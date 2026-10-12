@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+game/dist/
+godot/.godot/
+godot/export/
