@@ -5,6 +5,12 @@ ev_register,访客簿的划痕,F1,划痕旁的打字印，e 偏高
 ev_receipt_study,书房的回执,F3,“R.”“已收悉”
 ev_barlow_watch,停在 21:40 的怀表,, 
 ev_wynn_ink,色带的紫墨,,
+ev_notice,打字机上的通告,C1,字模 e 偏高
+ev_letter_draft,委托信底稿,C2,落款十月三日夜：艾克先生已在庄园门外
+ev_telegram_drafts,未寄出的电报稿,C3,已收悉·R.
+ev_iou,打字的借据,C1,字模 e 偏高
+ev_morning_paper,十月三日的早报,C2,私家侦探艾克今晚抵庄
+ev_record,唱片里的回执,C3,已收悉……
 ev_key_tags,钥匙牌,C1,打字机打的，e 偏高
 ev_night_log,值夜簿,C2,十月三日 21:40 艾克先生已在门外
 ev_receipts_a,抽屉里的回执,C3,每张比划痕晚一分钟

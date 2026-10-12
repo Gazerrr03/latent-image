@@ -63,17 +63,25 @@ func _arg(prefix: String) -> String:
 	return ""
 
 
-## 截图：Godot --path godot -- --capture=N1-07 [--leak=3] [--out=/tmp/x.png]
+## 截图：Godot --path godot -- --capture=N1-07 [--leak=3] [--grant-all] [--telegrams=4] [--out=/tmp/x.png]
 ## 跳到指定镜号，等画面稳定后截图并退出。供 agent 自查画面用。
 func _capture(shot_id: String) -> void:
 	GameState.reset()
 	if _arg("--leak=") != "":
 		GameState.set_leak(int(_arg("--leak=")))
+	if OS.get_cmdline_user_args().has("--grant-all"):
+		for id in ContentDB.evidence:
+			GameState.add_evidence(id)
+	if _arg("--telegrams=") != "":
+		GameState.telegrams_left = int(_arg("--telegrams="))
+		GameState.changed.emit()
 	Director.start(shot_id)
 	await get_tree().create_timer(float(_arg("--wait=")) if _arg("--wait=") != "" else 2.5).timeout
 	var out := _arg("--out=")
 	if out == "":
 		out = "/tmp/godot_capture_%s.png" % shot_id
+	if OS.get_cmdline_user_args().has("--debug-ui"):
+		print("board ", Director.ui.board.size, " register ", Director.ui.register.size, " anchors ", Director.ui.register.anchor_right, " page ", Director.ui.register.page.size)
 	get_viewport().get_texture().get_image().save_png(out)
 	print("截图已保存：", out)
 	get_tree().quit()

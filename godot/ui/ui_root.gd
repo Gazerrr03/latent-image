@@ -8,6 +8,8 @@ signal _resolved(value: int)
 const PAPER := Color("#efe6d2")
 const INK := Color("#1f1a14")
 const BAR_RATIO := 0.128  # 16:9 画面上加 2.39:1 黑边
+const EvidenceBoard := preload("res://ui/evidence_board.gd")
+const RegisterView := preload("res://ui/register_view.gd")
 
 var font: SystemFont
 var _waiting := false
@@ -28,6 +30,10 @@ var toast_label: Label
 var hint_label: Label
 var progress_label: Label
 var crosshair: Label
+var board: Control
+var register: Control
+var telegrams: HBoxContainer
+var telegram_note: Label
 
 
 func _ready() -> void:
@@ -44,6 +50,12 @@ func _ready() -> void:
 
 	bar_top = _bar(root, true)
 	bar_bottom = _bar(root, false)
+
+	# 证据板与访客簿盖在黑边之上、文字框之下
+	board = EvidenceBoard.new()
+	root.add_child(board)
+	register = RegisterView.new()
+	root.add_child(register)
 
 	text_panel = _paper_panel()
 	text_panel.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
@@ -85,8 +97,30 @@ func _ready() -> void:
 	objective_label = _label(root, Control.PRESET_CENTER_TOP, 20)
 	objective_label.offset_top = 70
 	telegram_label = _label(root, Control.PRESET_TOP_RIGHT, 18)
-	telegram_label.offset_left = -260
-	telegram_label.offset_top = 24
+	telegram_label.visible = false
+	# 七张电报纸：每个节点撕下一张（节点预算，docs/01 第 4 节）
+	telegrams = HBoxContainer.new()
+	telegrams.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	telegrams.position = Vector2(-24 - 7 * 30, 22)
+	telegrams.add_theme_constant_override("separation", -10)
+	telegrams.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(telegrams)
+	for i in GameState.TELEGRAMS:
+		var slip := Panel.new()
+		slip.custom_minimum_size = Vector2(38, 52)
+		var ssb := StyleBoxFlat.new()
+		ssb.bg_color = Color("#e9dfc6")
+		ssb.border_color = Color("#9a8a68")
+		ssb.set_border_width_all(1)
+		ssb.shadow_color = Color(0, 0, 0, 0.5)
+		ssb.shadow_size = 3
+		slip.add_theme_stylebox_override("panel", ssb)
+		slip.rotation_degrees = float(i % 3) - 1.0
+		slip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		telegrams.add_child(slip)
+	telegram_note = _label(root, Control.PRESET_TOP_RIGHT, 13)
+	telegram_note.position = Vector2(-150, 80)
+	telegram_note.text = "已读 21:40"
 	toast_label = _label(root, Control.PRESET_CENTER_TOP, 18)
 	toast_label.offset_top = 110
 	hint_label = _label(root, Control.PRESET_CENTER, 18)
@@ -140,7 +174,21 @@ func _label(root: Control, preset: int, size: int) -> Label:
 
 
 func _refresh() -> void:
-	telegram_label.text = "电报纸 " + "▮".repeat(GameState.telegrams_left) + "▯".repeat(GameState.TELEGRAMS - GameState.telegrams_left)
+	var slips := telegrams.get_children()
+	for i in slips.size():
+		var keep := i < GameState.telegrams_left
+		if slips[i].visible and not keep and not Director.autoplay:
+			# 撕下一张：向上飘走
+			var t := create_tween().set_parallel()
+			t.tween_property(slips[i], "position:y", -40.0, 0.5)
+			t.tween_property(slips[i], "modulate:a", 0.0, 0.5)
+			t.chain().tween_callback(func(): slips[i].visible = false)
+		elif keep:
+			slips[i].visible = true
+			slips[i].modulate.a = 1.0
+			slips[i].position.y = 0
+	# 渗漏 L2 起，电报纸边缘出现“已读 21:40”
+	telegram_note.visible = GameState.leak_level >= 2
 
 
 # ───────────── Director 调用的接口 ─────────────
@@ -195,6 +243,39 @@ func choose(title: String, options: Array) -> int:
 
 func cancel() -> void:
 	_resolved.emit(-1)
+	board.cancel()
+	register.cancel()
+
+
+# ───────────── 实物 UI ─────────────
+
+func board_pick_pair(title: String) -> Array:
+	_release_mouse()
+	objective_label.visible = false
+	var pair: Array = await board.pick_pair(title)
+	return pair
+
+
+func board_result(a: String, b: String, ok: bool) -> void:
+	await board.show_result(a, b, ok)
+
+
+func board_open(title: String) -> void:
+	_release_mouse()
+	board.open(title)
+
+
+func board_close() -> void:
+	board.close()
+	objective_label.visible = true
+	_restore_mouse()
+
+
+func register_pick(title: String, alive: Array) -> int:
+	_release_mouse()
+	var k: int = await register.pick(title, alive)
+	_restore_mouse()
+	return k
 
 
 func wait_seconds(sec: float) -> void:

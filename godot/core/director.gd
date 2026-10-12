@@ -230,7 +230,11 @@ func _accuse(reason_set: String) -> void:
 	var names := GameState.remaining_suspects()
 	var k := 0
 	if not autoplay:
-		k = await ui.choose("笔尖悬在名字上方", names)
+		k = await ui.register_pick("笔尖悬在名字上方。落笔即是指认。", names)
+	elif GameState.accused.is_empty():
+		for i in names.size():
+			if "--line=" + GameState.LINE_OF[names[i]] in OS.get_cmdline_user_args():
+				k = i
 	if k < 0:
 		return
 	var who: String = names[k]
@@ -249,37 +253,38 @@ func _link(group: String) -> void:
 	if pairs.is_empty():
 		push_warning("连线组不存在：" + group)
 		return
-	# links.csv 的 note 列写了镜号时，优先用这一行的回应（同一组在不同节点演示不同画面）
+	# links.csv 的 note 列写了镜号的行，是这个镜头固定要演示的画面（如 N6 汇聚），与玩家连的是哪一对无关
 	var here: Array = pairs.filter(func(p): return p.get("note", "") == GameState.shot)
-	var demo: Dictionary = here[0] if not here.is_empty() else pairs[0]
+	var shot_demo: Dictionary = here[0] if not here.is_empty() else {}
 	if GameState.links_done.has(group):
 		# 之前已经连对：自动演示一遍
-		await ui.show_text(demo.get("response", ""))
+		await ui.show_text((shot_demo if not shot_demo.is_empty() else pairs[0]).get("response", ""))
 		return
 	var usable := pairs.filter(func(p): return GameState.evidence.has(p["a"]) and GameState.evidence.has(p["b"]))
+	var matched: Dictionary = {}
 	if usable.is_empty() or autoplay:
 		if usable.is_empty():
 			push_warning("连线组 %s 所需证据尚未收集（可能是调试跳转），自动完成" % group)
-		GameState.links_done.append(group)
-		await ui.show_text(demo.get("response", ""))
-		return
-	while true:
-		var names: Array = GameState.evidence.map(func(e): return ContentDB.evidence.get(e, {}).get("name", e))
-		var a: int = await ui.choose("证据板：拉起红线的一端", names)
-		if a < 0:
-			return
-		var b: int = await ui.choose("另一端连到", names)
-		if b < 0:
-			return
-		var ea: String = GameState.evidence[a]
-		var eb: String = GameState.evidence[b]
-		for p in pairs:
-			if (p["a"] == ea and p["b"] == eb) or (p["a"] == eb and p["b"] == ea):
-				GameState.links_done.append(group)
-				GameState.record("link", group)
-				await ui.show_text(p.get("response", ""))
+		matched = usable[0] if not usable.is_empty() else pairs[0]
+	else:
+		var title: String = GameState.objective if GameState.objective != "" else "证据板"
+		while matched.is_empty():
+			var pick: Array = await ui.board_pick_pair(title)
+			if pick.is_empty():
+				ui.board_close()
 				return
-		ui.toast("红线抖了一下，弹回原处。")
+			for p in pairs:
+				if (p["a"] == pick[0] and p["b"] == pick[1]) or (p["a"] == pick[1] and p["b"] == pick[0]):
+					matched = p
+					break
+			await ui.board_result(pick[0], pick[1], not matched.is_empty())
+	GameState.links_done.append(group)
+	GameState.link_pairs.append([matched["a"], matched["b"]])
+	GameState.record("link", group)
+	await ui.show_text(matched.get("response", ""))
+	if not shot_demo.is_empty() and shot_demo != matched:
+		await ui.show_text(shot_demo.get("response", ""))
+	ui.board_close()
 
 
 func _say(set_id: String) -> void:

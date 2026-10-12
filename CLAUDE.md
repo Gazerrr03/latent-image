@@ -24,9 +24,10 @@ G=godot   # ~/.local/bin/godot → /Applications/Godot.app/Contents/MacOS/Godot
 # 1. 内容校验：表格互相对得上（退出码 0 = 通过）
 $G --headless --path godot --script res://tools/validate_content.gd
 # 2. 自动通关：无界面走完整条路径（退出码 0 = 到达终局且三组连线完成）
-$G --headless --path godot -- --autoplay
+$G --headless --path godot -- --autoplay --line=A   # 三条线 A / B / C 都要跑
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=N1-07 --leak=0 --out=/tmp/x.png
+# 可加 --grant-all（发放全部证据，用于看证据板）、--telegrams=4
 ```
 
 macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec(@ARGV)' <命令>` 防止卡住。
@@ -34,6 +35,11 @@ macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec
 Godot MCP 已在 `.mcp.json` 配置（Coding-Solo/godot-mcp）：可启动编辑器、运行项目、读取调试输出；没有截图功能，截图用上面的 `--capture`。
 
 游戏内按 F1 打开调试面板：跳镜号、切分支线、切渗漏等级、重载表格、从头开始。
+
+## Git
+
+- 远端：`github.com/Gazerrr03/acknowledged`（private），主分支 `main`。
+- 本机 git 未配置 GitHub 凭据，推送时用：`git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`（或由用户运行一次 `gh auth setup-git`）。
 
 ## 协作
 

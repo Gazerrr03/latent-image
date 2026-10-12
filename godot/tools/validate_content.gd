@@ -5,6 +5,7 @@ extends SceneTree
 
 const DB := preload("res://core/content_db.gd")
 const Actions := preload("res://core/actions.gd")
+const Greybox := preload("res://world/greybox_specs.gd")
 const STORY := "res://content/story/"
 
 var errors: Array = []
@@ -95,8 +96,11 @@ func _init() -> void:
 					errors.append("连线组 %s：证据 %s 不在 evidence.csv 中" % [g, p.get(k, "")])
 	for s in scenes.values():
 		var m: String = s.get("model", "")
-		if m != "" and not FileAccess.file_exists(m):
+		var has_model := m != "" and FileAccess.file_exists(m)
+		if m != "" and not has_model:
 			warnings.append("场景 %s：美术模型 %s 尚未到位，使用灰盒" % [s["id"], m])
+		if not has_model and Greybox.get_spec(s["id"]).is_empty():
+			errors.append("场景 %s 既没有美术模型，也没有灰盒规格（world/greybox_specs.gd）" % s["id"])
 
 	print("内容检查：%d 个镜头，%d 个热区，%d 件证据" % [shots.size(), hotspots.size(), evidence.size()])
 	for w in warnings:

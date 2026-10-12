@@ -17,6 +17,8 @@ var accused: Array = []
 var evidence: Array = []
 var inspected: Array = []
 var links_done: Array = []
+## 连对的证据对 [[a, b], ...]，证据板上画红线用
+var link_pairs: Array = []
 var leak_level := 0
 var tendency := {}
 ## 玩家的全部批注与选择，终局自述的输入
@@ -33,6 +35,7 @@ func reset() -> void:
 	evidence = []
 	inspected = []
 	links_done = []
+	link_pairs = []
 	leak_level = 0
 	tendency = {}
 	journal = []
@@ -97,7 +100,7 @@ func to_dict() -> Dictionary:
 	return {
 		"version": 1, "shot": shot, "telegrams_left": telegrams_left, "line": line,
 		"accused": accused, "evidence": evidence, "inspected": inspected,
-		"links_done": links_done, "leak_level": leak_level, "tendency": tendency,
+		"links_done": links_done, "link_pairs": link_pairs, "leak_level": leak_level, "tendency": tendency,
 		"journal": journal, "objective": objective, "ending": ending,
 	}
 
@@ -111,6 +114,7 @@ func from_dict(d: Dictionary) -> void:
 	evidence = d.get("evidence", [])
 	inspected = d.get("inspected", [])
 	links_done = d.get("links_done", [])
+	link_pairs = d.get("link_pairs", [])
 	leak_level = int(d.get("leak_level", 0))
 	tendency = d.get("tendency", {})
 	journal = d.get("journal", [])

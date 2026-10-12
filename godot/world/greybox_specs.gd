@@ -175,4 +175,69 @@ static func get_spec(id: String) -> Dictionary:
 				"markers": {},
 				"spawn": [Vector3(0, 0, 8.0), 0.0],
 			}
+		"typing_room":
+			return {
+				"size": Vector3(4.5, 3.0, 4),
+				"lights": [[Vector3(1.8, 2.2, -1.9), Color("#ffe0b0"), 2.2], [Vector3(-1.0, 1.4, 0.5), Color("#ffc98a"), 0.8]],
+				"props": [
+					{"name": "打字桌左", "pos": Vector3(-0.9, 0.38, -1.0), "size": Vector3(1.1, 0.76, 0.6), "color": WOOD},
+					{"name": "打字桌右", "pos": Vector3(0.9, 0.38, -1.0), "size": Vector3(1.1, 0.76, 0.6), "color": WOOD},
+					{"name": "打字机左", "pos": Vector3(-0.9, 0.86, -1.0), "size": Vector3(0.4, 0.2, 0.35), "color": DARK},
+					{"name": "打字机右", "pos": Vector3(0.9, 0.86, -1.0), "size": Vector3(0.4, 0.2, 0.35), "color": DARK},
+					{"name": "抽屉柜", "pos": Vector3(1.9, 0.5, 1.2), "size": Vector3(0.5, 1.0, 0.8), "color": WOOD},
+					{"name": "窗", "pos": Vector3(1.5, 1.7, -1.98), "size": Vector3(1.0, 1.2, 0.04), "color": Color("#1c2638")},
+					{"name": "镜子", "pos": Vector3(-2.22, 1.6, 0.6), "size": Vector3(0.04, 1.1, 0.6), "color": Color("#9fb0b8")},
+				],
+				"hotspots": {
+					"hs_platen": Vector3(-0.9, 1.0, -1.0),
+					"hs_typewriter_pair": Vector3(0.9, 1.05, -0.95),
+					"hs_calendar_letter": Vector3(-0.5, 0.85, -0.85),
+					"hs_telegram_drafts": Vector3(1.9, 0.75, 0.75),
+					"hs_window_b": Vector3(1.5, 1.6, -1.85),
+					"hs_mirror_b": Vector3(-2.1, 1.6, 0.6),
+				},
+				"markers": {"door_push": [Vector3(0, 1.6, 1.8), Vector3(0, 0.9, -1.0)]},
+				"spawn": [Vector3(0, 0, 1.6), 0.0],
+			}
+		"attic_stairs":
+			return {
+				"size": Vector3(1.6, 6.0, 6),
+				"lights": [[Vector3(0, 4.6, -2.6), Color("#ffd28a"), 3.0]],
+				"props": [
+					{"name": "台阶1", "pos": Vector3(0, 0.1, 1.5), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "台阶2", "pos": Vector3(0, 0.6, 0.9), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "台阶3", "pos": Vector3(0, 1.1, 0.3), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "台阶4", "pos": Vector3(0, 1.6, -0.3), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "台阶5", "pos": Vector3(0, 2.1, -0.9), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "台阶6", "pos": Vector3(0, 2.6, -1.5), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "台阶7", "pos": Vector3(0, 3.1, -2.1), "size": Vector3(1.4, 0.2, 0.6), "color": WOOD},
+					{"name": "门框光", "pos": Vector3(0, 4.3, -2.95), "size": Vector3(0.9, 2.0, 0.05), "color": Color("#ffe6b8")},
+				],
+				"hotspots": {},
+				"markers": {"stairs_up": [Vector3(0, 0.9, 2.6), Vector3(0, 3.6, -2.6)]},
+				"spawn": [Vector3(0, 0, 2.4), 0.0],
+			}
+		"billiard_room":
+			return {
+				"size": Vector3(6, 3.0, 5),
+				"lights": [[Vector3(0, 2.3, 0), Color("#ffd9a0"), 3.0]],
+				"props": [
+					{"name": "台球桌", "pos": Vector3(0, 0.4, 0), "size": Vector3(2.6, 0.8, 1.4), "color": Color("#1f4a32")},
+					{"name": "吊灯", "pos": Vector3(0, 2.5, 0), "size": Vector3(1.2, 0.15, 0.3), "color": BRASS},
+					{"name": "记分黑板", "pos": Vector3(-2.97, 1.5, -1.0), "size": Vector3(0.04, 0.8, 1.0), "color": Color("#1b1d1c")},
+					{"name": "边桌", "pos": Vector3(-2.4, 0.38, 0.6), "size": Vector3(0.8, 0.76, 0.6), "color": WOOD},
+					{"name": "留声机", "pos": Vector3(2.5, 0.6, -1.8), "size": Vector3(0.5, 1.2, 0.5), "color": BRASS},
+					{"name": "镜面墙", "pos": Vector3(0, 1.6, -2.47), "size": Vector3(3.0, 1.6, 0.04), "color": Color("#9fb0b8")},
+					{"name": "窗", "pos": Vector3(2.97, 1.6, 1.0), "size": Vector3(0.04, 1.2, 1.0), "color": Color("#1c2638")},
+				],
+				"hotspots": {
+					"hs_iou": Vector3(-2.4, 0.85, 0.6),
+					"hs_morning_paper": Vector3(-2.2, 0.85, 0.9),
+					"hs_gramophone": Vector3(2.5, 1.3, -1.6),
+					"hs_mirror_c": Vector3(0, 1.6, -2.35),
+					"hs_window_c": Vector3(2.85, 1.6, 1.0),
+				},
+				"markers": {"billiard_mid": [Vector3(2.0, 1.6, 2.0), Vector3(0, 0.8, 0)]},
+				"spawn": [Vector3(0, 0, 2.0), 0.0],
+			}
 	return {}
