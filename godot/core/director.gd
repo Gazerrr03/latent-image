@@ -154,6 +154,8 @@ func _do(name: String, args: Array, mode: String) -> void:
 			await ui.show_text(build_confession())
 		"goto":
 			world.show_scene(args[0])
+		"fx":
+			ui.fx.set_override(args[0] if args.size() > 0 else "")
 		_:
 			push_warning("未知动作，已跳过：" + name)
 

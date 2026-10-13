@@ -15,7 +15,7 @@
 - 镜头表的 `actions` 列只能使用 `godot/core/actions.gd` 中的白名单；新增动作要同时改 `actions.gd`、`director.gd` 的 `_do`，并更新 `docs/06` 2.2 节。
 - 每个 `.csv` 旁必须有 `importer="keep"` 的 `.csv.import`（校验工具会自动补）。
 - 美术模型放 `godot/art/rooms/`，在 `scenes.csv` 的 `model` 列登记；命名约定见 `docs/09` 第 5 节（`hs_`、`spawn`、`exit`、`cam_`、`guide_`、`-col`）。没有模型时按 `godot/content/space/`（房间登记表、房间布局表）搭灰盒。
-- 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线）、`content/space/`（房间、布局）、`content/audio/`（音效表）、`content/ai/`（词表、自述兜底）。填表说明在 `docs/填表说明/`。
+- 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线）、`content/space/`（房间、布局）、`content/audio/`（音效表）、`content/ai/`（词表、自述兜底）、`content/visual/`（滤镜表）。填表说明在 `docs/填表说明/`。
 - 结构：`core/`（状态、内容、播放器、动作）、`world/`（场景宿主、玩家）、`ui/`（临时界面、调试面板）、`shaders/`、`tools/`。
 
 ## 验证命令（改动后必须跑）
@@ -28,7 +28,7 @@ $G --headless --path godot --script res://tools/validate_content.gd
 $G --headless --path godot -- --autoplay --line=A   # 三条线 A / B / C 都要跑
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=N1-07 --leak=0 --out=/tmp/x.png
-# 可加 --grant-all（发放全部证据，用于看证据板）、--telegrams=4
+# 可加 --grant-all（发放全部证据，用于看证据板）、--telegrams=4、--fx=纪录片片头
 ```
 
 macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec(@ARGV)' <命令>` 防止卡住。

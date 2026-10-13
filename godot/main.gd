@@ -6,6 +6,7 @@ const SceneHost := preload("res://world/scene_host.gd")
 const Player := preload("res://world/player.gd")
 const UiRoot := preload("res://ui/ui_root.gd")
 const DebugPanel := preload("res://ui/debug_panel.gd")
+const MediaFx := preload("res://ui/media_fx.gd")
 
 
 func _ready() -> void:
@@ -14,7 +15,10 @@ func _ready() -> void:
 	var player := Player.new()
 	add_child(player)
 	host.player = player
+	var fx := MediaFx.new()
+	add_child(fx)
 	var ui := UiRoot.new()
+	ui.fx = fx
 	add_child(ui)
 	Director.ui = ui
 	Director.world = host
@@ -65,12 +69,14 @@ func _arg(prefix: String) -> String:
 	return ""
 
 
-## 截图：Godot --path godot -- --capture=N1-07 [--leak=3] [--grant-all] [--telegrams=4] [--out=/tmp/x.png]
+## 截图：Godot --path godot -- --capture=N1-07 [--leak=3] [--grant-all] [--telegrams=4] [--fx=纪录片片头] [--out=/tmp/x.png]
 ## 跳到指定镜号，等画面稳定后截图并退出。供 agent 自查画面用。
 func _capture(shot_id: String) -> void:
 	GameState.reset()
 	if _arg("--leak=") != "":
 		GameState.set_leak(int(_arg("--leak=")))
+	if _arg("--fx=") != "":
+		Director.ui.fx.set_override(_arg("--fx="))
 	if OS.get_cmdline_user_args().has("--grant-all"):
 		for id in ContentDB.evidence:
 			GameState.add_evidence(id)
@@ -78,6 +84,9 @@ func _capture(shot_id: String) -> void:
 		GameState.telegrams_left = int(_arg("--telegrams="))
 		GameState.changed.emit()
 	Director.start(shot_id)
+	if _arg("--fx=") != "":
+		await get_tree().process_frame
+		Director.ui.fx.set_override(_arg("--fx="))
 	await get_tree().create_timer(float(_arg("--wait=")) if _arg("--wait=") != "" else 2.5).timeout
 	var out := _arg("--out=")
 	if out == "":

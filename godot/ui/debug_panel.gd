@@ -60,6 +60,14 @@ func _ready() -> void:
 			Director.world.apply_leak(lv)))
 	v.add_child(leak)
 
+	var fxrow := HBoxContainer.new()
+	fxrow.add_child(_label("滤镜"))
+	for name in ["自动", "纪录片片头", "关闭"]:
+		var n: String = name
+		fxrow.add_child(_btn(n, func(): Director.ui.fx.set_override(n)))
+	fxrow.add_child(_btn("重载滤镜表", func(): Director.ui.fx.reload()))
+	v.add_child(fxrow)
+
 	var misc := HBoxContainer.new()
 	misc.add_child(_btn("重载内容表", func(): ContentDB.reload()))
 	misc.add_child(_btn("从头开始", func():

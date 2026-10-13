@@ -10,12 +10,14 @@ const STORY := "res://content/story/"
 const SPACE := "res://content/space/"
 const AUDIO := "res://content/audio/"
 const AI := "res://content/ai/"
+const VISUAL := "res://content/visual/"
 ## 每个节点允许的渗漏等级（docs/02 第 4 节）
 const NODE_LEAK := {"N1": 0, "N2": 1, "N3": 1, "N4": 2, "N5": 3, "N6": 4, "N7": 4}
 const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生点"]
 
 ## 每条问题：{level: 错误/提醒, table, where, what, fix}
 var issues: Array = []
+var fx_presets := {}
 
 
 func err(table: String, where: String, what: String, fix := "") -> void:
@@ -39,6 +41,16 @@ func _init() -> void:
 	var layout := DB.group_by(layout_rows, "room")
 	var sounds := DB.index_by(DB.load_table(AUDIO + "sounds.csv"), "id")
 	var words := DB.load_table(AI + "wordlists.csv")
+	fx_presets = DB.index_by(DB.load_table(VISUAL + "fx.csv"), "preset")
+	for lv in 5:
+		if not fx_presets.has("L%d" % lv):
+			err("滤镜表", "L%d" % lv, "缺少渗漏等级 L%d 的默认滤镜" % lv, "滤镜表必须有 L0—L4 五行")
+	for pr in fx_presets.values():
+		for k in pr:
+			if k in ["preset", "tint", "note"]:
+				continue
+			if pr[k] != "" and not str(pr[k]).is_valid_float():
+				err("滤镜表", pr["preset"], "%s 不是数字" % k)
 
 	_check_import_files()
 
@@ -188,6 +200,9 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"say":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
+		"fx":
+			if args.size() > 0 and not args[0] in ["", "自动"] and not fx_presets.has(args[0]):
+				err("镜头表", id, "滤镜预设“%s”不在滤镜表里" % args[0])
 		"leak":
 			if args.is_empty() or not args[0].is_valid_int() or int(args[0]) < 0 or int(args[0]) > 4:
 				err("镜头表", id, "渗漏等级必须是 0—4")

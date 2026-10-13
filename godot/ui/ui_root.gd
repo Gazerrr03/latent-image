@@ -10,6 +10,7 @@ const INK := Color("#1f1a14")
 const BAR_RATIO := 0.128  # 16:9 画面上加 2.39:1 黑边
 const EvidenceBoard := preload("res://ui/evidence_board.gd")
 const RegisterView := preload("res://ui/register_view.gd")
+const MediaFx := preload("res://ui/media_fx.gd")
 
 var font: SystemFont
 var _waiting := false
@@ -34,6 +35,7 @@ var board: Control
 var register: Control
 var telegrams: HBoxContainer
 var telegram_note: Label
+var fx: CanvasLayer
 
 
 func _ready() -> void:
