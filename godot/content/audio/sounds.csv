@@ -42,3 +42,4 @@ keys_even,键声渐渐变成均匀的节拍,渗漏,,0,否,
 typewriter_idle_low,打字机待机的低鸣,器物,,0,是,
 typewriter,打字机声,器物,,0,否,
 footstep_wood,玩家脚步（木地板）,人声,,0,否,
+phone_ring,走廊小桌上的电话铃（老式）,器物,,0,否,N5-04

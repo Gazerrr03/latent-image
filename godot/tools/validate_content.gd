@@ -208,13 +208,13 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 			for e in args:
 				if not evidence.has(e):
 					err("镜头表", id, "证据 %s 不在证据表里" % e)
-		"annotate", "inquire", "accuse", "ending_choice":
+		"annotate", "inquire", "accuse":
 			if args.size() > 0 and args[0] != "" and not ann.has(args[0]):
 				err("镜头表", id, "预设组 %s 不在预设表里" % args[0])
 		"link":
 			if args.is_empty() or not links.has(args[0]):
 				err("镜头表", id, "连线组 %s 不在连线规则表里" % str(args))
-		"say":
+		"say", "ending":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
 		"footage":

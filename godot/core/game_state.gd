@@ -17,11 +17,15 @@ var links_done: Array = []
 ## 连对的证据对 [[a, b], ...]，证据板上画红线用
 var link_pairs: Array = []
 var leak_level := 0
+## 人格属性计数：好奇 / 记忆 / 共情 / 欲望（docs/01 第 4.1 节）
 var tendency := {}
 ## 玩家的全部批注与选择，终局自述的输入
 var journal: Array = []
 var objective := ""
+## 终局视角 = 结束时的主导属性
 var ending := ""
+## 本局的容器编号，N7-05 的文件上显示；每局随机，暗示还有很多个“我”
+var container := ""
 ## 截图、自动测试时为 false：开发测试永远不写玩家的存档
 var persist := true
 
@@ -40,7 +44,21 @@ func reset() -> void:
 	journal = []
 	objective = ""
 	ending = ""
+	container = "%04d" % randi_range(1, 9999)
 	changed.emit()
+
+
+## 主导属性：计数最高者；平局取“好奇”（侦探本来就是好奇）。
+## 命令行 --view=记忆 可强制指定，用于截图和测试四种视角
+func dominant() -> String:
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--view="):
+			return a.trim_prefix("--view=")
+	var best := "好奇"
+	for t in ["好奇", "记忆", "共情", "欲望"]:
+		if int(tendency.get(t, 0)) > int(tendency.get(best, 0)):
+			best = t
+	return best
 
 
 ## 嫌疑人名单与分支线来自人物表（content/story/characters.csv）
@@ -48,9 +66,9 @@ func remaining_suspects() -> Array:
 	return ContentDB.suspects().filter(func(s): return not accused.has(s))
 
 
-## 用于 lines.csv 的条件匹配：X、Y、Z、line、ending
+## 用于 lines.csv 的条件匹配：X、Y、Z、line、ending、view（当前主导属性）
 func vars() -> Dictionary:
-	var v := {"line": line, "ending": ending}
+	var v := {"line": line, "ending": ending, "view": dominant()}
 	if accused.size() > 0:
 		v["X"] = accused[0]
 	if accused.size() > 1:
@@ -101,7 +119,7 @@ func to_dict() -> Dictionary:
 		"version": 1, "shot": shot, "telegrams_left": telegrams_left, "line": line,
 		"accused": accused, "evidence": evidence, "inspected": inspected,
 		"links_done": links_done, "link_pairs": link_pairs, "leak_level": leak_level, "tendency": tendency,
-		"journal": journal, "objective": objective, "ending": ending,
+		"journal": journal, "objective": objective, "ending": ending, "container": container,
 	}
 
 
@@ -120,6 +138,7 @@ func from_dict(d: Dictionary) -> void:
 	journal = d.get("journal", [])
 	objective = d.get("objective", "")
 	ending = d.get("ending", "")
+	container = d.get("container", container)
 	changed.emit()
 
 

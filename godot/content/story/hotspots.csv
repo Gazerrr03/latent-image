@@ -1,31 +1,34 @@
 id,scene,label,text,evidence,footage,note
 hs_latch,study,门闩,门闩从里面闩着。,,,
 hs_window,study,窗,窗外，花园里一条小径在树篱处分岔。,,,
-hs_phone,study,电话,电话听筒搭在桌上，没有挂回去。,,,
+hs_phone,study,电话,电话听筒搭在桌上，没有挂回去。听筒里只有很轻的杂音，像是很远的地方有人在说话。,,,
 hs_receipt,study,回执,桌角一张回执，只写了两行：\n“R.”\n“已收悉”,ev_receipt_study,,F3
 hs_register,study,访客簿,访客簿上，罗伊德先生一行被划去。划痕边有一个极小的打字印，字母 e 偏高半行。,ev_register,,F1
 hs_barlow_watch,parlor,巴洛的怀表,巴洛在擦怀表。表停在 21:40。,ev_barlow_watch,,
 hs_wynn_fingers,parlor,韦恩小姐的手,韦恩小姐的手指沾着色带的紫墨。,ev_wynn_ink,,
-hs_lance_window,parlor,朗斯望着的窗外,朗斯望着窗外。花园里一条小径在树篱处分岔。,,,
+hs_lance_window,parlor,朗斯朝着的窗外,朗斯的脸一直朝着窗外。花园里一条小径在树篱处分岔。,,,
 hs_keyring,butler_room,钥匙环,桌上一圈钥匙。,,,
 hs_key_tags,butler_room,钥匙牌,墙上一排钥匙钩，牌子是打字机打的，e 偏高。\n“Spare key — Study”挂在钩上。书房的钥匙一把不少。\n书房的门是内闩，不是用钥匙锁的。,ev_key_tags,,C1
 hs_night_log,butler_room,值夜簿,值夜簿摊开着：“十月三日 21:40 书房灯灭。艾克先生已在门外。”\n笔迹是巴洛的手写。,ev_night_log,,C2
 hs_receipts_drawer,butler_room,抽屉,抽屉里一叠回执，每张都写着“已收悉”。时间都比对应的名册划痕晚一分钟。,ev_receipts_a,,C3
 hs_window_a,butler_room,窗,花园小径在树篱处分岔，分岔后的两条路通向同一道门。,,,可选
 hs_mirror_a,butler_room,镜子,镜中是空房，没有你的倒影。,,,可选
+hs_photo_a,butler_room,墙上的旧照片,墙上一张旧照片：“罗伊德庄园全体　一九〇一年十月”。\n还是这几个人，还是这个年纪，眼睛都被遮着。中间空出一块，地上落着一顶帽子。\n照片背面的说明是打字机打的，e 偏高。,ev_photo_1901,,怪谈：以前发生过；相片留不住他
 hs_platen,typing_room,滚筒,一台打字机的滚筒还在微微转动。,,,
 hs_typewriter_pair,typing_room,两台打字机,两台打字机。韦恩小姐的那台字模清晰，e 正常；另一台与你的是同一型号，滚筒上卷着一张通告，字模 e 偏高：\n“Mr. Royd is struck off the register.”,ev_notice,,C1
 hs_calendar_letter,typing_room,日历与信封,桌上的日历翻在十月三日。旁边的信封邮戳是十月四日，里面是委托信的底稿，落款十月三日夜，写着：“艾克先生已在庄园门外。”,ev_letter_draft,,C2
 hs_telegram_drafts,typing_room,抽屉,抽屉里几张未寄出的电报稿，只写着“已收悉·R.”，没有收件人。,ev_telegram_drafts,,C3
 hs_window_b,typing_room,窗,窗外是那条分岔的小径。,,,可选
 hs_mirror_b,typing_room,镜子,墙上的镜子里只有两台打字机，没有人。,,,可选
+hs_photo_b,typing_room,墙上的旧照片,墙上一张旧照片：“罗伊德庄园打字室　一九〇一年十月”。\n两台打字机，一个戴遮光帽的女人，年纪和现在一样。另一台打字机前空着，椅子底下落着一顶帽子。\n照片背面的说明是打字机打的，e 偏高。,ev_photo_1901,,怪谈：以前发生过；相片留不住他
 hs_iou,billiard_room,记分黑板与借据,记分黑板旁的桌上有一张借据。借据是打字的，字模 e 偏高。,ev_iou,,C1
 hs_morning_paper,billiard_room,早报,桌上一份十月三日的早报，一个小栏写着：“私家侦探艾克今晚抵庄。”,ev_morning_paper,,C2
 hs_gramophone,billiard_room,留声机,留声机的唱片在转，唱针永远走不到头。播放的不是音乐，是一遍一遍的“已收悉……已收悉……”,ev_record,,C3
 hs_mirror_c,billiard_room,镜面墙,镜面墙里没有你的倒影。,,,可选
 hs_window_c,billiard_room,窗,窗外，小径分岔处的灯又亮了一盏。,,,可选
+hs_photo_c,billiard_room,墙上的旧照片,墙上一张旧照片：“台球室　一九〇一年除夕”。\n几个人围着球桌，眼睛上都缠着丝巾，年纪和现在一样。球桌边空着一个位置，一根球杆斜靠在那里，地上落着一顶帽子。\n照片背面的说明是打字机打的，e 偏高。,ev_photo_1901,,怪谈：以前发生过；相片留不住他
 hs_study_door,corridor,书房的门,书房的灯亮着。门后传来打字声。,,,
 hs_journal_p1,study,手记第一页,手记第一页。页脚的收讫戳：“十月三日 九点三十九分”。,ev_journal_p1,,
-hs_mirror_study,study,镜子,书房的镜子里，终于出现了你的倒影：一个白色模型的人形，边缘是网格。它抬头看着你。,,,双解读
-hs_lending_cards,study,借阅卡,书架上的借阅卡，借阅人一栏全是“R. 艾克”。,,,双解读
-hs_floorplan,study,墙上的平面图,墙上那幅和庄园一样大的平面图里，有一个小点在动。,,,双解读
+hs_mirror_study,study,镜子,书房的镜子里，终于出现了你：一个白色的人形，没有脸，边缘是细细的方格。,,,所有视角共有
+hs_lending_cards,study,借阅卡,书架上的借阅卡，借阅人一栏全是“R. 艾克”。,,,记忆视角会再看一次
+hs_floorplan,study,墙上的平面图,墙上那幅和庄园一样大的平面图里，有一个小点在动。,,,

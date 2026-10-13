@@ -82,7 +82,7 @@ func _play(row: Dictionary) -> void:
 	for s in str(row.get("sound", "")).split(";", false):
 		world.play_sound(s.strip_edges())
 	if row.get("text", "") != "":
-		await ui.show_text(row["text"])
+		await ui.show_text(fill(row["text"]))
 		if _interrupted():
 			return
 	var acts := Actions.parse(row.get("actions", ""))
@@ -147,9 +147,12 @@ func _do(name: String, args: Array, mode: String) -> void:
 			await _link(args[0])
 		"say":
 			await _say(args[0])
-		"ending_choice":
-			var picked: String = await _choose_from_set(args[0] if args.size() > 0 else "ending", "ending", "")
-			GameState.ending = picked
+		"ending":
+			# 固定结局按主导属性呈现视角（docs/02 第 8 节）；台词组里按 view= 条件取一条
+			GameState.ending = GameState.dominant()
+			GameState.record("ending", GameState.ending)
+			if args.size() > 0:
+				await _say(args[0])
 		"confession":
 			await ui.show_text(build_confession())
 		"goto":
@@ -215,7 +218,12 @@ func _inspect(ids: Array, mode: String) -> void:
 		pending.erase(id)
 
 
-## 弹出一组预设（annotations.csv），记录选择与倾向变量，显示回应；返回所选文本
+## 镜头文字里的占位符：{容器号} = 本局随机的容器编号（N7-05 的文件）
+func fill(text: String) -> String:
+	return text.replace("{容器号}", GameState.container)
+
+
+## 弹出一组预设（annotations.csv），记录选择与人格属性，显示回应；返回所选文本
 func _choose_from_set(set_id: String, kind: String, title: String) -> String:
 	var rows: Array = ContentDB.annotations.get(set_id, [])
 	if rows.is_empty():
@@ -305,9 +313,16 @@ func _say(set_id: String) -> void:
 				return
 
 
-## 案卷自述的兜底版本：标准自述 + 原样摘录玩家的批注（docs/05 第 4 节）
+## 案卷自述的兜底版本：按主导属性取一篇标准自述（台词表 n7_confession），
+## 再原样摘录玩家的批注（docs/05 第 4 节）
 func build_confession() -> String:
-	var parts: Array = [ContentDB.confession_fallback.strip_edges()]
+	var standard := ContentDB.confession_fallback.strip_edges()
+	var v := GameState.vars()
+	for r in ContentDB.lines.get("n7_confession", []):
+		if ContentDB.condition_matches(r.get("condition", ""), v):
+			standard = r["text"]
+			break
+	var parts: Array = [standard]
 	for e in GameState.journal:
 		match e["kind"]:
 			"annotate", "reason":
