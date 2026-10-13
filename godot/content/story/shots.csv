@@ -1,10 +1,11 @@
 shot_id,node,line,scene,camera,mode,sound,text,ai_slot,actions,next,note
-N1-01,N1,*,office,establish,,rain;tram_bell;typewriter_idle,,,fx(纪录片片头);leak(0);wait(2.5),,黑场淡入。镜头在玩家肩后缓推向桌面：台灯、打字机、七张电报纸，窗外雨夜街灯。可环顾桌面，点电报纸会数出七张。渗漏 L0
+N1-00,N1,*,office,establish,,,,,footage(片头_警告),,片头：中英双语警告卡（参考视频的 WARNING 片头）。文字草拟待确认
+N1-01,N1,*,office,establish,,rain;tram_bell;typewriter_idle,,,"osd(档案卡,ROYD_REEL_01,001/007,1926/10/04 21:39);leak(0);wait(2.5)",,黑场淡入。镜头在玩家肩后缓推向桌面：台灯、打字机、七张电报纸，窗外雨夜街灯。可环顾桌面，点电报纸会数出七张。渗漏 L0。开场以黑白 4:3 胶片档案呈现（参考视频的 DORN_MARKER 文件卡）
 N1-02,N1,*,office,letter_close,,paper_rustle,委托信：“请即刻来罗伊德庄园。家主昨夜在书房里不见了。——律师 W.”\n落款：十月四日,,collect(ev_letter),,F2 线索（委托信日期）
 N1-03,N1,*,office,typewriter_close,,typewriter_return,第一行：“我到达的时候，庄园的灯还亮着。”\n页脚戳：“十月三日 九点三十九分 收讫”,,collect(ev_journal_p1),,手记第一页，此后玩家的批注都续写在这里。F1、F2 线索以场景细节呈现，不做提示
-N1-04,N1,*,street,follow,,car_door;engine_low,电报纸上逐字打出：“找出让罗伊德先生消失的人。”,,objective(找出让罗伊德先生消失的人。);use_telegram(),,第 1 张电报纸（回电给律师：已启程）。全游戏唯一的目标文字
+N1-04,N1,*,street,follow,,car_door;engine_low,电报纸上逐字打出：“找出让罗伊德先生消失的人。”,,"osd(档案卡,ROYD_REEL_02,002/007,1926/10/04 22:10);objective(找出让罗伊德先生消失的人。);use_telegram()",,第 1 张电报纸（回电给律师：已启程）。全游戏唯一的目标文字
 N1-05,N1,*,manor_gate,wide_symmetric,,iron_gate;thunder_far,,,wait(3),,过场约 5 秒：庄园大门对称构图，一排窗里的灯一格一格亮着，像表格
-N1-06,N1,*,hall,hall_mid,,clock_chime_9,访客簿上列着：巴洛（管家）、韦恩小姐（秘书）、朗斯（继子）。\n最后一行，“罗伊德先生”已被划去。,嫌疑人口吻,fx(自动);inquire(n1_intro),,座钟敲九下，钟面指着十点四十；镜中管家倒影清晰，玩家的位置是空的
+N1-06,N1,*,hall,hall_mid,,clock_chime_9,访客簿上列着：巴洛（管家）、韦恩小姐（秘书）、朗斯（继子）。\n最后一行，“罗伊德先生”已被划去。,嫌疑人口吻,osd();fx(自动);inquire(n1_intro),,座钟敲九下，钟面指着十点四十；镜中管家倒影清晰，玩家的位置是空的
 N1-07,N1,*,study,door_push,walk,lamp_hum,,,"objective(门从里面闩着。他是怎么离开的？);inspect(hs_latch,hs_window,hs_phone,hs_receipt,hs_register);annotate(n1)",N2-01,教学关：自由走动检查门闩、窗、电话、回执、访客簿。F1、F3 线索。检查后出现预设批注
 N2-01,N2,*,parlor,parlor_mid,,fire_crackle,巴洛：“昨夜我守夜，门房的灯一直没灭。”\n韦恩小姐：“我把信打到九点三十五分，罗伊德先生说他想一个人待着。”\n朗斯：“我在台球室，一个人。”,嫌疑人口吻,objective();inquire(n2_ask),,三人坐在沙发上，玩家背影入画；壁炉、虎纹挂毯
 N2-02,N2,*,parlor,suspects_close,,pendulum,,,"inspect(hs_barlow_watch,hs_wynn_fingers,hs_lance_window)",,三处细节放大观察，收入证据板，此刻不判定

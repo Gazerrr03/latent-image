@@ -156,6 +156,11 @@ func _do(name: String, args: Array, mode: String) -> void:
 			world.show_scene(args[0])
 		"fx":
 			ui.fx.set_override(args[0] if args.size() > 0 else "")
+		"footage":
+			await ui.footage.play_clip(args[0])
+		"osd":
+			# osd(样式,文件名,编号,时间)；osd() 关闭
+			ui.footage.set_live(args[0] if args.size() > 0 else "", args[1] if args.size() > 1 else "", args[2] if args.size() > 2 else "", args[3] if args.size() > 3 else "")
 		_:
 			push_warning("未知动作，已跳过：" + name)
 
@@ -174,6 +179,8 @@ func _show_hotspot(id: String) -> void:
 	if not GameState.inspected.has(id):
 		GameState.inspected.append(id)
 	world.set_frozen(true)
+	if h.get("footage", "") != "":
+		await ui.footage.play_clip(h["footage"])
 	if h.get("text", "") != "":
 		await ui.show_text(h["text"])
 	world.set_frozen(false)

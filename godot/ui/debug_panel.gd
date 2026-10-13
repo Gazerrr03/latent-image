@@ -67,6 +67,13 @@ func _ready() -> void:
 		fxrow.add_child(_btn(n, func(): Director.ui.fx.set_override(n)))
 	fxrow.add_child(_btn("重载滤镜表", func(): Director.ui.fx.reload()))
 	v.add_child(fxrow)
+	var cliprow := HBoxContainer.new()
+	cliprow.add_child(_label("影像"))
+	for c in ["片头_警告", "示例_录像带", "示例_档案照片"]:
+		var cn: String = c
+		cliprow.add_child(_btn(cn, func(): Director.ui.footage.play_clip(cn)))
+	cliprow.add_child(_btn("重载影像表", func(): Director.ui.footage.reload()))
+	v.add_child(cliprow)
 
 	var misc := HBoxContainer.new()
 	misc.add_child(_btn("重载内容表", func(): ContentDB.reload()))

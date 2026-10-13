@@ -45,6 +45,10 @@ func set_override(name: String) -> void:
 	apply(_override if _override != "" else "L%d" % GameState.leak_level, 1.2)
 
 
+func get_override() -> String:
+	return _override
+
+
 func _follow_leak() -> void:
 	if _override == "":
 		apply("L%d" % GameState.leak_level, 1.5)

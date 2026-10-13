@@ -18,6 +18,7 @@ const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生�
 ## 每条问题：{level: 错误/提醒, table, where, what, fix}
 var issues: Array = []
 var fx_presets := {}
+var footage := {}
 
 
 func err(table: String, where: String, what: String, fix := "") -> void:
@@ -42,6 +43,19 @@ func _init() -> void:
 	var sounds := DB.index_by(DB.load_table(AUDIO + "sounds.csv"), "id")
 	var words := DB.load_table(AI + "wordlists.csv")
 	fx_presets = DB.index_by(DB.load_table(VISUAL + "fx.csv"), "preset")
+	footage = DB.group_by(DB.load_table(VISUAL + "footage.csv"), "clip")
+	for clip in footage:
+		for row in footage[clip]:
+			var where := "%s / 第 %s 行" % [clip, row.get("seq", "?")]
+			if not row.get("mode", "") in ["警告卡", "档案卡", "摄像机", "雪花"]:
+				err("影像片段表", where, "样式只能是 警告卡 / 档案卡 / 摄像机 / 雪花，现在是“%s”" % row.get("mode", ""))
+			var img: String = row.get("image", "")
+			if img != "" and not FileAccess.file_exists("res://art/footage/" + img):
+				warn("影像片段表", where, "图片 art/footage/%s 还没交付，播放时显示占位文字" % img)
+			if row.get("fx", "") != "" and not fx_presets.has(row["fx"]):
+				err("影像片段表", where, "滤镜预设“%s”不在滤镜表里" % row["fx"])
+			if not str(row.get("duration", "3")).is_valid_float():
+				err("影像片段表", where, "停留时间不是数字")
 	for lv in 5:
 		if not fx_presets.has("L%d" % lv):
 			err("滤镜表", "L%d" % lv, "缺少渗漏等级 L%d 的默认滤镜" % lv, "滤镜表必须有 L0—L4 五行")
@@ -84,6 +98,9 @@ func _init() -> void:
 
 	# ── 线索 ──
 	for h in hotspots.values():
+		var fc: String = h.get("footage", "")
+		if fc != "" and not footage.has(fc):
+			err("可检查物件表", h["id"], "影像片段“%s”不在影像片段表里" % fc)
 		var e: String = h.get("evidence", "")
 		if e != "" and not evidence.has(e):
 			err("可检查物件表", h["id"], "给出的证据“%s”不在证据表里" % e, "在证据表加这张卡片")
@@ -200,6 +217,12 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"say":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
+		"footage":
+			if args.is_empty() or not footage.has(args[0]):
+				err("镜头表", id, "影像片段“%s”不在影像片段表里" % str(args))
+		"osd":
+			if args.size() > 0 and args[0] != "" and not args[0] in ["档案卡", "摄像机"]:
+				err("镜头表", id, "osd 的样式只能是 档案卡 或 摄像机")
 		"fx":
 			if args.size() > 0 and not args[0] in ["", "自动"] and not fx_presets.has(args[0]):
 				err("镜头表", id, "滤镜预设“%s”不在滤镜表里" % args[0])

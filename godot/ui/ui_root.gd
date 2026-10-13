@@ -36,6 +36,7 @@ var register: Control
 var telegrams: HBoxContainer
 var telegram_note: Label
 var fx: CanvasLayer
+var footage: CanvasLayer
 
 
 func _ready() -> void:
@@ -196,6 +197,10 @@ func _refresh() -> void:
 # ───────────── Director 调用的接口 ─────────────
 
 func show_text(text: String) -> void:
+	# 取景器 / 档案卡叠加时，文字以纪录片字幕的形式出现
+	if footage and footage.active:
+		await footage.subtitle(text)
+		return
 	if Director.autoplay:
 		print("  │ ", text.replace("\n", "\n  │ "))
 		return
@@ -247,6 +252,8 @@ func cancel() -> void:
 	_resolved.emit(-1)
 	board.cancel()
 	register.cancel()
+	if footage:
+		footage.cancel()
 
 
 # ───────────── 实物 UI ─────────────
@@ -305,6 +312,14 @@ func set_progress(done: int, total: int) -> void:
 
 func set_hint(text: String) -> void:
 	hint_label.text = text
+
+
+## 播放影像档案时隐藏电报纸、目标、提示等界面
+func set_hud(on: bool) -> void:
+	for n in [telegrams, telegram_note, objective_label, hint_label, progress_label, toast_label, crosshair]:
+		n.visible = on
+	if on:
+		_refresh()
 
 
 func set_cinematic(on: bool) -> void:

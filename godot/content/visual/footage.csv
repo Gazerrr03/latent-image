@@ -1,0 +1,9 @@
+clip,seq,mode,image,duration,zoom_from,zoom_to,pan_x,pan_y,title,text,foot,subtitle,file,count,stamp,fx,note
+片头_警告,1,雪花,,0.8,,,,,,,,,,,,,开场：信号接入
+片头_警告,2,警告卡,,7,,,,,警告,本卷宗为罗伊德庄园“消失”一案之调查记录，附胶片七盘。\n依委托人要求，本记录仅供结案之用，不得复制、转录或公开放映。\n记录中部分陈述有所省略，观看者须自行甄别。,收讫后请回执。,,,,,,草拟待确认：“有所省略”呼应写法契约，“回执”呼应 ACK
+片头_警告,3,警告卡,,7,,,,,WARNING,"This reel forms part of the investigation record of the Royd Manor case.\nUnauthorised copying, transcription or public exhibition is prohibited.\nCertain statements herein are incomplete. Viewers are advised to exercise discretion.",Please acknowledge on receipt.,,,,,,英文版警告卡（参考视频的双语 WARNING）
+片头_警告,4,雪花,,0.6,,,,,,,,,,,,,转入第一盘胶片
+示例_录像带,1,摄像机,demo_hall.png,4,1.0,1.1,-30,,,,,“……巴洛？庄园里有这个人吗？”,,,1926/10/05 07:12:40,,仅示例，未接入剧情：录像带类线索的样子（台词取自 N2-A-02）
+示例_录像带,2,摄像机,demo_butler.png,4,1.05,1.15,,20,,,,“已收悉……已收悉……”,,,1926/10/05 07:13:02,,仅示例（台词取自 N3-C-04 留声机）
+示例_录像带,3,雪花,,1.2,,,,,,,,,,,,,信号中断
+示例_档案照片,1,档案卡,demo_butler.png,5,1.0,1.06,,,,,,“值夜簿上写着您的名字，先生。”,ROYD_REEL_03,003/007,1926/10/04 21:40,,仅示例，未接入剧情：胶片 / 照片类线索的样子
