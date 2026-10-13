@@ -6,6 +6,7 @@
 
 - 设计文档：`docs/`（入口 `docs/README.md`）。改动设计后，同步更新对应文档，并在 `docs/08-决策与更新记录.md` 记一笔。
 - 剧情的唯一依据：`docs/归档/故事分支分镜（MVP 预设分支）.pdf` 与 `docs/归档/2026-10-对话记录-剧情讨论.md`。**不要参考 Codex 生成的《第七间》。**
+- 10-13 起，世界观、人物（每个人物都是同一病人的一种人格）、怪谈“签收人”、结局视角以 `docs/11-叙事层级与世界观.md` 为准，玩家看到的内容以 `docs/剧本-玩家视角.md` 为准；镜头级细节仍以分镜 PDF 为准，两者冲突时按 `docs/11`。
 - 事实锚点 F1—F3（`docs/02` 第 3 节）任何内容都不得违反。叙述者不说谎，只省略。
 - `game/`（three.js）与 `docs/归档/v0-ERRATA/` 是旧方向，仅作参考，不要在其上继续开发。
 
@@ -28,7 +29,7 @@ $G --headless --path godot --script res://tools/validate_content.gd
 $G --headless --path godot -- --autoplay --line=A   # 三条线 A / B / C 都要跑
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=N1-07 --leak=0 --out=/tmp/x.png
-# 可加 --grant-all（发放全部证据）、--telegrams=4、--fx=纪录片片头、--play=示例_录像带（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）
+# 可加 --grant-all（发放全部证据）、--telegrams=4、--fx=纪录片片头、--play=示例_录像带（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--view=记忆（强制终局视角：好奇 / 记忆 / 共情 / 欲望）
 ```
 
 macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec(@ARGV)' <命令>` 防止卡住。
