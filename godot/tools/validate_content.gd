@@ -19,6 +19,8 @@ const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生�
 var issues: Array = []
 var fx_presets := {}
 var footage := {}
+## 关卡进度（纵切面），写进检查报告
+var level_rows: Array = []
 
 
 func err(table: String, where: String, what: String, fix := "") -> void:
@@ -165,6 +167,7 @@ func _init() -> void:
 	# ── 词表：玩家看到的文字里，穿帮词是否出现得太早 ──
 	_check_words(words, shots, hotspots, links, ann, lines, evidence)
 
+	_level_report(shots, rooms, sounds, ann, lines, footage)
 	_report(shots.size(), hotspots.size(), evidence.size(), chars.size(), rooms.size(), layout_rows.size(), sounds.size(), words.size())
 
 
@@ -302,6 +305,14 @@ func _report(n_shots: int, n_hot: int, n_ev: int, n_ch: int, n_rooms: int, n_lay
 		md.append("| --- | --- | --- | --- |")
 		for i in group[1]:
 			md.append("| %s | %s | %s | %s |" % [i["table"], i["where"], i["what"], i["fix"]])
+	if not level_rows.is_empty():
+		md.append("")
+		md.append("## 🎬 关卡进度（纵切面，按关卡表自动统计）")
+		md.append("")
+		md.append("| 关卡 | 镜头 | 房间（可走动的） | 用到的模块 | 渗漏与影像 | AI 位置 | 自动发现的缺口 | 状态 | 备注 |")
+		md.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+		for r in level_rows:
+			md.append("| %s %s | %d | %s（%s） | %s | %s | %s | %s | %s | %s |" % [r["level"], r["name"], r["shots"], r["rooms"], r["walk"] if r["walk"] != "" else "无", r["modules"], r["look"], r["ai"] if r["ai"] != "" else "—", r["gaps"], r["status"], r["note"]])
 	md.append("")
 	md.append("填表说明见 docs/填表说明/。")
 	var path := ProjectSettings.globalize_path("res://").path_join("../检查报告.md").simplify_path()
@@ -313,6 +324,8 @@ func _report(n_shots: int, n_hot: int, n_ev: int, n_ch: int, n_rooms: int, n_lay
 		print("  错误  [%s] %s：%s" % [i["table"], i["where"], i["what"]])
 	for i in notes:
 		print("  提醒  [%s] %s：%s" % [i["table"], i["where"], i["what"]])
+	for r in level_rows:
+		print("  关卡 %s %s：%d 个镜头 · 缺口：%s" % [r["level"], r["name"], r["shots"], r["gaps"]])
 	print("报告：", path)
 	quit(0 if ok else 1)
 
@@ -338,3 +351,120 @@ func _list(root: String) -> Array:
 	for sub in d.get_directories():
 		out.append_array(_list(root.path_join(sub)))
 	return out
+
+## 动作 → 横切面模块（docs/12 第 2 节）
+const ACTION_MODULE := {
+	"osd": "影像档案", "footage": "影像档案", "fx": "媒介滤镜", "leak": "媒介滤镜",
+	"inquire": "问话与台词", "say": "问话与台词", "accuse": "访客簿", "sign": "访客簿",
+	"link": "证据板", "annotate": "打字机与手记", "use_telegram": "电报纸",
+	"ending": "终局视角", "confession": "终局视角", "reveal": "场景事件", "conceal": "场景事件",
+	"collect": "证据板",
+}
+
+
+## 纵切面：按关卡表把镜头归到各关，统计每关用到的模块、滤镜、房间与缺口
+func _level_report(shots: Array, rooms: Dictionary, sounds: Dictionary, ann: Dictionary, lines: Dictionary, footage: Dictionary) -> void:
+	var levels := DB.load_table("res://content/levels.csv")
+	if levels.is_empty():
+		return
+	var owner := {}
+	for lv in levels:
+		for sid in str(lv.get("shots", "")).split(";", false):
+			owner[sid.strip_edges()] = lv["level"]
+	var data := {}
+	for lv in levels:
+		data[lv["level"]] = {"shots": 0, "rooms": [], "walk": [], "modules": [], "leak": [], "clips": [], "ai": [], "todo": 0, "img": 0, "snd_missing": 0, "snd": [], "models": 0, "errors": 0}
+	var cur_room := ""
+	var cur_leak := "0"
+	for s in shots:
+		var id: String = s["shot_id"]
+		var lvid := ""
+		if owner.has(id):
+			lvid = owner[id]
+		else:
+			for lv in levels:
+				if s.get("node", "") in str(lv.get("nodes", "")).split(";", false):
+					lvid = lv["level"]
+		if s.get("scene", "") != "":
+			cur_room = s["scene"]
+		if lvid == "" or not data.has(lvid):
+			if not owner.has(id):
+				warn("关卡表", id, "这个镜头不属于任何关卡", "在关卡表的 nodes 或 shots 列里认领它")
+			continue
+		var d: Dictionary = data[lvid]
+		d["shots"] += 1
+		var rname: String = rooms.get(cur_room, {}).get("name", cur_room)
+		if not d["rooms"].has(rname):
+			d["rooms"].append(rname)
+		var walk: bool = s.get("mode", "") == "walk"
+		if walk and not d["walk"].has(rname):
+			d["walk"].append(rname)
+		if s.get("text", "") != "" and not d["modules"].has("文字与字幕"):
+			d["modules"].append("文字与字幕")
+		if s.get("ai_slot", "") != "" and not d["ai"].has(s["ai_slot"]):
+			d["ai"].append(s["ai_slot"])
+		if "待补" in str(s.get("text", "")):
+			d["todo"] += 1
+		for snd in str(s.get("sound", "")).split(";", false):
+			var sid2 := snd.strip_edges()
+			if not d["snd"].has(sid2):
+				d["snd"].append(sid2)
+				if sounds.get(sid2, {}).get("file", "") == "":
+					d["snd_missing"] += 1
+		for a in Actions.parse(s.get("actions", "")):
+			var nm: String = a["name"]
+			var args: Array = a["args"]
+			var mod: String = ACTION_MODULE.get(nm, "")
+			if nm == "inspect":
+				mod = "行走与检查" if walk else "观察"
+			if mod != "" and not d["modules"].has(mod):
+				d["modules"].append(mod)
+			if nm == "leak" and args.size() > 0:
+				cur_leak = args[0]
+				if int(cur_leak) >= 3 and not d["modules"].has("渗漏材质"):
+					d["modules"].append("渗漏材质")
+			if nm in ["footage"] and args.size() > 0 and not d["clips"].has(args[0]):
+				d["clips"].append(args[0])
+				for row in footage.get(args[0], []):
+					var img: String = row.get("image", "")
+					if img != "" and not FileAccess.file_exists("res://art/footage/" + img):
+						d["img"] += 1
+			if nm in ["inquire", "annotate", "accuse"] and args.size() > 0:
+				for row in ann.get(args[0], []):
+					if "待补" in str(row.get("response", "")):
+						d["todo"] += 1
+		var leak_tag := "L%d" % NODE_LEAK.get(s.get("node", ""), 0)
+		if not d["leak"].has(leak_tag):
+			d["leak"].append(leak_tag)
+		for i in issues:
+			if i["level"] == "错误" and i["where"] == id:
+				d["errors"] += 1
+	for lv in levels:
+		var d: Dictionary = data[lv["level"]]
+		for rn in d["rooms"]:
+			for rid in rooms:
+				var mdl := str(rooms[rid].get("model", ""))
+				if rooms[rid].get("name", "") == rn and (mdl == "" or not FileAccess.file_exists(mdl)):
+					d["models"] += 1
+		var gaps := PackedStringArray()
+		if d["errors"] > 0:
+			gaps.append("%d 个错误" % d["errors"])
+		if d["todo"] > 0:
+			gaps.append("%d 处文字待补" % d["todo"])
+		if d["img"] > 0:
+			gaps.append("%d 张影像图片待交付" % d["img"])
+		if d["models"] > 0:
+			gaps.append("%d 个房间仍是灰盒" % d["models"])
+		if d["snd_missing"] > 0:
+			gaps.append("%d / %d 个声音无文件" % [d["snd_missing"], d["snd"].size()])
+		level_rows.append({
+			"level": lv["level"], "name": lv.get("name", ""), "shots": d["shots"],
+			"rooms": "、".join(PackedStringArray(d["rooms"])),
+			"walk": "、".join(PackedStringArray(d["walk"])),
+			"modules": "、".join(PackedStringArray(d["modules"])),
+			"look": "、".join(PackedStringArray(d["leak"])) + ("；影像：" + "、".join(PackedStringArray(d["clips"])) if not d["clips"].is_empty() else ""),
+			"ai": "、".join(PackedStringArray(d["ai"])),
+			"gaps": "；".join(gaps) if not gaps.is_empty() else "无",
+			"status": lv.get("status", ""),
+			"note": lv.get("note", ""),
+		})

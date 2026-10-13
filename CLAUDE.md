@@ -16,6 +16,7 @@
 - 镜头表的 `actions` 列只能使用 `godot/core/actions.gd` 中的白名单；新增动作要同时改 `actions.gd`、`director.gd` 的 `_do`，并更新 `docs/06` 2.2 节。
 - 每个 `.csv` 旁必须有 `importer="keep"` 的 `.csv.import`（校验工具会自动补）。
 - 美术模型放 `godot/art/rooms/`，在 `scenes.csv` 的 `model` 列登记；命名约定见 `docs/09` 第 5 节（`hs_`、`spawn`、`exit`、`cam_`、`guide_`、`-col`）。没有模型时按 `godot/content/space/`（房间登记表、房间布局表）搭灰盒。
+- 项目按两套视角管理：横切面（模块 H1—H16）与纵切面（关卡 0—7），见 `docs/12-关卡拆解.md`；关卡表 `godot/content/levels.csv`，检查报告会按关卡统计进度。现阶段先纵向贯通。
 - 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线）、`content/space/`（房间、布局）、`content/audio/`（音效表）、`content/ai/`（词表、自述兜底）、`content/visual/`（滤镜表、影像片段表）；影像素材放 `godot/art/footage/`。填表说明在 `docs/填表说明/`。
 - 结构：`core/`（状态、内容、播放器、动作）、`world/`（场景宿主、玩家）、`ui/`（临时界面、调试面板）、`shaders/`、`tools/`。
 
