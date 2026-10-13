@@ -14,6 +14,8 @@ var ui: Node
 var world: Node
 ## 命令行带 -- --autoplay 时自动选第一个选项、跳过等待，用于无界面回归测试
 var autoplay := false
+## 截图时用 --skip-text：文字不等点击，直接进入后面的动作
+var skip_text := false
 var running := false
 var _jump_to := ""
 var _played := 0
@@ -21,6 +23,7 @@ var _played := 0
 
 func _ready() -> void:
 	autoplay = OS.get_cmdline_user_args().has("--autoplay")
+	skip_text = OS.get_cmdline_user_args().has("--skip-text")
 
 
 func start(from_shot := "") -> void:
@@ -81,7 +84,7 @@ func _play(row: Dictionary) -> void:
 	ui.set_cinematic(mode == "camera")
 	for s in str(row.get("sound", "")).split(";", false):
 		world.play_sound(s.strip_edges())
-	if row.get("text", "") != "":
+	if row.get("text", "") != "" and not skip_text:
 		await ui.show_text(fill(row["text"]))
 		if _interrupted():
 			return
@@ -159,6 +162,16 @@ func _do(name: String, args: Array, mode: String) -> void:
 			world.show_scene(args[0])
 		"fx":
 			ui.fx.set_override(args[0] if args.size() > 0 else "")
+		"reveal":
+			for id in args:
+				world.set_shown(id, true)
+		"conceal":
+			for id in args:
+				world.set_shown(id, false)
+		"sign":
+			# 终局签名：玩家在被划去的那一行写下自己的名字（承认）
+			await ui.register_sign(args[0] if args.size() > 0 else "请回执。")
+			GameState.record("sign", "艾克罗伊德")
 		"footage":
 			await ui.footage.play_clip(args[0])
 		"osd":

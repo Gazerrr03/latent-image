@@ -280,6 +280,12 @@ func board_close() -> void:
 	_restore_mouse()
 
 
+func register_sign(title: String) -> void:
+	_release_mouse()
+	await register.sign(title)
+	_restore_mouse()
+
+
 func register_pick(title: String, alive: Array) -> int:
 	_release_mouse()
 	var k: int = await register.pick(title, alive)

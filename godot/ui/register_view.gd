@@ -140,3 +140,67 @@ func _strike(who: String) -> void:
 	t.tween_property(mark, "modulate:a", 1.0, 0.6)
 	t.tween_interval(0.6)
 	await t.finished
+
+
+## 终局签名（N7-06，《02》第 8 节）：名册翻回第一页，玩家在“罗伊德先生”那一行旁边签下自己的名字；
+## 划痕褪去，那一行变成完整的姓“艾克罗伊德”。这是“承认”，不是“删除”。
+func sign(title: String) -> void:
+	title_label.text = title
+	for c in list.get_children():
+		c.queue_free()
+	await get_tree().process_frame
+	var first: String = ContentDB.register_names()[0] if not ContentDB.register_names().is_empty() else "罗伊德先生"
+	var row := Control.new()
+	row.custom_minimum_size = Vector2(0, 72)
+	list.add_child(row)
+	var name_l := Label.new()
+	name_l.text = first
+	name_l.position = Vector2(150, 14)
+	name_l.add_theme_font_size_override("font_size", 30)
+	name_l.add_theme_color_override("font_color", INK.lightened(0.45))
+	row.add_child(name_l)
+	await get_tree().process_frame
+	var strike := ColorRect.new()
+	strike.color = INK
+	strike.position = Vector2(146, 36)
+	strike.size = Vector2(name_l.get_minimum_size().x + 10, 3)
+	row.add_child(strike)
+	# 划痕左边的空位：玩家点这里签名
+	var blank := Button.new()
+	blank.text = "▸ 签名"
+	blank.flat = true
+	blank.position = Vector2(8, 14)
+	blank.add_theme_font_size_override("font_size", 24)
+	blank.add_theme_color_override("font_color", Color("#7a1f12"))
+	row.add_child(blank)
+	show()
+	var k := 0
+	if not Director.autoplay:
+		blank.pressed.connect(func(): _picked.emit(0))
+		k = await _picked
+	if k < 0:
+		hide()
+		return
+	blank.queue_free()
+	var hand := Label.new()
+	hand.text = ""
+	hand.position = Vector2(70, 10)
+	hand.add_theme_font_size_override("font_size", 34)
+	hand.add_theme_color_override("font_color", Color("#1d2c5a"))
+	row.add_child(hand)
+	if not Director.autoplay:
+		for ch in "艾克":
+			hand.text += ch
+			await get_tree().create_timer(0.45).timeout
+		var t := create_tween().set_parallel()
+		t.tween_property(strike, "modulate:a", 0.0, 1.2)
+		t.tween_property(name_l, "theme_override_colors/font_color", INK, 1.2)
+		await t.finished
+		await get_tree().create_timer(0.3).timeout
+	# 两半合成一个完整的姓
+	hand.queue_free()
+	name_l.text = "艾克罗伊德"
+	name_l.position = Vector2(70, 14)
+	if not Director.autoplay:
+		await get_tree().create_timer(1.8).timeout
+	hide()

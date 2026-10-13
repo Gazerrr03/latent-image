@@ -10,6 +10,8 @@ var shot_cam: Camera3D
 var current_id := ""
 var room: Node3D
 var markers := {}
+## 布局表里有名字的东西：名称 -> 节点（reveal / conceal 用）
+var named := {}
 var hotspot_nodes := {}
 var spawn := [Vector3.ZERO, 0.0]
 var _surfaces: Array = []
@@ -58,6 +60,7 @@ func show_scene(id: String) -> void:
 		remove_child(room)
 		room.queue_free()
 	markers.clear()
+	named.clear()
 	hotspot_nodes.clear()
 	_surfaces.clear()
 	_orig_mats.clear()
@@ -92,10 +95,23 @@ func _build_greybox(id: String) -> Node3D:
 		var p := _vec(row, "x", "y", "z")
 		var size := _vec(row, "w", "h", "d")
 		var look := _vec(row, "look_x", "look_y", "look_z")
+		var before := r.get_child_count()
 		match row.get("type", ""):
 			"家具":
 				# y 是底部离地高度
-				_box(r, row["id"], p + Vector3(0, size.y / 2, 0), size, _color(row, "#5b3f2a"))
+				var mi := _box(r, row["id"], p + Vector3(0, size.y / 2, 0), size, _color(row, "#5b3f2a"))
+				if "镜" in row["id"]:
+					# 镜面不随渗漏变白：终局时镜中的白色人形才看得出来
+					_surfaces.erase(mi)
+					var glass := StandardMaterial3D.new()
+					glass.albedo_color = Color("#1d2328")
+					glass.metallic = 0.6
+					glass.roughness = 0.15
+					mi.material_override = glass
+			"人物":
+				# 人物在这个房间的站位；被指认过的人不再出现
+				if not GameState.accused.has(row["id"]):
+					_figure(r, row["id"], p)
 			"可检查物件":
 				_hotspot(r, row["id"], p, size if size != Vector3.ZERO else Vector3(0.3, 0.3, 0.3))
 			"机位":
@@ -115,13 +131,88 @@ func _build_greybox(id: String) -> Node3D:
 				spawn = [p, rad_to_deg(atan2(-dir.x, -dir.z)) if dir.length() > 0.01 else 0.0]
 			_:
 				push_warning("房间布局表：未知类型 %s（%s）" % [row.get("type", ""), id])
+		# hidden = 是：开始时隐藏，由镜头表的 reveal(名称) 显示
+		if r.get_child_count() > before:
+			var node := r.get_child(r.get_child_count() - 1)
+			if row.get("id", "") != "":
+				named[row["id"]] = node
+			if row.get("hidden", "") == "是":
+				node.visible = false
 	# 人物：人物表里所在房间为本房间、且尚未被指认的人
 	for c in ContentDB.characters:
-		if c.get("room", "") != id or GameState.accused.has(c["name"]):
+		if c.get("room", "") != id or GameState.accused.has(c["name"]) or named.has(c["name"]):
 			continue
-		var hgt := _num(c, "height", 1.7)
-		_box(r, c["name"], _vec(c, "x", "y", "z") + Vector3(0, hgt / 2, 0), Vector3(0.42, hgt, 0.4), _color(c, "#2b2420"))
+		named[c["name"]] = _figure(r, c["name"], _vec(c, "x", "y", "z"))
 	return r
+
+
+## 灰盒人形：身体 + 头 + 眼部处理（《04》第 11 节：除侦探外，所有人的眼睛都被遮住）。
+## 人形面朝 +z（玩家通常从 +z 方向看过来）。“镜中人形”是终局镜子里没有脸的白色人形。
+func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
+	var c: Dictionary = {}
+	for row in ContentDB.characters:
+		if row["name"] == who:
+			c = row
+	var root := StaticBody3D.new()
+	root.name = who
+	root.position = foot
+	parent.add_child(root)
+	var hgt := _num(c, "height", 1.75)
+	var col := _color(c, "#2b2420")
+	var head := 0.24
+	var body_h := hgt - head - 0.04
+	var mirror := who == "镜中人形"
+	var body := _mesh(root, Vector3(0, body_h / 2, 0), Vector3(0.44, body_h, 0.28), col)
+	var face := _mesh(root, Vector3(0, body_h + 0.04 + head / 2, 0), Vector3(head * 0.85, head, head * 0.9), Color("#c9b9a3"))
+	if mirror:
+		# 没有脸的白色网格人形
+		body.material_override = _leak_mat
+		face.material_override = _leak_mat
+		return root
+	var eye_y := body_h + 0.04 + head * 0.58
+	var ec := Color.from_string(c.get("eye_color", ""), Color("#111111")) if c.get("eye_color", "") != "" else Color("#111111")
+	match c.get("eye", ""):
+		"缎带":
+			_mesh(root, Vector3(0, eye_y, 0), Vector3(head * 0.92, 0.05, head * 0.96), ec)
+		"丝巾":
+			_mesh(root, Vector3(0, eye_y, 0), Vector3(head * 0.95, 0.075, head * 1.0), ec)
+			_mesh(root, Vector3(head * 0.32, eye_y - 0.05, -head * 0.5), Vector3(0.06, 0.12, 0.03), ec)
+		"遮光帽":
+			_mesh(root, Vector3(0, eye_y + 0.035, head * 0.38), Vector3(head * 1.05, 0.025, head * 0.75), ec)
+			_mesh(root, Vector3(0, eye_y + 0.07, 0), Vector3(head * 0.9, 0.03, head * 0.92), ec)
+		"涂白":
+			_mesh(root, Vector3(0, eye_y, head * 0.46), Vector3(head * 0.6, 0.05, 0.01), Color.WHITE)
+	var cs := CollisionShape3D.new()
+	var sh := BoxShape3D.new()
+	sh.size = Vector3(0.44, hgt, 0.3)
+	cs.shape = sh
+	cs.position.y = hgt / 2
+	root.add_child(cs)
+	return root
+
+
+func _mesh(parent: Node3D, pos: Vector3, size: Vector3, color: Color) -> MeshInstance3D:
+	var mi := MeshInstance3D.new()
+	var bm := BoxMesh.new()
+	bm.size = size
+	mi.mesh = bm
+	mi.position = pos
+	var m := StandardMaterial3D.new()
+	m.albedo_color = color
+	m.roughness = 0.85
+	mi.material_override = m
+	parent.add_child(mi)
+	_surfaces.append(mi)
+	_orig_mats[mi] = m
+	return mi
+
+
+## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏布局表里的某样东西（如终局的镜中人形）
+func set_shown(id: String, on: bool) -> void:
+	if named.has(id) and is_instance_valid(named[id]):
+		named[id].visible = on
+	else:
+		push_warning("当前房间里没有：" + id)
 
 
 static func _num(row: Dictionary, key: String, default: float) -> float:
@@ -308,8 +399,10 @@ func on_accused(who: String) -> void:
 	var body := room.find_child(who, true, false)
 	if body == null:
 		return
-	var mi: MeshInstance3D = body.get_child(0)
-	mi.material_override = _leak_mat
+	# 先变成白色网格人形，片刻后消失（N5-03）
+	for n in _walk(body):
+		if n is MeshInstance3D:
+			n.material_override = _leak_mat
 	if Director.autoplay:
 		body.queue_free()
 		return

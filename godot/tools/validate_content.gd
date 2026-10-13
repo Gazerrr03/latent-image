@@ -13,7 +13,7 @@ const AI := "res://content/ai/"
 const VISUAL := "res://content/visual/"
 ## 每个节点允许的渗漏等级（docs/02 第 4 节）
 const NODE_LEAK := {"N1": 0, "N2": 1, "N3": 1, "N4": 2, "N5": 3, "N6": 4, "N7": 4}
-const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生点"]
+const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生点", "人物"]
 
 ## 每条问题：{level: 错误/提醒, table, where, what, fix}
 var issues: Array = []
@@ -77,10 +77,13 @@ func _init() -> void:
 		elif ids.has(id):
 			err("镜头表", id, "镜号重复", "改成一个没用过的镜号")
 		ids[id] = r
+	var cur_room := ""
 	for i in shots.size():
 		var r: Dictionary = shots[i]
 		var id: String = r["shot_id"]
 		var room: String = r.get("scene", "")
+		if room != "":
+			cur_room = room
 		var mode: String = r.get("mode", "")
 		if room != "" and not rooms.has(room):
 			err("镜头表", id, "房间“%s”不在房间登记表里" % room, "先在房间登记表加这个房间，或改成已有的房间编号")
@@ -94,7 +97,7 @@ func _init() -> void:
 				err("镜头表", id, "声音“%s”不在音效表里" % snd.strip_edges(), "在音效表加这一行，或改成已有的声音编号")
 		_check_next(r, i, shots, ids)
 		for a in Actions.parse(r.get("actions", "")):
-			_check_action(id, a, mode, room, hotspots, evidence, links, ann, lines, layout)
+			_check_action(id, a, mode, cur_room, hotspots, evidence, links, ann, lines, layout)
 
 	# ── 线索 ──
 	for h in hotspots.values():
@@ -217,6 +220,14 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"say", "ending":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
+		"reveal", "conceal":
+			for x in args:
+				var found := false
+				for row in layout.get(room, []):
+					if row.get("id", "") == x:
+						found = true
+				if not found:
+					err("镜头表", id, "%s 要显示 / 隐藏的“%s”不在房间布局表的 %s 里" % [nm, x, room])
 		"footage":
 			if args.is_empty() or not footage.has(args[0]):
 				err("镜头表", id, "影像片段“%s”不在影像片段表里" % str(args))

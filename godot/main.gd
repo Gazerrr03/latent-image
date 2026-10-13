@@ -28,6 +28,8 @@ func _ready() -> void:
 	Director.ui = ui
 	Director.world = host
 	add_child(DebugPanel.new())
+	if not Director.autoplay and _arg("--capture=") == "":
+		Director.finished.connect(_on_finished)
 
 	if Director.autoplay or _arg("--capture=") != "":
 		GameState.persist = false
@@ -45,6 +47,15 @@ func _ready() -> void:
 			return
 	GameState.reset()
 	Director.start()
+
+
+## 走到结尾（N7-08 之后）：▸ 再读一遍（《剧本》第七幕）
+func _on_finished() -> void:
+	var k: int = await Director.ui.choose("", ["再读一遍"])
+	if k == 0:
+		GameState.reset()
+		GameState.delete_save()
+		Director.start()
 
 
 ## 自动选第一个选项走完整条路径，检查是否到达终局
