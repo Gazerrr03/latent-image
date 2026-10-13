@@ -1,6 +1,6 @@
 ---
 name: task-card
-description: Turn the project lead's rough request into a detailed, verifiable task card for a non-programmer teammate (3D, 2D, text, sound, materials) in the ERRATA / 罗伊德庄园 game project. Use when the user says /task-card, "派个任务", "写成任务卡", "交给队友做", or asks to break a need into tasks for teammates.
+description: Turn the project lead's rough request into a detailed, verifiable task card for a non-programmer teammate (3D, 2D, text, sound, materials) in the 1926 manor mystery game project (暗房主线). Use when the user says /task-card, "派个任务", "写成任务卡", "交给队友做", or asks to break a need into tasks for teammates.
 ---
 
 # 任务卡生成
@@ -12,8 +12,8 @@ description: Turn the project lead's rough request into a detailed, verifiable t
 1. **读上下文**（只读与需求相关的部分）：
    - `docs/任务/README.md`：已有编号与任务，避免重复，取下一个可用编号。
    - `docs/任务/_模板.md`：必须使用的格式。
-   - 按需求类型读：3D → `docs/03-空间与关卡设计.md`、`docs/09-团队协作与任务派发.md` 第 5 节命名约定；2D/UI → `docs/04-美术与声音风格.md`；文本 → `docs/02-剧情设计.md`、`docs/05-AI叙述代理与文本规范.md`、`docs/06-技术方案.md` 第 2 节；声音 → `docs/04` 第 7 节。
-   - 剧情细节以 `docs/归档/故事分支分镜（MVP 预设分支）.pdf` 为准，引用时写出镜号。
+   - 按需求类型读：3D → `docs/03-空间与关卡设计.md`（空间需求，不含空间设计）、`docs/09-团队协作与任务派发.md` 第 5 节命名约定；2D/UI → `docs/04-美术与声音风格.md`；文本 → `docs/02-剧情设计.md`、`docs/05-AI叙述代理与文本规范.md`、`docs/06-技术方案.md` 第 2 节；声音 → `docs/04` 第 7 节。
+   - 剧情细节以 `docs/02-剧情设计.md` 为准，引用时写出章节与固定事实编号（T1—T5）；`docs/归档/` 下的旧剧情不再使用。
 
 2. **补全用户没说的部分**，用设计文档里已有的信息，不要编造新的剧情事实。真正无法确定、会影响交付的点（例如截止日期、负责人）留空并在最后向用户提问。
 
