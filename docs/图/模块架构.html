@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《已收悉》模块架构与内容管线</title>
+  <link rel="icon" href="data:,">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" integrity="sha384-ZZ1pncU3bQe8y31yfZdMFdSpttDoPmOZg2wguVK9almUodir1PghgT0eY7Mrty8H" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js" integrity="sha384-en/ztfPSRkGfME4KIm05joYXynqzUgbsG5nMrj/xEFAHXkeZfO3yMK8QQ+mP7p1/" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'JetBrains Mono', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: #f5f7fb;
+      min-height: 100vh;
+      padding: 2rem;
+      color: #182b49;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      margin-bottom: 2rem;
+    }
+    
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pulse-dot {
+      width: 12px;
+      height: 12px;
+      background: #0ea5e9;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    
+    .subtitle {
+      color: #5e6b7f;
+      font-size: 0.875rem;
+      margin-left: 1.75rem;
+      line-height: 1.6;
+    }
+    
+    .diagram-container {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #d9e2ec;
+      padding: 1.5rem;
+      overflow-x: auto;
+      box-shadow: 0 14px 32px rgba(30, 58, 95, 0.07);
+    }
+    
+    svg {
+      width: 100%;
+      min-width: 900px;
+      display: block;
+    }
+    
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #d9e2ec;
+      padding: 1.25rem;
+      box-shadow: 0 10px 24px rgba(30, 58, 95, 0.05);
+    }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    
+    .card-dot.cyan { background: #0ea5e9; }
+    .card-dot.emerald { background: #10b981; }
+    .card-dot.violet { background: #7c3aed; }
+    .card-dot.amber { background: #d97706; }
+    .card-dot.rose { background: #e11d48; }
+    
+    .card h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    
+    .card ul {
+      list-style: none;
+      color: #5e6b7f;
+      font-size: 0.75rem;
+      line-height: 1.55;
+    }
+    
+    .card li {
+      margin-bottom: 0.375rem;
+    }
+
+    .eli5-strip {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.35fr) 1fr;
+      gap: 18px;
+      align-items: start;
+      margin-top: 18px;
+      padding: 16px 4px;
+      border-top: 1px solid #d9e2ec;
+      border-bottom: 1px solid #d9e2ec;
+    }
+
+    .eli5-strip strong {
+      color: #0f766e;
+      font-size: 13px;
+    }
+
+    .eli5-strip p {
+      color: #4a5b71;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .case-study {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid #d9e2ec;
+    }
+
+    .case-header {
+      margin-bottom: 14px;
+    }
+
+    .case-kicker {
+      display: block;
+      margin-bottom: 5px;
+      color: #d97706;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .case-header h2 {
+      color: #182b49;
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .case-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .case-step {
+      min-height: 118px;
+      padding: 13px;
+      background: #ffffff;
+      border: 1px solid #d9e2ec;
+      border-top: 3px solid #0ea5e9;
+      border-radius: 6px;
+      box-shadow: 0 8px 18px rgba(30, 58, 95, 0.04);
+    }
+
+    .case-step:nth-child(2) { border-top-color: #10b981; }
+    .case-step:nth-child(3) { border-top-color: #7c3aed; }
+    .case-step:nth-child(4) { border-top-color: #d97706; }
+
+    .case-step strong {
+      display: block;
+      margin-bottom: 9px;
+      color: #182b49;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .case-step p {
+      color: #5e6b7f;
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .case-step em {
+      display: block;
+      margin-top: 8px;
+      color: #0f766e;
+      font-style: normal;
+    }
+
+    .case-result {
+      margin-top: 12px;
+      padding: 12px 14px;
+      color: #4a5b71;
+      background: rgba(14, 165, 233, 0.06);
+      border-left: 3px solid #0ea5e9;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .case-result strong {
+      color: #182b49;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #657387;
+      font-size: 0.75rem;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      margin-left: auto;
+      flex-shrink: 0;
+      align-items: center;
+    }
+    .toolbar-toggle {
+      background: transparent;
+      border: none;
+      color: #657387;
+      cursor: pointer;
+      font-size: 1.25rem;
+      line-height: 1;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      transition: color 0.2s, background 0.2s;
+    }
+    .toolbar-toggle:hover { color: #182b49; background: rgba(100, 116, 139, 0.10); }
+    .toolbar-actions {
+      display: none;
+      gap: 0.5rem;
+    }
+    .toolbar.expanded .toolbar-actions { display: flex; }
+    .toolbar-actions button {
+      background: #f8fafc;
+      border: 1px solid #c7d2df;
+      color: #4a5b71;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-family: inherit;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .toolbar-actions button:hover {
+      background: #e7eef6;
+      color: #182b49;
+      border-color: #9fb1c5;
+    }
+
+    @media print {
+      body { background: #f5f7fb; padding: 1rem; }
+      .toolbar { display: none !important; }
+    }
+
+    @media (max-width: 760px) {
+      .eli5-strip { grid-template-columns: 1fr; gap: 8px; }
+      .case-flow { grid-template-columns: 1fr; }
+      .case-step { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="report-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-row">
+        <div class="pulse-dot"></div>
+        <h1>《已收悉》模块架构与内容管线</h1>
+        <div class="toolbar">
+          <div class="toolbar-actions">
+            <button onclick="copyAsImage(this)">📋 复制</button>
+            <button onclick="downloadPNG(this)">🖼️ PNG</button>
+            <button onclick="downloadPDF(this)">📄 PDF</button>
+          </div>
+          <button class="toolbar-toggle" onclick="this.parentElement.classList.toggle('expanded')" title="导出选项" aria-label="导出选项">⋯</button>
+        </div>
+      </div>
+      <p class="subtitle">从上往下读：队友在第①层填表、交文件 → 第②层把它们读懂并检查 → 第③层按表运行游戏 → 第④层是玩家看到和听到的。每个框右下角标着现在的进度。</p>
+    </div>
+
+    <!-- Main Diagram -->
+    <div class="diagram-container">
+      <svg viewBox="0 0 1200 966">
+        <defs>
+          <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#7c8a9d" />
+          </marker>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e7edf5" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <line x1="240" y1="426" x2="286" y2="426" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="468" y1="426" x2="514" y2="426" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="696" y1="426" x2="742" y2="426" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="924" y1="426" x2="970" y2="426" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="115.0" y1="312" x2="115.0" y2="396" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="309.0" y1="312" x2="309.0" y2="396" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="503.0" y1="312" x2="503.0" y2="396" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="697.0" y1="312" x2="697.0" y2="396" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="891.0" y1="312" x2="891.0" y2="396" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="1085.0" y1="312" x2="1085.0" y2="396" stroke="#7c3aed" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="135.0" y1="456" x2="135.0" y2="532" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="368.0" y1="456" x2="368.0" y2="532" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="601.0" y1="456" x2="601.0" y2="532" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="834.0" y1="456" x2="834.0" y2="532" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<line x1="1067.0" y1="456" x2="1067.0" y2="532" stroke="#ea580c" stroke-width="1.4" marker-end="url(#arrowhead)"/>
+<path d="M 601.0 730 L 601.0 752 L 163.5 752 L 163.5 798" fill="none" stroke="#10b981" stroke-width="1.3" marker-end="url(#arrowhead)"/>
+<path d="M 834.0 730 L 834.0 752 L 454.5 752 L 454.5 798" fill="none" stroke="#10b981" stroke-width="1.3" marker-end="url(#arrowhead)"/>
+<path d="M 135.0 730 L 135.0 752 L 745.5 752 L 745.5 798" fill="none" stroke="#10b981" stroke-width="1.3" marker-end="url(#arrowhead)"/>
+<path d="M 368.0 730 L 368.0 752 L 1036.5 752 L 1036.5 798" fill="none" stroke="#10b981" stroke-width="1.3" marker-end="url(#arrowhead)"/>
+        <rect x="15" y="36" width="1170" height="290" rx="12" fill="#7c3aed" fill-opacity="0.04" stroke="#7c3aed" stroke-width="1" stroke-dasharray="8,4"/>
+<text x="29" y="55" fill="#7c3aed" font-size="12" font-weight="700">① 内容生产层：填表与交文件</text>
+<text x="1171" y="55" fill="#5e6b7f" font-size="9" text-anchor="end">队友可独立完成 · 只需知道“填哪张表、放哪个文件夹”</text>
+<rect x="25" y="66" width="180" height="246" rx="6" fill="#ffffff"/>
+<rect x="25" y="66" width="180" height="246" rx="6" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="115.0" y="86" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">1.1 叙事与流程</text>
+<text x="115.0" y="102" fill="#7c3aed" font-size="9" font-weight="600" text-anchor="middle">剧情 / 文案</text>
+<text x="115.0" y="118" fill="#4a5b71" font-size="9" text-anchor="middle">镜头表</text>
+<text x="115.0" y="132" fill="#4a5b71" font-size="9" text-anchor="middle">（分镜的每一行）</text>
+<text x="115.0" y="146" fill="#4a5b71" font-size="9" text-anchor="middle">台词表</text>
+<text x="115.0" y="160" fill="#4a5b71" font-size="9" text-anchor="middle">（按条件出现的台词）</text>
+<text x="115.0" y="174" fill="#4a5b71" font-size="9" text-anchor="middle">预设表</text>
+<text x="115.0" y="188" fill="#4a5b71" font-size="9" text-anchor="middle">（批注·追问·理由·结局）</text>
+<rect x="89.0" y="292" width="52" height="14" rx="7" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
+<text x="115.0" y="302" fill="#10b981" font-size="8" font-weight="600" text-anchor="middle">已有</text>
+<rect x="219" y="66" width="180" height="246" rx="6" fill="#ffffff"/>
+<rect x="219" y="66" width="180" height="246" rx="6" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="309.0" y="86" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">1.2 人物</text>
+<text x="309.0" y="102" fill="#7c3aed" font-size="9" font-weight="600" text-anchor="middle">剧情 / 文案</text>
+<text x="309.0" y="118" fill="#4a5b71" font-size="9" text-anchor="middle">人物表</text>
+<text x="309.0" y="132" fill="#4a5b71" font-size="9" text-anchor="middle">姓名 · 身份 · 说话口吻</text>
+<text x="309.0" y="146" fill="#4a5b71" font-size="9" text-anchor="middle">平时待在哪个房间</text>
+<text x="309.0" y="160" fill="#4a5b71" font-size="9" text-anchor="middle">外观模型</text>
+<text x="309.0" y="174" fill="#4a5b71" font-size="9" text-anchor="middle">被除名后的去向</text>
+<rect x="283.0" y="292" width="52" height="14" rx="7" fill="#ffffff" stroke="#e11d48" stroke-width="1"/>
+<text x="309.0" y="302" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+<rect x="413" y="66" width="180" height="246" rx="6" fill="#ffffff"/>
+<rect x="413" y="66" width="180" height="246" rx="6" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="503.0" y="86" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">1.3 线索与推理</text>
+<text x="503.0" y="102" fill="#7c3aed" font-size="9" font-weight="600" text-anchor="middle">剧情 / 策划</text>
+<text x="503.0" y="118" fill="#4a5b71" font-size="9" text-anchor="middle">证据表</text>
+<text x="503.0" y="132" fill="#4a5b71" font-size="9" text-anchor="middle">（证据板上的卡片）</text>
+<text x="503.0" y="146" fill="#4a5b71" font-size="9" text-anchor="middle">可检查物件表</text>
+<text x="503.0" y="160" fill="#4a5b71" font-size="9" text-anchor="middle">（看到什么 · 得到什么）</text>
+<text x="503.0" y="174" fill="#4a5b71" font-size="9" text-anchor="middle">连线规则表</text>
+<text x="503.0" y="188" fill="#4a5b71" font-size="9" text-anchor="middle">（哪两条连起来算对）</text>
+<rect x="477.0" y="292" width="52" height="14" rx="7" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
+<text x="503.0" y="302" fill="#10b981" font-size="8" font-weight="600" text-anchor="middle">已有</text>
+<rect x="607" y="66" width="180" height="246" rx="6" fill="#ffffff"/>
+<rect x="607" y="66" width="180" height="246" rx="6" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1.5"/>
+<text x="697.0" y="86" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">1.4 空间与地图</text>
+<text x="697.0" y="102" fill="#7c3aed" font-size="9" font-weight="600" text-anchor="middle">地图 / 3D 美术</text>
+<text x="697.0" y="118" fill="#4a5b71" font-size="9" text-anchor="middle">房间登记表</text>
+<text x="697.0" y="132" fill="#4a5b71" font-size="9" text-anchor="middle">房间布局表</text>
+<text x="697.0" y="146" fill="#4a5b71" font-size="9" text-anchor="middle">（灰盒 · 机位 · 出生点）</text>
+<text x="697.0" y="160" fill="#4a5b71" font-size="9" text-anchor="middle">房间模型</text>
+<text x="697.0" y="174" fill="#4a5b71" font-size="9" text-anchor="middle">（按命名约定导出）</text>
+<rect x="671.0" y="292" width="52" height="14" rx="7" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<text x="697.0" y="302" fill="#d97706" font-size="8" font-weight="600" text-anchor="middle">部分</text>
+<rect x="801" y="66" width="180" height="246" rx="6" fill="#ffffff"/>
+<rect x="801" y="66" width="180" height="246" rx="6" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="891.0" y="86" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">1.5 视听素材</text>
+<text x="891.0" y="102" fill="#7c3aed" font-size="9" font-weight="600" text-anchor="middle">2D 美术 / 声音</text>
+<text x="891.0" y="118" fill="#4a5b71" font-size="9" text-anchor="middle">纸质道具图</text>
+<text x="891.0" y="132" fill="#4a5b71" font-size="9" text-anchor="middle">（信纸 · 电报 · 名册页）</text>
+<text x="891.0" y="146" fill="#4a5b71" font-size="9" text-anchor="middle">音效表 + 声音文件</text>
+<text x="891.0" y="160" fill="#4a5b71" font-size="9" text-anchor="middle">材质与灯光参考</text>
+<rect x="865.0" y="292" width="52" height="14" rx="7" fill="#ffffff" stroke="#e11d48" stroke-width="1"/>
+<text x="891.0" y="302" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+<rect x="995" y="66" width="180" height="246" rx="6" fill="#ffffff"/>
+<rect x="995" y="66" width="180" height="246" rx="6" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="1085.0" y="86" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">1.6 AI 规则</text>
+<text x="1085.0" y="102" fill="#7c3aed" font-size="9" font-weight="600" text-anchor="middle">剧情 / 文案</text>
+<text x="1085.0" y="118" fill="#4a5b71" font-size="9" text-anchor="middle">词表</text>
+<text x="1085.0" y="132" fill="#4a5b71" font-size="9" text-anchor="middle">本时代 · 渗漏 · 禁用</text>
+<text x="1085.0" y="146" fill="#4a5b71" font-size="9" text-anchor="middle">案卷自述兜底文本</text>
+<text x="1085.0" y="160" fill="#4a5b71" font-size="9" text-anchor="middle">AI 口吻范例</text>
+<rect x="1059.0" y="292" width="52" height="14" rx="7" fill="#ffffff" stroke="#e11d48" stroke-width="1"/>
+<text x="1085.0" y="302" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+<rect x="15" y="356" width="1170" height="118" rx="12" fill="#ea580c" fill-opacity="0.04" stroke="#ea580c" stroke-width="1" stroke-dasharray="8,4"/>
+<text x="29" y="375" fill="#ea580c" font-size="12" font-weight="700">② 导入与检查管线</text>
+<text x="1171" y="375" fill="#5e6b7f" font-size="9" text-anchor="end">程序负责 · 队友交来的东西在这里被“读懂”并检查</text>
+<rect x="60" y="398" width="180" height="56" rx="6" fill="#ffffff"/>
+<rect x="60" y="398" width="180" height="56" rx="6" fill="rgba(234, 88, 12, 0.10)" stroke="#ea580c" stroke-width="1.5"/>
+<text x="150" y="421" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">读取</text>
+<text x="150" y="439" fill="#5e6b7f" font-size="9" text-anchor="middle">表格与文件</text>
+<rect x="288" y="398" width="180" height="56" rx="6" fill="#ffffff"/>
+<rect x="288" y="398" width="180" height="56" rx="6" fill="rgba(234, 88, 12, 0.10)" stroke="#ea580c" stroke-width="1.5"/>
+<text x="378" y="421" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">交叉核对</text>
+<text x="378" y="439" fill="#5e6b7f" font-size="9" text-anchor="middle">编号与引用对得上吗</text>
+<rect x="516" y="398" width="180" height="56" rx="6" fill="#ffffff"/>
+<rect x="516" y="398" width="180" height="56" rx="6" fill="rgba(234, 88, 12, 0.10)" stroke="#ea580c" stroke-width="1.5"/>
+<text x="606" y="421" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">模型挂接</text>
+<text x="606" y="439" fill="#5e6b7f" font-size="9" text-anchor="middle">按命名自动加交互</text>
+<rect x="744" y="398" width="180" height="56" rx="6" fill="#ffffff"/>
+<rect x="744" y="398" width="180" height="56" rx="6" fill="rgba(234, 88, 12, 0.10)" stroke="#ea580c" stroke-width="1.5"/>
+<text x="834" y="421" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">检查报告</text>
+<text x="834" y="439" fill="#5e6b7f" font-size="9" text-anchor="middle">缺什么 · 哪里错</text>
+<rect x="972" y="398" width="180" height="56" rx="6" fill="#ffffff"/>
+<rect x="972" y="398" width="180" height="56" rx="6" fill="rgba(234, 88, 12, 0.10)" stroke="#ea580c" stroke-width="1.5"/>
+<text x="1062" y="421" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">预览</text>
+<text x="1062" y="439" fill="#5e6b7f" font-size="9" text-anchor="middle">调试面板跳到任意镜头</text>
+<rect x="15" y="504" width="1170" height="236" rx="12" fill="#10b981" fill-opacity="0.04" stroke="#10b981" stroke-width="1" stroke-dasharray="8,4"/>
+<text x="29" y="523" fill="#10b981" font-size="12" font-weight="700">③ 游戏运行层</text>
+<text x="1171" y="523" fill="#5e6b7f" font-size="9" text-anchor="end">程序负责 · 只按表格运行，不写死任何剧情内容</text>
+<rect x="25" y="534" width="220" height="196" rx="6" fill="#ffffff"/>
+<rect x="25" y="534" width="220" height="196" rx="6" fill="rgba(16, 185, 129, 0.10)" stroke="#10b981" stroke-width="1.5"/>
+<text x="135.0" y="554" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">3.1 全局服务</text>
+<text x="135.0" y="570" fill="#4a5b71" font-size="9" text-anchor="middle">存档读写</text>
+<text x="135.0" y="584" fill="#4a5b71" font-size="9" text-anchor="middle">场景切换</text>
+<text x="135.0" y="598" fill="#4a5b71" font-size="9" text-anchor="middle">设置与按键</text>
+<text x="135.0" y="612" fill="#4a5b71" font-size="9" text-anchor="middle">音频总线</text>
+<text x="135.0" y="626" fill="#4a5b71" font-size="9" text-anchor="middle">调试面板（F1）</text>
+<rect x="109.0" y="710" width="52" height="14" rx="7" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<text x="135.0" y="720" fill="#d97706" font-size="8" font-weight="600" text-anchor="middle">部分</text>
+<rect x="258" y="534" width="220" height="196" rx="6" fill="#ffffff"/>
+<rect x="258" y="534" width="220" height="196" rx="6" fill="rgba(16, 185, 129, 0.10)" stroke="#10b981" stroke-width="1.5"/>
+<text x="368.0" y="554" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">3.2 剧情调度</text>
+<text x="368.0" y="570" fill="#4a5b71" font-size="9" text-anchor="middle">按镜头表一行行播放</text>
+<text x="368.0" y="584" fill="#4a5b71" font-size="9" text-anchor="middle">分支与汇聚</text>
+<text x="368.0" y="598" fill="#4a5b71" font-size="9" text-anchor="middle">七张电报纸（节点预算）</text>
+<text x="368.0" y="612" fill="#4a5b71" font-size="9" text-anchor="middle">渗漏等级 L0—L4</text>
+<rect x="342.0" y="710" width="52" height="14" rx="7" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
+<text x="368.0" y="720" fill="#10b981" font-size="8" font-weight="600" text-anchor="middle">已有</text>
+<rect x="491" y="534" width="220" height="196" rx="6" fill="#ffffff"/>
+<rect x="491" y="534" width="220" height="196" rx="6" fill="rgba(16, 185, 129, 0.10)" stroke="#10b981" stroke-width="1.5"/>
+<text x="601.0" y="554" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">3.3 调查玩法</text>
+<text x="601.0" y="570" fill="#4a5b71" font-size="9" text-anchor="middle">问话 · 观察（放大镜）</text>
+<text x="601.0" y="584" fill="#4a5b71" font-size="9" text-anchor="middle">取证（在房间里检查）</text>
+<text x="601.0" y="598" fill="#4a5b71" font-size="9" text-anchor="middle">指认（访客簿划名）</text>
+<text x="601.0" y="612" fill="#4a5b71" font-size="9" text-anchor="middle">连线（证据板）</text>
+<text x="601.0" y="626" fill="#4a5b71" font-size="9" text-anchor="middle">批注 · 终局选择</text>
+<rect x="575.0" y="710" width="52" height="14" rx="7" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<text x="601.0" y="720" fill="#d97706" font-size="8" font-weight="600" text-anchor="middle">部分</text>
+<rect x="724" y="534" width="220" height="196" rx="6" fill="#ffffff"/>
+<rect x="724" y="534" width="220" height="196" rx="6" fill="rgba(16, 185, 129, 0.10)" stroke="#10b981" stroke-width="1.5"/>
+<text x="834.0" y="554" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">3.4 空间与角色</text>
+<text x="834.0" y="570" fill="#4a5b71" font-size="9" text-anchor="middle">房间搭建（模型或灰盒）</text>
+<text x="834.0" y="584" fill="#4a5b71" font-size="9" text-anchor="middle">机位与运镜</text>
+<text x="834.0" y="598" fill="#4a5b71" font-size="9" text-anchor="middle">第一人称行走</text>
+<text x="834.0" y="612" fill="#4a5b71" font-size="9" text-anchor="middle">人物在场 · 被除名后消失</text>
+<rect x="808.0" y="710" width="52" height="14" rx="7" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<text x="834.0" y="720" fill="#d97706" font-size="8" font-weight="600" text-anchor="middle">部分</text>
+<rect x="957" y="534" width="220" height="196" rx="6" fill="#ffffff"/>
+<rect x="957" y="534" width="220" height="196" rx="6" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="1067.0" y="554" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">3.5 AI 叙述代理</text>
+<text x="1067.0" y="570" fill="#d97706" font-size="9" font-weight="600" text-anchor="middle">读 1.2 人物 · 1.6 规则 · 玩家手记</text>
+<text x="1067.0" y="586" fill="#4a5b71" font-size="9" text-anchor="middle">五类改写位置</text>
+<text x="1067.0" y="600" fill="#4a5b71" font-size="9" text-anchor="middle">词表闸门（拦住穿帮词）</text>
+<text x="1067.0" y="614" fill="#4a5b71" font-size="9" text-anchor="middle">缓存与预写兜底</text>
+<text x="1067.0" y="628" fill="#4a5b71" font-size="9" text-anchor="middle">断网也能完整演示</text>
+<rect x="1041.0" y="710" width="52" height="14" rx="7" fill="#ffffff" stroke="#e11d48" stroke-width="1"/>
+<text x="1067.0" y="720" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+<rect x="15" y="770" width="1170" height="150" rx="12" fill="#0ea5e9" fill-opacity="0.04" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="8,4"/>
+<text x="29" y="789" fill="#0ea5e9" font-size="12" font-weight="700">④ 玩家看到与听到的</text>
+<text x="1171" y="789" fill="#5e6b7f" font-size="9" text-anchor="end">程序搭框架 · 美术与声音成员决定品质</text>
+<rect x="25" y="800" width="277" height="110" rx="6" fill="#ffffff"/>
+<rect x="25" y="800" width="277" height="110" rx="6" fill="rgba(14, 165, 233, 0.10)" stroke="#0ea5e9" stroke-width="1.5"/>
+<text x="163.5" y="820" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">4.1 实物界面</text>
+<text x="163.5" y="836" fill="#4a5b71" font-size="9" text-anchor="middle">文件阅读 · 证据板 · 访客簿</text>
+<text x="163.5" y="850" fill="#4a5b71" font-size="9" text-anchor="middle">打字机纸页 · 七张电报纸</text>
+<rect x="137.5" y="890" width="52" height="14" rx="7" fill="#ffffff" stroke="#d97706" stroke-width="1"/>
+<text x="163.5" y="900" fill="#d97706" font-size="8" font-weight="600" text-anchor="middle">部分</text>
+<rect x="316" y="800" width="277" height="110" rx="6" fill="#ffffff"/>
+<rect x="316" y="800" width="277" height="110" rx="6" fill="rgba(14, 165, 233, 0.10)" stroke="#0ea5e9" stroke-width="1.5"/>
+<text x="454.5" y="820" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">4.2 3D 画面</text>
+<text x="454.5" y="836" fill="#4a5b71" font-size="9" text-anchor="middle">庄园房间 · 灯光</text>
+<text x="454.5" y="850" fill="#4a5b71" font-size="9" text-anchor="middle">渗漏材质（白模网格）</text>
+<rect x="428.5" y="890" width="52" height="14" rx="7" fill="#ffffff" stroke="#64748b" stroke-width="1"/>
+<text x="454.5" y="900" fill="#64748b" font-size="8" font-weight="600" text-anchor="middle">灰盒</text>
+<rect x="607" y="800" width="277" height="110" rx="6" fill="#ffffff"/>
+<rect x="607" y="800" width="277" height="110" rx="6" fill="rgba(14, 165, 233, 0.10)" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="745.5" y="820" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">4.3 声音</text>
+<text x="745.5" y="836" fill="#4a5b71" font-size="9" text-anchor="middle">环境 · 器物 · 人声</text>
+<text x="745.5" y="850" fill="#4a5b71" font-size="9" text-anchor="middle">渗漏音（循环脚步、握手短音）</text>
+<rect x="719.5" y="890" width="52" height="14" rx="7" fill="#ffffff" stroke="#e11d48" stroke-width="1"/>
+<text x="745.5" y="900" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+<rect x="898" y="800" width="277" height="110" rx="6" fill="#ffffff"/>
+<rect x="898" y="800" width="277" height="110" rx="6" fill="rgba(14, 165, 233, 0.10)" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="1036.5" y="820" fill="#182b49" font-size="12" font-weight="600" text-anchor="middle">4.4 演出</text>
+<text x="1036.5" y="836" fill="#4a5b71" font-size="9" text-anchor="middle">开场运镜 · 除名消失</text>
+<text x="1036.5" y="850" fill="#4a5b71" font-size="9" text-anchor="middle">镜中倒影 · 终局三选一</text>
+<rect x="1010.5" y="890" width="52" height="14" rx="7" fill="#ffffff" stroke="#e11d48" stroke-width="1"/>
+<text x="1036.5" y="900" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+        <text x="25" y="944" fill="#182b49" font-size="11" font-weight="600">图例</text>
+<rect x="70" y="934" width="16" height="11" rx="2" fill="rgba(124, 58, 237, 0.10)" stroke="#7c3aed" stroke-width="1"/>
+<text x="92" y="943" fill="#5e6b7f" font-size="9">队友填写的表格与文件</text>
+<rect x="214" y="934" width="16" height="11" rx="2" fill="rgba(234, 88, 12, 0.10)" stroke="#ea580c" stroke-width="1"/>
+<text x="236" y="943" fill="#5e6b7f" font-size="9">导入与检查（程序）</text>
+<rect x="348" y="934" width="16" height="11" rx="2" fill="rgba(16, 185, 129, 0.10)" stroke="#10b981" stroke-width="1"/>
+<text x="370" y="943" fill="#5e6b7f" font-size="9">游戏运行模块（程序）</text>
+<rect x="492" y="934" width="16" height="11" rx="2" fill="rgba(217, 119, 6, 0.12)" stroke="#d97706" stroke-width="1"/>
+<text x="514" y="943" fill="#5e6b7f" font-size="9">AI 模块（程序）</text>
+<rect x="626" y="934" width="16" height="11" rx="2" fill="rgba(14, 165, 233, 0.10)" stroke="#0ea5e9" stroke-width="1"/>
+<text x="648" y="943" fill="#5e6b7f" font-size="9">玩家看到的</text>
+<rect x="720" y="933" width="34" height="13" rx="6" fill="#fff" stroke="#10b981" stroke-width="1"/>
+<text x="737" y="943" fill="#10b981" font-size="8" font-weight="600" text-anchor="middle">已有</text>
+<rect x="764" y="933" width="34" height="13" rx="6" fill="#fff" stroke="#d97706" stroke-width="1"/>
+<text x="781" y="943" fill="#d97706" font-size="8" font-weight="600" text-anchor="middle">部分</text>
+<rect x="808" y="933" width="34" height="13" rx="6" fill="#fff" stroke="#e11d48" stroke-width="1"/>
+<text x="825" y="943" fill="#e11d48" font-size="8" font-weight="600" text-anchor="middle">待建</text>
+<rect x="852" y="933" width="34" height="13" rx="6" fill="#fff" stroke="#64748b" stroke-width="1"/>
+<text x="869" y="943" fill="#64748b" font-size="8" font-weight="600" text-anchor="middle">灰盒</text>
+<text x="902" y="943" fill="#5e6b7f" font-size="9">虚线框 = 尚未建立</text>
+      </svg>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="cards">
+      <div class="card">
+        <div class="card-header"><div class="card-dot violet"></div><h3>队友只需要关心第①层</h3></div>
+        <ul>
+          <li>• 剧情 / 文案：叙事与流程、人物、线索、AI 规则四类表格</li>
+          <li>• 地图 / 3D 美术：房间布局表 + 按命名约定导出的房间模型</li>
+          <li>• 2D 美术 / 声音：纸质道具图、音效表与声音文件</li>
+          <li>• 每张表都有一页“填表说明”，填完运行检查就知道对不对</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-dot emerald"></div><h3>程序（你 + agent）负责②③</h3></div>
+        <ul>
+          <li>• 管线：读表、交叉核对、模型挂接、检查报告、预览</li>
+          <li>• 运行：剧情调度、调查玩法、空间与角色、全局服务、AI</li>
+          <li>• 原则：游戏规则写一次，具体内容全部来自表格</li>
+          <li>• 第④层的框架由程序搭，品质由美术与声音成员决定</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-dot rose"></div><h3>底座还缺的部分</h3></div>
+        <ul>
+          <li>• 人物表：嫌疑人信息目前写死在程序里</li>
+          <li>• 房间布局表：灰盒房间、机位目前写死在程序里</li>
+          <li>• 音效表、词表：还没有</li>
+          <li>• 每张表的填表说明与示例行：还没有</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="eli5-strip" aria-label="怎么理解这张架构图">
+      <strong>把它想成拍一部电影</strong>
+      <p>第①层是编剧写的分镜本、演员表、道具清单和布景图纸；第②层是场记，负责核对“分镜里提到的道具，道具组有没有做”；第③层是导演和剧组，照着分镜本一场一场地拍；第④层是观众在银幕上看到的成片。队友当编剧、道具组和布景组，不需要会当导演。</p>
+    </section>
+
+    <section class="case-study" aria-labelledby="case-title">
+      <div class="case-header">
+        <span class="case-kicker">快速代入案例</span>
+        <h2 id="case-title">“我想在管家室里加一件新线索：一只停在 21:40 的怀表。”</h2>
+      </div>
+      <div class="case-flow">
+        <article class="case-step">
+          <strong>1 · 剧情成员填表（1.3）</strong>
+          <p>在“可检查物件表”加一行：名字、玩家看到的描述、得到的证据；在“证据表”加一张卡片。</p>
+          <em>不碰程序，只填两行。</em>
+        </article>
+        <article class="case-step">
+          <strong>2 · 3D 美术放模型（1.4）</strong>
+          <p>在管家室模型里放一只怀表，按约定命名，重新导出管家室文件。</p>
+          <em>没有模型时，灰盒会先放一个方块占位。</em>
+        </article>
+        <article class="case-step">
+          <strong>3 · 管线检查（②）</strong>
+          <p>运行检查：怀表的编号在表里和模型里都找得到吗？证据卡片存在吗？报告列出缺漏。</p>
+          <em>像场记核对道具清单。</em>
+        </article>
+        <article class="case-step">
+          <strong>4 · 游戏里出现（③④）</strong>
+          <p>玩家走进管家室，看向怀表时出现提示，检查后读到描述，证据板上多一张卡片。</p>
+          <em>程序一行代码都没改。</em>
+        </article>
+      </div>
+      <p class="case-result"><strong>最后得到：</strong>新线索出现在游戏里，并且能在证据板上使用。整个过程只有两个人填表、交文件，程序负责人只需要看一眼检查报告。</p>
+    </section>
+
+    <!-- Footer -->
+    <p class="footer">《已收悉》Acknowledged · 模块架构 v1 · 2026-10-13 · 对应文档 docs/10-模块架构与内容管线.md</p>
+  </div>
+
+  <script>
+    async function copyAsImage(btn) {
+      const orig = btn.textContent;
+      try {
+        const el = document.getElementById('report-container');
+        const r = el.getBoundingClientRect();
+        const pad = 32;
+        const canvas = await html2canvas(document.body, { backgroundColor: '#f5f7fb', scale: 2, useCORS: true, ignoreElements: (e) => e.classList && e.classList.contains('toolbar'), x: r.left + window.scrollX - pad, y: r.top + window.scrollY - pad, width: r.width + pad * 2, height: r.height + pad * 2 });
+        const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        btn.textContent = '✓ 已复制';
+      } catch (e) {
+        btn.textContent = '✗ 失败';
+      }
+      setTimeout(() => btn.textContent = orig, 2000);
+    }
+
+    async function downloadPNG(btn) {
+      const orig = btn.textContent;
+      btn.textContent = '⏳ 处理中…';
+      try {
+        const el = document.getElementById('report-container');
+        const r = el.getBoundingClientRect();
+        const pad = 32;
+        const canvas = await html2canvas(document.body, { backgroundColor: '#f5f7fb', scale: 2, useCORS: true, ignoreElements: (e) => e.classList && e.classList.contains('toolbar'), x: r.left + window.scrollX - pad, y: r.top + window.scrollY - pad, width: r.width + pad * 2, height: r.height + pad * 2 });
+        const link = document.createElement('a');
+        link.download = '已收悉-模块架构.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        btn.textContent = '✓ 完成';
+      } catch (e) {
+        btn.textContent = '✗ 失败';
+      }
+      setTimeout(() => btn.textContent = orig, 2000);
+    }
+
+    async function downloadPDF(btn) {
+      const orig = btn.textContent;
+      btn.textContent = '⏳ 处理中…';
+      try {
+        const el = document.getElementById('report-container');
+        const r = el.getBoundingClientRect();
+        const pad = 32;
+        const canvas = await html2canvas(document.body, { backgroundColor: '#f5f7fb', scale: 2, useCORS: true, ignoreElements: (e) => e.classList && e.classList.contains('toolbar'), x: r.left + window.scrollX - pad, y: r.top + window.scrollY - pad, width: r.width + pad * 2, height: r.height + pad * 2 });
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const orientation = canvas.width > canvas.height ? 'landscape' : 'portrait';
+        const pdf = new jsPDF({ orientation, unit: 'px', format: [canvas.width, canvas.height], hotfixes: ['px_scaling'] });
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save('已收悉-模块架构.pdf');
+        btn.textContent = '✓ 完成';
+      } catch (e) {
+        btn.textContent = '✗ 失败';
+      }
+      setTimeout(() => btn.textContent = orig, 2000);
+    }
+  </script>
+</body>
+</html>

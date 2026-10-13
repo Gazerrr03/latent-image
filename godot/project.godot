@@ -1,5 +1,10 @@
-; 罗伊德庄园（工作名 ERRATA）Godot 工程
-; 约定见仓库根目录 CLAUDE.md
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
 
 config_version=5
 
