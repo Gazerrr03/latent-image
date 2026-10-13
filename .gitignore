@@ -4,3 +4,10 @@ game/dist/
 godot/.godot/
 godot/export/
 检查报告.md
+
+# 素材库：草稿、日志、源文件与归档只留在本机（见 assets/README.md）
+assets/**/drafts/
+assets/**/source/
+assets/_归档/
+*.blend1
+assets/登记表.csv.lock
