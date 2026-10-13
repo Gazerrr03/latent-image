@@ -1,54 +1,66 @@
 shot_id,node,line,scene,camera,mode,sound,text,ai_slot,actions,next,note
-N1-00,N1,*,office,establish,,,,,footage(片头_警告);footage(片头_童谣),,片头：中英双语警告卡 → 童谣字幕卡与庄园老照片（怪谈“签收人”，《11》4.4）。只讲怪谈，不讲世界观
-N1-01,N1,*,office,establish,,rain;tram_bell;typewriter_idle,墙上镶着一份旧剪报：“私家侦探 R. 艾克当众揭穿降灵会骗局：‘桌子是用脚抬起来的。’”,,"osd(档案卡,ROYD_REEL_01,001/007,1926/10/04 21:39);leak(0);wait(2.5)",,黑场淡入。镜头在玩家肩后缓推向桌面：台灯、打字机、七张电报纸，窗外雨夜街灯。可环顾桌面，点电报纸会数出七张。渗漏 L0。开场以黑白 4:3 胶片档案呈现（参考视频的 DORN_MARKER 文件卡）。墙上的旧剪报交代侦探是不信唯灵论的现实主义者
-N1-02,N1,*,office,letter_close,,paper_rustle,委托信：“请即刻来罗伊德庄园。家主昨夜在书房里不见了，门是从里面闩上的。访客簿上他的名字被划去了，桌上留着一张回执。仆人们在唱那首歌。我不信那种东西，所以请的是您。——律师 W.”\n落款：十月四日,,collect(ev_letter),,F2 线索（委托信日期）。律师请理性的侦探来证明“这是人干的”（《11》4.3）
-N1-03,N1,*,office,typewriter_close,,typewriter_return,第一行：“我到达的时候，庄园的灯还亮着。”\n页脚戳：“十月三日 九点三十九分 收讫”,,collect(ev_journal_p1),,手记第一页，此后玩家的批注都续写在这里。F1、F2 线索以场景细节呈现，不做提示
-N1-04,N1,*,street,follow,,car_door;engine_low,你撕下第一张电报纸，回电给律师：“已启程。”\n电报纸上逐字打出：“找出划掉罗伊德先生名字的人。”,,"osd(档案卡,ROYD_REEL_02,002/007,1926/10/04 22:10);objective(找出划掉罗伊德先生名字的人。);use_telegram()",,第 1 张电报纸（回电给律师：已启程）。全游戏唯一的目标文字
-N1-05,N1,*,manor_gate,wide_symmetric,,iron_gate;thunder_far,,,wait(3),,过场约 5 秒：庄园大门对称构图，一排窗里的灯一格一格亮着，像表格
-N1-06,N1,*,hall,hall_mid,,clock_chime_9,管家巴洛接过你的帽子。他的眼睛上蒙着一条黑色的缎带，动作却一丝不差。\n座钟敲了九下。钟面上的指针指着十点四十分。\n访客簿上列着：巴洛（管家）、韦恩小姐（秘书）、朗斯（继子）。\n最后一行，“罗伊德先生”已被划去。,嫌疑人口吻,osd();fx(自动);inquire(n1_intro),,座钟敲九下，钟面指着十点四十；镜中管家倒影清晰，玩家的位置是空的。巴洛蒙着黑色缎带（除侦探外所有人的眼睛都被遮住，《04》第 11 节）
-N1-07,N1,*,study,door_push,walk,lamp_hum,,,"objective(门从里面闩着。他是怎么离开的？);inspect(hs_latch,hs_window,hs_phone,hs_receipt,hs_register);annotate(n1)",N2-01,教学关：自由走动检查门闩、窗、电话、回执、访客簿。F1、F3 线索。检查后出现预设批注
-N2-01,N2,*,parlor,parlor_mid,,fire_crackle,巴洛：“昨夜我守夜，门房的灯一直没灭。”\n韦恩小姐：“我把信打到九点三十五分，罗伊德先生说他想一个人待着。”\n朗斯：“我在台球室，一个人。”,嫌疑人口吻,objective();say(n2_rhyme);inquire(n2_ask),,三人坐在沙发上，眼睛都被遮住，脸朝着玩家又偏一点；玩家背影入画；壁炉、虎纹挂毯（虎卧着）。三人各讲一个童谣版本（AI 槽位）
-N2-02,N2,*,parlor,suspects_close,,pendulum,,,"inspect(hs_barlow_watch,hs_wynn_fingers,hs_lance_window)",,三处细节放大观察，收入证据板，此刻不判定
-N2-03,N2,*,parlor,register_close,,thunder,,,accuse(n2_reason),line=A>N2-A-01|line=B>N2-B-01|line=C>N2-C-01,访客簿摊开，钢笔笔尖悬在三个名字上方；先选人，再选理由。理由计入人格属性并写入手记
-N2-A-01,N2,A,parlor,register_close,,pen_scratch;typewriter_return,笔尖划去“巴洛”，墨未干。名字旁浮现一个极小的打字印，e 偏高，仿佛是你自己印上去的。\n簿边多出一行小字：“已收悉”\n手记里写着：“我在访客簿上指认了巴洛。”,,wait(1.5),,玩家无操作约 4 秒。F1、F3 线索
-N2-A-02,N2,A,hall,hall_mid,,clock_extra_chime,巴洛原来站的地方空着。帽架上，他的帽子还挂着。座钟多敲了一下，钟面倒退了一格。\n韦恩小姐：“……巴洛？庄园里有这个人吗？”\n报纸角落一行小字：“某人已注销。”,嫌疑人口吻,leak(1),,巴洛原来站的位置空着，帽架上的帽子还挂着；座钟钟面倒退一格。渗漏 L1 词汇
-N2-A-03,N2,A,butler_room,door_push,,footsteps_echo,次日清晨。管家室的门半开着，床铺平整，衣柜空着。,,inspect(hs_keyring);use_telegram(),N3-A-01,玩家点钥匙环，进入 N3-A。第 2 张电报纸
-N3-A-01,N3,A,butler_room,,walk,footsteps_echo,,,"objective(他掌管庄园所有的钥匙。那一晚，书房需要钥匙吗？);inspect(hs_key_tags,hs_night_log,hs_receipts_drawer,hs_photo_a)",N3-A-02,渗漏 L1 空间：远处墙角木纹过分均匀，影子没有方向。三件证据与 1901 年合影取齐门自动打开；离开时第 3 张电报纸（电告律师“已取证”）。可选：hs_window_a、hs_mirror_a
-N3-A-02,N3,A,,,,,三样东西取齐，门自己开了。你撕下第三张电报纸，回电给律师：“已取证。”,,use_telegram(),N4-A-01,《剧本》第三幕：第 3 张电报纸
-N4-A-01,N4,A,parlor,board,,pin,,,objective(把证据钉上证据板，用红线连起来。);link(c1),,客厅窗边的软木板；连错红线抖动弹回，可立刻重试
-N4-A-03,N4,A,parlor,two_shot,,fire_crackle,同一版报纸下方，一则新广告，配着一幅没有眼睛的管家画像：“忠诚的管家，记得府上每一把钥匙。即日送达。”\n韦恩小姐：“谁在打字？”\n朗斯：“您一直在写字，艾克先生。”\n挂毯上的老虎坐起来了。,嫌疑人口吻,objective();inquire(n4a_ask),,剩下韦恩小姐与朗斯；韦恩小姐把手放在耳边，朗斯笑了一下。报纸广告：第一个消失的人成了商品（怪谈“住进电线里”，《11》4.4）
-N4-A-04,N4,A,parlor,telegram_close,,chime_modern,你手边的电报纸，边缘多出一行小字：“已读 21:40”。\n访客簿边多出一栏：“关注”。,,leak(2);annotate(n4);use_telegram(),N5-01,一声极轻的提示音，不属于这个时代。第 4 张电报纸。渗漏 L2 界面
-N2-B-01,N2,B,parlor,register_close,,pen_scratch;typing_far,笔尖划去“韦恩小姐”。划痕边的纸纤维里嵌着一点紫色色带墨，打字印 e 偏高。\n簿边多出一行小字：“已收悉”\n手记里写着：“我在访客簿上指认了韦恩小姐。”,,wait(1.5),,玩家无操作约 4 秒。F1、F3 线索
-N2-B-02,N2,B,parlor,parlor_mid,,fire_crackle;typing_faint,巴洛：“谁在打字？这屋里没有人会打字。”\n报纸角落一行小字：“某人已注销。”,嫌疑人口吻,leak(1),,韦恩小姐的座位空着，沙发上留着一只手套，椅面还微温；背景里隐约的打字声。渗漏 L1 词汇
-N2-B-03,N2,B,typing_room,door_push,,platen_spin,次日清晨。打字间的门虚掩着。,,inspect(hs_platen);use_telegram(),N3-B-01,玩家点滚筒，进入 N3-B。第 2 张电报纸
-N3-B-01,N3,B,typing_room,,walk,platen_spin,,,"objective(她把信打到九点三十五分。之后，是谁在打字？);inspect(hs_typewriter_pair,hs_calendar_letter,hs_telegram_drafts,hs_photo_b)",N3-B-02,渗漏 L1 空间：斜射进窗的光，影子没有方向。三件证据与 1901 年合影取齐门自动打开；第 3 张电报纸。可选：hs_window_b、hs_mirror_b
-N3-B-02,N3,B,,,,,三样东西取齐，门自己开了。你撕下第三张电报纸，回电给律师：“已取证。”,,use_telegram(),N4-B-01,《剧本》第三幕：第 3 张电报纸
-N4-B-01,N4,B,parlor,board,,pin,,,objective(把证据钉上证据板，用红线连起来。);link(c2),,通告、日历页、委托信底稿钉上证据板
-N4-B-03,N4,B,parlor,two_shot,,fire_crackle,同一版报纸下方，一则新广告，配着一幅没有眼睛的打字员画像：“永不疲倦的打字员，一字不差，照您的稿子打。”\n巴洛：“谁在打字？没人。”\n朗斯：“您以前写的东西，我读过。”\n挂毯上的老虎坐起来了。,嫌疑人口吻,objective();inquire(n4b_ask),,剩下巴洛与朗斯。报纸广告：第一个消失的人成了商品（怪谈“住进电线里”，《11》4.4）
-N4-B-04,N4,B,parlor,telegram_close,,chime_modern,你手边的电报纸，边缘多出一行小字：“已读 21:40”。\n访客簿边多出一栏：“关注”。,,leak(2);annotate(n4);use_telegram(),N5-01,第 4 张电报纸。渗漏 L2 界面
-N2-C-01,N2,C,parlor,register_close,,pen_scratch;bulb_pop,笔尖划去“朗斯”。落笔的同时，窗外花园小径分岔处的一盏灯熄灭了。\n簿边多出一行小字：“已收悉”\n手记里写着：“我在访客簿上指认了朗斯。”,,wait(1.5),,玩家无操作。F1、F3 线索
-N2-C-02,N2,C,billiard_room,billiard_mid,,ball_roll,巴洛：“少爷？庄园里没有少爷。”\n报纸角落一行小字：“某人已注销。”,嫌疑人口吻,leak(1),,台球室：球桌上的白球自己滚了一下，停住；巴洛站在门口。渗漏 L1 词汇
-N2-C-03,N2,C,attic_stairs,stairs_up,,footsteps_delayed,次日清晨。通往阁楼的台阶，比昨天多了一级。,,wait(2);use_telegram(),N3-C-01,镜头仰拍楼梯，尽头亮着台球室的灯；每一级的回声略有延迟。第 2 张电报纸
-N3-C-01,N3,C,billiard_room,,walk,bulb_sway,,,"objective(他说他一个人在台球室。那里还有谁？);inspect(hs_iou,hs_morning_paper,hs_gramophone,hs_photo_c)",N3-C-02,渗漏 L1 空间：吊灯轻晃，角落的木纹过分均匀。三件证据与 1901 年合影取齐门自动打开；第 3 张电报纸。可选：hs_mirror_c、hs_window_c
-N3-C-02,N3,C,,,,,三样东西取齐，门自己开了。你撕下第三张电报纸，回电给律师：“已取证。”,,use_telegram(),N4-C-01,《剧本》第三幕：第 3 张电报纸
-N4-C-01,N4,C,parlor,board,,pin,,,objective(把证据钉上证据板，用红线连起来。);link(c3),,借据、早报、唱片里的回执钉上证据板
-N4-C-03,N4,C,parlor,two_shot,,fire_crackle,同一版报纸下方，一则新广告，配着一幅没有眼睛的年轻绅士画像：“彻夜相陪的牌友，从不先走。”\n巴洛：“少爷的房间我从没打扫过。”\n韦恩小姐：“请别再划了。”\n挂毯上的老虎坐起来了。,嫌疑人口吻,objective();inquire(n4c_ask),,剩下巴洛与韦恩小姐。报纸广告：第一个消失的人成了商品（怪谈“住进电线里”，《11》4.4）
-N4-C-04,N4,C,parlor,telegram_close,,chime_modern,你手边的电报纸，边缘多出一行小字：“已读 21:40”。\n访客簿边多出一栏：“关注”。,,leak(2);annotate(n4);use_telegram(),N5-01,第 4 张电报纸。渗漏 L2 界面
-N5-01,N5,*,parlor,two_shot,,fire_low,,,wait(2),,客厅仅剩两人；镜头从两人之间过肩推向玩家，玩家第一次被正面拍到，只看得见帽檐与握笔的手。【待确认】按审阅意见，两人台词移到 N5-02 选择之后
-N5-02,N5,*,parlor,register_close,,silence,,,accuse(n5_reason);say(n5_pair),,笔尖悬在两个名字之间，轻轻发抖。指认 Y，Z 为剩下的那位
-N5-03,N5,*,parlor,two_shot,,click_clean;footsteps_x3,簿边：“已确认。”\n报纸角落小字：“某人已清除。”,,leak(3);wait(2),,笔尖落下的同一帧，Y 坐着的位置，人物变成白色模型，边缘露出网格，随即消失，椅垫上留下一圈凹痕。渗漏 L3
-N5-04,N5,*,corridor,,walk,typing_near;footsteps_loop;phone_ring,,,objective(尽头书房的灯亮着。);inspect(hs_corridor_phone);say(n5_phone);inspect(hs_study_door);use_telegram(),N6-01,所有房门朝内敞开，里面是白色；镜子里只有走廊；打字声越来越清晰，脚步声循环。第 5 张电报纸。走廊小桌上的电话响起，听筒里是 Y 的声音（重复他第一次问话时的话）
-N6-01,N6,*,study,study_mid,,clock_tick,访客簿页脚多出一行小字：“已存储”。,,"leak(4);objective(三件东西，摆在同一张桌上。);inspect(hs_journal_p1,hs_register,hs_receipt)",,Z 站在书桌旁，手里捧着访客簿；桌上并排三件东西；窗外雨停了，只剩座钟走时声。渗漏 L4
-N6-02,N6,*,study,desk_close,,paper_rustle,,,link(c2),,手记第一页页脚戳与委托信落款并排，两张纸叠合
-N6-03,N6,*,study,desk_close,,tracing_paper,,,link(c1),,透明描图纸先覆在访客簿划痕上，再拖到手记第一页的字行上
-N6-04,N6,*,study,desk_close,,ink_shift;handshake_beep,,,link(c3),,书房回执被展开，另一半露出“已收悉·R.”，随后文字一个字一个字地变化
-N6-05,N6,*,study,study_mid,,clock_tick,,嫌疑人口吻,say(n6_z),,Z 开口。镜子里 Z 的倒影清晰，玩家的位置依旧是空的
-N6-06,N6,*,study,desk_close,,typewriter_return;thunder,电报纸上打出：“请结案。”,,objective();use_telegram(),N7-01,Z 把最后一张电报纸推到玩家面前；镜头缓推打字机，滚筒上已卷好新的一页。第 6 张电报纸
-N7-01,N7,*,study,chair_over_shoulder,,chair_creak,,,wait(2),,玩家（背影）坐进罗伊德先生的椅子；Z 站在门口
-N7-02,N7,*,study,orbit_desk,,rain,,,wait(3),,镜头绕桌一圈，书房的墙面逐渐变成事务所的墙面，桌上七张电报纸只剩最后一张。空间叠合：事务所与书房是同一间屋
-N7-03,N7,*,study,desk_close,,page_turn;keys,,案卷自述,confession(),,打字机滚筒上的手记，每一页都是玩家的批注，页脚日期乱序。AI 生成约 200—300 字；此处为兜底版本
-N7-04,N7,*,study,desk_close,,keys_even,末行：“艾克（R. Ack）已确认。罗伊德已删除。”,,,,同一行文字里，打字内容从 1920 年代文风逐渐变成日志格式；“除名、注销、清除、删除”依次亮起。渗漏 L4 完成
-N7-05,N7,*,study,mirror,,clock_tick,桌角压着一页纸，不知道是从哪里来的：\n“受试者：R. 艾克罗伊德　疗程：整合　人格：5 → □　容器：#{容器号}”\n“诊断：████████”,,"reveal(镜中人形);inspect(hs_mirror_study,hs_lending_cards,hs_floorplan)",,镜中出现没有脸的白色人形；涂黑的文件是全游戏唯一不属于 1926 年的纸，容器号每局随机（《11》5.3）。玩家可自由观察
-N7-06,N7,*,study,desk_close,,typewriter_idle_low,最后一张电报纸上只有一行：“请回执。”\n访客簿翻回第一页。“罗伊德先生”那一行的划痕旁边，空着。,,sign(请回执。);use_telegram(),,第 7 张电报纸。玩家在被划去的那一行写下自己的名字，那一行变成“艾克罗伊德”：承认（《11》5.3）
-N7-07,N7,*,study,mirror,,clock_tick,,,ending(n7_view),,按主导属性（好奇 / 记忆 / 共情 / 欲望）显示四种视角之一：多出来的一件东西与最后一句（《02》第 8 节）
-N7-08,N7,*,office,typewriter_close,,typewriter;rain,“我到达的时候，庄园的灯还亮着。”\n页脚：“十月三日 九点三十九分 收讫”,,,END,黑场，只剩打字机声。回到 N1-03，故事成环；玩家可选“再读一遍”（多周目暂缓）
+C0-01,C0,*,train,seat,,train_rattle,,,footage(片头_警告);footage(片头_怪谈),,片头：警告卡 → 怪谈（灵魂照片、报纸、儿歌）。只讲怪谈，不讲世界观
+C0-02,C0,*,train,seat,,train_rattle,火车往西开。窗外是威尔特郡的秋天：一棵树，一道石墙，一个赶羊的人。\n过了一会儿，又是一棵树，一道石墙，一个赶羊的人。,,"osd(档案卡,ORIEL_REEL_01,001/008,1926/10/16 20:12);leak(0)",,上层露出 1/4（接缝）：窗外风景重复。docs/02 第 7 节
+C0-03,C0,*,train,letter_close,,paper_rustle,格雷先生：\n请于十月十六日星期六晚九点来奥瑞尔庄园。我有一样东西，必须给你看。\n——安布罗斯·塔尔博特　十月十三日\n\n我手里只有信的第一页。,,collect(ev_letter_p1);osd(),,第二页在格雷大衣内袋（第 6 章）。“我手里只有第一页”是真话（docs/02 第 11 节）
+C0-04,C0,*,manor_gate,wide_symmetric,,iron_gate;thunder_far,九点，我到达奥瑞尔庄园。,,wait(2),,T3：真话，省略七点
+C0-05,C0,*,hall,hall_mid,,clock_tick,门厅里挂着一面镜子。镜子里有门，有帽架，有一盏灯。\n座钟停着，没有人去管它。\n康斯坦斯·塔尔博特迎上来，眼睛上系着一条黑缎带。\n“他在暗房里。他冲照片的时候，谁也不许打扰。”,,,,镜子里没有格雷（镜头回避）；钟停在七点只出现在画面里，文字不提几点
+C0-06,C0,*,hall,hall_mid,,clock_tick,她说，晚饭时暗房的计时铃响了两次，他还在工作。\n到了十点，他还没有出来。,,,,
+C0-07,C0,*,darkroom,door_push,,door_bang;red_hum,园丁吉迪恩撞开了门。我第一个走进暗房。\n红灯还亮着。安布罗斯倒在显影台边。显影盘里泡着一张全黑的相纸。\n门闩是从里面闩上的。,,reveal(尸体);wait(2),,“我第一个走进暗房”是真话；不得写“第一次进入暗房”（docs/02 第 11 节）
+C0-08,C0,*,darkroom,wide,,red_hum,医生说，是冲洗药剂的意外。警察点了头。\n康斯坦斯请我留下来，住到下星期六验尸官开庭的那一天。,,reveal(尸体),,开庭日 10-23 即终局，也是留宿的理由
+C0-09,C0,*,guest_room,typewriter_close,,typewriter_return,那一夜，我在客房的打字机上打下第一页记录：\n“十月十六日。九点，我到达奥瑞尔庄园。十点，园丁撞开暗房的门。安布罗斯·塔尔博特死了。”,,collect(ev_record_c0),,S6-08①：七点到九点之间，一个字也没有
+C1-01,C1,*,guest_room,establish,,birds_morning,十月十七日，星期日。\n我在客房醒来。窗外是花园，花园那头是温室。\n早饭时，康斯坦斯说：“验尸官下星期六开庭。在那之前，请您查清楚。”,,leak(0);objective(认识这张书桌。),,
+C1-02,C1,*,guest_room,,walk,clock_tick,,,"inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed,hs_mirror_guest)",,引导：书桌上的三样东西各管什么（docs/01 第 3 节）；镜子里没有格雷
+C1-03,C1,*,darkroom,,walk,red_hum,,,"objective(看看暗房。);inspect(hs_tray,hs_bottles,hs_vent_inside,hs_camera,hs_clock_dark)",,ev_tray_black（S4-02①）与 ev_typed_labels（S2-02①）可以在这里先拿到
+C1-04,C1,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c1),,
+C1-05,C1,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C2-01,C2,*,guest_room,establish,,birds_morning,十月十八日，星期一。,,objective(问问这家人。),,
+C2-02,C2,*,dining,dining_mid,,clock_tick,,人物口吻,say(c2_constance);inquire(c2_ask_constance),,一对一：画面里只有康斯坦斯
+C2-03,C2,*,greenhouse,green_mid,,rain_glass,,人物口吻,say(c2_gideon);collect(ev_testimony_vent);inquire(c2_ask_gideon),,S2-03①
+C2-04,C2,*,child_room,child_mid,,music_box,,人物口吻,say(c2_iris);collect(ev_rhyme),,儿歌（S3-03①）；“没有脸的叔叔”只说半句
+C2-05,C2,*,garden,,walk,wind,,,"objective(暗房外面，通风口那一侧。);inspect(hs_vent_print,hs_vent_louver)",,S2-01①
+C2-06,C2,*,guest_room,board,,pin,,,objective(有人做了手脚吗？);link(d1),,
+C2-07,C2,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c2),,
+C2-08,C2,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C3-01,C3,*,guest_room,establish,,birds_morning,十月十九日，星期二。,,leak(1);objective(安布罗斯的照片档案。),,
+C3-02,C3,*,archive,,walk,clock_tick,,,"inspect(hs_photos,hs_ledger,hs_doorframe,hs_clipping)",,S3-01①、S3-02②、S3-04①
+C3-03,C3,*,dining,table_close,,cutlery,午饭时，康斯坦斯在桌上多摆了一副餐具。我问她给谁摆的。\n“摆错了。”她说，把它收走了。,,,,S3-03③（画面细节，不入证据板）
+C3-04,C3,*,seance,seance_mid,,candle,晚上，拉坦特夫人在客厅点起蜡烛。她说，要问问照片里多出来的那些人。,人物口吻,say(c3_seance),,
+C3-05,C3,*,seance,seance_mid,,chime_modern,她醒过来，问我们刚才她说了什么。没有人回答她。,,,,上层露出 2/4：“有人在看着我们。稳定率已经很低了。”在 c3_seance 台词里
+C3-06,C3,*,guest_room,board,,pin,,,objective(怪谈是真的吗？);link(d2),,
+C3-07,C3,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c3),,
+C3-08,C3,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C4-01,C4,*,guest_room,establish,,birds_morning,十月二十日，星期三。,,leak(1);objective(谁有机会？),,
+C4-02,C4,*,greenhouse,green_mid,,rain_glass,吉迪恩把药房的签收单拍在桌上。“药是我买的。我买的是对的。”\n康斯坦斯说过，安布罗斯本来打算下个月辞退他。,人物口吻,collect(ev_receipt);say(c4_gideon),,主要误导；S4-04①
+C4-03,C4,*,darkroom,,walk,red_hum,,,"objective(那两声铃。);inspect(hs_bell,hs_tray)",,S4-01①、S4-02①
+C4-04,C4,*,dining,dining_mid,,clock_tick,,人物口吻,say(c4_constance);collect(ev_glass_815),,S4-03①
+C4-05,C4,*,guest_room,board,,pin,,,objective(他是什么时候死的？);link(d3),,
+C4-06,C4,*,guest_room,typewriter_close,,typewriter_return,所有人的不在场证明都作废了。\n只有一件事没有变：九点，我到达奥瑞尔庄园。,,,,《罗杰疑案》时刻：真话，省略七点
+C4-07,C4,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c4),,
+C4-08,C4,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C5-01,C5,*,guest_room,establish,,birds_morning,十月二十一日，星期四。,,leak(2);objective(这家人有什么不对。),,
+C5-02,C5,*,guest_room,,walk,clock_tick,,,"inspect(hs_handwriting,hs_drawer)",,S5-01①；另一位侦探的笔记（S5-03 甲，L1 主要载体）
+C5-03,C5,*,greenhouse,green_mid,,water_pump,吉迪恩在井边摘下手套洗手。他左手的虎口上，有一道新月形的旧疤。,,collect(ev_scar),,S5-02①
+C5-04,C5,*,child_room,child_mid,,music_box,艾瑞斯给我看她画的全家福：爸爸、妈妈、吉迪恩、夫人，还有她自己。\n每个人都长着同一张脸。,,collect(ev_iris_portrait),,S5-04①
+C5-05,C5,*,archive,,walk,clock_tick,,,"inspect(hs_manual,hs_photo_back)",,S5-05①；上层露出 3/4：合影背面的 #{容器号} / 12  SYNC
+C5-06,C5,*,guest_room,board,,pin,,,objective(他们是谁？);link(d4),,
+C5-07,C5,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c5),,
+C5-08,C5,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C6-01,C6,*,guest_room,establish,,clock_tick,十月二十二日，星期五。\n抽屉里那叠笔记，有一页反复写着同一句话：“去冲洗那张底片。”,,leak(3);objective(去冲洗那张底片。),,
+C6-02,C6,*,darkroom,tray,,red_hum;liquid,三脚架上的相机里，还留着安布罗斯拍下的最后一张底片。,,develop(composite.png);collect(ev_composite),,S6-06：固定情节，玩家亲手冲洗
+C6-03,C6,*,darkroom,tray,,red_hum,是叠印。全家所有人的肖像叠在一起，叠出来的不是一张模糊的脸。\n是一张清晰的脸。我认得这张脸。,,,,
+C6-04,C6,*,archive,archive_mid,,page_turn,底片簿的最后一页，安布罗斯在十月十三日写道：\n“叠印做出来了，只有一张脸。\n星期日早上，我要把这张照片拿给他们每一个人看。看过的人就会想起来，我们原本是谁，那年秋天发生了什么。\n然后这个家就不需要这么多人了。彭罗斯、索尔特、卢西恩是怎么走的，其他人也会怎么走。\n我会先给格雷看。他最不愿意想起来。”,,collect(ev_ledger_last),,动机（固定情节，不进槽位池）。docs/02 第 8 节
+C6-05,C6,*,guest_room,,walk,clock_tick,,,"objective(七点。);inspect(hs_coat,hs_shoes,hs_fireplace,hs_waistcoat)",,S6-01①、S6-02②、S6-03①、S6-05①：七点的痕迹都在客房里
+C6-06,C6,*,child_room,child_mid,,music_box,,人物口吻,say(c6_iris);collect(ev_iris_before_bell),,S6-04①
+C6-07,C6,*,guest_room,board,,pin,,,objective(我是什么时候到的？);link(d5),,
+C6-08,C6,*,guest_room,typewriter_close,,typewriter,,,inspect(hs_typewriter_test),,S6-07①
+C6-09,C6,*,guest_room,board,,pin,,,objective(是谁？);link(d6),,
+C6-10,C6,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c6),,
+C6-11,C6,*,guest_room,bed,,clock_tick,我没有睡。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C7-01,C7,*,guest_room,establish,,clock_tick,十月二十三日，星期六。验尸官今天开庭。\n我坐在打字机前，写最后一份记录。,,leak(4),,
+C7-02,C7,*,guest_room,typewriter_close,,typewriter,,,telling(n7_telling),,两种讲法：玩家一路的记录决定哪一种先出现在纸上，由玩家选（docs/02 第 9.3 节）
+C7-03,C7,*,guest_room,mirror,,clock_tick,我走到镜子前。\n镜子里有人。,,reveal(镜中的格雷);wait(2),,全游戏第一次照出格雷
+C7-04,C7,*,guest_room,mirror,,click_clean,已定影。,,reveal(镜中的格雷);wait(1.5),,
+EP-01,EP,*,monitor_room,screens_close,,monitor_hum,镜子前的那个人定格了，变成显影盘里的一张相纸。\n显影盘是一块屏幕。,,fx(自动),,
+EP-02,EP,*,monitor_room,wall,,monitor_hum,旁边并排着十二块同样的屏幕。每一块里，都有一个格雷站在镜子前：有的还在暗房，有的在客房，有的刚下火车。\n其中一块亮着编号：{容器号} / 12。,,,,与第 5 章合影背面的编号一致
+EP-03,EP,*,monitor_room,wall,,monitor_hum,人格重建 · 容器 {容器号} / 12\n保留人格：解释者（格雷）\n记录者人格：已终止\n本轮：记录者的底片已冲洗。解释者已看见。\n本轮陈述：“{本轮陈述}”\n记忆：已显影,,,,记录卡：白底、等宽字、平实措辞；机构不说明
+EP-04,EP,*,monitor_room,wall,,silence,卡片边上，有人用铅笔写了一行字：\n“这一次，他自己冲洗了那张底片。”,,,END,

@@ -122,9 +122,8 @@ func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
 					glass.roughness = 0.15
 					mi.material_override = glass
 			"人物":
-				# 人物在这个房间的站位；被指认过的人不再出现
-				if not GameState.accused.has(row["id"]):
-					_figure(r, row["id"], p)
+				# 人物在这个房间的站位（同一画面里只放一个人，docs/02 第 7 节）
+				_figure(r, row["id"], p)
 			"可检查物件":
 				if model_mode and hotspot_nodes.has(row["id"]):
 					continue
@@ -159,12 +158,12 @@ func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
 				node.visible = false
 	# 人物：人物表里所在房间为本房间、且尚未被指认的人
 	for c in ContentDB.characters:
-		if c.get("room", "") != id or GameState.accused.has(c["name"]) or named.has(c["name"]):
+		if c.get("room", "") != id or named.has(c["name"]):
 			continue
 		named[c["name"]] = _figure(r, c["name"], _vec(c, "x", "y", "z"))
 
 
-## 灰盒人形：身体 + 头 + 眼部处理（《04》第 11 节：除侦探外，所有人的眼睛都被遮住）。
+## 灰盒人形：身体 + 头 + 眼部处理（docs/02 第 5 节：除侦探外，所有人的眼睛都被遮住）。
 ## 人形面朝 +z（玩家通常从 +z 方向看过来）。“镜中人形”是终局镜子里没有脸的白色人形。
 func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
 	var c: Dictionary = {}
@@ -198,6 +197,9 @@ func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
 		"遮光帽":
 			_mesh(root, Vector3(0, eye_y + 0.035, head * 0.38), Vector3(head * 1.05, 0.025, head * 0.75), ec)
 			_mesh(root, Vector3(0, eye_y + 0.07, 0), Vector3(head * 0.9, 0.03, head * 0.92), ec)
+		"面纱":
+			_mesh(root, Vector3(0, eye_y - 0.02, head * 0.47), Vector3(head * 0.9, head * 0.55, 0.01), ec)
+			_mesh(root, Vector3(0, eye_y + 0.11, 0), Vector3(head * 1.2, 0.02, head * 1.2), ec)
 		"涂白":
 			_mesh(root, Vector3(0, eye_y, head * 0.46), Vector3(head * 0.6, 0.05, 0.01), Color.WHITE)
 	var cs := CollisionShape3D.new()
@@ -421,22 +423,3 @@ func stop_loops() -> void:
 		if is_instance_valid(p):
 			p.queue_free()
 	_loops.clear()
-
-
-## 被指认者：变成白模后消失（N5-03 的表现；N2 时同样适用）
-func on_accused(who: String) -> void:
-	if room == null:
-		return
-	var body := room.find_child(who, true, false)
-	if body == null:
-		return
-	# 先变成白色网格人形，片刻后消失（N5-03）
-	for n in _walk(body):
-		if n is MeshInstance3D:
-			n.material_override = _leak_mat
-	if Director.autoplay:
-		body.queue_free()
-		return
-	var t := create_tween()
-	t.tween_interval(1.0)
-	t.tween_callback(body.queue_free)

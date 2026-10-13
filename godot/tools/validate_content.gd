@@ -11,8 +11,10 @@ const SPACE := "res://content/space/"
 const AUDIO := "res://content/audio/"
 const AI := "res://content/ai/"
 const VISUAL := "res://content/visual/"
-## 每个节点允许的渗漏等级（docs/02 第 4 节）
-const NODE_LEAK := {"N1": 0, "N2": 1, "N3": 1, "N4": 2, "N5": 3, "N6": 4, "N7": 4}
+## 每一章允许的渗漏等级（docs/02 第 9.2 节；EP = 尾声）
+const NODE_LEAK := {"C0": 0, "C1": 0, "C2": 0, "C3": 1, "C4": 1, "C5": 2, "C6": 3, "C7": 4, "EP": 4}
+## 禁用词在这些章节解禁（终局与尾声明确揭示世界观）
+const REVEAL_NODES := ["C7", "EP"]
 const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生点", "人物"]
 
 ## 每条问题：{level: 错误/提醒, table, where, what, fix}
@@ -75,7 +77,7 @@ func _init() -> void:
 	for r in shots:
 		var id: String = r.get("shot_id", "")
 		if id == "":
-			err("镜头表", "某一行", "没有填镜号", "每行第一列必须填镜号，例如 N3-A-01")
+			err("镜头表", "某一行", "没有填镜号", "每行第一列必须填镜号，例如 C3-02")
 		elif ids.has(id):
 			err("镜头表", id, "镜号重复", "改成一个没用过的镜号")
 		ids[id] = r
@@ -118,21 +120,18 @@ func _init() -> void:
 					err("连线规则表", "连线组 " + g, "证据“%s”不在证据表里" % p.get(k, ""))
 
 	# ── 人物 ──
-	var lines_seen := {}
 	for c in chars:
 		var n: String = c.get("name", "")
 		var st: String = c.get("status", "")
-		if not st in ["嫌疑人", "已除名", "其他"]:
-			err("人物表", n, "状态只能填 嫌疑人 / 已除名 / 其他，现在是“%s”" % st)
-		if st == "嫌疑人":
-			var ln: String = c.get("line", "")
-			if not ln in ["A", "B", "C"]:
-				err("人物表", n, "嫌疑人必须填分支线 A / B / C")
-			elif lines_seen.has(ln):
-				err("人物表", n, "分支线 %s 和 %s 重复" % [ln, lines_seen[ln]])
-			lines_seen[ln] = n
-			if c.get("room", "") != "" and not rooms.has(c["room"]):
-				err("人物表", n, "所在房间“%s”不在房间登记表里" % c["room"])
+		if not st in ["侦探", "人物", "死者", "其他"]:
+			err("人物表", n, "状态只能填 侦探 / 人物 / 死者 / 其他，现在是“%s”" % st)
+		if c.get("room", "") != "" and not rooms.has(c["room"]):
+			err("人物表", n, "所在房间“%s”不在房间登记表里" % c["room"])
+	# 同一个房间里最多放一个人：这些人物从不同时出现在同一画面里（docs/02 第 7 节）
+	for room in layout:
+		var people: Array = layout[room].filter(func(row): return row.get("type", "") == "人物" and row.get("id", "") != "镜中人形")
+		if people.size() > 1:
+			warn("房间布局表", room, "这个房间放了 %d 个人物；同一画面里只应有一个人" % people.size(), "把其他人移到别的房间，或用 hidden + reveal 轮流出现")
 
 	# ── 空间 ──
 	for row in layout_rows:
@@ -216,13 +215,24 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 			for e in args:
 				if not evidence.has(e):
 					err("镜头表", id, "证据 %s 不在证据表里" % e)
-		"annotate", "inquire", "accuse":
+		"annotate", "inquire", "telling":
 			if args.size() > 0 and args[0] != "" and not ann.has(args[0]):
 				err("镜头表", id, "预设组 %s 不在预设表里" % args[0])
+			if nm == "telling":
+				var leans := {}
+				for row in ann.get(args[0], []):
+					leans[row.get("tendency", "")] = true
+				if not (leans.has("保护") and leans.has("取代")):
+					err("预设表", args[0], "终局讲法必须同时有“保护”和“取代”两种倾向")
+		"develop":
+			if args.is_empty() or args[0] == "":
+				err("镜头表", id, "develop 需要一张图片（art/footage/ 下的文件名）")
+			elif not FileAccess.file_exists("res://art/footage/" + args[0]):
+				warn("镜头表", id, "冲洗用的图片 art/footage/%s 还没交付，显示占位文字" % args[0])
 		"link":
 			if args.is_empty() or not links.has(args[0]):
 				err("镜头表", id, "连线组 %s 不在连线规则表里" % str(args))
-		"say", "ending":
+		"say":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
 		"reveal", "conceal":
@@ -254,11 +264,11 @@ func _check_words(words: Array, shots: Array, hotspots: Dictionary, links: Dicti
 	for r in shots:
 		var node: String = r.get("node", "")
 		var lv: int = NODE_LEAK.get(node, 4)
-		var text: String = r.get("text", "")
+		var text: String = _strip_placeholders(r.get("text", ""))
 		for w in graded:
 			if int(w["level"]) > lv and text.contains(w["word"]):
 				warn("镜头表", r["shot_id"], "出现了“%s”（渗漏 L%s 才该出现），而 %s 只到 L%d" % [w["word"], w["level"], node, lv], "确认是否故意提前；否则换成本时代的说法")
-		if node != "N7":
+		if not node in REVEAL_NODES:
 			for b in banned:
 				if text.contains(b):
 					err("镜头表", r["shot_id"], "出现禁用词“%s”（终局前不得出现）" % b)
@@ -279,9 +289,15 @@ func _check_words(words: Array, shots: Array, hotspots: Dictionary, links: Dicti
 		others["证据表 / " + e["id"]] = e.get("name", "") + e.get("note", "")
 	for where in others:
 		for b in banned:
-			if str(others[where]).contains(b):
+			if _strip_placeholders(str(others[where])).contains(b):
 				var parts: PackedStringArray = where.split(" / ")
 				err(parts[0], parts[1], "出现禁用词“%s”" % b)
+
+
+## 占位符（如 {容器号}）在游戏里会被替换掉，玩家看不到，不参与词表检查
+static func _strip_placeholders(t: String) -> String:
+	var re := RegEx.create_from_string("\\{[^}]*\\}")
+	return re.sub(t, "", true)
 
 
 func _report(n_shots: int, n_hot: int, n_ev: int, n_ch: int, n_rooms: int, n_layout: int, n_snd: int, n_words: int) -> void:
@@ -357,9 +373,9 @@ func _list(root: String) -> Array:
 ## 动作 → 横切面模块（docs/12 第 2 节）
 const ACTION_MODULE := {
 	"osd": "影像档案", "footage": "影像档案", "fx": "媒介滤镜", "leak": "媒介滤镜",
-	"inquire": "问话与台词", "say": "问话与台词", "accuse": "访客簿", "sign": "访客簿",
-	"link": "证据板", "annotate": "打字机与手记", "use_telegram": "电报纸",
-	"ending": "终局视角", "confession": "终局视角", "reveal": "场景事件", "conceal": "场景事件",
+	"inquire": "问话与台词", "say": "问话与台词",
+	"link": "证据板", "annotate": "打字机与手记", "develop": "暗房冲洗",
+	"telling": "终局讲法", "reveal": "场景事件", "conceal": "场景事件",
 	"collect": "证据板",
 }
 
@@ -431,7 +447,7 @@ func _level_report(shots: Array, rooms: Dictionary, sounds: Dictionary, ann: Dic
 					var img: String = row.get("image", "")
 					if img != "" and not FileAccess.file_exists("res://art/footage/" + img):
 						d["img"] += 1
-			if nm in ["inquire", "annotate", "accuse"] and args.size() > 0:
+			if nm in ["inquire", "annotate", "telling"] and args.size() > 0:
 				for row in ann.get(args[0], []):
 					if "待补" in str(row.get("response", "")):
 						d["todo"] += 1

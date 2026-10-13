@@ -2,9 +2,9 @@
 ## 镜头表只能调用这些动作，见 docs/06-技术方案.md 2.2。
 
 const ACTIONS := [
-	"wait", "leak", "use_telegram", "objective", "collect", "inspect",
-	"annotate", "inquire", "accuse", "link", "say", "ending",
-	"confession", "goto", "fx", "footage", "osd", "reveal", "conceal", "sign",
+	"wait", "leak", "objective", "collect", "inspect",
+	"annotate", "inquire", "link", "say", "telling", "develop",
+	"goto", "fx", "footage", "osd", "reveal", "conceal",
 ]
 
 

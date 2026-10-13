@@ -1,5 +1,5 @@
 extends CanvasLayer
-## 临时界面层（灰盒阶段）：文字框、选项、提示、电报纸计数、宽银幕黑边。
+## 临时界面层（灰盒阶段）：文字框、选项、提示、宽银幕黑边、冲洗底片。
 ## 之后会逐步换成场景中的实物 UI（纸、打字机、证据板），但 Director 调用的接口保持不变：
 ## show_text / choose / cancel / toast / set_objective / set_progress / set_cinematic / wait_seconds
 
@@ -9,7 +9,6 @@ const PAPER := Color("#efe6d2")
 const INK := Color("#1f1a14")
 const BAR_RATIO := 0.128  # 16:9 画面上加 2.39:1 黑边
 const EvidenceBoard := preload("res://ui/evidence_board.gd")
-const RegisterView := preload("res://ui/register_view.gd")
 const MediaFx := preload("res://ui/media_fx.gd")
 
 var font: SystemFont
@@ -26,15 +25,14 @@ var choice_panel: PanelContainer
 var choice_box: VBoxContainer
 var choice_title: Label
 var objective_label: Label
-var telegram_label: Label
 var toast_label: Label
 var hint_label: Label
 var progress_label: Label
 var crosshair: Label
 var board: Control
-var register: Control
-var telegrams: HBoxContainer
-var telegram_note: Label
+var develop_layer: ColorRect
+var develop_image: TextureRect
+var develop_label: Label
 var fx: CanvasLayer
 var footage: CanvasLayer
 
@@ -54,11 +52,10 @@ func _ready() -> void:
 	bar_top = _bar(root, true)
 	bar_bottom = _bar(root, false)
 
-	# 证据板与访客簿盖在黑边之上、文字框之下
+	# 证据板盖在黑边之上、文字框之下
 	board = EvidenceBoard.new()
 	root.add_child(board)
-	register = RegisterView.new()
-	root.add_child(register)
+	_build_develop(root)
 
 	text_panel = _paper_panel()
 	text_panel.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
@@ -99,31 +96,6 @@ func _ready() -> void:
 
 	objective_label = _label(root, Control.PRESET_CENTER_TOP, 20)
 	objective_label.offset_top = 70
-	telegram_label = _label(root, Control.PRESET_TOP_RIGHT, 18)
-	telegram_label.visible = false
-	# 七张电报纸：每个节点撕下一张（节点预算，docs/01 第 4 节）
-	telegrams = HBoxContainer.new()
-	telegrams.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	telegrams.position = Vector2(-24 - 7 * 30, 22)
-	telegrams.add_theme_constant_override("separation", -10)
-	telegrams.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	root.add_child(telegrams)
-	for i in GameState.TELEGRAMS:
-		var slip := Panel.new()
-		slip.custom_minimum_size = Vector2(38, 52)
-		var ssb := StyleBoxFlat.new()
-		ssb.bg_color = Color("#e9dfc6")
-		ssb.border_color = Color("#9a8a68")
-		ssb.set_border_width_all(1)
-		ssb.shadow_color = Color(0, 0, 0, 0.5)
-		ssb.shadow_size = 3
-		slip.add_theme_stylebox_override("panel", ssb)
-		slip.rotation_degrees = float(i % 3) - 1.0
-		slip.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		telegrams.add_child(slip)
-	telegram_note = _label(root, Control.PRESET_TOP_RIGHT, 13)
-	telegram_note.position = Vector2(-150, 80)
-	telegram_note.text = "已读 21:40"
 	toast_label = _label(root, Control.PRESET_CENTER_TOP, 18)
 	toast_label.offset_top = 110
 	hint_label = _label(root, Control.PRESET_CENTER, 18)
@@ -177,21 +149,44 @@ func _label(root: Control, preset: int, size: int) -> Label:
 
 
 func _refresh() -> void:
-	var slips := telegrams.get_children()
-	for i in slips.size():
-		var keep := i < GameState.telegrams_left
-		if slips[i].visible and not keep and not Director.autoplay:
-			# 撕下一张：向上飘走
-			var t := create_tween().set_parallel()
-			t.tween_property(slips[i], "position:y", -40.0, 0.5)
-			t.tween_property(slips[i], "modulate:a", 0.0, 0.5)
-			t.chain().tween_callback(func(): slips[i].visible = false)
-		elif keep:
-			slips[i].visible = true
-			slips[i].modulate.a = 1.0
-			slips[i].position.y = 0
-	# 渗漏 L2 起，电报纸边缘出现“已读 21:40”
-	telegram_note.visible = GameState.leak_level >= 2
+	pass
+
+
+## 暗房：红灯下的显影盘。相纸先是一片白，随着显影慢慢浮出影像
+func _build_develop(root: Control) -> void:
+	develop_layer = ColorRect.new()
+	develop_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	develop_layer.color = Color("#1a0503")
+	develop_layer.mouse_filter = Control.MOUSE_FILTER_STOP
+	root.add_child(develop_layer)
+	var tray := ColorRect.new()
+	tray.color = Color("#2a0a06")
+	tray.anchor_left = 0.3
+	tray.anchor_right = 0.7
+	tray.anchor_top = 0.14
+	tray.anchor_bottom = 0.78
+	develop_layer.add_child(tray)
+	var paper := ColorRect.new()
+	paper.color = Color("#f2e8e0")
+	paper.set_anchors_preset(Control.PRESET_FULL_RECT)
+	paper.offset_left = 24
+	paper.offset_top = 24
+	paper.offset_right = -24
+	paper.offset_bottom = -24
+	tray.add_child(paper)
+	develop_image = TextureRect.new()
+	develop_image.set_anchors_preset(Control.PRESET_FULL_RECT)
+	develop_image.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	develop_image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	paper.add_child(develop_image)
+	develop_label = Label.new()
+	develop_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+	develop_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	develop_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	develop_label.add_theme_font_size_override("font_size", 26)
+	develop_label.add_theme_color_override("font_color", Color("#2a1a14"))
+	paper.add_child(develop_label)
+	develop_layer.hide()
 
 
 # ───────────── Director 调用的接口 ─────────────
@@ -251,7 +246,7 @@ func choose(title: String, options: Array) -> int:
 func cancel() -> void:
 	_resolved.emit(-1)
 	board.cancel()
-	register.cancel()
+	develop_layer.hide()
 	if footage:
 		footage.cancel()
 
@@ -280,17 +275,35 @@ func board_close() -> void:
 	_restore_mouse()
 
 
-func register_sign(title: String) -> void:
-	_release_mouse()
-	await register.sign(title)
-	_restore_mouse()
-
-
-func register_pick(title: String, alive: Array) -> int:
-	_release_mouse()
-	var k: int = await register.pick(title, alive)
-	_restore_mouse()
-	return k
+## 第 6 章：亲手冲洗底片。显影（影像从白纸上慢慢浮出）→ 定影。
+## image 是 art/footage/ 下的图片；还没交付时显示占位文字
+func develop(image: String) -> void:
+	var tex: Texture2D = null
+	var path := "res://art/footage/" + image
+	if image != "" and ResourceLoader.exists(path):
+		tex = load(path)
+	develop_image.texture = tex
+	develop_label.text = "" if tex else "（叠印：一张清晰的脸）\n图片待美术交付：art/footage/%s" % image
+	if Director.autoplay:
+		print("  ◐ 显影：", image)
+		return
+	develop_image.modulate.a = 0.0
+	develop_label.modulate.a = 0.0
+	set_hud(false)
+	develop_layer.show()
+	# 选项框移到显影盘下方，别挡住正在浮出来的脸
+	choice_panel.anchor_top = 0.84
+	choice_panel.anchor_bottom = 0.84
+	await choose("暗房", ["把底片放进显影液"])
+	var t := create_tween().set_parallel()
+	t.tween_property(develop_image, "modulate:a", 1.0, 6.0).set_ease(Tween.EASE_IN)
+	t.tween_property(develop_label, "modulate:a", 1.0, 6.0).set_ease(Tween.EASE_IN)
+	await t.finished
+	await choose("暗房", ["放进定影液"])
+	choice_panel.anchor_top = 0.3
+	choice_panel.anchor_bottom = 0.3
+	develop_layer.hide()
+	set_hud(true)
 
 
 func wait_seconds(sec: float) -> void:
@@ -320,9 +333,9 @@ func set_hint(text: String) -> void:
 	hint_label.text = text
 
 
-## 播放影像档案时隐藏电报纸、目标、提示等界面
+## 播放影像档案、冲洗底片时隐藏目标、提示等界面
 func set_hud(on: bool) -> void:
-	for n in [telegrams, telegram_note, objective_label, hint_label, progress_label, toast_label, crosshair]:
+	for n in [objective_label, hint_label, progress_label, toast_label, crosshair]:
 		n.visible = on
 	if on:
 		_refresh()

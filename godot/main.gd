@@ -41,7 +41,7 @@ func _ready() -> void:
 		_capture(cap)
 		return
 	if GameState.load_save() and GameState.shot != "":
-		var k: int = await ui.choose("罗伊德庄园", ["继续调查", "从头开始"])
+		var k: int = await ui.choose("奥瑞尔庄园", ["继续调查", "从头开始"])
 		if k == 0:
 			Director.start(GameState.shot)
 			return
@@ -49,7 +49,7 @@ func _ready() -> void:
 	Director.start()
 
 
-## 走到结尾（N7-08 之后）：▸ 再读一遍（《剧本》第七幕）
+## 走到结尾（尾声之后）：▸ 再读一遍
 func _on_finished() -> void:
 	var k: int = await Director.ui.choose("", ["再读一遍"])
 	if k == 0:
@@ -66,12 +66,13 @@ func _autoplay() -> void:
 		printerr("AUTOPLAY 超时，停在镜号 ", GameState.shot)
 		get_tree().quit(2))
 	Director.finished.connect(func():
-		var ok := GameState.ending != "" and GameState.telegrams_left == 0 \
-			and GameState.links_done.has("c1") and GameState.links_done.has("c2") and GameState.links_done.has("c3")
+		# 通过 = 选定了一种讲法，且连线规则表里的每一组推论都已成立
+		var missing: Array = ContentDB.links.keys().filter(func(g): return not GameState.links_done.has(g))
+		var ok := GameState.ending != "" and missing.is_empty()
 		print("\n── AUTOPLAY 结束 ──")
-		print("最后镜号 %s ｜ 分支线 %s ｜ 指认 %s ｜ 剩余电报纸 %d ｜ 连线 %s ｜ 终局 %s ｜ 证据 %d 件" % [
-			GameState.shot, GameState.line, GameState.accused, GameState.telegrams_left,
-			GameState.links_done, GameState.ending, GameState.evidence.size()])
+		print("最后镜号 %s ｜ 推论 %s ｜ 未成立 %s ｜ 讲法 %s ｜ 容器 %s ｜ 证据 %d 件" % [
+			GameState.shot, GameState.links_done, missing, GameState.ending,
+			GameState.container, GameState.evidence.size()])
 		print("结果：", "通过" if ok else "未通过")
 		get_tree().quit(0 if ok else 1))
 	Director.shot_started.connect(func(r): print("▶ ", r["shot_id"]))
@@ -85,7 +86,7 @@ func _arg(prefix: String) -> String:
 	return ""
 
 
-## 截图：Godot --path godot -- --capture=N1-07 [--leak=3] [--grant-all] [--telegrams=4] [--fx=纪录片片头] [--clean] [--play=示例_录像带] [--out=/tmp/x.png]
+## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--fx=纪录片片头] [--clean] [--play=片头_怪谈] [--view=取代] [--out=/tmp/x.png]
 ## 跳到指定镜号，等画面稳定后截图并退出。供 agent 自查画面用。
 func _capture(shot_id: String) -> void:
 	GameState.reset()
@@ -96,9 +97,6 @@ func _capture(shot_id: String) -> void:
 	if OS.get_cmdline_user_args().has("--grant-all"):
 		for id in ContentDB.evidence:
 			GameState.add_evidence(id)
-	if _arg("--telegrams=") != "":
-		GameState.telegrams_left = int(_arg("--telegrams="))
-		GameState.changed.emit()
 	Director.start(shot_id)
 	if _arg("--fx=") != "":
 		await get_tree().process_frame
@@ -106,10 +104,10 @@ func _capture(shot_id: String) -> void:
 	if _arg("--hint-test=") != "":
 		# 截图自查：模拟在当前连线组连错 N 次后的提示
 		await get_tree().create_timer(1.0).timeout
-		var pairs: Array = ContentDB.links.get("c1", [])
+		var pairs: Array = ContentDB.links.get("d1", [])
 		var usable := pairs.filter(func(p): return GameState.evidence.has(p["a"]) and GameState.evidence.has(p["b"]))
 		Director.ui.footage.cancel()
-		Director._link_hint("c1", ["ev_letter", "ev_key_tags"], usable, int(_arg("--hint-test=")))
+		Director._link_hint("d1", ["ev_letter_p1", "ev_vent_print"], usable, int(_arg("--hint-test=")))
 	if _arg("--play=") != "":
 		await get_tree().process_frame
 		Director.ui.footage.play_clip(_arg("--play="))
@@ -125,7 +123,7 @@ func _capture(shot_id: String) -> void:
 	if out == "":
 		out = "/tmp/godot_capture_%s.png" % shot_id
 	if OS.get_cmdline_user_args().has("--debug-ui"):
-		print("board ", Director.ui.board.size, " register ", Director.ui.register.size, " anchors ", Director.ui.register.anchor_right, " page ", Director.ui.register.page.size)
+		print("board ", Director.ui.board.size)
 	get_viewport().get_texture().get_image().save_png(out)
 	print("截图已保存：", out)
 	get_tree().quit()

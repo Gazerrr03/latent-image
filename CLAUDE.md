@@ -7,7 +7,7 @@
 - 设计文档：`docs/`（入口 `docs/README.md`）。改动设计后，同步更新对应文档，并在 `docs/08-决策与更新记录.md` 记一笔。
 - 剧情的唯一依据：`docs/02-剧情设计.md`（10-13 晚起的“暗房主线”）；玩法以 `docs/01-玩法设计.md` 为准；预期的演变与已作废的设定见 `docs/14-最新预期（收敛版）.md`。
 - 固定事实 T1—T5（`docs/02` 第 2 节）任何内容都不得违反。叙述者不说谎，只省略。
-- 旧剧情（罗伊德庄园、签收人、访客簿、事务所与电报、四种结局视角）已归档到 `docs/归档/v1-签收人/`，**不再作为依据**；`godot/content/` 里的内容表仍是旧剧情，迁移见 issue #3。**不要参考 Codex 生成的《第七间》。**
+- 旧剧情（罗伊德庄园、签收人、访客簿、事务所与电报、四种结局视角）已归档到 `docs/归档/v1-签收人/`，**不再作为依据**；`godot/content/` 的内容表已于 10-13 迁移到暗房主线（#3）。**不要参考 Codex 生成的《第七间》。**
 - `game/`（three.js）、`docs/归档/v0-ERRATA/` 与 `docs/归档/v1-签收人/` 是旧方向，仅作参考，不要在其上继续开发。
 
 ## Godot 工程（`godot/`）
@@ -26,18 +26,19 @@
 G=godot   # ~/.local/bin/godot → /Applications/Godot.app/Contents/MacOS/Godot
 # 1. 内容校验：表格互相对得上（退出码 0 = 通过），报告写到根目录“检查报告.md”；队友可双击“检查内容.command”
 $G --headless --path godot --script res://tools/validate_content.gd
-# 2. 自动通关：无界面走完整条路径（退出码 0 = 到达终局且三组连线完成）
-$G --headless --path godot -- --autoplay --line=A   # 三条线 A / B / C 都要跑
+# 2. 自动通关：无界面走完整条主线（退出码 0 = 选定了一种讲法且六组推论 d1—d6 全部成立）
+$G --headless --path godot -- --autoplay                # 两种讲法都要跑：
+$G --headless --path godot -- --autoplay --view=取代
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
-$G --path godot --resolution 1280x720 -- --capture=N1-07 --leak=0 --out=/tmp/x.png
-# 可加 --grant-all（发放全部证据）、--telegrams=4、--fx=纪录片片头、--play=示例_录像带（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--skip-text（文字不等点击）、--hint-test=1..3（看连错提示）、--view=记忆（强制终局视角：好奇 / 记忆 / 共情 / 欲望）
+$G --path godot --resolution 1280x720 -- --capture=C2-05 --wait=4 --out=/tmp/x.png
+# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--view=保护|取代（强制终局倾向）
 ```
 
 macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec(@ARGV)' <命令>` 防止卡住。
 
 Godot MCP 已在 `.mcp.json` 配置（Coding-Solo/godot-mcp）：可启动编辑器、运行项目、读取调试输出；没有截图功能，截图用上面的 `--capture`。
 
-游戏内按 F1 打开调试面板：跳镜号、切分支线、切渗漏等级、重载表格、从头开始。
+游戏内按 F1 打开调试面板：跳镜号、按章跳转、切终局倾向、切渗漏等级、重载表格、从头开始。
 
 ## Git
 

@@ -1,35 +1,27 @@
 id,scene,label,text,evidence,footage,note
-hs_latch,study,门闩,门闩从里面闩着。,,,
-hs_window,study,窗,窗外，花园里一条小径在树篱处分岔。,,,
-hs_phone,study,电话,电话听筒搭在桌上，没有挂回去。听筒里只有很轻的杂音，像是很远的地方有人在说话。,,,
-hs_receipt,study,回执,桌角一张回执，只写了两行：\n“R.”\n“已收悉”,ev_receipt_study,,F3
-hs_register,study,访客簿,访客簿上，罗伊德先生一行被划去。划痕边有一个极小的打字印，字母 e 偏高半行。,ev_register,,F1
-hs_barlow_watch,parlor,巴洛的怀表,巴洛在擦怀表。表停在 21:40。,ev_barlow_watch,,
-hs_wynn_fingers,parlor,韦恩小姐的手,韦恩小姐的手指沾着色带的紫墨。,ev_wynn_ink,,
-hs_lance_window,parlor,朗斯朝着的窗外,朗斯的脸一直朝着窗外。花园里一条小径在树篱处分岔。,,,
-hs_keyring,butler_room,钥匙环,桌上一圈钥匙。,,,
-hs_key_tags,butler_room,钥匙牌,墙上一排钥匙钩，牌子是打字机打的，e 偏高。\n“Spare key — Study”挂在钩上。书房的钥匙一把不少。\n书房的门是内闩，不是用钥匙锁的。,ev_key_tags,,C1
-hs_night_log,butler_room,值夜簿,值夜簿摊开着：“十月三日 21:40 书房灯灭。艾克先生已在门外。”\n笔迹是巴洛的手写。,ev_night_log,,C2
-hs_receipts_drawer,butler_room,抽屉,抽屉里一叠回执，每张都写着“已收悉”。时间都比对应的名册划痕晚一分钟。,ev_receipts_a,,C3
-hs_window_a,butler_room,窗,花园小径在树篱处分岔，分岔后的两条路通向同一道门。,,,可选
-hs_mirror_a,butler_room,镜子,镜中是空房，没有你的倒影。,,,可选
-hs_photo_a,butler_room,墙上的旧照片,墙上一张旧照片：“罗伊德庄园全体　一九〇一年十月”。\n还是这几个人，还是这个年纪，眼睛都被遮着。中间空出一块，地上落着一顶帽子。\n照片背面的说明是打字机打的，e 偏高。,ev_photo_1901,,怪谈：以前发生过；相片留不住他
-hs_platen,typing_room,滚筒,一台打字机的滚筒还在微微转动。,,,
-hs_typewriter_pair,typing_room,两台打字机,两台打字机。韦恩小姐的那台字模清晰，e 正常；另一台与你的是同一型号，滚筒上卷着一张通告，字模 e 偏高：\n“Mr. Royd is struck off the register.”,ev_notice,,C1
-hs_calendar_letter,typing_room,日历与信封,桌上的日历翻在十月三日。旁边的信封邮戳是十月四日，里面是委托信的底稿，落款十月三日夜，写着：“艾克先生已在庄园门外。”,ev_letter_draft,,C2
-hs_telegram_drafts,typing_room,抽屉,抽屉里几张未寄出的电报稿，只写着“已收悉·R.”，没有收件人。,ev_telegram_drafts,,C3
-hs_window_b,typing_room,窗,窗外是那条分岔的小径。,,,可选
-hs_mirror_b,typing_room,镜子,墙上的镜子里只有两台打字机，没有人。,,,可选
-hs_photo_b,typing_room,墙上的旧照片,墙上一张旧照片：“罗伊德庄园打字室　一九〇一年十月”。\n两台打字机，一个戴遮光帽的女人，年纪和现在一样。另一台打字机前空着，椅子底下落着一顶帽子。\n照片背面的说明是打字机打的，e 偏高。,ev_photo_1901,,怪谈：以前发生过；相片留不住他
-hs_iou,billiard_room,记分黑板与借据,记分黑板旁的桌上有一张借据。借据是打字的，字模 e 偏高。,ev_iou,,C1
-hs_morning_paper,billiard_room,早报,桌上一份十月三日的早报，一个小栏写着：“私家侦探艾克今晚抵庄。”,ev_morning_paper,,C2
-hs_gramophone,billiard_room,留声机,留声机的唱片在转，唱针永远走不到头。播放的不是音乐，是一遍一遍的“已收悉……已收悉……”,ev_record,,C3
-hs_mirror_c,billiard_room,镜面墙,镜面墙里没有你的倒影。,,,可选
-hs_window_c,billiard_room,窗,窗外，小径分岔处的灯又亮了一盏。,,,可选
-hs_photo_c,billiard_room,墙上的旧照片,墙上一张旧照片：“台球室　一九〇一年除夕”。\n几个人围着球桌，眼睛上都缠着丝巾，年纪和现在一样。球桌边空着一个位置，一根球杆斜靠在那里，地上落着一顶帽子。\n照片背面的说明是打字机打的，e 偏高。,ev_photo_1901,,怪谈：以前发生过；相片留不住他
-hs_study_door,corridor,书房的门,书房的灯亮着。门后传来打字声。,,,
-hs_journal_p1,study,手记第一页,手记第一页。页脚的收讫戳：“十月三日 九点三十九分”。,ev_journal_p1,,
-hs_mirror_study,study,镜子,书房的镜子里，终于出现了你：一个白色的人形，没有脸，边缘是细细的方格。,,,所有视角共有
-hs_lending_cards,study,借阅卡,书架上的借阅卡，借阅人一栏全是“R. 艾克”。,,,记忆视角会再看一次
-hs_floorplan,study,墙上的平面图,墙上那幅和庄园一样大的平面图里，有一个小点在动。,,,
-hs_corridor_phone,corridor,电话,,,,N5：拿起听筒后播放 n5_phone
+hs_notebook,guest_room,记事本,记事本。我收到的每一条线索都记在这里，随时可以翻开来看。,,,
+hs_typewriter,guest_room,打字机,打字机。每天结束时，我在这里写下当天的记录。,,,
+hs_desk_board,guest_room,桌面,桌面。把两条线索摊在一起，看它们能不能说明同一件事。,,,
+hs_bed,guest_room,床,床。一天查完，就在这里睡下。,,,
+hs_mirror_guest,guest_room,镜子,镜子。镜子里是床、书桌和窗。,,,
+hs_handwriting,guest_room,摊开的字,我把这几天收到的字摊在桌上：康斯坦斯的账簿、吉迪恩的签收单、艾瑞斯画上的字、拉坦特夫人的降灵卡片、安布罗斯的底片簿，还有我自己的记事本。\n每一个小写的 t，横画都不碰竖画。,ev_t_cross,,
+hs_drawer,guest_room,抽屉,抽屉的夹层里有一叠调查笔记，署名 H. Grey。是我的笔迹，查的是这桩案子。\n第一页写着：“凶手是园丁沃登。案结。”下面被同一支笔划掉，又写：“不对。铃声。”\n我不记得写过它们。,ev_other_notes,,
+hs_coat,guest_room,大衣,大衣内袋里，是信的第二页：\n“另：请先于七点从温室进来，直接到暗房。不要让家里任何人知道。”,ev_letter_p2,,
+hs_shoes,guest_room,皮鞋,我的皮鞋底上，干了的泥。拿去比一比，正好补全通风口下面那半个鞋印。,ev_shoe_mud,,
+hs_fireplace,guest_room,壁炉,壁炉的炉栅上，有一角没烧尽的相纸。上面是半只眼睛。,ev_burnt_corner,,
+hs_waistcoat,guest_room,背心,背心口袋里，有一把小小的上弦钥匙。是暗房那只计时铃的。,ev_bell_key,,
+hs_typewriter_test,guest_room,打一行字,我在打字机上打了一行药名，和暗房里那两张标签放在一起。\n同一台机器。,ev_typewriter_match,,
+hs_tray,darkroom,显影盘,显影盘里的相纸泡得太久，已经全黑了。定影盘没有动过。,ev_tray_black,,
+hs_bottles,darkroom,药柜,药柜里，两只瓶子的标签是打字机打的。架子上其余的标签，都是安布罗斯的手写。,ev_typed_labels,,
+hs_vent_inside,darkroom,通风口,通风口开着。墙那边就是花园。,,,
+hs_camera,darkroom,相机,三脚架上的相机还装着一张底片。没有人动过它。,,,
+hs_clock_dark,darkroom,钟,墙上的钟停着。这座房子里的钟，好像都停着。,,,
+hs_bell,darkroom,计时铃,计时铃被挪到了门边。发条上得很紧，表盘上插着两枚定时销：一枚在半点，一枚在五十分。,ev_bell_set,,
+hs_vent_print,garden,泥地,通风口下面的泥地上，有半个男式皮鞋印。只看得出是皮鞋，看不出大小。,ev_vent_print,,
+hs_vent_louver,garden,百叶,通风口外侧的百叶上，有几道新的擦痕，像是有什么东西被塞进去又拽出来。,,,
+hs_photos,archive,历年合影,历年合影按年份挂满了一面墙。每一张都用长曝光，每一张脸都有点糊。\n1920 年、1922 年、1924 年、1926 年，人群里各多出一张谁也不认识的脸。,,,
+hs_ledger,archive,底片簿,底片簿。每年合影的底片编号旁，安布罗斯写下了在场者的名字。\n1920 年起多了“彭罗斯先生”，1922 年起多了“索尔特太太”，1924 年起多了“卢西恩”。第二年，名字就没有了。,ev_ledger_names,,
+hs_doorframe,archive,门框,储物间的门框上刻着一道道身高线，旁边刻着一个 L。最后一道停在 1924 年。,ev_doorframe_l,,
+hs_clipping,archive,剪报,《威尔特郡时报》1925 年趣闻栏：《奥瑞尔庄园的“第五张脸”》。\n照相馆称底片无损。塔尔博特一家称，照片上的人从未在府上住过。,ev_clipping,,
+hs_manual,archive,摄影手册,安布罗斯的摄影手册，折了角的一页：\n长时间曝光时，如果一个人在镜头前走动，底片上会留下好几个半透明的人影。,ev_manual_page,,
+hs_photo_back,archive,1926 年合影的背面,1926 年合影的背面，安布罗斯手写着编号。\n下面还印着一行很小的字，字体不像这个年代的东西：\n#{容器号} / 12  SYNC,ev_photo_back,,

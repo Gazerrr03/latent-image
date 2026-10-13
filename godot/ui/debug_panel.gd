@@ -1,5 +1,5 @@
 extends CanvasLayer
-## 调试面板（F1 开关）：跳到任意镜号、切换分支线、设置渗漏等级、重载内容表、重置存档。
+## 调试面板（F1 开关）：跳到任意镜号、切换终局倾向、设置渗漏等级、重载内容表、重置存档。
 ## 也是演示现场的保险。
 
 var panel: PanelContainer
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 	var h := HBoxContainer.new()
 	shot_edit = LineEdit.new()
-	shot_edit.placeholder_text = "镜号，如 N3-A-01"
+	shot_edit.placeholder_text = "镜号，如 C3-02"
 	shot_edit.custom_minimum_size.x = 180
 	shot_edit.text_submitted.connect(func(t): _jump(t))
 	h.add_child(shot_edit)
@@ -38,18 +38,18 @@ func _ready() -> void:
 	var seen := {}
 	for r in ContentDB.shot_order:
 		var n: String = r["node"]
-		if not seen.has(n) and r.get("line", "*") in ["*", "", "A"]:
+		if not seen.has(n):
 			seen[n] = true
 			var id: String = r["shot_id"]
 			nodes.add_child(_btn(n, func(): _jump(id)))
 	v.add_child(nodes)
 
-	var lines := HBoxContainer.new()
-	lines.add_child(_label("分支线"))
-	for who in ContentDB.suspects():
-		var w: String = who
-		lines.add_child(_btn(ContentDB.line_of(w), func(): _force_line(w)))
-	v.add_child(lines)
+	var leans := HBoxContainer.new()
+	leans.add_child(_label("倾向"))
+	for t in GameState.LEANS:
+		var tt: String = t
+		leans.add_child(_btn(tt, func(): _force_lean(tt)))
+	v.add_child(leans)
 
 	var leak := HBoxContainer.new()
 	leak.add_child(_label("渗漏"))
@@ -69,7 +69,7 @@ func _ready() -> void:
 	v.add_child(fxrow)
 	var cliprow := HBoxContainer.new()
 	cliprow.add_child(_label("影像"))
-	for c in ["片头_警告", "示例_录像带", "示例_档案照片"]:
+	for c in ["片头_警告", "片头_怪谈", "尾声_屏幕"]:
 		var cn: String = c
 		cliprow.add_child(_btn(cn, func(): Director.ui.footage.play_clip(cn)))
 	cliprow.add_child(_btn("重载影像表", func(): Director.ui.footage.reload()))
@@ -105,18 +105,16 @@ func _jump(id: String) -> void:
 	Director.jump(id.strip_edges().to_upper())
 
 
-## 让后续分支按某条线走：把此人记为第一次指认的对象
-func _force_line(who: String) -> void:
-	GameState.accused = [who]
-	GameState.line = ContentDB.line_of(who)
+## 让终局先出现某一种讲法：把这种倾向记高
+func _force_lean(t: String) -> void:
+	GameState.tendency = {t: 99}
 	GameState.changed.emit()
 
 
 func _refresh() -> void:
-	info.text = "镜号 %s ｜ 线 %s ｜ 指认 %s\n渗漏 L%d ｜ 电报纸 %d ｜ 证据 %d ｜ 连线 %s" % [
-		GameState.shot, GameState.line if GameState.line != "" else "-",
-		"、".join(PackedStringArray(GameState.accused)) if not GameState.accused.is_empty() else "-",
-		GameState.leak_level, GameState.telegrams_left, GameState.evidence.size(),
+	info.text = "镜号 %s ｜ 倾向 %s ｜ 容器 %s\n渗漏 L%d ｜ 证据 %d ｜ 推论 %s" % [
+		GameState.shot, GameState.dominant(), GameState.container,
+		GameState.leak_level, GameState.evidence.size(),
 		",".join(PackedStringArray(GameState.links_done)),
 	]
 

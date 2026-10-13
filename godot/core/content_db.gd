@@ -27,7 +27,6 @@ var characters: Array = []
 ## 音效表：id -> 行
 var sounds := {}
 var wordlists: Array = []
-var confession_fallback := ""
 
 
 func _ready() -> void:
@@ -47,8 +46,6 @@ func reload() -> void:
 	characters = load_table(STORY + "characters.csv")
 	sounds = index_by(load_table(AUDIO + "sounds.csv"), "id")
 	wordlists = load_table(AI + "wordlists.csv")
-	if FileAccess.file_exists(AI + "confession_fallback.txt"):
-		confession_fallback = FileAccess.get_file_as_string(AI + "confession_fallback.txt")
 
 
 ## 读 CSV：第一行是表头；以 # 开头的行是注释；文本中的 \n 转为换行
@@ -93,24 +90,6 @@ static func group_by(rows: Array, key: String) -> Dictionary:
 	return d
 
 
-## 人物表中状态为“嫌疑人”的人，按表格顺序
-func suspects() -> Array:
-	return characters.filter(func(c): return c.get("status", "") == "嫌疑人").map(func(c): return c["name"])
-
-
-## 第一次指认此人时进入的分支线（A / B / C）
-func line_of(name: String) -> String:
-	for c in characters:
-		if c["name"] == name:
-			return c.get("line", "")
-	return ""
-
-
-## 访客簿上列出的名字：已除名与嫌疑人，按表格顺序
-func register_names() -> Array:
-	return characters.filter(func(c): return c.get("status", "") in ["已除名", "嫌疑人"]).map(func(c): return c["name"])
-
-
 ## 表格中下一行的镜号（用于 next 列留空时）
 func next_in_order(shot_id: String) -> String:
 	for i in shot_order.size():
@@ -119,7 +98,7 @@ func next_in_order(shot_id: String) -> String:
 	return "END"
 
 
-## lines.csv 的 condition 形如 "X=巴洛;Y=韦恩小姐"，空表示无条件
+## lines.csv 的 condition 形如 "view=保护"，空表示无条件
 static func condition_matches(cond: String, vars: Dictionary) -> bool:
 	if cond.strip_edges() == "":
 		return true

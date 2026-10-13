@@ -9,6 +9,8 @@ signal finished
 
 const Actions := preload("res://core/actions.gd")
 const CANCEL := "__cancel__"
+## 在镜头文字出现之前执行的动作
+const STAGING := ["reveal", "conceal"]
 
 var ui: Node
 var world: Node
@@ -84,12 +86,18 @@ func _play(row: Dictionary) -> void:
 	ui.set_cinematic(mode == "camera")
 	for s in str(row.get("sound", "")).split(";", false):
 		world.play_sound(s.strip_edges())
+	var acts := Actions.parse(row.get("actions", ""))
+	# 布景动作（显示 / 隐藏场景里的东西）先于文字执行：玩家读文字时，画面已经摆好
+	for a in acts:
+		if a["name"] in STAGING:
+			await _do(a["name"], a["args"], mode)
 	if row.get("text", "") != "" and not skip_text:
 		await ui.show_text(fill(row["text"]))
 		if _interrupted():
 			return
-	var acts := Actions.parse(row.get("actions", ""))
 	for a in acts:
+		if a["name"] in STAGING:
+			continue
 		await _do(a["name"], a["args"], mode)
 		if _interrupted():
 			return
@@ -98,7 +106,7 @@ func _play(row: Dictionary) -> void:
 
 
 ## next 列：空 = 表格中的下一行；"N2-A-01" = 指定；
-## "line=A>N2-A-01|line=B>N2-B-01|>N9" = 按条件，最后一个可以是无条件的默认值
+## "view=保护>C7-02|>C7-03" = 按条件，最后一个可以是无条件的默认值
 func resolve_next(row: Dictionary) -> String:
 	var n: String = row.get("next", "").strip_edges()
 	if n == "":
@@ -129,9 +137,6 @@ func _do(name: String, args: Array, mode: String) -> void:
 		"leak":
 			GameState.set_leak(int(args[0]) if args.size() > 0 else 0)
 			world.apply_leak(GameState.leak_level)
-		"use_telegram":
-			GameState.use_telegram()
-			ui.toast("用掉一张电报纸（剩 %d 张）" % GameState.telegrams_left)
 		"objective":
 			GameState.objective = ",".join(PackedStringArray(args))
 			ui.set_objective(GameState.objective)
@@ -144,20 +149,16 @@ func _do(name: String, args: Array, mode: String) -> void:
 			await _choose_from_set(args[0], "annotate", "手记")
 		"inquire":
 			await _choose_from_set(args[0], "inquire", "追问")
-		"accuse":
-			await _accuse(args[0] if args.size() > 0 else "")
 		"link":
 			await _link(args[0])
 		"say":
 			await _say(args[0])
-		"ending":
-			# 固定结局按主导属性呈现视角（docs/02 第 8 节）；台词组里按 view= 条件取一条
-			GameState.ending = GameState.dominant()
-			GameState.record("ending", GameState.ending)
-			if args.size() > 0:
-				await _say(args[0])
-		"confession":
-			await ui.show_text(build_confession())
+		"telling":
+			await _telling(args[0])
+		"develop":
+			# 第 6 章：玩家亲手冲洗底片（docs/02 第 9 节）
+			await ui.develop(args[0] if args.size() > 0 else "")
+			GameState.record("develop", args[0] if args.size() > 0 else "")
 		"goto":
 			world.show_scene(args[0])
 		"fx":
@@ -168,10 +169,6 @@ func _do(name: String, args: Array, mode: String) -> void:
 		"conceal":
 			for id in args:
 				world.set_shown(id, false)
-		"sign":
-			# 终局签名：玩家在被划去的那一行写下自己的名字（承认）
-			await ui.register_sign(args[0] if args.size() > 0 else "请回执。")
-			GameState.record("sign", "艾克罗伊德")
 		"footage":
 			await ui.footage.play_clip(args[0])
 		"osd":
@@ -198,7 +195,7 @@ func _show_hotspot(id: String) -> void:
 	if h.get("footage", "") != "":
 		await ui.footage.play_clip(h["footage"])
 	if h.get("text", "") != "":
-		await ui.show_text(h["text"])
+		await ui.show_text(fill(h["text"]))
 	world.set_frozen(false)
 	if h.get("evidence", "") != "":
 		_collect(h["evidence"])
@@ -231,9 +228,10 @@ func _inspect(ids: Array, mode: String) -> void:
 		pending.erase(id)
 
 
-## 镜头文字里的占位符：{容器号} = 本局随机的容器编号（N7-05 的文件）
+## 镜头文字里的占位符：{容器号} = 本局的容器编号（01—12）；{本轮陈述} = 玩家在终局选定的那句话
 func fill(text: String) -> String:
-	return text.replace("{容器号}", GameState.container)
+	var said: String = GameState.statement if GameState.statement != "" else "……"
+	return text.replace("{容器号}", GameState.container).replace("{本轮陈述}", said)
 
 
 ## 弹出一组预设（annotations.csv），记录选择与人格属性，显示回应；返回所选文本
@@ -253,28 +251,6 @@ func _choose_from_set(set_id: String, kind: String, title: String) -> String:
 	if r.get("response", "") != "":
 		await ui.show_text(r["response"])
 	return r["text"]
-
-
-func _accuse(reason_set: String) -> void:
-	var names := GameState.remaining_suspects()
-	var k := 0
-	if not autoplay:
-		k = await ui.register_pick("笔尖悬在名字上方。落笔即是指认。", names)
-	elif GameState.accused.is_empty():
-		for i in names.size():
-			if "--line=" + ContentDB.line_of(names[i]) in OS.get_cmdline_user_args():
-				k = i
-	if k < 0:
-		return
-	var who: String = names[k]
-	var reason := ""
-	if reason_set != "":
-		reason = await _choose_from_set(reason_set, "reason", "理由")
-		if _interrupted():
-			return
-	GameState.accuse(who)
-	GameState.record("accuse", who, {"reason": reason})
-	world.on_accused(who)
 
 
 func _link(group: String) -> void:
@@ -360,20 +336,24 @@ func _say(set_id: String) -> void:
 				return
 
 
-## 案卷自述的兜底版本：按主导属性取一篇标准自述（台词表 n7_confession），
-## 再原样摘录玩家的批注（docs/05 第 4 节）
-func build_confession() -> String:
-	var standard := ContentDB.confession_fallback.strip_edges()
-	var v := GameState.vars()
-	for r in ContentDB.lines.get("n7_confession", []):
-		if ContentDB.condition_matches(r.get("condition", ""), v):
-			standard = r["text"]
-			break
-	var parts: Array = [standard]
-	for e in GameState.journal:
-		match e["kind"]:
-			"annotate", "reason":
-				parts.append("我写下：“%s”" % e["text"])
-			"accuse":
-				parts.append("我在名册上划去了%s。" % e["text"])
-	return "\n".join(PackedStringArray(parts))
+## 终局的两种讲法（docs/02 第 9.3 节）：玩家一路写下的记录决定哪一种先出现在纸上，
+## 但由玩家自己选。选定的那句话写进尾声的记录卡（{本轮陈述}）。
+func _telling(set_id: String) -> void:
+	var rows: Array = ContentDB.annotations.get(set_id, [])
+	if rows.is_empty():
+		push_warning("预设组不存在：" + set_id)
+		return
+	var lean := GameState.dominant()
+	rows = rows.duplicate()
+	rows.sort_custom(func(a, b): return a.get("tendency", "") == lean and b.get("tendency", "") != lean)
+	var k := 0
+	if not autoplay:
+		k = await ui.choose("最后一份记录", rows.map(func(r): return r["text"]))
+	if k < 0:
+		return
+	var r: Dictionary = rows[k]
+	GameState.ending = r.get("tendency", "")
+	GameState.statement = r["text"]
+	GameState.record("telling", r["text"], {"tendency": GameState.ending})
+	if r.get("response", "") != "":
+		await ui.show_text(r["response"])
