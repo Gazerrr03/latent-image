@@ -19,6 +19,8 @@ var _orig_mats := {}
 var _leak_mat: ShaderMaterial
 var _env: WorldEnvironment
 var _cam_key := ""
+## 当前美术模型里有没有 spawn（没有就用布局表的出生点）
+var _model_spawn := false
 var _missing_sounds := {}
 var _loops := {}
 
@@ -68,6 +70,8 @@ func show_scene(id: String) -> void:
 	if model != "" and ResourceLoader.exists(model):
 		room = (load(model) as PackedScene).instantiate()
 		_adopt_model(room)
+		# 美术模型只提供房间本身；人物、灯光，以及模型里没有的机位、物件、出生点仍按布局表补上
+		_apply_layout(room, id, true)
 	else:
 		room = _build_greybox(id)
 	add_child(room)
@@ -91,6 +95,13 @@ func _build_greybox(id: String) -> Node3D:
 	_box(r, "左墙", Vector3(-s.x / 2 - t / 2, s.y / 2, 0), Vector3(t, s.y, s.z), Color("#3b3430"))
 	_box(r, "右墙", Vector3(s.x / 2 + t / 2, s.y / 2, 0), Vector3(t, s.y, s.z), Color("#3b3430"))
 	spawn = [Vector3(0, 0, s.z / 2 - 0.6), 0.0]
+	_apply_layout(r, id, false)
+	return r
+
+
+## 布局表的各行（家具、人物、可检查物件、机位、灯光、出生点）。
+## model_mode = true 时房间来自美术模型：跳过家具，模型里已有的机位、物件、出生点以模型为准
+func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
 	for row in ContentDB.layout.get(id, []):
 		var p := _vec(row, "x", "y", "z")
 		var size := _vec(row, "w", "h", "d")
@@ -98,6 +109,8 @@ func _build_greybox(id: String) -> Node3D:
 		var before := r.get_child_count()
 		match row.get("type", ""):
 			"家具":
+				if model_mode:
+					continue
 				# y 是底部离地高度
 				var mi := _box(r, row["id"], p + Vector3(0, size.y / 2, 0), size, _color(row, "#5b3f2a"))
 				if "镜" in row["id"]:
@@ -113,8 +126,12 @@ func _build_greybox(id: String) -> Node3D:
 				if not GameState.accused.has(row["id"]):
 					_figure(r, row["id"], p)
 			"可检查物件":
+				if model_mode and hotspot_nodes.has(row["id"]):
+					continue
 				_hotspot(r, row["id"], p, size if size != Vector3.ZERO else Vector3(0.3, 0.3, 0.3))
 			"机位":
+				if model_mode and markers.has(row["id"]):
+					continue
 				markers[row["id"]] = [p, look]
 			"灯光":
 				var o := OmniLight3D.new()
@@ -127,6 +144,8 @@ func _build_greybox(id: String) -> Node3D:
 					o.name = row["id"]
 				r.add_child(o)
 			"出生点":
+				if model_mode and _model_spawn:
+					continue
 				var dir := look - p
 				spawn = [p, rad_to_deg(atan2(-dir.x, -dir.z)) if dir.length() > 0.01 else 0.0]
 			_:
@@ -143,7 +162,6 @@ func _build_greybox(id: String) -> Node3D:
 		if c.get("room", "") != id or GameState.accused.has(c["name"]) or named.has(c["name"]):
 			continue
 		named[c["name"]] = _figure(r, c["name"], _vec(c, "x", "y", "z"))
-	return r
 
 
 ## 灰盒人形：身体 + 头 + 眼部处理（《04》第 11 节：除侦探外，所有人的眼睛都被遮住）。
@@ -253,7 +271,9 @@ func _box(parent: Node3D, n: String, pos: Vector3, size: Vector3, color: Color) 
 	return mi
 
 
-func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3) -> void:
+## from_model = true：物件来自美术模型，模型本身就是物件的样子，
+## 所以高亮方块平时隐藏，只在指引时显示成一层半透明的暖光
+func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_model := false) -> void:
 	var a := Area3D.new()
 	a.name = id
 	a.position = pos
@@ -274,6 +294,13 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3) -> void:
 	m.emission_enabled = true
 	m.emission = Color("#ffcf8a")
 	m.emission_energy_multiplier = 0.0
+	if from_model:
+		bm.size = size + Vector3(0.02, 0.02, 0.02)
+		m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		m.albedo_color = Color(1.0, 0.85, 0.6, 0.18)
+		m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mi.visible = false
+		a.set_meta("from_model", true)
 	mi.material_override = m
 	a.add_child(mi)
 	parent.add_child(a)
@@ -282,15 +309,17 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3) -> void:
 
 ## 美术模型：按命名约定识别热区、出生点、机位
 func _adopt_model(r: Node) -> void:
+	_model_spawn = false
 	for n in _walk(r):
 		if not n is Node3D:
 			continue
 		var nm: String = n.name
 		if nm.begins_with("hs_") and n is MeshInstance3D:
 			var aabb: AABB = n.get_aabb()
-			_hotspot(n, nm.trim_suffix("-col"), aabb.get_center(), aabb.size.max(Vector3(0.2, 0.2, 0.2)))
+			_hotspot(n, nm.trim_suffix("-col"), aabb.get_center(), aabb.size.max(Vector3(0.05, 0.05, 0.05)), true)
 		elif nm == "spawn":
 			spawn = [n.global_position, n.global_rotation_degrees.y]
+			_model_spawn = true
 		elif nm.begins_with("cam_"):
 			var fwd: Vector3 = -n.global_transform.basis.z
 			markers[nm.trim_prefix("cam_")] = [n.global_position, n.global_position + fwd]
@@ -336,6 +365,8 @@ func highlight_hotspots(ids: Array) -> void:
 	for id in hotspot_nodes:
 		var mi: MeshInstance3D = hotspot_nodes[id].get_child(1)
 		(mi.material_override as StandardMaterial3D).emission_energy_multiplier = 0.6 if ids.has(id) else 0.0
+		if hotspot_nodes[id].has_meta("from_model"):
+			mi.visible = ids.has(id)
 
 
 func set_frozen(b: bool) -> void:
