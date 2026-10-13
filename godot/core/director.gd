@@ -58,8 +58,7 @@ func _run(first: String) -> void:
 			break
 		var row: Dictionary = ContentDB.shots[cur]
 		GameState.shot = cur
-		if not autoplay:
-			GameState.save()
+		GameState.save()
 		_played += 1
 		await _play(row)
 		if _interrupted():
@@ -233,7 +232,7 @@ func _accuse(reason_set: String) -> void:
 		k = await ui.register_pick("笔尖悬在名字上方。落笔即是指认。", names)
 	elif GameState.accused.is_empty():
 		for i in names.size():
-			if "--line=" + GameState.LINE_OF[names[i]] in OS.get_cmdline_user_args():
+			if "--line=" + ContentDB.line_of(names[i]) in OS.get_cmdline_user_args():
 				k = i
 	if k < 0:
 		return

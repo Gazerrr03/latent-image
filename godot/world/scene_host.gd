@@ -4,7 +4,6 @@ extends Node3D
 ##   hs_<id> 可检查物件；spawn 出生点；exit 出口；cam_<名称> 机位；guide_ 指引光；-col 碰撞（Godot 导入时处理）
 
 const HOTSPOT_LAYER := 2
-const GreyboxSpecs := preload("res://world/greybox_specs.gd")
 
 var player: Node3D
 var shot_cam: Camera3D
@@ -19,7 +18,7 @@ var _leak_mat: ShaderMaterial
 var _env: WorldEnvironment
 var _cam_key := ""
 var _missing_sounds := {}
-var _audio := AudioStreamPlayer.new()
+var _loops := {}
 
 
 func _ready() -> void:
@@ -31,7 +30,6 @@ func _ready() -> void:
 	add_child(_env)
 	_leak_mat = ShaderMaterial.new()
 	_leak_mat.shader = load("res://shaders/leak_white.gdshader")
-	add_child(_audio)
 
 
 func _make_env() -> Environment:
@@ -55,6 +53,7 @@ func show_scene(id: String) -> void:
 		return
 	current_id = id
 	_cam_key = ""
+	stop_loops()
 	if room:
 		remove_child(room)
 		room.queue_free()
@@ -67,20 +66,20 @@ func show_scene(id: String) -> void:
 		room = (load(model) as PackedScene).instantiate()
 		_adopt_model(room)
 	else:
-		room = _build_greybox(GreyboxSpecs.get_spec(id))
+		room = _build_greybox(id)
 	add_child(room)
 	apply_leak(GameState.leak_level)
 	if player:
 		player.needs_spawn = true
 
 
-func _build_greybox(spec: Dictionary) -> Node3D:
+## 灰盒：按房间登记表（尺寸）与房间布局表（家具、可检查物件、机位、灯光、出生点）搭出房间。
+## 填表说明见 docs/填表说明/1.4-空间与地图.md
+func _build_greybox(id: String) -> Node3D:
 	var r := Node3D.new()
 	r.name = "Greybox"
-	if spec.is_empty():
-		push_warning("没有灰盒规格：" + current_id)
-		spec = {"size": Vector3(4, 3, 4)}
-	var s: Vector3 = spec["size"]
+	var info: Dictionary = ContentDB.scenes.get(id, {})
+	var s := Vector3(_num(info, "width", 4), _num(info, "height", 3), _num(info, "depth", 4))
 	var t := 0.1
 	_box(r, "地面", Vector3(0, -t / 2, 0), Vector3(s.x, t, s.z), Color("#3a2c22"))
 	_box(r, "天花", Vector3(0, s.y + t / 2, 0), Vector3(s.x, t, s.z), Color("#2a2826"))
@@ -88,24 +87,55 @@ func _build_greybox(spec: Dictionary) -> Node3D:
 	_box(r, "后墙", Vector3(0, s.y / 2, s.z / 2 + t / 2), Vector3(s.x, s.y, t), Color("#3b3430"))
 	_box(r, "左墙", Vector3(-s.x / 2 - t / 2, s.y / 2, 0), Vector3(t, s.y, s.z), Color("#3b3430"))
 	_box(r, "右墙", Vector3(s.x / 2 + t / 2, s.y / 2, 0), Vector3(t, s.y, s.z), Color("#3b3430"))
-	for p in spec.get("props", []):
-		# 已被指认的人不再出现在场景里
-		if GameState.accused.has(p["name"]):
+	spawn = [Vector3(0, 0, s.z / 2 - 0.6), 0.0]
+	for row in ContentDB.layout.get(id, []):
+		var p := _vec(row, "x", "y", "z")
+		var size := _vec(row, "w", "h", "d")
+		var look := _vec(row, "look_x", "look_y", "look_z")
+		match row.get("type", ""):
+			"家具":
+				# y 是底部离地高度
+				_box(r, row["id"], p + Vector3(0, size.y / 2, 0), size, _color(row, "#5b3f2a"))
+			"可检查物件":
+				_hotspot(r, row["id"], p, size if size != Vector3.ZERO else Vector3(0.3, 0.3, 0.3))
+			"机位":
+				markers[row["id"]] = [p, look]
+			"灯光":
+				var o := OmniLight3D.new()
+				o.position = p
+				o.light_color = _color(row, "#ffc98a")
+				o.light_energy = _num(row, "energy", 2.0)
+				o.omni_range = 6.0
+				o.shadow_enabled = true
+				if row.get("id", "") != "":
+					o.name = row["id"]
+				r.add_child(o)
+			"出生点":
+				var dir := look - p
+				spawn = [p, rad_to_deg(atan2(-dir.x, -dir.z)) if dir.length() > 0.01 else 0.0]
+			_:
+				push_warning("房间布局表：未知类型 %s（%s）" % [row.get("type", ""), id])
+	# 人物：人物表里所在房间为本房间、且尚未被指认的人
+	for c in ContentDB.characters:
+		if c.get("room", "") != id or GameState.accused.has(c["name"]):
 			continue
-		_box(r, p["name"], p["pos"], p["size"], p["color"])
-	for id in spec.get("hotspots", {}):
-		_hotspot(r, id, spec["hotspots"][id], Vector3(0.3, 0.3, 0.3))
-	for l in spec.get("lights", []):
-		var o := OmniLight3D.new()
-		o.position = l[0]
-		o.light_color = l[1]
-		o.light_energy = l[2]
-		o.omni_range = 6.0
-		o.shadow_enabled = true
-		r.add_child(o)
-	markers = spec.get("markers", {}).duplicate()
-	spawn = spec.get("spawn", [Vector3.ZERO, 0.0])
+		var hgt := _num(c, "height", 1.7)
+		_box(r, c["name"], _vec(c, "x", "y", "z") + Vector3(0, hgt / 2, 0), Vector3(0.42, hgt, 0.4), _color(c, "#2b2420"))
 	return r
+
+
+static func _num(row: Dictionary, key: String, default: float) -> float:
+	var v: String = row.get(key, "")
+	return float(v) if v.is_valid_float() else default
+
+
+static func _vec(row: Dictionary, kx: String, ky: String, kz: String) -> Vector3:
+	return Vector3(_num(row, kx, 0), _num(row, ky, 0), _num(row, kz, 0))
+
+
+static func _color(row: Dictionary, default: String) -> Color:
+	var v: String = row.get("color", "")
+	return Color.from_string(v, Color(default)) if v != "" else Color(default)
 
 
 func _box(parent: Node3D, n: String, pos: Vector3, size: Vector3, color: Color) -> MeshInstance3D:
@@ -233,16 +263,42 @@ func apply_leak(level: int) -> void:
 	_env.environment.fog_light_color = Color("#d8d6d0") if level >= 3 else Color("#0b0b10")
 
 
+## 按音效表播放：文件放在 res://audio/，音量与是否循环由表决定；还没有文件的声音保持静音
 func play_sound(id: String) -> void:
-	if id == "":
+	if id == "" or id == "silence":
 		return
-	for ext in [".ogg", ".wav", ".mp3"]:
-		var p: String = "res://audio/" + id + ext
-		if ResourceLoader.exists(p):
-			_audio.stream = load(p)
-			_audio.play()
+	var row: Dictionary = ContentDB.sounds.get(id, {})
+	var file: String = row.get("file", "")
+	var path := "res://audio/" + file
+	if file == "" or not ResourceLoader.exists(path):
+		_missing_sounds[id] = true
+		return
+	var stream: AudioStream = load(path)
+	var loop: bool = row.get("loop", "否") == "是"
+	if loop:
+		if _loops.has(id):
 			return
-	_missing_sounds[id] = true
+		if stream is AudioStreamOggVorbis or stream is AudioStreamMP3:
+			stream.loop = true
+		elif stream is AudioStreamWAV:
+			stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+	var p := AudioStreamPlayer.new()
+	p.stream = stream
+	p.volume_db = float(row.get("volume_db", "0")) if str(row.get("volume_db", "")).is_valid_float() else 0.0
+	add_child(p)
+	p.play()
+	if loop:
+		_loops[id] = p
+	else:
+		p.finished.connect(p.queue_free)
+
+
+## 换房间时停掉上一个房间的循环声
+func stop_loops() -> void:
+	for p in _loops.values():
+		if is_instance_valid(p):
+			p.queue_free()
+	_loops.clear()
 
 
 ## 被指认者：变成白模后消失（N5-03 的表现；N2 时同样适用）

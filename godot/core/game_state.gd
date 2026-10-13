@@ -5,9 +5,6 @@ signal changed
 
 const SAVE_PATH := "user://save.json"
 const TELEGRAMS := 7
-## 指认后决定分支线：第一次指认谁，就走哪条线
-const LINE_OF := {"巴洛": "A", "韦恩小姐": "B", "朗斯": "C"}
-const SUSPECTS := ["巴洛", "韦恩小姐", "朗斯"]
 
 var shot := ""
 var telegrams_left := TELEGRAMS
@@ -25,6 +22,8 @@ var tendency := {}
 var journal: Array = []
 var objective := ""
 var ending := ""
+## 截图、自动测试时为 false：开发测试永远不写玩家的存档
+var persist := true
 
 
 func reset() -> void:
@@ -44,8 +43,9 @@ func reset() -> void:
 	changed.emit()
 
 
+## 嫌疑人名单与分支线来自人物表（content/story/characters.csv）
 func remaining_suspects() -> Array:
-	return SUSPECTS.filter(func(s): return not accused.has(s))
+	return ContentDB.suspects().filter(func(s): return not accused.has(s))
 
 
 ## 用于 lines.csv 的条件匹配：X、Y、Z、line、ending
@@ -64,7 +64,7 @@ func vars() -> Dictionary:
 func accuse(name: String) -> void:
 	accused.append(name)
 	if line == "":
-		line = LINE_OF.get(name, "")
+		line = ContentDB.line_of(name)
 	changed.emit()
 
 
@@ -124,6 +124,8 @@ func from_dict(d: Dictionary) -> void:
 
 
 func save() -> void:
+	if not persist:
+		return
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if f:
 		f.store_string(JSON.stringify(to_dict(), "\t"))

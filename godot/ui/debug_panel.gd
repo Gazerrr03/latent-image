@@ -46,9 +46,9 @@ func _ready() -> void:
 
 	var lines := HBoxContainer.new()
 	lines.add_child(_label("分支线"))
-	for who in GameState.SUSPECTS:
+	for who in ContentDB.suspects():
 		var w: String = who
-		lines.add_child(_btn(GameState.LINE_OF[w], func(): _force_line(w)))
+		lines.add_child(_btn(ContentDB.line_of(w), func(): _force_line(w)))
 	v.add_child(lines)
 
 	var leak := HBoxContainer.new()
@@ -93,7 +93,7 @@ func _jump(id: String) -> void:
 ## 让后续分支按某条线走：把此人记为第一次指认的对象
 func _force_line(who: String) -> void:
 	GameState.accused = [who]
-	GameState.line = GameState.LINE_OF[who]
+	GameState.line = ContentDB.line_of(who)
 	GameState.changed.emit()
 
 

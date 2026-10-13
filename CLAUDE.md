@@ -14,14 +14,15 @@
 - 分镜即数据：剧情内容全部在 `godot/content/story/*.csv`，代码不写死内容。表头与列含义见 `docs/06-技术方案.md` 第 2 节。
 - 镜头表的 `actions` 列只能使用 `godot/core/actions.gd` 中的白名单；新增动作要同时改 `actions.gd`、`director.gd` 的 `_do`，并更新 `docs/06` 2.2 节。
 - 每个 `.csv` 旁必须有 `importer="keep"` 的 `.csv.import`（校验工具会自动补）。
-- 美术模型放 `godot/art/rooms/`，在 `scenes.csv` 的 `model` 列登记；命名约定见 `docs/09` 第 5 节（`hs_`、`spawn`、`exit`、`cam_`、`guide_`、`-col`）。没有模型时自动使用 `world/greybox_specs.gd` 的灰盒。
-- 结构：`core/`（状态、内容、播放器、动作）、`world/`（场景宿主、灰盒、玩家）、`ui/`（临时界面、调试面板）、`shaders/`、`tools/`。
+- 美术模型放 `godot/art/rooms/`，在 `scenes.csv` 的 `model` 列登记；命名约定见 `docs/09` 第 5 节（`hs_`、`spawn`、`exit`、`cam_`、`guide_`、`-col`）。没有模型时按 `godot/content/space/`（房间登记表、房间布局表）搭灰盒。
+- 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线）、`content/space/`（房间、布局）、`content/audio/`（音效表）、`content/ai/`（词表、自述兜底）。填表说明在 `docs/填表说明/`。
+- 结构：`core/`（状态、内容、播放器、动作）、`world/`（场景宿主、玩家）、`ui/`（临时界面、调试面板）、`shaders/`、`tools/`。
 
 ## 验证命令（改动后必须跑）
 
 ```bash
 G=godot   # ~/.local/bin/godot → /Applications/Godot.app/Contents/MacOS/Godot
-# 1. 内容校验：表格互相对得上（退出码 0 = 通过）
+# 1. 内容校验：表格互相对得上（退出码 0 = 通过），报告写到根目录“检查报告.md”；队友可双击“检查内容.command”
 $G --headless --path godot --script res://tools/validate_content.gd
 # 2. 自动通关：无界面走完整条路径（退出码 0 = 到达终局且三组连线完成）
 $G --headless --path godot -- --autoplay --line=A   # 三条线 A / B / C 都要跑

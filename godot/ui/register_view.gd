@@ -60,8 +60,7 @@ func pick(title: String, alive: Array) -> int:
 	title_label.text = title
 	for c in list.get_children():
 		c.queue_free()
-	_add_row("罗伊德先生", true, -1)
-	for who in GameState.SUSPECTS:
+	for who in ContentDB.register_names():
 		var idx := alive.find(who)
 		_add_row(who, idx < 0, idx)
 	show()

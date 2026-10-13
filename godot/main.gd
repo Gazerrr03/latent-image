@@ -20,6 +20,8 @@ func _ready() -> void:
 	Director.world = host
 	add_child(DebugPanel.new())
 
+	if Director.autoplay or _arg("--capture=") != "":
+		GameState.persist = false
 	if Director.autoplay:
 		_autoplay()
 		return
