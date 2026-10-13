@@ -47,6 +47,7 @@ Godot MCP 已在 `.mcp.json` 配置（Coding-Solo/godot-mcp）：可启动编辑
 
 ## 协作
 
-- 用户是项目负责人，代码只由用户和 agent 修改；队友只交表格和文件。
+- 用户是项目负责人，代码只由用户和 agent 修改；队友只交表格和文件。贡献规则（派任务、生产、接入、验证）见根目录 `CONTRIBUTING.md`。
+- 生成可直接发给队友的 PDF 派发单：`python3 tools/dispatch/make_dispatch.py docs/任务/T-xxx.md`（需要 `pip3 install --user markdown` 与本机 Chrome）。
 - 给队友派任务用 `/task-card`（`.claude/skills/task-card/`），任务卡存 `docs/任务/`。
 - 每项计划都要有“只有用户 + agent 也能完成”的兜底。
