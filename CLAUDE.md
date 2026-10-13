@@ -30,7 +30,7 @@ $G --headless --path godot --script res://tools/validate_content.gd
 $G --headless --path godot -- --autoplay --line=A   # 三条线 A / B / C 都要跑
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=N1-07 --leak=0 --out=/tmp/x.png
-# 可加 --grant-all（发放全部证据）、--telegrams=4、--fx=纪录片片头、--play=示例_录像带（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--view=记忆（强制终局视角：好奇 / 记忆 / 共情 / 欲望）
+# 可加 --grant-all（发放全部证据）、--telegrams=4、--fx=纪录片片头、--play=示例_录像带（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--skip-text（文字不等点击）、--hint-test=1..3（看连错提示）、--view=记忆（强制终局视角：好奇 / 记忆 / 共情 / 欲望）
 ```
 
 macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec(@ARGV)' <命令>` 防止卡住。

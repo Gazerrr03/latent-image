@@ -111,6 +111,8 @@ func _init() -> void:
 			err("可检查物件表", h["id"], "给出的证据“%s”不在证据表里" % e, "在证据表加这张卡片")
 	for g in links:
 		for p in links[g]:
+			if p.get("result", "") != "" and not evidence.has(p["result"]):
+				err("连线规则表", "连线组 " + g, "连对后得到的推论“%s”不在证据表里" % p["result"])
 			for k in ["a", "b"]:
 				if not evidence.has(p.get(k, "")):
 					err("连线规则表", "连线组 " + g, "证据“%s”不在证据表里" % p.get(k, ""))

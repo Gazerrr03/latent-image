@@ -1,12 +1,12 @@
-group,a,b,response,note
-c1,ev_key_tags,ev_register,红线从钥匙牌拉向访客簿的打字印，放大镜里两个 e 重合。\n报纸“读者来信”栏出现一封新来信：“我也见过那个偏高的 e。”,N4-A-02
-c1,ev_register,ev_journal_p1,透明描图纸覆在访客簿的划痕上，再拖到手记第一页的字行上：两处的 e 同样偏高。\n屏幕边缘一行小字：“字模一致。”,N6-03
-c1,ev_notice,ev_register,红线从打字机上的通告拉向访客簿的打字印，放大镜里两个 e 重合。,B 线备用
-c1,ev_iou,ev_register,红线从借据拉向访客簿的打字印，放大镜里两个 e 重合。,C 线备用
-c2,ev_letter_draft,ev_letter,红线从底稿的“艾克先生已在庄园门外”拉向委托信落款“十月四日”，两个日期在放大镜下并排，差一天。\n报纸“更正”栏出现：“本报昨日刊登之日期有误，特此更正。”,N4-B-01
-c2,ev_morning_paper,ev_letter,早报预告了尚未发生的到达；委托信的落款却是第二天。,C 线备用
-c3,ev_record,ev_receipt_study,红线从唱片里的回执拉向书房的回执，两张“已收悉”叠在一起。\n读者来信栏出现：“我家的电话也在回应我。”,N4-C-01
-c3,ev_telegram_drafts,ev_receipt_study,未寄出的电报稿与书房的回执并排：同一个“R.”，同一句“已收悉”。,B 线备用
-c2,ev_journal_p1,ev_letter,两张纸叠合，时间差一天。\n旁边浮出一行小字：“九点四十分，罗伊德先生已除名。”,N6-02
-c2,ev_night_log,ev_letter,值夜簿写着十月三日，你已在门外；委托信的落款却是十月四日。,备用
-c3,ev_receipt_study,ev_receipts_a,书房的回执被展开，折在里面的另一半显露出来：“已收悉·R.”。\n“已收悉”变成“ACK”，旁边多出“数据库”三个字的页眉。,N6-04
+group,a,b,response,result,hint,note
+c1,ev_key_tags,ev_register,红线从钥匙牌拉向访客簿的打字印，放大镜里两个 e 重合。\n报纸“读者来信”栏出现一封新来信：“我也见过那个偏高的 e。”,ev_inf_e_tags,名册上的每道划痕旁边都有一个打字印。是哪一台打字机？,N4-A-02
+c1,ev_register,ev_journal_p1,透明描图纸覆在访客簿的划痕上，再拖到手记第一页的字行上：两处的 e 同样偏高。\n屏幕边缘一行小字：“字模一致。”,ev_inf_e_mine,名册上的每道划痕旁边都有一个打字印。是哪一台打字机？,N6-03
+c1,ev_notice,ev_register,红线从打字机上的通告拉向访客簿的打字印，放大镜里两个 e 重合。,ev_inf_e_notice,名册上的每道划痕旁边都有一个打字印。是哪一台打字机？,B 线备用
+c1,ev_iou,ev_register,红线从借据拉向访客簿的打字印，放大镜里两个 e 重合。,ev_inf_e_iou,名册上的每道划痕旁边都有一个打字印。是哪一台打字机？,C 线备用
+c2,ev_letter_draft,ev_letter,红线从底稿的“艾克先生已在庄园门外”拉向委托信落款“十月四日”，两个日期在放大镜下并排，差一天。\n报纸“更正”栏出现：“本报昨日刊登之日期有误，特此更正。”,ev_inf_date_draft,日期对不上。哪样东西，写在了它该写的日子之前？,N4-B-01
+c2,ev_morning_paper,ev_letter,早报预告了尚未发生的到达；委托信的落款却是第二天。,ev_inf_date_paper,日期对不上。哪样东西，写在了它该写的日子之前？,C 线备用
+c3,ev_record,ev_receipt_study,红线从唱片里的回执拉向书房的回执，两张“已收悉”叠在一起。\n读者来信栏出现：“我家的电话也在回应我。”,ev_inf_ack_record,每一次划名之后，好像都有人回了一句“已收悉”。,N4-C-01
+c3,ev_telegram_drafts,ev_receipt_study,未寄出的电报稿与书房的回执并排：同一个“R.”，同一句“已收悉”。,ev_inf_ack_drafts,每一次划名之后，好像都有人回了一句“已收悉”。,B 线备用
+c2,ev_journal_p1,ev_letter,两张纸叠合，时间差一天。\n旁边浮出一行小字：“九点四十分，罗伊德先生已除名。”,ev_inf_date_mine,日期对不上。哪样东西，写在了它该写的日子之前？,N6-02
+c2,ev_night_log,ev_letter,值夜簿写着十月三日，你已在门外；委托信的落款却是十月四日。,ev_inf_date_log,日期对不上。哪样东西，写在了它该写的日子之前？,备用
+c3,ev_receipt_study,ev_receipts_a,书房的回执被展开，折在里面的另一半显露出来：“已收悉·R.”。\n“已收悉”变成“ACK”，旁边多出“数据库”三个字的页眉。,ev_inf_ack_each,每一次划名之后，好像都有人回了一句“已收悉”。,N6-04

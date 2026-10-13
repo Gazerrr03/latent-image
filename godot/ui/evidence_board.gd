@@ -99,15 +99,21 @@ func _rebuild() -> void:
 		s.queue_free()
 	_first = ""
 	var ids: Array = GameState.evidence
-	var cols := 4
+	# 卡片多时增加列数并缩小卡片，保证全部留在板上
+	var n := ids.size()
+	var cols := clampi(int(ceil(sqrt(n * 1.8))), 4, 6)
+	var rows := maxi(1, int(ceil(float(n) / cols)))
 	var vp := get_viewport_rect().size
-	var origin := Vector2((vp.x - cols * (CARD_SIZE.x + 40)) / 2.0 + 20, 120)
+	var cell := CARD_SIZE + Vector2(40, 46)
+	var k := minf(1.0, minf((vp.x - 120) / (cols * cell.x), (vp.y - 200) / (rows * cell.y)))
+	var origin := Vector2((vp.x - cols * cell.x * k) / 2.0 + 20 * k, 110)
 	for i in ids.size():
 		var id: String = ids[i]
 		var card := _make_card(id)
-		var cell := Vector2(i % cols, i / cols)
-		var jitter := Vector2(float(hash(id) % 31) - 15, float(hash(id + "y") % 25) - 12)
-		card.position = origin + cell * (CARD_SIZE + Vector2(40, 46)) + jitter
+		var pos := Vector2(i % cols, i / cols)
+		var jitter := Vector2(float(hash(id) % 31) - 15, float(hash(id + "y") % 25) - 12) * k
+		card.position = origin + pos * cell * k + jitter
+		card.scale = Vector2(k, k)
 		card.rotation_degrees = float(hash(id + "r") % 7) - 3.0
 		add_child(card)
 		cards[id] = card
@@ -123,15 +129,17 @@ func _make_card(id: String) -> Control:
 	var e: Dictionary = ContentDB.evidence.get(id, {})
 	var wrap := Control.new()
 	wrap.size = CARD_SIZE
-	wrap.pivot_offset = CARD_SIZE / 2
+	wrap.pivot_offset = Vector2.ZERO
 	wrap.mouse_filter = Control.MOUSE_FILTER_STOP
 	wrap.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	var card := PanelContainer.new()
+	card.custom_minimum_size = CARD_SIZE
 	card.size = CARD_SIZE
 	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	wrap.add_child(card)
 	var sb := StyleBoxFlat.new()
-	sb.bg_color = PAPER
+	# 推论卡（连线得出的结论）用浅蓝色的索引卡，和线索区分开
+	sb.bg_color = Color("#dfe7ee") if id.begins_with("ev_inf_") else PAPER
 	sb.set_content_margin_all(14)
 	sb.shadow_color = Color(0, 0, 0, 0.45)
 	sb.shadow_size = 6
@@ -142,6 +150,8 @@ func _make_card(id: String) -> Control:
 	card.add_child(v)
 	var name_l := Label.new()
 	name_l.text = e.get("name", id)
+	name_l.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
+	name_l.custom_minimum_size.x = CARD_SIZE.x - 28
 	name_l.add_theme_font_size_override("font_size", 20)
 	name_l.add_theme_color_override("font_color", INK)
 	v.add_child(name_l)
@@ -192,9 +202,20 @@ func _make_string(a: String, b: String) -> Line2D:
 	var l := Line2D.new()
 	l.default_color = RED
 	l.width = 3.0
-	var pa: Vector2 = cards[a].position + Vector2(CARD_SIZE.x / 2, 3)
-	var pb: Vector2 = cards[b].position + Vector2(CARD_SIZE.x / 2, 3)
+	var pa: Vector2 = cards[a].position + Vector2(CARD_SIZE.x / 2, 3) * cards[a].scale
+	var pb: Vector2 = cards[b].position + Vector2(CARD_SIZE.x / 2, 3) * cards[b].scale
 	l.add_point(pa)
 	l.add_point((pa + pb) / 2 + Vector2(0, 18))
 	l.add_point(pb)
 	return l
+
+
+## 提示：让几张卡片轻轻闪烁（连错三次后，指出该连的两张）
+func highlight(ids: Array) -> void:
+	for id in ids:
+		if not cards.has(id):
+			continue
+		var card: Control = cards[id]
+		var t := create_tween().set_loops(4)
+		t.tween_property(card, "modulate", Color(1.35, 1.2, 0.8), 0.35)
+		t.tween_property(card, "modulate", Color.WHITE, 0.35)

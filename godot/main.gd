@@ -103,6 +103,13 @@ func _capture(shot_id: String) -> void:
 	if _arg("--fx=") != "":
 		await get_tree().process_frame
 		Director.ui.fx.set_override(_arg("--fx="))
+	if _arg("--hint-test=") != "":
+		# 截图自查：模拟在当前连线组连错 N 次后的提示
+		await get_tree().create_timer(1.0).timeout
+		var pairs: Array = ContentDB.links.get("c1", [])
+		var usable := pairs.filter(func(p): return GameState.evidence.has(p["a"]) and GameState.evidence.has(p["b"]))
+		Director.ui.footage.cancel()
+		Director._link_hint("c1", ["ev_letter", "ev_key_tags"], usable, int(_arg("--hint-test=")))
 	if _arg("--play=") != "":
 		await get_tree().process_frame
 		Director.ui.footage.play_clip(_arg("--play="))

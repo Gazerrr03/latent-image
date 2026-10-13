@@ -286,8 +286,10 @@ func _link(group: String) -> void:
 	var here: Array = pairs.filter(func(p): return p.get("note", "") == GameState.shot)
 	var shot_demo: Dictionary = here[0] if not here.is_empty() else {}
 	if GameState.links_done.has(group):
-		# 之前已经连对：自动演示一遍
-		await ui.show_text((shot_demo if not shot_demo.is_empty() else pairs[0]).get("response", ""))
+		# 之前已经连对：自动演示一遍，并给出这个镜头对应的推论
+		var demo: Dictionary = shot_demo if not shot_demo.is_empty() else pairs[0]
+		await ui.show_text(demo.get("response", ""))
+		_collect(demo.get("result", ""))
 		return
 	var usable := pairs.filter(func(p): return GameState.evidence.has(p["a"]) and GameState.evidence.has(p["b"]))
 	var matched: Dictionary = {}
@@ -297,6 +299,7 @@ func _link(group: String) -> void:
 		matched = usable[0] if not usable.is_empty() else pairs[0]
 	else:
 		var title: String = GameState.objective if GameState.objective != "" else "证据板"
+		var fails := 0
 		while matched.is_empty():
 			var pick: Array = await ui.board_pick_pair(title)
 			if pick.is_empty():
@@ -307,13 +310,44 @@ func _link(group: String) -> void:
 					matched = p
 					break
 			await ui.board_result(pick[0], pick[1], not matched.is_empty())
+			if matched.is_empty():
+				fails += 1
+				await _link_hint(group, pick, usable, fails)
 	GameState.links_done.append(group)
 	GameState.link_pairs.append([matched["a"], matched["b"]])
 	GameState.record("link", group)
 	await ui.show_text(matched.get("response", ""))
+	_collect(matched.get("result", ""))
 	if not shot_demo.is_empty() and shot_demo != matched:
 		await ui.show_text(shot_demo.get("response", ""))
+		_collect(shot_demo.get("result", ""))
 	ui.board_close()
+
+
+## 连不通时，侦探的自言自语，一次比一次具体（docs/13 第 6 节）：
+## 第 1 次：针对玩家拿起的那条线索（证据表 hint 列）；
+## 第 2 次：针对这组推理（连线规则表 hint 列）；
+## 第 3 次起：证据板上该连的两张卡片亮起来。
+func _link_hint(group: String, pick: Array, usable: Array, fails: int) -> void:
+	var relevant := func(id: String) -> bool:
+		return usable.any(func(p): return p["a"] == id or p["b"] == id)
+	var line := ""
+	if fails == 1:
+		for id in pick:
+			if relevant.call(id) and ContentDB.evidence.get(id, {}).get("hint", "") != "":
+				line = ContentDB.evidence[id]["hint"]
+				break
+		if line == "":
+			line = "这两样东西之间，看不出关系。"
+	elif fails == 2:
+		line = ContentDB.links.get(group, [{}])[0].get("hint", "")
+		if line == "":
+			line = "也许该换一条线索试试。"
+	else:
+		var p: Dictionary = usable[0]
+		ui.board.highlight([p["a"], p["b"]])
+		line = "也许该把“%s”和“%s”放在一起看。" % [ContentDB.evidence.get(p["a"], {}).get("name", p["a"]), ContentDB.evidence.get(p["b"], {}).get("name", p["b"])]
+	await ui.show_text("（自言自语）" + line)
 
 
 func _say(set_id: String) -> void:
