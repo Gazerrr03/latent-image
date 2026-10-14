@@ -1,0 +1,68 @@
+# =============================================================================
+# 行尾与文本属性统一规则
+#
+# 目的
+#   Godot 编辑器每次打开工程都会重写 project.godot 与 *.import。在
+#   core.autocrlf=true 的机器上，这会让这些文件反复显示为"已修改"
+#   （实际内容与仓库完全一致），干扰 git status / stash / 合并判断。
+#   这里用显式 eol=lf 让检出结果与文件实际内容一致，从而消除假改动。
+#
+# 重要约定
+#   eol 属性会强制 Git 把文件当文本做行尾转换，所以 **绝对不能**把 eol
+#   放到 "*" 这类通配规则上，否则 PDF / PNG 等二进制文件会被改写损坏。
+#   文本类扩展名逐条显式声明；二进制资源一律 -text -diff。
+#
+# 说明
+#   本文件规则优先于 core.autocrlf 全局配置，无需改动个人全局设置。
+# =============================================================================
+
+# ---- 默认：由 Git 自动判别文本/二进制，不设置任何 eol ----
+* text=auto
+
+# ---- Godot 工程文本文件（必须 LF，与仓库现有存储一致）----
+*.godot    text eol=lf
+*.tscn     text eol=lf
+*.tres     text eol=lf
+*.import   text eol=lf
+*.gd       text eol=lf
+*.gdshader text eol=lf
+*.uid      text eol=lf
+*.cfg      text eol=lf
+*.tpsheet  text eol=lf
+
+# ---- 配置、脚本、文档 ----
+*.json     text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.py       text eol=lf
+*.sh       text eol=lf
+*.ps1      text eol=lf
+*.md       text eol=lf
+*.txt      text eol=lf
+*.svg      text eol=lf
+*.gltf     text eol=lf
+*.obj      text eol=lf
+
+# ---- Windows 批处理：保持 CRLF ----
+*.bat      text eol=crlf
+
+# ---- 二进制资源：禁止一切行尾与编码转换，避免文件损坏 ----
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.gif   binary
+*.tga   binary
+*.exr   binary
+*.hdr   binary
+*.blend binary
+*.glb   binary
+*.fbx   binary
+*.wav   binary
+*.ogg   binary
+*.mp3   binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+*.zip   binary
+*.7z    binary
