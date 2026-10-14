@@ -1,0 +1,10 @@
+{
+  "id": "grey_hand_v2",
+  "task": "T-024-人物三视图",
+  "kind": "hand",
+  "character": "grey",
+  "file": "assets/2d/T-024-人物三视图/grey/grey_左手-v2.png",
+  "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_hand_v2.txt",
+  "prompt": "Use case: stylized-concept. Square historical game reference, light grey neutral background, flat light. Two anatomical studies of the SAME ADULT LEFT HAND, both seen dorsally, fingers upward, thumb on IMAGE RIGHT. Spread thumb gently to reveal thumb-index interdigital web. A single pale healed crescent mark sits exactly inside that web at the thumb root. Nothing on centre of hand or wrist. Short clean nails, charcoal wool detective cuff. Five digits each, no rings or gloves, no blood or fresh wounds, no text or scale. Left study dorsal straight-on, right dorsal oblique. Main subject is only hands, no head or torso.",
+  "refs": []
+}

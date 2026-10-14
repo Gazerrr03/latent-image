@@ -1,0 +1,15 @@
+layer,file,x,y,z,height,anim,note
+天空,../../final/layer_sky.png,0,-200,200,400,,最远：阴天
+庄园,../../final/layer_manor.png,0,-0.821803,42,17.174004,,对称立面，中间凸窗
+树左,../../final/layer_tree_a-v2.png,-17,-0.225834,34,12.307956,,
+树右,../../final/layer_tree_b-v2.png,16,-0.243804,30,13.374414,,
+远地排,../../final/layer_ground_far.png,0,-11.438511,28,18.788026,,地面一排一排往前叠，像舞台的地排
+小路,../../final/layer_path.png,0.6,-6.263618,14,6.514513,,
+中地排,../../final/layer_ground_mid-v2.png,0,-6.600000,14,11.339759,,
+吉迪恩,../../final/gideon_scribble.png,-0.9,-0.017116,8.2,1.877900,"bob(0.03,12);sway(1.5)",
+康斯坦斯,../../final/constance_scribble.png,0,-0.011884,8.3,1.659447,"bob(0.03,14);sway(1.2)",
+多出来的人,../../final/penrose_scribble.png,1.85,-0.017013,8.15,2.010099,"still;turn(96,120,0.72)",一动不动，最后转向拍电影的人
+近地排,../../final/layer_ground_near-v2.png,0,-3.400000,6.5,5.545532,,
+三脚架,../../final/layer_tripod.png,-2.4,-0.025583,4.2,1.637308,,
+安布罗斯,../../final/ambrose_scribble.png,-1.9,-0.016678,4.0,1.829782,"bob(0.02,6);move(34,70,0.92,0,8.25);hop(0.22)",在相机旁按下快门，一跳一跳跑进队伍
+前景草,../../final/layer_grass_fore-v2.png,0,-0.700000,1.5,1.443179,,离镜头最近，糊成一片

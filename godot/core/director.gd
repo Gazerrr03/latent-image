@@ -21,6 +21,8 @@ var skip_text := false
 var running := false
 var _jump_to := ""
 var _played := 0
+var _train_present := false
+var _before_train_fx := ""
 
 
 func _ready() -> void:
@@ -77,6 +79,13 @@ func _run(first: String) -> void:
 
 func _play(row: Dictionary) -> void:
 	shot_started.emit(row)
+	var scene_id: String = row.get("scene", "")
+	if scene_id == "train" and not _train_present:
+		_before_train_fx = ui.fx.get_override()
+		_train_present = true
+	elif scene_id != "" and scene_id != "train" and _train_present:
+		ui.fx.set_override(_before_train_fx)
+		_train_present = false
 	var mode: String = row.get("mode", "")
 	if mode == "":
 		mode = "camera"
@@ -87,16 +96,20 @@ func _play(row: Dictionary) -> void:
 	for s in str(row.get("sound", "")).split(";", false):
 		world.play_sound(s.strip_edges())
 	var acts := Actions.parse(row.get("actions", ""))
+	# 火车的当下画面：在文字出现前退出片头录像样式；其他关卡保持原顺序。
+	var staging: Array = STAGING.duplicate()
+	if row.get("scene", "") == "train":
+		staging.append_array(["fx", "osd", "leak"])
 	# 布景动作（显示 / 隐藏场景里的东西）先于文字执行：玩家读文字时，画面已经摆好
 	for a in acts:
-		if a["name"] in STAGING:
+		if a["name"] in staging:
 			await _do(a["name"], a["args"], mode)
 	if row.get("text", "") != "" and not skip_text:
 		await ui.show_text(fill(row["text"]))
 		if _interrupted():
 			return
 	for a in acts:
-		if a["name"] in STAGING:
+		if a["name"] in staging:
 			continue
 		await _do(a["name"], a["args"], mode)
 		if _interrupted():
@@ -212,10 +225,12 @@ func _inspect(ids: Array, mode: String) -> void:
 		while not pending.is_empty():
 			var id: String = await inspected
 			if id == CANCEL:
+				world.highlight_hotspots([])
 				return
 			await _show_hotspot(id)
 			pending.erase(id)
 			ui.set_progress(ids.size() - pending.size(), ids.size())
+		world.highlight_hotspots([])
 		ui.set_progress(0, 0)
 		return
 	while not pending.is_empty():

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "guest_room_establish",
+    "task": "T-026-客房",
+    "kind": "imagegen",
+    "file": "assets/2d/T-026-客房/guest_room_透视_establish-v2.png",
+    "prompt": "assets/2d/T-026-客房/prompts/guest_room_establish-v2.txt",
+    "status": "退回修订",
+    "notes": "需修：多出壁炉装饰钟；书桌物件左右与布局有偏差",
+    "size": [
+      1672,
+      941
+    ],
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a138d3-0bf2-74b2-883e-2efcedc505f6/exec-d3209499-167d-4a4c-b38d-476338eb780b.png",
+    "sha256": "8572e2f45228ad6ea436d0a1773c85a63b90787ab12ef94532cca95d72897d19"
+  },
+  {
+    "id": "darkroom_wide",
+    "task": "T-027-暗房",
+    "kind": "imagegen",
+    "file": "assets/2d/T-027-暗房/darkroom_透视_wide-v2.png",
+    "prompt": "assets/2d/T-027-暗房/prompts/darkroom_wide-v2.txt",
+    "status": "退回修订",
+    "notes": "需修：瓶签及相纸伪文字；通风口落在侧墙",
+    "size": [
+      1672,
+      941
+    ],
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a138d3-0bf2-74b2-883e-2efcedc505f6/exec-7a8da795-6b89-4ceb-9575-3dafe2e1014f.png",
+    "sha256": "9475d2adcc18684ecd1baab1f6e0d0cc31b86f0db9a8c416a614d8321985887e"
+  },
+  {
+    "id": "archive_archive_mid",
+    "task": "T-028-照片档案室",
+    "kind": "imagegen",
+    "file": "assets/2d/T-028-照片档案室/archive_透视_archive_mid-v2.png",
+    "prompt": "assets/2d/T-028-照片档案室/prompts/archive_archive_mid-v2.txt",
+    "status": "退回修订",
+    "notes": "需修：多余摄影设备、现代感活页簿和装饰灯；桌面照片尺寸偏小",
+    "size": [
+      1672,
+      941
+    ],
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a138d3-0bf2-74b2-883e-2efcedc505f6/exec-336b715a-b890-4fb4-862e-fe6efb5ecd5e.png",
+    "sha256": "a5b9b24d0a8f0bf8d31e247411ba9117c10ad84175cb995d099dac2101f5ab0b"
+  }
+]

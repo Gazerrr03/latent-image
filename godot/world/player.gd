@@ -121,7 +121,7 @@ func _update_hover() -> void:
 	var id := ""
 	if ray.is_colliding():
 		var c := ray.get_collider()
-		if c and c.has_meta("hotspot_id"):
+		if c and c.has_meta("hotspot_id") and Director.world.active_hotspots.has(c.get_meta("hotspot_id")):
 			id = c.get_meta("hotspot_id")
 	if id == _hover:
 		return

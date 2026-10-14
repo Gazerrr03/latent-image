@@ -1,0 +1,272 @@
+[
+  {
+    "id": "dining_dining_mid_v2",
+    "task": "T-029-餐厅",
+    "room": "dining",
+    "camera": "dining_mid",
+    "file": "assets/2d/T-029-餐厅/dining_透视_dining_mid-v2.png",
+    "prompt_file": "assets/2d/T-029-餐厅/prompts/dining_dining_mid_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m English manor dining room. Modest long walnut table with eight distinct chairs, a ninth unoccupied place setting exists as extra crockery rather than extra seated person. Eight seats in total. White plain porcelain, ivory linen, tarnished silver. Warm chandelier above and candles. Sideboard against left wall, kitchen door back-right. Empty of people, retain a clear space for Constance near head of table. No red lamps. Camera/composition: Camera (1.8,1.6,1.8) toward (-0.4,1.1,-1): diagonal overview from back-right, entire eight-chair table, sideboard and kitchen door readable. One extra place setting is visibly untouched at a near-side seat. Dark walnut and deep muted green textiles. Intended camera position: ['1.8', '1.6', '1.8'] target ['-0.4', '1.1', '-1.0'].",
+    "refs": []
+  },
+  {
+    "id": "dining_table_close_v2",
+    "task": "T-029-餐厅",
+    "room": "dining",
+    "camera": "table_close",
+    "file": "assets/2d/T-029-餐厅/dining_透视_table_close-v2.png",
+    "prompt_file": "assets/2d/T-029-餐厅/prompts/dining_table_close_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m English manor dining room. Modest long walnut table with eight distinct chairs, a ninth unoccupied place setting exists as extra crockery rather than extra seated person. Eight seats in total. White plain porcelain, ivory linen, tarnished silver. Warm chandelier above and candles. Sideboard against left wall, kitchen door back-right. Empty of people, retain a clear space for Constance near head of table. No red lamps. Camera/composition: Camera (0.6,1.5,0.6) toward (0,0.8,-0.5): gently downward close view of one EMPTY place setting at table. Two nearby place settings partly visible for normal context; plates and cutlery ordinary and consistent. Show an extra clean plate-and-glass laid out with no person; no supernatural damage. Intended camera position: ['0.6', '1.5', '0.6'] target ['0', '0.8', '-0.5'].",
+    "refs": []
+  },
+  {
+    "id": "dining_dining_entry_v2",
+    "task": "T-029-餐厅",
+    "room": "dining",
+    "camera": "dining_entry",
+    "file": "assets/2d/T-029-餐厅/dining_透视_dining_entry-v2.png",
+    "prompt_file": "assets/2d/T-029-餐厅/prompts/dining_dining_entry_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m English manor dining room. Modest long walnut table with eight distinct chairs, a ninth unoccupied place setting exists as extra crockery rather than extra seated person. Eight seats in total. White plain porcelain, ivory linen, tarnished silver. Warm chandelier above and candles. Sideboard against left wall, kitchen door back-right. Empty of people, retain a clear space for Constance near head of table. No red lamps. Camera/composition: Additional side-wall view: table stretches across image, chandelier and eight chairs, foreground sideboard holding plain porcelain, back-right kitchen service door. Quiet room lit by warm lamps, no people. Intended camera position: [0, 1.6, 2.0] target [0, 0.8, -0.8].",
+    "refs": []
+  },
+  {
+    "id": "greenhouse_green_mid_v2",
+    "task": "T-030-温室",
+    "room": "greenhouse",
+    "camera": "green_mid",
+    "file": "assets/2d/T-030-温室/greenhouse_透视_green_mid-v2.png",
+    "prompt_file": "assets/2d/T-030-温室/prompts/greenhouse_green_mid_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6m square Victorian-style greenhouse in 1926. Pitched glass roof and walls with slim dark cast iron ribs, wet glass, real overcast grey-green daylight. Left-front potting racks, dark wooden workbench with an unprinted cream pharmacy receipt, clay pots and period hand tools. Hand-operated cast iron water pump with stone catch-basin at rear-right. LEFT side door leads to a NARROW indoor passage in main house, NOT directly into photographic darkroom. Wood door with inner sliding bolt, no signage. Moist earth and plants, no neon. Camera/composition: Camera (-1.5,1.6,1.8) looking to (0.6,1.2,-1): eye-level diagonally across greenhouse. All iron roof ribs, potting bench left, water pump rear-right, left side door to indoor passage visible. Empty work area for gardener. Intended camera position: ['-1.5', '1.6', '1.8'] target ['0.6', '1.2', '-1.0'].",
+    "refs": []
+  },
+  {
+    "id": "greenhouse_pump_detail_v2",
+    "task": "T-030-温室",
+    "room": "greenhouse",
+    "camera": "pump_detail",
+    "file": "assets/2d/T-030-温室/greenhouse_透视_pump_detail-v2.png",
+    "prompt_file": "assets/2d/T-030-温室/prompts/greenhouse_pump_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6m square Victorian-style greenhouse in 1926. Pitched glass roof and walls with slim dark cast iron ribs, wet glass, real overcast grey-green daylight. Left-front potting racks, dark wooden workbench with an unprinted cream pharmacy receipt, clay pots and period hand tools. Hand-operated cast iron water pump with stone catch-basin at rear-right. LEFT side door leads to a NARROW indoor passage in main house, NOT directly into photographic darkroom. Wood door with inner sliding bolt, no signage. Moist earth and plants, no neon. Camera/composition: Additional close low eye-level camera near rear-right water pump and basin. Rough canvas gloves laid on stone rim, pump lever and wet stone readable, greenhouse plants background. No human or disembodied hand, no evidence text. Intended camera position: [0.9, 1.55, 2.2] target [1.8, 0.6, 1.2].",
+    "refs": []
+  },
+  {
+    "id": "greenhouse_side_door_v2",
+    "task": "T-030-温室",
+    "room": "greenhouse",
+    "camera": "side_door",
+    "file": "assets/2d/T-030-温室/greenhouse_透视_side_door-v2.png",
+    "prompt_file": "assets/2d/T-030-温室/prompts/greenhouse_side_door_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6m square Victorian-style greenhouse in 1926. Pitched glass roof and walls with slim dark cast iron ribs, wet glass, real overcast grey-green daylight. Left-front potting racks, dark wooden workbench with an unprinted cream pharmacy receipt, clay pots and period hand tools. Hand-operated cast iron water pump with stone catch-basin at rear-right. LEFT side door leads to a NARROW indoor passage in main house, NOT directly into photographic darkroom. Wood door with inner sliding bolt, no signage. Moist earth and plants, no neon. Camera/composition: Additional view toward LEFT SIDE door. Wooden door opens into a short quiet plaster corridor; a stair could continue beyond frame but do not depict a solved total floor plan. Sliding inner bolt in sharp focus, tiny dark wool fibre caught on bolt visible without label. Plant shadows green-grey. Intended camera position: [-0.8, 1.6, 0.5] target [-2.95, 1, 0.5].",
+    "refs": []
+  },
+  {
+    "id": "child_room_child_mid_v2",
+    "task": "T-031-艾瑞斯的房间",
+    "room": "child_room",
+    "camera": "child_mid",
+    "file": "assets/2d/T-031-艾瑞斯的房间/child_room_透视_child_mid-v2.png",
+    "prompt_file": "assets/2d/T-031-艾瑞斯的房间/prompts/child_room_child_mid_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 4m square 1926 young child bedroom. Narrow small wood bed left-front, cream bedding and muted powder-blue blanket. Front wall has six blank cream drawing sheets pinned up awaiting separate artwork; NO pictures of multiple people. Small wooden music box on a low cabinet at right. Plain cloth doll, modest wood blocks and tidily closed toy basket. One leaded window, soft cream lamplight and grey daylight. Slightly too orderly and quiet, never horror. NO child in environment image. Camera/composition: Camera (-1.2,1.3,1.5) looking (0.4,0.9,-0.8): low eye-level overview. Small bed left, six drawing sheets ahead, music box right, wooden toys carefully arranged. Intended camera position: ['-1.2', '1.3', '1.5'] target ['0.4', '0.9', '-0.8'].",
+    "refs": []
+  },
+  {
+    "id": "child_room_drawings_detail_v2",
+    "task": "T-031-艾瑞斯的房间",
+    "room": "child_room",
+    "camera": "drawings_detail",
+    "file": "assets/2d/T-031-艾瑞斯的房间/child_room_透视_drawings_detail-v2.png",
+    "prompt_file": "assets/2d/T-031-艾瑞斯的房间/prompts/child_room_drawings_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 4m square 1926 young child bedroom. Narrow small wood bed left-front, cream bedding and muted powder-blue blanket. Front wall has six blank cream drawing sheets pinned up awaiting separate artwork; NO pictures of multiple people. Small wooden music box on a low cabinet at right. Plain cloth doll, modest wood blocks and tidily closed toy basket. One leaded window, soft cream lamplight and grey daylight. Slightly too orderly and quiet, never horror. NO child in environment image. Camera/composition: Additional front-wall close view of six pinned blank paper sheets with slightly curled edges. Low writing surface and a few dull coloured crayons below, cream warm light. Paper completely unprinted; no family faces or occult marks. Intended camera position: [0.6, 1.4, -0.5] target [0.6, 1.4, -1.97].",
+    "refs": []
+  },
+  {
+    "id": "child_room_musicbox_detail_v2",
+    "task": "T-031-艾瑞斯的房间",
+    "room": "child_room",
+    "camera": "musicbox_detail",
+    "file": "assets/2d/T-031-艾瑞斯的房间/child_room_透视_musicbox_detail-v2.png",
+    "prompt_file": "assets/2d/T-031-艾瑞斯的房间/prompts/child_room_musicbox_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 4m square 1926 young child bedroom. Narrow small wood bed left-front, cream bedding and muted powder-blue blanket. Front wall has six blank cream drawing sheets pinned up awaiting separate artwork; NO pictures of multiple people. Small wooden music box on a low cabinet at right. Plain cloth doll, modest wood blocks and tidily closed toy basket. One leaded window, soft cream lamplight and grey daylight. Slightly too orderly and quiet, never horror. NO child in environment image. Camera/composition: Additional close view of closed hand-carved wooden musical box on bedside cabinet, tiny brass winding key, cloth doll and neat row of wood blocks. Bed and soft curtain out of focus behind. Period furniture, no modern toy. Intended camera position: [0.4, 1.1, 1.5] target [1.1, 0.6, 0.9].",
+    "refs": []
+  },
+  {
+    "id": "garden_vent_v2",
+    "task": "T-032-花园·通风口外侧",
+    "room": "garden",
+    "camera": "vent",
+    "file": "assets/2d/T-032-花园·通风口外侧/garden_透视_vent-v2.png",
+    "prompt_file": "assets/2d/T-032-花园·通风口外侧/prompts/garden_vent_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 8m square garden investigation patch outside stone wall of darkroom wing, misty overcast morning, wet pale limestone and darker muddy ground. ONE rectangular iron louver vent 0.40x0.30m, local centre 2.20m above same local floor datum as inside darkroom; block wall above and below. Under vent wet dark muddy patch, half impression of a male leather shoe, not a boot, no measurable size marks. Adjacent neighbouring wing has a small deep stone window sill offset to LEFT; this is not a darkroom window. A muted cast iron greenhouse visible farther RIGHT, narrow path and low shrubs. Camera/composition: Camera (1,1.6,-1) toward (1,0.8,-3.4): near outside wall, downward to wet muddy shoe impression below vent. Vent is HIGH on wall in upper part of frame; only one vent. Damp masonry has louver scratches and a few dark cotton fibres but no hanging blocking cloth now. Intended camera position: ['1.0', '1.6', '-1.0'] target ['1.0', '0.8', '-3.4'].",
+    "refs": []
+  },
+  {
+    "id": "garden_garden_wide_v2",
+    "task": "T-032-花园·通风口外侧",
+    "room": "garden",
+    "camera": "garden_wide",
+    "file": "assets/2d/T-032-花园·通风口外侧/garden_透视_garden_wide-v2.png",
+    "prompt_file": "assets/2d/T-032-花园·通风口外侧/prompts/garden_garden_wide_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 8m square garden investigation patch outside stone wall of darkroom wing, misty overcast morning, wet pale limestone and darker muddy ground. ONE rectangular iron louver vent 0.40x0.30m, local centre 2.20m above same local floor datum as inside darkroom; block wall above and below. Under vent wet dark muddy patch, half impression of a male leather shoe, not a boot, no measurable size marks. Adjacent neighbouring wing has a small deep stone window sill offset to LEFT; this is not a darkroom window. A muted cast iron greenhouse visible farther RIGHT, narrow path and low shrubs. Camera/composition: Additional three-quarter context view from farther along garden path: darkroom wing masonry and its single high vent left, greenhouse farther right, dark muddy patch exactly under vent, shrubs lower foreground. Do not solve whether the manor floor sits half-level; local geometry only. Intended camera position: [-2, 1.6, 2.4] target [1, 1.3, -3.5].",
+    "refs": []
+  },
+  {
+    "id": "garden_mud_detail_v2",
+    "task": "T-032-花园·通风口外侧",
+    "room": "garden",
+    "camera": "mud_detail",
+    "file": "assets/2d/T-032-花园·通风口外侧/garden_透视_mud_detail-v2.png",
+    "prompt_file": "assets/2d/T-032-花园·通风口外侧/prompts/garden_mud_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 8m square garden investigation patch outside stone wall of darkroom wing, misty overcast morning, wet pale limestone and darker muddy ground. ONE rectangular iron louver vent 0.40x0.30m, local centre 2.20m above same local floor datum as inside darkroom; block wall above and below. Under vent wet dark muddy patch, half impression of a male leather shoe, not a boot, no measurable size marks. Adjacent neighbouring wing has a small deep stone window sill offset to LEFT; this is not a darkroom window. A muted cast iron greenhouse visible farther RIGHT, narrow path and low shrubs. Camera/composition: Additional low macro camera showing half leather-soled shoe print pressed into wet dark earth directly below wall. Print partial, never full identifiable matching pattern, no ruler or numbers. Iron louver can crop at top, stone sill further left. Intended camera position: [1, 0.8, -1.8] target [1, 0.02, -3].",
+    "refs": []
+  },
+  {
+    "id": "seance_seance_mid_v2",
+    "task": "T-033-客厅·降灵会",
+    "room": "seance",
+    "camera": "seance_mid",
+    "file": "assets/2d/T-033-客厅·降灵会/seance_透视_seance_mid-v2.png",
+    "prompt_file": "assets/2d/T-033-客厅·降灵会/prompts/seance_seance_mid_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m drawing room prepared for a 1926 seance. Central round dark walnut table diameter 1.4m with four unoccupied chairs, three modest candles on table as the ONLY lit source. Thick dull plum velvet curtains fully CLOSED. Small old sofa at left, cast-iron fireplace at right UNLIT. Empty place beyond table reserved for one veiled medium later. No people, ghosts, spirit board, pentagram or fantasy objects. Spacious dark areas, subtle warm reflections. Camera/composition: Camera (0,1.5,1.2) looking straight to (0,1.2,-1.6): table candle flames foreground, empty chair beyond table centre. Closed curtains and sofa partly visible in dark. Intended camera position: ['0', '1.5', '1.2'] target ['0', '1.2', '-1.6'].",
+    "refs": []
+  },
+  {
+    "id": "seance_table_detail_v2",
+    "task": "T-033-客厅·降灵会",
+    "room": "seance",
+    "camera": "table_detail",
+    "file": "assets/2d/T-033-客厅·降灵会/seance_透视_table_detail-v2.png",
+    "prompt_file": "assets/2d/T-033-客厅·降灵会/prompts/seance_table_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m drawing room prepared for a 1926 seance. Central round dark walnut table diameter 1.4m with four unoccupied chairs, three modest candles on table as the ONLY lit source. Thick dull plum velvet curtains fully CLOSED. Small old sofa at left, cast-iron fireplace at right UNLIT. Empty place beyond table reserved for one veiled medium later. No people, ghosts, spirit board, pentagram or fantasy objects. Spacious dark areas, subtle warm reflections. Camera/composition: Additional close view at table rim: three ivory candles in tarnished brass holders, wax drops, thick walnut grain, empty chair behind. Candle glow and deep surrounding black. No faces, hands, letters or occult markings. Intended camera position: [0.7, 1.4, 0.1] target [0, 0.9, -0.6].",
+    "refs": []
+  },
+  {
+    "id": "seance_seance_side_v2",
+    "task": "T-033-客厅·降灵会",
+    "room": "seance",
+    "camera": "seance_side",
+    "file": "assets/2d/T-033-客厅·降灵会/seance_透视_seance_side-v2.png",
+    "prompt_file": "assets/2d/T-033-客厅·降灵会/prompts/seance_seance_side_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m drawing room prepared for a 1926 seance. Central round dark walnut table diameter 1.4m with four unoccupied chairs, three modest candles on table as the ONLY lit source. Thick dull plum velvet curtains fully CLOSED. Small old sofa at left, cast-iron fireplace at right UNLIT. Empty place beyond table reserved for one veiled medium later. No people, ghosts, spirit board, pentagram or fantasy objects. Spacious dark areas, subtle warm reflections. Camera/composition: Additional lateral room view showing heavy closed curtains, round table to side and an unlit hearth; only table candles light the scene. Curtains are old but clean, no horror decay. Intended camera position: [2, 1.6, 1] target [0, 1, -1.2].",
+    "refs": []
+  },
+  {
+    "id": "hall_hall_mid_v2",
+    "task": "T-034-门厅",
+    "room": "hall",
+    "camera": "hall_mid",
+    "file": "assets/2d/T-034-门厅/hall_透视_hall_mid-v2.png",
+    "prompt_file": "assets/2d/T-034-门厅/prompts/hall_hall_mid_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m 1926 manor entrance hall. Main exterior door on back wall opening INWARD, wet blue rainy night beyond. Narrow walnut-framed vertical mirror on RIGHT wall reflecting ONLY entrance door, empty hat stand and warm hanging lamp. An old tall grandfather clock near back LEFT with blank dial, minute hand up and hour hand down-left toward seven. Dark hat stand rear-right. Staircase farther front-left to upper floor, broad enough for walking. No people, detective reflection, visible viewer or modern items. Camera/composition: Camera (1.2,1.65,2) toward (-2.2,1,-1): diagonal entrance view to front-left stair. Stair, old clock and a glimpse of side mirror provide readable landmarks under a single amber hanging lamp. Intended camera position: ['1.2', '1.65', '2.0'] target ['-2.2', '1.0', '-1.0'].",
+    "refs": []
+  },
+  {
+    "id": "hall_mirror_detail_v2",
+    "task": "T-034-门厅",
+    "room": "hall",
+    "camera": "mirror_detail",
+    "file": "assets/2d/T-034-门厅/hall_透视_mirror_detail-v2.png",
+    "prompt_file": "assets/2d/T-034-门厅/prompts/hall_mirror_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m 1926 manor entrance hall. Main exterior door on back wall opening INWARD, wet blue rainy night beyond. Narrow walnut-framed vertical mirror on RIGHT wall reflecting ONLY entrance door, empty hat stand and warm hanging lamp. An old tall grandfather clock near back LEFT with blank dial, minute hand up and hour hand down-left toward seven. Dark hat stand rear-right. Staircase farther front-left to upper floor, broad enough for walking. No people, detective reflection, visible viewer or modern items. Camera/composition: Additional right-wall close view of full mirror. Mirror reflects ONLY main door, empty hat stand and lamp, NO photographer and NO human shadow. Wooden mirror frame, rain visible beyond reflected door. Clever diagonal composition. Intended camera position: [1, 1.5, 0.3] target [2.95, 1.5, -0.5].",
+    "refs": []
+  },
+  {
+    "id": "hall_stairs_v2",
+    "task": "T-034-门厅",
+    "room": "hall",
+    "camera": "stairs",
+    "file": "assets/2d/T-034-门厅/hall_透视_stairs-v2.png",
+    "prompt_file": "assets/2d/T-034-门厅/prompts/hall_stairs_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6x5m 1926 manor entrance hall. Main exterior door on back wall opening INWARD, wet blue rainy night beyond. Narrow walnut-framed vertical mirror on RIGHT wall reflecting ONLY entrance door, empty hat stand and warm hanging lamp. An old tall grandfather clock near back LEFT with blank dial, minute hand up and hour hand down-left toward seven. Dark hat stand rear-right. Staircase farther front-left to upper floor, broad enough for walking. No people, detective reflection, visible viewer or modern items. Camera/composition: Additional view at foot of stairs upward toward second floor. Warm banister, worn wood treads, subtle landing door, clock lower-left if visible with correct two hands. No portraits containing faces, no writing. Intended camera position: [1.5, 1.6, 1.7] target [-1.2, 1, -1.7].",
+    "refs": []
+  },
+  {
+    "id": "train_seat_v2",
+    "task": "T-035-火车车厢",
+    "room": "train",
+    "camera": "seat",
+    "file": "assets/2d/T-035-火车车厢/train_透视_seat-v2.png",
+    "prompt_file": "assets/2d/T-035-火车车厢/prompts/train_seat_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 1926 British GWR-style private compartment in actual present-time prologue, NOT a tape recording. Facing upholstered bench seats, restrained dark blue wool, glossy walnut panelling, brass fittings, luggage rack, small table and one folded blank cream letter. Wide window to misty English countryside at dusk: lone tree, low stone wall, shepherd with indistinct tiny distant figure outside only if needed, prefer no figure. Warm carriage lamps contrast cold blue window. No railway branding or readable ticket. Camera/composition: Camera (0.6,1.3,1.2) to (-1.5,1.3,0): seated-eye view toward large left window and facing bench. Small table with unprinted letter, brass rack above, plausible compartment proportions. Intended camera position: ['0.6', '1.3', '1.2'] target ['-1.5', '1.3', '0.0'].",
+    "refs": []
+  },
+  {
+    "id": "train_letter_close_v2",
+    "task": "T-035-火车车厢",
+    "room": "train",
+    "camera": "letter_close",
+    "file": "assets/2d/T-035-火车车厢/train_透视_letter_close-v2.png",
+    "prompt_file": "assets/2d/T-035-火车车厢/prompts/train_letter_close_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 1926 British GWR-style private compartment in actual present-time prologue, NOT a tape recording. Facing upholstered bench seats, restrained dark blue wool, glossy walnut panelling, brass fittings, luggage rack, small table and one folded blank cream letter. Wide window to misty English countryside at dusk: lone tree, low stone wall, shepherd with indistinct tiny distant figure outside only if needed, prefer no figure. Warm carriage lamps contrast cold blue window. No railway branding or readable ticket. Camera/composition: Camera (0.35,1.25,0.6) to (0.1,0.72,0): close downward view of one folded blank cream letter on small glossy wood table. Leather luggage corner and blue wool seats secondary. No hand, no text. Intended camera position: ['0.35', '1.25', '0.6'] target ['0.1', '0.72', '0.0'].",
+    "refs": []
+  },
+  {
+    "id": "train_compartment_wide_v2",
+    "task": "T-035-火车车厢",
+    "room": "train",
+    "camera": "compartment_wide",
+    "file": "assets/2d/T-035-火车车厢/train_透视_compartment_wide-v2.png",
+    "prompt_file": "assets/2d/T-035-火车车厢/prompts/train_compartment_wide_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 1926 British GWR-style private compartment in actual present-time prologue, NOT a tape recording. Facing upholstered bench seats, restrained dark blue wool, glossy walnut panelling, brass fittings, luggage rack, small table and one folded blank cream letter. Wide window to misty English countryside at dusk: lone tree, low stone wall, shepherd with indistinct tiny distant figure outside only if needed, prefer no figure. Warm carriage lamps contrast cold blue window. No railway branding or readable ticket. Camera/composition: Additional wide inside-compartment overview, TWO facing blue bench seats, large countryside window left, table between, overhead brass luggage racks. No modern corridor carriage and no passengers. Intended camera position: [1.1, 1.6, 2.4] target [0, 1, 0].",
+    "refs": []
+  },
+  {
+    "id": "manor_gate_wide_symmetric_v2",
+    "task": "T-036-奥瑞尔庄园外景",
+    "room": "manor_gate",
+    "camera": "wide_symmetric",
+    "file": "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_wide_symmetric-v2.png",
+    "prompt_file": "assets/2d/T-036-奥瑞尔庄园外景/prompts/manor_gate_wide_symmetric_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 1926 English Wiltshire manor at rainy night, understated weathered limestone, symmetric 16m-wide two-storey facade, central upper-floor projecting ORIEL bay window supported by a stone corbel, repeated lit narrow casement windows. Plain central entry below. Cast iron gate in foreground, damp gravel drive, trees and hedges. Cold indigo sky and restrained warm amber light, no ghostly faces, no titles. Camera/composition: Camera (0,1.6,4) looking (0,3.5,-13): from gate centred on facade, symmetrical whole manor behind modest iron gate. Upper projecting oriel prominent, wet gravel drive leads to front door. Intended camera position: ['0', '1.6', '4.0'] target ['0', '3.5', '-13.0'].",
+    "refs": []
+  },
+  {
+    "id": "manor_gate_gate_detail_v2",
+    "task": "T-036-奥瑞尔庄园外景",
+    "room": "manor_gate",
+    "camera": "gate_detail",
+    "file": "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_gate_detail-v2.png",
+    "prompt_file": "assets/2d/T-036-奥瑞尔庄园外景/prompts/manor_gate_gate_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 1926 English Wiltshire manor at rainy night, understated weathered limestone, symmetric 16m-wide two-storey facade, central upper-floor projecting ORIEL bay window supported by a stone corbel, repeated lit narrow casement windows. Plain central entry below. Cast iron gate in foreground, damp gravel drive, trees and hedges. Cold indigo sky and restrained warm amber light, no ghostly faces, no titles. Camera/composition: Additional camera nearer wrought iron entrance gate looking through vertical bars toward illuminated manor and central oriel. Gate details and wet limestone pillars tactile, no coat of arms with letters. Intended camera position: [1.5, 1.6, 0] target [0, 2, -4].",
+    "refs": []
+  },
+  {
+    "id": "manor_gate_oriel_detail_v2",
+    "task": "T-036-奥瑞尔庄园外景",
+    "room": "manor_gate",
+    "camera": "oriel_detail",
+    "file": "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_oriel_detail-v2.png",
+    "prompt_file": "assets/2d/T-036-奥瑞尔庄园外景/prompts/manor_gate_oriel_detail_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 1926 English Wiltshire manor at rainy night, understated weathered limestone, symmetric 16m-wide two-storey facade, central upper-floor projecting ORIEL bay window supported by a stone corbel, repeated lit narrow casement windows. Plain central entry below. Cast iron gate in foreground, damp gravel drive, trees and hedges. Cold indigo sky and restrained warm amber light, no ghostly faces, no titles. Camera/composition: Additional architectural detail of central upper-storey projecting oriel bay, stone corbel and leaded glass, side angle clearly shows it projects OUT beyond main wall, amber inside, cold rain on stone. No person in window. Intended camera position: [0, 2, -6] target [0, 4, -10.9].",
+    "refs": []
+  },
+  {
+    "id": "monitor_room_screens_close_v2",
+    "task": "T-037-尾声·白色的房间",
+    "room": "monitor_room",
+    "camera": "screens_close",
+    "file": "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_screens_close-v2.png",
+    "prompt_file": "assets/2d/T-037-尾声·白色的房间/prompts/monitor_room_screens_close_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. Modern very plain empty white room 10m wide 8m deep 4m high. Exactly TWELVE horizontal landscape blank display panels in ONE straight evenly spaced row on front wall. Each panel 0.70m wide x0.50m high, 0.10m gaps, total strip 9.5m wide. Display centre height 1.40m. Only white plaster walls, white matte floor, slim unobtrusive bezel and flat cool-white ambient light. Absolutely no people, silhouettes, operator, instruments, chair, cables, control console, futuristic city, printed text, number or footage inside displays; screens muted neutral grey waiting for program textures. Camera/composition: Camera (0,1.5,-2.2) to (0,1.4,-3.8): close oblique eye-level inspection of CENTRAL FEW landscape screens, cropped neighbours acceptable because this is close shot. Panels really landscape 7:5, not tall tablets. Blank grey faces and quiet thin frames, wall white. Intended camera position: ['0', '1.5', '-2.2'] target ['0', '1.4', '-3.8'].",
+    "refs": []
+  },
+  {
+    "id": "monitor_room_wall_v2",
+    "task": "T-037-尾声·白色的房间",
+    "room": "monitor_room",
+    "camera": "wall",
+    "file": "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_wall-v2.png",
+    "prompt_file": "assets/2d/T-037-尾声·白色的房间/prompts/monitor_room_wall_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. Modern very plain empty white room 10m wide 8m deep 4m high. Exactly TWELVE horizontal landscape blank display panels in ONE straight evenly spaced row on front wall. Each panel 0.70m wide x0.50m high, 0.10m gaps, total strip 9.5m wide. Display centre height 1.40m. Only white plaster walls, white matte floor, slim unobtrusive bezel and flat cool-white ambient light. Absolutely no people, silhouettes, operator, instruments, chair, cables, control console, futuristic city, printed text, number or footage inside displays; screens muted neutral grey waiting for program textures. Camera/composition: Camera (0,1.8,2.5) toward (0,1.4,-3.8), full wide frontal view: count EXACTLY TWELVE landscape 7:5 screens in ONE row, all same size and same height. No second row and no thirteenth screen. Near empty white floor foreground, diffused shadowless illumination. Intended camera position: ['0', '1.8', '2.5'] target ['0', '1.4', '-3.8'].",
+    "refs": []
+  },
+  {
+    "id": "monitor_room_oblique_v2",
+    "task": "T-037-尾声·白色的房间",
+    "room": "monitor_room",
+    "camera": "oblique",
+    "file": "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_oblique-v2.png",
+    "prompt_file": "assets/2d/T-037-尾声·白色的房间/prompts/monitor_room_oblique_v2.txt",
+    "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. Modern very plain empty white room 10m wide 8m deep 4m high. Exactly TWELVE horizontal landscape blank display panels in ONE straight evenly spaced row on front wall. Each panel 0.70m wide x0.50m high, 0.10m gaps, total strip 9.5m wide. Display centre height 1.40m. Only white plaster walls, white matte floor, slim unobtrusive bezel and flat cool-white ambient light. Absolutely no people, silhouettes, operator, instruments, chair, cables, control console, futuristic city, printed text, number or footage inside displays; screens muted neutral grey waiting for program textures. Camera/composition: Additional eye-level oblique camera from rear-right showing expansive bare white floor leading to same ONE row of exactly twelve landscape displays; no floor grid. Architectural restraint, subtle cool white surfaces. Intended camera position: [4, 1.7, 2] target [-1, 1.4, -3.85].",
+    "refs": []
+  }
+]

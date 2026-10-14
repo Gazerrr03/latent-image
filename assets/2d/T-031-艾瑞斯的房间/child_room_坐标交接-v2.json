@@ -1,0 +1,137 @@
+{
+  "room": "child_room",
+  "source_hash": "5d1e31557c4d351dd0783d57f93544520eee89db3a0fbddebc04694e4f5bd4f1",
+  "metres_to_pdf_points": 56.69291338582678,
+  "scale": "1:50",
+  "page_mm": [
+    420.0,
+    297.0
+  ],
+  "room_rectangle_pdf_points": [
+    257.9527559055118,
+    136.06299212598427,
+    484.72440944881896,
+    362.8346456692914
+  ],
+  "current_layout": [
+    {
+      "room": "child_room",
+      "type": "出生点",
+      "id": "spawn",
+      "x": "0",
+      "y": "0",
+      "z": "1.4",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0",
+      "look_y": "0",
+      "look_z": "0",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "child_room",
+      "type": "灯光",
+      "id": "",
+      "x": "0",
+      "y": "2.6",
+      "z": "0",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#ffd9a8",
+      "energy": "2.0",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "child_room",
+      "type": "机位",
+      "id": "child_mid",
+      "x": "-1.2",
+      "y": "1.3",
+      "z": "1.5",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0.4",
+      "look_y": "0.9",
+      "look_z": "-0.8",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "child_room",
+      "type": "家具",
+      "id": "小床",
+      "x": "-1.3",
+      "y": "0",
+      "z": "-1.0",
+      "w": "0.8",
+      "h": "0.45",
+      "d": "1.5",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#8a7a68",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "child_room",
+      "type": "家具",
+      "id": "墙上的画",
+      "x": "0.6",
+      "y": "1.0",
+      "z": "-1.97",
+      "w": "1.6",
+      "h": "0.8",
+      "d": "0.02",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#e8e0d0",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    }
+  ],
+  "proposed_furniture": [
+    [
+      "窗",
+      1.2,
+      -1.97,
+      1,
+      0.06
+    ],
+    [
+      "八音盒",
+      1.3,
+      0.4,
+      0.25,
+      0.25
+    ],
+    [
+      "玩具箱",
+      1.25,
+      1.35,
+      0.65,
+      0.45
+    ]
+  ],
+  "proposed_entrance": [
+    "south",
+    0,
+    0.8
+  ],
+  "global_floor_alignment": "待团队决定"
+}

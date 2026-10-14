@@ -1,0 +1,12 @@
+{
+  "id": "greenhouse_pump_detail_v2",
+  "task": "T-030-温室",
+  "room": "greenhouse",
+  "camera": "pump_detail",
+  "file": "assets/2d/T-030-温室/greenhouse_透视_pump_detail-v2.png",
+  "prompt_file": "assets/2d/T-030-温室/prompts/greenhouse_pump_detail_v2.txt",
+  "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 6m square Victorian-style greenhouse in 1926. Pitched glass roof and walls with slim dark cast iron ribs, wet glass, real overcast grey-green daylight. Left-front potting racks, dark wooden workbench with an unprinted cream pharmacy receipt, clay pots and period hand tools. Hand-operated cast iron water pump with stone catch-basin at rear-right. LEFT side door leads to a NARROW indoor passage in main house, NOT directly into photographic darkroom. Wood door with inner sliding bolt, no signage. Moist earth and plants, no neon. Camera/composition: Additional close low eye-level camera near rear-right water pump and basin. Rough canvas gloves laid on stone rim, pump lever and wet stone readable, greenhouse plants background. No human or disembodied hand, no evidence text. Intended camera position: [0.9, 1.55, 2.2] target [1.8, 0.6, 1.2]. Reference image is the established greenhouse: preserve its iron ribs, weathered potting bench, stone basin and indoor corridor door. Produce the requested new camera view only.",
+  "refs": [
+    "assets/2d/T-030-温室/greenhouse_透视_green_mid-v2.png"
+  ]
+}

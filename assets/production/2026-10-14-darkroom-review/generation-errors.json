@@ -1,0 +1,9 @@
+[
+  {
+    "id": "iris_turnaround_v2",
+    "status": "工具拦截，未完成",
+    "error": "imagegen output moderation_blocked category sexual",
+    "request_id": "04f6e603-6d24-4a6c-9002-79e2cd886f4c",
+    "note": "请求为穿完整日常服装的儿童人物设定。未获得可用图像；保留缺口，不用占位图冒充。"
+  }
+]

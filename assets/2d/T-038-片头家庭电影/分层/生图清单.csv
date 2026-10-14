@@ -1,0 +1,15 @@
+asset_id,图层,提示词,参考图,画风
+layer_sky,天空,prompts/layer_sky.txt,,照片（背景）
+layer_manor,庄园立面,prompts/layer_manor.txt,,照片（背景）
+layer_tree_a,树（左）,prompts/layer_tree_a.txt,,照片（背景）
+layer_tree_b,树（右）,prompts/layer_tree_b.txt,,照片（背景）
+layer_ground_far,远地排,prompts/layer_ground_far.txt,,照片（背景）
+layer_ground_mid,中地排,prompts/layer_ground_mid.txt,,照片（背景）
+layer_ground_near,近地排,prompts/layer_ground_near.txt,,照片（背景）
+layer_path,砾石小路,prompts/layer_path.txt,,照片（背景）
+layer_tripod,三脚架相机,prompts/layer_tripod.txt,,照片（背景）
+layer_grass_fore,前景草,prompts/layer_grass_fore.txt,,照片（背景）
+ambrose_scribble,安布罗斯,prompts/ambrose_scribble.txt,../T-024-人物三视图/ambrose/ambrose_三视图.png,乱涂剪纸（人物）
+constance_scribble,康斯坦斯,prompts/constance_scribble.txt,../T-024-人物三视图/constance/constance_三视图.png,乱涂剪纸（人物）
+gideon_scribble,吉迪恩,prompts/gideon_scribble.txt,../T-024-人物三视图/gideon/gideon_三视图.png,乱涂剪纸（人物）
+penrose_scribble,多出来的人（彭罗斯）,prompts/penrose_scribble.txt,,未完成的铅笔剪纸

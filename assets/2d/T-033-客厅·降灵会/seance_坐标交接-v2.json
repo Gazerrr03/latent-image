@@ -1,0 +1,137 @@
+{
+  "room": "seance",
+  "source_hash": "5d1e31557c4d351dd0783d57f93544520eee89db3a0fbddebc04694e4f5bd4f1",
+  "metres_to_pdf_points": 56.69291338582678,
+  "scale": "1:50",
+  "page_mm": [
+    420.0,
+    297.0
+  ],
+  "room_rectangle_pdf_points": [
+    201.25984251968507,
+    136.06299212598427,
+    541.4173228346457,
+    419.5275590551181
+  ],
+  "current_layout": [
+    {
+      "room": "seance",
+      "type": "出生点",
+      "id": "spawn",
+      "x": "0",
+      "y": "0",
+      "z": "1.8",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0",
+      "look_y": "0",
+      "look_z": "0",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "seance",
+      "type": "灯光",
+      "id": "",
+      "x": "0",
+      "y": "1.0",
+      "z": "-0.6",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#ffb060",
+      "energy": "1.6",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "seance",
+      "type": "机位",
+      "id": "seance_mid",
+      "x": "0",
+      "y": "1.5",
+      "z": "1.2",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0",
+      "look_y": "1.2",
+      "look_z": "-1.6",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "seance",
+      "type": "家具",
+      "id": "圆桌",
+      "x": "0",
+      "y": "0",
+      "z": "-0.6",
+      "w": "1.4",
+      "h": "0.75",
+      "d": "1.4",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#3a2a22",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "seance",
+      "type": "家具",
+      "id": "蜡烛",
+      "x": "0",
+      "y": "0.75",
+      "z": "-0.6",
+      "w": "0.05",
+      "h": "0.2",
+      "d": "0.05",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#f0e0c0",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    }
+  ],
+  "proposed_furniture": [
+    [
+      "闭合窗帘",
+      0,
+      -2.45,
+      3.4,
+      0.12
+    ],
+    [
+      "沙发",
+      2.3,
+      0.4,
+      0.7,
+      2
+    ],
+    [
+      "未点壁炉",
+      -2.8,
+      -0.7,
+      0.25,
+      1.2
+    ]
+  ],
+  "proposed_entrance": [
+    "south",
+    0,
+    1
+  ],
+  "global_floor_alignment": "待团队决定"
+}

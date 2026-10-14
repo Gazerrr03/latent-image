@@ -1,0 +1,155 @@
+{
+  "room": "greenhouse",
+  "source_hash": "5d1e31557c4d351dd0783d57f93544520eee89db3a0fbddebc04694e4f5bd4f1",
+  "metres_to_pdf_points": 56.69291338582678,
+  "scale": "1:50",
+  "page_mm": [
+    420.0,
+    297.0
+  ],
+  "room_rectangle_pdf_points": [
+    201.25984251968507,
+    136.06299212598427,
+    541.4173228346457,
+    476.22047244094495
+  ],
+  "current_layout": [
+    {
+      "room": "greenhouse",
+      "type": "出生点",
+      "id": "spawn",
+      "x": "0",
+      "y": "0",
+      "z": "2.0",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0",
+      "look_y": "0",
+      "look_z": "0",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "greenhouse",
+      "type": "灯光",
+      "id": "",
+      "x": "0",
+      "y": "3.2",
+      "z": "0",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#d8e8d0",
+      "energy": "2.0",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "greenhouse",
+      "type": "机位",
+      "id": "green_mid",
+      "x": "-1.5",
+      "y": "1.6",
+      "z": "1.8",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0.6",
+      "look_y": "1.2",
+      "look_z": "-1.0",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "greenhouse",
+      "type": "家具",
+      "id": "花架",
+      "x": "-1.8",
+      "y": "0",
+      "z": "-1.5",
+      "w": "1.6",
+      "h": "0.9",
+      "d": "0.6",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#5b4a3a",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "greenhouse",
+      "type": "家具",
+      "id": "井",
+      "x": "1.8",
+      "y": "0",
+      "z": "1.2",
+      "w": "0.8",
+      "h": "0.8",
+      "d": "0.8",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#6b6660",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "greenhouse",
+      "type": "家具",
+      "id": "通往暗房的侧门",
+      "x": "-2.95",
+      "y": "0",
+      "z": "0.5",
+      "w": "0.04",
+      "h": "2.0",
+      "d": "0.9",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#5b3f2a",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    }
+  ],
+  "proposed_furniture": [
+    [
+      "工作台",
+      0.6,
+      -1.5,
+      1.4,
+      0.6
+    ],
+    [
+      "签收单",
+      0.6,
+      -1.5,
+      0.2,
+      0.3
+    ],
+    [
+      "工具架",
+      -2.65,
+      -1.6,
+      0.25,
+      0.8
+    ]
+  ],
+  "proposed_entrance": [
+    "south",
+    0,
+    1
+  ],
+  "global_floor_alignment": "待团队决定"
+}

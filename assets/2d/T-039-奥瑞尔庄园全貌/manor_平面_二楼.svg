@@ -1,0 +1,368 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+<defs><pattern id="earth" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M-1,1 L1,-1 M0,2 L2,0 M1,3 L3,1" fill="none" stroke="#c5c0b5" stroke-width=".18"/></pattern>
+<marker id="arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="#276c88"/></marker>
+<marker id="gold" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="#a36b29"/></marker></defs>
+<style>text {font-family: 'Hiragino Sans GB','PingFang SC',sans-serif;fill:#29332e} .route{stroke:#276c88} .secret{stroke:#a36b29}</style>
+<rect width="420" height="297" fill="#fcfaf6"/>
+<text x="17" y="15" font-size="3" letter-spacing="1.3">ORIEL HOUSE / 奥瑞尔庄园 / T-039</text>
+<text x="17" y="28" font-size="8" font-family="Songti SC,serif">二楼 / 调查环线与秘密入口</text>
+<text x="17" y="36" font-size="3.1" fill="#727c70">楼面 +3.600 / 与后花园同高 / 正立面朝南</text>
+<text x="401" y="27" text-anchor="end" font-size="10">03</text>
+<path d="M17,41 H403 M17,282 H403" stroke="#bbb9ae" stroke-width=".25"/>
+<text x="17" y="290" font-size="2.8">设计草案 v1 / 2026-10-14 / 尺寸单位 m / 布局与视觉待用户验收</text>
+<text x="403" y="290" text-anchor="end" font-size="2.8">A3 · PDF 按 100% 打印；PNG 以比例尺为准</text>
+<rect x="12.000" y="42.500" width="285.000" height="100.000" fill="#eef0e5" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="12.000" y="42.500" width="285.000" height="100.000" fill="url(#earth)" stroke="none" stroke-width="0.25" opacity="0.3"/>
+<polyline points="12.000,266.500 12.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="22.000,266.500 22.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="32.000,266.500 32.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="42.000,266.500 42.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="52.000,266.500 52.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="62.000,266.500 62.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="72.000,266.500 72.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="82.000,266.500 82.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="92.000,266.500 92.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="102.000,266.500 102.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="112.000,266.500 112.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="122.000,266.500 122.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="132.000,266.500 132.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="142.000,266.500 142.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="152.000,266.500 152.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="162.000,266.500 162.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="172.000,266.500 172.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="182.000,266.500 182.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="192.000,266.500 192.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="202.000,266.500 202.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="212.000,266.500 212.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="222.000,266.500 222.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="232.000,266.500 232.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="242.000,266.500 242.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="252.000,266.500 252.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="262.000,266.500 262.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="272.000,266.500 272.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="282.000,266.500 282.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="292.000,266.500 292.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="302.000,266.500 302.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,266.500 302.000,266.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,256.500 302.000,256.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,246.500 302.000,246.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,236.500 302.000,236.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,226.500 302.000,226.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,216.500 302.000,216.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,206.500 302.000,206.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,196.500 302.000,196.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,186.500 302.000,186.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,176.500 302.000,176.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,166.500 302.000,166.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,156.500 302.000,156.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,146.500 302.000,146.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,136.500 302.000,136.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,126.500 302.000,126.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,116.500 302.000,116.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,106.500 302.000,106.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,96.500 302.000,96.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,86.500 302.000,86.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,76.500 302.000,76.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,66.500 302.000,66.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,56.500 302.000,56.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="12.000,46.500 302.000,46.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<rect x="42.000" y="142.500" width="192.000" height="114.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="231.000" y="209.500" width="56.000" height="56.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="234.000" y="212.500" width="50.000" height="50.000" fill="#e3e1dd" stroke="none" stroke-width="0.25" opacity="1"/>
+<text x="259.0" y="231.5" font-size="3.6" text-anchor="middle" style="fill:#29332e">厨房</text>
+<text x="259.0" y="239.5" font-size="2.9" text-anchor="middle" style="fill:#29332e">5.0 × 5.0</text>
+<rect x="231.000" y="209.500" width="56.000" height="56.000" fill="#dedbd4" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="234.000,256.500 284.000,256.500" fill="none" stroke="#b4b5aa" stroke-width="0.16" class=""/>
+<polyline points="234.000,246.500 284.000,246.500" fill="none" stroke="#b4b5aa" stroke-width="0.16" class=""/>
+<polyline points="234.000,236.500 284.000,236.500" fill="none" stroke="#b4b5aa" stroke-width="0.16" class=""/>
+<polyline points="234.000,226.500 284.000,226.500" fill="none" stroke="#b4b5aa" stroke-width="0.16" class=""/>
+<polyline points="234.000,216.500 284.000,216.500" fill="none" stroke="#b4b5aa" stroke-width="0.16" class=""/>
+<text x="259.0" y="231.5" font-size="3.1" text-anchor="middle" style="fill:#29332e">下层厨房屋顶</text>
+<text x="259.0" y="239.5" font-size="2.6" text-anchor="middle" style="fill:#29332e">低处服务院 ±0.000</text>
+<rect x="45.000" y="190.500" width="148.000" height="15.000" fill="#eee3cf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="45.000" y="208.500" width="45.000" height="45.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="93.000" y="208.500" width="15.000" height="45.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="111.000" y="208.500" width="54.000" height="45.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="168.000,253.500 231.000,253.500 231.000,216.500 193.000,216.500 193.000,208.500 168.000,208.500 168.000,253.500" fill="#e3e1dd" stroke="none" stroke-width="0.4" class=""/>
+<rect x="45.000" y="145.500" width="40.000" height="42.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="88.000" y="145.500" width="30.000" height="42.000" fill="#e3e1dd" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="121.000" y="145.500" width="30.000" height="42.000" fill="#eee3cf" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="122.500,178.500 134.500,178.500" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,175.700 134.500,175.700" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,172.900 134.500,172.900" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,170.100 134.500,170.100" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,167.300 134.500,167.300" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,164.500 134.500,164.500" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,161.700 134.500,161.700" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,158.900 134.500,158.900" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,156.100 134.500,156.100" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="122.500,153.300 134.500,153.300" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,178.500 149.500,178.500" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,175.700 149.500,175.700" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,172.900 149.500,172.900" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,170.100 149.500,170.100" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,167.300 149.500,167.300" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,164.500 149.500,164.500" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,161.700 149.500,161.700" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,158.900 149.500,158.900" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,156.100 149.500,156.100" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<polyline points="137.500,153.300 149.500,153.300" fill="none" stroke="#8c8c7e" stroke-width="0.16" class=""/>
+<rect x="134.500" y="153.300" width="3.000" height="25.200" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="128.500,182.500 128.500,150.500" fill="none" stroke="#276c88" stroke-width="0.35" class="" marker-end="url(#arr)"/>
+<polyline points="143.500,150.500 143.500,182.500" fill="none" stroke="#276c88" stroke-width="0.35" class="" marker-end="url(#arr)"/>
+<text x="136.0" y="147.9" font-size="2.7" text-anchor="middle" style="fill:#29332e">折返楼梯</text>
+<text x="136.0" y="194.5" font-size="2.7" text-anchor="middle" style="fill:#276c88">下</text>
+<rect x="122.500" y="187.300" width="27.000" height="3.300" fill="#eee3cf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="150.800" y="178.500" width="3.400" height="8.500" fill="#eee3cf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="154.000" y="145.500" width="39.000" height="60.000" fill="#eee3cf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="196.000" y="183.500" width="35.000" height="30.000" fill="#e3e1dd" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="196.000" y="145.500" width="35.000" height="35.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="231.000" y="128.500" width="66.000" height="66.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="234.000" y="131.500" width="60.000" height="60.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="237.000" y="191.300" width="54.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="237.000,194.100 291.000,194.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="237.000,193.000 291.000,193.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="237.000,191.900 291.000,191.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="237.000" y="128.300" width="54.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="237.000,131.100 291.000,131.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="237.000,130.000 291.000,130.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="237.000,128.900 291.000,128.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="293.800" y="134.500" width="3.400" height="54.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="294.400,188.500 294.400,134.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="295.500,188.500 295.500,134.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="296.600,188.500 296.600,134.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="52.000" y="224.500" width="15.000" height="20.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="76.000" y="244.500" width="12.000" height="6.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="119.000" y="233.500" width="21.000" height="9.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="115.000" y="213.000" width="45.000" height="4.500" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="52.000" y="164.000" width="12.000" height="18.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="92.000" y="164.000" width="15.000" height="18.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="202.000" y="226.500" width="16.000" height="20.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="202.000" y="200.500" width="21.000" height="6.000" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="200.000" y="152.000" width="26.000" height="6.500" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<rect x="221.500" y="164.500" width="5.500" height="12.500" fill="#f5f1e7" stroke="#9a9e8d" stroke-width="0.2" opacity="1"/>
+<circle cx="207.0" cy="166.5" r="2.8000000000000003" fill="#f4f0e6" stroke="#9a9e8d" stroke-width="0.2"/>
+<circle cx="81.0" cy="217.5" r="2.0" fill="#fcfaf6" stroke="#29332e" stroke-width="0.35"/>
+<polyline points="81.000,217.500 81.000,216.000" fill="none" stroke="#29332e" stroke-width="0.25" class=""/>
+<polyline points="81.000,217.500 80.250,218.800" fill="none" stroke="#29332e" stroke-width="0.35" class=""/>
+<rect x="89.100" y="228.500" width="0.800" height="8.000" fill="#80a3ad" stroke="#29332e" stroke-width="0.2" opacity="1"/>
+<text x="67.5" y="220.0" font-size="3.6" text-anchor="middle" style="fill:#29332e">客房</text>
+<text x="67.5" y="248.5" font-size="2.8" text-anchor="middle" style="fill:#29332e">4.50 × 4.50</text>
+<text x="100.5" y="233.5" font-size="2.7" text-anchor="middle" style="fill:#29332e">衣柜</text>
+<text x="100.5" y="240.0" font-size="2.7" text-anchor="middle" style="fill:#29332e">/ 前室</text>
+<text x="138.0" y="225.5" font-size="3.25" text-anchor="middle" style="fill:#29332e">书房 · 照片档案室</text>
+<text x="138.0" y="232.0" font-size="2.8" text-anchor="middle" style="fill:#29332e">5.40 × 4.50</text>
+<text x="197.0" y="220.5" font-size="3.3" text-anchor="middle" style="fill:#29332e">主卧（锁）</text>
+<text x="197.0" y="248.5" font-size="2.6" text-anchor="middle" style="fill:#29332e">6.30 × 3.70 + 门前凹区</text>
+<text x="65.0" y="151.5" font-size="3.1" text-anchor="middle" style="fill:#29332e">艾瑞斯的房间</text>
+<text x="65.0" y="157.5" font-size="2.7" text-anchor="middle" style="fill:#29332e">4.00 × 4.20</text>
+<text x="103.0" y="151.5" font-size="2.9" text-anchor="middle" style="fill:#29332e">康斯坦斯卧室</text>
+<text x="103.0" y="157.5" font-size="2.65" text-anchor="middle" style="fill:#29332e">3.00 × 4.20（锁）</text>
+<text x="213.5" y="192.5" font-size="2.9" text-anchor="middle" style="fill:#29332e">储物间（锁）</text>
+<text x="213.5" y="199.0" font-size="2.7" text-anchor="middle" style="fill:#29332e">3.50 × 3.00</text>
+<text x="213.5" y="150.0" font-size="3.5" text-anchor="middle" style="fill:#29332e">暗房</text>
+<text x="213.5" y="156.5" font-size="2.8" text-anchor="middle" style="fill:#29332e">3.50 × 3.50</text>
+<text x="264.0" y="150.5" font-size="3.6" text-anchor="middle" style="fill:#29332e">温室</text>
+<text x="264.0" y="156.5" font-size="2.8" text-anchor="middle" style="fill:#29332e">6.00 × 6.00</text>
+<circle cx="280.0" cy="182.5" r="2.5" fill="#cad5c5" stroke="#29332e" stroke-width="0.3"/>
+<text x="280.0" y="187.0" font-size="2.6" text-anchor="middle" style="fill:#29332e">水泵</text>
+<rect x="70.500" y="205.300" width="10.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="70.500,207.000 70.500,217.000" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M80.5,207.0 A10.0,10.0 0 0 1 70.5,217.0" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="133.000" y="205.300" width="10.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="133.000,207.000 133.000,217.000" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M143.0,207.0 A10.0,10.0 0 0 1 133.0,217.0" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="172.000" y="205.300" width="9.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="172.000,207.000 172.000,216.000" fill="none" stroke="#a36b29" stroke-width="0.3" class=""/>
+<path d="M181.0,207.0 A9.0,9.0 0 0 1 172.0,216.0" fill="none" stroke="#a36b29" stroke-width=".18"/>
+<text x="176.5" y="207.0" font-size="5" text-anchor="middle" style="fill:#a36b29">×</text>
+<rect x="89.800" y="217.500" width="3.400" height="8.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="91.500,225.500 99.500,225.500" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M91.5,217.5 A8.0,8.0 0 0 1 99.5,225.5" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="63.500" y="187.300" width="9.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="63.500,189.000 63.500,180.000" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M72.5,189.0 A9.0,9.0 0 0 0 63.5,180.0" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="98.500" y="187.300" width="9.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="98.500,189.000 98.500,180.000" fill="none" stroke="#a36b29" stroke-width="0.3" class=""/>
+<path d="M107.5,189.0 A9.0,9.0 0 0 0 98.5,180.0" fill="none" stroke="#a36b29" stroke-width=".18"/>
+<text x="103.0" y="189.0" font-size="5" text-anchor="middle" style="fill:#a36b29">×</text>
+<rect x="192.800" y="194.000" width="3.400" height="9.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="194.500,203.000 203.500,203.000" fill="none" stroke="#a36b29" stroke-width="0.3" class=""/>
+<path d="M194.5,194.0 A9.0,9.0 0 0 1 203.5,203.0" fill="none" stroke="#a36b29" stroke-width=".18"/>
+<text x="194.5" y="198.5" font-size="5" text-anchor="middle" style="fill:#a36b29">×</text>
+<rect x="192.800" y="168.500" width="3.400" height="10.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="194.500,178.500 204.500,178.500" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M194.5,168.5 A10.0,10.0 0 0 1 204.5,178.5" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="230.800" y="157.000" width="3.400" height="9.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="232.500,166.000 223.500,166.000" fill="none" stroke="#a36b29" stroke-width="0.3" class=""/>
+<path d="M232.5,157.0 A9.0,9.0 0 0 0 223.50000000000003,166.0" fill="none" stroke="#a36b29" stroke-width=".18"/>
+<polyline points="230.200,165.500 230.200,157.500" fill="none" stroke="#a36b29" stroke-width="0.9" class=""/>
+<rect x="165.000" y="142.300" width="10.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="165.000,144.000 165.000,154.000" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M175.0,144.0 A10.0,10.0 0 0 1 165.0,154.0" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="259.000" y="128.300" width="10.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="259.000,130.000 259.000,140.000" fill="none" stroke="#29332e" stroke-width="0.3" class=""/>
+<path d="M269.0,130.0 A10.0,10.0 0 0 1 259.0,140.0" fill="none" stroke="#29332e" stroke-width=".18"/>
+<rect x="191.000" y="127.500" width="40.000" height="15.000" fill="#d6c3aa" stroke="#a36b29" stroke-width="0.3" opacity="1"/>
+<text x="211.0" y="131.5" font-size="2.7" text-anchor="middle" style="fill:#a36b29">泥地 4.0 × 1.5</text>
+<rect x="212.000" y="142.200" width="4.000" height="3.500" fill="#acbbb4" stroke="#29332e" stroke-width="0.2" opacity="1"/>
+<text x="214.0" y="119.5" font-size="2.7" text-anchor="middle" style="fill:#a36b29">通风口：中心离地 0.50</text>
+<polyline points="124.000,255.000 124.000,262.000 130.000,267.000 146.000,267.000 152.000,262.000 152.000,255.000" fill="#e4ecdf" stroke="#29332e" stroke-width="0.5" class=""/>
+<polyline points="125.000,262.000 131.000,266.000" fill="none" stroke="#507e89" stroke-width="0.4" class=""/>
+<polyline points="131.000,266.000 145.000,266.000" fill="none" stroke="#507e89" stroke-width="0.4" class=""/>
+<polyline points="145.000,266.000 151.000,262.000" fill="none" stroke="#507e89" stroke-width="0.4" class=""/>
+<text x="138.0" y="271.0" font-size="2.7" text-anchor="middle" style="fill:#29332e">凸窗</text>
+<rect x="45.000" y="230.500" width="6.000" height="11.000" fill="#aea795" stroke="#29332e" stroke-width="0.25" opacity="1"/>
+<text x="35.5" y="235.0" font-size="2.5" text-anchor="middle" style="fill:#29332e">壁炉</text>
+<polyline points="147.500,183.000 194.500,173.500" fill="none" stroke="#68885e" stroke-width="0.5" class="" stroke-dasharray="1.2 .9"/>
+<circle cx="147.5" cy="183.0" r="1.0" fill="#68885e" stroke="none" stroke-width="0.3"/>
+<text x="170.0" y="169.0" font-size="2.55" text-anchor="middle" style="fill:#57734f">楼梯口 → 暗房门视线</text>
+<polyline points="75.500,198.500 138.000,198.500 147.500,183.000 170.000,183.000 170.000,139.500 170.000,112.500 264.000,112.500 264.000,130.000" fill="none" stroke="#276c88" stroke-width="0.6" class="route" stroke-dasharray="2 1.2" marker-end="url(#arr)"/>
+<polyline points="264.000,50.500 264.000,107.500 272.000,116.500 264.000,130.000 264.000,161.500 232.500,161.500 219.000,161.500" fill="none" stroke="#a36b29" stroke-width="0.6" class="secret" stroke-dasharray="1.1 1" marker-end="url(#gold)"/>
+<polyline points="264.000,112.500 138.000,96.500 42.000,106.500 22.000,116.500 14.000,166.500 20.000,216.500 22.000,259.500" fill="none" stroke="#276c88" stroke-width="0.5" class="route" stroke-dasharray="2 1.2" marker-end="url(#arr)"/>
+<text x="132.0" y="66.5" font-size="4" text-anchor="middle" style="fill:#29332e">后花园 +3.600</text>
+<text x="132.0" y="78.5" font-size="3.0" text-anchor="middle" style="fill:#727c70">二楼后门打开就是草地</text>
+<text x="329" y="61" font-size="3.3" text-anchor="start" style="fill:#a36b29">01</text>
+<text x="341" y="61" font-size="3.4" text-anchor="start" style="fill:#29332e">两个地面</text>
+<text x="329" y="68" font-size="2.85" text-anchor="start" style="fill:#727c70">正门在低处 ±0.000。</text>
+<text x="329" y="73" font-size="2.85" text-anchor="start" style="fill:#727c70">后园在高处 +3.600。</text>
+<text x="329" y="78" font-size="2.85" text-anchor="start" style="fill:#727c70">后花园就是二楼室外。</text>
+<text x="329" y="97" font-size="3.3" text-anchor="start" style="fill:#a36b29">02</text>
+<text x="341" y="97" font-size="3.4" text-anchor="start" style="fill:#29332e">密室的三个接口</text>
+<text x="329" y="104" font-size="2.85" text-anchor="start" style="fill:#727c70">走廊门：正常可达。</text>
+<text x="329" y="109" font-size="2.85" text-anchor="start" style="fill:#727c70">温室侧门：暗房内侧闩。</text>
+<text x="329" y="114" font-size="2.85" text-anchor="start" style="fill:#727c70">后墙百叶：0.40 × 0.40。</text>
+<text x="329" y="138" font-size="3.3" text-anchor="start" style="fill:#a36b29">03</text>
+<text x="341" y="138" font-size="3.4" text-anchor="start" style="fill:#29332e">视线公平性</text>
+<text x="329" y="145" font-size="2.85" text-anchor="start" style="fill:#727c70">从客房出门必经公共区。</text>
+<text x="329" y="150" font-size="2.85" text-anchor="start" style="fill:#727c70">楼梯口到暗房门无阻挡。</text>
+<text x="329" y="155" font-size="2.85" text-anchor="start" style="fill:#727c70">门缝红光可以被看见。</text>
+<text x="329" y="177" font-size="3.3" text-anchor="start" style="fill:#a36b29">04</text>
+<text x="341" y="177" font-size="3.4" text-anchor="start" style="fill:#29332e">两条路线</text>
+<text x="329" y="184" font-size="2.85" text-anchor="start" style="fill:#727c70">蓝虚线：玩家日常环线。</text>
+<text x="329" y="189" font-size="2.85" text-anchor="start" style="fill:#727c70">赭虚线：秘密进入路径。</text>
+<text x="329" y="194" font-size="2.85" text-anchor="start" style="fill:#727c70">外侧小路与前院不相交。</text>
+<rect x="54.750" y="253.300" width="10.500" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="54.750,256.100 65.250,256.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="54.750,255.000 65.250,255.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="54.750,253.900 65.250,253.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="74.750" y="253.300" width="10.500" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="74.750,256.100 85.250,256.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="74.750,255.000 85.250,255.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="74.750,253.900 85.250,253.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="94.750" y="253.300" width="10.500" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="94.750,256.100 105.250,256.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="94.750,255.000 105.250,255.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="94.750,253.900 105.250,253.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="170.750" y="253.300" width="10.500" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="170.750,256.100 181.250,256.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="170.750,255.000 181.250,255.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="170.750,253.900 181.250,253.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="190.750" y="253.300" width="10.500" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="190.750,256.100 201.250,256.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="190.750,255.000 201.250,255.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="190.750,253.900 201.250,253.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="210.750" y="253.300" width="10.500" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="210.750,256.100 221.250,256.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="210.750,255.000 221.250,255.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="210.750,253.900 221.250,253.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="54.000" y="142.300" width="12.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="54.000,145.100 66.000,145.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="54.000,144.000 66.000,144.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="54.000,142.900 66.000,142.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="95.000" y="142.300" width="12.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="95.000,145.100 107.000,145.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="95.000,144.000 107.000,144.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="95.000,142.900 107.000,142.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="211.000" y="142.300" width="4.000" height="3.400" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="211.000,145.100 215.000,145.100" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="211.000,144.000 215.000,144.000" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="211.000,142.900 215.000,142.900" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="211.000" y="142.200" width="4.000" height="3.500" fill="#8c9e95" stroke="#29332e" stroke-width="0.2" opacity="1"/>
+<polyline points="211.000,145.300 215.000,145.300" fill="none" stroke="#29332e" stroke-width="0.18" class=""/>
+<polyline points="211.000,144.500 215.000,144.500" fill="none" stroke="#29332e" stroke-width="0.18" class=""/>
+<polyline points="211.000,143.700 215.000,143.700" fill="none" stroke="#29332e" stroke-width="0.18" class=""/>
+<polyline points="211.000,142.900 215.000,142.900" fill="none" stroke="#29332e" stroke-width="0.18" class=""/>
+<rect x="41.800" y="227.500" width="3.400" height="12.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="42.400,239.500 42.400,227.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="43.500,239.500 43.500,227.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="44.600,239.500 44.600,227.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<rect x="41.800" y="161.500" width="3.400" height="12.000" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="42.400,173.500 42.400,161.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="43.500,173.500 43.500,161.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<polyline points="44.600,173.500 44.600,161.500" fill="none" stroke="#507e89" stroke-width="0.22" class=""/>
+<text x="83.0" y="202.0" font-size="2.6" text-anchor="middle" style="fill:#29332e">走廊净宽 1.50</text>
+<rect x="45.500" y="233.500" width="5.000" height="5.000" fill="#b4ac9a" stroke="#29332e" stroke-width="0.22" opacity="1"/>
+<rect x="47.000" y="235.000" width="2.000" height="2.000" fill="#fcfaf6" stroke="#29332e" stroke-width="0.18" opacity="1"/>
+<rect x="225.500" y="233.500" width="5.000" height="5.000" fill="#b4ac9a" stroke="#29332e" stroke-width="0.22" opacity="1"/>
+<rect x="227.000" y="235.000" width="2.000" height="2.000" fill="#fcfaf6" stroke="#29332e" stroke-width="0.18" opacity="1"/>
+<rect x="45.500" y="151.000" width="5.000" height="5.000" fill="#b4ac9a" stroke="#29332e" stroke-width="0.22" opacity="1"/>
+<rect x="47.000" y="152.500" width="2.000" height="2.000" fill="#fcfaf6" stroke="#29332e" stroke-width="0.18" opacity="1"/>
+<rect x="225.500" y="151.000" width="5.000" height="5.000" fill="#b4ac9a" stroke="#29332e" stroke-width="0.22" opacity="1"/>
+<rect x="227.000" y="152.500" width="2.000" height="2.000" fill="#fcfaf6" stroke="#29332e" stroke-width="0.18" opacity="1"/>
+<g opacity=".18">
+<polyline points="52.000,253.500 52.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="62.000,253.500 62.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="72.000,253.500 72.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="82.000,253.500 82.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="92.000,253.500 92.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="102.000,253.500 102.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="112.000,253.500 112.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="122.000,253.500 122.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="132.000,253.500 132.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="142.000,253.500 142.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="152.000,253.500 152.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="162.000,253.500 162.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="172.000,253.500 172.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="182.000,253.500 182.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="192.000,253.500 192.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="202.000,253.500 202.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="212.000,253.500 212.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="222.000,253.500 222.000,145.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,246.500 231.000,246.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,236.500 231.000,236.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,226.500 231.000,226.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,216.500 231.000,216.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,206.500 231.000,206.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,196.500 231.000,196.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,186.500 231.000,186.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,176.500 231.000,176.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,166.500 231.000,166.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,156.500 231.000,156.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+<polyline points="45.000,146.500 231.000,146.500" fill="none" stroke="#cdd0c5" stroke-width="0.1" class=""/>
+</g>
+<polyline points="42.000,280.500 234.000,280.500" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="42.000,282.500 42.000,278.500" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="234.000,282.500 234.000,278.500" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="138.0" y="278.0" font-size="2.8" text-anchor="middle" style="fill:#29332e">主楼外包 19.20</text>
+<polyline points="29.500,256.500 29.500,142.500" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="27.500,256.500 31.500,256.500" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="27.500,142.500 31.500,142.500" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="25.700000000000003" y="199.5" font-size="2.8" text-anchor="middle" transform="rotate(-90,25.700000000000003,199.5)">11.40</text>
+<polyline points="138.000,262.500 138.000,126.500" fill="none" stroke="#777267" stroke-width="0.28" class="section" stroke-dasharray="4 .8 .8 .8"/>
+<text x="138.0" y="266.0" font-size="2.6" text-anchor="middle" style="fill:#29332e">A</text>
+<text x="138.0" y="124.0" font-size="2.6" text-anchor="middle" style="fill:#29332e">A</text>
+<polyline points="213.000,262.500 213.000,126.500" fill="none" stroke="#777267" stroke-width="0.28" class="section" stroke-dasharray="4 .8 .8 .8"/>
+<text x="213.0" y="266.0" font-size="2.6" text-anchor="middle" style="fill:#29332e">B</text>
+<text x="213.0" y="124.0" font-size="2.6" text-anchor="middle" style="fill:#29332e">B</text>
+<path d="M307,65 l-2.5,7 l2.5,-1.5 l2.5,1.5 Z" fill="#29332e"/>
+<text x="307" y="63" font-size="3.2" text-anchor="middle" style="fill:#29332e">N</text>
+<text x="329" y="217" font-size="3.3" text-anchor="start" style="fill:#29332e">探索权限 / 门的状态</text>
+<rect x="329" y="221" width="4" height="3.5" fill="#e4ecdf" stroke="#aaa" stroke-width=".15"/>
+<text x="337" y="224" font-size="2.8" text-anchor="start" style="fill:#29332e">可进入探索</text>
+<rect x="329" y="227" width="4" height="3.5" fill="#eee3cf" stroke="#aaa" stroke-width=".15"/>
+<text x="337" y="230" font-size="2.8" text-anchor="start" style="fill:#29332e">只能走过</text>
+<rect x="329" y="233" width="4" height="3.5" fill="#e3e1dd" stroke="#aaa" stroke-width=".15"/>
+<text x="337" y="236" font-size="2.8" text-anchor="start" style="fill:#29332e">不能进入</text>
+<text x="329" y="247" font-size="2.7" text-anchor="start" style="fill:#29332e">× 锁门   ┃ 暗房一侧门闩</text>
+<text x="329" y="253" font-size="2.5" text-anchor="start" style="fill:#29332e">圆形指针：钟 / 蓝短线：镜子</text>
+<rect x="329" y="263" width="10" height="1.6" fill="#29332e" stroke="#29332e" stroke-width=".2"/>
+<rect x="339" y="263" width="10" height="1.6" fill="#fcfaf6" stroke="#29332e" stroke-width=".2"/>
+<rect x="349" y="263" width="10" height="1.6" fill="#29332e" stroke="#29332e" stroke-width=".2"/>
+<rect x="359" y="263" width="10" height="1.6" fill="#fcfaf6" stroke="#29332e" stroke-width=".2"/>
+<rect x="369" y="263" width="10" height="1.6" fill="#29332e" stroke="#29332e" stroke-width=".2"/>
+<text x="329" y="269" font-size="2.5" text-anchor="middle" style="fill:#29332e">0</text>
+<text x="339" y="269" font-size="2.5" text-anchor="middle" style="fill:#29332e">1</text>
+<text x="379" y="269" font-size="2.5" text-anchor="middle" style="fill:#29332e">5 m</text>
+<text x="329" y="259" font-size="2.7" text-anchor="start" style="fill:#29332e">1:100 / 每格 1 m</text>
+</svg>

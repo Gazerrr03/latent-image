@@ -1,0 +1,565 @@
+[
+  {
+    "id": "guest_room_establish",
+    "task": "T-026-客房",
+    "kind": "scene",
+    "room": "guest_room",
+    "camera": "establish",
+    "path": "assets/2d/T-026-客房/guest_room_透视_establish-v2.png",
+    "original": "assets/2d/T-026-客房/drafts/guest_room_透视_establish-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1920,
+      1080
+    ],
+    "prompt": "assets/2d/T-026-客房/prompts/guest_room_establish-v2.txt",
+    "refs": [],
+    "status": "候选待审",
+    "note": "内置 imagegen；1672×941 原生，1920×1080 规格导出，未宣称原生1080p。"
+  },
+  {
+    "id": "darkroom_wide",
+    "task": "T-027-暗房",
+    "kind": "scene",
+    "room": "darkroom",
+    "camera": "wide",
+    "path": "assets/2d/T-027-暗房/darkroom_透视_wide-v2.png",
+    "original": "assets/2d/T-027-暗房/drafts/darkroom_透视_wide-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1920,
+      1080
+    ],
+    "prompt": "assets/2d/T-027-暗房/prompts/darkroom_wide-v2.txt",
+    "refs": [],
+    "status": "候选待审",
+    "note": "内置 imagegen；1672×941 原生，1920×1080 规格导出，未宣称原生1080p。"
+  },
+  {
+    "id": "archive_archive_mid",
+    "task": "T-028-照片档案室",
+    "kind": "scene",
+    "room": "archive",
+    "camera": "archive_mid",
+    "path": "assets/2d/T-028-照片档案室/archive_透视_archive_mid-v2.png",
+    "original": "assets/2d/T-028-照片档案室/drafts/archive_透视_archive_mid-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1920,
+      1080
+    ],
+    "prompt": "assets/2d/T-028-照片档案室/prompts/archive_archive_mid-v2.txt",
+    "refs": [],
+    "status": "候选待审",
+    "note": "内置 imagegen；1672×941 原生，1920×1080 规格导出，未宣称原生1080p。"
+  },
+  {
+    "id": "guest_room_typewriter_close_v2",
+    "task": "T-026-客房",
+    "kind": "scene",
+    "room": "guest_room",
+    "camera": "typewriter_close",
+    "path": "assets/2d/T-026-客房/guest_room_透视_typewriter_close-v2.png",
+    "original": "assets/2d/T-026-客房/drafts/guest_room_透视_typewriter_close-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-026-客房/prompts/guest_room_typewriter_close_v2.txt",
+    "refs": [
+      "assets/2d/T-026-客房/guest_room_透视_establish-v3.png"
+    ],
+    "status": "候选待审",
+    "note": "内置 imagegen；保持原生尺寸；需人工确认按键无伪文字。"
+  },
+  {
+    "id": "guest_room_board_v2",
+    "task": "T-026-客房",
+    "kind": "scene",
+    "room": "guest_room",
+    "camera": "board",
+    "path": "assets/2d/T-026-客房/guest_room_透视_board-v2.png",
+    "original": "assets/2d/T-026-客房/drafts/guest_room_透视_board-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-026-客房/prompts/guest_room_board_v2.txt",
+    "refs": [
+      "assets/2d/T-026-客房/guest_room_透视_establish-v3.png"
+    ],
+    "status": "退回修订",
+    "note": "五张空白纸已提供；打字机键帽和机身仍有伪文字，需修订。",
+    "sha256": "cbd409a57b0005e4c58d935b68b1c32ab009e60edc124d7b4cd835fb0635131e"
+  },
+  {
+    "id": "guest_room_mirror_v2",
+    "task": "T-026-客房",
+    "kind": "scene",
+    "room": "guest_room",
+    "camera": "mirror",
+    "path": "assets/2d/T-026-客房/guest_room_透视_mirror-v2.png",
+    "original": "assets/2d/T-026-客房/drafts/guest_room_透视_mirror-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-026-客房/prompts/guest_room_mirror_v2.txt",
+    "refs": [
+      "assets/2d/T-026-客房/guest_room_透视_establish-v3.png"
+    ],
+    "status": "退回修订",
+    "note": "无人物倒影；床和门的空间位置偏离平面图，只可作镜框材质与氛围参考。",
+    "sha256": "60a6eb70be75d7334f882dc2e06144ac7312142ffad9efdb6727a54cbcceeea4"
+  },
+  {
+    "id": "guest_room_bed_v2",
+    "task": "T-026-客房",
+    "room": "guest_room",
+    "camera": "bed",
+    "kind": "scene",
+    "path": "assets/2d/T-026-客房/guest_room_透视_bed-v2.png",
+    "original": "assets/2d/T-026-客房/drafts/guest_room_透视_bed-v2-original.png",
+    "native_size": [
+      1672,
+      940
+    ],
+    "export_size": [
+      1672,
+      940
+    ],
+    "prompt": "assets/2d/T-026-客房/prompts/guest_room_bed_v2.txt",
+    "refs": [
+      "assets/2d/T-026-客房/guest_room_透视_establish-v3.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "bd493e962cd080754137a73d077ff056abf287e61c58085eb4456f0fce32712b",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-df4419a2-7b07-4cbd-84b4-6576122d445e.png"
+  },
+  {
+    "id": "darkroom_tray_v2",
+    "task": "T-027-暗房",
+    "room": "darkroom",
+    "camera": "tray",
+    "kind": "scene",
+    "path": "assets/2d/T-027-暗房/darkroom_透视_tray-v2.png",
+    "original": "assets/2d/T-027-暗房/drafts/darkroom_透视_tray-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-027-暗房/prompts/darkroom_tray_v2.txt",
+    "refs": [
+      "assets/2d/T-027-暗房/darkroom_透视_wide-v3.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "873760297428ccb3c0659bdb083510f0c34adc75e7cd9c61e127fd71cc9d40c6",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-a9072f04-3358-4b19-b6c4-3e2414f508b7.png"
+  },
+  {
+    "id": "archive_archive_high_v2",
+    "task": "T-028-照片档案室",
+    "room": "archive",
+    "camera": "archive_high",
+    "kind": "scene",
+    "path": "assets/2d/T-028-照片档案室/archive_透视_archive_high-v2.png",
+    "original": "assets/2d/T-028-照片档案室/drafts/archive_透视_archive_high-v2-original.png",
+    "native_size": [
+      1672,
+      940
+    ],
+    "export_size": [
+      1672,
+      940
+    ],
+    "prompt": "assets/2d/T-028-照片档案室/prompts/archive_archive_high_v2.txt",
+    "refs": [
+      "assets/2d/T-028-照片档案室/archive_透视_archive_mid-v3.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "22e28963179e157b3ed2588a12ebf9a1213eaab7e36d074370cf775f803953db",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-689e4296-6c78-4760-b386-a3f1b4a2ff66.png"
+  },
+  {
+    "id": "darkroom_door_push_v2",
+    "task": "T-027-暗房",
+    "room": "darkroom",
+    "camera": "door_push",
+    "kind": "scene",
+    "path": "assets/2d/T-027-暗房/darkroom_透视_door_push-v2.png",
+    "original": "assets/2d/T-027-暗房/drafts/darkroom_透视_door_push-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-027-暗房/prompts/darkroom_door_push_v2.txt",
+    "refs": [
+      "assets/2d/T-027-暗房/darkroom_透视_wide-v3.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "a689e4857f857408b5e754b86885df0bd35f0b5707b38e13cd1adcf1d7762b14",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-380cfa26-26a2-4411-b609-d574dbe09dfa.png"
+  },
+  {
+    "id": "archive_archive_entry_v2",
+    "task": "T-028-照片档案室",
+    "room": "archive",
+    "camera": "archive_entry",
+    "kind": "scene",
+    "path": "assets/2d/T-028-照片档案室/archive_透视_archive_entry-v2.png",
+    "original": "assets/2d/T-028-照片档案室/drafts/archive_透视_archive_entry-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-028-照片档案室/prompts/archive_archive_entry_v2.txt",
+    "refs": [
+      "assets/2d/T-028-照片档案室/archive_透视_archive_mid-v3.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "9e0ac796e137758d4f005914a3a9662cb8090a08e784f93bcd228b39c2ab521c",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-55af5813-258a-4240-aa27-401515a61b8f.png"
+  },
+  {
+    "id": "dining_dining_mid_v2",
+    "task": "T-029-餐厅",
+    "room": "dining",
+    "camera": "dining_mid",
+    "kind": "scene",
+    "path": "assets/2d/T-029-餐厅/dining_透视_dining_mid-v2.png",
+    "original": "assets/2d/T-029-餐厅/drafts/dining_透视_dining_mid-v2-original.png",
+    "native_size": [
+      1672,
+      940
+    ],
+    "export_size": [
+      1672,
+      940
+    ],
+    "prompt": "assets/2d/T-029-餐厅/prompts/dining_dining_mid_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "12797ffb3ab3c9e908b2c373ea608de2e50278736180b9d5d38ae6a55cb9976f",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-6587d3f4-eaba-4ff5-96aa-4e107932fa1f.png"
+  },
+  {
+    "id": "child_room_child_mid_v2",
+    "task": "T-031-艾瑞斯的房间",
+    "room": "child_room",
+    "camera": "child_mid",
+    "kind": "scene",
+    "path": "assets/2d/T-031-艾瑞斯的房间/child_room_透视_child_mid-v2.png",
+    "original": "assets/2d/T-031-艾瑞斯的房间/drafts/child_room_透视_child_mid-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-031-艾瑞斯的房间/prompts/child_room_child_mid_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "c6a5dfe4159bf85abd90642308b7c70f00e1a3315b8c4e0072f2b56bd658a41d",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-55964ad8-e60c-4a4a-979c-cb66334e64f9.png"
+  },
+  {
+    "id": "greenhouse_green_mid_v2",
+    "task": "T-030-温室",
+    "room": "greenhouse",
+    "camera": "green_mid",
+    "kind": "scene",
+    "path": "assets/2d/T-030-温室/greenhouse_透视_green_mid-v2.png",
+    "original": "assets/2d/T-030-温室/drafts/greenhouse_透视_green_mid-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-030-温室/prompts/greenhouse_green_mid_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "56ea9a71e19a3f42cdf9ad8a84305f420c50db8d17e0c22c6e469bbac730d92c",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-1efcaf79-dd11-4c37-9b0c-902b8bc85f95.png"
+  },
+  {
+    "id": "ambrose_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "path": "assets/2d/T-024-人物三视图/ambrose/ambrose_三视图-v2.png",
+    "original": "assets/2d/T-024-人物三视图/ambrose/drafts/ambrose_三视图-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_turnaround_v2.txt",
+    "refs": [
+      "assets/2d/T-024-人物三视图/ambrose/ambrose_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "9bfc0dba5c5b829bd7e62ce8b5bdc906db3c67ae239ef040c99111bb28e04c75",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13945-82d2-7970-a85a-8e5304779c27/exec-bb9b0d0f-fd8c-4bcd-9be1-854270cd9c45.png"
+  },
+  {
+    "id": "garden_garden_wide_v2",
+    "task": "T-032-花园·通风口外侧",
+    "room": "garden",
+    "camera": "garden_wide",
+    "kind": "scene",
+    "path": "assets/2d/T-032-花园·通风口外侧/garden_透视_garden_wide-v2.png",
+    "original": "assets/2d/T-032-花园·通风口外侧/drafts/garden_透视_garden_wide-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-032-花园·通风口外侧/prompts/garden_garden_wide_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "d9f995a0a6079a159b8c51a8bf87017533e00a737c272d8e1e2b2ec05801634e",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-364dae56-c6c9-45c6-a30e-fbfe352b16de.png"
+  },
+  {
+    "id": "greenhouse_pump_detail_v2",
+    "task": "T-030-温室",
+    "room": "greenhouse",
+    "camera": "pump_detail",
+    "kind": "scene",
+    "path": "assets/2d/T-030-温室/greenhouse_透视_pump_detail-v2.png",
+    "original": "assets/2d/T-030-温室/drafts/greenhouse_透视_pump_detail-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-030-温室/prompts/greenhouse_pump_detail_v2.txt",
+    "refs": [
+      "assets/2d/T-030-温室/greenhouse_透视_green_mid-v2.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "dca073807b3189d26e30901562cd3e8ba53cea9962c57b17d597a76b8c236c07",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-921e99a3-a433-4b3c-9e8f-06cbe0bdc83d.png"
+  },
+  {
+    "id": "greenhouse_side_door_v2",
+    "task": "T-030-温室",
+    "room": "greenhouse",
+    "camera": "side_door",
+    "kind": "scene",
+    "path": "assets/2d/T-030-温室/greenhouse_透视_side_door-v2.png",
+    "original": "assets/2d/T-030-温室/drafts/greenhouse_透视_side_door-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-030-温室/prompts/greenhouse_side_door_v2.txt",
+    "refs": [
+      "assets/2d/T-030-温室/greenhouse_透视_green_mid-v2.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "3113c113b1751ccce087200523a2d1b9949e34b0de440ad686d36594f694af7a",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-3108e6b0-1c1f-4d1b-aff4-ef8fe40e55da.png"
+  },
+  {
+    "id": "grey_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "path": "assets/2d/T-024-人物三视图/grey/grey_左手-v2.png",
+    "original": "assets/2d/T-024-人物三视图/grey/drafts/grey_左手-v2-original.png",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "export_size": [
+      1254,
+      1254
+    ],
+    "prompt": "assets/2d/T-024-人物三视图/grey/prompts/grey_hand_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "3a62753e46d7f04ab0ba7e1d12073b7154cc34191ec1bb1611b42bb86dc8d456",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-ee23467b-4200-4f60-b123-0208d36ee016.png"
+  },
+  {
+    "id": "hall_hall_mid_v2",
+    "task": "T-034-门厅",
+    "room": "hall",
+    "camera": "hall_mid",
+    "kind": "scene",
+    "path": "assets/2d/T-034-门厅/hall_透视_hall_mid-v2.png",
+    "original": "assets/2d/T-034-门厅/drafts/hall_透视_hall_mid-v2-original.png",
+    "native_size": [
+      1672,
+      940
+    ],
+    "export_size": [
+      1672,
+      940
+    ],
+    "prompt": "assets/2d/T-034-门厅/prompts/hall_hall_mid_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "c637e6f2a68f17f45804071b1cae79cb744ec9dc0788db119eb31e79c872aba3",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-f83ebc84-3602-4771-ad93-a6eb8119da30.png"
+  },
+  {
+    "id": "manor_gate_wide_symmetric_v2",
+    "task": "T-036-奥瑞尔庄园外景",
+    "room": "manor_gate",
+    "camera": "wide_symmetric",
+    "kind": "scene",
+    "path": "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_wide_symmetric-v2.png",
+    "original": "assets/2d/T-036-奥瑞尔庄园外景/drafts/manor_gate_透视_wide_symmetric-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-036-奥瑞尔庄园外景/prompts/manor_gate_wide_symmetric_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "29046e3350d6012926fc31c3a78432f40fc60b8483a3f0b45df058621d72e288",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-9df39b49-4c39-48af-9005-66c7207a54fa.png"
+  },
+  {
+    "id": "monitor_room_wall_v2",
+    "task": "T-037-尾声·白色的房间",
+    "room": "monitor_room",
+    "camera": "wall",
+    "kind": "scene",
+    "path": "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_wall-v2.png",
+    "original": "assets/2d/T-037-尾声·白色的房间/drafts/monitor_room_透视_wall-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-037-尾声·白色的房间/prompts/monitor_room_wall_v2.txt",
+    "refs": [],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "4cdd43bd1a27f7aaeeca79f2873bb139215d5fbc8947e496337713218d7b12b5",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-4e70856a-0f9b-4ddb-ac3b-e928a88927c2.png"
+  },
+  {
+    "id": "grey_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "path": "assets/2d/T-024-人物三视图/grey/grey_三视图-v2.png",
+    "original": "assets/2d/T-024-人物三视图/grey/drafts/grey_三视图-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-024-人物三视图/grey/prompts/grey_turnaround_v2.txt",
+    "refs": [
+      "assets/2d/T-024-人物三视图/grey/grey_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "5043557f2e31104dee4d86ee26cffe3e5bd5dc3123dafc3ddd75bca589f62777",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-0800fa51-3b5c-4297-8f22-2cf0a86da6a8.png"
+  },
+  {
+    "id": "constance_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "path": "assets/2d/T-024-人物三视图/constance/constance_三视图-v2.png",
+    "original": "assets/2d/T-024-人物三视图/constance/drafts/constance_三视图-v2-original.png",
+    "native_size": [
+      1672,
+      941
+    ],
+    "export_size": [
+      1672,
+      941
+    ],
+    "prompt": "assets/2d/T-024-人物三视图/constance/prompts/constance_turnaround_v2.txt",
+    "refs": [
+      "assets/2d/T-024-人物三视图/constance/constance_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ],
+    "status": "待逐图审查",
+    "note": "内置 imagegen 原生文件；未放大；不是精确机位或建模验收证据。",
+    "sha256": "abd792f647c12817eac5c9fae236eb413f39e5cb1d86976e799fcca85332bc5c",
+    "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a13972-67eb-7b00-b0a0-ed3ed587e067/exec-31444c30-f438-42a8-a9fe-60463d485897.png"
+  }
+]

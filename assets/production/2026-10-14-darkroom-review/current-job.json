@@ -1,0 +1,10 @@
+{
+  "id": "garden_garden_wide_v2",
+  "task": "T-032-花园·通风口外侧",
+  "room": "garden",
+  "camera": "garden_wide",
+  "file": "assets/2d/T-032-花园·通风口外侧/garden_透视_garden_wide-v2.png",
+  "prompt_file": "assets/2d/T-032-花园·通风口外侧/prompts/garden_garden_wide_v2.txt",
+  "prompt": "Use case: historical-scene. ONE finished environment painting, landscape 16:9. Premium tactile painterly realism, fine gouache, coherent architectural perspective, plausible 1926 English country manor objects. Natural period light with restrained cinematic contrast. No people, no human reflection, no readable text, no labels or letters on keys, no watermark, no multi-panel sheet, no UI, no film scratches, no scanlines, no modern gadgets, no saturated red except the darkroom safelight. This is the PRESENT-TIME environment, not archival footage. Do not bake in a shader or story revelation. 8m square garden investigation patch outside stone wall of darkroom wing, misty overcast morning, wet pale limestone and darker muddy ground. ONE rectangular iron louver vent 0.40x0.30m, local centre 2.20m above same local floor datum as inside darkroom; block wall above and below. Under vent wet dark muddy patch, half impression of a male leather shoe, not a boot, no measurable size marks. Adjacent neighbouring wing has a small deep stone window sill offset to LEFT; this is not a darkroom window. A muted cast iron greenhouse visible farther RIGHT, narrow path and low shrubs. Camera/composition: Additional three-quarter context view from farther along garden path: darkroom wing masonry and its single high vent left, greenhouse farther right, dark muddy patch exactly under vent, shrubs lower foreground. Do not solve whether the manor floor sits half-level; local geometry only. Intended camera position: [-2, 1.6, 2.4] target [1, 1.3, -3.5].",
+  "refs": []
+}

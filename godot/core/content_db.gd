@@ -6,6 +6,9 @@ const STORY := "res://content/story/"
 const SPACE := "res://content/space/"
 const AUDIO := "res://content/audio/"
 const AI := "res://content/ai/"
+const VISUAL := "res://content/visual/"
+## 人工搭的关卡场景：res://levels/<房间id>.tscn（空间、灯光、机位构图都以它为准）
+const LEVELS := "res://levels/"
 
 ## 按表格顺序排列的镜头，以及 shot_id -> 行
 var shot_order: Array = []
@@ -20,12 +23,14 @@ var annotations := {}
 var lines := {}
 ## 房间登记表（id -> 行）
 var scenes := {}
-## 房间布局表：room -> 行数组
+## 房间布局表（过渡用，只给还没有关卡场景的房间搭灰盒）：room -> 行数组
 var layout := {}
 ## 人物表，按表格顺序
 var characters: Array = []
 ## 音效表：id -> 行
 var sounds := {}
+## 模型资产表：prop_<id> -> 行（关卡里同名占位方块换成哪个模型）
+var props := {}
 var wordlists: Array = []
 
 
@@ -45,7 +50,12 @@ func reload() -> void:
 	layout = group_by(load_table(SPACE + "layout.csv"), "room")
 	characters = load_table(STORY + "characters.csv")
 	sounds = index_by(load_table(AUDIO + "sounds.csv"), "id")
+	props = index_by(load_table(VISUAL + "props.csv"), "id")
 	wordlists = load_table(AI + "wordlists.csv")
+
+
+static func level_path(room_id: String) -> String:
+	return LEVELS + room_id + ".tscn"
 
 
 ## 读 CSV：第一行是表头；以 # 开头的行是注释；文本中的 \n 转为换行

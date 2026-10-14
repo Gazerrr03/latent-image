@@ -1,7 +1,7 @@
 shot_id,node,line,scene,camera,mode,sound,text,ai_slot,actions,next,note
-C0-01,C0,*,train,seat,,train_rattle,,,footage(片头_警告);footage(片头_怪谈),,片头：警告卡 → 怪谈（灵魂照片、报纸、儿歌）。只讲怪谈，不讲世界观
-C0-02,C0,*,train,seat,,train_rattle,火车往西开。窗外是威尔特郡的秋天：一棵树，一道石墙，一个赶羊的人。\n过了一会儿，又是一棵树，一道石墙，一个赶羊的人。,,"osd(档案卡,ORIEL_REEL_01,001/008,1926/10/16 20:12);leak(0)",,上层露出 1/4（接缝）：窗外风景重复。docs/02 第 7 节
-C0-03,C0,*,train,letter_close,,paper_rustle,格雷先生：\n请于十月十六日星期六晚九点来奥瑞尔庄园。我有一样东西，必须给你看。\n——安布罗斯·塔尔博特　十月十三日\n\n我手里只有信的第一页。,,collect(ev_letter_p1);osd(),,第二页在格雷大衣内袋（第 6 章）。“我手里只有第一页”是真话（docs/02 第 11 节）
+C0-01,C0,*,train,seat,camera,train_rattle,,,fx(关闭);footage(片头_警告);footage(片头_怪谈),,片头：警告卡 → 怪谈（灵魂照片、报纸、儿歌）。只讲怪谈，不讲世界观
+C0-02,C0,*,train,seat,camera,train_rattle,火车往西开。窗外是威尔特郡的秋天：一棵树，一道石墙，一个赶羊的人。\n过了一会儿，又是一棵树，一道石墙，一个赶羊的人。,,osd();fx(关闭);leak(0),,上层露出 1/4（接缝）：窗外风景重复。docs/02 第 7 节
+C0-03,C0,*,train,letter_close,camera,paper_rustle,格雷先生：\n请于十月十六日星期六晚九点来奥瑞尔庄园。我有一样东西，必须给你看。\n——安布罗斯·塔尔博特　十月十三日\n\n我手里只有信的第一页。,,osd();fx(关闭);collect(ev_letter_p1),,第二页在格雷大衣内袋（第 6 章）。“我手里只有第一页”是真话（docs/02 第 11 节）
 C0-04,C0,*,manor_gate,wide_symmetric,,iron_gate;thunder_far,九点，我到达奥瑞尔庄园。,,wait(2),,T3：真话，省略七点
 C0-05,C0,*,hall,hall_mid,,clock_tick,门厅里挂着一面镜子。镜子里有门，有帽架，有一盏灯。\n座钟停着，没有人去管它。\n康斯坦斯·塔尔博特迎上来，眼睛上系着一条黑缎带。\n“他在暗房里。他冲照片的时候，谁也不许打扰。”,,,,镜子里没有格雷（镜头回避）；钟停在七点只出现在画面里，文字不提几点
 C0-06,C0,*,hall,hall_mid,,clock_tick,她说，晚饭时暗房的计时铃响了两次，他还在工作。\n到了十点，他还没有出来。,,,,

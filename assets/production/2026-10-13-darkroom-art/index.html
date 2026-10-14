@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>暗房主线 · 美术候选批次</title>
+  <style>
+    :root { --paper:#f3eee5; --ink:#2d251f; --muted:#75695e; --red:#8f2b25; --blue:#2b6371; }
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB",sans-serif}
+    header{padding:52px 6vw 40px;border-bottom:1px solid #d4c7b7;background:linear-gradient(120deg,#f7f2ea,#e8ded0)}
+    h1{margin:0 0 12px;font-family:Georgia,"Songti SC",serif;font-weight:500;font-size:clamp(32px,5vw,64px);letter-spacing:.01em}
+    p{max-width:760px;line-height:1.7;color:var(--muted);margin:0}.state{display:inline-block;margin-top:20px;padding:6px 12px;border:1px solid #a88769;color:#76533b;font-size:13px;letter-spacing:.08em}
+    main{padding:38px 6vw 80px}.notice{max-width:950px;border-left:4px solid var(--red);padding:4px 0 4px 18px;margin-bottom:44px;color:#5d4237;line-height:1.8}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:42px 28px}.room{border-top:1px solid #b9aa98;padding-top:16px}.room h2{font-family:Georgia,"Songti SC",serif;font-size:26px;font-weight:500;margin:0 0 4px}.room small{color:var(--muted)}
+    .hero{margin:14px 0;aspect-ratio:1.36;overflow:hidden;background:#ded4c8}.hero img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}.hero:hover img{transform:scale(1.025)}
+    .views{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.views a{display:block;aspect-ratio:16/9;overflow:hidden;background:#211a17}.views img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}.views img:hover{opacity:1}
+    .links{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:14px}.links a{color:var(--blue);text-decoration:none;border-bottom:1px solid #94b2b8}.links a:hover{color:var(--red);border-color:var(--red)}
+    footer{border-top:1px solid #d4c7b7;padding-top:26px;margin-top:60px;color:var(--muted);font-size:13px;line-height:1.7}
+  </style>
+</head>
+<body>
+<header><h1>暗房主线</h1><p>《奥瑞尔庄园》当前决策下的场景设计候选。每个场景都有 1:50 平面图、与任务卡机位对应的透视概念图和物件清单，供用户验收与后续 Blender 建模。</p><span class="state">候选 · 2026-10-13 · 未接入 Godot</span></header>
+<main><div class="notice"><strong>2026-10-14：本批次退回。</strong>旧平面图比例失真，方块稿不是真实机位透视。<a href="../2026-10-14-darkroom-review/index.html">查看重做批次</a></div>
+  <div class="notice"><strong>审查边界：</strong>平面图直接读取当前 <code>rooms.csv</code> 与 <code>layout.csv</code>；透视图是统一材质、光线和构图的交接概念，不是已验收的最终渲染。暗房与花园的通风口高度差已在物件清单中标出，建模前必须统一。</div>
+  <section class="grid" id="rooms"></section>
+  <footer>人物设定在 <a href="../../2d/T-024-人物三视图/">T-024 人物三视图</a>。纸面与屏幕文字留给程序排版；渗漏白模、网格和故障由程序切换。打开缩略图可查看原图。</footer>
+</main>
+<script>
+const root='../../2d/';
+const rooms=[
+['T-026-客房','客房（大厅）','guest_room',['establish','typewriter_close','board','mirror','bed']],
+['T-027-暗房','暗房','darkroom',['door_push','wide','tray']],
+['T-028-照片档案室','照片档案室','archive',['archive_mid','archive_wall','archive_doorframe']],
+['T-029-餐厅','餐厅','dining',['dining_mid','table_close','dining_side']],
+['T-030-温室','温室','greenhouse',['green_mid','green_pump','green_side']],
+['T-031-艾瑞斯的房间','艾瑞斯的房间','child_room',['child_mid','child_wall','child_box']],
+['T-032-花园·通风口外侧','花园·通风口外侧','garden',['vent','vent_ground','greenhouse_view']],
+['T-033-客厅·降灵会','客厅·降灵会','seance',['seance_mid','table_candle','curtain']],
+['T-034-门厅','门厅','hall',['hall_mid','mirror_hall','stair']],
+['T-035-火车车厢','火车车厢','train',['seat','letter_close','aisle']],
+['T-036-奥瑞尔庄园外景','奥瑞尔庄园外景','manor_gate',['wide_symmetric','gate_close','oriel']],
+['T-037-尾声·白色的房间','尾声·白色的房间','monitor_room',['screens_close','wall','floor']]
+];
+document.querySelector('#rooms').innerHTML=rooms.map(([task,title,slug,cams])=>{const folder=encodeURIComponent(task);const plan=`${root}${folder}/${slug}_平面图.png`;const views=cams.map(c=>`<a href="${root}${folder}/${slug}_透视_${c}.png"><img loading="lazy" src="${root}${folder}/${slug}_透视_${c}.png" alt="${title} ${c} 机位"></a>`).join('');return `<article class="room"><h2>${title}</h2><small>${task} · ${cams.length} 个机位概念</small><a class="hero" href="${plan}"><img loading="lazy" src="${plan}" alt="${title} 平面图"></a><div class="views">${views}</div><div class="links"><a href="${root}${folder}/${slug}_物件清单.md">物件清单</a><a href="${root}${folder}/来源.md">来源与审查</a></div></article>`}).join('');
+</script>
+</body>
+</html>

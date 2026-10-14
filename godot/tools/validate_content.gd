@@ -23,6 +23,10 @@ var fx_presets := {}
 var footage := {}
 ## 关卡进度（纵切面），写进检查报告
 var level_rows: Array = []
+## 人工搭的关卡场景：房间 id -> 从场景里读出的名字（机位、物件、人物、小物件占位）
+var levels := {}
+## 小物件规格（从关卡占位方块读出），写进检查报告给美术
+var prop_specs: Array = []
 
 
 func err(table: String, where: String, what: String, fix := "") -> void:
@@ -45,6 +49,11 @@ func _init() -> void:
 	var layout_rows := DB.load_table(SPACE + "layout.csv")
 	var layout := DB.group_by(layout_rows, "room")
 	var sounds := DB.index_by(DB.load_table(AUDIO + "sounds.csv"), "id")
+	var props := DB.index_by(DB.load_table(VISUAL + "props.csv"), "id")
+	for rid in rooms:
+		var lv := _scan_level(rid)
+		if not lv.is_empty():
+			levels[rid] = lv
 	var words := DB.load_table(AI + "wordlists.csv")
 	fx_presets = DB.index_by(DB.load_table(VISUAL + "fx.csv"), "preset")
 	footage = DB.group_by(DB.load_table(VISUAL + "footage.csv"), "clip")
@@ -94,7 +103,10 @@ func _init() -> void:
 		if not mode in ["", "camera", "walk"]:
 			err("镜头表", id, "模式只能填 camera（镜头）或 walk（行走），现在是“%s”" % mode)
 		var cam: String = r.get("camera", "")
-		if cam != "" and room != "" and not _has_layout(layout, room, "机位", cam) and rooms.get(room, {}).get("model", "") == "":
+		if cam != "" and levels.has(room):
+			if not levels[room]["cams"].has(cam):
+				warn("镜头表", id, "关卡场景 levels/%s.tscn 里没有机位 cam_%s，会用默认机位" % [room, cam], "在关卡场景里加一个 Camera3D，命名为 cam_%s" % cam)
+		elif cam != "" and room != "" and not _has_layout(layout, room, "机位", cam):
 			warn("镜头表", id, "机位“%s”在房间布局表的 %s 里找不到，会用默认机位" % [cam, room], "在房间布局表给这个房间加一行“机位”")
 		for snd in str(r.get("sound", "")).split(";", false):
 			if not sounds.has(snd.strip_edges()):
@@ -127,13 +139,46 @@ func _init() -> void:
 			err("人物表", n, "状态只能填 侦探 / 人物 / 死者 / 其他，现在是“%s”" % st)
 		if c.get("room", "") != "" and not rooms.has(c["room"]):
 			err("人物表", n, "所在房间“%s”不在房间登记表里" % c["room"])
+		elif levels.has(c.get("room", "")) and not levels[c["room"]]["chr"].has(n):
+			warn("人物表", n, "所在房间 %s 已有关卡场景，但场景里没有 chr_%s，这个人不会出现" % [c["room"], n], "在关卡场景里放一个空节点（Marker3D），命名为 chr_%s" % n)
+	for room in levels:
+		var people: Array = levels[room]["chr"].keys().filter(func(p): return p != "镜中人形")
+		if people.size() > 1:
+			warn("关卡场景", room, "这个房间放了 %d 个人物；同一画面里只应有一个人" % people.size(), "把其他人移到别的房间，或先隐藏、再用 reveal 轮流出现")
 	# 同一个房间里最多放一个人：这些人物从不同时出现在同一画面里（docs/02 第 7 节）
 	for room in layout:
+		if levels.has(room):
+			continue
 		var people: Array = layout[room].filter(func(row): return row.get("type", "") == "人物" and row.get("id", "") != "镜中人形")
 		if people.size() > 1:
 			warn("房间布局表", room, "这个房间放了 %d 个人物；同一画面里只应有一个人" % people.size(), "把其他人移到别的房间，或用 hidden + reveal 轮流出现")
 
-	# ── 空间 ──
+	# ── 空间：有关卡场景的房间以场景为准；其余房间暂用灰盒（房间布局表） ──
+	for room in levels:
+		var lv: Dictionary = levels[room]
+		if layout.has(room):
+			warn("房间布局表", room, "这个房间已有关卡场景 levels/%s.tscn，布局表里的 %d 行不再生效" % [room, layout[room].size()], "确认场景搭好后，删掉布局表里这个房间的行")
+		if not lv["spawn"]:
+			warn("关卡场景", room, "场景里没有 spawn，玩家会出生在原点", "放一个空节点（Marker3D），命名为 spawn，朝向 -z 是玩家面朝的方向")
+		for h in lv["hs"]:
+			if not hotspots.has(h):
+				warn("关卡场景", "%s / %s" % [room, h], "这个可检查物件在可检查物件表里没有描述", "在可检查物件表补一行，写玩家看到什么")
+		for pid in lv["props"]:
+			var size = lv["props"][pid]
+			var row: Dictionary = props.get(pid, {})
+			var file: String = row.get("model", "")
+			var state := "未登记" if row.is_empty() else ("待交付" if file == "" or not FileAccess.file_exists(file) else "已替换")
+			prop_specs.append({"id": pid, "name": row.get("name", ""), "room": room, "size": size, "state": state})
+			if row.is_empty():
+				warn("模型资产表", pid, "关卡 %s 里有这个小物件占位，但模型资产表还没登记" % room, "在模型资产表加一行，id 写 %s" % pid)
+	for pid in props:
+		var file: String = props[pid].get("model", "")
+		if not pid.begins_with("prop_"):
+			err("模型资产表", pid, "id 必须以 prop_ 开头，和关卡里的占位节点同名")
+		if file != "" and not FileAccess.file_exists(file):
+			err("模型资产表", pid, "模型文件 %s 不存在" % file, "检查路径，例如 res://art/props/teacup.glb")
+		if not prop_specs.any(func(p): return p["id"] == pid):
+			warn("模型资产表", pid, "还没有哪个关卡放了这个物件的占位", "在关卡场景里放一个 CSGBox3D，命名为 %s" % pid)
 	for row in layout_rows:
 		var room: String = row.get("room", "")
 		var where := "%s / %s" % [room, row.get("id", row.get("type", ""))]
@@ -148,11 +193,8 @@ func _init() -> void:
 		if t == "可检查物件" and not hotspots.has(row.get("id", "")):
 			warn("房间布局表", where, "这个可检查物件在可检查物件表里没有描述", "在可检查物件表补一行，写玩家看到什么")
 	for id in rooms:
-		var m: String = rooms[id].get("model", "")
-		if m != "" and not FileAccess.file_exists(m):
-			warn("房间登记表", id, "美术模型 %s 还没交付，暂时用灰盒" % m.get_file())
-		if not FileAccess.file_exists(m) and not layout.has(id):
-			err("房间登记表", id, "既没有美术模型，也没有房间布局", "在房间布局表给它加家具、出生点等")
+		if not levels.has(id) and not layout.has(id):
+			err("房间登记表", id, "既没有关卡场景，也没有灰盒布局", "在 Godot 里搭 levels/%s.tscn" % id)
 
 	# ── 声音 ──
 	var missing_files := 0
@@ -170,6 +212,38 @@ func _init() -> void:
 
 	_level_report(shots, rooms, sounds, ann, lines, footage)
 	_report(shots.size(), hotspots.size(), evidence.size(), chars.size(), rooms.size(), layout_rows.size(), sounds.size(), words.size())
+
+
+## 读关卡场景里按约定命名的节点；没有场景返回空字典
+func _scan_level(id: String) -> Dictionary:
+	var path := DB.level_path(id)
+	if not ResourceLoader.exists(path):
+		return {}
+	var ps := load(path) as PackedScene
+	if ps == null:
+		err("关卡场景", id, "levels/%s.tscn 打不开" % id, "在 Godot 编辑器里打开它，看报什么错")
+		return {}
+	var root := ps.instantiate()
+	var d := {"cams": {}, "hs": {}, "chr": {}, "props": {}, "names": {}, "spawn": false}
+	var stack: Array = [root]
+	while not stack.is_empty():
+		var n: Node = stack.pop_back()
+		stack.append_array(n.get_children())
+		var nm := String(n.name)
+		d["names"][nm] = true
+		if nm == "spawn":
+			d["spawn"] = true
+		elif nm.begins_with("cam_"):
+			d["cams"][nm.trim_prefix("cam_")] = true
+		elif nm.begins_with("hs_"):
+			d["hs"][nm] = true
+		elif nm.begins_with("chr_"):
+			d["chr"][nm.trim_prefix("chr_")] = true
+			d["names"][nm.trim_prefix("chr_")] = true
+		elif nm.begins_with("prop_"):
+			d["props"][nm] = n.size if n is CSGBox3D else (n.mesh.get_aabb().size if n is MeshInstance3D and n.mesh else null)
+	root.free()
+	return d
 
 
 func _has_layout(layout: Dictionary, room: String, type: String, id: String) -> bool:
@@ -209,6 +283,9 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 			for h in args:
 				if not hotspots.has(h):
 					err("镜头表", id, "要检查的物件 %s 不在可检查物件表里" % h)
+				elif mode == "walk" and levels.has(room):
+					if not levels[room]["hs"].has(h):
+						err("镜头表", id, "行走镜头要检查 %s，但关卡场景 levels/%s.tscn 里没有这个节点，玩家找不到" % [h, room], "在关卡场景里放一个节点，命名为 %s" % h)
 				elif mode == "walk" and not _has_layout(layout, room, "可检查物件", h):
 					err("镜头表", id, "行走镜头要检查 %s，但房间布局表的 %s 里没有放它，玩家找不到" % [h, room], "在房间布局表给 %s 加一行“可检查物件”" % room)
 		"collect":
@@ -237,7 +314,10 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
 		"reveal", "conceal":
 			for x in args:
-				var found := false
+				var found: bool = levels.has(room) and levels[room]["names"].has(x)
+				if levels.has(room) and not found:
+					err("镜头表", id, "%s 要显示 / 隐藏的“%s”在关卡场景 levels/%s.tscn 里没有同名节点" % [nm, x, room])
+					continue
 				for row in layout.get(room, []):
 					if row.get("id", "") == x:
 						found = true
@@ -323,6 +403,19 @@ func _report(n_shots: int, n_hot: int, n_ev: int, n_ch: int, n_rooms: int, n_lay
 		md.append("| --- | --- | --- | --- |")
 		for i in group[1]:
 			md.append("| %s | %s | %s | %s |" % [i["table"], i["where"], i["what"], i["fix"]])
+	md.append("")
+	md.append("## 🧱 关卡场景与小物件规格")
+	md.append("")
+	md.append("已搭关卡场景：%d / %d 个房间（%s）" % [levels.size(), n_rooms, "、".join(PackedStringArray(levels.keys())) if not levels.is_empty() else "无"])
+	if not prop_specs.is_empty():
+		md.append("")
+		md.append("小物件的尺寸从关卡里的占位方块读出，就是建模规格（单位：米；模型原点放在底面中心）。")
+		md.append("")
+		md.append("| 物件 | 名称 | 房间 | 宽 × 高 × 深 | 状态 |")
+		md.append("| --- | --- | --- | --- | --- |")
+		for p in prop_specs:
+			var sz: String = "（不是方块，没有尺寸）" if p["size"] == null else "%.2f × %.2f × %.2f" % [p["size"].x, p["size"].y, p["size"].z]
+			md.append("| %s | %s | %s | %s | %s |" % [p["id"], p["name"], p["room"], sz, p["state"]])
 	if not level_rows.is_empty():
 		md.append("")
 		md.append("## 🎬 关卡进度（纵切面，按关卡表自动统计）")
@@ -461,8 +554,7 @@ func _level_report(shots: Array, rooms: Dictionary, sounds: Dictionary, ann: Dic
 		var d: Dictionary = data[lv["level"]]
 		for rn in d["rooms"]:
 			for rid in rooms:
-				var mdl := str(rooms[rid].get("model", ""))
-				if rooms[rid].get("name", "") == rn and (mdl == "" or not FileAccess.file_exists(mdl)):
+				if rooms[rid].get("name", "") == rn and not levels.has(rid):
 					d["models"] += 1
 		var gaps := PackedStringArray()
 		if d["errors"] > 0:
@@ -472,7 +564,7 @@ func _level_report(shots: Array, rooms: Dictionary, sounds: Dictionary, ann: Dic
 		if d["img"] > 0:
 			gaps.append("%d 张影像图片待交付" % d["img"])
 		if d["models"] > 0:
-			gaps.append("%d 个房间仍是灰盒" % d["models"])
+			gaps.append("%d 个房间还没有关卡场景（仍是灰盒）" % d["models"])
 		if d["snd_missing"] > 0:
 			gaps.append("%d / %d 个声音无文件" % [d["snd_missing"], d["snd"].size()])
 		level_rows.append({

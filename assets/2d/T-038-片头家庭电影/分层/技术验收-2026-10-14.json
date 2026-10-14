@@ -1,0 +1,16 @@
+{
+  "selected_assets": 14,
+  "transparent_layers": 13,
+  "generated_versions": 19,
+  "missing_files": 0,
+  "hash_mismatches": 0,
+  "frames": 126,
+  "width": 960,
+  "height": 720,
+  "fps": 18,
+  "duration_s": 7,
+  "max_exact_black_fraction": 0.00036024305555555554,
+  "decode": "passed",
+  "user_visual_acceptance": "pending",
+  "godot_integration": "not changed"
+}

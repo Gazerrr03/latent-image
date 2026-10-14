@@ -1,0 +1,135 @@
+{
+  "status": "待用户验收",
+  "files": [
+    {
+      "file": "manor_总平面.svg",
+      "sha256": "3ff07a2809d4166f248fdf11f920f52f94a8cdcb84e3ad93247d19d367884090",
+      "bytes": 18319
+    },
+    {
+      "file": "manor_总平面.png",
+      "sha256": "b1bd3816a21de448e34ce6f550aa1bbb3fe1faf4945bc465852cb5992f987bf7",
+      "bytes": 338144,
+      "pixels": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_总平面.pdf",
+      "sha256": "76aebf0018d5b7aef072f20aee0a8fbe51cb4f1743de1cf9f52732617f6f951e",
+      "bytes": 1009564
+    },
+    {
+      "file": "manor_平面_一楼.svg",
+      "sha256": "7da19eb02e0e68cc13bece86ca2cfdc0d88ed59462f633012cf17e2a8a6dad81",
+      "bytes": 31173
+    },
+    {
+      "file": "manor_平面_一楼.png",
+      "sha256": "aa7e99c439382c5a82872172f982655b30abafcec8491629877286d6b145df3c",
+      "bytes": 353842,
+      "pixels": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_平面_一楼.pdf",
+      "sha256": "4dd06b68aee2bdeb0ec6b09ba8c1bcc1088385308a1c2a76d757e2ee250f6cac",
+      "bytes": 2030854
+    },
+    {
+      "file": "manor_平面_二楼.svg",
+      "sha256": "abca0a6abeec20ea80cd1261eae54ee0b8b4059841558b9cb289b0458ab19711",
+      "bytes": 38965
+    },
+    {
+      "file": "manor_平面_二楼.png",
+      "sha256": "0c4989ee933bf2a7b5b4cd9bc564786d16b477c3105046fb5328bcd4896d43e6",
+      "bytes": 381304,
+      "pixels": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_平面_二楼.pdf",
+      "sha256": "3465bd6f41d3ce7578ade99c43f621a258786cbf704f3e7b839dc4877075a45c",
+      "bytes": 1080410
+    },
+    {
+      "file": "manor_剖面.svg",
+      "sha256": "5334f1357404e890edfb77a890634698f55dab390f3921af1706fc57cc311371",
+      "bytes": 24039
+    },
+    {
+      "file": "manor_剖面.png",
+      "sha256": "d734cd7b1289c8000cd6c9bfc5dbeb3e66bddf27b792ba1a6b4198da66666407",
+      "bytes": 378366,
+      "pixels": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_剖面.pdf",
+      "sha256": "8850efb773b38cf3dfed9036c81cec04c72b6f2a382cad4b65e2d354b7161145",
+      "bytes": 6742540
+    },
+    {
+      "file": "manor_鸟瞰_前.png",
+      "sha256": "4009e9ea394f56a8cabf7ba8ca2ab1b86f7e94bf84aa4498f58ba123f379d04e",
+      "bytes": 3611874,
+      "pixels": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "manor_鸟瞰_后.png",
+      "sha256": "c1d85fbabf9ce171d7307887fbe25c77cf7696e30966534704935e5e84dc90ab",
+      "bytes": 3320596,
+      "pixels": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "manor_人视角_1.png",
+      "sha256": "e389d943830492333cc1dd8f28464e05d8b61603d7f35e79e2d56173f0789701",
+      "bytes": 2981977,
+      "pixels": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "manor_人视角_2.png",
+      "sha256": "61ba83910915a3ffc86c88abc0565e97ef65a93533b179d7c3c13e3787f3d557",
+      "bytes": 3390362,
+      "pixels": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "manor_人视角_3.png",
+      "sha256": "cc664973ca89f3fdd34066fe5422d28ca2e70e272d812c241af3263ef26d4cd3",
+      "bytes": 3022697,
+      "pixels": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "manor_人视角_4.png",
+      "sha256": "d2e5d319b25293df10c8227bc7d1f795a8143caa962751d15814b9298384cc99",
+      "bytes": 2917859,
+      "pixels": [
+        1672,
+        941
+      ]
+    }
+  ]
+}

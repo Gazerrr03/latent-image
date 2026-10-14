@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420mm" height="297mm" viewBox="0 0 420 297">
+<defs><pattern id="earth" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M-1,1 L1,-1 M0,2 L2,0 M1,3 L3,1" fill="none" stroke="#c5c0b5" stroke-width=".18"/></pattern>
+<marker id="arr" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="#276c88"/></marker>
+<marker id="gold" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5" fill="#a36b29"/></marker></defs>
+<style>text {font-family: 'Hiragino Sans GB','PingFang SC',sans-serif;fill:#29332e} .route{stroke:#276c88} .secret{stroke:#a36b29}</style>
+<rect width="420" height="297" fill="#fcfaf6"/>
+<text x="17" y="15" font-size="3" letter-spacing="1.3">ORIEL HOUSE / 奥瑞尔庄园 / T-039</text>
+<text x="17" y="28" font-size="8" font-family="Songti SC,serif">剖面 / 两个地面与楼上楼下</text>
+<text x="17" y="36" font-size="3.1" fill="#727c70">1:100 / A-A 中轴：正门、门厅与楼梯 / B-B 东侧：餐厅、暗房与百叶</text>
+<text x="401" y="27" text-anchor="end" font-size="10">04</text>
+<path d="M17,41 H403 M17,282 H403" stroke="#bbb9ae" stroke-width=".25"/>
+<text x="17" y="290" font-size="2.8">设计草案 v1 / 2026-10-14 / 尺寸单位 m / 布局与视觉待用户验收</text>
+<text x="403" y="290" text-anchor="end" font-size="2.8">A3 · PDF 按 100% 打印；PNG 以比例尺为准</text>
+<text x="17" y="48" font-size="3.6" text-anchor="start" style="fill:#a36b29">A-A</text>
+<polyline points="35.000,145.000 65.000,145.000 65.000,155.000 285.000,155.000 285.000,109.000 179.000,109.000 179.000,145.000 35.000,145.000" fill="#e4dfd2" stroke="none" stroke-width="0.4" class=""/>
+<polyline points="35.000,145.000 65.000,145.000" fill="none" stroke="#738466" stroke-width="0.7" class=""/>
+<polyline points="179.000,109.000 285.000,109.000" fill="none" stroke="#738466" stroke-width="0.8" class=""/>
+<rect x="65.000" y="77.000" width="114.000" height="68.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="68.000" y="112.000" width="108.000" height="30.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="68.000" y="80.000" width="108.000" height="29.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="65.000,77.000 122.000,50.000 179.000,77.000" fill="#d7d5cb" stroke="#29332e" stroke-width="0.5" class=""/>
+<polyline points="69.000,77.000 122.000,54.000" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="122.000,54.000 175.000,77.000" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="50.000,145.000 185.000,145.000" fill="none" stroke="#b6b8ac" stroke-width="0.12" class="" stroke-dasharray="1.5 1"/>
+<text x="49.0" y="143.7" font-size="2.65" text-anchor="end" style="fill:#29332e">±0.000</text>
+<polyline points="50.000,109.000 185.000,109.000" fill="none" stroke="#b6b8ac" stroke-width="0.12" class="" stroke-dasharray="1.5 1"/>
+<text x="49.0" y="107.7" font-size="2.65" text-anchor="end" style="fill:#29332e">+3.600</text>
+<polyline points="50.000,77.000 185.000,77.000" fill="none" stroke="#b6b8ac" stroke-width="0.12" class="" stroke-dasharray="1.5 1"/>
+<text x="49.0" y="75.7" font-size="2.65" text-anchor="end" style="fill:#29332e">+6.800</text>
+<polyline points="56.000,145.000 56.000,109.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,145.000 58.000,145.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,109.000 58.000,109.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="52.2" y="127.0" font-size="2.8" text-anchor="middle" transform="rotate(-90,52.2,127.0)">3.60</text>
+<polyline points="56.000,109.000 56.000,77.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,109.000 58.000,109.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,77.000 58.000,77.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="52.2" y="93.0" font-size="2.8" text-anchor="middle" transform="rotate(-90,52.2,93.0)">3.20</text>
+<text x="45" y="135.0" font-size="2.9" text-anchor="middle" style="fill:#29332e">前草坪</text>
+<text x="225" y="114.0" font-size="3.1" text-anchor="middle" style="fill:#29332e">后花园 +3.600</text>
+<text x="225" y="120.5" font-size="2.6" text-anchor="middle" style="fill:#29332e">高处与二楼地面同高</text>
+<rect x="64.700" y="119.500" width="3.600" height="22.500" fill="#fcfaf6" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="54.500" y="85.000" width="13.500" height="18.000" fill="#d2e0dc" stroke="#29332e" stroke-width="0.25" opacity="1"/>
+<text x="89.0" y="128.5" font-size="3.4" text-anchor="middle" style="fill:#29332e">门厅 / 正门</text>
+<text x="89.0" y="95.0" font-size="3.35" text-anchor="middle" style="fill:#29332e">照片档案室</text>
+<text x="89.0" y="101.5" font-size="2.6" text-anchor="middle" style="fill:#29332e">中轴凸窗</text>
+<text x="123.0" y="94.0" font-size="2.75" text-anchor="middle" style="fill:#29332e">走廊</text>
+<rect x="134.000" y="80.000" width="42.000" height="62.000" fill="#eee3cf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="134.000" y="109.000" width="9.000" height="3.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="143.000,145.000 143.000,145.000 143.000,143.200 145.800,143.200 145.800,141.400 148.600,141.400 148.600,139.600 151.400,139.600 151.400,137.800 154.200,137.800 154.200,136.000 157.000,136.000 157.000,134.200 159.800,134.200 159.800,132.400 162.600,132.400 162.600,130.600 165.400,130.600 165.400,128.800 168.200,128.800 168.200,127.000" fill="none" stroke="#9ca494" stroke-width="0.35" class="" stroke-dasharray="1 .6"/>
+<polyline points="143.000,109.000 143.000,109.000 143.000,110.800 145.800,110.800 145.800,112.600 148.600,112.600 148.600,114.400 151.400,114.400 151.400,116.200 154.200,116.200 154.200,118.000 157.000,118.000 157.000,119.800 159.800,119.800 159.800,121.600 162.600,121.600 162.600,123.400 165.400,123.400 165.400,125.200 168.200,125.200 168.200,127.000" fill="none" stroke="#29332e" stroke-width="0.35" class=""/>
+<rect x="168.200" y="127.000" width="7.800" height="1.500" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<text x="155.0" y="89.0" font-size="2.9" text-anchor="middle" style="fill:#29332e">折返楼梯</text>
+<text x="155.0" y="96.0" font-size="2.65" text-anchor="middle" style="fill:#29332e">20 级 / 两跑</text>
+<text x="155.0" y="139.5" font-size="2.6" text-anchor="middle" style="fill:#29332e">每级 0.18</text>
+<text x="110.0" y="65.0" font-size="2.65" text-anchor="middle" style="fill:#29332e">屋脊约 +9.500</text>
+<text x="17" y="168" font-size="3.6" text-anchor="start" style="fill:#a36b29">B-B</text>
+<polyline points="35.000,265.000 65.000,265.000 65.000,275.000 285.000,275.000 285.000,229.000 179.000,229.000 179.000,265.000 35.000,265.000" fill="#e4dfd2" stroke="none" stroke-width="0.4" class=""/>
+<polyline points="35.000,265.000 65.000,265.000" fill="none" stroke="#738466" stroke-width="0.7" class=""/>
+<polyline points="179.000,229.000 285.000,229.000" fill="none" stroke="#738466" stroke-width="0.8" class=""/>
+<rect x="65.000" y="197.000" width="114.000" height="68.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="68.000" y="232.000" width="108.000" height="30.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="68.000" y="200.000" width="108.000" height="29.000" fill="#e4ecdf" stroke="none" stroke-width="0.25" opacity="1"/>
+<polyline points="65.000,197.000 122.000,170.000 179.000,197.000" fill="#d7d5cb" stroke="#29332e" stroke-width="0.5" class=""/>
+<polyline points="69.000,197.000 122.000,174.000" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="122.000,174.000 175.000,197.000" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="50.000,265.000 185.000,265.000" fill="none" stroke="#b6b8ac" stroke-width="0.12" class="" stroke-dasharray="1.5 1"/>
+<text x="49.0" y="263.7" font-size="2.65" text-anchor="end" style="fill:#29332e">±0.000</text>
+<polyline points="50.000,229.000 185.000,229.000" fill="none" stroke="#b6b8ac" stroke-width="0.12" class="" stroke-dasharray="1.5 1"/>
+<text x="49.0" y="227.7" font-size="2.65" text-anchor="end" style="fill:#29332e">+3.600</text>
+<polyline points="50.000,197.000 185.000,197.000" fill="none" stroke="#b6b8ac" stroke-width="0.12" class="" stroke-dasharray="1.5 1"/>
+<text x="49.0" y="195.7" font-size="2.65" text-anchor="end" style="fill:#29332e">+6.800</text>
+<polyline points="56.000,265.000 56.000,229.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,265.000 58.000,265.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,229.000 58.000,229.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="52.2" y="247.0" font-size="2.8" text-anchor="middle" transform="rotate(-90,52.2,247.0)">3.60</text>
+<polyline points="56.000,229.000 56.000,197.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,229.000 58.000,229.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="54.000,197.000 58.000,197.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="52.2" y="213.0" font-size="2.8" text-anchor="middle" transform="rotate(-90,52.2,213.0)">3.20</text>
+<text x="45" y="255.0" font-size="2.9" text-anchor="middle" style="fill:#29332e">前草坪</text>
+<text x="225" y="234.0" font-size="3.1" text-anchor="middle" style="fill:#29332e">后花园 +3.600</text>
+<text x="225" y="240.5" font-size="2.6" text-anchor="middle" style="fill:#29332e">高处与二楼地面同高</text>
+<rect x="105.000" y="200.000" width="3.000" height="29.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<rect x="138.000" y="200.000" width="3.000" height="29.000" fill="#29332e" stroke="none" stroke-width="0.25" opacity="1"/>
+<text x="87.0" y="214.5" font-size="3.1" text-anchor="middle" style="fill:#29332e">主卧（锁）</text>
+<text x="123.0" y="214.5" font-size="2.9" text-anchor="middle" style="fill:#29332e">储物间（锁）</text>
+<text x="160.0" y="214.5" font-size="3.6" text-anchor="middle" style="fill:#29332e">暗房</text>
+<text x="160.0" y="221.5" font-size="2.65" text-anchor="middle" style="fill:#29332e">右后角 / 餐厅上方</text>
+<text x="97.0" y="247.0" font-size="3.4" text-anchor="middle" style="fill:#29332e">餐厅前厅</text>
+<text x="157.0" y="247.0" font-size="3.35" text-anchor="middle" style="fill:#29332e">后餐叙区</text>
+<text x="128.0" y="256.0" font-size="2.75" text-anchor="middle" style="fill:#29332e">餐厅从前到后连续 / 中间没有隔墙</text>
+<rect x="175.800" y="222.000" width="3.500" height="4.000" fill="#74867c" stroke="#29332e" stroke-width="0.2" opacity="1"/>
+<polyline points="176.000,225.300 179.000,225.300" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="176.000,224.400 179.000,224.400" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="176.000,223.500 179.000,223.500" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<polyline points="176.000,222.600 179.000,222.600" fill="none" stroke="#29332e" stroke-width="0.2" class=""/>
+<rect x="179.000" y="229.000" width="15.000" height="1.500" fill="#ae8c5f" stroke="none" stroke-width="0.25" opacity="1"/>
+<text x="209.0" y="218.5" font-size="2.75" text-anchor="middle" style="fill:#a36b29">百叶 0.40 × 0.40</text>
+<text x="209.0" y="224.5" font-size="2.75" text-anchor="middle" style="fill:#a36b29">中心离地 0.50</text>
+<text x="206.0" y="211.0" font-size="2.75" text-anchor="middle" style="fill:#a36b29">下方为未铺装泥地</text>
+<polyline points="156.000,239.500 156.000,228.500" fill="none" stroke="#276c88" stroke-width="0.35" class="" marker-end="url(#arr)"/>
+<text x="156.0" y="235.5" font-size="2.4" text-anchor="end" style="fill:#276c88">声音</text>
+<polyline points="65.000,276.000 179.000,276.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="65.000,278.000 65.000,274.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<polyline points="179.000,278.000 179.000,274.000" fill="none" stroke="#727c70" stroke-width="0.18" class=""/>
+<text x="122.0" y="273.5" font-size="2.8" text-anchor="middle" style="fill:#29332e">主楼进深 11.40</text>
+<text x="329" y="62" font-size="3.3" text-anchor="start" style="fill:#a36b29">01</text>
+<text x="341" y="62" font-size="3.4" text-anchor="start" style="fill:#29332e">两条真实剖切线</text>
+<text x="329" y="69" font-size="2.85" text-anchor="start" style="fill:#727c70">两条剖线均在平面标出。</text>
+<text x="329" y="74" font-size="2.85" text-anchor="start" style="fill:#727c70">中轴与暗房不在同一直线上。</text>
+<text x="329" y="79" font-size="2.85" text-anchor="start" style="fill:#727c70">因此在同张图分别剖开。</text>
+<text x="329" y="105" font-size="3.3" text-anchor="start" style="fill:#a36b29">02</text>
+<text x="341" y="105" font-size="3.4" text-anchor="start" style="fill:#29332e">高度基准</text>
+<text x="329" y="112" font-size="2.85" text-anchor="start" style="fill:#727c70">低处前院 ±0.000。</text>
+<text x="329" y="117" font-size="2.85" text-anchor="start" style="fill:#727c70">二楼、后园、温室 +3.600。</text>
+<text x="329" y="122" font-size="2.85" text-anchor="start" style="fill:#727c70">主楼前两层 / 后只露上层。</text>
+<text x="329" y="164" font-size="3.3" text-anchor="start" style="fill:#a36b29">03</text>
+<text x="341" y="164" font-size="3.4" text-anchor="start" style="fill:#29332e">空间让证词成立</text>
+<text x="329" y="171" font-size="2.85" text-anchor="start" style="fill:#727c70">餐叙区与暗房上下相叠。</text>
+<text x="329" y="176" font-size="2.85" text-anchor="start" style="fill:#727c70">窗台、百叶、泥地在同侧。</text>
+<text x="329" y="181" font-size="2.85" text-anchor="start" style="fill:#727c70">温室共墙侧门见二楼平面。</text>
+<text x="329" y="211" font-size="3.3" text-anchor="start" style="fill:#a36b29">04</text>
+<text x="341" y="211" font-size="3.4" text-anchor="start" style="fill:#29332e">设计图的边界</text>
+<text x="329" y="218" font-size="2.85" text-anchor="start" style="fill:#727c70">层高为楼面到楼面。</text>
+<text x="329" y="223" font-size="2.85" text-anchor="start" style="fill:#727c70">楼板示意厚 0.30。</text>
+<text x="329" y="228" font-size="2.85" text-anchor="start" style="fill:#727c70">不包含结构、排水施工。</text>
+<rect x="329" y="263" width="10" height="1.6" fill="#29332e" stroke="#29332e" stroke-width=".2"/>
+<rect x="339" y="263" width="10" height="1.6" fill="#fcfaf6" stroke="#29332e" stroke-width=".2"/>
+<rect x="349" y="263" width="10" height="1.6" fill="#29332e" stroke="#29332e" stroke-width=".2"/>
+<rect x="359" y="263" width="10" height="1.6" fill="#fcfaf6" stroke="#29332e" stroke-width=".2"/>
+<rect x="369" y="263" width="10" height="1.6" fill="#29332e" stroke="#29332e" stroke-width=".2"/>
+<text x="329" y="269" font-size="2.5" text-anchor="middle" style="fill:#29332e">0</text>
+<text x="339" y="269" font-size="2.5" text-anchor="middle" style="fill:#29332e">1</text>
+<text x="379" y="269" font-size="2.5" text-anchor="middle" style="fill:#29332e">5 m</text>
+<text x="329" y="259" font-size="2.7" text-anchor="start" style="fill:#29332e">1:100 / 每格 1 m</text>
+</svg>

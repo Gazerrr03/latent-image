@@ -1,0 +1,148 @@
+{
+  "room": "dining",
+  "source_hash": "5d1e31557c4d351dd0783d57f93544520eee89db3a0fbddebc04694e4f5bd4f1",
+  "metres_to_pdf_points": 56.69291338582678,
+  "scale": "1:50",
+  "page_mm": [
+    420.0,
+    297.0
+  ],
+  "room_rectangle_pdf_points": [
+    201.25984251968507,
+    136.06299212598427,
+    541.4173228346457,
+    419.5275590551181
+  ],
+  "current_layout": [
+    {
+      "room": "dining",
+      "type": "出生点",
+      "id": "spawn",
+      "x": "0",
+      "y": "0",
+      "z": "1.8",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0",
+      "look_y": "0",
+      "look_z": "0",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "dining",
+      "type": "灯光",
+      "id": "",
+      "x": "0",
+      "y": "2.8",
+      "z": "-0.5",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#ffcf95",
+      "energy": "2.6",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "dining",
+      "type": "机位",
+      "id": "dining_mid",
+      "x": "1.8",
+      "y": "1.6",
+      "z": "1.8",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "-0.4",
+      "look_y": "1.1",
+      "look_z": "-1.0",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "dining",
+      "type": "机位",
+      "id": "table_close",
+      "x": "0.6",
+      "y": "1.5",
+      "z": "0.6",
+      "w": "",
+      "h": "",
+      "d": "",
+      "look_x": "0",
+      "look_y": "0.8",
+      "look_z": "-0.5",
+      "color": "",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "dining",
+      "type": "家具",
+      "id": "餐桌",
+      "x": "0",
+      "y": "0",
+      "z": "-0.5",
+      "w": "2.4",
+      "h": "0.75",
+      "d": "1.0",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#5b3f2a",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    },
+    {
+      "room": "dining",
+      "type": "家具",
+      "id": "多出来的一副餐具",
+      "x": "0.8",
+      "y": "0.75",
+      "z": "-0.3",
+      "w": "0.3",
+      "h": "0.02",
+      "d": "0.3",
+      "look_x": "",
+      "look_y": "",
+      "look_z": "",
+      "color": "#e8e0d0",
+      "energy": "",
+      "hidden": "",
+      "note": ""
+    }
+  ],
+  "proposed_furniture": [
+    [
+      "餐具柜",
+      -2.65,
+      -1,
+      0.45,
+      1.4
+    ],
+    [
+      "吊灯",
+      0,
+      -0.5,
+      0.5,
+      0.5
+    ]
+  ],
+  "proposed_entrance": [
+    "south",
+    0,
+    1
+  ],
+  "global_floor_alignment": "待团队决定"
+}

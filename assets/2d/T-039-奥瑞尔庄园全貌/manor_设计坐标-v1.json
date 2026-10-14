@@ -1,0 +1,291 @@
+{
+  "version": "v1",
+  "status": "待用户验收",
+  "units": "metres",
+  "origin": "主楼西南外墙角",
+  "x": "向东",
+  "north": "向北；Godot -Z",
+  "ffl": {
+    "1": 0,
+    "2": 3.6,
+    "garden": 3.6
+  },
+  "main_outer": [
+    19.2,
+    11.4
+  ],
+  "rooms": [
+    {
+      "name": "门厅",
+      "floor": "1",
+      "x": 6.75,
+      "north": 0.3,
+      "width": 5.7,
+      "depth": 4.5,
+      "floor_to_floor": 3.6,
+      "access": "可进入"
+    },
+    {
+      "name": "客厅 · 降灵会",
+      "floor": "1",
+      "x": 0.3,
+      "north": 0.3,
+      "width": 6.15,
+      "depth": 4.5,
+      "floor_to_floor": 3.6,
+      "access": "可进入"
+    },
+    {
+      "name": "餐厅前厅",
+      "floor": "1",
+      "x": 12.75,
+      "north": 0.3,
+      "width": 6.15,
+      "depth": 4.5,
+      "floor_to_floor": 3.6,
+      "access": "可进入"
+    },
+    {
+      "name": "餐厅后餐叙区",
+      "floor": "1",
+      "x": 15.4,
+      "north": 5.1,
+      "width": 3.5,
+      "depth": 6,
+      "floor_to_floor": 3.6,
+      "access": "可进入；与前厅连续"
+    },
+    {
+      "name": "厨房",
+      "floor": "1",
+      "x": 19.2,
+      "north": -0.6,
+      "width": 5,
+      "depth": 5,
+      "floor_to_floor": 3.2,
+      "access": "不能进入"
+    },
+    {
+      "name": "一楼走廊",
+      "floor": "1",
+      "x": 0.3,
+      "north": 5.1,
+      "width": 14.8,
+      "depth": 1.5,
+      "floor_to_floor": 3.6,
+      "access": "只能走过"
+    },
+    {
+      "name": "布草库房",
+      "floor": "1",
+      "x": 0.3,
+      "north": 6.9,
+      "width": 4,
+      "depth": 4.2,
+      "floor_to_floor": 3.6,
+      "access": "不能进入"
+    },
+    {
+      "name": "杂务间",
+      "floor": "1",
+      "x": 4.6,
+      "north": 6.9,
+      "width": 3,
+      "depth": 4.2,
+      "floor_to_floor": 3.6,
+      "access": "不能进入"
+    },
+    {
+      "name": "地下库房",
+      "floor": "1",
+      "x": 11.2,
+      "north": 6.9,
+      "width": 3.9,
+      "depth": 4.2,
+      "floor_to_floor": 3.6,
+      "access": "不能进入"
+    },
+    {
+      "name": "主楼梯",
+      "floor": "1—2",
+      "x": 7.9,
+      "north": 6.9,
+      "width": 3,
+      "depth": 4.2,
+      "floor_to_floor": 3.6,
+      "access": "只能走过；20 级"
+    },
+    {
+      "name": "客房主室",
+      "floor": "2",
+      "x": 0.3,
+      "north": 0.3,
+      "width": 4.5,
+      "depth": 4.5,
+      "floor_to_floor": 3.2,
+      "access": "可进入"
+    },
+    {
+      "name": "客房衣柜前室",
+      "floor": "2",
+      "x": 5.1,
+      "north": 0.3,
+      "width": 1.5,
+      "depth": 4.5,
+      "floor_to_floor": 3.2,
+      "access": "可进入"
+    },
+    {
+      "name": "书房兼照片档案室",
+      "floor": "2",
+      "x": 6.9,
+      "north": 0.3,
+      "width": 5.4,
+      "depth": 4.5,
+      "floor_to_floor": 3.2,
+      "access": "可进入"
+    },
+    {
+      "name": "主卧主体",
+      "floor": "2",
+      "x": 12.6,
+      "north": 0.3,
+      "width": 6.3,
+      "depth": 3.7,
+      "floor_to_floor": 3.2,
+      "access": "不能进入；另有 2.5×0.8 门前凹区"
+    },
+    {
+      "name": "艾瑞斯的房间",
+      "floor": "2",
+      "x": 0.3,
+      "north": 6.9,
+      "width": 4,
+      "depth": 4.2,
+      "floor_to_floor": 3.2,
+      "access": "可进入"
+    },
+    {
+      "name": "康斯坦斯卧室",
+      "floor": "2",
+      "x": 4.6,
+      "north": 6.9,
+      "width": 3,
+      "depth": 4.2,
+      "floor_to_floor": 3.2,
+      "access": "不能进入"
+    },
+    {
+      "name": "储物间（原卢西恩房间）",
+      "floor": "2",
+      "x": 15.4,
+      "north": 4.3,
+      "width": 3.5,
+      "depth": 3,
+      "floor_to_floor": 3.2,
+      "access": "不能进入；暗房南侧"
+    },
+    {
+      "name": "暗房",
+      "floor": "2",
+      "x": 15.4,
+      "north": 7.6,
+      "width": 3.5,
+      "depth": 3.5,
+      "floor_to_floor": 3.2,
+      "access": "可进入"
+    },
+    {
+      "name": "二楼横走廊",
+      "floor": "2",
+      "x": 0.3,
+      "north": 5.1,
+      "width": 14.8,
+      "depth": 1.5,
+      "floor_to_floor": 3.2,
+      "access": "只能走过"
+    },
+    {
+      "name": "二楼后门厅",
+      "floor": "2",
+      "x": 11.2,
+      "north": 6.6,
+      "width": 3.9,
+      "depth": 4.5,
+      "floor_to_floor": 3.2,
+      "access": "只能走过；与横走廊连续"
+    },
+    {
+      "name": "温室",
+      "floor": "室外高处",
+      "x": 19.2,
+      "north": 6.5,
+      "width": 6,
+      "depth": 6,
+      "floor_to_floor": 3.0,
+      "access": "可进入；地面 +3.6；玻璃脊约 +7.1"
+    },
+    {
+      "name": "后花园",
+      "floor": "室外高处",
+      "x": 0,
+      "north": 11.4,
+      "width": 19.2,
+      "depth": 10,
+      "floor_to_floor": "—",
+      "access": "可进入；地面 +3.6"
+    },
+    {
+      "name": "暗房外泥地",
+      "floor": "室外高处",
+      "x": 14.9,
+      "north": 11.4,
+      "width": 4,
+      "depth": 1.5,
+      "floor_to_floor": "—",
+      "access": "可进入；地面 +3.6"
+    }
+  ],
+  "interfaces": {
+    "vent": {
+      "x": 17.1,
+      "north": 11.25,
+      "centre_height_absolute": 4.1,
+      "size": [
+        0.4,
+        0.4
+      ]
+    },
+    "greenhouse_darkroom_door": {
+      "x": 19.05,
+      "north": 9.5,
+      "clear_width": 0.9,
+      "bar_side": "暗房"
+    },
+    "darkroom_corridor_door": {
+      "x": 15.25,
+      "north": 8.3,
+      "clear_width": 1.0
+    },
+    "rear_door": {
+      "x": 12.8,
+      "north": 11.25
+    },
+    "stair_view": [
+      [
+        10.55,
+        7.35
+      ],
+      [
+        15.25,
+        8.3
+      ]
+    ]
+  },
+  "facade": {
+    "ground_windows": 6,
+    "upper_windows": 6,
+    "oriel": 1,
+    "chimney_stacks": 4
+  }
+}

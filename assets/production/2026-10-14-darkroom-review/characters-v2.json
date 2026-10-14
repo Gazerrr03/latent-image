@@ -1,0 +1,228 @@
+[
+  {
+    "id": "grey_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "character": "grey",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_三视图-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_turnaround_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. wide16:9. Adult male detective, 1.80m tall, dark grey wool overcoat over waistcoat, shirt and tie, leather shoes. No eye covering; both eyes visible. Felt hat worn on head without hiding eyes. Hands empty. No gloves. ONLY THREE full-length orthographic figures: FRONT, LEFT PROFILE (nose points LEFT), BACK, arranged left to right, same scale and same head-top/foot baseline. A-pose, arms30degrees away from torso, hands empty. Entire shoes visible. NO enlarged heads or hand insets, no props outside figures. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/grey/grey_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "grey_face_v2",
+    "task": "T-024-人物三视图",
+    "kind": "face",
+    "character": "grey",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_face_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Adult male detective, 1.80m tall, dark grey wool overcoat over waistcoat, shirt and tie, leather shoes. No eye covering; both eyes visible. Felt hat worn on head without hiding eyes. Hands empty. No gloves. ONLY TWO bust portraits side by side: straight-on frontal and three-quarter facing left. No full-length figures, no hands, no writing. Each head fully visible. For the detective keep hat off in this face asset so geometry can be compared. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/grey/grey_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "grey_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "character": "grey",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_左手-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_hand_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Character: grey. Adult male detective, 1.80m tall, dark grey wool overcoat over waistcoat, shirt and tie, leather shoes. No eye covering; both eyes visible. Felt hat worn on head without hiding eyes. Hands empty. No gloves. ONLY TWO studies of the SAME LEFT HAND viewed from its back, fingertips pointing up; thumb visible on IMAGE RIGHT in both. The anatomical web between thumb and index is shown as a shallow valley at base of these two digits, never centre of hand. RIGHT study: thumb spread, old pale crescent-shaped healed mark on that web only. No blood, no fresh wound, not red, not palm-centre. LEFT study: normal covered state. Constance: ring on left ring finger and thumb folded inward; right study ring removed. Gideon: opaque canvas glove on left study, removed on right. Latente: opaque-backed black lace glove on left study, removed on right. Iris: plain cream cloth bandage on web in left study, removed in right; small age-appropriate hand. Grey and Ambrose: both studies uncovered, back and oblique view of same left hand since no normal covering. Natural anatomy exactly five digits, no right hand. No face or body. Keep hand anatomy the main subject. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/grey/grey_sheet-v1.png"
+    ]
+  },
+  {
+    "id": "constance_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "character": "constance",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_三视图-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_turnaround_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. wide16:9. Adult woman, 1.65m tall, 1920s dark green long dress and dark cardigan, tidy pinned-up hair, modest low heels. OPAQUE black satin ribbon covers both eyes from all angles. Wide gold ring on LEFT ring finger only. Her LEFT thumb folds into palm concealing thumb-index web. No gloves. ONLY THREE full-length orthographic figures: FRONT, LEFT PROFILE (nose points LEFT), BACK, arranged left to right, same scale and same head-top/foot baseline. A-pose, arms30degrees away from torso, hands empty. Entire shoes visible. NO enlarged heads or hand insets, no props outside figures. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/constance/constance_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "constance_face_v2",
+    "task": "T-024-人物三视图",
+    "kind": "face",
+    "character": "constance",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_脸-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_face_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Adult woman, 1.65m tall, 1920s dark green long dress and dark cardigan, tidy pinned-up hair, modest low heels. OPAQUE black satin ribbon covers both eyes from all angles. Wide gold ring on LEFT ring finger only. Her LEFT thumb folds into palm concealing thumb-index web. No gloves. ONLY TWO bust portraits side by side: straight-on frontal and three-quarter facing left. No full-length figures, no hands, no writing. Each head fully visible. For the detective keep hat off in this face asset so geometry can be compared. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/constance/constance_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "constance_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "character": "constance",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_左手-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_hand_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Character: constance. Adult woman, 1.65m tall, 1920s dark green long dress and dark cardigan, tidy pinned-up hair, modest low heels. OPAQUE black satin ribbon covers both eyes from all angles. Wide gold ring on LEFT ring finger only. Her LEFT thumb folds into palm concealing thumb-index web. No gloves. ONLY TWO studies of the SAME LEFT HAND viewed from its back, fingertips pointing up; thumb visible on IMAGE RIGHT in both. The anatomical web between thumb and index is shown as a shallow valley at base of these two digits, never centre of hand. RIGHT study: thumb spread, old pale crescent-shaped healed mark on that web only. No blood, no fresh wound, not red, not palm-centre. LEFT study: normal covered state. Constance: ring on left ring finger and thumb folded inward; right study ring removed. Gideon: opaque canvas glove on left study, removed on right. Latente: opaque-backed black lace glove on left study, removed on right. Iris: plain cream cloth bandage on web in left study, removed in right; small age-appropriate hand. Grey and Ambrose: both studies uncovered, back and oblique view of same left hand since no normal covering. Natural anatomy exactly five digits, no right hand. No face or body. Keep hand anatomy the main subject. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/constance/constance_sheet-v1.png"
+    ]
+  },
+  {
+    "id": "ambrose_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "character": "ambrose",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_三视图-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_turnaround_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. wide16:9. Adult male manor owner, 1.78m tall, brown tweed suit and waistcoat, rolled shirt cuffs, pocket watch chain. Both eyes covered with opaque white paint strokes as if this is a retouched archival photograph, ALSO in full-length front and side views. No visible eyes, no blindfold. Hands empty, bare. ONLY THREE full-length orthographic figures: FRONT, LEFT PROFILE (nose points LEFT), BACK, arranged left to right, same scale and same head-top/foot baseline. A-pose, arms30degrees away from torso, hands empty. Entire shoes visible. NO enlarged heads or hand insets, no props outside figures. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/ambrose/ambrose_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "ambrose_face_v2",
+    "task": "T-024-人物三视图",
+    "kind": "face",
+    "character": "ambrose",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_脸-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_face_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Adult male manor owner, 1.78m tall, brown tweed suit and waistcoat, rolled shirt cuffs, pocket watch chain. Both eyes covered with opaque white paint strokes as if this is a retouched archival photograph, ALSO in full-length front and side views. No visible eyes, no blindfold. Hands empty, bare. ONLY TWO bust portraits side by side: straight-on frontal and three-quarter facing left. No full-length figures, no hands, no writing. Each head fully visible. For the detective keep hat off in this face asset so geometry can be compared. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/ambrose/ambrose_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "ambrose_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "character": "ambrose",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_左手-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_hand_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Character: ambrose. Adult male manor owner, 1.78m tall, brown tweed suit and waistcoat, rolled shirt cuffs, pocket watch chain. Both eyes covered with opaque white paint strokes as if this is a retouched archival photograph, ALSO in full-length front and side views. No visible eyes, no blindfold. Hands empty, bare. ONLY TWO studies of the SAME LEFT HAND viewed from its back, fingertips pointing up; thumb visible on IMAGE RIGHT in both. The anatomical web between thumb and index is shown as a shallow valley at base of these two digits, never centre of hand. RIGHT study: thumb spread, old pale crescent-shaped healed mark on that web only. No blood, no fresh wound, not red, not palm-centre. LEFT study: normal covered state. Constance: ring on left ring finger and thumb folded inward; right study ring removed. Gideon: opaque canvas glove on left study, removed on right. Latente: opaque-backed black lace glove on left study, removed on right. Iris: plain cream cloth bandage on web in left study, removed in right; small age-appropriate hand. Grey and Ambrose: both studies uncovered, back and oblique view of same left hand since no normal covering. Natural anatomy exactly five digits, no right hand. No face or body. Keep hand anatomy the main subject. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/ambrose/ambrose_sheet-v1.png"
+    ]
+  },
+  {
+    "id": "iris_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "character": "iris",
+    "file": "assets/2d/T-024-人物三视图/iris/iris_三视图-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/iris/prompts/iris_turnaround_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. wide16:9. Eight-year-old girl, height1.20m, short brown bob, long-sleeved navy sailor-collar knee-length day dress, opaque long stockings, sensible black Mary Jane shoes. A loose cream cotton blindfold for the traditional family parlour game covers both eyes, knot behind head. Small plain cloth bandage on LEFT thumb-index web. Fully clothed, ordinary historical children's-book costume reference, wholesome and nonsexual. ONLY THREE full-length orthographic figures: FRONT, LEFT PROFILE (nose points LEFT), BACK, arranged left to right, same scale and same head-top/foot baseline. A-pose, arms30degrees away from torso, hands empty. Entire shoes visible. NO enlarged heads or hand insets, no props outside figures. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "iris_face_v2",
+    "task": "T-024-人物三视图",
+    "kind": "face",
+    "character": "iris",
+    "file": "assets/2d/T-024-人物三视图/iris/iris_脸-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/iris/prompts/iris_face_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Eight-year-old girl, height1.20m, short brown bob, long-sleeved navy sailor-collar knee-length day dress, opaque long stockings, sensible black Mary Jane shoes. A loose cream cotton blindfold for the traditional family parlour game covers both eyes, knot behind head. Small plain cloth bandage on LEFT thumb-index web. Fully clothed, ordinary historical children's-book costume reference, wholesome and nonsexual. ONLY TWO bust portraits side by side: straight-on frontal and three-quarter facing left. No full-length figures, no hands, no writing. Each head fully visible. For the detective keep hat off in this face asset so geometry can be compared. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "iris_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "character": "iris",
+    "file": "assets/2d/T-024-人物三视图/iris/iris_左手-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/iris/prompts/iris_hand_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Character: iris. Eight-year-old girl, height1.20m, short brown bob, long-sleeved navy sailor-collar knee-length day dress, opaque long stockings, sensible black Mary Jane shoes. A loose cream cotton blindfold for the traditional family parlour game covers both eyes, knot behind head. Small plain cloth bandage on LEFT thumb-index web. Fully clothed, ordinary historical children's-book costume reference, wholesome and nonsexual. ONLY TWO studies of the SAME LEFT HAND viewed from its back, fingertips pointing up; thumb visible on IMAGE RIGHT in both. The anatomical web between thumb and index is shown as a shallow valley at base of these two digits, never centre of hand. RIGHT study: thumb spread, old pale crescent-shaped healed mark on that web only. No blood, no fresh wound, not red, not palm-centre. LEFT study: normal covered state. Constance: ring on left ring finger and thumb folded inward; right study ring removed. Gideon: opaque canvas glove on left study, removed on right. Latente: opaque-backed black lace glove on left study, removed on right. Iris: plain cream cloth bandage on web in left study, removed in right; small age-appropriate hand. Grey and Ambrose: both studies uncovered, back and oblique view of same left hand since no normal covering. Natural anatomy exactly five digits, no right hand. No face or body. Keep hand anatomy the main subject. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "gideon_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "character": "gideon",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_三视图-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_turnaround_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. wide16:9. Adult male gardener and driver, height1.85m, broad sturdy build, faded brown work dungarees, cream coarse shirt and brown waistcoat, work boots. Brown flat cap pulled down so the brim physically conceals both eyes including side view. Both hands wearing rough canvas work gloves, no bare hand. ONLY THREE full-length orthographic figures: FRONT, LEFT PROFILE (nose points LEFT), BACK, arranged left to right, same scale and same head-top/foot baseline. A-pose, arms30degrees away from torso, hands empty. Entire shoes visible. NO enlarged heads or hand insets, no props outside figures. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/gideon/gideon_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "gideon_face_v2",
+    "task": "T-024-人物三视图",
+    "kind": "face",
+    "character": "gideon",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_脸-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_face_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Adult male gardener and driver, height1.85m, broad sturdy build, faded brown work dungarees, cream coarse shirt and brown waistcoat, work boots. Brown flat cap pulled down so the brim physically conceals both eyes including side view. Both hands wearing rough canvas work gloves, no bare hand. ONLY TWO bust portraits side by side: straight-on frontal and three-quarter facing left. No full-length figures, no hands, no writing. Each head fully visible. For the detective keep hat off in this face asset so geometry can be compared. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/gideon/gideon_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "gideon_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "character": "gideon",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_左手-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_hand_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Character: gideon. Adult male gardener and driver, height1.85m, broad sturdy build, faded brown work dungarees, cream coarse shirt and brown waistcoat, work boots. Brown flat cap pulled down so the brim physically conceals both eyes including side view. Both hands wearing rough canvas work gloves, no bare hand. ONLY TWO studies of the SAME LEFT HAND viewed from its back, fingertips pointing up; thumb visible on IMAGE RIGHT in both. The anatomical web between thumb and index is shown as a shallow valley at base of these two digits, never centre of hand. RIGHT study: thumb spread, old pale crescent-shaped healed mark on that web only. No blood, no fresh wound, not red, not palm-centre. LEFT study: normal covered state. Constance: ring on left ring finger and thumb folded inward; right study ring removed. Gideon: opaque canvas glove on left study, removed on right. Latente: opaque-backed black lace glove on left study, removed on right. Iris: plain cream cloth bandage on web in left study, removed in right; small age-appropriate hand. Grey and Ambrose: both studies uncovered, back and oblique view of same left hand since no normal covering. Natural anatomy exactly five digits, no right hand. No face or body. Keep hand anatomy the main subject. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/gideon/gideon_sheet-v1.png"
+    ]
+  },
+  {
+    "id": "latente_turnaround_v2",
+    "task": "T-024-人物三视图",
+    "kind": "turnaround",
+    "character": "latente",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_三视图-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_turnaround_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. wide16:9. Adult woman, height1.65m, modest black 1920s long dress, shawl, restrained small dark jewellery, pinned-up hair. Black lace veil down to nose tip; opaque lining behind the lace eye region means both eyes COMPLETELY invisible from any angle. BOTH hands black lace gloves with opaque backing hiding thumb-index web. ONLY THREE full-length orthographic figures: FRONT, LEFT PROFILE (nose points LEFT), BACK, arranged left to right, same scale and same head-top/foot baseline. A-pose, arms30degrees away from torso, hands empty. Entire shoes visible. NO enlarged heads or hand insets, no props outside figures. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/latente/latente_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "latente_face_v2",
+    "task": "T-024-人物三视图",
+    "kind": "face",
+    "character": "latente",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_脸-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_face_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Adult woman, height1.65m, modest black 1920s long dress, shawl, restrained small dark jewellery, pinned-up hair. Black lace veil down to nose tip; opaque lining behind the lace eye region means both eyes COMPLETELY invisible from any angle. BOTH hands black lace gloves with opaque backing hiding thumb-index web. ONLY TWO bust portraits side by side: straight-on frontal and three-quarter facing left. No full-length figures, no hands, no writing. Each head fully visible. For the detective keep hat off in this face asset so geometry can be compared. Preserve same nasal bridge, cheekbone spacing and jaw scaffold as shared base face; vary only age, hair, styling and body. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/latente/latente_sheet-v1.png",
+      "assets/2d/T-024-人物三视图/foundation/底脸-v1.png"
+    ]
+  },
+  {
+    "id": "latente_hand_v2",
+    "task": "T-024-人物三视图",
+    "kind": "hand",
+    "character": "latente",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_左手-v2.png",
+    "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_hand_v2.txt",
+    "prompt": "Use case: stylized-concept. Game production reference, neutral light grey background, even shadowless studio illumination, natural anatomical illustration matching supplied costume/identity reference. square. Character: latente. Adult woman, height1.65m, modest black 1920s long dress, shawl, restrained small dark jewellery, pinned-up hair. Black lace veil down to nose tip; opaque lining behind the lace eye region means both eyes COMPLETELY invisible from any angle. BOTH hands black lace gloves with opaque backing hiding thumb-index web. ONLY TWO studies of the SAME LEFT HAND viewed from its back, fingertips pointing up; thumb visible on IMAGE RIGHT in both. The anatomical web between thumb and index is shown as a shallow valley at base of these two digits, never centre of hand. RIGHT study: thumb spread, old pale crescent-shaped healed mark on that web only. No blood, no fresh wound, not red, not palm-centre. LEFT study: normal covered state. Constance: ring on left ring finger and thumb folded inward; right study ring removed. Gideon: opaque canvas glove on left study, removed on right. Latente: opaque-backed black lace glove on left study, removed on right. Iris: plain cream cloth bandage on web in left study, removed in right; small age-appropriate hand. Grey and Ambrose: both studies uncovered, back and oblique view of same left hand since no normal covering. Natural anatomy exactly five digits, no right hand. No face or body. Keep hand anatomy the main subject. Do not copy diagram layout from reference. No text, labels, grid, ruler, numbers, floor shadow, drama, gore or watermark.",
+    "refs": [
+      "assets/2d/T-024-人物三视图/latente/latente_sheet-v1.png"
+    ]
+  }
+]

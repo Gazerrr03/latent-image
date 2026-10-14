@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-14",
+  "corrections": [
+    {
+      "id": "layer_tree_a",
+      "version": "v2",
+      "prompt": "Use case: background-extraction. Edit target: the attached isolated autumn oak tree. Keep the same photographic tree, trunk, branching shape, orange-brown sparse leaves, full tree composition and fine twigs. Remove ALL remaining white background, including EVERY enclosed gap between branches, fine twigs and leaves. Genuine clean transparent alpha channel throughout all empty spaces. Tree material stays opaque. No white islands, no white matte fringe, no checkerboard baked into RGB, no added glow, shadow, background or paper border. Return the complete tree cutout with a small clear margin and base fully visible.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-038-片头家庭电影/final/layer_tree_a.png"
+      ],
+      "tool": "Codex 内置 imagegen",
+      "transparent_background": true,
+      "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a1392c-d5bd-7f62-8c00-6ce36a26d73a/exec-3f3eb2a1-b32d-4317-8c31-4b39f7e4301f.png"
+    },
+    {
+      "id": "layer_grass_fore",
+      "version": "v2",
+      "prompt": "Use case: background-extraction. Edit target: the attached photographic horizontal strip of tall grass. Preserve the grass stalks, seed heads, natural dark photographic texture and panoramic layout. Remove ALL white background including ALL enclosed spaces and tiny holes between grass blades and seed stems. Genuine transparent alpha channel; all empty air must be fully transparent, NOT white patches. Keep the lower grass strip continuous. No background, glow, white halo, frame or text. Do not add any object.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-038-片头家庭电影/final/layer_grass_fore.png"
+      ],
+      "tool": "Codex 内置 imagegen",
+      "transparent_background": true,
+      "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a1392c-d5bd-7f62-8c00-6ce36a26d73a/exec-a5943ece-429f-4635-a360-949c2f4f394e.png"
+    },
+    {
+      "id": "layer_ground_near",
+      "version": "v2",
+      "prompt": "Use case: background-extraction. Edit target: the attached photographic panoramic strip of autumn lawn grass. Preserve the original grass, leaves, colors, photographic texture and wide horizontal layout exactly. Remove ALL remaining white background including small enclosed white holes between the top grass blades. Genuine transparent alpha in all empty air, not white matte patches. Keep grass and soil opaque. No added glow, shadow, paper border, scene or text.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-038-片头家庭电影/final/layer_ground_near.png"
+      ],
+      "tool": "Codex 内置 imagegen",
+      "transparent_background": true,
+      "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a1392c-d5bd-7f62-8c00-6ce36a26d73a/exec-4c213854-507e-4cb4-bda2-488312b9faaa.png"
+    },
+    {
+      "id": "layer_tree_b",
+      "version": "v2",
+      "prompt": "Use case: background-extraction. Edit target: the attached photographic tall English autumn beech tree. Keep exactly the tree silhouette, trunk, sparse orange leaves and natural photographic textures. Remove ALL remaining white background including every enclosed gap between branches and leaves. Genuine transparent alpha everywhere outside tree material, no white islands or matte. Tree stays opaque. No glow, background, paper border, shadows or text. Complete trunk base and canopy stay visible.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-038-片头家庭电影/final/layer_tree_b.png"
+      ],
+      "tool": "Codex 内置 imagegen",
+      "transparent_background": true,
+      "source": "/Users/qizhi_dong/.mirasim/agent-homes/codex-relay/generated_images/01a1392c-d5bd-7f62-8c00-6ce36a26d73a/exec-61751c06-2701-4ebd-967c-5fb5769de6aa.png"
+    }
+  ]
+}

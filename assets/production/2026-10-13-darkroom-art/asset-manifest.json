@@ -1,0 +1,282 @@
+{
+  "batch": "2026-10-13-darkroom-art",
+  "status": "候选",
+  "rooms": [
+    {
+      "room": "guest_room",
+      "task": "T-026-客房",
+      "title": "客房（大厅）",
+      "plan": "assets/2d/T-026-客房/guest_room_平面图.png",
+      "views": [
+        "assets/2d/T-026-客房/guest_room_透视_establish.png",
+        "assets/2d/T-026-客房/guest_room_透视_typewriter_close.png",
+        "assets/2d/T-026-客房/guest_room_透视_board.png",
+        "assets/2d/T-026-客房/guest_room_透视_mirror.png",
+        "assets/2d/T-026-客房/guest_room_透视_bed.png"
+      ],
+      "objects": "assets/2d/T-026-客房/guest_room_物件清单.md",
+      "source": "assets/2d/T-026-客房/来源.md",
+      "required": [
+        "单人床",
+        "书桌与打字机",
+        "记事本",
+        "抽屉夹层",
+        "椅子上的背心",
+        "衣柜与大衣",
+        "壁炉与相纸残角",
+        "落地镜",
+        "花园与温室窗景",
+        "停在七点的钟"
+      ],
+      "materials": "胡桃木、墨绿丝绒、米黄纸张、黄铜；早晨冷天光与台灯暖光"
+    },
+    {
+      "room": "darkroom",
+      "task": "T-027-暗房",
+      "title": "暗房",
+      "plan": "assets/2d/T-027-暗房/darkroom_平面图.png",
+      "views": [
+        "assets/2d/T-027-暗房/darkroom_透视_door_push.png",
+        "assets/2d/T-027-暗房/darkroom_透视_wide.png",
+        "assets/2d/T-027-暗房/darkroom_透视_tray.png"
+      ],
+      "objects": "assets/2d/T-027-暗房/darkroom_物件清单.md",
+      "source": "assets/2d/T-027-暗房/来源.md",
+      "required": [
+        "单门与内侧门闩",
+        "红色安全灯",
+        "显影台与三盘",
+        "药柜与两种打字标签",
+        "高处通风口",
+        "三脚架大画幅相机",
+        "门边计时铃",
+        "停在七点的钟",
+        "倒下的衣着轮廓（无血）"
+      ],
+      "materials": "吸光黑漆、旧木、玻璃、金属；只有安全灯照亮红色"
+    },
+    {
+      "room": "archive",
+      "task": "T-028-照片档案室",
+      "title": "照片档案室",
+      "plan": "assets/2d/T-028-照片档案室/archive_平面图.png",
+      "views": [
+        "assets/2d/T-028-照片档案室/archive_透视_archive_mid.png",
+        "assets/2d/T-028-照片档案室/archive_透视_archive_wall.png",
+        "assets/2d/T-028-照片档案室/archive_透视_archive_doorframe.png"
+      ],
+      "objects": "assets/2d/T-028-照片档案室/archive_物件清单.md",
+      "source": "assets/2d/T-028-照片档案室/来源.md",
+      "required": [
+        "1919—1926 合影墙",
+        "书桌与底片簿",
+        "放大镜",
+        "1925 剪报位置",
+        "摄影手册与底片盒",
+        "带身高线与 L 的门框",
+        "背面朝上的 1926 合影"
+      ],
+      "materials": "胡桃木、玻璃反光、米黄纸张、暗红皮革；桌面暖光，墙面半暗"
+    },
+    {
+      "room": "dining",
+      "task": "T-029-餐厅",
+      "title": "餐厅",
+      "plan": "assets/2d/T-029-餐厅/dining_平面图.png",
+      "views": [
+        "assets/2d/T-029-餐厅/dining_透视_dining_mid.png",
+        "assets/2d/T-029-餐厅/dining_透视_table_close.png",
+        "assets/2d/T-029-餐厅/dining_透视_dining_side.png"
+      ],
+      "objects": "assets/2d/T-029-餐厅/dining_物件清单.md",
+      "source": "assets/2d/T-029-餐厅/来源.md",
+      "required": [
+        "八座长餐桌",
+        "多出来的一副餐具",
+        "吊灯",
+        "餐具柜",
+        "通往厨房的门",
+        "康斯坦斯单独站位"
+      ],
+      "materials": "深胡桃木、亚麻、瓷器、烛光；不要把空座位做成恐怖道具"
+    },
+    {
+      "room": "greenhouse",
+      "task": "T-030-温室",
+      "title": "温室",
+      "plan": "assets/2d/T-030-温室/greenhouse_平面图.png",
+      "views": [
+        "assets/2d/T-030-温室/greenhouse_透视_green_mid.png",
+        "assets/2d/T-030-温室/greenhouse_透视_green_pump.png",
+        "assets/2d/T-030-温室/greenhouse_透视_green_side.png"
+      ],
+      "objects": "assets/2d/T-030-温室/greenhouse_物件清单.md",
+      "source": "assets/2d/T-030-温室/来源.md",
+      "required": [
+        "铸铁玻璃屋顶与墙",
+        "花架与盆栽台",
+        "园艺工具",
+        "手压水泵",
+        "通往暗房走廊的侧门",
+        "可挂线头的门闩",
+        "吉迪恩工作台与签收单位置"
+      ],
+      "materials": "湿玻璃、铸铁、泥土、苔绿；雨天的绿冷光"
+    },
+    {
+      "room": "child_room",
+      "task": "T-031-艾瑞斯的房间",
+      "title": "艾瑞斯的房间",
+      "plan": "assets/2d/T-031-艾瑞斯的房间/child_room_平面图.png",
+      "views": [
+        "assets/2d/T-031-艾瑞斯的房间/child_room_透视_child_mid.png",
+        "assets/2d/T-031-艾瑞斯的房间/child_room_透视_child_wall.png",
+        "assets/2d/T-031-艾瑞斯的房间/child_room_透视_child_box.png"
+      ],
+      "objects": "assets/2d/T-031-艾瑞斯的房间/child_room_物件清单.md",
+      "source": "assets/2d/T-031-艾瑞斯的房间/来源.md",
+      "required": [
+        "小床",
+        "满墙儿童画的位置",
+        "八音盒",
+        "娃娃与积木",
+        "窗",
+        "整齐到像无人玩过的收纳"
+      ],
+      "materials": "褪色蓝、奶油白、浅木；暖光柔和但不甜腻"
+    },
+    {
+      "room": "garden",
+      "task": "T-032-花园·通风口外侧",
+      "title": "花园·通风口外侧",
+      "plan": "assets/2d/T-032-花园·通风口外侧/garden_平面图.png",
+      "views": [
+        "assets/2d/T-032-花园·通风口外侧/garden_透视_vent.png",
+        "assets/2d/T-032-花园·通风口外侧/garden_透视_vent_ground.png",
+        "assets/2d/T-032-花园·通风口外侧/garden_透视_greenhouse_view.png"
+      ],
+      "objects": "assets/2d/T-032-花园·通风口外侧/garden_物件清单.md",
+      "source": "assets/2d/T-032-花园·通风口外侧/来源.md",
+      "required": [
+        "暗房一翼外墙",
+        "与暗房对齐的通风口外侧",
+        "通风口正下方深泥地",
+        "窗台",
+        "远处温室",
+        "小径与低矮灌木"
+      ],
+      "materials": "湿石墙、深泥、雨草、锈蚀百叶；阴天冷光"
+    },
+    {
+      "room": "seance",
+      "task": "T-033-客厅·降灵会",
+      "title": "客厅·降灵会",
+      "plan": "assets/2d/T-033-客厅·降灵会/seance_平面图.png",
+      "views": [
+        "assets/2d/T-033-客厅·降灵会/seance_透视_seance_mid.png",
+        "assets/2d/T-033-客厅·降灵会/seance_透视_table_candle.png",
+        "assets/2d/T-033-客厅·降灵会/seance_透视_curtain.png"
+      ],
+      "objects": "assets/2d/T-033-客厅·降灵会/seance_物件清单.md",
+      "source": "assets/2d/T-033-客厅·降灵会/来源.md",
+      "required": [
+        "圆桌与椅子",
+        "桌上蜡烛",
+        "拉上的厚窗帘",
+        "沙发",
+        "可熄灭壁炉",
+        "画面内只出现拉坦特夫人"
+      ],
+      "materials": "黑色木料、酒红织物、旧黄铜、烛泪；大面积纯黑"
+    },
+    {
+      "room": "hall",
+      "task": "T-034-门厅",
+      "title": "门厅",
+      "plan": "assets/2d/T-034-门厅/hall_平面图.png",
+      "views": [
+        "assets/2d/T-034-门厅/hall_透视_hall_mid.png",
+        "assets/2d/T-034-门厅/hall_透视_mirror_hall.png",
+        "assets/2d/T-034-门厅/hall_透视_stair.png"
+      ],
+      "objects": "assets/2d/T-034-门厅/hall_物件清单.md",
+      "source": "assets/2d/T-034-门厅/来源.md",
+      "required": [
+        "向内开的正门",
+        "镜中只有门帽架灯",
+        "停在七点的落地座钟",
+        "帽架",
+        "通往二楼的楼梯"
+      ],
+      "materials": "湿黑木、黄铜、石灰墙、雨夜蓝；镜头从不让格雷入镜"
+    },
+    {
+      "room": "train",
+      "task": "T-035-火车车厢",
+      "title": "火车车厢",
+      "plan": "assets/2d/T-035-火车车厢/train_平面图.png",
+      "views": [
+        "assets/2d/T-035-火车车厢/train_透视_seat.png",
+        "assets/2d/T-035-火车车厢/train_透视_letter_close.png",
+        "assets/2d/T-035-火车车厢/train_透视_aisle.png"
+      ],
+      "objects": "assets/2d/T-035-火车车厢/train_物件清单.md",
+      "source": "assets/2d/T-035-火车车厢/来源.md",
+      "required": [
+        "1920 年代英国 GWR 式包厢",
+        "相对座椅与小桌",
+        "可贴循环风景的车窗",
+        "行李架",
+        "桌上的信"
+      ],
+      "materials": "深蓝绒、漆木、黄铜、窗外冷蓝；车内暖灯"
+    },
+    {
+      "room": "manor_gate",
+      "task": "T-036-奥瑞尔庄园外景",
+      "title": "奥瑞尔庄园外景",
+      "plan": "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_平面图.png",
+      "views": [
+        "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_wide_symmetric.png",
+        "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_gate_close.png",
+        "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_透视_oriel.png"
+      ],
+      "objects": "assets/2d/T-036-奥瑞尔庄园外景/manor_gate_物件清单.md",
+      "source": "assets/2d/T-036-奥瑞尔庄园外景/来源.md",
+      "required": [
+        "铁门",
+        "对称主屋正立面",
+        "醒目的凸窗",
+        "车道",
+        "一排亮灯的窗"
+      ],
+      "materials": "湿铁、灰石、黑树、窗内暖光；天空冷蓝"
+    },
+    {
+      "room": "monitor_room",
+      "task": "T-037-尾声·白色的房间",
+      "title": "尾声·白色的房间",
+      "plan": "assets/2d/T-037-尾声·白色的房间/monitor_room_平面图.png",
+      "views": [
+        "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_screens_close.png",
+        "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_wall.png",
+        "assets/2d/T-037-尾声·白色的房间/monitor_room_透视_floor.png"
+      ],
+      "objects": "assets/2d/T-037-尾声·白色的房间/monitor_room_物件清单.md",
+      "source": "assets/2d/T-037-尾声·白色的房间/来源.md",
+      "required": [
+        "十二块并排屏幕",
+        "白墙",
+        "白地面",
+        "无家具",
+        "无人物、操作员、仪器和未来城市"
+      ],
+      "materials": "白色涂层、磨砂屏幕、均匀冷白光；不制造科幻装饰"
+    }
+  ],
+  "source": [
+    "godot/content/space/rooms.csv",
+    "godot/content/space/layout.csv"
+  ],
+  "gallery": "assets/production/2026-10-13-darkroom-art/index.html"
+}
