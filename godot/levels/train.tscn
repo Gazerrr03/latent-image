@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://c1drr4tseidnf"]
+
+[ext_resource type="PackedScene" path="res://art/levels/train/train-baked.glb" id="1_model"]
+[ext_resource type="Material" path="res://art/levels/train/window_lineart.tres" id="2_window"]
+[ext_resource type="Script" path="res://levels/train_window.gd" id="3_scroll"]
+[ext_resource type="Material" path="res://art/levels/train/baked_interior.tres" id="4_baked"]
+[ext_resource type="Material" path="res://art/levels/train/lamp_glow.tres" id="5_lamp"]
+
+
+[sub_resource type="Environment" id="Environment_train"]
+background_mode = 1
+background_color = Color(0.025, 0.025, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.47, 0.5, 1)
+ambient_light_energy = 0.22
+tonemap_mode = 2
+
+[node name="train" type="Node3D" unique_id=861179479]
+script = ExtResource("3_scroll")
+
+[node name="结构" type="Node3D" parent="." unique_id=410718122]
+
+[node name="车厢模型" parent="结构" unique_id=708906408 instance=ExtResource("1_model")]
+
+[node name="opal_lamp_bowl" parent="结构/车厢模型" index="0" unique_id=251093273 groups=["no_leak"]]
+transform = Transform3D(0.156, 0, 0, 0, 0.1, 0, 0, 0, 0.156, 0, 2.39, -0.1)
+material_override = ExtResource("5_lamp")
+
+[node name="窗外画面" parent="结构/车厢模型" index="1" unique_id=75223419 groups=["no_leak"]]
+material_override = ExtResource("2_window")
+
+[node name="车厢烘焙模型" parent="结构/车厢模型" index="2" unique_id=1196978150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.055, 0)
+material_override = ExtResource("4_baked")
+
+[node name="灯光" type="Node3D" parent="." unique_id=1407827905]
+
+[node name="顶灯" type="OmniLight3D" parent="灯光" unique_id=292504422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, -0.1)
+light_color = Color(1, 0.78, 0.55, 1)
+light_energy = 0.0
+shadow_enabled = true
+omni_range = 3.2
+
+[node name="柔和反射光" type="OmniLight3D" parent="灯光" unique_id=1200904622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 1.75, 0.55)
+light_color = Color(0.64, 0.73, 0.82, 1)
+light_energy = 0.0
+omni_range = 3.0
+
+[node name="接口" type="Node3D" parent="." unique_id=873592998]
+
+[node name="spawn" type="Marker3D" parent="接口" unique_id=62987283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, 0, 0.88)
+
+[node name="cam_seat" type="Camera3D" parent="接口" unique_id=541263112]
+transform = Transform3D(0.61733884, 0.012891906, 0.78659177, 0, 0.9998658, -0.016387377, -0.7866974, 0.010116564, 0.617256, 0.82, 1.31, 0.88)
+environment = SubResource("Environment_train")
+current = true
+fov = 56.10584
+near = 0.02
+
+[node name="cam_letter_close" type="Camera3D" parent="接口" unique_id=15089666]
+transform = Transform3D(0.46915525, -0.24837916, 0.8474675, 0, 0.9596336, 0.28125325, -0.8831157, -0.13195144, 0.45021713, 0.82, 1.31, 0.88)
+environment = SubResource("Environment_train")
+fov = 23.822432
+near = 0.02
+
+[editable path="结构/车厢模型"]

@@ -1,0 +1,16 @@
+03:54:17 - tripo_addon - [task.py:21] - INFO - WebSocket server started on port 60600
+03:54:17 - tripo_addon - [ws_server.py:142] - INFO - WebSocket server running on ws://127.0.0.1:60600
+03:54:17 - tripo_addon - [ws_server.py:151] - INFO - Heartbeat monitoring started (timeout: 120s)
+00:01.278  blend            | Read blend: "/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/train.blend"
+00:01.289  reports          | WARNING Library file, loading empty scene
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+00:13.323  render           | Saved: '/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/review/seat-v1.png'
+00:27.547  render           | Saved: '/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/review/letter-v1.png'
+[Tripo3D] Log file: /var/folders/ry/zyfmj5r9501bg4c7wvmxphmh0000gn/T/tripo3d_blender_bridge.log
+Info: Saved as "train.blend"
+TRAIN_REVIEW_RENDERED
+03:54:44 - tripo_addon - [ws_server.py:101] - INFO - Stopping WebSocket server...
+03:54:44 - tripo_addon - [task.py:27] - INFO - WebSocket server stop requested
+03:54:44 - tripo_addon - [ws_server.py:88] - INFO - Event loop closed
+
+Blender quit

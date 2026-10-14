@@ -1,0 +1,16 @@
+{
+  "atlas": [
+    4096,
+    4096
+  ],
+  "bake_seconds": 87.41,
+  "polygons": 315828,
+  "light_source": "Exterior rectangular area light; four diffuse bounces",
+  "limitations": [
+    "Static lighting",
+    "No moving tree shadows",
+    "No view-dependent specular reflections"
+  ],
+  "source": "/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/baked/train-lighting-source.blend",
+  "baked": "/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/baked/train-baked.blend"
+}

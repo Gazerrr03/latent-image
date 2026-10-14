@@ -1,0 +1,32 @@
+05:49:01 - tripo_addon - [task.py:21] - INFO - WebSocket server started on port 60600
+05:49:01 - tripo_addon - [ws_server.py:142] - INFO - WebSocket server running on ws://127.0.0.1:60600
+05:49:01 - tripo_addon - [ws_server.py:151] - INFO - Heartbeat monitoring started (timeout: 120s)
+00:00.372  blend            | Read blend: "/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/train.blend"
+/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/scripts/06_bake_window_light.py:23: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  if not mat.use_nodes:continue
+[Tripo3D] Log file: /var/folders/ry/zyfmj5r9501bg4c7wvmxphmh0000gn/T/tripo3d_blender_bridge.log
+Info: Saved as "train-lighting-source.blend"
+TRAIN_UV_READY 315828
+Info: Baking map saved to internal image, save it externally or pack it
+TRAIN_BAKE_SAVED 86.53023219108582
+/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/scripts/06_bake_window_light.py:59: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new('TrainBakedUnlit');mat.use_nodes=True;nd=mat.node_tree.nodes;nd.clear()
+INFO Draco is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib
+INFO MeshOptimizer is available, use library at /Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_meshopt_bridge.dylib
+05:50:29 | INFO: Starting glTF 2.0 export
+05:50:29 | INFO: Extracting primitive: Sphere.001
+05:50:29 | INFO: Primitives created: 1
+05:50:29 | INFO: Extracting primitive: window_screen_mesh
+05:50:29 | INFO: Primitives created: 1
+05:50:29 | INFO: Extracting primitive: TrainBakedMesh
+05:50:29 | INFO: Primitives created: 1
+05:50:29 | INFO: Finished glTF 2.0 export in 0.4548158645629883 s
+
+Info: Saved as "train-baked.blend"
+TRAIN_BAKE_COMPLETE
+05:50:29 - tripo_addon - [ws_server.py:101] - INFO - Stopping WebSocket server...
+05:50:29 - tripo_addon - [task.py:27] - INFO - WebSocket server stop requested
+05:50:29 - tripo_addon - [ws_server.py:88] - INFO - Event loop closed
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

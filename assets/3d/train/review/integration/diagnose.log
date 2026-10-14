@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ROOM train FILE res://levels/train.tscn
+CAM [X: (0.617288, 0.0, 0.786738), Y: (0.007959, 0.999949, -0.006245), Z: (-0.786697, 0.010117, 0.617256), O: (0.82, 1.31, 0.88)] expected [X: (0.617288, 0.0, 0.786738), Y: (0.007959, 0.999949, -0.006245), Z: (-0.786697, 0.010117, 0.617256), O: (0.82, 1.31, 0.88)]
+MARKERS { "seat": [(0.82, 1.31, 0.88), (1.606697, 1.299883, 0.262744), 56.1058387756348, (res://levels/train.tscn::Environment_train):<Environment#-9223371986825115875>, 0.01999999955297], "letter_close": [(0.82, 1.31, 0.88), (1.703116, 1.441951, 0.429783), 23.8224315643311, (res://levels/train.tscn::Environment_train):<Environment#-9223371986825115875>, 0.01999999955297] }
+ROOM TRANS [X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, 0.0, 0.0)]
+MESH opal_lamp_bowl [X: (0.156, 0.0, 0.0), Y: (0.0, 0.1, 0.0), Z: (0.0, 0.0, 0.156), O: (0.0, 2.39, -0.1)] mat 乳白灯罩暖色微光 (res://art/levels/train/lamp_glow.tres):<StandardMaterial3D#-9223371986875447521>
+MESH 窗外画面 [X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, 0.0, 0.0)] mat 窗外手绘长卷 ():<ShaderMaterial#-9223371986489571550>
+MESH 车厢烘焙模型 [X: (1.0, 0.0, 0.0), Y: (0.0, 1.0, 0.0), Z: (0.0, 0.0, 1.0), O: (0.0, -0.055, 0.0)] mat 车厢窗光烘焙 (res://art/levels/train/baked_interior.tres):<StandardMaterial3D#-9223371986992888031>
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

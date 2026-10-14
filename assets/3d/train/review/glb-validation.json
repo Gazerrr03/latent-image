@@ -1,0 +1,13 @@
+{
+  "valid_glb_header": true,
+  "bytes": 20013176,
+  "nodes": 351,
+  "meshes": 351,
+  "triangles": 635134,
+  "materials": 14,
+  "images": 5,
+  "embedded_images": true,
+  "cameras": 0,
+  "light_extension": false,
+  "window_node": true
+}

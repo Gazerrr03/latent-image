@@ -11,3 +11,9 @@ assets/**/source/
 assets/_归档/
 *.blend1
 assets/登记表.csv.lock
+# Blender 源文件与备份只留在本机（10-14）；游戏用的 .glb 照常提交
+assets/**/*.blend
+assets/**/backups/
+# 截帧、浏览器自查等临时输出
+output/
+.playwright-cli/

@@ -1,0 +1,14 @@
+05:46:54 - tripo_addon - [task.py:21] - INFO - WebSocket server started on port 60600
+05:46:54 - tripo_addon - [ws_server.py:142] - INFO - WebSocket server running on ws://127.0.0.1:60600
+05:46:54 - tripo_addon - [ws_server.py:151] - INFO - Heartbeat monitoring started (timeout: 120s)
+00:00.425  blend            | Read blend: "/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/train/train.blend"
+[Tripo3D] Log file: /var/folders/ry/zyfmj5r9501bg4c7wvmxphmh0000gn/T/tripo3d_blender_bridge.log
+Info: Saved copy as "train-before-roof-fix.blend"
+Info: Saved as "train.blend"
+ROOF_FIXED -0.973474532365799
+05:46:54 - tripo_addon - [ws_server.py:101] - INFO - Stopping WebSocket server...
+05:46:54 - tripo_addon - [task.py:27] - INFO - WebSocket server stop requested
+05:46:54 - tripo_addon - [ws_server.py:88] - INFO - Event loop closed
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit
