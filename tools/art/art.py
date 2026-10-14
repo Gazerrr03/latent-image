@@ -4,8 +4,9 @@
   生成草稿：python3 tools/art/art.py gen <任务目录> <素材编号> <提示词文件> [--ref 参考图 ...] [--title 名称]
   定稿：    python3 tools/art/art.py promote <素材编号> <版本号> [--max 2048] [--png] [--cutout border|all] [--game godot/art/...]
   列表：    python3 tools/art/art.py ls [任务目录]
+  登记现有：python3 tools/art/art.py register <任务目录> <素材编号> <文件> --tool 工具 [--source 源文件] [--prompt 提示词] [--note 说明]
 
-<任务目录> 相对于 assets/，例如 2d/T-018-人物设定。图像由 Codex CLI 的内置图像生成完成。
+<任务目录> 相对于 assets/，例如 2d/T-024-人物三视图。图像由 Codex CLI 的内置图像生成完成。
 """
 import argparse, csv, datetime, fcntl, os, shutil, subprocess, sys
 
@@ -29,7 +30,7 @@ def save(rows):
             w.writerow({k: r.get(k, "") for k in FIELDS})
 
 
-## 任务目录 2d/T-018-人物设定 → 任务编号 T-018
+## 任务目录 2d/T-024-人物三视图 → 任务编号 T-024
 def task_of(d):
     parts = d.rstrip("/").split("/")[-1].split("-")
     return "-".join(parts[:2]) if len(parts) >= 2 else parts[0]
@@ -152,6 +153,30 @@ def ls(a):
         print(f'{r["status"]:3}  {r["asset_id"]:28} {r["version"]:4} {r["file"]}  {r["game_path"]}')
 
 
+def register(a):
+    """Register an existing Blender or built-in image artifact, without publishing."""
+    paths = [a.file] + ([a.source] if a.source else []) + ([a.prompt] if a.prompt else []) + a.ref
+    for path in paths:
+        absolute = os.path.realpath(os.path.join(ROOT, path))
+        if os.path.commonpath([ROOT, absolute]) != ROOT or not os.path.isfile(absolute):
+            sys.exit(f"登记失败：文件不在素材仓库内或不存在：{path}")
+    with open(REG + '.lock', 'w') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        rows = load()
+        found = [r for r in rows if r['asset_id'] == a.id and r['version'] == a.version]
+        if found:
+            if found[0]['file'] == a.file:
+                print(f"已登记，未修改：{a.id} {a.version}")
+                return
+            sys.exit(f"该版本已有其他文件，请递增版本：{a.id} {a.version}")
+        rows.append({'asset_id': a.id, 'task': task_of(a.dir), 'title': a.title or a.id,
+            'status': a.status, 'version': a.version, 'draft': a.source or a.file,
+            'file': a.file, 'prompt': a.prompt, 'refs': ';'.join(a.ref), 'tool': a.tool,
+            'created': datetime.date.today().isoformat(), 'game_path': '', 'note': a.note})
+        save(rows)
+    print(f"已登记：{a.id} {a.version} {a.file}")
+
+
 p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 sub = p.add_subparsers(dest="cmd", required=True)
 g = sub.add_parser("gen"); g.add_argument("dir"); g.add_argument("id"); g.add_argument("prompt")
@@ -163,5 +188,11 @@ q.add_argument("--png", action="store_true")
 q.add_argument("--cutout", choices=["border", "all"], default="", help="去白底存透明 PNG")
 q.set_defaults(fn=promote)
 l = sub.add_parser("ls"); l.add_argument("dir", nargs="?", default=""); l.set_defaults(fn=ls)
+r = sub.add_parser('register'); r.add_argument('dir'); r.add_argument('id'); r.add_argument('file')
+r.add_argument('--source', default=''); r.add_argument('--prompt', default='')
+r.add_argument('--ref', action='append', default=[]); r.add_argument('--tool', required=True)
+r.add_argument('--title', default=''); r.add_argument('--version', default='v1')
+r.add_argument('--status', default='草稿', choices=['草稿', '候选', '定稿'])
+r.add_argument('--note', default=''); r.set_defaults(fn=register)
 a = p.parse_args()
 a.fn(a)

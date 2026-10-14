@@ -36,7 +36,7 @@ assets/
 1. **写提示词**：`2d/<任务>/prompts/<素材编号>.txt`。开头贴 `_共用/` 里对应的风格前缀，再写这一张的内容。提示词用英文写画面，禁止让模型画正文文字。
 2. **生成草稿**（每张约 70 秒；多张可以并行，登记表有文件锁）：
    ```bash
-   python3 tools/art/art.py gen 2d/T-018-人物设定 char_barlow assets/2d/T-018-人物设定/prompts/char_barlow.txt --ref assets/_共用/人物参考.png --title "巴洛设定"
+   python3 tools/art/art.py gen 2d/T-024-人物三视图 grey_sheet assets/2d/T-024-人物三视图/prompts/grey.txt --ref assets/2d/T-024-人物三视图/底脸.png --title "格雷三视图"
    ```
    草稿存到 `drafts/<编号>-v<N>.png`，自动在登记表加一行（状态“草稿”）。同一编号再生成一次就是 v2、v3。
 3. **挑选与定稿**：用户（或 agent 按验收清单）选定一个版本：
@@ -44,11 +44,11 @@ assets/
    python3 tools/art/art.py promote char_barlow v2 [--max 2048] [--png] [--game godot/art/...]
    ```
    存为 `final/<编号>.jpg`（质量 92；需要透明背景时加 `--png`），状态改为“定稿”；加 `--game` 时同时复制到游戏工程，并记下游戏路径。
-4. **查看**：`python3 tools/art/art.py ls [2d/T-018-人物设定]`。
+4. **查看**：`python3 tools/art/art.py ls [2d/T-024-人物三视图]`。
 
 ## 4. 命名
 
-- 任务目录：`<任务编号>-<中文名>`，如 `2d/T-020-怪谈物证`。
+- 任务目录：`<任务编号>-<中文名>`，如 `2d/T-024-人物三视图`。
 - 素材编号：小写英文加下划线，与《美术任务书》中给出的文件名一致，如 `photo_1901_a`、`ad_butler`。
 - 版本：`v1`、`v2`……只增不改。
 
