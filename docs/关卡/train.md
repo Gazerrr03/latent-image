@@ -108,7 +108,7 @@
 - 参考相机参数：`assets/3d/train/review/cameras.json`。
 - 新视觉依据：用户提供的三张氛围参考，保存于 `assets/3d/train/references/`。采用窗口方向光、可读的深阴影、沉着配色、哑光旧木、老黄铜与褪色布料；保留 1926 年与黄昏时间，不迁移参考中的现代电器。
 - 窗外采用 AI 生成的黑白手绘线稿，Godot 材质独立覆盖：`godot/art/levels/train/window_lineart.tres`。当前是静态图，不是已完成的循环风景动画；信纸无正文，信的内容沿用字幕阅读。Blender 源文件保留上一轮写实静态背景，不再继续渲染；当前窗景以 Godot 材质覆盖为准。
-- 查看实际 Blender 渲染：`assets/3d/train/review/seat-reviewed.png`、`letter-reviewed.png`、`transition-reviewed.png`。
+- 查看当前画面：`assets/3d/train/review/integration/`（游戏内截图）。改线稿前的 Blender 检查渲染（`*-v1`、`*-atmosphere-v3`、`*-final`、`*-reviewed`）已于 10-14 删除，可从 git 历史找回。
 - Godot 已用 GLB 实例替换灰盒，保留 `结构`、`灯光`、`接口` 分组和原有机位名称；旧场景备份位于 `assets/3d/train/backups/train-greybox-before-integration.tscn`。
 - `C0-01—C0-03` 明确采用 camera 模式，禁止自由行走；两个机位共用坐姿位置，1.2 秒平滑转向/变焦；读信结束后仍收集 `ev_letter_p1`。
 - 机位的独立 Environment 和 near 会传给运行相机；train 的当下画面关闭媒介滤镜与档案卡，片头录像仍自行控制滤镜，离开 train 恢复进入前的滤镜状态。
