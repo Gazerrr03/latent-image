@@ -1,0 +1,55 @@
+{
+  "task": "T-024",
+  "status": "候选",
+  "shared_face": "assets/2d/T-024-人物三视图/底脸.png",
+  "characters": {
+    "grey": {
+      "folder": "assets/2d/T-024-人物三视图/grey",
+      "files": [
+        "assets/2d/T-024-人物三视图/grey/grey_三视图.png",
+        "assets/2d/T-024-人物三视图/grey/grey_脸.png",
+        "assets/2d/T-024-人物三视图/grey/grey_左手.png"
+      ]
+    },
+    "ambrose": {
+      "folder": "assets/2d/T-024-人物三视图/ambrose",
+      "files": [
+        "assets/2d/T-024-人物三视图/ambrose/ambrose_三视图.png",
+        "assets/2d/T-024-人物三视图/ambrose/ambrose_脸.png",
+        "assets/2d/T-024-人物三视图/ambrose/ambrose_左手.png"
+      ]
+    },
+    "constance": {
+      "folder": "assets/2d/T-024-人物三视图/constance",
+      "files": [
+        "assets/2d/T-024-人物三视图/constance/constance_三视图.png",
+        "assets/2d/T-024-人物三视图/constance/constance_脸.png",
+        "assets/2d/T-024-人物三视图/constance/constance_左手.png"
+      ]
+    },
+    "iris": {
+      "folder": "assets/2d/T-024-人物三视图/iris",
+      "files": [
+        "assets/2d/T-024-人物三视图/iris/iris_三视图.png",
+        "assets/2d/T-024-人物三视图/iris/iris_脸.png",
+        "assets/2d/T-024-人物三视图/iris/iris_左手.png"
+      ]
+    },
+    "gideon": {
+      "folder": "assets/2d/T-024-人物三视图/gideon",
+      "files": [
+        "assets/2d/T-024-人物三视图/gideon/gideon_三视图.png",
+        "assets/2d/T-024-人物三视图/gideon/gideon_脸.png",
+        "assets/2d/T-024-人物三视图/gideon/gideon_左手.png"
+      ]
+    },
+    "latente": {
+      "folder": "assets/2d/T-024-人物三视图/latente",
+      "files": [
+        "assets/2d/T-024-人物三视图/latente/latente_三视图.png",
+        "assets/2d/T-024-人物三视图/latente/latente_脸.png",
+        "assets/2d/T-024-人物三视图/latente/latente_左手.png"
+      ]
+    }
+  }
+}

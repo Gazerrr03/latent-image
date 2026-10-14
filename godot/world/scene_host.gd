@@ -1,26 +1,29 @@
 extends Node3D
-## 场景宿主：按场景 id 搭建房间（美术模型优先，否则用灰盒），管理机位、热区、渗漏材质与声音。
-## 美术模型的命名约定见 docs/09-团队协作与任务派发.md 第 5 节：
-##   hs_<id> 可检查物件；spawn 出生点；exit 出口；cam_<名称> 机位；guide_ 指引光；-col 碰撞（Godot 导入时处理）
+## 场景宿主：按场景 id 搭建房间，管理机位、热区、渗漏材质与声音。
+## 房间以人工在 Godot 里搭的关卡场景 res://levels/<房间id>.tscn 为准；还没搭的房间暂用灰盒（房间布局表）。
+## 关卡场景的命名约定见 docs/09-团队协作与任务派发.md 第 5 节：
+##   spawn 出生点；cam_<机位> 机位（Camera3D）；hs_<id> 可检查物件；chr_<人名> 人物站位；prop_<id> 小物件占位
 
 const HOTSPOT_LAYER := 2
+const PAD := Vector3(0.04, 0.04, 0.04)
 
 var player: Node3D
 var shot_cam: Camera3D
 var current_id := ""
 var room: Node3D
 var markers := {}
-## 布局表里有名字的东西：名称 -> 节点（reveal / conceal 用）
+## 有名字的东西：名称 -> 节点（reveal / conceal 用）
 var named := {}
 var hotspot_nodes := {}
+## 当前这一轮自由检查的目标；只有它们能被准星选中
+var active_hotspots: Array = []
 var spawn := [Vector3.ZERO, 0.0]
 var _surfaces: Array = []
 var _orig_mats := {}
 var _leak_mat: ShaderMaterial
 var _env: WorldEnvironment
 var _cam_key := ""
-## 当前美术模型里有没有 spawn（没有就用布局表的出生点）
-var _model_spawn := false
+var _camera_tween: Tween
 var _missing_sounds := {}
 var _loops := {}
 
@@ -55,6 +58,8 @@ func _make_env() -> Environment:
 func show_scene(id: String) -> void:
 	if id == current_id:
 		return
+	if _camera_tween:
+		_camera_tween.kill()
 	current_id = id
 	_cam_key = ""
 	stop_loops()
@@ -66,22 +71,22 @@ func show_scene(id: String) -> void:
 	hotspot_nodes.clear()
 	_surfaces.clear()
 	_orig_mats.clear()
-	var model: String = ContentDB.scenes.get(id, {}).get("model", "")
-	if model != "" and ResourceLoader.exists(model):
-		room = (load(model) as PackedScene).instantiate()
-		_adopt_model(room)
-		# 美术模型只提供房间本身；人物、灯光，以及模型里没有的机位、物件、出生点仍按布局表补上
-		_apply_layout(room, id, true)
+	spawn = [Vector3.ZERO, 0.0]
+	var level := ContentDB.level_path(id)
+	if ResourceLoader.exists(level):
+		room = (load(level) as PackedScene).instantiate()
+		add_child(room)
+		_adopt_level(room)
 	else:
 		room = _build_greybox(id)
-	add_child(room)
+		add_child(room)
 	apply_leak(GameState.leak_level)
 	if player:
 		player.needs_spawn = true
 
 
-## 灰盒：按房间登记表（尺寸）与房间布局表（家具、可检查物件、机位、灯光、出生点）搭出房间。
-## 填表说明见 docs/填表说明/1.4-空间与地图.md
+## 灰盒（过渡用）：还没有关卡场景的房间，按房间登记表（尺寸）与房间布局表搭出来。
+## 12 个房间都有关卡场景后，灰盒、房间布局表与这段代码一起删除。
 func _build_greybox(id: String) -> Node3D:
 	var r := Node3D.new()
 	r.name = "Greybox"
@@ -95,13 +100,12 @@ func _build_greybox(id: String) -> Node3D:
 	_box(r, "左墙", Vector3(-s.x / 2 - t / 2, s.y / 2, 0), Vector3(t, s.y, s.z), Color("#3b3430"))
 	_box(r, "右墙", Vector3(s.x / 2 + t / 2, s.y / 2, 0), Vector3(t, s.y, s.z), Color("#3b3430"))
 	spawn = [Vector3(0, 0, s.z / 2 - 0.6), 0.0]
-	_apply_layout(r, id, false)
+	_apply_layout(r, id)
 	return r
 
 
-## 布局表的各行（家具、人物、可检查物件、机位、灯光、出生点）。
-## model_mode = true 时房间来自美术模型：跳过家具，模型里已有的机位、物件、出生点以模型为准
-func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
+## 布局表的各行（家具、人物、可检查物件、机位、灯光、出生点）
+func _apply_layout(r: Node3D, id: String) -> void:
 	for row in ContentDB.layout.get(id, []):
 		var p := _vec(row, "x", "y", "z")
 		var size := _vec(row, "w", "h", "d")
@@ -109,8 +113,6 @@ func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
 		var before := r.get_child_count()
 		match row.get("type", ""):
 			"家具":
-				if model_mode:
-					continue
 				# y 是底部离地高度
 				var mi := _box(r, row["id"], p + Vector3(0, size.y / 2, 0), size, _color(row, "#5b3f2a"))
 				if "镜" in row["id"]:
@@ -125,12 +127,8 @@ func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
 				# 人物在这个房间的站位（同一画面里只放一个人，docs/02 第 7 节）
 				_figure(r, row["id"], p)
 			"可检查物件":
-				if model_mode and hotspot_nodes.has(row["id"]):
-					continue
 				_hotspot(r, row["id"], p, size if size != Vector3.ZERO else Vector3(0.3, 0.3, 0.3))
 			"机位":
-				if model_mode and markers.has(row["id"]):
-					continue
 				markers[row["id"]] = [p, look]
 			"灯光":
 				var o := OmniLight3D.new()
@@ -143,8 +141,6 @@ func _apply_layout(r: Node3D, id: String, model_mode: bool) -> void:
 					o.name = row["id"]
 				r.add_child(o)
 			"出生点":
-				if model_mode and _model_spawn:
-					continue
 				var dir := look - p
 				spawn = [p, rad_to_deg(atan2(-dir.x, -dir.z)) if dir.length() > 0.01 else 0.0]
 			_:
@@ -191,10 +187,10 @@ func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
 	match c.get("eye", ""):
 		"缎带":
 			_mesh(root, Vector3(0, eye_y, 0), Vector3(head * 0.92, 0.05, head * 0.96), ec)
-		"丝巾":
+		"布条":
 			_mesh(root, Vector3(0, eye_y, 0), Vector3(head * 0.95, 0.075, head * 1.0), ec)
 			_mesh(root, Vector3(head * 0.32, eye_y - 0.05, -head * 0.5), Vector3(0.06, 0.12, 0.03), ec)
-		"遮光帽":
+		"帽檐":
 			_mesh(root, Vector3(0, eye_y + 0.035, head * 0.38), Vector3(head * 1.05, 0.025, head * 0.75), ec)
 			_mesh(root, Vector3(0, eye_y + 0.07, 0), Vector3(head * 0.9, 0.03, head * 0.92), ec)
 		"面纱":
@@ -227,7 +223,7 @@ func _mesh(parent: Node3D, pos: Vector3, size: Vector3, color: Color) -> MeshIns
 	return mi
 
 
-## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏布局表里的某样东西（如终局的镜中人形）
+## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏关卡里的某个节点（如终局的镜中人形）
 func set_shown(id: String, on: bool) -> void:
 	if named.has(id) and is_instance_valid(named[id]):
 		named[id].visible = on
@@ -309,25 +305,69 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_mode
 	hotspot_nodes[id] = a
 
 
-## 美术模型：按命名约定识别热区、出生点、机位
-func _adopt_model(r: Node) -> void:
-	_model_spawn = false
+## 关卡场景：空间、灯光、构图全部以场景为准，这里只按名字认出需要接上剧情的节点
+func _adopt_level(r: Node) -> void:
+	# 先换小物件模型，再记下房间表面（渗漏变白用），最后接上出生点、机位、热区、人物
 	for n in _walk(r):
-		if not n is Node3D:
-			continue
-		var nm: String = n.name
-		if nm.begins_with("hs_") and n is MeshInstance3D:
-			var aabb: AABB = n.get_aabb()
-			_hotspot(n, nm.trim_suffix("-col"), aabb.get_center(), aabb.size.max(Vector3(0.05, 0.05, 0.05)), true)
-		elif nm == "spawn":
-			spawn = [n.global_position, n.global_rotation_degrees.y]
-			_model_spawn = true
-		elif nm.begins_with("cam_"):
-			var fwd: Vector3 = -n.global_transform.basis.z
-			markers[nm.trim_prefix("cam_")] = [n.global_position, n.global_position + fwd]
-		if n is MeshInstance3D:
+		if n is Node3D and String(n.name).begins_with("prop_"):
+			_swap_prop(n, String(n.name))
+	for n in _walk(r):
+		if n is GeometryInstance3D and not n.is_in_group("no_leak"):
 			_surfaces.append(n)
 			_orig_mats[n] = n.material_override
+	for n in _walk(r):
+		if not n is Node3D or n == r:
+			continue
+		var nm := String(n.name)
+		named[nm] = n
+		if nm == "spawn":
+			spawn = [n.global_position, n.global_rotation_degrees.y]
+		elif nm.begins_with("cam_"):
+			var fwd: Vector3 = -n.global_transform.basis.z
+			var fov: float = n.fov if n is Camera3D else 45.0
+			if n is Camera3D:
+				n.current = false
+			markers[nm.trim_prefix("cam_")] = [n.global_position, n.global_position + fwd, fov,
+				n.environment if n is Camera3D else null, n.near if n is Camera3D else 0.05]
+		elif nm.begins_with("hs_"):
+			_hotspot_on(n, nm)
+		elif nm.begins_with("chr_"):
+			# 人形挂在站位节点下，面朝站位节点的 +z；reveal / conceal 用人名或 chr_人名都行
+			var who := nm.trim_prefix("chr_")
+			_figure(n, who, Vector3.ZERO)
+			named[who] = n
+
+
+## hs_<id>：网格或方块本身就是物件的样子，热区比它略大一圈（准星先碰到热区）；空节点就放一个默认大小的高亮方块
+func _hotspot_on(n: Node3D, nm: String) -> void:
+	if n is MeshInstance3D and n.mesh:
+		var aabb: AABB = n.mesh.get_aabb()
+		_hotspot(n, nm, aabb.get_center(), aabb.size.max(Vector3(0.05, 0.05, 0.05)) + PAD, true)
+	elif n is CSGBox3D:
+		_hotspot(n, nm, Vector3.ZERO, n.size + PAD, true)
+	else:
+		_hotspot(n, nm, Vector3.ZERO, Vector3(0.3, 0.3, 0.3))
+
+
+## prop_<id>：关卡里的占位方块。模型资产表给了模型文件，就换成模型，底面中心对齐方块底面中心
+func _swap_prop(n: Node3D, nm: String) -> void:
+	var file: String = ContentDB.props.get(nm, {}).get("model", "")
+	if file == "" or not ResourceLoader.exists(file):
+		return
+	var m: Node3D = (load(file) as PackedScene).instantiate()
+	m.transform = n.transform
+	if n is CSGBox3D:
+		m.transform = n.transform * Transform3D(Basis(), Vector3(0, -n.size.y / 2, 0))
+	m.visible = n.visible
+	var parent := n.get_parent()
+	parent.add_child(m)
+	parent.move_child(m, n.get_index())
+	for c in n.get_children():
+		c.reparent(m, true)
+	parent.remove_child(n)
+	n.queue_free()
+	m.name = nm
+	named[nm] = m
 
 
 func _walk(n: Node) -> Array:
@@ -340,6 +380,8 @@ func _walk(n: Node) -> Array:
 # ───────────── 模式与机位 ─────────────
 
 func set_mode(mode: String, cam: String) -> void:
+	if _camera_tween:
+		_camera_tween.kill()
 	if mode == "walk":
 		if player.needs_spawn or not player.active:
 			player.place(spawn[0], spawn[1])
@@ -347,6 +389,8 @@ func set_mode(mode: String, cam: String) -> void:
 		return
 	player.deactivate()
 	shot_cam.current = true
+	shot_cam.environment = null
+	shot_cam.near = 0.05
 	var key := cam if markers.has(cam) else ""
 	if key == "" and not markers.is_empty():
 		key = markers.keys()[0]
@@ -356,14 +400,21 @@ func set_mode(mode: String, cam: String) -> void:
 		return
 	var m: Array = markers[key]
 	var target := Transform3D(Basis(), m[0]).looking_at(m[1])
+	var fov: float = m[2] if m.size() > 2 else 45.0
+	shot_cam.environment = m[3] if m.size() > 3 else null
+	shot_cam.near = m[4] if m.size() > 4 else 0.05
 	if _cam_key != "" and _cam_key != key and not Director.autoplay:
-		create_tween().tween_property(shot_cam, "global_transform", target, 1.2).set_trans(Tween.TRANS_SINE)
+		_camera_tween = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		_camera_tween.tween_property(shot_cam, "global_transform", target, 1.2)
+		_camera_tween.tween_property(shot_cam, "fov", fov, 1.2)
 	else:
 		shot_cam.global_transform = target
+		shot_cam.fov = fov
 	_cam_key = key
 
 
 func highlight_hotspots(ids: Array) -> void:
+	active_hotspots = ids.duplicate()
 	for id in hotspot_nodes:
 		var mi: MeshInstance3D = hotspot_nodes[id].get_child(1)
 		(mi.material_override as StandardMaterial3D).emission_energy_multiplier = 0.6 if ids.has(id) else 0.0
