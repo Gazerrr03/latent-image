@@ -91,6 +91,7 @@ func _play(row: Dictionary) -> void:
 		mode = "camera"
 	if row.get("scene", "") != "":
 		world.show_scene(row["scene"])
+	world.apply_room_states(row.get("shot_id", ""))
 	world.set_mode(mode, row.get("camera", ""))
 	ui.set_cinematic(mode == "camera")
 	for s in str(row.get("sound", "")).split(";", false):

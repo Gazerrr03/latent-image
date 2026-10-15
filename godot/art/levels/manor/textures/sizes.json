@@ -1,0 +1,19 @@
+{
+ "stone_ashlar_albedo": 3.0,
+ "stone_rubble_albedo": 2.0,
+ "stone_dressed_albedo": 1.0,
+ "slate_albedo": 2.0,
+ "gravel_albedo": 1.2,
+ "lawn_albedo": 2.0,
+ "mud_albedo": 2.0,
+ "soil_albedo": 1.5,
+ "oak_albedo": 1.0,
+ "bark_albedo": 1.0,
+ "curtain_albedo": 1.0,
+ "floorboards_albedo": 2.4,
+ "plaster_albedo": 2.0,
+ "knit_albedo": 0.4,
+ "damask_albedo": 0.42,
+ "linen_albedo": 0.3,
+ "mahogany_albedo": 1.2
+}

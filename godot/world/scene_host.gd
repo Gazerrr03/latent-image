@@ -223,6 +223,19 @@ func _mesh(parent: Node3D, pos: Vector3, size: Vector3, color: Color) -> MeshIns
 	return mi
 
 
+## 房间状态表（content/space/room_states.csv）：这一镜打开哪些层。关卡里的层节点命名为“层·<层名>”，
+## 状态层是一份 glTF 的实例，开关是一组灯 / 发光件；表里没写的层不动。
+func apply_room_states(shot_id: String) -> void:
+	var rows: Array = ContentDB.room_states.get(current_id, [])
+	if rows.is_empty() or shot_id == "":
+		return
+	var on: Array = ContentDB.room_layers(current_id, shot_id)
+	for r in rows:
+		var n = named.get("层·" + String(r.get("layer", "")))
+		if n is Node3D:
+			n.visible = on.has(r["layer"])
+
+
 ## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏关卡里的某个节点（如终局的镜中人形）
 func set_shown(id: String, on: bool) -> void:
 	if named.has(id) and is_instance_valid(named[id]):
@@ -345,6 +358,9 @@ func _hotspot_on(n: Node3D, nm: String) -> void:
 		_hotspot(n, nm, aabb.get_center(), aabb.size.max(Vector3(0.05, 0.05, 0.05)) + PAD, true)
 	elif n is CSGBox3D:
 		_hotspot(n, nm, Vector3.ZERO, n.size + PAD, true)
+	elif n is Marker3D:
+		# 不可见的热区：物件本身已经在美术模型里（房间模块），热区大小写在节点的 size 元数据里
+		_hotspot(n, nm, Vector3.ZERO, n.get_meta("size", Vector3(0.3, 0.3, 0.3)), true)
 	else:
 		_hotspot(n, nm, Vector3.ZERO, Vector3(0.3, 0.3, 0.3))
 

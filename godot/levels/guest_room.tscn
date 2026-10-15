@@ -1,0 +1,165 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room__夹层未发现.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room__夹层已打开.gltf" id="4_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.45
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="guest_room" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="客房" parent="结构" instance=ExtResource("2_r")]
+
+[node name="层·夹层未发现" parent="结构" instance=ExtResource("3_r")]
+
+[node name="层·夹层已打开" parent="结构" instance=ExtResource("4_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 1.4
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="吊灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55, 5.75, -2.55)
+light_color = Color(1.0, 0.78, 0.55, 1)
+light_energy = 1.2
+omni_range = 5.0
+shadow_enabled = true
+
+[node name="台灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49, 4.635, -3.87)
+light_color = Color(1.0, 0.75, 0.45, 1)
+light_energy = 0.9
+omni_range = 2.5
+shadow_enabled = true
+
+[node name="炉火" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 3.915, -1.15)
+light_color = Color(1.0, 0.45, 0.15, 1)
+light_energy = 0.8
+omni_range = 3.0
+shadow_enabled = true
+
+[node name="前室灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85, 5.9, -3.75)
+light_color = Color(1.0, 0.78, 0.55, 1)
+light_energy = 0.7
+omni_range = 3.0
+shadow_enabled = true
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, 2.4, 3.615, -3.3)
+
+[node name="cam_establish" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.0982872, -0.121352, 0.987731, 0, 0.992537, 0.121942, -0.995158, 0.0119854, -0.0975537, 4.45, 5.165, -2.95)
+environment = SubResource("env")
+fov = 53.7
+near = 0.03
+
+[node name="cam_typewriter_close" type="Camera3D" parent="接口"]
+transform = Transform3D(0.0333148, -0.503383, 0.863421, 0, 0.863901, 0.503662, -0.999445, -0.0167794, 0.0287807, 1.2, 4.825, -3.34)
+environment = SubResource("env")
+fov = 32.3
+near = 0.03
+
+[node name="cam_board" type="Camera3D" parent="接口"]
+transform = Transform3D(0.231621, -0.441672, 0.866763, 0, 0.890992, 0.454019, -0.972806, -0.10516, 0.206372, 1.55, 4.965, -3.2)
+environment = SubResource("env")
+fov = 37.3
+near = 0.03
+
+[node name="cam_bed" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.756535, 0.131429, -0.640611, 0, 0.979596, 0.200976, 0.653954, 0.152045, -0.741098, 1.05, 5.115, -3.95)
+environment = SubResource("env")
+fov = 53.7
+near = 0.03
+
+[node name="cam_mirror" type="Camera3D" parent="接口"]
+transform = Transform3D(-0, 0.144307, -0.989533, 0, 0.989533, 0.144307, 1, 0, -0, 4.2, 5.165, -3.75)
+environment = SubResource("env")
+fov = 45.7
+near = 0.03
+
+[node name="hs_notebook" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 4.405, -2.98)
+metadata/size = Vector3(0.25, 0.08, 0.3)
+
+[node name="hs_typewriter" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 4.495, -3.36)
+metadata/size = Vector3(0.4, 0.28, 0.42)
+
+[node name="hs_desk_board" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 4.395, -3.62)
+metadata/size = Vector3(0.3, 0.06, 0.3)
+
+[node name="hs_handwriting" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78, 4.395, -3.86)
+metadata/size = Vector3(0.3, 0.06, 0.3)
+
+[node name="hs_typewriter_test" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 4.675, -3.36)
+metadata/size = Vector3(0.25, 0.15, 0.25)
+
+[node name="hs_drawer" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96, 4.255, -3.88)
+metadata/size = Vector3(0.12, 0.2, 0.45)
+
+[node name="hs_bed" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7, 4.215, -1.45)
+metadata/size = Vector3(1.0, 0.5, 1.0)
+
+[node name="hs_fireplace" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 3.815, -1.15)
+metadata/size = Vector3(0.45, 0.45, 0.7)
+
+[node name="hs_coat" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 4.715, -4.45)
+metadata/size = Vector3(0.5, 1.0, 0.35)
+
+[node name="hs_shoes" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.22, 3.795, -4.4)
+metadata/size = Vector3(0.4, 0.15, 0.35)
+
+[node name="hs_waistcoat" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 4.465, -3.46)
+metadata/size = Vector3(0.5, 0.45, 0.3)
+
+[node name="hs_mirror_guest" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55, 4.815, -3.75)
+metadata/size = Vector3(0.12, 1.6, 0.7)
+
+[node name="chr_镜中的格雷" type="Node3D" parent="接口"]
+transform = Transform3D(6.12323e-17, 0, -1, 0, 1, 0, 1, 0, 6.12323e-17, 6.42, 3.615, -3.75)
+visible = false

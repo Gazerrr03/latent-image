@@ -4,6 +4,146 @@
 
 由 `tools/art/level_previews.py` 生成，不要手改；新增图片后重新运行。每个视角只显示最新版，旧版本在折叠列表里。
 
+## Godot 实机截图（阶段 3）
+
+来源 `assets/3d/manor/review/godot/` · godot/tools/capture_level.gd：关卡场景 + 临时天空与阳光
+
+**cam_c1_gate**
+
+![cam_c1_gate](../../../assets/3d/manor/review/godot/cam_c1_gate.jpg)
+
+**cam_c2_lawn**
+
+![cam_c2_lawn](../../../assets/3d/manor/review/godot/cam_c2_lawn.jpg)
+
+**cam_c3_westpath**
+
+![cam_c3_westpath](../../../assets/3d/manor/review/godot/cam_c3_westpath.jpg)
+
+**cam_c4_vent**
+
+![cam_c4_vent](../../../assets/3d/manor/review/godot/cam_c4_vent.jpg)
+
+**前鸟瞰**
+
+![前鸟瞰](../../../assets/3d/manor/review/godot/前鸟瞰.jpg)
+
+**后花园与温室**
+
+![后花园与温室](../../../assets/3d/manor/review/godot/后花园与温室.jpg)
+
+**后鸟瞰**
+
+![后鸟瞰](../../../assets/3d/manor/review/godot/后鸟瞰.jpg)
+
+**正门近景**
+
+![正门近景](../../../assets/3d/manor/review/godot/正门近景.jpg)
+
+**正面草坪**
+
+![正面草坪](../../../assets/3d/manor/review/godot/正面草坪.jpg)
+
+**西侧小路**
+
+![西侧小路](../../../assets/3d/manor/review/godot/西侧小路.jpg)
+
+## 美术渲染与近景细节（阶段 3）
+
+来源 `assets/3d/manor/review/beauty/` · 13_beauty.py，EEVEE；含用户指出的两处问题的复查图
+
+**全景_东南鸟瞰**
+
+![全景_东南鸟瞰](../../../assets/3d/manor/review/beauty/全景_东南鸟瞰.jpg)
+
+**检查1_凸窗西侧**
+
+![检查1_凸窗西侧](../../../assets/3d/manor/review/beauty/检查1_凸窗西侧.jpg)
+
+**检查2_厨房翼交接**
+
+![检查2_厨房翼交接](../../../assets/3d/manor/review/beauty/检查2_厨房翼交接.jpg)
+
+**细节_凸窗与山墙**
+
+![细节_凸窗与山墙](../../../assets/3d/manor/review/beauty/细节_凸窗与山墙.jpg)
+
+**细节_后墙通风口与泥地**
+
+![细节_后墙通风口与泥地](../../../assets/3d/manor/review/beauty/细节_后墙通风口与泥地.jpg)
+
+**细节_屋顶与烟囱**
+
+![细节_屋顶与烟囱](../../../assets/3d/manor/review/beauty/细节_屋顶与烟囱.jpg)
+
+**细节_推拉窗与藤蔓**
+
+![细节_推拉窗与藤蔓](../../../assets/3d/manor/review/beauty/细节_推拉窗与藤蔓.jpg)
+
+**细节_正门**
+
+![细节_正门](../../../assets/3d/manor/review/beauty/细节_正门.jpg)
+
+**细节_温室**
+
+![细节_温室](../../../assets/3d/manor/review/beauty/细节_温室.jpg)
+
+**细节_铁门与门柱**
+
+![细节_铁门与门柱](../../../assets/3d/manor/review/beauty/细节_铁门与门柱.jpg)
+
+## 参考图对照（阶段 3）
+
+来源 `assets/3d/manor/review/compare/` · 左：T-039 v1 效果图；右：同视角模型渲染
+
+**manor_人视角_1-模型**
+
+![manor_人视角_1-模型](../../../assets/3d/manor/review/compare/manor_人视角_1-模型.jpg)
+
+**manor_人视角_2-模型**
+
+![manor_人视角_2-模型](../../../assets/3d/manor/review/compare/manor_人视角_2-模型.jpg)
+
+**manor_人视角_3-模型**
+
+![manor_人视角_3-模型](../../../assets/3d/manor/review/compare/manor_人视角_3-模型.jpg)
+
+**manor_人视角_4-模型**
+
+![manor_人视角_4-模型](../../../assets/3d/manor/review/compare/manor_人视角_4-模型.jpg)
+
+**manor_鸟瞰_前-模型**
+
+![manor_鸟瞰_前-模型](../../../assets/3d/manor/review/compare/manor_鸟瞰_前-模型.jpg)
+
+**manor_鸟瞰_后-模型**
+
+![manor_鸟瞰_后-模型](../../../assets/3d/manor/review/compare/manor_鸟瞰_后-模型.jpg)
+
+**对照_manor_人视角_1**
+
+![对照_manor_人视角_1](../../../assets/3d/manor/review/compare/对照_manor_人视角_1.jpg)
+
+**对照_manor_人视角_2**
+
+![对照_manor_人视角_2](../../../assets/3d/manor/review/compare/对照_manor_人视角_2.jpg)
+
+**对照_manor_人视角_3**
+
+![对照_manor_人视角_3](../../../assets/3d/manor/review/compare/对照_manor_人视角_3.jpg)
+
+**对照_manor_人视角_4**
+
+![对照_manor_人视角_4](../../../assets/3d/manor/review/compare/对照_manor_人视角_4.jpg)
+
+**对照_manor_鸟瞰_前**
+
+![对照_manor_鸟瞰_前](../../../assets/3d/manor/review/compare/对照_manor_鸟瞰_前.jpg)
+
+**对照_manor_鸟瞰_后**
+
+![对照_manor_鸟瞰_后](../../../assets/3d/manor/review/compare/对照_manor_鸟瞰_后.jpg)
+
 ## 全貌（现行：v1）
 
 来源 `assets/2d/T-039-奥瑞尔庄园全貌/v1/` · T-039 v1 设计复核稿：总平面、分层平面、剖面、鸟瞰、人视角（10-14 用户确定 v1 为现行；上级目录是另一套布局，不收）
@@ -241,6 +381,14 @@
 **child_room_透视_child_mid**
 
 ![child_room_透视_child_mid](../../../assets/2d/T-031-艾瑞斯的房间/child_room_透视_child_mid-v2.png)
+
+<details><summary>references/画风参考/（生成原图）</summary>
+
+- [01_狼与相机](../../../assets/2d/T-031-艾瑞斯的房间/references/画风参考/01_狼与相机.jpg)
+- [02_桌上散落的画](../../../assets/2d/T-031-艾瑞斯的房间/references/画风参考/02_桌上散落的画.jpg)
+- [03_带网格的太阳眼](../../../assets/2d/T-031-艾瑞斯的房间/references/画风参考/03_带网格的太阳眼.jpg)
+
+</details>
 
 ## 花园·通风口外侧
 

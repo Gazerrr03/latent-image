@@ -5,7 +5,7 @@
 | id | 关卡 | 优先级 | 视角数 | 预览 | 页面 |
 | --- | --- | --- | --- | --- | --- |
 | `train` | 火车车厢 | P0 | 8 | 有 | [train](train.md) |
-| `manor` | 奥瑞尔庄园（大地图） | P0 | 42 | 有 | [manor](manor.md) |
+| `manor` | 奥瑞尔庄园（大地图） | P0 | 74 | 有 | [manor](manor.md) |
 | `epilogue` | 尾声·白色的房间 | P0 | 2 | 有 | [epilogue](epilogue.md) |
 | `ded_locked` | 密室 | P0 | 4 | 复用其他空间 | [ded_locked](ded_locked.md) |
 | `ded_photo` | 合影 | P0 | 14 | 复用其他空间 | [ded_photo](ded_photo.md) |

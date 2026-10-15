@@ -1,0 +1,68 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom.gltf" id="3_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="greenhouse" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="温室" parent="结构" instance=ExtResource("2_r")]
+
+[node name="暗房" parent="结构" instance=ExtResource("3_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 1.5
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="挂灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2, 6.02, -10.6)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.6
+omni_range = 4.0
+shadow_enabled = true
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 21.4, 3.631, -9)
+
+[node name="cam_green_mid" type="Camera3D" parent="接口"]
+transform = Transform3D(0.836461, 0.0858647, -0.541258, -0, 0.987649, 0.15668, 0.548026, -0.131057, 0.82613, 21.3, 5.231, -9.4)
+environment = SubResource("env")
+fov = 42.6
+near = 0.03
+
+[node name="chr_吉迪恩·沃登" type="Node3D" parent="接口"]
+transform = Transform3D(0.87462, 0, -0.48481, 0, 1, 0, 0.48481, 0, 0.87462, 22.85, 3.631, -12.25)

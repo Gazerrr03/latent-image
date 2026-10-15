@@ -1,0 +1,122 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门完好.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门撞坏.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__冲洗布置.gltf" id="5_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.05
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="darkroom" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="暗房" parent="结构" instance=ExtResource("2_r")]
+
+[node name="层·门完好" parent="结构" instance=ExtResource("3_r")]
+
+[node name="层·门撞坏" parent="结构" instance=ExtResource("4_r")]
+
+[node name="层·冲洗布置" parent="结构" instance=ExtResource("5_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="层·红灯" type="Node3D" parent="灯光"]
+
+[node name="红色安全灯" type="OmniLight3D" parent="灯光/层·红灯"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.15, 5.7, -10.35)
+light_color = Color(1.0, 0.08, 0.04, 1)
+light_energy = 2.2
+omni_range = 6.0
+shadow_enabled = true
+
+[node name="层·白灯" type="Node3D" parent="灯光"]
+
+[node name="白色工作灯" type="OmniLight3D" parent="灯光/层·白灯"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3, 5.7, -9)
+light_color = Color(1.0, 0.86, 0.66, 1)
+light_energy = 1.2
+omni_range = 6.0
+shadow_enabled = true
+
+[node name="走廊来光" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.15, 5.615, -7)
+light_color = Color(1.0, 0.86, 0.66, 1)
+light_energy = 0.4
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 16.75, 3.615, -8.6)
+
+[node name="cam_door_push" type="Camera3D" parent="接口"]
+transform = Transform3D(0.992061, -0.0338458, 0.121114, 0, 0.9631, 0.269142, -0.125754, -0.267006, 0.955455, 16.95, 5.215, -7.05)
+environment = SubResource("env")
+fov = 45.7
+near = 0.03
+
+[node name="cam_wide" type="Camera3D" parent="接口"]
+transform = Transform3D(0.99948, -0.00989351, 0.0306858, 0, 0.951755, 0.306858, -0.0322413, -0.306699, 0.95126, 16.85, 5.315, -7.8)
+environment = SubResource("env")
+fov = 58.7
+near = 0.03
+
+[node name="cam_tray" type="Camera3D" parent="接口"]
+transform = Transform3D(0.99282, -0.0748056, 0.0933398, 0, 0.780323, 0.625377, -0.119617, -0.620887, 0.77472, 16.05, 5.165, -9.95)
+environment = SubResource("env")
+fov = 35.1
+near = 0.03
+
+[node name="hs_tray" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.72, 4.545, -10.76)
+metadata/size = Vector3(0.4, 0.12, 0.32)
+
+[node name="hs_bottles" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.62, 5.065, -9.75)
+metadata/size = Vector3(0.35, 1.0, 1.0)
+
+[node name="hs_vent_inside" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.15, 4.115, -11.04)
+metadata/size = Vector3(0.5, 0.5, 0.15)
+
+[node name="hs_camera" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 4.965, -10)
+metadata/size = Vector3(0.35, 0.4, 0.45)
+
+[node name="hs_clock_dark" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.95, 5.615, -11.06)
+metadata/size = Vector3(0.4, 0.4, 0.1)
+
+[node name="hs_bell" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2, 4.885, -7.72)
+metadata/size = Vector3(0.2, 0.2, 0.2)
+
+[node name="chr_尸体" type="Node3D" parent="接口"]
+transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 16.55, 3.775, -9.85)
+visible = false

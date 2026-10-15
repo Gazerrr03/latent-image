@@ -22,6 +22,9 @@ LEVELS = [
         ("设计包", "assets/2d/T-035-火车车厢", "T-035 平面图与 10-14 的 AI 效果图（previews/）；平面图按完整车厢画，现在定为固定坐姿，只建镜头看得到的部分"),
     ]),
     ("manor", "奥瑞尔庄园（大地图）", "P0", [
+        ("Godot 实机截图（阶段 3）", "assets/3d/manor/review/godot", "godot/tools/capture_level.gd：关卡场景 + 临时天空与阳光"),
+        ("美术渲染与近景细节（阶段 3）", "assets/3d/manor/review/beauty", "13_beauty.py，EEVEE；含用户指出的两处问题的复查图"),
+        ("参考图对照（阶段 3）", "assets/3d/manor/review/compare", "左：T-039 v1 效果图；右：同视角模型渲染"),
         ("全貌（现行：v1）", "assets/2d/T-039-奥瑞尔庄园全貌/v1", "T-039 v1 设计复核稿：总平面、分层平面、剖面、鸟瞰、人视角（10-14 用户确定 v1 为现行；上级目录是另一套布局，不收）"),
         ("门厅", "assets/2d/T-034-门厅", "T-034"),
         ("客房（大厅）", "assets/2d/T-026-客房", "T-026"),
@@ -69,6 +72,8 @@ def scan(rel):
         sub = os.path.relpath(d, base)
         for f in sorted(files):
             if f.lower().endswith(IMG):
+                if f.lower().endswith(".png") and os.path.splitext(f)[0] + ".jpg" in files:
+                    continue                                  # 审查图的 PNG 只留在本机，入库的是同名 JPG
                 view, ver = version_key(f)
                 path = os.path.join(rel, f) if sub == "." else os.path.join(rel, sub, f)
                 groups.setdefault(sub, collections.defaultdict(list))[view].append((ver, path))

@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_cqssl"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room.gltf" id="2_guest"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room__夹层未发现.gltf" id="3_guest_s0"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom.gltf" id="4_dark"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门撞坏.gltf" id="5_dark_s1"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="6_gh"]
+
+[node name="manor" type="Node3D" unique_id=381912937]
+
+[node name="结构" type="Node3D" parent="." unique_id=1076001759]
+
+[node name="manor_model" type="Node3D" parent="结构" unique_id=30813524 instance=ExtResource("1_cqssl")]
+
+[node name="房间" type="Node3D" parent="结构"]
+
+[node name="客房" type="Node3D" parent="结构/房间" instance=ExtResource("2_guest")]
+
+[node name="客房·状态_夹层未发现" type="Node3D" parent="结构/房间" instance=ExtResource("3_guest_s0")]
+
+[node name="暗房" type="Node3D" parent="结构/房间" instance=ExtResource("4_dark")]
+
+[node name="暗房·状态_门撞坏" type="Node3D" parent="结构/房间" instance=ExtResource("5_dark_s1")]
+
+[node name="温室" type="Node3D" parent="结构/房间" instance=ExtResource("6_gh")]
+
+[node name="灯光" type="Node3D" parent="." unique_id=1156300904]
+
+[node name="月光" type="DirectionalLight3D" parent="灯光" unique_id=1216019514]
+transform = Transform3D(0.8320503, -0.47545737, 0.2857143, 0, 0.5150788, 0.85714287, -0.55470026, -0.713186, 0.42857143, 0, 30, 0)
+light_color = Color(0.62352943, 0.6901961, 0.8156863, 1)
+light_energy = 0.6
+shadow_enabled = true
+
+[node name="接口" type="Node3D" parent="." unique_id=14421134]
+
+[node name="spawn" type="Marker3D" parent="接口" unique_id=823545373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 0, 6)
+
+[node name="cam_c1_gate" type="Camera3D" parent="接口" unique_id=311250354]
+transform = Transform3D(1, 0, 0, 0, 0.99818224, -0.060267605, 0, 0.060267605, 0.99818224, 9.6, 2.6, 26.5)
+fov = 60.0
+
+[node name="cam_c2_lawn" type="Camera3D" parent="接口" unique_id=1101043159]
+transform = Transform3D(1, 0, 0, 0, 0.9863939, -0.16439898, 0, 0.16439898, 0.9863939, 9.6, 1.5, 10)
+fov = 60.0
+
+[node name="cam_c3_westpath" type="Camera3D" parent="接口" unique_id=1661351549]
+transform = Transform3D(0.99778515, -0.0057308245, -0.066271685, 0, 0.99628186, -0.08615319, 0.06651901, 0.08596237, 0.9940753, -2, 3.2, -5)
+fov = 60.0
+
+[node name="cam_c4_vent" type="Camera3D" parent="接口" unique_id=653787474]
+transform = Transform3D(-0.99956775, 0.0061958563, -0.028738668, 0, 0.97753984, 0.21075076, 0.029398974, 0.21065967, -0.9771173, 17, 5.2, -16.5)
+fov = 60.0

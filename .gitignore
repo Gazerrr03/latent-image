@@ -17,3 +17,5 @@ assets/**/backups/
 # 截帧、浏览器自查等临时输出
 output/
 .playwright-cli/
+# 3D 审查渲染：PNG 只留在本机，入库的是同名 JPG（10-15）
+assets/3d/**/review/**/*.png

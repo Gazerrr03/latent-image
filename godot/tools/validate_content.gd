@@ -195,6 +195,26 @@ func _init() -> void:
 	for id in rooms:
 		if not levels.has(id) and not layout.has(id):
 			err("房间登记表", id, "既没有关卡场景，也没有灰盒布局", "在 Godot 里搭 levels/%s.tscn" % id)
+	# ── 房间状态表：房间在登记表里、类型合法、起止镜号存在且先后正确 ──
+	var shot_ids := shots.map(func(r): return r.get("shot_id", ""))
+	for row in DB.load_table(SPACE + "room_states.csv"):
+		var where := "%s / %s" % [row.get("room", ""), row.get("layer", "")]
+		if not rooms.has(row.get("room", "")):
+			err("房间状态表", where, "房间“%s”不在房间登记表里" % row.get("room", ""))
+		if not row.get("kind", "") in ["状态层", "开关"]:
+			err("房间状态表", where, "kind 只能是 状态层 或 开关，现在是“%s”" % row.get("kind", ""))
+		if row.get("layer", "") == "":
+			err("房间状态表", where, "layer 不能空")
+		for k in ["from", "until"]:
+			var v: String = row.get(k, "")
+			if v != "" and not shot_ids.has(v):
+				err("房间状态表", where, "%s 写的镜号 %s 不在镜头表里" % [k, v], "写成镜头表 shot_id 列里的镜号，或留空")
+		var lvs: Dictionary = levels.get(row.get("room", ""), {})
+		if not lvs.is_empty() and not lvs["names"].has("层·" + String(row.get("layer", ""))):
+			warn("房间状态表", where, "关卡场景 levels/%s.tscn 里没有节点“层·%s”" % [row.get("room", ""), row.get("layer", "")], "在关卡场景里加一个名为 层·%s 的节点（状态层的 glTF 实例或一组灯）" % row.get("layer", ""))
+		var a_: String = row.get("from", ""); var b_: String = row.get("until", "")
+		if a_ != "" and b_ != "" and shot_ids.find(a_) >= shot_ids.find(b_):
+			err("房间状态表", where, "from（%s）不在 until（%s）之前" % [a_, b_])
 
 	# ── 声音 ──
 	var missing_files := 0

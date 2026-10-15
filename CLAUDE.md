@@ -15,7 +15,7 @@
 - 分镜即数据：剧情内容全部在 `godot/content/story/*.csv`，代码不写死内容。表头与列含义见 `docs/06-技术方案.md` 第 2 节。
 - 镜头表的 `actions` 列只能使用 `godot/core/actions.gd` 中的白名单；新增动作要同时改 `actions.gd`、`director.gd` 的 `_do`，并更新 `docs/06` 2.2 节。
 - 每个 `.csv` 旁必须有 `importer="keep"` 的 `.csv.import`（校验工具会自动补）。
-- **空间不进表（10-14）**：关卡空间与机位构图由用户在 Godot 编辑器里搭成 `godot/levels/<房间id>.tscn`，是空间的唯一依据；不要用代码或表格生成、改写关卡空间。表格只放靠名字就能接上的内容（线索、小物件用哪个模型等）。节点命名见 `docs/填表说明/1.4`（`spawn`、`cam_<机位>`、`hs_<编号>`、`chr_<人名>`、`prop_<编号>`）；小物件模型放 `godot/art/props/`，在 `content/visual/props.csv` 登记。还没有关卡场景的房间暂按 `content/space/`（rooms.csv、layout.csv）搭灰盒，全部搭完后删除。镜头的节奏与运镜优先由 agent 完成。每个关卡的需求写在 `docs/关卡/<关卡id>.md`（一个关卡一篇，索引 `docs/关卡/README.md`），新增或改动关卡时同步。
+- **空间不进表（10-14）**：关卡空间与机位构图由用户在 Godot 编辑器里搭成 `godot/levels/<房间id>.tscn`，是空间的唯一依据；不要用代码或表格生成、改写关卡空间。表格只放靠名字就能接上的内容（线索、小物件用哪个模型等）。节点命名见 `docs/填表说明/1.4`（`spawn`、`cam_<机位>`、`hs_<编号>`、`chr_<人名>`、`prop_<编号>`）；小物件模型放 `godot/art/props/`，在 `content/visual/props.csv` 登记。还没有关卡场景的房间暂按 `content/space/`（rooms.csv、layout.csv）搭灰盒，全部搭完后删除。镜头的节奏与运镜优先由 agent 完成。每个关卡的需求写在 `docs/关卡/<关卡id>.md`（一个关卡一篇，索引 `docs/关卡/README.md`），新增或改动关卡时同步。关卡的开发流程、中间产物与最终产物放哪里，按 `docs/关卡/关卡开发规范.md`（基准案例 `train`）。
 - 人物资产（设定依据、三视图、模型、管线现状）的总入口是 `docs/人物/README.md`；只以现行六个人物为准，旧剧情的人物资产已于 10-14 删除。
 - 项目按两套视角管理：横切面（模块 H1—H16）与纵切面（关卡 0—7），见 `docs/12-关卡拆解.md`；关卡表 `godot/content/levels.csv`，检查报告会按关卡统计进度。现阶段先纵向贯通。
 - 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线）、`content/space/`（房间、布局）、`content/audio/`（音效表）、`content/ai/`（词表、自述兜底）、`content/visual/`（滤镜表、影像片段表）；影像素材放 `godot/art/footage/`。填表说明在 `docs/填表说明/`。

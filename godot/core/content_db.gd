@@ -25,6 +25,7 @@ var lines := {}
 var scenes := {}
 ## 房间布局表（过渡用，只给还没有关卡场景的房间搭灰盒）：room -> 行数组
 var layout := {}
+var room_states := {}          # 房间状态表：房间 → [层、类型、起止镜号]
 ## 人物表，按表格顺序
 var characters: Array = []
 ## 音效表：id -> 行
@@ -48,10 +49,28 @@ func reload() -> void:
 	lines = group_by(load_table(STORY + "lines.csv"), "set_id")
 	scenes = index_by(load_table(SPACE + "rooms.csv"), "id")
 	layout = group_by(load_table(SPACE + "layout.csv"), "room")
+	room_states = group_by(load_table(SPACE + "room_states.csv"), "room")
 	characters = load_table(STORY + "characters.csv")
 	sounds = index_by(load_table(AUDIO + "sounds.csv"), "id")
 	props = index_by(load_table(VISUAL + "props.csv"), "id")
 	wordlists = load_table(AI + "wordlists.csv")
+
+
+## 某一镜时，这个房间打开的层（状态层与开关）：from ≤ 当前镜 < until
+func room_layers(room: String, shot_id: String) -> Array:
+	var idx := _shot_index(shot_id)
+	var out: Array = []
+	for r in room_states.get(room, []):
+		var a: String = r.get("from", ""); var b: String = r.get("until", "")
+		if (a == "" or _shot_index(a) <= idx) and (b == "" or idx < _shot_index(b)) and not out.has(r["layer"]):
+			out.append(r["layer"])
+	return out
+
+
+func _shot_index(shot_id: String) -> int:
+	for i in shot_order.size():
+		if shot_order[i].get("shot_id", "") == shot_id: return i
+	return -1
 
 
 static func level_path(room_id: String) -> String:
