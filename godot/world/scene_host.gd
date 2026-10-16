@@ -80,6 +80,13 @@ func show_scene(id: String) -> void:
 	else:
 		room = _build_greybox(id)
 		add_child(room)
+	# 行走模式的画面环境：关卡里机位带了环境（天空、色调）就用它，否则用默认的暗环境
+	var level_env: Environment = null
+	for m in markers.values():
+		if m.size() > 3 and m[3] != null:
+			level_env = m[3]
+			break
+	_env.environment = level_env if level_env else _make_env()
 	apply_leak(GameState.leak_level)
 	if player:
 		player.needs_spawn = true

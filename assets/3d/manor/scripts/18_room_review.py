@@ -91,6 +91,15 @@ def setup(mode):
         sky.sun_elevation = math.radians(-4); bg.inputs['Strength'].default_value = 0.02; sc.view_settings.exposure = 0.6
         emission('室内_灯泡', 8.0 if ROOM != '暗房' else 0.0); emission('室内_奶白灯罩', 1.2); emission('室内_炉火余烬', 6.0); emission('窗玻璃', 0.0); emission('室内_红色安全灯', 8.0)
 
+def find_lc(l, name):
+    if l.name == name: return l
+    for ch in l.children:
+        r = find_lc(ch, name)
+        if r: return r
+DEFAULT_EX = {}
+for st in [x for x in bpy.data.collections if x.name.startswith(f'房间_{ROOM}_状态_')]:
+    lc = find_lc(bpy.context.view_layer.layer_collection, st.name)
+    if lc: DEFAULT_EX[st.name] = lc.exclude
 cams = [o for o in sc.objects if o.type == 'CAMERA' and o.name.startswith(f'房间审查·{ROOM}') or (o.type == 'CAMERA' and ROOM == '客房' and o.name.startswith('房间审查·前室'))]
 if ONLY: cams = [c for c in cams if any(k in c.name for k in ONLY)]
 modes = ['day', 'night'] if MODE == 'both' else [MODE]
@@ -99,15 +108,13 @@ for mode in modes:
     setup(mode)
     for c in cams:
         sc.camera = c
-        for st in [x for x in bpy.data.collections if ROOM == '客房' and '_状态_' in x.name and x.name.startswith(f'房间_{ROOM}')]:
-            lc = None
-            def find(l):
-                if l.name == st.name: return l
-                for ch in l.children:
-                    r = find(ch)
-                    if r: return r
-            lc = find(bpy.context.view_layer.layer_collection)
-            if lc: lc.exclude = not (('已打开' in st.name) == ('夹层' in c.name))
+        sts = [x for x in bpy.data.collections if x.name.startswith(f'房间_{ROOM}_状态_')]
+        named_st = [x for x in sts if x.name.split('_状态_')[-1] in c.name or (ROOM == '客房' and '夹层' in c.name and '已打开' in x.name)]
+        for st in sts:                                                                  # 相机名里带状态名：只开那一层；否则恢复脚本设的默认
+            lc = find_lc(bpy.context.view_layer.layer_collection, st.name)
+            if lc is None: continue
+            if named_st: lc.exclude = st not in named_st
+            else: lc.exclude = DEFAULT_EX.get(st.name, lc.exclude)
         tag = c.name.split('·')[-1]
         sc.render.filepath = f'{OUT}/{tag}-{"白天" if mode == "day" else "夜晚"}.jpg'
         bpy.ops.render.render(write_still=True); done.append(sc.render.filepath)

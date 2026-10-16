@@ -6,7 +6,7 @@
 """
 import bpy, os, sys
 DST = '/Users/qizhi_dong/Projects/DigitalMedia/godot/art/levels/manor'
-IDS = {'客房': 'guest_room', '温室': 'greenhouse', '暗房': 'darkroom', '门厅': 'hall'}
+IDS = {'客房': 'guest_room', '温室': 'greenhouse', '暗房': 'darkroom', '门厅': 'hall', '花园百叶外侧': 'garden'}
 only = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
 vl = bpy.context.view_layer
 def find(l, name):

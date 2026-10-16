@@ -142,6 +142,7 @@ godot --path godot --resolution 1600x900 --script res://tools/capture_level.gd -
 | `16_room_guest.py` | 客房 + 前室（状态：夹层未发现 / 夹层已打开） |
 | `17_room_darkroom.py` | 暗房（状态：门完好 / 门撞坏 / 冲洗布置；开关：暗房·红灯、暗房·白灯） |
 | `21_room_greenhouse.py` | 温室（无状态；植物卡片：蕨叶、阔叶、白花、粉花、常春藤） |
+| `22_garden_vent.py` | 花园百叶外侧的室外状态补丁（状态：遮光布 / 泥地鞋印） |
 | `09b_overlap_detail.py` | 体检的补充：逐对打印某个物体里重叠的三角形 |
 | `18_room_review.py` | 房间审查渲染：白天（西南阳光 + 窗口天光）与夜晚（台灯、吊灯、炉火），输出 `review/rooms/<房间>/` |
 | `19_room_compare.py` | 系统 Python：拼“参考 | 白天 | 夜晚”对照图 |

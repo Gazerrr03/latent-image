@@ -4,9 +4,10 @@
 状态层与开关命名为“层·<层名>”，由 world/scene_host.gd 的 apply_room_states 按 content/space/room_states.csv 切换。
 设计坐标 (X, N, 标高) → Godot (X, 标高, -N)。
 
-    python3 tools/levels/gen_manor_room_levels.py
+    python3 tools/levels/gen_manor_room_levels.py [garden …]   # 只重写列出的关卡，其余不动
 """
-import math
+import math, sys
+ONLY = sys.argv[1:]                                  # 只写这几个关卡（例：garden）；不给就全写
 ROOT = '/Users/qizhi_dong/Projects/DigitalMedia/godot/levels/'
 
 def g(p): return (p[0], p[2], -p[1])
@@ -32,6 +33,7 @@ class Scene:
     def node(self, name, typ, parent, props=None, inst=None):
         self.nodes.append((name, typ, parent, props or {}, inst))
     def write(self):
+        if ONLY and self.name not in ONLY: return
         L = ['[gd_scene format=3]', '']
         for p, rid in self.ext: L.append('[ext_resource type="PackedScene" path="%s" id="%s"]' % (p, rid))
         L.append('')
@@ -147,5 +149,16 @@ sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((21.4, 9.0, FS), -30)})
 cam(sc, 'green_mid', (21.3, 9.4, FS + 1.6), (23.2, 12.3, FS + 1.05), 26)
 # 吉迪恩：站在石水槽西边，面朝镜头（西南）
 sc.node('chr_吉迪恩·沃登', 'Node3D', '接口', {'transform': yaw((22.85, 12.25, FS), -29)})
+sc.write()
+
+# ═════ 花园·百叶外侧（第 2 章 C2-05 自由检查） ═════
+G0 = 3.6
+sc = Scene('garden'); env(sc, 0.55)
+base(sc, [('garden', '花园百叶外侧', ['遮光布', '泥地鞋印'])])
+sun(sc, 1.3)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((16.4, 14.0, G0), 197)})           # 站在北侧碎石路上，面朝通风口（南偏东）
+cam(sc, 'garden_wide', (14.6, 13.6, G0 + 1.65), (18.6, 11.4, G0 + 0.55), 24)
+hs(sc, 'hs_vent_print', (17.15, 11.75, G0 + 0.05), (0.5, 0.15, 0.6))
+hs(sc, 'hs_vent_louver', (17.15, 11.45, 4.1), (0.6, 0.6, 0.25))
 sc.write()
 print('ok')

@@ -10,6 +10,7 @@ REFS = {'客房': {'全景': 'T-026-客房/guest_room_透视_establish-v3.png', 
                  '床与壁炉': 'T-026-客房/guest_room_透视_bed-v2.png', '打字机近景': 'T-026-客房/guest_room_透视_typewriter_close-v2.png',
                  '镜子': 'T-026-客房/guest_room_透视_mirror-v2.png'},
         '暗房': {'全景': 'T-027-暗房/darkroom_透视_wide-v3.png', '推门': 'T-027-暗房/darkroom_透视_door_push-v2.png', '显影盘': 'T-027-暗房/darkroom_透视_tray-v2.png'},
+        '花园百叶外侧': {'全景': 'T-032-花园·通风口外侧/garden_透视_garden_wide-v2.png'},
         '温室': {'全景': 'T-030-温室/greenhouse_透视_green_mid-v2.png', '手压泵': 'T-030-温室/greenhouse_透视_pump_detail-v2.png', '侧门': 'T-030-温室/greenhouse_透视_side_door-v2.png'}}
 room = sys.argv[1] if len(sys.argv) > 1 else '客房'
 D = f'{ROOT}/assets/3d/manor/review/rooms/{room}'
