@@ -1,4 +1,4 @@
-"""一次性生成 godot/levels/{guest_room,darkroom,greenhouse}.tscn 的初稿（10-15）：引用庄园与房间模块的 glTF，摆好接口节点。
+"""一次性生成 godot/levels/{guest_room,darkroom,greenhouse,garden,hall,dining,seance,archive,child_room}.tscn 的初稿（10-15 起；10-16 加门厅组与四个房间）：引用庄园与房间模块的 glTF，摆好接口节点。
 **只用于初稿。** 之后机位、热区、灯光以用户在 Godot 编辑器里的修改为准；重跑会覆盖这三个文件里的所有手改。
 机位与 assets/3d/manor/scripts/16、17、21 的审查相机同视角；热区是不可见的 Marker3D（metadata/size）；
 状态层与开关命名为“层·<层名>”，由 world/scene_host.gd 的 apply_room_states 按 content/space/room_states.csv 切换。
@@ -155,10 +155,93 @@ sc.write()
 G0 = 3.6
 sc = Scene('garden'); env(sc, 0.55)
 base(sc, [('garden', '花园百叶外侧', ['遮光布', '泥地鞋印'])])
+sc.node('邻·温室', None, '结构', inst=sc.res('res://art/levels/manor/room_greenhouse.gltf'))     # 温室的碰撞在温室模块里（manor 外壳的温室不带碰撞）
 sun(sc, 1.3)
 sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((16.4, 14.0, G0), 197)})           # 站在北侧碎石路上，面朝通风口（南偏东）
 cam(sc, 'garden_wide', (14.6, 13.6, G0 + 1.65), (18.6, 11.4, G0 + 0.55), 24)
 hs(sc, 'hs_vent_print', (17.15, 11.75, G0 + 0.05), (0.5, 0.15, 0.6))
 hs(sc, 'hs_vent_louver', (17.15, 11.45, 4.1), (0.6, 0.6, 0.25))
+sc.write()
+
+def neighbor(sc, rid, label, layer=None):
+    """相邻房间：只放空间（和一个固定的状态，例如暗房门关着），不参与状态切换；门扇、门套归它们，少了会看到空门洞。"""
+    sc.node('邻·' + label, None, '结构', inst=sc.res('res://art/levels/manor/room_%s.gltf' % rid))
+    if layer: sc.node('邻·%s·%s' % (label, layer), None, '结构', inst=sc.res('res://art/levels/manor/room_%s__%s.gltf' % (rid, layer)))
+
+WARM = (1.0, 0.72, 0.42)
+# ═════ 门厅 + 主楼梯 + 走廊（0B 到达；C0-05、C0-06） ═════
+F1 = 0.015; F2 = 3.615
+sc = Scene('hall'); env(sc, 0.25, sky=False)
+base(sc, [('hall', '门厅', [])])
+for rid, label in [('dining', '餐厅'), ('seance', '客厅'), ('archive', '照片档案室'), ('child_room', '艾瑞斯的房间'), ('guest_room', '客房')]: neighbor(sc, rid, label)
+neighbor(sc, 'darkroom', '暗房', '门完好')                                                       # 门厅的镜头都在撞门以前
+omni(sc, '灯笼', '灯光', (9.6, 2.55, 3.3 - 0.7), WARM, 1.6, 6.0)
+omni(sc, '楼梯井灯笼', '灯光', (9.4, 8.9, 6.5 - 1.6), WARM, 1.4, 7.0)
+for x in (2.5, 8.0, 12.1): omni(sc, '一楼壁灯%s' % x, '灯光', (x, 5.27, F1 + 1.95), WARM, 0.5, 3.0, shadow=False)
+for x in (4.6, 8.6, 13.0, 15.5): omni(sc, '二楼壁灯%s' % x, '灯光', (x, 5.27, F2 + 1.9), WARM, 0.5, 3.0, shadow=False)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((9.6, 1.1, F1), 0)})                    # 从正门进来，面朝北
+cam(sc, 'hall_mid', (9.6, 4.55, F1 + 1.45), (9.6, 0.3, F1 + 1.25), 16)
+cam(sc, 'hall_north', (9.6, 0.62, F1 + 1.45), (9.6, 6.0, F1 + 1.3), 16)
+cam(sc, 'stair', (9.45, 5.3, F1 + 1.45), (8.85, 10.5, F1 + 2.1), 15)
+cam(sc, 'landing_darkroom', (9.35, 6.2, F2 + 1.5), (18.9, 6.6, F2 + 1.15), 18)
+sc.node('chr_康斯坦斯·塔尔博特', 'Node3D', '接口', {'transform': yaw((10.3, 1.9, F1), -165)})     # 人形朝站位节点的 +z：站在落地钟对面，朝着 hall_mid 机位
+sc.write()
+
+# ═════ 餐厅 + 餐叙区（C2-02、C3-03、C4-04） ═════
+TOPD = 0.015 + 0.0115 + 0.75
+sc = Scene('dining'); env(sc, 0.4)
+base(sc, [('dining', '餐厅', ['晚饭未收', '多一副餐具'])])
+neighbor(sc, 'hall', '门厅')
+sun(sc, 1.2)
+omni(sc, '枝形吊灯', '灯光', (15.75, 2.55, 2.45), WARM, 1.4, 6.0)
+omni(sc, '餐叙区吊灯', '灯光', (17.0, 8.6, 2.05), WARM, 0.9, 4.5)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((15.75, 4.4, 0.015), 180)})
+cam(sc, 'dining_mid', (15.75, 4.65, 0.015 + 1.5), (15.75, 0.3, 0.015 + 1.3), 16)
+cam(sc, 'table_close', (15.75 + 0.32, 2.55 + 1.5, 0.015 + 1.55), (15.7, 2.55 - 1.15, TOPD + 0.05), 28)
+cam(sc, 'snug', (17.0, 3.2, 0.015 + 1.45), (17.0, 11.1, 0.015 + 1.25), 20)
+sc.node('chr_康斯坦斯·塔尔博特', 'Node3D', '接口', {'transform': yaw((13.6, 1.7, 0.015), 144)})   # 餐边柜前，朝着 dining_mid 机位（不挡 table_close）
+sc.write()
+
+# ═════ 客厅·降灵会（C3-04、C3-05） ═════
+sc = Scene('seance'); env(sc, 0.35)
+base(sc, [('seance', '客厅', ['降灵会布置', '窗帘拉上'])])
+neighbor(sc, 'hall', '门厅')
+sun(sc, 1.1)
+omni(sc, '吊灯', '灯光', (3.6, 2.6, 2.55), WARM, 1.1, 5.5)
+omni(sc, '台灯', '灯光', (6.31, 3.3, 1.3), WARM, 0.6, 3.0, shadow=False)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((6.1, 2.35, 0.015), 90)})
+cam(sc, 'seance_mid', (6.35, 2.35, 0.015 + 1.55), (0.3, 2.3, 0.015 + 1.25), 16)
+sc.node('chr_拉坦特夫人', 'Node3D', '接口', {'transform': yaw((2.55, 2.6, 0.015), 86)})          # 圆桌西侧，朝着 seance_mid 机位
+sc.write()
+
+# ═════ 照片档案室（C3-02、C5-05 自由检查；C6-04） ═════
+TOPA = 3.615 + 0.0115 + 0.7615
+sc = Scene('archive'); env(sc, 0.35)
+base(sc, [('archive', '照片档案室', [])])
+neighbor(sc, 'hall', '门厅')                                                                  # 走廊：储物间门框上的刻痕在走廊里
+sun(sc, 1.2)
+omni(sc, '吊灯', '灯光', (9.6, 2.4, 5.8), WARM, 1.0, 5.0)
+omni(sc, '书桌台灯', '灯光', (8.88, 1.92, 4.75), WARM, 0.7, 2.5)
+omni(sc, '走廊壁灯', '灯光', (13.0, 5.27, F2 + 1.9), WARM, 0.6, 4.0, shadow=False)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((9.6, 4.25, F2), 180)})                 # 进门，面朝凸窗
+cam(sc, 'archive_mid', (9.6, 4.55, F2 + 1.5), (9.6, -0.6, F2 + 1.25), 17)
+cam(sc, 'doorframe', (9.6, 0.75, F2 + 1.25), (9.6, 4.8, F2 + 1.35), 22)
+for n, p, sz in [('hs_photos', (6.95, 2.7, F2 + 1.73), (0.12, 1.9, 0.9)), ('hs_ledger', (9.6, 1.6, TOPA + 0.02), (0.8, 0.08, 0.35)),
+                 ('hs_doorframe', (13.41, 7.75, F2 + 1.05), (0.12, 0.6, 0.12)), ('hs_clipping', (10.19, 1.84, TOPA + 0.01), (0.3, 0.05, 0.25)),
+                 ('hs_manual', (9.05, 1.83, TOPA + 0.02), (0.25, 0.06, 0.2)), ('hs_photo_back', (10.15, 1.48, TOPA + 0.01), (0.3, 0.05, 0.25))]:
+    hs(sc, n, p, sz)
+sc.write()
+
+# ═════ 艾瑞斯的房间（C2-04、C5-04、C6-06） ═════
+sc = Scene('child_room'); env(sc, 0.35)
+base(sc, [('child_room', '艾瑞斯的房间', ['画·黑布', '画·红光睡着', '画·全家福', '画·戴帽子的人'])])
+neighbor(sc, 'hall', '门厅')
+sun(sc, 0.9)
+omni(sc, '吊灯', '灯光', (2.3, 9.0, 5.75), WARM, 0.9, 5.0)
+omni(sc, '五斗柜台灯', '灯光', (1.6, 7.15, 4.85), WARM, 0.5, 2.5, shadow=False)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((2.75, 7.4, F2), 0)})
+cam(sc, 'child_mid', (2.8, 7.15, F2 + 1.45), (2.15, 11.1, F2 + 1.15), 17)
+cam(sc, 'child_wall', (2.6, 10.7, F2 + 1.45), (2.0, 6.9, F2 + 1.25), 17)
+sc.node('chr_艾瑞斯·塔尔博特', 'Node3D', '接口', {'transform': yaw((2.0, 9.6, F2), 18)})        # 书桌前一步，朝着 child_mid 机位
 sc.write()
 print('ok')

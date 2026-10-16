@@ -23,8 +23,7 @@ rng = random.Random(1926)
 
 # ═══════════ 0. 保护会话、新建空文件 ═══════════
 if not bpy.app.background and bpy.data.is_dirty:
-    stamp = datetime.datetime.now().strftime('%m%d-%H%M%S')
-    bpy.ops.wm.save_as_mainfile(filepath=f'{OUT}/backups/pre-manor-session-{stamp}.blend', copy=True)
+    bpy.ops.wm.save_as_mainfile(filepath=f'{OUT}/backups/重建前.blend', copy=True)     # 只留一份（每次覆盖）：防止整体重建覆盖掉没保存的手工修改
 bpy.ops.wm.read_homefile(use_empty=True)
 scene = bpy.context.scene
 scene.name = 'MANOR | 精修'
@@ -419,7 +418,11 @@ ARCH = [(-0.006, -0.03), (0.16, -0.03), (0.16, 0.03), (0.145, 0.045), (0.07, 0.0
 SILL = [(-0.12, -0.12), (0.11, -0.12), (0.125, -0.105), (0.125, -0.04), (0.0, 0.012), (-0.12, 0.012)]
 
 ROOM_OWNED = [(2, 0.3, 4.8, 0.3, 4.8),          # 由房间模块接管的房间（楼层, X0, X1, N0, N1）：窗帘、门扇、百叶背板交给房间。16_room_guest.py 客房
-              (2, 15.4, 18.9, 7.6, 11.1)]         # 17_room_darkroom.py 暗房：温室侧门的门扇、百叶背后的挡板
+              (2, 15.4, 18.9, 7.6, 11.1),         # 17_room_darkroom.py 暗房：温室侧门的门扇、百叶背后的挡板
+              (1, 12.6, 18.9, 0.3, 4.8),          # 25_room_dining.py 餐厅：三扇南窗的窗帘
+              (1, 0.3, 6.6, 0.3, 4.8),            # 26_room_seance.py 客厅：南窗三扇、西窗一扇的窗帘
+              (2, 0.3, 4.3, 6.9, 11.1)]           # 28_room_child.py 艾瑞斯的房间：北窗的窗帘
+STAIR_BY_ROOM = True                              # 主楼梯交给 24_room_hall.py（原来的方块楼梯第二跑顶端与楼板之间漏了 0.43 m）
 GH_BY_ROOM = True                                 # 温室室内（台架、手压泵、盆栽）交给 21_room_greenhouse.py
 def room_owned(op):
     u = (op['lo'] + op['hi']) / 2
@@ -785,6 +788,7 @@ if not GH_BY_ROOM:                                                              
     Gi.tube([(PUMP[0], PUMP[1], gz + 1.15), (PUMP[0], PUMP[1] - 0.18, gz + 1.18), (PUMP[0], PUMP[1] - 0.48, gz + 1.32)], 0.02, seg=8)
     Gi.tube([(PUMP[0], PUMP[1] + 0.05, gz + 0.95), (PUMP[0], PUMP[1] + 0.22, gz + 0.95), (PUMP[0], PUMP[1] + 0.28, gz + 0.86)], 0.025, seg=8)
 make(Gs, '温室_石', C['温室']); make(Gi, '温室_铸铁', C['温室']); make(Gg, '温室_玻璃', C['温室']); make(Gw, '温室_木', C['温室'])
+exec(open(OUT + '/scripts/gh_closure.py', encoding='utf-8').read()); greenhouse_closure(C['温室'])     # 与主楼交接处补框、补玻璃、补墙（10-16）
 
 # ═══════════ 9. 地形：一张连续网格（同一网格上分材质），按图纸分区 ═══════════
 def zW(n): return 0.0 if n <= 0 else 3.6 if n >= D else 3.6 * n / D
@@ -960,15 +964,16 @@ for fl, els, z in [(1, F1, 0.0), (2, F2, 3.6)]:
             FM['floor_pass'].face([FM['floor_pass'].V(p) for p in [(bx[i], by[j], z + 0.004), (bx[i + 1], by[j], z + 0.004), (bx[i + 1], by[j + 1], z + 0.004), (bx[i], by[j + 1], z + 0.004)]])
     for k, m in FM.items():
         if len(m.bm.faces): make(m, f'{fl}F_地面_{k}', C['房间地面'], recalc=False)
-# 楼梯：两跑各 10 级（与 01 相同）
-STM = Mesh('oak')
-fx0, fx1, gx0s, gx1s, n0s = X(135.5), X(147.5), X(150.5), X(162.5), N(254.5)
-for i in range(10): STM.box(fx0, fx1, n0s + i * 0.28, n0s + (i + 1) * 0.28, 0.0, (i + 1) * 0.18)
-land0 = n0s + 10 * 0.28
-STM.box(fx0, gx1s, land0 - 0.28, land0 + 1.2, 0.0, 1.8)
-for i in range(9):
-    y1 = land0 - i * 0.28; STM.box(gx0s, gx1s, y1 - 0.28, y1, 0.0, 1.8 + (i + 1) * 0.18)
-make(STM, '主楼梯-col', C['结构'], union=True)
+# 楼梯：两跑各 10 级（与 01 相同）；门厅模块接管后不生成
+if not STAIR_BY_ROOM:
+    STM = Mesh('oak')
+    fx0, fx1, gx0s, gx1s, n0s = X(135.5), X(147.5), X(150.5), X(162.5), N(254.5)
+    for i in range(10): STM.box(fx0, fx1, n0s + i * 0.28, n0s + (i + 1) * 0.28, 0.0, (i + 1) * 0.18)
+    land0 = n0s + 10 * 0.28
+    STM.box(fx0, gx1s, land0 - 0.28, land0 + 1.2, 0.0, 1.8)
+    for i in range(9):
+        y1 = land0 - i * 0.28; STM.box(gx0s, gx1s, y1 - 0.28, y1, 0.0, 1.8 + (i + 1) * 0.18)
+    make(STM, '主楼梯-col', C['结构'], union=True)
 
 # ═══════════ 12. 审查：图纸叠图、相机 ═══════════
 def plan_ref(png, name, z, mm_per_px, origin_mm, scale):

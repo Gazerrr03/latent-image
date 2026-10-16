@@ -1,0 +1,93 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room__画·黑布.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room__画·红光睡着.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room__画·全家福.gltf" id="5_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room__画·戴帽子的人.gltf" id="6_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="7_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="child_room" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="艾瑞斯的房间" parent="结构" instance=ExtResource("2_r")]
+
+[node name="层·画·黑布" parent="结构" instance=ExtResource("3_r")]
+
+[node name="层·画·红光睡着" parent="结构" instance=ExtResource("4_r")]
+
+[node name="层·画·全家福" parent="结构" instance=ExtResource("5_r")]
+
+[node name="层·画·戴帽子的人" parent="结构" instance=ExtResource("6_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("7_r")]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 0.9
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="吊灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3, 5.75, -9)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.9
+omni_range = 5.0
+shadow_enabled = true
+
+[node name="五斗柜台灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 4.85, -7.15)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 2.75, 3.615, -7.4)
+
+[node name="cam_child_mid" type="Camera3D" parent="接口"]
+transform = Transform3D(0.986729, -0.0121345, 0.161919, 0, 0.997204, 0.0747319, -0.162373, -0.0737402, 0.98397, 2.8, 5.065, -7.15)
+environment = SubResource("env")
+fov = 61.6
+near = 0.03
+
+[node name="cam_child_wall" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.987763, -0.00809717, 0.155752, 0, 0.998651, 0.0519174, -0.155963, 0.0512821, -0.986431, 2.6, 5.065, -10.7)
+environment = SubResource("env")
+fov = 61.6
+near = 0.03
+
+[node name="chr_艾瑞斯·塔尔博特" type="Node3D" parent="接口"]
+transform = Transform3D(0.951057, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951057, 2, 3.615, -9.6)

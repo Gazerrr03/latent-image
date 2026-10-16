@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom.gltf" id="4_dark"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门撞坏.gltf" id="5_dark_s1"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="6_gh"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="7_hall"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_dining.gltf" id="8_dining"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_dining__晚饭未收.gltf" id="9_dining_s0"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_seance.gltf" id="10_seance"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_archive.gltf" id="11_archive"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room.gltf" id="12_child"]
 
 [node name="manor" type="Node3D" unique_id=381912937]
 
@@ -24,6 +30,18 @@
 [node name="暗房·状态_门撞坏" type="Node3D" parent="结构/房间" instance=ExtResource("5_dark_s1")]
 
 [node name="温室" type="Node3D" parent="结构/房间" instance=ExtResource("6_gh")]
+
+[node name="门厅" type="Node3D" parent="结构/房间" instance=ExtResource("7_hall")]
+
+[node name="餐厅" type="Node3D" parent="结构/房间" instance=ExtResource("8_dining")]
+
+[node name="餐厅·状态_晚饭未收" type="Node3D" parent="结构/房间" instance=ExtResource("9_dining_s0")]
+
+[node name="客厅" type="Node3D" parent="结构/房间" instance=ExtResource("10_seance")]
+
+[node name="照片档案室" type="Node3D" parent="结构/房间" instance=ExtResource("11_archive")]
+
+[node name="艾瑞斯的房间" type="Node3D" parent="结构/房间" instance=ExtResource("12_child")]
 
 [node name="灯光" type="Node3D" parent="." unique_id=1156300904]
 

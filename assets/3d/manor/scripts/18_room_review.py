@@ -45,10 +45,12 @@ nt.links.new(sky.outputs['Color'], bg.inputs['Color']); nt.links.new(bg.outputs[
 
 LC = bpy.data.collections.get('房间审查灯光') or bpy.data.collections.new('房间审查灯光')
 if LC.name not in sc.collection.children: sc.collection.children.link(LC)
-def L(name, kind, loc, energy, color, size=0.1, rot=None):
+def L(name, kind, loc, energy, color, size=0.1, rot=None, shadow=True):
     ob = bpy.data.objects.get(name)
     if ob: bpy.data.objects.remove(ob, do_unlink=True)
     ld = bpy.data.lights.new(name, kind); ld.energy = energy; ld.color = color
+    try: ld.use_shadow = shadow
+    except AttributeError: pass
     if kind == 'AREA': ld.shape = 'RECTANGLE'; ld.size = size[0]; ld.size_y = size[1]
     elif kind != 'SUN': ld.shadow_soft_size = size
     ob = bpy.data.objects.new(name, ld); LC.objects.link(ob); ob.location = loc
@@ -79,6 +81,40 @@ if ROOM == '暗房':                                                            
     NIGHT += [L('审查_暗房红灯', 'POINT', (17.15, 10.35, 6.5 - 0.84), 110, (1.0, 0.015, 0.01), 0.05), L('审查_暗房红光反射', 'POINT', (16.6, 9.0, 5.6), 18, (1.0, 0.02, 0.015), 0.6)]
 if ROOM == '温室':                                                                      # 温室：白天就是天光（不加窗口面光）；夜晚一盏挂灯
     NIGHT += [L('审查_温室挂灯', 'POINT', (22.2, 10.6, 3.6 + 2.42), 600, (1.0, 0.7, 0.4), 0.1)]
+
+if ROOM == '门厅':                                                                      # 门厅组没有窗：白天 = 天光从正门、后门进来 + 灯开低档；夜晚 = 灯笼、壁灯
+    for x, y, z, e_ in [(9.6, 2.55, 2.2, 260), (9.6, 0.7, 2.2, 120), (11.8, 8.9, 2.6, 120), (9.4, 8.9, 4.6, 260), (8.4, 9.8, 2.6, 120), (5.0, 5.85, 2.6, 90), (12.0, 5.85, 2.6, 90),
+                      (4.0, 5.85, 5.9, 120), (10.0, 5.9, 5.9, 120), (16.0, 6.2, 5.9, 120), (11.9, 10.4, 5.6, 90)]:
+        DAY.append(L(f'审查_门厅天光{x}_{y}_{z}', 'POINT', (x, y, z), e_, (1.0, 0.93, 0.85), 0.8, shadow=False))
+    NIGHT += [L('审查_灯笼', 'POINT', (9.6, 2.55, 3.3 - 0.7), 380, (1.0, 0.68, 0.38), 0.1), L('审查_楼梯井灯笼', 'POINT', (9.4, 8.9, 6.5 - 1.6), 420, (1.0, 0.68, 0.38), 0.1)]
+    for x, y, z in [(2.5, 5.27, 2.0), (8.0, 5.27, 2.0), (12.1, 5.27, 2.0), (4.6, 5.27, 5.57), (8.6, 5.27, 5.57), (13.0, 5.27, 5.57), (15.5, 5.27, 5.57), (8.07, 9.0, 5.37)]:
+        NIGHT.append(L(f'审查_壁灯{x}_{z}', 'POINT', (x, y, z), 75, (1.0, 0.7, 0.4), 0.05, shadow=False))
+    NIGHT += [L('审查_门厅补光', 'POINT', (9.6, 3.6, 1.2), 60, (1.0, 0.7, 0.4), 0.8, shadow=False), L('审查_楼梯补光', 'POINT', (9.4, 7.5, 1.6), 70, (1.0, 0.7, 0.4), 0.8, shadow=False),
+              L('审查_台灯', 'POINT', (7.2, 4.05, 0.93 + 0.4), 60, (1.0, 0.7, 0.4), 0.03, shadow=False)]
+
+if ROOM == '餐厅':
+    for x in (13.4, 15.5, 17.6):
+        DAY.append(L(f'审查_南窗{x}', 'AREA', (x, 0.42, 1.8), 45, (1.0, 0.95, 0.88), (1.2, 1.8), (math.radians(-90), 0, 0)))
+    DAY += [L('审查_餐叙区天光', 'POINT', (17.0, 8.0, 2.6), 90, (1.0, 0.92, 0.8), 1.0, shadow=False), L('审查_餐厅补光', 'POINT', (15.75, 3.8, 2.6), 60, (1.0, 0.92, 0.8), 1.0, shadow=False)]
+    NIGHT += [L('审查_枝形吊灯', 'POINT', (15.75, 2.55, 2.45), 320, (1.0, 0.68, 0.38), 0.3), L('审查_餐叙区吊灯', 'POINT', (17.0, 8.6, 2.05), 160, (1.0, 0.7, 0.4), 0.1)]
+    for x, y in [(15.27, 9.3), (18.73, 8.3), (15.27, 6.0), (18.73, 5.9), (14.45, 0.45), (16.55, 0.45)]:
+        NIGHT.append(L(f'审查_餐厅壁灯{x}_{y}', 'POINT', (x, y, 1.9), 45, (1.0, 0.7, 0.4), 0.05, shadow=False))
+    NIGHT += [L('审查_桌上烛光', 'POINT', (15.75, 2.55, 1.35), 40, (1.0, 0.62, 0.3), 0.3, shadow=False)]
+
+if ROOM == '客厅':
+    for x in (1.6, 3.7, 5.8):
+        DAY.append(L(f'审查_客厅南窗{x}', 'AREA', (x, 0.42, 1.8), 45, (1.0, 0.95, 0.88), (1.2, 1.8), (math.radians(-90), 0, 0)))
+    DAY += [L('审查_客厅西窗', 'AREA', (0.42, 3.35, 1.8), 35, (1.0, 0.95, 0.88), (1.3, 1.8), (0, math.radians(90), 0)), L('审查_客厅补光', 'POINT', (3.6, 3.6, 2.6), 70, (1.0, 0.92, 0.8), 1.0, shadow=False)]
+    NIGHT += [L('审查_客厅吊灯', 'POINT', (3.6, 2.6, 2.55), 240, (1.0, 0.68, 0.38), 0.3), L('审查_客厅台灯', 'POINT', (6.31, 3.3, 1.3), 60, (1.0, 0.7, 0.4), 0.05, shadow=False),
+              L('审查_客厅壁灯一', 'POINT', (2.65, 0.47, 1.95), 45, (1.0, 0.7, 0.4), 0.05, shadow=False), L('审查_客厅壁灯二', 'POINT', (4.75, 0.47, 1.95), 45, (1.0, 0.7, 0.4), 0.05, shadow=False),
+              L('审查_降灵会烛光', 'POINT', (3.6, 2.6, 1.05), 55, (1.0, 0.55, 0.25), 0.2)]
+if ROOM == '照片档案室':
+    DAY += [L('审查_凸窗天光', 'AREA', (9.6, -0.3, 5.1), 90, (1.0, 0.95, 0.88), (2.6, 1.8), (math.radians(-90), 0, 0)), L('审查_档案室补光', 'POINT', (9.6, 3.2, 5.8), 80, (1.0, 0.92, 0.8), 1.0, shadow=False)]
+    NIGHT += [L('审查_档案室吊灯', 'POINT', (9.6, 2.4, 5.8), 160, (1.0, 0.68, 0.38), 0.2), L('审查_书桌台灯', 'POINT', (8.88, 1.92, 4.75), 70, (1.0, 0.7, 0.4), 0.05),
+              L('审查_档案室门口', 'POINT', (9.6, 4.2, 5.2), 30, (1.0, 0.7, 0.4), 0.3, shadow=False)]
+if ROOM == '艾瑞斯的房间':
+    DAY += [L('审查_北窗天光', 'AREA', (2.2, 10.98, 5.3), 40, (0.95, 0.97, 1.0), (1.2, 1.6), (math.radians(90), 0, 0)), L('审查_儿童房补光', 'POINT', (2.3, 8.2, 5.8), 60, (1.0, 0.92, 0.8), 1.0, shadow=False)]
+    NIGHT += [L('审查_儿童房吊灯', 'POINT', (2.3, 9.0, 5.75), 120, (1.0, 0.7, 0.42), 0.1), L('审查_五斗柜台灯', 'POINT', (1.6, 7.15, 4.85), 45, (1.0, 0.7, 0.4), 0.05, shadow=False)]
 
 def setup(mode):
     for l in DAY: l.hide_render = mode != 'day'
@@ -115,7 +151,9 @@ for mode in modes:
             if lc is None: continue
             if named_st: lc.exclude = st not in named_st
             else: lc.exclude = DEFAULT_EX.get(st.name, lc.exclude)
-        tag = c.name.split('·')[-1]
+        parts = c.name.split('·')
+        tag = parts[2] if len(parts) > 2 else parts[-1]                                           # 相机名后面可以再挂状态名（只开那几层），文件名只取视角
+        if tag == '画' and len(parts) > 3: tag = '画·' + parts[3]
         sc.render.filepath = f'{OUT}/{tag}-{"白天" if mode == "day" else "夜晚"}.jpg'
         bpy.ops.render.render(write_still=True); done.append(sc.render.filepath)
         print('rendered', sc.render.filepath)

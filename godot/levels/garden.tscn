@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_garden.gltf" id="2_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_garden__遮光布.gltf" id="3_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_garden__泥地鞋印.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="gh_nb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
 sky_top_color = Color(0.33, 0.42, 0.55, 1)
@@ -39,6 +40,8 @@ glow_intensity = 0.35
 [node name="层·遮光布" parent="结构" instance=ExtResource("3_r")]
 
 [node name="层·泥地鞋印" parent="结构" instance=ExtResource("4_r")]
+
+[node name="邻·温室" parent="结构" instance=ExtResource("gh_nb")]
 
 [node name="灯光" type="Node3D" parent="."]
 

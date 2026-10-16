@@ -60,6 +60,7 @@ open_edges = {}
 for ob in bpy.data.objects:
     if ob.type != 'MESH' or not ob.users_collection or ob.users_collection[0].name in SKIP_COLL: continue
     if ob.hide_render and ob.users_collection[0].name != '屋顶': continue
+    if ob.name.endswith('-colonly'): continue                                       # 只有碰撞、导进 Godot 不显示
     me = ob.evaluated_get(dg).to_mesh()
     bm = bmesh.new(); bm.from_mesh(me); bm.transform(ob.matrix_world)
     room_piece = ob.users_collection[0].name.startswith('房间_')                    # 房间模块里有很多本来就单面的件（墙面饰面、布、纸），不查缺面

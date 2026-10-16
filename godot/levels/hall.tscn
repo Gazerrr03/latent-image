@@ -1,0 +1,153 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_dining.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_seance.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_archive.gltf" id="5_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room.gltf" id="6_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room.gltf" id="7_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom.gltf" id="8_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门完好.gltf" id="9_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="hall" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="门厅" parent="结构" instance=ExtResource("2_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="邻·餐厅" parent="结构" instance=ExtResource("3_r")]
+
+[node name="邻·客厅" parent="结构" instance=ExtResource("4_r")]
+
+[node name="邻·照片档案室" parent="结构" instance=ExtResource("5_r")]
+
+[node name="邻·艾瑞斯的房间" parent="结构" instance=ExtResource("6_r")]
+
+[node name="邻·客房" parent="结构" instance=ExtResource("7_r")]
+
+[node name="邻·暗房" parent="结构" instance=ExtResource("8_r")]
+
+[node name="邻·暗房·门完好" parent="结构" instance=ExtResource("9_r")]
+
+[node name="灯笼" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 2.6, -2.55)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 1.6
+omni_range = 6.0
+shadow_enabled = true
+
+[node name="楼梯井灯笼" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.4, 4.9, -8.9)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 1.4
+omni_range = 7.0
+shadow_enabled = true
+
+[node name="一楼壁灯2.5" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.965, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="一楼壁灯8.0" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.965, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="一楼壁灯12.1" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1, 1.965, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="二楼壁灯4.6" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 5.515, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="二楼壁灯8.6" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.6, 5.515, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="二楼壁灯13.0" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 5.515, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="二楼壁灯15.5" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 5.515, -5.27)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 3.0
+shadow_enabled = false
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 9.6, 0.015, -1.1)
+
+[node name="cam_hall_mid" type="Camera3D" parent="接口"]
+transform = Transform3D(-1, 0, -0, 0, 0.998895, 0.0470068, 0, 0.0470068, -0.998895, 9.6, 1.465, -4.55)
+environment = SubResource("env")
+fov = 64.7
+near = 0.03
+
+[node name="cam_hall_north" type="Camera3D" parent="接口"]
+transform = Transform3D(1, 0, -0, -0, 0.999612, 0.0278702, 0, -0.0278702, 0.999612, 9.6, 1.465, -0.62)
+environment = SubResource("env")
+fov = 64.7
+near = 0.03
+
+[node name="cam_stair" type="Camera3D" parent="接口"]
+transform = Transform3D(0.993409, 0.0141251, 0.11375, 0, 0.992378, -0.12323, -0.114624, 0.122417, 0.985837, 9.45, 1.465, -5.3)
+environment = SubResource("env")
+fov = 68.0
+near = 0.03
+
+[node name="cam_landing_darkroom" type="Camera3D" parent="接口"]
+transform = Transform3D(0.0418481, 0.0365605, -0.998455, -0, 0.99933, 0.0365926, 0.999124, -0.00153133, 0.0418201, 9.35, 5.115, -6.2)
+environment = SubResource("env")
+fov = 58.7
+near = 0.03
+
+[node name="chr_康斯坦斯·塔尔博特" type="Node3D" parent="接口"]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 10.3, 0.015, -1.9)

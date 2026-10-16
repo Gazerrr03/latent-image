@@ -276,7 +276,7 @@ class Wall:
 def wall_finish(Mu, Ml, w, z0, z1, holes, dado):
     """饰面：按洞口与墙裙线切成格子，跳过洞口格；墙裙线以下用 Ml，以上用 Mu。holes=[(u0,u1,z0,z1)]。"""
     us = sorted({w.u0, w.u1} | {h[0] for h in holes if w.u0 < h[0] < w.u1} | {h[1] for h in holes if w.u0 < h[1] < w.u1})
-    zs = sorted({z0, z1, dado} | {h[2] for h in holes if z0 < h[2] < z1} | {h[3] for h in holes if z0 < h[3] < z1})
+    zs = sorted({z0, z1} | ({dado} if z0 < dado < z1 else set()) | {h[2] for h in holes if z0 < h[2] < z1} | {h[3] for h in holes if z0 < h[3] < z1})
     for i in range(len(us) - 1):
         for j in range(len(zs) - 1):
             uc, zc = (us[i] + us[i + 1]) / 2, (zs[j] + zs[j + 1]) / 2
@@ -478,3 +478,172 @@ def strip_manor(obname, box):
     x0, x1, y0, y1, z0, z1 = box
     dead = [f for f in bm.faces if x0 < f.calc_center_median().x < x1 and y0 < f.calc_center_median().y < y1 and z0 < f.calc_center_median().z < z1]
     bmesh.ops.delete(bm, geom=dead, context='FACES'); bm.to_mesh(ob.data); bm.free(); return len(dead)
+
+# ───────── 任意直角多边形房间：饰面、线脚一次做完（门厅、走廊、餐厅……10-16 起） ─────────
+def _left(a, b):
+    d = (b[0] - a[0], b[1] - a[1]); L = math.hypot(*d); return (-d[1] / L, d[0] / L)
+
+def poly_walls(poly, O=0.012):
+    """poly：墙内表面围成的直角多边形（逆时针；可以有共线的点，用来把一面墙分段）。
+    返回 (ipoly, walls)：ipoly 是向里收 O 的饰面轮廓（线脚沿它走），walls[i] 是第 i 条边的 Wall。"""
+    n = len(poly); ip = []
+    for i in range(n):
+        na, nb = _left(poly[i - 1], poly[i]), _left(poly[i], poly[(i + 1) % n])
+        if abs(na[0] - nb[0]) < 1e-9 and abs(na[1] - nb[1]) < 1e-9: off = na
+        else: off = (na[0] + nb[0], na[1] + nb[1])
+        ip.append((poly[i][0] + O * off[0], poly[i][1] + O * off[1]))
+    walls = []
+    for i in range(n):
+        a, b = poly[i], poly[(i + 1) % n]; ia, ib = ip[i], ip[(i + 1) % n]
+        if abs(a[1] - b[1]) < 1e-9:
+            side = 'S' if b[0] > a[0] else 'N'; walls.append(Wall(side, a[1], min(ia[0], ib[0]), max(ia[0], ib[0]), O))
+        else:
+            side = 'E' if b[1] > a[1] else 'W'; walls.append(Wall(side, a[0], min(ia[1], ib[1]), max(ia[1], ib[1]), O))
+    return ip, walls
+
+def edge_gaps(ip, i, u0, u1):
+    """把第 i 条边上的 u 范围换成 runs() 用的（段号, 起点距, 终点距）。"""
+    a, b = ip[i], ip[(i + 1) % len(ip)]
+    k = 0 if abs(a[1] - b[1]) < 1e-9 else 1
+    if b[k] >= a[k]: return (i, u0 - a[k], u1 - a[k])
+    return (i, a[k] - u1, a[k] - u0)
+
+def finish_room(P, poly, holes, z0, z1, dado_z, O=0.012, skirt_z=None, cornice=True, bare=(), no_dado=(), no_skirt=(), wall_key='wallf', dado_key='dadof',
+                trim_key='trim', door_ext=0.075, extra_gaps=None, skip=(), no_cornice=(), dado_by_edge=None):
+    """饰面 + 踢脚 + 墙裙压条 + 天花线脚。holes={边号: [(u0, u1, zb, zt, 'door'|'window'|'open'|'fire')]}。
+    bare：只做上部灰泥、不做墙裙的边（例如楼梯井上方的墙）；no_dado / no_skirt：这些边整段不做压条 / 踢脚。返回 (ipoly, walls)。"""
+    ip, walls = poly_walls(poly, O)
+    for i, w in enumerate(walls):
+        hs = [h[:4] for h in holes.get(i, [])]
+        if i in skip: continue
+        if i in bare: wall_finish(P.flat(wall_key), P.flat(wall_key), w, z0, z1, hs, z0 - 1.0)
+        else: wall_finish(P.flat(wall_key), P.flat(dado_key), w, z0, z1, hs, (dado_by_edge or {}).get(i, dado_z))
+    sk_g, da_g = list(extra_gaps or []), list(extra_gaps or [])
+    for i in range(len(walls)):
+        L = (Vector(ip[(i + 1) % len(ip)]) - Vector(ip[i])).length
+        if i in bare or i in no_skirt or i in skip: sk_g.append((i, -0.001, L + 0.001))
+        if i in bare or i in no_dado or i in skip: da_g.append((i, -0.001, L + 0.001))
+        for h in holes.get(i, []):
+            kind = h[4] if len(h) > 4 else 'door'
+            if kind in ('door', 'open', 'fire'):
+                e = door_ext if kind == 'door' else 0.0
+                sk_g.append(edge_gaps(ip, i, h[0] - e, h[1] + e))
+                if kind == 'fire' or h[2] < dado_z: da_g.append(edge_gaps(ip, i, h[0] - e, h[1] + e))
+            elif kind == 'window' and h[2] < dado_z + 0.06: da_g.append(edge_gaps(ip, i, h[0] - 0.07, h[1] + 0.07))
+    sz = z0 + 0.015 - 0.005 if skirt_z is None else skirt_z
+    moulding(P[trim_key], ip, _merge_gaps(sk_g), sz, SKIRT)
+    moulding(P[trim_key], ip, _merge_gaps(da_g), dado_z, DADO)
+    if cornice:
+        L_ = lambda i: (Vector(ip[(i + 1) % len(ip)]) - Vector(ip[i])).length
+        moulding(P['wall'], ip, [(i, -0.001, L_(i) + 0.001) for i in no_cornice], z1 - 0.007, CORNICE)   # 线脚顶面低于天花 1 mm
+    return ip, walls
+
+def _merge_gaps(g):
+    out = []
+    for i, a, b in sorted(g):
+        if out and out[-1][0] == i and a <= out[-1][2] + 1e-6: out[-1] = (i, out[-1][1], max(out[-1][2], b))
+        else: out.append((i, a, b))
+    return out
+
+def floor_poly(M, poly, z, O=0.012, holes_xy=()):
+    """地板完成面：直角多边形（饰面轮廓内）切成矩形格子铺满，跳过 holes_xy=[(x0,x1,y0,y1)]（楼梯井）。"""
+    ip, _ = poly_walls(poly, O)
+    xs = sorted({round(p[0], 6) for p in ip} | {round(h[k], 6) for h in holes_xy for k in (0, 1)})
+    ys = sorted({round(p[1], 6) for p in ip} | {round(h[k], 6) for h in holes_xy for k in (2, 3)})
+    def inside(x, y):
+        c = False; n = len(ip)
+        for i in range(n):
+            (x1, y1), (x2, y2) = ip[i], ip[(i + 1) % n]
+            if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1): c = not c
+        return c
+    for i in range(len(xs) - 1):
+        for j in range(len(ys) - 1):
+            cx, cy = (xs[i] + xs[i + 1]) / 2, (ys[j] + ys[j + 1]) / 2
+            if not inside(cx, cy) or any(h[0] < cx < h[1] and h[2] < cy < h[3] for h in holes_xy): continue
+            M.face([M.V((xs[i], ys[j], z)), M.V((xs[i + 1], ys[j], z)), M.V((xs[i + 1], ys[j + 1], z)), M.V((xs[i], ys[j + 1], z))])
+
+PANEL = [(-0.004, -0.002), (0.014, -0.002), (0.004, 0.011), (-0.004, 0.011)]
+def dado_panels(M, w, u0, u1, zb, zt, width=0.62, gap=0.09, skip=()):
+    """墙裙上的凸起面板线（门厅、餐厅）：在 u0—u1 之间等分成若干块，每块一圈小线脚；skip=[(u0,u1)] 处不放（门、家具背后无所谓）。"""
+    L = u1 - u0
+    if L < 0.3: return
+    n = max(1, round(L / (width + gap))); pw = (L - gap * (n + 1)) / n
+    for k in range(n):
+        a = u0 + gap + k * (pw + gap); b = a + pw
+        if any(s0 < (a + b) / 2 < s1 for s0, s1 in skip): continue
+        pts = [w.P(a, zb, w.off), w.P(b, zb, w.off), w.P(b, zt, w.off), w.P(a, zt, w.off)]
+        c = w.P((a + b) / 2, (zb + zt) / 2, w.off)
+        M.sweep(pts, PANEL, w.n, away=c, closed=True)
+
+def window_dress(P, w, u0, u1, z0, z1, rng_, O=0.012, curtains=True, full=None, rod_ext=0.36, frame=True):
+    ra, rb = rod_ext if isinstance(rod_ext, tuple) else (rod_ext, rod_ext)
+    if not frame: return _curtains(P, w, u0, u1, z0, z1, rng_, O, full, ra, rb)
+    """窗：窗台板、窗洞内侧贴面、窗套、窗帘杆与两幅打褶的提花窗帘（客房那一套，16 起公用）。
+    z0、z1：窗洞下沿与上沿；full：给地面标高时窗帘落地，否则垂到窗台下 17 cm。"""
+    a, b = w.P(u0 + 0.001, z0 + 0.001, -0.095), w.P(u1 - 0.001, z0 + 0.03, O + 0.035)          # 窗台板：洞口里那段，搁在石窗台上（不压进 manor 的窗框与墙）
+    P['trim'].cbox(a.x, b.x, a.y, b.y, a.z, b.z, 0.006)
+    for ua, ub in ((u0 - 0.06, u0 + 0.004), (u1 - 0.004, u1 + 0.06)):                           # 两端搭在墙面饰面外的“耳朵”
+        a, b = w.P(ua, z0 - 0.02, O + 0.002), w.P(ub, z0 + 0.03, O + 0.035)
+        P['trim'].cbox(a.x, b.x, a.y, b.y, a.z, b.z, 0.004)
+    a, b = w.P(u0 - 0.03, z0 - 0.12, O + 0.001), w.P(u1 + 0.03, z0 - 0.02, O + 0.016)
+    P['trim'].box(a.x, b.x, a.y, b.y, a.z, b.z)
+    for uu0, uu1, zz0, zz1 in [(u0 + 0.001, u0 + 0.011, z0 + 0.031, z1 - 0.015), (u1 - 0.011, u1 - 0.001, z0 + 0.031, z1 - 0.015), (u0 + 0.001, u1 - 0.001, z1 - 0.014, z1 - 0.001)]:   # 贴面立在窗台板上、不与板端共面
+        a, b = w.P(uu0, zz0, -0.1), w.P(uu1, zz1, O + 0.001)
+        P['wall'].box(a.x, b.x, a.y, b.y, a.z, b.z)
+    architrave(P['trim'], w, u0, u1, z0 + 0.015, z1)
+    if not curtains: return
+    _curtains(P, w, u0, u1, z0, z1, rng_, O, full, ra, rb)
+
+def _curtains(P, w, u0, u1, z0, z1, rng_, O, full, ra, rb):
+    zp, dp = z1 + 0.16, 0.11
+    P['brass'].tube([w.P(u0 - ra, zp, dp), w.P(u1 + rb, zp, dp)], 0.013, seg=12)
+    for uu in (u0 - ra, u1 + rb):
+        place(P['brass'], lambda M: M.lathe([(0.0, 0.0), (0.02, 0.0), (0.03, 0.02), (0.022, 0.045), (0.0, 0.05)], 0, 0, 0, seg=10),
+              lambda v, uu=uu: w.P(uu + (v.z if uu > u1 else -v.z), zp + v.y, dp + v.x))
+        a, b = w.P(uu - 0.012, zp - 0.011, O + 0.001), w.P(uu + 0.012, zp + 0.011, dp)       # 托架贴着墙面饰面
+        P['brass'].box(a.x, b.x, a.y, b.y, a.z, b.z)
+    zb = (full + 0.02) if full is not None else (z0 - 0.17)
+    for side in (0, 1):
+        ua, ub = (u0 - ra + 0.03, u0 + 0.10) if side == 0 else (u1 - 0.10, u1 + rb - 0.03)
+        ph = rng_.uniform(0, 6.28)
+        def fn(s, t, ua=ua, ub=ub, ph=ph):
+            uu = ua + (ub - ua) * s
+            d = dp + 0.035 * math.sin(2 * math.pi * s * 5 + ph) * (0.75 + 0.25 * t) - 0.01
+            zz = zb + (zp - 0.03 - zb) * t
+            return w.P(uu, zz, d)
+        grid_surface(P.flat('damask'), fn, 40, 8)
+        for k in range(6):
+            uu = ua + (ub - ua) * (k + 0.5) / 6
+            P['brass'].tube([w.P(uu, zp + 0.022 * math.cos(a_ * math.pi / 6), dp + 0.022 * math.sin(a_ * math.pi / 6)) for a_ in range(13)], 0.003, seg=4, cap=False)
+
+def chimney_breast(name, col, x0, x1, y0, y1, z0, z1, fire, side):
+    """实心烟囱墙（离 manor 墙 2 mm，不穿墙）：fire=(u0, u1, zt) 是炉膛开口（沿墙方向、顶标高）；side：开口朝向 'E'/'W'/'N'/'S'。"""
+    B = Prop(); Bw = B['wall']
+    u0, u1, zt = fire
+    if side in ('E', 'W'):
+        fx0, fx1 = (x0, x0 + 0.24) if side == 'W' else (x1 - 0.24, x1)       # side：炉膛开在哪一面（W：朝西开 = 开口在 x0 那面）
+        Bw.box(x0, x1, y0, u0, z0, z1); Bw.box(x0, x1, u1, y1, z0, z1); Bw.box(x0, x1, u0, u1, zt, z1)
+        bx0, bx1 = (fx1, x1) if side == 'W' else (x0, fx0)
+        Bw.box(bx0, bx1, u0, u1, z0, zt)
+    else:
+        fy0, fy1 = (y0, y0 + 0.24) if side == 'S' else (y1 - 0.24, y1)
+        Bw.box(x0, u0, y0, y1, z0, z1); Bw.box(u1, x1, y0, y1, z0, z1); Bw.box(u0, u1, y0, y1, zt, z1)
+        by0, by1 = (fy1, y1) if side == 'S' else (y0, fy0)
+        Bw.box(u0, u1, by0, by1, z0, zt)
+    ob = make(Bw, name, col, union=True, keys=['wall'])
+    ob.data.materials.append(MATS['soot'])
+    for p in ob.data.polygons:
+        c = p.center
+        inside = (u0 + 0.001 < (c.y if side in ('E', 'W') else c.x) < u1 - 0.001) and c.z < zt - 0.001
+        if inside: p.material_index = 1
+    planar_uv(ob.data, ['wall', 'soot'])
+    return ob
+
+def clamp_cards(Cd, box, m=0.035, O=0.012):
+    """植物卡片四角不出墙：box=(x0, x1, y0, y1) 是墙内表面围成的范围；越界的整张卡片平移回来。"""
+    x0, x1, y0, y1 = box
+    for k in range(0, len(Cd.v), 4):
+        q = Cd.v[k:k + 4]
+        dx = max(0, x0 + O + m - min(p[0] for p in q)) - max(0, max(p[0] for p in q) - (x1 - O - m))
+        dy = max(0, y0 + O + m - min(p[1] for p in q)) - max(0, max(p[1] for p in q) - (y1 - O - m))
+        Cd.v[k:k + 4] = [(p[0] + dx, p[1] + dy, p[2]) for p in q]

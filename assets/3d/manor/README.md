@@ -100,11 +100,12 @@
 | 文件 | 位置 | 进 git | 用途 |
 | --- | --- | --- | --- |
 | 工作文件 | `assets/3d/manor/manor.blend` | 否 | 日常在 Blender 里打开、修改的就是它；贴图引用 `godot/art/levels/manor/textures/`，与游戏共用一套 |
-| 留档快照 | `assets/3d/manor/archive/manor-<日期时间>.blend` | 否 | 每次重要修改后用 14 存一份，贴图已打包，单独拷走也能打开 |
-| 版本记录 | `assets/3d/manor/archive/版本记录.md` | 是 | 每个快照一行：时间、物体数、三角面、几何体检、说明 |
-| 会话备份 | `assets/3d/manor/backups/pre-manor-session-*.blend` | 否 | 11 执行前自动另存的上一个未保存会话 |
+| 版本记录 | `assets/3d/manor/archive/版本记录.md` | 是 | 每次用 14 保存追加一行：时间、物体数、三角面、几何体检、说明 |
+| 重建前备份 | `assets/3d/manor/backups/重建前.blend` | 否 | 只在整体重跑 11 之前自动另存，每次覆盖，只有一份 |
 
-**手工修改之后怎么维护**：在 Blender 里改完 → Python 控制台执行 `NOTE = '改了什么'`、再执行 `exec(open('/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/manor/scripts/14_save_archive.py').read())`（保存工作文件 + 快照 + 记录）→ 后台跑 09 体检与 03 导出。**手工改过之后不要再跑 11、12**：它们会从图纸重新生成、覆盖手工修改（11 会新建 manor.blend，12 会重建“植物”集合）。要改生成规则（尺寸、构件、植物分布），改 11 / 12 脚本再整体重跑，然后用 14 留档。
+**版本只有 `manor.blend` 一份**（10-16 用户要求）：不再另存带日期的快照，之前的快照已移到废纸篓。要回到旧状态靠脚本重跑（11—22 都可重复执行）。
+
+**手工修改之后怎么维护**：在 Blender 里改完 → Python 控制台执行 `NOTE = '改了什么'`、再执行 `exec(open('/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/manor/scripts/14_save_archive.py').read())`（保存 manor.blend + 追加一行版本记录）→ 后台跑 09 体检与 03 导出。**手工改过之后不要再跑 11、12**：它们会从图纸重新生成、覆盖手工修改（11 会新建 manor.blend，12 会重建“植物”集合）。要改生成规则（尺寸、构件、植物分布），改 11 / 12 脚本再整体重跑，然后用 14 留档。
 
 ### 阶段 3 的流水线（取代 01、04、05）
 
@@ -137,18 +138,28 @@ godot --path godot --resolution 1600x900 --script res://tools/capture_level.gd -
 
 | 脚本 | 作用 |
 | --- | --- |
-| `room_lib.py` | 公用：材质（`室内_` 开头的每次重建）、多材质家具物体、墙面饰面留洞口、沿轮廓扫掠线脚、门窗套、贴脸板、四块面板门扇（原点在合页轴）、陈列区、审查相机 |
-| `room_props.py` | 公用的家具与小物件：抽屉拉手、书、挂钟、油画、吊灯、篮子、地毯 |
+| `room_lib.py` | 公用：材质（`室内_` 开头的每次重建）、多材质家具物体、墙面饰面留洞口、沿轮廓扫掠线脚、门窗套、贴脸板、四块面板门扇（原点在合页轴）、陈列区、审查相机；10-16 起：直角多边形房间一次做完饰面与线脚（`finish_room`、`floor_poly`）、墙裙面板（`dado_panels`）、窗台与窗帘（`window_dress`）、烟囱墙（`chimney_breast`）、卡片不出墙（`clamp_cards`） |
+| `room_props.py` | 公用的家具与小物件：抽屉拉手、书、挂钟、油画、吊灯、篮子、地毯；10-16 起：五斗柜、条案、瓷瓶与花束、落地钟、窄镜、灯笼、壁灯、台灯、衣帽架、伞桶、栏杆望柱扶手、石 / 铸铁壁炉、餐椅、长桌、餐边柜、烛台、枝形吊灯、餐具、瓷器柜、圆桌、沙发、扶手椅、立式钢琴、书柜、棕榈、写字台、三脚架相机 |
 | `16_room_guest.py` | 客房 + 前室（状态：夹层未发现 / 夹层已打开） |
 | `17_room_darkroom.py` | 暗房（状态：门完好 / 门撞坏 / 冲洗布置；开关：暗房·红灯、暗房·白灯） |
 | `21_room_greenhouse.py` | 温室（无状态；植物卡片：蕨叶、阔叶、白花、粉花、常春藤） |
 | `22_garden_vent.py` | 花园百叶外侧的室外状态补丁（状态：遮光布 / 泥地鞋印） |
+| `24_room_hall.py` | 门厅 + 主楼梯（重建，接管 manor 旧楼梯）+ 一二楼走廊 + 后门过道 + 锁着的门；储物间门框上的身高刻痕（无状态） |
+| `25_room_dining.py` | 餐厅 + 餐叙区（状态：晚饭未收 / 多一副餐具） |
+| `26_room_seance.py` | 客厅·降灵会（状态：降灵会布置 / 窗帘拉上） |
+| `27_room_archive.py` | 照片档案室（无状态；凸窗窗座、合影墙） |
+| `28_room_child.py` | 艾瑞斯的房间（状态：画·黑布 / 画·红光睡着 / 画·全家福 / 画·戴帽子的人，可叠加） |
+| `29_rooms_group_a.py` | 依次执行 24—28 |
+| `gh_closure.py`、`30_patch_greenhouse_closure.py` | 温室与主楼交接处的补框、补玻璃、补墙（11 重建时生成；30 给已保存的文件打补丁） |
+| `23_layout_audit.py` | 排布体检：穿插、穿墙穿玻璃、悬空、超出范围 + 平涂俯视图（`review/rooms/<名>/`） |
 | `09b_overlap_detail.py` | 体检的补充：逐对打印某个物体里重叠的三角形 |
 | `18_room_review.py` | 房间审查渲染：白天（西南阳光 + 窗口天光）与夜晚（台灯、吊灯、炉火），输出 `review/rooms/<房间>/` |
 | `19_room_compare.py` | 系统 Python：拼“参考 | 白天 | 夜晚”对照图 |
 | `20_room_export.py` | 导出房间到 Godot（空间 + 各状态） |
 
 流程：后台迭代 `Blender -b manor.blend --python scripts/16_room_guest.py -- /tmp/room_guest.blend` → `18` 渲染 → `19` 对照 → `09` 体检（房间单面件不查缺面；同一房间不同状态之间的重叠不算）→ 在用户 Blender 的 Python 控制台执行 16 → `14_save_archive.py` 留档 → 后台 `03`、`20` 导出 → Godot `capture_level.gd --only=客房`。
+
+**A 组五个房间（10-16，#15 #19—#22）**：门厅组 65 个物体约 3.2 万面、餐厅 55 / 3.6 万、客厅 40 / 3.1 万、照片档案室 33 / 2.0 万、艾瑞斯的房间 29 / 1.2 万。新贴图由 `tools/art/make_room_textures.py` 生成：合影 `photo_1919—1925`（片头家庭电影的立面层 + 人物剪纸，旧照片褐色调）、墙纸 `wallpaper_floral`、艾瑞斯的画 `iris_*`（四张取自 v3 生成图，三张程序画的背景乱线画）。体检：排布五项全部为 0；共面重叠五个房间合计 0.006 m²、与庄园之间 0、缺面 0（庄园其余部分 0.010 m²）。批量重建：`29_rooms_group_a.py`（依次 exec 24—28；后台 `Blender -b manor.blend --python scripts/29_rooms_group_a.py -- /tmp/x.blend` 另存）后逐个跑 `23_layout_audit.py -- <名>` 与 `09`。
 
 **暗房与温室（10-15）**：暗房 24 个物体约 1.0 万面，温室 15 个物体约 1.6 万面；manor 里归它们的东西（温室侧门外门扇、百叶背板、温室简化台架 / 手压泵 / 盆栽）由脚本删除，`11` 的 `ROOM_OWNED` / `GH_BY_ROOM` 保证重建时也不生成。新贴图：蕨叶、阔叶、白花图集。留档 `archive/manor-2026-10-15_0603.blend`。
 
