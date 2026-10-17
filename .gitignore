@@ -25,3 +25,7 @@ godot/content/flow/.obsidian/
 
 # 配乐：无损试听只留在本机，入库的是 .ogg 与 MIDI（10-17）
 assets/audio/**/preview/*.wav
+
+# Python
+__pycache__/
+*.pyc
