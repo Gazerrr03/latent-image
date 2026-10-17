@@ -194,6 +194,8 @@ func _do(name: String, args: Array, mode: String) -> void:
 			await ui.footage.play_clip(args[0])
 		"recap":
 			await _recap(args[0] if args.size() > 0 else "")
+		"diary":
+			await _diary(args[0] if args.size() > 0 else "")
 		"osd":
 			# osd(样式,文件名,编号,时间)；osd() 关闭
 			ui.footage.set_live(args[0] if args.size() > 0 else "", args[1] if args.size() > 1 else "", args[2] if args.size() > 2 else "", args[3] if args.size() > 3 else "")
@@ -275,7 +277,8 @@ func fill(text: String) -> String:
 	return text.replace("{容器号}", GameState.container).replace("{本轮陈述}", said)
 
 
-## 一章结束：黑场，字幕逐行打出当天的复盘（台词表的一组；说话人写“标题”的一行是黑场顶上的日期）。
+## 一章结束、睡下以后的梦：上一章的复盘（台词表的一组，逐行浮现）。
+## 影像片段表里有“梦_<组名>”这个片段时（如 梦_r1），先播放它，作为这一章独立的梦境动画。
 ## 可用占位符：{今日线索}（这一章收进证据板的线索）、{今日推论}（这一章得出的推论）、{今日记录}（这一章打字机上写下的那句）。
 ## 占位符这一章没有内容时，整行不出现。
 func _recap(set_id: String) -> void:
@@ -307,11 +310,36 @@ func _recap(set_id: String) -> void:
 				empty = empty or fills[k] == ""
 				t = t.replace(k, fills[k])
 		if not empty:
-			out.append({"text": t, "title": r.get("speaker", "") == "标题"})
-	if out.is_empty():
+			out.append({"text": t})
+	var clip := "梦_" + set_id
+	if ui.footage.clips.is_empty():
+		ui.footage.reload()
+	if not ui.footage.clips.has(clip):
+		clip = ""
+	if out.is_empty() and clip == "":
 		push_warning("复盘组为空：" + set_id)
 		return
-	await ui.interlude(out)
+	await ui.dream(out, clip)
+
+
+## 新一章开头：日记本上的一页（台词表的一组）。说话人写“日期”“天气”“标题”的行填进对应位置，
+## 说话人空着的行是标题下面的小字（如“离开庭还有六天”）。
+func _diary(set_id: String) -> void:
+	var page := {"date": "", "weather": "", "title": "", "notes": []}
+	var v := GameState.vars()
+	for r in ContentDB.lines.get(set_id, []):
+		if not ContentDB.condition_matches(r.get("condition", ""), v):
+			continue
+		var t: String = fill(r["text"])
+		match r.get("speaker", ""):
+			"日期": page["date"] = t
+			"天气": page["weather"] = t
+			"标题": page["title"] = t
+			_: page["notes"].append(t)
+	if page["date"] == "" and page["title"] == "":
+		push_warning("日记组为空：" + set_id)
+		return
+	await ui.diary(page)
 
 
 ## 弹出一组预设（annotations.csv），记录选择与人格属性，显示回应；返回所选文本

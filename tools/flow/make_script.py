@@ -196,8 +196,11 @@ def render_shot(r, room, stats):
                 tag = f"〔{a['tendency']}〕" if a["tendency"] else "〔中性〕"
                 body.append(f"- {tag} {nl(a['text'])}")
         elif name == "recap":
-            body.append("**睡前复盘**（黑场字幕）")
-            body += ["> " + x.replace("**标题**：", "") for x in quote_lines(args[0])]
+            body.append("**梦**（章间黑场前半：睡前复盘）")
+            body += ["> " + x for x in quote_lines(args[0])]
+        elif name == "diary":
+            body.append("**日记**（章间黑场后半：新一章的日记页）")
+            body += ["> " + x for x in quote_lines(args[0])]
         elif name == "develop":
             body.append("**【亲手冲洗底片】** 显影 → 定影（玩家操作）")
         elif name == "reveal":

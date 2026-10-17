@@ -39,6 +39,12 @@ var footage: CanvasLayer
 var interlude_layer: ColorRect
 var interlude_box: VBoxContainer
 var interlude_more: Label
+var _lift: Tween
+var diary_page: PanelContainer
+var diary_date: Label
+var diary_weather: Label
+var diary_title: Label
+var diary_notes: VBoxContainer
 
 
 func _ready() -> void:
@@ -200,7 +206,10 @@ func _build_develop(root: Control) -> void:
 	develop_layer.hide()
 
 
-## 章末黑场：盖在所有界面之上，中间一列字幕
+## 章节之间的黑场：盖在所有界面之上。前半段是梦（上一章的复盘），后半段是日记本的一页（新一章的开头）
+const DREAM_BG := Color("#05060a")
+const DREAM_INK := Color("#b9bccb")
+
 func _build_interlude(root: Control) -> void:
 	interlude_layer = ColorRect.new()
 	interlude_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -213,8 +222,46 @@ func _build_interlude(root: Control) -> void:
 	interlude_layer.add_child(center)
 	interlude_box = VBoxContainer.new()
 	interlude_box.custom_minimum_size.x = 760
-	interlude_box.add_theme_constant_override("separation", 18)
+	interlude_box.add_theme_constant_override("separation", 20)
 	center.add_child(interlude_box)
+
+	# 日记本的一页：左上日期，右上天气，中间标题，下面一两行小字
+	var dc := CenterContainer.new()
+	dc.set_anchors_preset(Control.PRESET_FULL_RECT)
+	dc.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	interlude_layer.add_child(dc)
+	diary_page = _paper_panel()
+	diary_page.custom_minimum_size = Vector2(640, 400)
+	(diary_page.get_theme_stylebox("panel") as StyleBoxFlat).set_content_margin_all(44)
+	dc.add_child(diary_page)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 0)
+	diary_page.add_child(v)
+	var head := HBoxContainer.new()
+	v.add_child(head)
+	diary_date = _diary_label(20, HORIZONTAL_ALIGNMENT_LEFT)
+	diary_date.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	head.add_child(diary_date)
+	diary_weather = _diary_label(20, HORIZONTAL_ALIGNMENT_RIGHT)
+	head.add_child(diary_weather)
+	var rule := ColorRect.new()
+	rule.color = Color(INK, 0.35)
+	rule.custom_minimum_size.y = 1
+	v.add_child(rule)
+	var gap := Control.new()
+	gap.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(gap)
+	diary_title = _diary_label(36, HORIZONTAL_ALIGNMENT_CENTER)
+	diary_title.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	v.add_child(diary_title)
+	var gap2 := Control.new()
+	gap2.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	v.add_child(gap2)
+	diary_notes = VBoxContainer.new()
+	diary_notes.add_theme_constant_override("separation", 8)
+	v.add_child(diary_notes)
+	diary_page.hide()
+
 	interlude_more = Label.new()
 	interlude_more.text = "▸"
 	interlude_more.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
@@ -222,6 +269,14 @@ func _build_interlude(root: Control) -> void:
 	interlude_more.add_theme_color_override("font_color", Color("#8a8070"))
 	interlude_layer.add_child(interlude_more)
 	interlude_layer.hide()
+
+
+func _diary_label(size: int, align: int) -> Label:
+	var l := Label.new()
+	l.horizontal_alignment = align
+	l.add_theme_font_size_override("font_size", size)
+	l.add_theme_color_override("font_color", INK)
+	return l
 
 
 # ───────────── Director 调用的接口 ─────────────
@@ -283,7 +338,9 @@ func cancel() -> void:
 	board.cancel()
 	develop_layer.hide()
 	interlude_layer.hide()
+	interlude_layer.color = Color.BLACK
 	interlude_box.modulate.a = 1.0
+	diary_page.hide()
 	if footage:
 		footage.cancel()
 
@@ -345,63 +402,154 @@ func develop(image: String) -> void:
 	set_hud(true)
 
 
-## 一章结束：画面暗下去，字幕一行一行浮出来（当天的复盘），点击后黑场慢慢退去，进入下一镜。
-## lines：[{text, title}]，title = true 的一行是顶上的日期
-func interlude(lines: Array) -> void:
-	if Director.autoplay:
-		for l in lines:
-			print("  ▬ ", String(l["text"]).replace("\n", "\n  ▬ "))
-		return
+## 进入黑场：已经是黑的（梦接着日记）就停下正在退去的黑场，不再重新变暗
+func _interlude_enter() -> void:
 	_release_mouse()
 	set_hud(false)
-	for c in interlude_box.get_children():
-		c.queue_free()
+	if _lift and _lift.is_valid():
+		_lift.kill()
 	interlude_more.modulate.a = 0.0
+	if interlude_layer.visible and interlude_layer.modulate.a > 0.5:
+		interlude_layer.modulate.a = 1.0
+		return
 	interlude_layer.modulate.a = 0.0
 	interlude_layer.show()
 	var t := create_tween()
 	t.tween_property(interlude_layer, "modulate:a", 1.0, 1.4)
 	await t.finished
 	await wait_seconds(0.5)
-	for l in lines:
-		var lb := Label.new()
-		lb.text = l["text"]
-		lb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		lb.custom_minimum_size.x = 760
-		if l.get("title", false):
-			# 标题是本章的诗句（docs/02 第 9.1 节），比正文大，下面空出一段
-			lb.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-			lb.add_theme_font_size_override("font_size", 34)
-			lb.add_theme_color_override("font_color", Color("#e8dcc0"))
-			lb.custom_minimum_size.y = 72
-		else:
-			lb.add_theme_font_size_override("font_size", 23)
-			lb.add_theme_color_override("font_color", Color("#e8dcc0"))
-		lb.modulate.a = 0.0
-		interlude_box.add_child(lb)
-		var f := create_tween()
-		f.tween_property(lb, "modulate:a", 1.0, 1.0)
-		await f.finished
-		if not interlude_layer.visible:
-			return
-		await wait_seconds(1.4 if l.get("title", false) else 0.9)
+
+
+## 等玩家点击，再让当前这一段淡去
+func _interlude_hold(part: CanvasItem) -> void:
 	create_tween().tween_property(interlude_more, "modulate:a", 1.0, 0.4)
 	_typing = null
 	_waiting = true
 	await _resolved
 	_waiting = false
+	interlude_more.modulate.a = 0.0
 	var out := create_tween()
-	out.tween_property(interlude_box, "modulate:a", 0.0, 0.8)
+	out.tween_property(part, "modulate:a", 0.0, 0.8)
 	await out.finished
+
+
+## 离开黑场：黑场在下一镜开始以后才退去，画面从黑里慢慢亮起来。
+## 紧接着还有下一段（梦之后的日记）时，_interlude_enter 会停下这次退去。
+func _interlude_exit() -> void:
 	set_hud(true)
 	_restore_mouse()
-	# 黑场在下一镜开始以后才退去：早晨的画面从黑里慢慢亮起来
-	var lift := create_tween()
-	lift.tween_interval(0.4)
-	lift.tween_property(interlude_layer, "modulate:a", 0.0, 2.0)
-	lift.tween_callback(func():
+	_lift = create_tween()
+	_lift.tween_interval(0.4)
+	_lift.tween_property(interlude_layer, "modulate:a", 0.0, 2.0)
+	_lift.tween_callback(func():
 		interlude_layer.hide()
-		interlude_box.modulate.a = 1.0)
+		interlude_layer.color = Color.BLACK
+		interlude_box.modulate.a = 1.0
+		diary_page.hide())
+
+
+## 梦：一章结束、睡下以后，上一章的事在梦里过一遍（复盘）。
+## clip 不为空时先放这段影像片段（独立的梦境动画），再浮出字幕；lines：[{text}]
+## 字幕一行一行从下面浮上来，新的一行出现时，前面的几行慢慢暗下去，像梦里记不住的东西。
+func dream(lines: Array, clip := "") -> void:
+	if Director.autoplay:
+		if clip != "":
+			print("  ☾ （梦境片段：%s）" % clip)
+		for l in lines:
+			print("  ☾ ", String(l["text"]).replace("\n", "\n  ☾ "))
+		return
+	await _interlude_enter()
+	if clip != "":
+		# 影像片段画在黑场下面一层，放的时候把黑场让开
+		interlude_layer.hide()
+		await footage.play_clip(clip)
+		interlude_layer.show()
+		interlude_layer.modulate.a = 1.0
+	if lines.is_empty():
+		_interlude_exit()
+		return
+	interlude_layer.color = DREAM_BG
+	diary_page.hide()
+	for c in interlude_box.get_children():
+		c.queue_free()
+	interlude_box.modulate.a = 1.0
+	interlude_box.show()
+	var shown: Array = []
+	for l in lines:
+		var lb := Label.new()
+		lb.text = l["text"]
+		lb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lb.custom_minimum_size.x = 760
+		lb.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lb.add_theme_font_size_override("font_size", 23)
+		lb.add_theme_color_override("font_color", DREAM_INK)
+		lb.modulate.a = 0.0
+		interlude_box.add_child(lb)
+		await get_tree().process_frame
+		var y := lb.position.y
+		lb.position.y = y + 14
+		var f := create_tween().set_parallel()
+		f.tween_property(lb, "modulate:a", 1.0, 1.6).set_trans(Tween.TRANS_SINE)
+		f.tween_property(lb, "position:y", y, 2.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		for i in shown.size():
+			var dim := maxf(0.22, 0.75 - 0.18 * (shown.size() - 1 - i))
+			f.tween_property(shown[i], "modulate:a", dim, 1.6)
+		shown.append(lb)
+		await f.finished
+		if not interlude_layer.visible:
+			return
+		await wait_seconds(0.9)
+	# 最后一行（睡前相信的那件事）停住；前面的都暗下去
+	await _interlude_hold(interlude_box)
+	interlude_layer.color = Color.BLACK
+	_interlude_exit()
+
+
+## 日记：新一章开头，在日记本上写下这一天：日期、天气、标题，下面一两行小字。
+## page：{date, weather, title, notes:[文字]}；字一笔一笔写出来（按字数显露）
+func diary(page: Dictionary) -> void:
+	if Director.autoplay:
+		print("  ✎ %s　%s　《%s》" % [page.get("date", ""), page.get("weather", ""), page.get("title", "")])
+		for n in page.get("notes", []):
+			print("  ✎ ", n)
+		return
+	await _interlude_enter()
+	interlude_layer.color = Color.BLACK
+	interlude_box.hide()
+	diary_date.text = page.get("date", "")
+	diary_weather.text = page.get("weather", "")
+	diary_title.text = page.get("title", "")
+	for c in diary_notes.get_children():
+		c.queue_free()
+	var notes: Array = []
+	for n in page.get("notes", []):
+		var nl := _diary_label(20, HORIZONTAL_ALIGNMENT_LEFT)
+		nl.text = n
+		diary_notes.add_child(nl)
+		notes.append(nl)
+	var order: Array = [diary_date, diary_weather, diary_title]
+	order.append_array(notes)
+	for l in order:
+		l.visible_ratio = 0.0
+	diary_page.modulate.a = 0.0
+	diary_page.show()
+	var t := create_tween()
+	t.tween_property(diary_page, "modulate:a", 1.0, 0.9)
+	await t.finished
+	for l in order:
+		var n: int = (l as Label).text.length()
+		if n == 0:
+			continue
+		var w := create_tween()
+		w.tween_property(l, "visible_ratio", 1.0, clampf(n * (0.16 if l == diary_title else 0.07), 0.4, 2.4))
+		await w.finished
+		if not interlude_layer.visible:
+			return
+		await wait_seconds(0.9 if l == diary_title else 0.35)
+	await _interlude_hold(diary_page)
+	diary_page.hide()
+	diary_page.modulate.a = 1.0
+	_interlude_exit()
 
 
 func wait_seconds(sec: float) -> void:

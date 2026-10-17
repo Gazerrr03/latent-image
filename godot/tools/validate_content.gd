@@ -358,7 +358,7 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"link":
 			if args.is_empty() or not links.has(args[0]):
 				err("镜头表", id, "连线组 %s 不在连线规则表里" % str(args))
-		"say", "recap":
+		"say", "recap", "diary":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
 		"reveal", "conceal":
