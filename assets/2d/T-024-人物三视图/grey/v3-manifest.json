@@ -1,0 +1,37 @@
+{
+  "tool": "Codex built-in imagegen",
+  "purpose": "Concealed face presentation references; not a physical mask or replacement of ending face anatomy",
+  "date": "2026-10-14",
+  "entries": [
+    {
+      "file": "assets/2d/T-024-人物三视图/grey/grey_front-v3.png",
+      "prompt": "assets/2d/T-024-人物三视图/grey/prompts/grey_front-v3.txt",
+      "reference": "assets/2d/T-024-人物三视图/grey/grey_front-v2.png",
+      "sha256": "b806a00218a5b750ff23c2851840e3e5c52de295140dd3f6f4b78bbb3322635f",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "assets/2d/T-024-人物三视图/grey/grey_side-v3.png",
+      "prompt": "assets/2d/T-024-人物三视图/grey/prompts/grey_side-v3.txt",
+      "reference": "assets/2d/T-024-人物三视图/grey/grey_side-v2.png",
+      "sha256": "006e5760b6027dd8bab5efe306dee525b1f08a75c756d18d5c2041328b0c43c1",
+      "dimensions": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "assets/2d/T-024-人物三视图/grey/grey_脸-v3.png",
+      "prompt": "assets/2d/T-024-人物三视图/grey/prompts/grey_脸-v3.txt",
+      "reference": "assets/2d/T-024-人物三视图/grey/grey_front-v3.png",
+      "sha256": "a03f78f99e1e16dd9232692f8700609b6c71c6ac01e20cc669e1d0b4f51a487a",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    }
+  ]
+}

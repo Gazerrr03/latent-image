@@ -1,0 +1,20 @@
+{
+  "v2_outputs": 27,
+  "special_portraits": 6,
+  "static_image": [
+    1254,
+    1254
+  ],
+  "final_two_seconds": "identical frames",
+  "game_copy": "matches",
+  "content_check": "0 errors; 1 missing-audio reminder",
+  "autoplay": [
+    "protection passed",
+    "replacement passed"
+  ],
+  "exit_warnings": "pre-existing CanvasItem/ObjectDB/font RID leak messages remain; not investigated",
+  "video_full_decode": "passed",
+  "ui_animation_integrated": false,
+  "iris_full_body_images": false,
+  "godot_capture": "C6-02 before user continues dialogue; final photo appearance in the developed UI is not visually verified"
+}

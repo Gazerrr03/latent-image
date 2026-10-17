@@ -1,0 +1,113 @@
+{
+  "method": "experimental manual placement only; not validated anatomical landmarks; default view equal-width original images",
+  "data": [
+    {
+      "id": "grey",
+      "label": "格雷",
+      "path": "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+      "w": 1254,
+      "h": 1254,
+      "transform": "translate(240 250) rotate(0.0) scale(0.4513888888888889) translate(-626 -666)",
+      "anchors": [
+        [
+          626,
+          666
+        ],
+        [
+          626,
+          954
+        ]
+      ]
+    },
+    {
+      "id": "ambrose",
+      "label": "安布罗斯",
+      "path": "assets/2d/T-024-人物三视图/ambrose/ambrose_脸-v2.png",
+      "w": 1254,
+      "h": 1254,
+      "transform": "translate(240 250) rotate(0.0) scale(0.4482758620689655) translate(-627 -685)",
+      "anchors": [
+        [
+          627,
+          685
+        ],
+        [
+          627,
+          975
+        ]
+      ]
+    },
+    {
+      "id": "constance",
+      "label": "康斯坦斯",
+      "path": "assets/2d/T-024-人物三视图/constance/constance_脸-v2.png",
+      "w": 1254,
+      "h": 1254,
+      "transform": "translate(240 250) rotate(-0.5388158978827622) scale(0.40750549096249844) translate(-630 -617)",
+      "anchors": [
+        [
+          630,
+          617
+        ],
+        [
+          627,
+          936
+        ]
+      ]
+    },
+    {
+      "id": "iris",
+      "label": "艾瑞斯",
+      "path": "assets/2d/T-024-人物三视图/iris/iris_脸-v2.png",
+      "w": 1199,
+      "h": 1312,
+      "transform": "translate(240 250) scale(0.6046511627906976) translate(-600 -601)",
+      "anchors": [
+        [
+          600,
+          601
+        ],
+        [
+          600,
+          816
+        ]
+      ]
+    },
+    {
+      "id": "gideon",
+      "label": "吉迪恩",
+      "path": "assets/2d/T-024-人物三视图/gideon/gideon_脸-v2.png",
+      "w": 1254,
+      "h": 1254,
+      "transform": "translate(240 250) rotate(1.7829504795736628) scale(0.5055916816839687) translate(-626 -625)",
+      "anchors": [
+        [
+          626,
+          625
+        ],
+        [
+          634,
+          882
+        ]
+      ]
+    },
+    {
+      "id": "latente",
+      "label": "拉坦特",
+      "path": "assets/2d/T-024-人物三视图/latente/latente_脸-v2.png",
+      "w": 1254,
+      "h": 1254,
+      "transform": "translate(240 250) rotate(0.0) scale(0.4234527687296417) translate(-627 -682)",
+      "anchors": [
+        [
+          627,
+          682
+        ],
+        [
+          627,
+          989
+        ]
+      ]
+    }
+  ]
+}

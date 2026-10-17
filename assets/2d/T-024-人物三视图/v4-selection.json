@@ -1,0 +1,332 @@
+[
+  {
+    "person": "grey",
+    "role": "正面",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_front-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "430ff6004746381e00dcd54e2ed5b2ec9149d0b4a4fd9b6bde6dde26e7b46738"
+  },
+  {
+    "person": "grey",
+    "role": "侧面",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_side-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "ee8ef1f6bca10508ea77c191c7e0034a978f7ea55f29c07be97f6b82bb1b289e"
+  },
+  {
+    "person": "grey",
+    "role": "背面",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_back-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "45d4ffe2f7360adde065a7806156b5ca8e039f0e02e1196044b12a97a163aaa9"
+  },
+  {
+    "person": "grey",
+    "role": "脸",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+    "status": "内部参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "ab870b28e6f2860377187ee15bc46fbcbb22ba3ed95f543a9ad170c8197d056f"
+  },
+  {
+    "person": "grey",
+    "role": "左手",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_左手-v2-r2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "2eeba473c5dbe9c47f7d43bb99c5009373c4ae9c3f7f7b8b49cff78daaa12292"
+  },
+  {
+    "person": "grey",
+    "role": "展示正面",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_front-v4-隐脸.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "7db90d6574d697620e202bb30506db79400d7cc275ca515cdba57dc91afacf37"
+  },
+  {
+    "person": "grey",
+    "role": "展示侧面",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_side-v4-隐脸.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "5ef84fff1c1746bd737d5788e3733b5aaab1acff9aac8817dea03c772aeb0e1d"
+  },
+  {
+    "person": "grey",
+    "role": "展示头像",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_脸-v3.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "a03f78f99e1e16dd9232692f8700609b6c71c6ac01e20cc669e1d0b4f51a487a"
+  },
+  {
+    "person": "ambrose",
+    "role": "正面",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_front-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "37d70cbcebd25f99715c6eb04cddce44b75b4dc37c729640cd9cc5dbf0e89738"
+  },
+  {
+    "person": "ambrose",
+    "role": "侧面",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_side-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "c2c166834e14eda32df015eafe6676a5259fc897ba16d2b469b5d769920a3a3c"
+  },
+  {
+    "person": "ambrose",
+    "role": "背面",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_back-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "3c1603e3af7586774e27038e8f4fb60684898d55fd5a72b7b5b19b8ea13098cc"
+  },
+  {
+    "person": "ambrose",
+    "role": "脸",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_脸-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "ed662754c99cfa1da448e3bc4c036e238add5007b5830317ab7bfc24940c3202"
+  },
+  {
+    "person": "ambrose",
+    "role": "左手",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_左手-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "e1f407c6d69c91e636217754e5a693c64b984935fdee7c5b0e0c70bfa749b444"
+  },
+  {
+    "person": "gideon",
+    "role": "正面",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_front-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "5ac28bf13b5e0b59fe72c61ff385a2909de106580705d82fceb7ef560a08fe56"
+  },
+  {
+    "person": "gideon",
+    "role": "侧面",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_side-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "b76d873c2ae06db2affc1ac25d12aded6846e7e192806325e21e8695a34e121d"
+  },
+  {
+    "person": "gideon",
+    "role": "背面",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_back-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "2f9d218a2fab033069879e34105b1ae3bed98c155518d57a7f9ee3e499f30d98"
+  },
+  {
+    "person": "gideon",
+    "role": "脸",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_脸-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "1028c289997e17f8cb5803efbf862f4e2b5c8fea13a796a032e5a1b11699de2c"
+  },
+  {
+    "person": "gideon",
+    "role": "左手",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_左手-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "351fb51f8fda78aa08dff4a065b2224326379be27595530e9d2acd5ee3933f9e"
+  },
+  {
+    "person": "latente",
+    "role": "正面",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_front-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "b2fb7a71dd9d7a1e4edc0cb579547d21efec01af4c21a2cccbf38a65314560f1"
+  },
+  {
+    "person": "latente",
+    "role": "侧面",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_side-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "169f1411d2e7612112a950337dda1ccbbe64c5301c1b52f3e6f9797fc4ff9ca0"
+  },
+  {
+    "person": "latente",
+    "role": "背面",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_back-v4.png",
+    "status": "候选待验收",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "086fbd7bef3f976d6da90fb502aa0a993c236c75e0db84758c2e7e0cd41d8468"
+  },
+  {
+    "person": "latente",
+    "role": "脸",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_脸-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "ebb79db502c85cd4e1026cb743c0e704e68211ed6751af3653d01a496b29752d"
+  },
+  {
+    "person": "latente",
+    "role": "左手",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_左手-v2.png",
+    "status": "沿用参考",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "ad887ad4808476f690277f7055409f13de3e38b05ac420baeb6a2d6226ce4541"
+  },
+  {
+    "person": "constance",
+    "role": "正面",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_front-v2.png",
+    "status": "沿用 V2（任务书指定）",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "74576263f3e537004af7041a016d1e714503baa4c70aa1531fb31b2350150114"
+  },
+  {
+    "person": "constance",
+    "role": "侧面",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_side-v2.png",
+    "status": "沿用 V2（任务书指定）",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "656a57d9beebce31f825ce36888d8712cb485439a98fb1bf75a0b759b876e738"
+  },
+  {
+    "person": "constance",
+    "role": "背面",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_back-v2.png",
+    "status": "沿用 V2（任务书指定）",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "3ff3e72cf96d287fc7beea9cddeb0c576e6168e92b7c54da7d36e7e9b0667944"
+  },
+  {
+    "person": "constance",
+    "role": "脸",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_脸-v2.png",
+    "status": "沿用 V2（任务书指定）",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "f4c46e04c507cc7102b055961427ad9f8296b3a1e9f53a0b6be1735e63c5c4e5"
+  },
+  {
+    "person": "constance",
+    "role": "左手",
+    "file": "assets/2d/T-024-人物三视图/constance/constance_左手-v2.png",
+    "status": "沿用 V2（任务书指定）",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "3eff03537cf02d7c3ea0f92c1ccc1f43e723e5f93345570f2f112dac530fa8cf"
+  },
+  {
+    "person": "iris",
+    "role": "脸",
+    "file": "assets/2d/T-024-人物三视图/iris/iris_脸-v2.png",
+    "status": "头肩/手部参考；全身未完成",
+    "dimensions": [
+      1199,
+      1312
+    ],
+    "sha256": "deb04880d27a3eb0d7f0bd40d8ddb086c423562a18a6fd6a0692215d9f483e54"
+  },
+  {
+    "person": "iris",
+    "role": "左手",
+    "file": "assets/2d/T-024-人物三视图/iris/iris_左手-v2.png",
+    "status": "头肩/手部参考；全身未完成",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "2fee3c0b96f59096fe8e5386605e087ddeee32631316999595639d2c155495f1"
+  }
+]

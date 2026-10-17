@@ -1,0 +1,1 @@
+reused V2 face source; see T024 v2-manifest.json

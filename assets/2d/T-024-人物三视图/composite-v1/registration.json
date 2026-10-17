@@ -1,0 +1,199 @@
+{
+  "method": "3-point affine registration (left/right eye centres + mouth centre); normal eye-cover excerpts registered by estimated eye centres + mouth",
+  "reference": "grey",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "duration": 12,
+  "final": "Grey source; six-person overlay transitions into the shared base face, not a claim that equal averaging naturally equals Grey.",
+  "normal_designs_changed": false,
+  "layers": [
+    {
+      "id": "grey",
+      "label": "格雷",
+      "source": "assets/2d/T-024-人物三视图/composite-v1/portraits/grey.png",
+      "normal": "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "normalMatrix": [
+        1.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      "residualPixels": {
+        "leftEye": 0.0,
+        "rightEye": 0.0,
+        "mouth": 0.0,
+        "nose": 0.0,
+        "chin": 0.0
+      }
+    },
+    {
+      "id": "ambrose",
+      "label": "安布罗斯",
+      "source": "assets/2d/T-024-人物三视图/composite-v1/portraits/ambrose.png",
+      "normal": "assets/2d/T-024-人物三视图/ambrose/ambrose_脸.png",
+      "width": 1254,
+      "height": 1254,
+      "matrix": [
+        0.9437458154719411,
+        -0.0003372090575253725,
+        0.004055073091969285,
+        0.9291624703245337,
+        33.99931178879432,
+        4.885060344174191
+      ],
+      "normalMatrix": [
+        0.5106791731486925,
+        0.012640605132461616,
+        -0.01728034335678498,
+        0.43834345477904507,
+        227.40899943971985,
+        93.59132858282
+      ],
+      "residualPixels": {
+        "leftEye": 1.2710574864626038e-13,
+        "rightEye": 0.0,
+        "mouth": 0.0,
+        "nose": 1.604230634423078,
+        "chin": 2.140942459688309
+      }
+    },
+    {
+      "id": "constance",
+      "label": "康斯坦斯",
+      "source": "assets/2d/T-024-人物三视图/composite-v1/portraits/constance.png",
+      "normal": "assets/2d/T-024-人物三视图/constance/constance_脸-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "matrix": [
+        0.9800577397478949,
+        0.0030329720737056654,
+        0.007500589882954277,
+        0.9930334137313335,
+        3.90839108200045,
+        -1.8625600562414448
+      ],
+      "normalMatrix": [
+        1.0235943956261109,
+        0.028736161908710204,
+        -0.026604797340232928,
+        1.0400659206176783,
+        -0.3134808986305637,
+        -79.13202341985435
+      ],
+      "residualPixels": {
+        "leftEye": 0.0,
+        "rightEye": 0.0,
+        "mouth": 1.1368683772161603e-13,
+        "nose": 1.017412644848073,
+        "chin": 1.6651089689151035
+      }
+    },
+    {
+      "id": "iris",
+      "label": "艾瑞斯",
+      "source": "assets/2d/T-024-人物三视图/composite-v1/portraits/iris.png",
+      "normal": "assets/2d/T-024-人物三视图/iris/iris_脸-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "matrix": [
+        1.0863280693181379,
+        0.04915869045268246,
+        -0.044272021988092145,
+        1.1455128501431115,
+        -15.722471919367326,
+        -112.38537506012557
+      ],
+      "normalMatrix": [
+        1.2216349430250553,
+        -0.0031996813181455596,
+        -0.05431804376405303,
+        1.2427798745115146,
+        -68.88582999405897,
+        -149.29283084460397
+      ],
+      "residualPixels": {
+        "leftEye": 5.684341886080802e-14,
+        "rightEye": 0.0,
+        "mouth": 0.0,
+        "nose": 4.289232619968811,
+        "chin": 7.834349787204825
+      }
+    },
+    {
+      "id": "gideon",
+      "label": "吉迪恩",
+      "source": "assets/2d/T-024-人物三视图/composite-v1/portraits/gideon.png",
+      "normal": "assets/2d/T-024-人物三视图/gideon/gideon_脸-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "matrix": [
+        1.0565531523335188,
+        0.0019581731192627517,
+        -0.009169773834233614,
+        1.092098187400919,
+        -34.63368061044808,
+        -30.710804360362214
+      ],
+      "normalMatrix": [
+        1.0844895858189185,
+        -0.02841991966609391,
+        -0.023439839997346997,
+        1.1196479109646083,
+        -37.34179582372377,
+        -28.863635788120355
+      ],
+      "residualPixels": {
+        "leftEye": 1.1368683772161603e-13,
+        "rightEye": 1.1368683772161603e-13,
+        "mouth": 1.1368683772161603e-13,
+        "nose": 7.146618832201438,
+        "chin": 21.22569190910257
+      }
+    },
+    {
+      "id": "latente",
+      "label": "拉坦特",
+      "source": "assets/2d/T-024-人物三视图/composite-v1/portraits/latente.png",
+      "normal": "assets/2d/T-024-人物三视图/latente/latente_脸-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "matrix": [
+        1.0063811590523057,
+        0.00432195649934099,
+        -0.0005007403099855409,
+        1.0102455326779913,
+        -5.297308440426516,
+        -7.488351631176778
+      ],
+      "normalMatrix": [
+        1.1885554802135212,
+        -0.04488049347559294,
+        0.007535114205018418,
+        1.2310091345065932,
+        -134.41167984435137,
+        -75.06601832202992
+      ],
+      "residualPixels": {
+        "leftEye": 5.684341886080802e-14,
+        "rightEye": 0.0,
+        "mouth": 0.0,
+        "nose": 0.18592212867932364,
+        "chin": 1.6875513889251161
+      }
+    }
+  ]
+}

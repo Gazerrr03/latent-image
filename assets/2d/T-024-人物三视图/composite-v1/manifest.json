@@ -1,0 +1,109 @@
+{
+  "task": "T-024 chapter-6 special portraits",
+  "date": "2026-10-14",
+  "user_decision": "dedicated aligned portraits; eye-cover layers fade during development",
+  "source_portraits": [
+    {
+      "name": "constance",
+      "prompt": "Asset: special registered portrait for a chapter-six photographic superimposition; it does NOT replace the character's normal eye-covered design. Image 1 is GREY facial framing master; image 2 is the character identity/costume reference. Create ONE straight-front head-and-shoulders portrait of character from image 2, face upright, no rotation or three-quarter pose. Match image 1's framing, head scale, centreline, eye line, nose-tip height, mouth height and chin height as closely as possible. Preserve common nose shape, mouth shape, jaw and cheekbone family resemblance; preserve appropriate character age. Woman about 35, pinned brown hair, dark green high-collar dress and black cardigan. REMOVE black eye ribbon completely; both natural eyes visible. No white paint. Plain light grey background, flat soft light, finely painted realistic illustration consistent with image 1. No text, no other views. Square image. Important: entirely uncovered eyes in these private source portraits.",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-d50bcb4e-ca2d-4425-9fc7-662956b2d899.png",
+      "dest": "assets/2d/T-024-人物三视图/composite-v1/portraits/constance.png",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+        "assets/2d/T-024-人物三视图/constance/constance_脸-v2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "9c2c3f8c76644724a39a4ea1af9d3cc48ffb59f03123c29fee5ca6aab402fb25",
+      "prompt_file": "assets/2d/T-024-人物三视图/composite-v1/prompts/constance.txt",
+      "status": "candidate"
+    },
+    {
+      "name": "gideon",
+      "prompt": "Asset: special registered portrait for a chapter-six photographic superimposition; it does NOT replace the character's normal eye-covered design. Image 1 is GREY facial framing master; image 2 is the character identity/costume reference. Create ONE straight-front head-and-shoulders portrait of character from image 2, face upright, no rotation or three-quarter pose. Match image 1's framing, head scale, centreline, eye line, nose-tip height, mouth height and chin height as closely as possible. Preserve common nose shape, mouth shape, jaw and cheekbone family resemblance; preserve appropriate character age. Man 46, sun-weathered face, subtle grey at temples, broad neck, cream rough shirt and brown waistcoat. REMOVE cap completely, forehead and both natural eyes visible. No hat or shadow over eyes. Plain light grey background, flat soft light, finely painted realistic illustration consistent with image 1. No text, no other views. Square image. Important: entirely uncovered eyes in these private source portraits.",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-3d37c9f6-4614-4956-b863-a0a59ce4d72a.png",
+      "dest": "assets/2d/T-024-人物三视图/composite-v1/portraits/gideon.png",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+        "assets/2d/T-024-人物三视图/gideon/gideon_脸-v2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "6d6b71b43297171f7d48d5016d005c1fbe8e69afc876c2bdb1c454568a171c3f",
+      "prompt_file": "assets/2d/T-024-人物三视图/composite-v1/prompts/gideon.txt",
+      "status": "candidate"
+    },
+    {
+      "name": "latente",
+      "prompt": "Asset: special registered portrait for a chapter-six photographic superimposition; it does NOT replace the character's normal eye-covered design. Image 1 is GREY facial framing master; image 2 is the character identity/costume reference. Create ONE straight-front head-and-shoulders portrait of character from image 2, face upright, no rotation or three-quarter pose. Match image 1's framing, head scale, centreline, eye line, nose-tip height, mouth height and chin height as closely as possible. Preserve common nose shape, mouth shape, jaw and cheekbone family resemblance; preserve appropriate character age. Woman of ambiguous adult age 30-50, pinned brown hair, black high-collar dress, modest antique brooch, dark burgundy shawl. REMOVE veil completely; both natural eyes visible. Keep sober expression. Plain light grey background, flat soft light, finely painted realistic illustration consistent with image 1. No text, no other views. Square image. Important: entirely uncovered eyes in these private source portraits.",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-5ee073f9-5b78-40d1-9506-f3861aff3c8e.png",
+      "dest": "assets/2d/T-024-人物三视图/composite-v1/portraits/latente.png",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+        "assets/2d/T-024-人物三视图/latente/latente_脸-v2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "be7d7b7da8026914d2317e6fe8dc2b06d4ba25ec6e466788b8ecf78a6091b9b7",
+      "prompt_file": "assets/2d/T-024-人物三视图/composite-v1/prompts/latente.txt",
+      "status": "candidate"
+    },
+    {
+      "name": "iris",
+      "prompt": "Asset: special registered portrait for a chapter-six photographic superimposition; it does NOT replace the character's normal eye-covered design. Image 1 is GREY facial framing master; image 2 is the character identity/costume reference. Create ONE straight-front head-and-shoulders portrait of character from image 2, face upright, no rotation or three-quarter pose. Match image 1's framing, head scale, centreline, eye line, nose-tip height, mouth height and chin height as closely as possible. Preserve common nose shape, mouth shape, jaw and cheekbone family resemblance; preserve appropriate character age. The same ordinary eight-year-old girl from image 2, natural child's face proportions, short brown bob, grey-blue sailor dress with cream collar. A normal fully clothed painted head-and-shoulders portrait. NO cloth over eyes for this private face-alignment reference. Both eyes visible. Do not depict an adult with a child's body. Plain light grey background, flat soft light, finely painted realistic illustration consistent with image 1. No text, no other views. Square image. Important: entirely uncovered eyes in these private source portraits.",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-19bc5b49-8444-463c-b33e-2db7acad4a93.png",
+      "dest": "assets/2d/T-024-人物三视图/composite-v1/portraits/iris.png",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+        "assets/2d/T-024-人物三视图/iris/iris_face-anatomy-v2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "a601dc8be91370855d6264fc032a6fd05805f247fd4451bd9e7905b893f0a9b5",
+      "prompt_file": "assets/2d/T-024-人物三视图/composite-v1/prompts/iris.txt",
+      "status": "candidate"
+    },
+    {
+      "name": "grey",
+      "dest": "assets/2d/T-024-人物三视图/composite-v1/portraits/grey.png",
+      "prompt": "reused V2 face source; see T024 v2-manifest.json",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png"
+      ],
+      "tool": "source reuse",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ab870b28e6f2860377187ee15bc46fbcbb22ba3ed95f543a9ad170c8197d056f",
+      "prompt_file": "assets/2d/T-024-人物三视图/composite-v1/prompts/grey.txt",
+      "status": "candidate"
+    },
+    {
+      "name": "ambrose",
+      "dest": "assets/2d/T-024-人物三视图/composite-v1/portraits/ambrose.png",
+      "prompt": "reused V2 face source; see T024 v2-manifest.json",
+      "refs": [
+        "assets/2d/T-024-人物三视图/ambrose/ambrose_脸-v2.png"
+      ],
+      "tool": "source reuse",
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d175e51343eb7590466f58b03b8ff26bfacdcf6211ecde03317692db52688116",
+      "prompt_file": "assets/2d/T-024-人物三视图/composite-v1/prompts/ambrose.txt",
+      "status": "candidate"
+    }
+  ],
+  "raw_v2_designs_changed": false,
+  "all_approved": false
+}

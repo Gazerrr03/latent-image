@@ -1,0 +1,498 @@
+{
+  "status": "design_revisions_saved_with_iris_text_fallback",
+  "records": [
+    {
+      "name": "grey",
+      "view": "front",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-03ddc525-ab86-481c-b7ee-3c8ae586447d.png",
+      "dest": "assets/2d/T-024-人物三视图/grey/grey_front-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/grey_front-v2.png",
+      "prompt": "Use case: identity-preserve. Asset: single front orthographic full-body reference for Tripo image-to-3D. Image 1 is character design reference, image 2 common facial family reference. Produce ONE person only, exact straight FRONT view, entire head-to-shoes visible, centred with generous plain light grey background margins. A pose, arms 30 degrees from torso, symmetrical neutral stance feet flat. Flat soft even lighting, finely painted realistic period costume concept-art, muted palette. No other views, no inset closeups, no text, no labels, no props in hands, no perspective distortion. 1926 England. Changes: Male detective age 32-34, keep charcoal long coat, waistcoat, tie, leather shoes and fedora worn on head. Eyes visible. Bare hands; left hand has a small pale crescent healed scar in thumb-index web. Increase maturity subtly, preserve underlying facial proportions. Preserve costume design and underlying identity; do not copy multi-panel layout. Portrait image 1024x1536 or comparable.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_三视图-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0e8d021c22b88e740553b613fe3dba9a23fd86f7d9327d4c31f30fb481e8284b",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_front-v2.txt"
+    },
+    {
+      "name": "ambrose",
+      "view": "front",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-cb07d8c6-0189-4475-a447-57ac481b642b.png",
+      "dest": "assets/2d/T-024-人物三视图/ambrose/ambrose_front-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/ambrose_front-v2.png",
+      "prompt": "Use case: identity-preserve. Asset: single front orthographic full-body reference for Tripo image-to-3D. Image 1 is character design reference, image 2 common facial family reference. Produce ONE person only, exact straight FRONT view, entire head-to-shoes visible, centred with generous plain light grey background margins. A pose, arms 30 degrees from torso, symmetrical neutral stance feet flat. Flat soft even lighting, finely painted realistic period costume concept-art, muted palette. No other views, no inset closeups, no text, no labels, no props in hands, no perspective distortion. 1926 England. Changes: Male manor owner age 43, older than detective, subtle crow's feet, receding temples and a little grey at temples. Walnut brown tweed jacket and waistcoat, rolled white cuffs, pocket watch. REMOVE ALL WHITE PAINT FROM EYES: normal natural eyes and unpainted skin, no blindfold. Same base facial bone proportions. Bare hands, small healed pale crescent on left thumb-index web. Preserve costume design and underlying identity; do not copy multi-panel layout. Portrait image 1024x1536 or comparable.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/ambrose/ambrose_三视图-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "69dc0e3d0228fb0fcdd10d7092f09974de511d794e438e200121fa37514c0649",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_front-v2.txt"
+    },
+    {
+      "name": "constance",
+      "view": "front",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-c4870159-0350-4e58-937a-ea844ba03750.png",
+      "dest": "assets/2d/T-024-人物三视图/constance/constance_front-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/constance_front-v2.png",
+      "prompt": "Use case: identity-preserve. Asset: single front orthographic full-body reference for Tripo image-to-3D. Image 1 is character design reference, image 2 common facial family reference. Produce ONE person only, exact straight FRONT view, entire head-to-shoes visible, centred with generous plain light grey background margins. A pose, arms 30 degrees from torso, symmetrical neutral stance feet flat. Flat soft even lighting, finely painted realistic period costume concept-art, muted palette. No other views, no inset closeups, no text, no labels, no props in hands, no perspective distortion. 1926 England. Changes: Woman age about 35, mature face and pinned-up brown hair; dark green long 1920s dress and black cardigan. Opaque black satin ribbon fully covers both eyes. Wide ring on LEFT ring finger. Left thumb rests gently across palm so web scar hidden, hands relaxed. Preserve face bone proportions. Preserve costume design and underlying identity; do not copy multi-panel layout. Portrait image 1024x1536 or comparable.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/constance/constance_三视图-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "74576263f3e537004af7041a016d1e714503baa4c70aa1531fb31b2350150114",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_front-v2.txt"
+    },
+    {
+      "name": "gideon",
+      "view": "front",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-f704ee6b-b642-4315-8c4e-ff8ea94b09ea.png",
+      "dest": "assets/2d/T-024-人物三视图/gideon/gideon_front-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/gideon_front-v2.png",
+      "prompt": "Use case: identity-preserve. Asset: single front orthographic full-body reference for Tripo image-to-3D. Image 1 is character design reference, image 2 common facial family reference. Produce ONE person only, exact straight FRONT view, entire head-to-shoes visible, centred with generous plain light grey background margins. A pose, arms 30 degrees from torso, symmetrical neutral stance feet flat. Flat soft even lighting, finely painted realistic period costume concept-art, muted palette. No other views, no inset closeups, no text, no labels, no props in hands, no perspective distortion. 1926 England. Changes: Male gardener age 46, sun-weathered cheeks, slightly greying temples, BROAD stocky physique, shoulders and torso visibly wider than detective. Low flat cap completely conceals eyes; khaki canvas bib overalls, coarse cream shirt, brown waistcoat, boots. BOTH hands wear coarse canvas work gloves. NO modern cargo side pockets or flap pockets on thighs/back legs: period plain trousers, only simple rear patch pockets. Preserve nose jaw cheekbone bone proportions. Preserve costume design and underlying identity; do not copy multi-panel layout. Portrait image 1024x1536 or comparable.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/gideon/gideon_sheet-v1.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ab7238132d89524919d9d9afce073e113692f1a04a987bbda6b2acb3f4c89114",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_front-v2.txt"
+    },
+    {
+      "name": "latente",
+      "view": "front",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-a2e89639-32cb-4b41-ae3c-d54abfe72ea7.png",
+      "dest": "assets/2d/T-024-人物三视图/latente/latente_front-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/latente_front-v2.png",
+      "prompt": "Use case: identity-preserve. Asset: single front orthographic full-body reference for Tripo image-to-3D. Image 1 is character design reference, image 2 common facial family reference. Produce ONE person only, exact straight FRONT view, entire head-to-shoes visible, centred with generous plain light grey background margins. A pose, arms 30 degrees from torso, symmetrical neutral stance feet flat. Flat soft even lighting, finely painted realistic period costume concept-art, muted palette. No other views, no inset closeups, no text, no labels, no props in hands, no perspective distortion. 1926 England. Changes: Female medium ambiguous age between 30 and 50, reserved mature mouth rather than youthful model, black full-length dress, dark burgundy shawl, modest antique jewellery, black veil down to nose tip fully conceals eyes, black lace gloves on both hands. Preserve facial bone proportions. Preserve costume design and underlying identity; do not copy multi-panel layout. Portrait image 1024x1536 or comparable.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/latente/latente_sheet-v1.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b2fb7a71dd9d7a1e4edc0cb579547d21efec01af4c21a2cccbf38a65314560f1",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_front-v2.txt"
+    },
+    {
+      "name": "grey",
+      "view": "side",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-0fca6449-5ef2-43d4-8b02-fdde616fbdee.png",
+      "dest": "assets/2d/T-024-人物三视图/grey/grey_side-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/grey_side-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body LEFT PROFILE view facing image left, showing anatomical left side; do not draw front or three-quarter view of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Male detective age 32-34, keep charcoal long coat, waistcoat, tie, leather shoes and fedora worn on head. Eyes visible. Bare hands; left hand has a small pale crescent healed scar in thumb-index web. Increase maturity subtly, preserve underlying facial proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/grey/grey_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "300633825b2219afc8a94128bbacff329028044ae0c51f19f608b03b18e9f05d",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_side-v2.txt"
+    },
+    {
+      "name": "grey",
+      "view": "back",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-bfdbb28c-e471-49b1-b964-6a6ec7636052.png",
+      "dest": "assets/2d/T-024-人物三视图/grey/grey_back-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/grey_back-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body exact BACK view, facing away from camera of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Male detective age 32-34, keep charcoal long coat, waistcoat, tie, leather shoes and fedora worn on head. Eyes visible. Bare hands; left hand has a small pale crescent healed scar in thumb-index web. Increase maturity subtly, preserve underlying facial proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/grey/grey_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "45d4ffe2f7360adde065a7806156b5ca8e039f0e02e1196044b12a97a163aaa9",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_back-v2.txt"
+    },
+    {
+      "name": "ambrose",
+      "view": "side",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-f0c6d394-fbce-4949-a520-ccc1acc1d714.png",
+      "dest": "assets/2d/T-024-人物三视图/ambrose/ambrose_side-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/ambrose_side-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body LEFT PROFILE view facing image left, showing anatomical left side; do not draw front or three-quarter view of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Male manor owner age 43, older than detective, subtle crow's feet, receding temples and a little grey at temples. Walnut brown tweed jacket and waistcoat, rolled white cuffs, pocket watch. REMOVE ALL WHITE PAINT FROM EYES: normal natural eyes and unpainted skin, no blindfold. Same base facial bone proportions. Bare hands, small healed pale crescent on left thumb-index web. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/ambrose/ambrose_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "0a590f28ec7d6b100a83b1227530077ac505fccdd3901eca79775da76970f891",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_side-v2.txt"
+    },
+    {
+      "name": "ambrose",
+      "view": "back",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-f5a5257d-d85d-41df-9562-85676d97347a.png",
+      "dest": "assets/2d/T-024-人物三视图/ambrose/ambrose_back-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/ambrose_back-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body exact BACK view, facing away from camera of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Male manor owner age 43, older than detective, subtle crow's feet, receding temples and a little grey at temples. Walnut brown tweed jacket and waistcoat, rolled white cuffs, pocket watch. REMOVE ALL WHITE PAINT FROM EYES: normal natural eyes and unpainted skin, no blindfold. Same base facial bone proportions. Bare hands, small healed pale crescent on left thumb-index web. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/ambrose/ambrose_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "6a8cbd5f939632266fffc72e35eceee2f244fe24f6a1aded493532825694931f",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_back-v2.txt"
+    },
+    {
+      "name": "constance",
+      "view": "side",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-294c0988-8d07-4775-9551-aba88c659e24.png",
+      "dest": "assets/2d/T-024-人物三视图/constance/constance_side-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/constance_side-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body LEFT PROFILE view facing image left, showing anatomical left side; do not draw front or three-quarter view of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Woman age about 35, mature face and pinned-up brown hair; dark green long 1920s dress and black cardigan. Opaque black satin ribbon fully covers both eyes. Wide ring on LEFT ring finger. Left thumb rests gently across palm so web scar hidden, hands relaxed. Preserve face bone proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/constance/constance_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "656a57d9beebce31f825ce36888d8712cb485439a98fb1bf75a0b759b876e738",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_side-v2.txt"
+    },
+    {
+      "name": "constance",
+      "view": "back",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-71af0c31-4899-46b9-9eb9-973095974aeb.png",
+      "dest": "assets/2d/T-024-人物三视图/constance/constance_back-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/constance_back-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body exact BACK view, facing away from camera of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Woman age about 35, mature face and pinned-up brown hair; dark green long 1920s dress and black cardigan. Opaque black satin ribbon fully covers both eyes. Wide ring on LEFT ring finger. Left thumb rests gently across palm so web scar hidden, hands relaxed. Preserve face bone proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/constance/constance_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "3ff3e72cf96d287fc7beea9cddeb0c576e6168e92b7c54da7d36e7e9b0667944",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_back-v2.txt"
+    },
+    {
+      "name": "gideon",
+      "view": "side",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-49a3f795-9e5b-496b-b5d2-124195691eb6.png",
+      "dest": "assets/2d/T-024-人物三视图/gideon/gideon_side-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/gideon_side-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body LEFT PROFILE view facing image left, showing anatomical left side; do not draw front or three-quarter view of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Male gardener age 46, sun-weathered cheeks, slightly greying temples, BROAD stocky physique, shoulders and torso visibly wider than detective. Low flat cap completely conceals eyes; khaki canvas bib overalls, coarse cream shirt, brown waistcoat, boots. BOTH hands wear coarse canvas work gloves. NO modern cargo side pockets or flap pockets on thighs/back legs: period plain trousers, only simple rear patch pockets. Preserve nose jaw cheekbone bone proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/gideon/gideon_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "68678e6dbd59331c8fb2fe0cf4b6172071de9137988c695ab289b886c0d27db8",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_side-v2.txt"
+    },
+    {
+      "name": "gideon",
+      "view": "back",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-0e8cc384-c8a1-4e38-9819-332600d8061d.png",
+      "dest": "assets/2d/T-024-人物三视图/gideon/gideon_back-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/gideon_back-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body exact BACK view, facing away from camera of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Male gardener age 46, sun-weathered cheeks, slightly greying temples, BROAD stocky physique, shoulders and torso visibly wider than detective. Low flat cap completely conceals eyes; khaki canvas bib overalls, coarse cream shirt, brown waistcoat, boots. BOTH hands wear coarse canvas work gloves. NO modern cargo side pockets or flap pockets on thighs/back legs: period plain trousers, only simple rear patch pockets. Preserve nose jaw cheekbone bone proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/gideon/gideon_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "64e72cc8b6a6fd4eb89406a6c7199bab2599f6e8ac5b234999ec200d70f60833",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_back-v2.txt"
+    },
+    {
+      "name": "latente",
+      "view": "side",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-8a556dce-d272-4ad2-9302-5f0e4eb99544.png",
+      "dest": "assets/2d/T-024-人物三视图/latente/latente_side-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/latente_side-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body LEFT PROFILE view facing image left, showing anatomical left side; do not draw front or three-quarter view of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Female medium ambiguous age between 30 and 50, reserved mature mouth rather than youthful model, black full-length dress, dark burgundy shawl, modest antique jewellery, black veil down to nose tip fully conceals eyes, black lace gloves on both hands. Preserve facial bone proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/latente/latente_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "169f1411d2e7612112a950337dda1ccbbe64c5301c1b52f3e6f9797fc4ff9ca0",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_side-v2.txt"
+    },
+    {
+      "name": "latente",
+      "view": "back",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-51f3861d-dd11-4495-859e-24a6e82515dc.png",
+      "dest": "assets/2d/T-024-人物三视图/latente/latente_back-v2.png",
+      "input": "assets/3d/T-025-人物模型/input/latente_back-v2.png",
+      "prompt": "Use case: identity-preserve. Image 1 is the NEW definitive FRONT design; image 2 is OLD costume turnaround reference, only use for hidden costume details. Generate ONE orthographic full-body exact BACK view, facing away from camera of precisely the SAME person in image 1. Match height, build, age, hairstyle, face bone proportions, colours, layers, buttons, garment lengths, hat/veil/blindfold and gloves. Entire head to shoes inside frame, centred, grey plain backdrop, same A pose with arms 30 degrees out, flat soft lighting, muted finely painted realistic 1926 costume concept art. NO other views, NO panels, NO text or inset. Female medium ambiguous age between 30 and 50, reserved mature mouth rather than youthful model, black full-length dress, dark burgundy shawl, modest antique jewellery, black veil down to nose tip fully conceals eyes, black lace gloves on both hands. Preserve facial bone proportions. Match silhouette vertical coverage to front (head at 2 percent, shoes at 96 percent of frame). Portrait 1024x1536.",
+      "refs": [
+        "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-024-人物三视图/latente/latente_front-v2.png"
+      ],
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7a7875edadf771c1ba0a7dfb997db40f1fa2efbec43e7311d886b6d7f07ab90d",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_back-v2.txt"
+    },
+    {
+      "name": "grey",
+      "view": "hand",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-3645e155-ee46-489d-bae6-335c57db8f7d.png",
+      "dest": "assets/2d/T-024-人物三视图/grey/grey_左手-v2-r2.png",
+      "prompt": "Use case: identity-preserve. Asset: isolated LEFT hand evidence reference for a 1926 narrative game, no torso, face fragments, text, panel borders, jewellery unless specified. Plain light grey background and soft even lighting. The visible permanent mark is a completely healed PALE crescent line on the DORSAL thumb-index web skin, NOT palm, not middle of hand, no redness. Keep anatomy correct: 5 fingers; show nail side / back of LEFT hand, thumb on image right when fingers point up. One large LEFT hand only, adult man age 33, charcoal coat cuff. Fingers gently spread, thumb widely extended, web crescent clearly visible. Preserve shape and scar position from image 1; subtle pale line with sufficient contrast. NO ring, NO glove. Square.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_左手-v2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "2eeba473c5dbe9c47f7d43bb99c5009373c4ae9c3f7f7b8b49cff78daaa12292",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_左手-v2-r2.txt"
+    },
+    {
+      "name": "constance",
+      "view": "hand",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-04d4d45f-3e77-4f8b-afee-81eed867ea2a.png",
+      "dest": "assets/2d/T-024-人物三视图/constance/constance_左手-v2.png",
+      "prompt": "Use case: identity-preserve. Asset: isolated LEFT hand evidence reference for a 1926 narrative game, no torso, face fragments, text, panel borders, jewellery unless specified. Plain light grey background and soft even lighting. The visible permanent mark is a completely healed PALE crescent line on the DORSAL thumb-index web skin, NOT palm, not middle of hand, no redness. Keep anatomy correct: 5 fingers; show nail side / back of LEFT hand, thumb on image right when fingers point up. Two views of the SAME LEFT hand, woman age 35, black cardigan cuff: LEFT HALF: wide simple gold ring on ring finger, relaxed closed fingers and thumb folded across palm hiding the web. RIGHT HALF: ring REMOVED, fingers extended with BACK of hand towards viewer, thumb spread wide, crescent visible at precisely same web position as image 2. The right half must show fingernails, NOT palm. No torso/face. Square.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/constance/constance_左手.png",
+        "assets/2d/T-024-人物三视图/grey/grey_左手-v2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "3eff03537cf02d7c3ea0f92c1ccc1f43e723e5f93345570f2f112dac530fa8cf",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_左手-v2.txt"
+    },
+    {
+      "name": "grey",
+      "view": "face",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-f92f24ff-843f-48cc-a155-e340d56d8544.png",
+      "dest": "assets/2d/T-024-人物三视图/grey/grey_脸-v2.png",
+      "prompt": "Use case: identity-preserve. Produce a SINGLE high-resolution straight-front head-and-shoulders portrait of EXACT same character as image 1, same age and all eyes coverings (if any), same nose jaw cheekbones mouth. Image 2 is common facial reference, preserve family resemblance, do not de-age. Plain light grey background, flat soft light, head upright centred, finely painted realism matching image 1. No text, no montage, no body fragments. Male detective age 32-34, keep charcoal long coat, waistcoat, tie, leather shoes and fedora worn on head. Eyes visible. Bare hands; left hand has a small pale crescent healed scar in thumb-index web. Increase maturity subtly, preserve underlying facial proportions. Square. Remove fedora for this portrait only so whole face/hair visible; natural eyes open.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_front-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ab870b28e6f2860377187ee15bc46fbcbb22ba3ed95f543a9ad170c8197d056f",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_脸-v2.txt"
+    },
+    {
+      "name": "ambrose",
+      "view": "face",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-3b1229c2-4516-4427-a1b2-3a7a607c765a.png",
+      "dest": "assets/2d/T-024-人物三视图/ambrose/ambrose_脸-v2.png",
+      "prompt": "Use case: identity-preserve. Produce a SINGLE high-resolution straight-front head-and-shoulders portrait of EXACT same character as image 1, same age and all eyes coverings (if any), same nose jaw cheekbones mouth. Image 2 is common facial reference, preserve family resemblance, do not de-age. Plain light grey background, flat soft light, head upright centred, finely painted realism matching image 1. No text, no montage, no body fragments. Male manor owner age 43, older than detective, subtle crow's feet, receding temples and a little grey at temples. Walnut brown tweed jacket and waistcoat, rolled white cuffs, pocket watch. REMOVE ALL WHITE PAINT FROM EYES: normal natural eyes and unpainted skin, no blindfold. Same base facial bone proportions. Bare hands, small healed pale crescent on left thumb-index web. Square. IMPORTANT: natural unpainted eyes in model portrait. No white paint whatsoever.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/ambrose/ambrose_front-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "d175e51343eb7590466f58b03b8ff26bfacdcf6211ecde03317692db52688116",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_脸-v2.txt"
+    },
+    {
+      "name": "constance",
+      "view": "face",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-4923494f-442a-467f-be30-96f6d70a2c5e.png",
+      "dest": "assets/2d/T-024-人物三视图/constance/constance_脸-v2.png",
+      "prompt": "Use case: identity-preserve. Produce a SINGLE high-resolution straight-front head-and-shoulders portrait of EXACT same character as image 1, same age and all eyes coverings (if any), same nose jaw cheekbones mouth. Image 2 is common facial reference, preserve family resemblance, do not de-age. Plain light grey background, flat soft light, head upright centred, finely painted realism matching image 1. No text, no montage, no body fragments. Woman age about 35, mature face and pinned-up brown hair; dark green long 1920s dress and black cardigan. Opaque black satin ribbon fully covers both eyes. Wide ring on LEFT ring finger. Left thumb rests gently across palm so web scar hidden, hands relaxed. Preserve face bone proportions. Square. ",
+      "refs": [
+        "assets/2d/T-024-人物三视图/constance/constance_front-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "f4c46e04c507cc7102b055961427ad9f8296b3a1e9f53a0b6be1735e63c5c4e5",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/constance/prompts/constance_脸-v2.txt"
+    },
+    {
+      "name": "latente",
+      "view": "face",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-d662c121-a84e-4d7c-a8d6-0610bf69ca59.png",
+      "dest": "assets/2d/T-024-人物三视图/latente/latente_脸-v2.png",
+      "prompt": "Use case: identity-preserve. Produce a SINGLE high-resolution straight-front head-and-shoulders portrait of EXACT same character as image 1, same age and all eyes coverings (if any), same nose jaw cheekbones mouth. Image 2 is common facial reference, preserve family resemblance, do not de-age. Plain light grey background, flat soft light, head upright centred, finely painted realism matching image 1. No text, no montage, no body fragments. Female medium ambiguous age between 30 and 50, reserved mature mouth rather than youthful model, black full-length dress, dark burgundy shawl, modest antique jewellery, black veil down to nose tip fully conceals eyes, black lace gloves on both hands. Preserve facial bone proportions. Square. ",
+      "refs": [
+        "assets/2d/T-024-人物三视图/latente/latente_front-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ebb79db502c85cd4e1026cb743c0e704e68211ed6751af3653d01a496b29752d",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_脸-v2.txt"
+    },
+    {
+      "name": "gideon",
+      "view": "hand",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-a37a3b4d-2873-4863-9976-e5afdd492b87.png",
+      "dest": "assets/2d/T-024-人物三视图/gideon/gideon_左手-v2.png",
+      "prompt": "Historical game character detail, two states of the SAME anatomical LEFT hand of a weathered 46-year-old gardener. Left half coarse khaki CANVAS work glove covering whole hand. Right half glove removed, dorsal BACK of left hand towards camera, visible fingernails, thumb extended to image right, five fingers. Clearly visible small PALE fully healed crescent line in dorsal thumb-index web, same exact position as reference image. No palm view, no face or body fragments. Cream coarse shirt cuffs, flat soft light, empty light grey background. Realistic painted illustration, square, no text.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_左手-v2-r2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "351fb51f8fda78aa08dff4a065b2224326379be27595530e9d2acd5ee3933f9e",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_左手-v2.txt"
+    },
+    {
+      "name": "latente",
+      "view": "hand",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-73095c25-5840-419f-8855-fefd917a2194.png",
+      "dest": "assets/2d/T-024-人物三视图/latente/latente_左手-v2.png",
+      "prompt": "Edit reference image 1 into isolated hand study without body fragments. TWO states of SAME anatomical LEFT hand, black lace glove on left half / glove removed on right half. Both dorsal hand views, fingernails visible, extended thumb. IMPORTANT LEFT hand: thumb on image RIGHT, not image left. Nude hand has clearly readable small PALE healed crescent line only in thumb-index web, position and appearance from reference 2. Black lace sleeve cuffs, plain grey background, soft flat light, finely painted realism. No words.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/latente/latente_左手.png",
+        "assets/2d/T-024-人物三视图/grey/grey_左手-v2-r2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "ad887ad4808476f690277f7055409f13de3e38b05ac420baeb6a2d6226ce4541",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_左手-v2.txt"
+    },
+    {
+      "name": "gideon",
+      "view": "face",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-8e93d8ef-0bfc-4115-933b-55291bad5bfc.png",
+      "dest": "assets/2d/T-024-人物三视图/gideon/gideon_脸-v2.png",
+      "prompt": "Single straight-front head-and-shoulders portrait of EXACT male gardener from reference 1, age 46, sun-weathered mouth and cheeks, subtle greying temples, broad neck, low brown flat-cap brim COMPLETELY hides eyes. Same coarse cream shirt and brown waistcoat, underlying nose cheekbones jaw proportions retain family resemblance to reference 2. Realistic finely painted 1926 England game concept art, grey background, flat light, no words, no insets, square.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/gideon/gideon_front-v2.png",
+        "assets/2d/T-024-人物三视图/底脸.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "1028c289997e17f8cb5803efbf862f4e2b5c8fea13a796a032e5a1b11699de2c",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_脸-v2.txt"
+    },
+    {
+      "name": "iris",
+      "view": "hand",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-ea81e82b-73ca-4f53-99d0-41f704104855.png",
+      "dest": "assets/2d/T-024-人物三视图/iris/iris_左手-v2.png",
+      "prompt": "Historical game illustration, isolated study of a small LEFT hand with grey-blue sleeve cuff. Two states side by side: on left, small beige plaster covers thumb-index web; on right, plaster removed revealing a small PALE completely healed crescent birthmark-like line in same dorsal web position as reference. Back of LEFT hand faces viewer, nails visible, thumb to image right, five fingers, no palm view. Ordinary child's hand, no injury, only hand and clothing cuff, no body or face. Soft even light, plain light grey background, no text.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/grey/grey_左手-v2-r2.png"
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "sha256": "2fee3c0b96f59096fe8e5386605e087ddeee32631316999595639d2c155495f1",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/iris/prompts/iris_左手-v2.txt"
+    },
+    {
+      "name": "iris",
+      "view": "face_anatomy",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-042d3a6c-a484-4330-8965-b178ae445bee.png",
+      "dest": "assets/2d/T-024-人物三视图/iris/iris_face-anatomy-v2.png",
+      "prompt": "A simple painted portrait of an eight-year-old fictional girl for a 1920s storybook. Only her head and shoulders, wearing a grey-blue sailor dress with a cream collar. Short brown bob, natural child facial proportions, grey eyes, neutral expression. Plain light grey background, soft even light, muted colours, finely painted illustration. One ordinary fully clothed portrait, no text, no props.",
+      "refs": [],
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "039291b8cfa5cc52a74e19004563070d206f018cd0fe9e55cf353a3db79c3056",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/iris/prompts/iris_face-anatomy-v2.txt"
+    },
+    {
+      "name": "iris",
+      "view": "face",
+      "src": "/Users/qizhi_dong/.codex/generated_images/01a13a32-acbb-7282-8dd7-82b1450e4651/exec-2d453d61-654d-4dc6-913a-b388c45d7014.png",
+      "dest": "assets/2d/T-024-人物三视图/iris/iris_脸-v2.png",
+      "prompt": "Edit this painted portrait of an eight-year-old fictional storybook girl. Keep same age, facial identity, bob haircut, sailor dress, cream collar, painting style and grey backdrop. For the costume design of the children's game blind man's buff, add a simple cream fabric ribbon over the eyes. Face calm, no restraints or distress. Turn head upright and straight toward camera for a neutral front-view head-and-shoulders character reference. No text.",
+      "refs": [
+        "assets/2d/T-024-人物三视图/iris/iris_face-anatomy-v2.png"
+      ],
+      "size": [
+        1199,
+        1312
+      ],
+      "sha256": "deb04880d27a3eb0d7f0bd40d8ddb086c423562a18a6fd6a0692215d9f483e54",
+      "status": "candidate",
+      "prompt_file": "assets/2d/T-024-人物三视图/iris/prompts/iris_脸-v2.txt"
+    }
+  ],
+  "missing": [
+    "iris front/side/back: image service blocked; Tripo text input prepared, model not generated"
+  ],
+  "all_approved": false,
+  "tool": "Codex built-in imagegen",
+  "date": "2026-10-14",
+  "special_composite": "composite-v1/manifest.json",
+  "chapter_6_choice": "dedicated aligned portraits and fading eye covers",
+  "game_static_image": "godot/art/footage/composite.png"
+}

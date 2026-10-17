@@ -1,0 +1,255 @@
+[
+  {
+    "id": "grey_front",
+    "prompt": "Use case: precise-object-edit. Edit target image 1 grey front v2. Remove ONLY the gold watch chain and its metal attachments from waistcoat, repairing matching dark pinstripe fabric. Keep exact face, age 32, hat, open overcoat, waistcoat cut, pose, body size and framing pixel-consistent with input (head near 2%, soles 96%); reference continuity takes priority over reframing. Add subtle notebook and pencil silhouettes inside waistcoat pocket, not loose objects. One full body front, native 1024x1536 PNG, no panels, text or additional accessories. Plain uniform light grey RGB approx 200,200,205, flat light with no ground shadow. Coat remains fully OPEN.",
+    "refs": [
+      "grey/grey_front-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-ea249e89-bb57-4c15-8d2e-79283fcd248c.png",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_front-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "430ff6004746381e00dcd54e2ed5b2ec9149d0b4a4fd9b6bde6dde26e7b46738",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_front-v4.txt"
+  },
+  {
+    "id": "grey_side",
+    "prompt": "Use case: identity-preserve. Image 1 is corrected definitive FRONT costume; image 2 is old SIDE edit target. Correct image 2 into one strict full-body profile facing image LEFT showing anatomical RIGHT side. Same man, bones, age, fedora, hair, charcoal herringbone long overcoat, pinstripe waistcoat/trousers and shoes. CRITICAL overcoat is UNBUTTONED AND OPEN like image 1: visible separate lapel/front edge and exposed waistcoat and trouser layers along forward-facing torso. No watch chain. Notebook/pencil only on anatomical left breast pocket, naturally hidden from this right profile. Preserve side framing and head/sole baselines of image 2 and height of image1 within2%. Arms down. Plain light grey flat background, flat light, no cast shadows/text/panels. Native 1024x1536 PNG.",
+    "refs": [
+      "grey/grey_front-v4.png",
+      "grey/grey_side-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-03d01b22-73be-4ab7-9089-1b847fc783de.png",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_side-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "ee8ef1f6bca10508ea77c191c7e0034a978f7ea55f29c07be97f6b82bb1b289e",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_side-v4.txt"
+  },
+  {
+    "id": "ambrose_front",
+    "prompt": "Use case: identity-preserve. Edit image1 existing Ambrose full body FRONT. Image2 is underlying shared facial anatomy reference ONLY. Age him to 43-45, unmistakably older than a 32 year old: pronounced SILVER GREY temples, visibly receding hairline, neatly combed BACK side-parted flatter hair (no fluffy waves), clear forehead wrinkles, eye bags and nasolabial folds. CLEAN SHAVEN, NO moustache; no chemical stains. Keep exact nose, cheekbones, jaw and mouth anatomy, no unrelated new face. Slightly heavier settled torso and subtly sloped shoulders; otherwise preserve matching walnut brown herringbone tweed open jacket, matching waistcoat and trousers, rolled ivory sleeves, brown tie, pocket square, hanging pocketwatch AND chains, shoes, A pose and framing. Eyes normal visible and unpainted, internal anatomy reference. Same full body no crop. Native 1024x1536 PNG, light uniform grey backdrop, flat lighting no cast shadows, single view no labels.",
+    "refs": [
+      "ambrose/ambrose_front-v2.png",
+      "底脸.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-61b45a61-2442-412e-b703-bc4cb8829d05.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_front-v4-r1.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "b5438e2874fa31d3a3bc0329c5ba949d39bedb1915f6d82a48f1ee8a8de4171b",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_front-v4-r1.txt"
+  },
+  {
+    "id": "ambrose_front_r2",
+    "prompt": "Use case: precise-object-edit. Edit target Ambrose front image. Correct ONLY hairstyle: short straight hair combed close and smooth BACK with a sharply defined side part, receding at both temples and clearly SILVER WHITE at temples above ears. No wavy curl, no fluffy volume, no tousled quiff. Distinguish this 43 year old estate owner from younger curly-haired detective. Keep clean shaven face, facial bones, existing wrinkles, exact costume, watch, body, pose, scale and framing unchanged. One full body front PNG native1024x1536. No text, flat light grey background.",
+    "refs": [
+      "ambrose/ambrose_front-v4-r1.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-0f88f3ff-ce21-47fb-9b30-b15308cee56c.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_front-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "37d70cbcebd25f99715c6eb04cddce44b75b4dc37c729640cd9cc5dbf0e89738",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_front-v4.txt"
+  },
+  {
+    "id": "gideon_back",
+    "prompt": "Use case: precise-object-edit. Image1 back is edit target, image2 front is costume reference. Correct ONLY rear overalls construction: remove jeans yoke seam and riveted jean back pockets. High backed olive canvas bib-overall rear panel with TWO visible suspender straps emerging from beneath brown waistcoat hem, running down diagonally to attach to high canvas rear waist panel. The straps go under the waistcoat higher up, NOT on top of waistcoat. Clear short exposed lengths on both sides below vest hem. No belt, jean yoke, rivets, extra bags or cargo pockets. Preserve cap, hair, brown waistcoat with adjustment strap, rolled ivory shirt, gloves, build, boots, pose and framing. One strict BACK full body view native1024x1536 PNG, no text, same flat light grey background.",
+    "refs": [
+      "gideon/gideon_back-v2.png",
+      "gideon/gideon_front-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-af51288f-5edf-4da4-a2ce-30bbf63bdcd2.png",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_back-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "2f9d218a2fab033069879e34105b1ae3bed98c155518d57a7f9ee3e499f30d98",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_back-v4.txt"
+  },
+  {
+    "id": "latente_back",
+    "prompt": "Use case: precise-object-edit. Image1 back is edit target; image2 front is exact costume reference. REMOVE ONLY the additional broad scalloped BLACK LACE SHOULDER CAPE covering the upper back. Upper back becomes plain opaque high-collared black dress matching front, with subtle vertical gathers. Keep separate head veil trailing only near head and sides, keep same visible bun, wine-red paisley fringed shawl draped around upper arms and sagging across lower back, gloves, skirt, shoes and pose/framing. Do not add any new shoulder wrap; no scalloped black lace cape remaining across shoulder blades. Single full body BACK PNG native1024x1536. Flat uniform grey background, no shadow/text.",
+    "refs": [
+      "latente/latente_back-v2.png",
+      "latente/latente_front-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-8ae19ebb-c209-40e4-8fbf-96d81bced4b6.png",
+    "file": "assets/2d/T-024-人物三视图/latente/latente_back-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "086fbd7bef3f976d6da90fb502aa0a993c236c75e0db84758c2e7e0cd41d8468",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/latente/prompts/latente_back-v4.txt"
+  },
+  {
+    "id": "ambrose_side",
+    "prompt": "Use case: identity-preserve. Image1 definitive front; image2 old profile is edit target. Correct it to strict RIGHT SIDE profile facing IMAGE LEFT. Same exact 43-45 year old clean shaven Ambrose as corrected front image1: smooth short slicked BACK side-parted hair with receding hairline, SILVER WHITE temples, forehead wrinkles, bags and nasolabial folds. Shared nose cheekbone jaw lip anatomy preserved. No moustache or finger stains. Walnut brown herringbone open jacket and matching waistcoat/trousers, rolled ivory sleeves, tie, watch and chains, pocket square, brown shoes, slightly settled build. Native1024x1536, one full body view, scale/soles same as front, grey background flat light no shadow no text. Arms down, open jacket front edge and waistcoat layers visible; keep watch/chain only where anatomically visible. Pocket square belongs LEFT breast so not visible on camera-facing RIGHT chest.",
+    "refs": [
+      "ambrose/ambrose_front-v4.png",
+      "ambrose/ambrose_side-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-b810f1ef-cfad-4e12-90b9-eaf4ca3f5f84.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_side-v4-r1.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "fce4267b24732d4e9fc349ee0782dffc24da3aef5b102d1619e0f21c14c38d61",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_side-v4-r1.txt"
+  },
+  {
+    "id": "ambrose_back",
+    "prompt": "Use case: identity-preserve. Image1 definitive front; image2 old back is edit target. Correct back to new hairstyle/build matching front. Same exact 43-45 year old clean shaven Ambrose as corrected front image1: smooth short slicked BACK side-parted hair with receding hairline, SILVER WHITE temples, forehead wrinkles, bags and nasolabial folds. Shared nose cheekbone jaw lip anatomy preserved. No moustache or finger stains. Walnut brown herringbone open jacket and matching waistcoat/trousers, rolled ivory sleeves, tie, watch and chains, pocket square, brown shoes, slightly settled build. Native1024x1536, one full body view, scale/soles same as front, grey background flat light no shadow no text. Strict BACK view, rear hair smooth combed back, silver hair around both ears, short neat nape; no fluffy waves. A pose same as old back, fingers relaxed.",
+    "refs": [
+      "ambrose/ambrose_front-v4.png",
+      "ambrose/ambrose_back-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-31561b81-10d6-4c48-b7de-3246f2b19afe.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_back-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "3c1603e3af7586774e27038e8f4fb60684898d55fd5a72b7b5b19b8ea13098cc",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_back-v4.txt"
+  },
+  {
+    "id": "ambrose_face",
+    "prompt": "Use case: identity-preserve. Image1 definitive full body is exact current identity/hairstyle/age authority. Image2 old closeup edit target, image3 shared anatomy. Make one large head/shoulders frontal portrait of this SAME man: smooth straight short hair slicked BACK, definite side part, receding temples, SILVER WHITE temple hair, forehead lines, nasolabial folds, visible eye bags. Reads43-45 older than detective32; NOT elderly. Clean shaven NO moustache. Normal open eyes no white paint. Exact same face bone proportions nose mouth jaw. Same brown tweed collar ivory shirt tie, grey background flat light. Native square1254x1254PNG, no text/panels.",
+    "refs": [
+      "ambrose/ambrose_front-v4.png",
+      "ambrose/ambrose_脸-v2.png",
+      "底脸.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-40d33176-e7d0-4c04-ac0f-074a68916c90.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_脸-v4.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "ed662754c99cfa1da448e3bc4c036e238add5007b5830317ab7bfc24940c3202",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_脸-v4.txt"
+  },
+  {
+    "id": "ambrose_hand",
+    "prompt": "Use case: identity-preserve. Image1 is anatomical LEFT hand and shared healed crescent scar placement reference, edit target. Create Ambrose's left hand age43, back of hand outward, fingers relaxed straight, thumb spread, exact same pale healed crescent scar at dorsal thumb-index web, same location size and orientation. Replace dark detective cuff with rolled IVORY shirt cuff with walnut tweed sleeve edge matching image2. Bare hand no rings/gloves no stains no blood no injury. One hand only isolated, wrist and fingertips fully framed, no body/face. Neutral light grey background, realistic painted concept style, native1254x1254PNG no panels/text.",
+    "refs": [
+      "grey/grey_左手-v2-r2.png",
+      "ambrose/ambrose_front-v4.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-04680b99-45b4-4d6e-84a1-debce8267f38.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_左手-v4.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "e1f407c6d69c91e636217754e5a693c64b984935fdee7c5b0e0c70bfa749b444",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_左手-v4.txt"
+  },
+  {
+    "id": "grey_side_hidden",
+    "prompt": "Use case: precise-object-edit. Edit target corrected profile. Change ONLY entire face to deep unlit black shadow matching supporting image2. No discernible eyes/nose/lips within shadow, retain outer facial silhouette, hair, visible ear and hat. No mask, blindfold, paint or added objects. Keep open coat, visible waistcoat layers, no chain, same pose and all costume pixels/framing. Single full body facing left native1024x1536 PNG.",
+    "refs": [
+      "grey/grey_side-v4.png",
+      "grey/grey_side-v3.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-35e5b5d3-d5cc-4f92-85dd-1adf1cca9b10.png",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_side-v4-隐脸.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "5ef84fff1c1746bd737d5788e3733b5aaab1acff9aac8817dea03c772aeb0e1d",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_side-v4-隐脸.txt"
+  },
+  {
+    "id": "grey_front_hidden",
+    "prompt": "Use case: precise-object-edit. Change ONLY entire face of image1 to featureless deep unlit black shadow under hat for mystery presentation. No eyes/nose/mouth discernible, retain outer face silhouette, hair ears hat. No mask/cloth/paint or new objects. Keep corrected chain-free open coat waistcoat notebook/pencil, full body pose, exact framing. One front native1024x1536PNG.",
+    "refs": [
+      "grey/grey_front-v4.png",
+      "grey/grey_side-v3.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-eada8e59-e827-4620-b93c-7703b4ae77dc.png",
+    "file": "assets/2d/T-024-人物三视图/grey/grey_front-v4-隐脸.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "7db90d6574d697620e202bb30506db79400d7cc275ca515cdba57dc91afacf37",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/grey/prompts/grey_front-v4-隐脸.txt"
+  },
+  {
+    "id": "gideon_front",
+    "prompt": "Use case: precise-object-edit. Edit ONLY visible lower face/neck age in target: read as weathered outdoor labourer aged45-48, darker sun-weathered skin, salt-and-pepper rough stubble on chin jaw and upper lip, pronounced nasolabial folds and leathery texture. Keep same underlying nose lip chin bone shape, no facial expression change. Eye-covering low cap brim unchanged. EXACT existing burly build, overalls waistcoat shirt gloves boots and A pose/frame unchanged. One front full body native1024x1536PNG, grey background, no text.",
+    "refs": [
+      "gideon/gideon_front-v2.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-e372932d-b1dc-480d-99d0-a20526835b12.png",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_front-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "5ac28bf13b5e0b59fe72c61ff385a2909de106580705d82fceb7ef560a08fe56",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_front-v4.txt"
+  },
+  {
+    "id": "ambrose_side_r2",
+    "prompt": "Use case: identity-preserve. Edit target image1 current Ambrose profile: correct orientation. His NOSE must point toward the LEFT edge of the picture, and the BACK OF HIS HEAD on the RIGHT. Feet and toes point picture LEFT too. Show same man from opposite side, with unchanged age43, receding smooth slicked back parted hair, silver-white temples, wrinkles, clean shaven facial anatomy, exact tweed suit and rolled sleeves. Pocket square on anatomical LEFT breast is hidden from this side; hanging watch/chain visible only if plausible. Body fully in frame and SAME height as reference front image2, head at35px soles1465px in1024x1536 canvas. One single profile ONLY. Native1024x1536PNG. Plain neutral light grey (not blue), flat light. No text/panels.",
+    "refs": [
+      "ambrose/ambrose_side-v4-r1.png",
+      "ambrose/ambrose_front-v4.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-0e7ddeb0-8bdd-4082-bac3-f77cad9332f6.png",
+    "file": "assets/2d/T-024-人物三视图/ambrose/ambrose_side-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "c2c166834e14eda32df015eafe6676a5259fc897ba16d2b469b5d769920a3a3c",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/ambrose/prompts/ambrose_side-v4.txt"
+  },
+  {
+    "id": "gideon_side",
+    "prompt": "Use case: precise-object-edit. Image1 old SIDE is edit target. Correct ONLY two continuity defects: REMOVE the jeans-style rear patch pocket and rivets visible behind hip, replace with unbroken olive canvas matching corrected back image2. Keep normal front hip pocket. Also give visible lower face same age45 weathered skin with short dark/grey stubble on chin/jaw, nasolabial folds, still eyes fully hidden by LOW cap brim. Preserve existing face bones, hair cap, massive body, canvas gloves, brown waistcoat, rolled ivory shirt, overalls, boots, exact side pose facing picture LEFT and framing. Short rear suspender segment only where it emerges under waistcoat matching image2. Single full body LEFT-FACING profile native1024x1536PNG, same grey background, no text/panels.",
+    "refs": [
+      "gideon/gideon_side-v2.png",
+      "gideon/gideon_back-v4.png"
+    ],
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a13e76-99e7-7403-905f-7cf5bb7caaf6/exec-591d9992-314e-442c-a3ee-b9e592759698.png",
+    "file": "assets/2d/T-024-人物三视图/gideon/gideon_side-v4.png",
+    "dimensions": [
+      1024,
+      1536
+    ],
+    "sha256": "b76d873c2ae06db2affc1ac25d12aded6846e7e192806325e21e8695a34e121d",
+    "format": "PNG",
+    "prompt_file": "assets/2d/T-024-人物三视图/gideon/prompts/gideon_side-v4.txt"
+  }
+]

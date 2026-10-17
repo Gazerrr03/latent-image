@@ -50,7 +50,7 @@ RULES = """
 ## 附二：美术共同基准
 
 1. **时代**：1926 年秋，英格兰乡间庄园；克制的黑色电影。胡桃木、黄铜、丝绒、纸张；暖色点光源与大面积暗部。
-2. **眼睛**：除侦探外，所有人的眼睛都被遮住；侦探从不出现在画面和镜子里，直到最后。
+2. **眼睛**：正常演出中除侦探外都隐藏眼睛。安布罗斯的照片眼部涂白，模型本体不涂白，倒地时用脸朝地或手臂遮脸。侦探从不出现在画面和镜子里，直到最后。
 3. **同一道疤、同一张脸**：六个人左手虎口同一位置有新月形旧疤，各自用不同的东西遮住；六张脸从同一张底脸变化出来。
 4. **钟停在七点**：有钟的地方都停在七点整，只画出来，不写字。
 5. **同一画面只有一个人**：这些人物从不同时出现在同一个镜头里。
@@ -134,6 +134,9 @@ def plan_svg(rid):
 CSS = """
 @page { size: A4; margin: 16mm 14mm; }
 body { font-family: "PingFang SC", "Songti SC", sans-serif; font-size: 10.5pt; line-height: 1.6; color: #1f1a14; }
+h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+tr { break-inside: avoid; page-break-inside: avoid; }
+table:first-of-type th:first-child, table:first-of-type td:first-child { min-width: 4em; }
 h1 { font-size: 18pt; border-bottom: 2px solid #2b2420; padding-bottom: 6px; }
 h2 { font-size: 13pt; margin-top: 22px; color: #5b2a1a; border-left: 4px solid #8a5a3a; padding-left: 8px; }
 table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 9.5pt; }
@@ -186,7 +189,7 @@ def build(card_path):
     if rid:
         svg, legend = plan_svg(rid)
         plan = f'<div class="plan"><h2>参考平面草图：{rooms[rid]["name"]}</h2><p class="meta">按游戏里现在的灰盒布局自动画出，只是起点：尺寸、家具、门窗都可以重新设计；可检查物件的编号、机位要保留（位置可以挪，挪了在你的平面图上标出）。</p>{svg}{legend}</div>'
-    doc = f'<!doctype html><html><head><meta charset="utf-8"><title>{tid}</title><style>{CSS}</style></head><body>{h}{plan}<p class="meta">《奥瑞尔庄园》美术任务派发单 · 2026-10-13</p></body></html>'
+    doc = f'<!doctype html><html><head><meta charset="utf-8"><title>{tid}</title><style>{CSS}</style></head><body>{h}{plan}<p class="meta">《奥瑞尔庄园》美术任务派发单 · 以任务卡正文为准</p></body></html>'
     base = os.path.splitext(fname)[0]
     hp = os.path.join(OUT, base + ".html")
     open(hp, "w", encoding="utf-8").write(doc)
