@@ -367,9 +367,11 @@ func interlude(lines: Array) -> void:
 		lb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		lb.custom_minimum_size.x = 760
 		if l.get("title", false):
+			# 标题是本章的诗句（docs/02 第 9.1 节），比正文大，下面空出一段
 			lb.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-			lb.add_theme_font_size_override("font_size", 20)
-			lb.add_theme_color_override("font_color", Color("#9c917c"))
+			lb.add_theme_font_size_override("font_size", 34)
+			lb.add_theme_color_override("font_color", Color("#e8dcc0"))
+			lb.custom_minimum_size.y = 72
 		else:
 			lb.add_theme_font_size_override("font_size", 23)
 			lb.add_theme_color_override("font_color", Color("#e8dcc0"))
@@ -380,7 +382,7 @@ func interlude(lines: Array) -> void:
 		await f.finished
 		if not interlude_layer.visible:
 			return
-		await wait_seconds(0.6 if l.get("title", false) else 0.9)
+		await wait_seconds(1.4 if l.get("title", false) else 0.9)
 	create_tween().tween_property(interlude_more, "modulate:a", 1.0, 0.4)
 	_typing = null
 	_waiting = true
