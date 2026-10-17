@@ -4,7 +4,7 @@
 const ACTIONS := [
 	"wait", "leak", "objective", "collect", "inspect",
 	"annotate", "inquire", "link", "say", "telling", "develop",
-	"goto", "fx", "footage", "osd", "reveal", "conceal",
+	"goto", "fx", "footage", "osd", "reveal", "conceal", "recap",
 ]
 
 

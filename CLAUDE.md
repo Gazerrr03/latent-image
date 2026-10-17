@@ -32,14 +32,16 @@ $G --headless --path godot -- --autoplay                # 两种讲法都要跑�
 $G --headless --path godot -- --autoplay --view=取代
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=C2-05 --wait=4 --out=/tmp/x.png
-# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--view=保护|取代（强制终局倾向）
+# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--examine=ev_xxx（打开证据板检视一张证据）、--view=保护|取代（强制终局倾向）
+# 4. 关卡碰撞体检（改了关卡场景或模型后跑）：用玩家本身从出生点向各方向走，看会不会掉下去
+$G --headless --path godot --script res://tools/probe_walk.gd -- --level=hall --dirs=8
 ```
 
 macOS 没有 `timeout` 命令，长时间运行时用 `perl -e 'alarm(120); exec(@ARGV)' <命令>` 防止卡住。
 
 Godot MCP 已在 `.mcp.json` 配置（Coding-Solo/godot-mcp）：可启动编辑器、运行项目、读取调试输出；没有截图功能，截图用上面的 `--capture`。
 
-游戏内按 F1 打开调试面板：跳镜号、按章跳转、切终局倾向、切渗漏等级、重载表格、从头开始。
+游戏内按 F1 打开调试面板：跳镜号、按章跳转、切终局倾向、切渗漏等级、重载表格、从头开始。按 Tab 翻开证据板，点卡片检视。
 
 ## Git
 

@@ -9,6 +9,8 @@ const LEANS := ["保护", "取代"]
 
 var shot := ""
 var evidence: Array = []
+## 每条证据是在哪一镜收进来的：章末复盘按章列出“今天找到的”
+var found_at := {}
 var inspected: Array = []
 var links_done: Array = []
 ## 连对的证据对 [[a, b], ...]，证据板上画红线用
@@ -31,6 +33,7 @@ var persist := true
 func reset() -> void:
 	shot = ""
 	evidence = []
+	found_at = {}
 	inspected = []
 	links_done = []
 	link_pairs = []
@@ -65,6 +68,7 @@ func vars() -> Dictionary:
 func add_evidence(id: String) -> void:
 	if id != "" and not evidence.has(id):
 		evidence.append(id)
+		found_at[id] = shot
 		changed.emit()
 
 
@@ -87,7 +91,7 @@ func set_leak(level: int) -> void:
 
 func to_dict() -> Dictionary:
 	return {
-		"version": 2, "shot": shot, "evidence": evidence, "inspected": inspected,
+		"version": 2, "shot": shot, "evidence": evidence, "found_at": found_at, "inspected": inspected,
 		"links_done": links_done, "link_pairs": link_pairs, "leak_level": leak_level, "tendency": tendency,
 		"journal": journal, "objective": objective, "ending": ending, "statement": statement, "container": container,
 	}
@@ -97,6 +101,7 @@ func from_dict(d: Dictionary) -> void:
 	reset()
 	shot = d.get("shot", "")
 	evidence = d.get("evidence", [])
+	found_at = d.get("found_at", {})
 	inspected = d.get("inspected", [])
 	links_done = d.get("links_done", [])
 	link_pairs = d.get("link_pairs", [])

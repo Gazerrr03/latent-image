@@ -7,55 +7,55 @@ C0-05,C0,*,hall,hall_mid,,clock_tick,门厅里挂着一面镜子。镜子里有�
 C0-06,C0,*,hall,hall_mid,,clock_tick,她说，晚饭时暗房的计时铃响了两次，他还在工作。\n到了十点，他还没有出来。,,,,
 C0-07,C0,*,darkroom,door_push,,door_bang;red_hum,园丁吉迪恩撞开了门。我第一个走进暗房。\n红灯还亮着。安布罗斯倒在显影台边。显影盘里泡着一张全黑的相纸。\n门闩是从里面闩上的。,,reveal(尸体);wait(2),,“我第一个走进暗房”是真话；不得写“第一次进入暗房”（docs/02 第 11 节）
 C0-08,C0,*,darkroom,wide,,red_hum,医生说，是冲洗药剂的意外。警察点了头。\n康斯坦斯请我留下来，住到下星期六验尸官开庭的那一天。,,reveal(尸体),,开庭日 10-23 即终局，也是留宿的理由
-C0-09,C0,*,guest_room,typewriter_close,,typewriter_return,那一夜，我在客房的打字机上打下第一页记录：\n“十月十六日。九点，我到达奥瑞尔庄园。十点，园丁撞开暗房的门。安布罗斯·塔尔博特死了。”,,collect(ev_record_c0),,S6-08①：七点到九点之间，一个字也没有
+C0-09,C0,*,guest_room,typewriter_close,,typewriter_return,那一夜，我在客房的打字机上打下第一页记录：\n“十月十六日。九点，我到达奥瑞尔庄园。十点，园丁撞开暗房的门。安布罗斯·塔尔博特死了。”,,collect(ev_record_c0);recap(r0),,S6-08①：七点到九点之间，一个字也没有
 C1-01,C1,*,guest_room,establish,,birds_morning,十月十七日，星期日。\n我在客房醒来。窗外是花园，花园那头是温室。\n早饭时，康斯坦斯说：“验尸官下星期六开庭。在那之前，请您查清楚。”,,leak(0);objective(认识这张书桌。),,
-C1-02,C1,*,guest_room,,walk,clock_tick,,,"inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed,hs_mirror_guest)",,引导：书桌上的三样东西各管什么（docs/01 第 3 节）；镜子里没有格雷
-C1-03,C1,*,darkroom,,walk,red_hum,,,"objective(看看暗房。);inspect(hs_tray,hs_bottles,hs_vent_inside,hs_camera,hs_clock_dark)",,ev_tray_black（S4-02①）与 ev_typed_labels（S2-02①）可以在这里先拿到
+C1-02,C1,*,guest_room,,walk,clock_tick,,,"objective(先认认客房里的东西：书桌、床、镜子。);inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed,hs_mirror_guest)",,引导：书桌上的三样东西各管什么（docs/01 第 3 节）；镜子里没有格雷
+C1-03,C1,*,darkroom,,walk,red_hum,,,"objective(暗房：他是怎么死的？屋里有哪些东西不对劲？);inspect(hs_tray,hs_bottles,hs_vent_inside,hs_camera,hs_clock_dark)",,ev_tray_black（S4-02①）与 ev_typed_labels（S2-02①）可以在这里先拿到
 C1-04,C1,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c1),,
-C1-05,C1,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
-C2-01,C2,*,guest_room,establish,,birds_morning,十月十八日，星期一。,,objective(问问这家人。),,
+C1-05,C1,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r1),,一章结束：睡下 → 黑场复盘 → 下一章早晨醒来（docs/01 第 4 节）
+C2-01,C2,*,guest_room,establish,,birds_morning,十月十八日，星期一。,,objective(问问这家人：餐厅的康斯坦斯、温室的吉迪恩、楼上的艾瑞斯。),,
 C2-02,C2,*,dining,dining_mid,,clock_tick,,人物口吻,say(c2_constance);inquire(c2_ask_constance),,一对一：画面里只有康斯坦斯
 C2-03,C2,*,greenhouse,green_mid,,rain_glass,,人物口吻,say(c2_gideon);collect(ev_testimony_vent);inquire(c2_ask_gideon),,S2-03①
 C2-04,C2,*,child_room,child_mid,,music_box,,人物口吻,say(c2_iris);collect(ev_rhyme),,儿歌（S3-03①）；“没有脸的叔叔”只说半句
-C2-05,C2,*,garden,,walk,wind,,,"objective(暗房外面，通风口那一侧。);inspect(hs_vent_print,hs_vent_louver)",,S2-01①
-C2-06,C2,*,guest_room,board,,pin,,,objective(有人做了手脚吗？);link(d1),,
+C2-05,C2,*,garden,,walk,wind,,,"objective(绕到暗房外墙下：那个“从没关过”的通风口，从外面能堵上吗？);inspect(hs_vent_print,hs_vent_louver)",,S2-01①
+C2-06,C2,*,guest_room,board,,pin,,,objective(证据板：暗房里外，哪两样东西说明有人做了手脚？);link(d1),,
 C2-07,C2,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c2),,
-C2-08,C2,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
-C3-01,C3,*,guest_room,establish,,birds_morning,十月十九日，星期二。,,leak(1);objective(安布罗斯的照片档案。),,
+C2-08,C2,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r2),,一章结束：睡下 → 黑场复盘 → 下一章早晨醒来（docs/01 第 4 节）
+C3-01,C3,*,guest_room,establish,,birds_morning,十月十九日，星期二。,,leak(1);objective(照片档案室：合影里多出来的那些人，在这里留下过什么？),,
 C3-02,C3,*,archive,,walk,clock_tick,,,"inspect(hs_photos,hs_ledger,hs_doorframe,hs_clipping)",,S3-01①、S3-02②、S3-04①
 C3-03,C3,*,dining,table_close,,cutlery,午饭时，康斯坦斯在桌上多摆了一副餐具。我问她给谁摆的。\n“摆错了。”她说，把它收走了。,,,,S3-03③（画面细节，不入证据板）
 C3-04,C3,*,seance,seance_mid,,candle,晚上，拉坦特夫人在客厅点起蜡烛。她说，要问问照片里多出来的那些人。,人物口吻,say(c3_seance),,
 C3-05,C3,*,seance,seance_mid,,chime_modern,她醒过来，问我们刚才她说了什么。没有人回答她。,,,,上层露出 2/4：“有人在看着我们。稳定率已经很低了。”在 c3_seance 台词里
-C3-06,C3,*,guest_room,board,,pin,,,objective(怪谈是真的吗？);link(d2),,
+C3-06,C3,*,guest_room,board,,pin,,,objective(证据板：哪些东西还记得那些被忘掉的人？);link(d2),,
 C3-07,C3,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c3),,
-C3-08,C3,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C3-08,C3,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r3),,一章结束：睡下 → 黑场复盘 → 下一章早晨醒来（docs/01 第 4 节）
 C4-01,C4,*,guest_room,establish,,birds_morning,十月二十日，星期三。,,leak(1);objective(谁有机会？),,
 C4-02,C4,*,greenhouse,green_mid,,rain_glass,吉迪恩把药房的签收单拍在桌上。“药是我买的。我买的是对的。”\n康斯坦斯说过，安布罗斯本来打算下个月辞退他。,人物口吻,collect(ev_receipt);say(c4_gideon),,主要误导；S4-04①
-C4-03,C4,*,darkroom,,walk,red_hum,,,"objective(那两声铃。);inspect(hs_bell,hs_tray)",,S4-01①、S4-02①
+C4-03,C4,*,darkroom,,walk,red_hum,,,"objective(暗房：晚饭时那两声铃，真能说明他还活着吗？);inspect(hs_bell,hs_tray)",,S4-01①、S4-02①
 C4-04,C4,*,dining,dining_mid,,clock_tick,,人物口吻,say(c4_constance);collect(ev_glass_815),,S4-03①
-C4-05,C4,*,guest_room,board,,pin,,,objective(他是什么时候死的？);link(d3),,
+C4-05,C4,*,guest_room,board,,pin,,,objective(证据板：那两声铃之外，还有什么能说明他是几点倒下的？);link(d3),,
 C4-06,C4,*,guest_room,typewriter_close,,typewriter_return,所有人的不在场证明都作废了。\n只有一件事没有变：九点，我到达奥瑞尔庄园。,,,,《罗杰疑案》时刻：真话，省略七点
 C4-07,C4,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c4),,
-C4-08,C4,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
-C5-01,C5,*,guest_room,establish,,birds_morning,十月二十一日，星期四。,,leak(2);objective(这家人有什么不对。),,
+C4-08,C4,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r4),,一章结束：睡下 → 黑场复盘 → 下一章早晨醒来（docs/01 第 4 节）
+C5-01,C5,*,guest_room,establish,,birds_morning,十月二十一日，星期四。,,leak(2);objective(这家人有什么不对：先看看书桌上这几天收到的字。),,
 C5-02,C5,*,guest_room,,walk,clock_tick,,,"inspect(hs_handwriting,hs_drawer)",,S5-01①；另一位侦探的笔记（S5-03 甲，L1 主要载体）
 C5-03,C5,*,greenhouse,green_mid,,water_pump,吉迪恩在井边摘下手套洗手。他左手的虎口上，有一道新月形的旧疤。,,collect(ev_scar),,S5-02①
 C5-04,C5,*,child_room,child_mid,,music_box,艾瑞斯给我看她画的全家福：爸爸、妈妈、吉迪恩、夫人，还有她自己。\n每个人都长着同一张脸。,,collect(ev_iris_portrait),,S5-04①
-C5-05,C5,*,archive,,walk,clock_tick,,,"inspect(hs_manual,hs_photo_back)",,S5-05①；上层露出 3/4：合影背面的 #{容器号} / 12  SYNC
-C5-06,C5,*,guest_room,board,,pin,,,objective(他们是谁？);link(d4),,
+C5-05,C5,*,archive,,walk,clock_tick,,,"objective(照片档案室：一张合影里，怎么会多出一个人？);inspect(hs_manual,hs_photo_back)",,S5-05①；上层露出 3/4：合影背面的 #{容器号} / 12  SYNC
+C5-06,C5,*,guest_room,board,,pin,,,objective(证据板：这家人的字、手和脸，有什么是一样的？);link(d4),,
 C5-07,C5,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c5),,
-C5-08,C5,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C5-08,C5,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r5),,一章结束：睡下 → 黑场复盘 → 下一章早晨醒来（docs/01 第 4 节）
 C6-01,C6,*,guest_room,establish,,clock_tick,十月二十二日，星期五。\n抽屉里那叠笔记，有一页反复写着同一句话：“去冲洗那张底片。”,,leak(3);objective(去冲洗那张底片。),,
 C6-02,C6,*,darkroom,tray,,red_hum;liquid,三脚架上的相机里，还留着安布罗斯拍下的最后一张底片。,,develop(composite.png);collect(ev_composite),,S6-06：固定情节，玩家亲手冲洗
 C6-03,C6,*,darkroom,tray,,red_hum,是叠印。全家所有人的肖像叠在一起，叠出来的不是一张模糊的脸。\n是一张清晰的脸。我认得这张脸。,,,,
 C6-04,C6,*,archive,archive_mid,,page_turn,底片簿的最后一页，安布罗斯在十月十三日写道：\n“叠印做出来了，只有一张脸。\n星期日早上，我要把这张照片拿给他们每一个人看。看过的人就会想起来，我们原本是谁，那年秋天发生了什么。\n然后这个家就不需要这么多人了。彭罗斯、索尔特、卢西恩是怎么走的，其他人也会怎么走。\n我会先给格雷看。他最不愿意想起来。”,,collect(ev_ledger_last),,动机（固定情节，不进槽位池）。docs/02 第 8 节
-C6-05,C6,*,guest_room,,walk,clock_tick,,,"objective(七点。);inspect(hs_coat,hs_shoes,hs_fireplace,hs_waistcoat)",,S6-01①、S6-02②、S6-03①、S6-05①：七点的痕迹都在客房里
+C6-05,C6,*,guest_room,,walk,clock_tick,,,"objective(七点：我自己的东西里，有没有那天晚上的痕迹？);inspect(hs_coat,hs_shoes,hs_fireplace,hs_waistcoat)",,S6-01①、S6-02②、S6-03①、S6-05①：七点的痕迹都在客房里
 C6-06,C6,*,child_room,child_mid,,music_box,,人物口吻,say(c6_iris);collect(ev_iris_before_bell),,S6-04①
-C6-07,C6,*,guest_room,board,,pin,,,objective(我是什么时候到的？);link(d5),,
+C6-07,C6,*,guest_room,board,,pin,,,objective(证据板：在我身上找到的这些东西，说明我是几点来的？);link(d5),,
 C6-08,C6,*,guest_room,typewriter_close,,typewriter,,,inspect(hs_typewriter_test),,S6-07①
-C6-09,C6,*,guest_room,board,,pin,,,objective(是谁？);link(d6),,
+C6-09,C6,*,guest_room,board,,pin,,,objective(证据板：叠印里的那张脸，和我写下的记录，放在一起看。);link(d6),,
 C6-10,C6,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c6),,
-C6-11,C6,*,guest_room,bed,,clock_tick,我没有睡。,,wait(1),,一章结束：睡下，下一章早晨醒来（docs/01 第 4 节）
+C6-11,C6,*,guest_room,bed,,clock_tick,我没有睡。,,wait(1);recap(r6),,一章结束：睡下 → 黑场复盘 → 下一章早晨醒来（docs/01 第 4 节）
 C7-01,C7,*,guest_room,establish,,clock_tick,十月二十三日，星期六。验尸官今天开庭。\n我坐在打字机前，写最后一份记录。,,leak(4),,
 C7-02,C7,*,guest_room,typewriter_close,,typewriter,,,telling(n7_telling),,两种讲法：玩家一路的记录决定哪一种先出现在纸上，由玩家选（docs/02 第 9.3 节）
 C7-03,C7,*,guest_room,mirror,,clock_tick,我走到镜子前。\n镜子里有人。,,reveal(镜中的格雷);wait(2),,全游戏第一次照出格雷

@@ -28,6 +28,7 @@ var objective_label: Label
 var toast_label: Label
 var hint_label: Label
 var progress_label: Label
+var checklist_box: VBoxContainer
 var crosshair: Label
 var board: Control
 var develop_layer: ColorRect
@@ -35,6 +36,9 @@ var develop_image: TextureRect
 var develop_label: Label
 var fx: CanvasLayer
 var footage: CanvasLayer
+var interlude_layer: ColorRect
+var interlude_box: VBoxContainer
+var interlude_more: Label
 
 
 func _ready() -> void:
@@ -103,9 +107,16 @@ func _ready() -> void:
 	progress_label = _label(root, Control.PRESET_TOP_LEFT, 18)
 	progress_label.offset_left = 24
 	progress_label.offset_top = 24
+	# 自由检查时的观察清单：这一轮要看的每样东西，一句带方向的问题；看过的变暗、打勾
+	checklist_box = VBoxContainer.new()
+	checklist_box.position = Vector2(24, 54)
+	checklist_box.add_theme_constant_override("separation", 6)
+	checklist_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(checklist_box)
 	crosshair = _label(root, Control.PRESET_CENTER, 18)
 	crosshair.text = "·"
 
+	_build_interlude(root)
 	GameState.changed.connect(_refresh)
 	_refresh()
 
@@ -189,6 +200,30 @@ func _build_develop(root: Control) -> void:
 	develop_layer.hide()
 
 
+## 章末黑场：盖在所有界面之上，中间一列字幕
+func _build_interlude(root: Control) -> void:
+	interlude_layer = ColorRect.new()
+	interlude_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	interlude_layer.color = Color.BLACK
+	interlude_layer.mouse_filter = Control.MOUSE_FILTER_STOP
+	root.add_child(interlude_layer)
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	interlude_layer.add_child(center)
+	interlude_box = VBoxContainer.new()
+	interlude_box.custom_minimum_size.x = 760
+	interlude_box.add_theme_constant_override("separation", 18)
+	center.add_child(interlude_box)
+	interlude_more = Label.new()
+	interlude_more.text = "▸"
+	interlude_more.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	interlude_more.position = Vector2(-90, -80)
+	interlude_more.add_theme_color_override("font_color", Color("#8a8070"))
+	interlude_layer.add_child(interlude_more)
+	interlude_layer.hide()
+
+
 # ───────────── Director 调用的接口 ─────────────
 
 func show_text(text: String) -> void:
@@ -247,6 +282,8 @@ func cancel() -> void:
 	_resolved.emit(-1)
 	board.cancel()
 	develop_layer.hide()
+	interlude_layer.hide()
+	interlude_box.modulate.a = 1.0
 	if footage:
 		footage.cancel()
 
@@ -306,6 +343,63 @@ func develop(image: String) -> void:
 	set_hud(true)
 
 
+## 一章结束：画面暗下去，字幕一行一行浮出来（当天的复盘），点击后黑场慢慢退去，进入下一镜。
+## lines：[{text, title}]，title = true 的一行是顶上的日期
+func interlude(lines: Array) -> void:
+	if Director.autoplay:
+		for l in lines:
+			print("  ▬ ", String(l["text"]).replace("\n", "\n  ▬ "))
+		return
+	_release_mouse()
+	set_hud(false)
+	for c in interlude_box.get_children():
+		c.queue_free()
+	interlude_more.modulate.a = 0.0
+	interlude_layer.modulate.a = 0.0
+	interlude_layer.show()
+	var t := create_tween()
+	t.tween_property(interlude_layer, "modulate:a", 1.0, 1.4)
+	await t.finished
+	await wait_seconds(0.5)
+	for l in lines:
+		var lb := Label.new()
+		lb.text = l["text"]
+		lb.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		lb.custom_minimum_size.x = 760
+		if l.get("title", false):
+			lb.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			lb.add_theme_font_size_override("font_size", 20)
+			lb.add_theme_color_override("font_color", Color("#9c917c"))
+		else:
+			lb.add_theme_font_size_override("font_size", 23)
+			lb.add_theme_color_override("font_color", Color("#e8dcc0"))
+		lb.modulate.a = 0.0
+		interlude_box.add_child(lb)
+		var f := create_tween()
+		f.tween_property(lb, "modulate:a", 1.0, 1.0)
+		await f.finished
+		if not interlude_layer.visible:
+			return
+		await wait_seconds(0.6 if l.get("title", false) else 0.9)
+	create_tween().tween_property(interlude_more, "modulate:a", 1.0, 0.4)
+	_typing = null
+	_waiting = true
+	await _resolved
+	_waiting = false
+	var out := create_tween()
+	out.tween_property(interlude_box, "modulate:a", 0.0, 0.8)
+	await out.finished
+	set_hud(true)
+	_restore_mouse()
+	# 黑场在下一镜开始以后才退去：早晨的画面从黑里慢慢亮起来
+	var lift := create_tween()
+	lift.tween_interval(0.4)
+	lift.tween_property(interlude_layer, "modulate:a", 0.0, 2.0)
+	lift.tween_callback(func():
+		interlude_layer.hide()
+		interlude_box.modulate.a = 1.0)
+
+
 func wait_seconds(sec: float) -> void:
 	await get_tree().create_timer(sec).timeout
 
@@ -329,13 +423,28 @@ func set_progress(done: int, total: int) -> void:
 	progress_label.text = "" if total == 0 else "手记 %d / %d" % [done, total]
 
 
+## items：[{text, done}]；空数组清掉清单
+func set_checklist(items: Array) -> void:
+	for c in checklist_box.get_children():
+		c.queue_free()
+	for it in items:
+		var l := Label.new()
+		l.text = ("✓  " if it["done"] else "·  ") + String(it["text"])
+		l.add_theme_font_size_override("font_size", 17)
+		l.add_theme_color_override("font_color", Color("#8f8778") if it["done"] else Color("#efe3c6"))
+		l.add_theme_color_override("font_shadow_color", Color.BLACK)
+		l.add_theme_constant_override("shadow_offset_x", 1)
+		l.add_theme_constant_override("shadow_offset_y", 1)
+		checklist_box.add_child(l)
+
+
 func set_hint(text: String) -> void:
 	hint_label.text = text
 
 
 ## 播放影像档案、冲洗底片时隐藏目标、提示等界面
 func set_hud(on: bool) -> void:
-	for n in [objective_label, hint_label, progress_label, toast_label, crosshair]:
+	for n in [objective_label, hint_label, progress_label, checklist_box, toast_label, crosshair]:
 		n.visible = on
 	if on:
 		_refresh()
@@ -349,6 +458,24 @@ func set_cinematic(on: bool) -> void:
 
 
 # ───────────── 输入 ─────────────
+
+## Tab：随时翻开证据板，一张一张拿起来看（不在问话、选项、读字的时候）
+func _unhandled_input(event: InputEvent) -> void:
+	if not (event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_TAB):
+		return
+	if board.visible or _waiting or choice_panel.visible or develop_layer.visible or interlude_layer.visible or Director.autoplay:
+		return
+	if footage and footage.active:
+		return
+	get_viewport().set_input_as_handled()
+	_release_mouse()
+	objective_label.visible = false
+	Director.world.set_frozen(true)
+	await board.browse()
+	Director.world.set_frozen(false)
+	objective_label.visible = true
+	_restore_mouse()
+
 
 func _input(event: InputEvent) -> void:
 	if not _waiting:

@@ -86,7 +86,7 @@ func _arg(prefix: String) -> String:
 	return ""
 
 
-## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--fx=纪录片片头] [--clean] [--play=片头_怪谈] [--view=取代] [--out=/tmp/x.png]
+## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--examine=ev_id] [--fx=纪录片片头] [--clean] [--play=片头_怪谈] [--view=取代] [--out=/tmp/x.png]
 ## 跳到指定镜号，等画面稳定后截图并退出。供 agent 自查画面用。
 func _capture(shot_id: String) -> void:
 	GameState.reset()
@@ -108,6 +108,12 @@ func _capture(shot_id: String) -> void:
 		var usable := pairs.filter(func(p): return GameState.evidence.has(p["a"]) and GameState.evidence.has(p["b"]))
 		Director.ui.footage.cancel()
 		Director._link_hint("d1", ["ev_letter_p1", "ev_vent_print"], usable, int(_arg("--hint-test=")))
+	if _arg("--examine=") != "":
+		# 截图自查：打开证据板，把一张证据拿起来看
+		await get_tree().create_timer(1.0).timeout
+		if not Director.ui.board.visible:
+			Director.ui.board.open("证据板")
+		Director.ui.board.examine(_arg("--examine="))
 	if _arg("--play=") != "":
 		await get_tree().process_frame
 		Director.ui.footage.play_clip(_arg("--play="))

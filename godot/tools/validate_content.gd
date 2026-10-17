@@ -329,7 +329,7 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"link":
 			if args.is_empty() or not links.has(args[0]):
 				err("镜头表", id, "连线组 %s 不在连线规则表里" % str(args))
-		"say":
+		"say", "recap":
 			if args.is_empty() or not lines.has(args[0]):
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
 		"reveal", "conceal":
@@ -375,7 +375,7 @@ func _check_words(words: Array, shots: Array, hotspots: Dictionary, links: Dicti
 	# 其他玩家看得到的文字：禁用词一律不得出现
 	var others := {}
 	for h in hotspots.values():
-		others["可检查物件表 / " + h["id"]] = h.get("text", "") + h.get("label", "")
+		others["可检查物件表 / " + h["id"]] = h.get("text", "") + h.get("label", "") + h.get("hint", "")
 	for g in links:
 		for p in links[g]:
 			others["连线规则表 / " + g] = str(others.get("连线规则表 / " + g, "")) + p.get("response", "")
@@ -386,7 +386,7 @@ func _check_words(words: Array, shots: Array, hotspots: Dictionary, links: Dicti
 		for p in lines[k]:
 			others["台词表 / " + k] = str(others.get("台词表 / " + k, "")) + p.get("text", "")
 	for e in evidence.values():
-		others["证据表 / " + e["id"]] = e.get("name", "") + e.get("note", "")
+		others["证据表 / " + e["id"]] = e.get("name", "") + e.get("note", "") + e.get("detail", "") + e.get("hint", "")
 	for where in others:
 		for b in banned:
 			if _strip_placeholders(str(others[where])).contains(b):

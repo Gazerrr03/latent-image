@@ -185,6 +185,8 @@ func _do(name: String, args: Array, mode: String) -> void:
 				world.set_shown(id, false)
 		"footage":
 			await ui.footage.play_clip(args[0])
+		"recap":
+			await _recap(args[0] if args.size() > 0 else "")
 		"osd":
 			# osd(样式,文件名,编号,时间)；osd() 关闭
 			ui.footage.set_live(args[0] if args.size() > 0 else "", args[1] if args.size() > 1 else "", args[2] if args.size() > 2 else "", args[3] if args.size() > 3 else "")
@@ -223,16 +225,20 @@ func _inspect(ids: Array, mode: String) -> void:
 		return
 	if mode == "walk":
 		world.highlight_hotspots(ids)
+		_checklist(ids, pending)
 		while not pending.is_empty():
 			var id: String = await inspected
 			if id == CANCEL:
 				world.highlight_hotspots([])
+				ui.set_checklist([])
 				return
 			await _show_hotspot(id)
 			pending.erase(id)
 			ui.set_progress(ids.size() - pending.size(), ids.size())
+			_checklist(ids, pending)
 		world.highlight_hotspots([])
 		ui.set_progress(0, 0)
+		ui.set_checklist([])
 		return
 	while not pending.is_empty():
 		var labels: Array = pending.map(func(i): return ContentDB.hotspots.get(i, {}).get("label", i))
@@ -244,10 +250,59 @@ func _inspect(ids: Array, mode: String) -> void:
 		pending.erase(id)
 
 
+## 观察清单：可检查物件表的 hint 列（带方向的问题）；没写 hint 的用物件名
+func _checklist(ids: Array, pending: Array) -> void:
+	var items: Array = []
+	for id in ids:
+		var h: Dictionary = ContentDB.hotspots.get(id, {})
+		var t: String = h.get("hint", "")
+		items.append({"text": fill(t if t != "" else h.get("label", id)), "done": not pending.has(id)})
+	ui.set_checklist(items)
+
+
 ## 镜头文字里的占位符：{容器号} = 本局的容器编号（01—12）；{本轮陈述} = 玩家在终局选定的那句话
 func fill(text: String) -> String:
 	var said: String = GameState.statement if GameState.statement != "" else "……"
 	return text.replace("{容器号}", GameState.container).replace("{本轮陈述}", said)
+
+
+## 一章结束：黑场，字幕逐行打出当天的复盘（台词表的一组；说话人写“标题”的一行是黑场顶上的日期）。
+## 可用占位符：{今日线索}（这一章收进证据板的线索）、{今日推论}（这一章得出的推论）、{今日记录}（这一章打字机上写下的那句）。
+## 占位符这一章没有内容时，整行不出现。
+func _recap(set_id: String) -> void:
+	var chapter := GameState.shot.get_slice("-", 0)
+	var clues: Array = []
+	var infs: Array = []
+	for id in GameState.evidence:
+		if String(GameState.found_at.get(id, "")).get_slice("-", 0) != chapter:
+			continue
+		var nm: String = ContentDB.evidence.get(id, {}).get("name", id)
+		if id.begins_with("ev_inf_"):
+			infs.append(nm.trim_prefix("推论："))
+		else:
+			clues.append(nm)
+	var note := ""
+	for e in GameState.journal:
+		if e.get("kind", "") == "annotate" and String(e.get("shot", "")).get_slice("-", 0) == chapter:
+			note = e["text"]
+	var fills := {"{今日线索}": "、".join(PackedStringArray(clues)), "{今日推论}": "；".join(PackedStringArray(infs)), "{今日记录}": note}
+	var out: Array = []
+	var v := GameState.vars()
+	for r in ContentDB.lines.get(set_id, []):
+		if not ContentDB.condition_matches(r.get("condition", ""), v):
+			continue
+		var t: String = fill(r["text"])
+		var empty := false
+		for k in fills:
+			if t.contains(k):
+				empty = empty or fills[k] == ""
+				t = t.replace(k, fills[k])
+		if not empty:
+			out.append({"text": t, "title": r.get("speaker", "") == "标题"})
+	if out.is_empty():
+		push_warning("复盘组为空：" + set_id)
+		return
+	await ui.interlude(out)
 
 
 ## 弹出一组预设（annotations.csv），记录选择与人格属性，显示回应；返回所选文本
