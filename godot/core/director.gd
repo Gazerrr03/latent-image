@@ -177,6 +177,10 @@ func _do(name: String, args: Array, mode: String) -> void:
 			world.show_scene(args[0])
 		"fx":
 			ui.fx.set_override(args[0] if args.size() > 0 else "")
+		"anim":
+			# anim(人物, 动作)：idle / walk / talk / tap / sit
+			if args.size() >= 2:
+				world.figure_anim(args[0], args[1])
 		"reveal":
 			for id in args:
 				world.set_shown(id, true)
@@ -402,7 +406,10 @@ func _say(set_id: String) -> void:
 	for r in ContentDB.lines.get(set_id, []):
 		if ContentDB.condition_matches(r.get("condition", ""), v):
 			var sp: String = r.get("speaker", "")
+			var talking: bool = sp != "" and world.has_method("figure_anim") and world.figure_anim(sp, "talk")
 			await ui.show_text(("%s：%s" % [sp, r["text"]]) if sp != "" else r["text"])
+			if talking:
+				world.figure_anim(sp, "idle")
 			if _interrupted():
 				return
 

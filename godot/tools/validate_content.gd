@@ -137,6 +137,9 @@ func _init() -> void:
 		var st: String = c.get("status", "")
 		if not st in ["侦探", "人物", "死者", "其他"]:
 			err("人物表", n, "状态只能填 侦探 / 人物 / 死者 / 其他，现在是“%s”" % st)
+		var cm: String = c.get("model", "")
+		if cm != "" and not FileAccess.file_exists(cm if cm.begins_with("res://") else "res://" + cm):
+			err("人物表", n, "模型文件 %s 不存在" % cm, "检查路径，例如 res://art/characters/char_grey.glb")
 		if c.get("room", "") != "" and not rooms.has(c["room"]):
 			err("人物表", n, "所在房间“%s”不在房间登记表里" % c["room"])
 		elif levels.has(c.get("room", "")) and not levels[c["room"]]["chr"].has(n):

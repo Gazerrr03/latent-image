@@ -14,6 +14,8 @@ var room: Node3D
 var markers := {}
 ## 有名字的东西：名称 -> 节点（reveal / conceal 用）
 var named := {}
+## 人物名 -> 模型里的 AnimationPlayer（方盒子人物自带 idle / walk / talk / tap / sit）
+var figures := {}
 var hotspot_nodes := {}
 ## 当前这一轮自由检查的目标；只有它们能被准星选中
 var active_hotspots: Array = []
@@ -71,6 +73,7 @@ func show_scene(id: String) -> void:
 	markers.clear()
 	doors.clear()
 	named.clear()
+	figures.clear()
 	hotspot_nodes.clear()
 	_surfaces.clear()
 	_orig_mats.clear()
@@ -181,6 +184,33 @@ func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
 	root.position = foot
 	parent.add_child(root)
 	var hgt := _num(c, "height", 1.75)
+	# 人物表 model 列：方盒子人物模型（T-025）。有模型就用模型，没有就画灰盒人形
+	var model: String = c.get("model", "")
+	if model != "" and not model.begins_with("res://"):
+		model = "res://" + model
+	if model != "" and ResourceLoader.exists(model):
+		var inst: Node3D = (load(model) as PackedScene).instantiate()
+		inst.name = "模型"
+		root.add_child(inst)
+		for n in _walk(inst):
+			if n is GeometryInstance3D:
+				_surfaces.append(n)
+				_orig_mats[n] = n.material_override
+			elif n is AnimationPlayer:
+				for a in ["idle", "walk", "talk", "sit"]:
+					if n.has_animation(a):
+						n.get_animation(a).loop_mode = Animation.LOOP_LINEAR
+				figures[who] = n
+				if n.has_animation("idle"):
+					n.play("idle")
+					n.seek(randf() * n.current_animation_length)
+		var mcs := CollisionShape3D.new()
+		var msh := BoxShape3D.new()
+		msh.size = Vector3(0.44, hgt, 0.3)
+		mcs.shape = msh
+		mcs.position.y = hgt / 2
+		root.add_child(mcs)
+		return root
 	var col := _color(c, "#2b2420")
 	var head := 0.24
 	var body_h := hgt - head - 0.04
@@ -247,6 +277,24 @@ func apply_room_states(shot_id: String) -> void:
 
 
 ## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏关卡里的某个节点（如终局的镜中人形）
+## 让人物播放一个动作（idle / walk / talk / tap / sit）。who 可以写全名或台词里的简称（“吉迪恩”）。
+## 不循环的动作（tap）播完自动回到 idle。找不到人物或动作时返回 false。
+func figure_anim(who: String, anim: String) -> bool:
+	var ap: AnimationPlayer = null
+	for k in figures:
+		if k == who or String(k).begins_with(who):
+			ap = figures[k]
+			break
+	if ap == null or not is_instance_valid(ap) or not ap.has_animation(anim):
+		return false
+	if ap.current_animation == anim:
+		return true
+	ap.play(anim, 0.25)
+	if ap.get_animation(anim).loop_mode == Animation.LOOP_NONE and ap.has_animation("idle"):
+		ap.queue("idle")
+	return true
+
+
 func set_shown(id: String, on: bool) -> void:
 	if named.has(id) and is_instance_valid(named[id]):
 		_set_present(named[id], on)

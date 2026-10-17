@@ -1,0 +1,82 @@
+{
+  "characters": [
+    {
+      "name": "grey",
+      "height_target": 1.8,
+      "z_min": 0.0,
+      "z_max_with_hat": 1.8975,
+      "width": 0.604,
+      "verts": 528,
+      "tris": 264,
+      "glb": "godot/art/characters/char_grey.glb"
+    },
+    {
+      "name": "ambrose",
+      "height_target": 1.78,
+      "z_min": 0.0,
+      "z_max_with_hat": 1.78,
+      "width": 0.608,
+      "verts": 408,
+      "tris": 204,
+      "glb": "godot/art/characters/char_ambrose.glb"
+    },
+    {
+      "name": "constance",
+      "height_target": 1.65,
+      "z_min": 0.0,
+      "z_max_with_hat": 1.65,
+      "width": 0.502,
+      "verts": 552,
+      "tris": 276,
+      "glb": "godot/art/characters/char_constance.glb"
+    },
+    {
+      "name": "gideon",
+      "height_target": 1.85,
+      "z_min": 0.0,
+      "z_max_with_hat": 1.8606,
+      "width": 0.768,
+      "verts": 456,
+      "tris": 228,
+      "glb": "godot/art/characters/char_gideon.glb"
+    },
+    {
+      "name": "latente",
+      "height_target": 1.65,
+      "z_min": 0.0,
+      "z_max_with_hat": 1.667,
+      "width": 0.515,
+      "verts": 600,
+      "tris": 300,
+      "glb": "godot/art/characters/char_latente.glb"
+    },
+    {
+      "name": "iris",
+      "height_target": 1.2,
+      "z_min": 0.0,
+      "z_max_with_hat": 1.2,
+      "width": 0.394,
+      "verts": 672,
+      "tris": 336,
+      "glb": "godot/art/characters/char_iris.glb"
+    },
+    {
+      "name": "char_ambrose_fallen.glb",
+      "glb": "godot/art/characters/char_ambrose_fallen.glb"
+    },
+    {
+      "name": "char_ambrose_corpse.glb",
+      "glb": "godot/art/characters/char_ambrose_corpse.glb"
+    },
+    {
+      "name": "grey_mirror",
+      "glb": "godot/art/characters/char_grey_mirror.glb"
+    }
+  ],
+  "previews": [
+    "assets/3d/T-025-人物模型/preview/lineup_front.png",
+    "assets/3d/T-025-人物模型/preview/lineup_side.png",
+    "assets/3d/T-025-人物模型/preview/lineup_back.png",
+    "assets/3d/T-025-人物模型/preview/lineup_threequarter.png"
+  ]
+}
