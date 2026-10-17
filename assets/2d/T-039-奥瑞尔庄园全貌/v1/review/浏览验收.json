@@ -1,0 +1,12 @@
+{
+  "offline": true,
+  "tabs": 10,
+  "loaded_images": 10,
+  "zoom": "150% and Escape close passed",
+  "mobile_width": {
+    "client": 390,
+    "scroll": 390
+  },
+  "script_errors": [],
+  "external_requests": []
+}

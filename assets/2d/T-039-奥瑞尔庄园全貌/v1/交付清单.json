@@ -1,135 +1,168 @@
 {
-  "status": "待用户验收",
+  "version": "v1-review",
+  "date": "2026-10-14",
+  "status": "设计候选，待用户审查；效果图原生分辨率尚未满足任务书",
   "files": [
     {
-      "file": "manor_总平面.svg",
-      "sha256": "3ff07a2809d4166f248fdf11f920f52f94a8cdcb84e3ad93247d19d367884090",
-      "bytes": 18319
-    },
-    {
-      "file": "manor_总平面.png",
-      "sha256": "b1bd3816a21de448e34ce6f550aa1bbb3fe1faf4945bc465852cb5992f987bf7",
-      "bytes": 338144,
-      "pixels": [
-        3564,
-        2520
-      ]
-    },
-    {
-      "file": "manor_总平面.pdf",
-      "sha256": "76aebf0018d5b7aef072f20aee0a8fbe51cb4f1743de1cf9f52732617f6f951e",
-      "bytes": 1009564
-    },
-    {
-      "file": "manor_平面_一楼.svg",
-      "sha256": "7da19eb02e0e68cc13bece86ca2cfdc0d88ed59462f633012cf17e2a8a6dad81",
-      "bytes": 31173
-    },
-    {
-      "file": "manor_平面_一楼.png",
-      "sha256": "aa7e99c439382c5a82872172f982655b30abafcec8491629877286d6b145df3c",
-      "bytes": 353842,
-      "pixels": [
-        3564,
-        2520
-      ]
-    },
-    {
-      "file": "manor_平面_一楼.pdf",
-      "sha256": "4dd06b68aee2bdeb0ec6b09ba8c1bcc1088385308a1c2a76d757e2ee250f6cac",
-      "bytes": 2030854
-    },
-    {
-      "file": "manor_平面_二楼.svg",
-      "sha256": "abca0a6abeec20ea80cd1261eae54ee0b8b4059841558b9cb289b0458ab19711",
-      "bytes": 38965
-    },
-    {
-      "file": "manor_平面_二楼.png",
-      "sha256": "0c4989ee933bf2a7b5b4cd9bc564786d16b477c3105046fb5328bcd4896d43e6",
-      "bytes": 381304,
-      "pixels": [
-        3564,
-        2520
-      ]
-    },
-    {
-      "file": "manor_平面_二楼.pdf",
-      "sha256": "3465bd6f41d3ce7578ade99c43f621a258786cbf704f3e7b839dc4877075a45c",
-      "bytes": 1080410
-    },
-    {
-      "file": "manor_剖面.svg",
-      "sha256": "5334f1357404e890edfb77a890634698f55dab390f3921af1706fc57cc311371",
-      "bytes": 24039
-    },
-    {
-      "file": "manor_剖面.png",
-      "sha256": "d734cd7b1289c8000cd6c9bfc5dbeb3e66bddf27b792ba1a6b4198da66666407",
-      "bytes": 378366,
-      "pixels": [
-        3564,
-        2520
-      ]
-    },
-    {
-      "file": "manor_剖面.pdf",
-      "sha256": "8850efb773b38cf3dfed9036c81cec04c72b6f2a382cad4b65e2d354b7161145",
-      "bytes": 6742540
-    },
-    {
       "file": "manor_鸟瞰_前.png",
-      "sha256": "4009e9ea394f56a8cabf7ba8ca2ab1b86f7e94bf84aa4498f58ba123f379d04e",
       "bytes": 3611874,
-      "pixels": [
+      "sha256": "4009e9ea394f56a8cabf7ba8ca2ab1b86f7e94bf84aa4498f58ba123f379d04e",
+      "dimensions": [
         1672,
         941
       ]
     },
     {
       "file": "manor_鸟瞰_后.png",
-      "sha256": "c1d85fbabf9ce171d7307887fbe25c77cf7696e30966534704935e5e84dc90ab",
       "bytes": 3320596,
-      "pixels": [
+      "sha256": "c1d85fbabf9ce171d7307887fbe25c77cf7696e30966534704935e5e84dc90ab",
+      "dimensions": [
         1672,
         941
       ]
     },
     {
       "file": "manor_人视角_1.png",
-      "sha256": "e389d943830492333cc1dd8f28464e05d8b61603d7f35e79e2d56173f0789701",
       "bytes": 2981977,
-      "pixels": [
+      "sha256": "e389d943830492333cc1dd8f28464e05d8b61603d7f35e79e2d56173f0789701",
+      "dimensions": [
         1672,
         941
       ]
     },
     {
       "file": "manor_人视角_2.png",
-      "sha256": "61ba83910915a3ffc86c88abc0565e97ef65a93533b179d7c3c13e3787f3d557",
       "bytes": 3390362,
-      "pixels": [
+      "sha256": "61ba83910915a3ffc86c88abc0565e97ef65a93533b179d7c3c13e3787f3d557",
+      "dimensions": [
         1672,
         941
       ]
     },
     {
       "file": "manor_人视角_3.png",
-      "sha256": "cc664973ca89f3fdd34066fe5422d28ca2e70e272d812c241af3263ef26d4cd3",
       "bytes": 3022697,
-      "pixels": [
+      "sha256": "cc664973ca89f3fdd34066fe5422d28ca2e70e272d812c241af3263ef26d4cd3",
+      "dimensions": [
         1672,
         941
       ]
     },
     {
       "file": "manor_人视角_4.png",
-      "sha256": "d2e5d319b25293df10c8227bc7d1f795a8143caa962751d15814b9298384cc99",
       "bytes": 2917859,
-      "pixels": [
+      "sha256": "d2e5d319b25293df10c8227bc7d1f795a8143caa962751d15814b9298384cc99",
+      "dimensions": [
         1672,
         941
       ]
+    },
+    {
+      "file": "manor_总平面.svg",
+      "bytes": 18319,
+      "sha256": "3ff07a2809d4166f248fdf11f920f52f94a8cdcb84e3ad93247d19d367884090"
+    },
+    {
+      "file": "manor_总平面.png",
+      "bytes": 338144,
+      "sha256": "b1bd3816a21de448e34ce6f550aa1bbb3fe1faf4945bc465852cb5992f987bf7",
+      "dimensions": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_总平面.pdf",
+      "bytes": 1009564,
+      "sha256": "3c94fbcbf258d44fecf0767cc586f12fa1a3601de1a34a8638f41a0dce8ced59",
+      "pages": 1
+    },
+    {
+      "file": "manor_平面_一楼.svg",
+      "bytes": 31173,
+      "sha256": "7da19eb02e0e68cc13bece86ca2cfdc0d88ed59462f633012cf17e2a8a6dad81"
+    },
+    {
+      "file": "manor_平面_一楼.png",
+      "bytes": 353842,
+      "sha256": "aa7e99c439382c5a82872172f982655b30abafcec8491629877286d6b145df3c",
+      "dimensions": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_平面_一楼.pdf",
+      "bytes": 2030854,
+      "sha256": "889b1ad8975ef8b48bd91c3d8d7cb4ed51b8e79f9a50717b6f9c2ed406f0b833",
+      "pages": 1
+    },
+    {
+      "file": "manor_平面_二楼.svg",
+      "bytes": 38965,
+      "sha256": "abca0a6abeec20ea80cd1261eae54ee0b8b4059841558b9cb289b0458ab19711"
+    },
+    {
+      "file": "manor_平面_二楼.png",
+      "bytes": 381304,
+      "sha256": "0c4989ee933bf2a7b5b4cd9bc564786d16b477c3105046fb5328bcd4896d43e6",
+      "dimensions": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_平面_二楼.pdf",
+      "bytes": 1080410,
+      "sha256": "8e8d44aeebf9d56da926cd1cc8b6b58a60cdfea740fdfcb37b494b3483734734",
+      "pages": 1
+    },
+    {
+      "file": "manor_剖面.svg",
+      "bytes": 24506,
+      "sha256": "2dc1a0383df1ca214b78dda5e42a720b8d2b6790717f851ebc06c82e41df09b4"
+    },
+    {
+      "file": "manor_剖面.png",
+      "bytes": 378353,
+      "sha256": "c43cf2499ee3fce8418fac40770627f47a78aebaf0ddec542d82ebcd6420c3e8",
+      "dimensions": [
+        3564,
+        2520
+      ]
+    },
+    {
+      "file": "manor_剖面.pdf",
+      "bytes": 6742575,
+      "sha256": "5851587c48dac2e9c100d3ed968293459ee137278603647ddbc634fa579d8009",
+      "pages": 1
+    },
+    {
+      "file": "manor_设计图集-v1.pdf",
+      "bytes": 10757995,
+      "sha256": "8d96bb4b282c7ad16453af086e440f5fa8524e4ec56d9388a0deaf1eeb63825b",
+      "pages": 4
+    },
+    {
+      "file": "manor_完整设计图集-v1.pdf",
+      "bytes": 27418293,
+      "sha256": "627bc0a78f27fac391a165c702771be430c0ff30ef7d1b740b4f6ddea493d042",
+      "pages": 10
+    },
+    {
+      "file": "manor_设计审查-v1.html",
+      "bytes": 25836714,
+      "sha256": "652590c8d7270582131bac3e98f68c66f010b0f261c93edf8c85d17ca9bd51b6"
+    },
+    {
+      "file": "manor_尺寸表.md",
+      "bytes": 6206,
+      "sha256": "e76fad386c0f7b3b7ce0bbcfb36a6f121b4f2c8cd70ee58faaedc44c232bcf61"
+    },
+    {
+      "file": "来源.md",
+      "bytes": 4197,
+      "sha256": "3add4b45a9a0109a4a4c6f9382e77ac59fe02903b7af8c0d7d529f7b1f12d6de"
     }
   ]
 }
