@@ -9,6 +9,27 @@ const ACTIONS := [
 ]
 
 
+## 声音列（镜头表、台词表、可检查物件表的 sound 列）：
+## "door_knock;door_bang@3.2;-projector" -> [{id, delay, stop}]
+## 编号 = 立刻播放；编号@秒 = 延迟播放；-编号 = 停掉这个循环声
+static func parse_sounds(s: String) -> Array:
+	var out: Array = []
+	for raw in s.split(";", false):
+		var t := raw.strip_edges()
+		if t == "":
+			continue
+		var stop := t.begins_with("-")
+		if stop:
+			t = t.substr(1).strip_edges()
+		var delay := 0.0
+		var at := t.find("@")
+		if at >= 0:
+			delay = float(t.substr(at + 1)) if t.substr(at + 1).is_valid_float() else -1.0
+			t = t.substr(0, at).strip_edges()
+		out.append({"id": t, "delay": delay, "stop": stop})
+	return out
+
+
 ## "leak(1);inspect(hs_a,hs_b)" -> [{name, args}]
 static func parse(s: String) -> Array:
 	var out: Array = []

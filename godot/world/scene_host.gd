@@ -5,6 +5,7 @@ extends Node3D
 ##   spawn 出生点；cam_<机位> 机位（Camera3D）；hs_<id> 可检查物件；chr_<人名> 人物站位；prop_<id> 小物件占位
 
 const HOTSPOT_LAYER := 2
+const Actions := preload("res://core/actions.gd")
 const PAD := Vector3(0.04, 0.04, 0.04)
 
 var player: Node3D
@@ -618,6 +619,22 @@ func apply_leak(level: int) -> void:
 	_env.environment.fog_light_color = Color("#d8d6d0") if level >= 3 else Color("#0b0b10")
 
 
+## 按声音列播放一串声音（写法见 actions.gd 的 parse_sounds）：立刻、延迟、停掉循环
+func play_sounds(spec: String) -> void:
+	for s in Actions.parse_sounds(spec):
+		if s["stop"]:
+			stop_loop(s["id"])
+		elif s["delay"] > 0:
+			get_tree().create_timer(s["delay"]).timeout.connect(play_sound.bind(s["id"]))
+		else:
+			play_sound(s["id"])
+
+
+## 当前房间的脚步声（脚步表 content/audio/footsteps.csv；没写的房间用木地板）
+func footstep_sound() -> String:
+	return String(ContentDB.footsteps.get(current_id, {}).get("sound", "footstep_wood"))
+
+
 ## 按音效表播放：文件放在 res://audio/，音量与是否循环由表决定；还没有文件的声音保持静音
 func play_sound(id: String) -> void:
 	if id == "" or id == "silence":
@@ -640,6 +657,8 @@ func play_sound(id: String) -> void:
 	var p := AudioStreamPlayer.new()
 	p.stream = stream
 	p.volume_db = float(row.get("volume_db", "0")) if str(row.get("volume_db", "")).is_valid_float() else 0.0
+	if id.begins_with("footstep_"):
+		p.pitch_scale = randf_range(0.92, 1.08)  # 每一步略有不同，不像复读
 	add_child(p)
 	p.play()
 	if loop:
@@ -663,7 +682,7 @@ func play_music(id: String, fade := 1.5) -> void:
 		return
 	var stream: AudioStream = load(path)
 	if stream is AudioStreamOggVorbis or stream is AudioStreamMP3:
-		stream.loop = true
+		stream.loop = row.get("loop", "是") != "否"  # 配乐表 loop 列：否 = 只放一遍（冲洗、尾声）
 	var target := float(row.get("volume_db", "0")) if str(row.get("volume_db", "")).is_valid_float() else 0.0
 	var p := AudioStreamPlayer.new()
 	p.stream = stream
@@ -687,6 +706,13 @@ func stop_music(fade := 1.5) -> void:
 			p.queue_free()
 	_music = null
 	_music_id = ""
+
+
+func stop_loop(id: String) -> void:
+	if _loops.has(id):
+		if is_instance_valid(_loops[id]):
+			_loops[id].queue_free()
+		_loops.erase(id)
 
 
 ## 换房间时停掉上一个房间的循环声

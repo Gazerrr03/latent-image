@@ -226,7 +226,7 @@ def synth(notes, bends, n, sr, voice):
 
     out = np.zeros((n, 2), np.float32)
     hz = lambda p: 440 * 2 ** ((p - 69) / 12)
-    if voice == "analog":
+    if voice in ("analog", "pad"):
         # 两条略微走调的锯齿波，削掉高频；慢起音、长收尾，像在“唱”而不是“敲”
         bt = np.array([b[0] for b in bends] or [0.0])
         bv = np.array([b[1] for b in bends] or [0.0])
@@ -286,21 +286,30 @@ def synth(notes, bends, n, sr, voice):
 
 
 # ---------- 渲染与无缝循环 ----------
-def render(tracks, out_dir):
+def render(tracks, out_dir, loop=True):
+    """loop=False：只放一遍的曲子（冲洗、尾声），保留自然收尾，不叠回开头。
+    没有乐队轨时只渲染合成器（尾声）。其他曲目 compose_cues.py 也复用这个函数。"""
     import numpy as np
 
-    band_mid = out_dir / f"{NAME}_band.mid"
-    raw = out_dir / f"{NAME}_raw.wav"
-    write_midi([t for t in tracks if not t.synth], band_mid)
-    subprocess.run(["fluidsynth", "-ni", "-g", "0.7", "-r", "44100", "-F", str(raw), str(SF2), str(band_mid)],
-                   check=True, capture_output=True)
-    with wave.open(str(raw)) as w:
-        sr, n = w.getframerate(), w.getnframes()
-        band = np.frombuffer(w.readframes(n), dtype=np.int16).reshape(-1, 2).astype(np.float32) / 32768
-    raw.unlink()
-    band_mid.unlink()
+    sr = 44100
     loop_n = round(BARS * 4 * 60 / BPM * sr)
+    band_tracks = [t for t in tracks if not t.synth]
+    if band_tracks:
+        band_mid = out_dir / f"{NAME}_band.mid"
+        raw = out_dir / f"{NAME}_raw.wav"
+        write_midi(band_tracks, band_mid)
+        subprocess.run(["fluidsynth", "-ni", "-g", "0.7", "-r", "44100", "-F", str(raw), str(SF2), str(band_mid)],
+                       check=True, capture_output=True)
+        with wave.open(str(raw)) as w:
+            sr, n = w.getframerate(), w.getnframes()
+            band = np.frombuffer(w.readframes(n), dtype=np.int16).reshape(-1, 2).astype(np.float32) / 32768
+        raw.unlink()
+        band_mid.unlink()
+    else:
+        n = loop_n + 6 * sr
+        band = np.zeros((n, 2), np.float32)
     rms = lambda x: float(np.sqrt((x ** 2).mean()))
+    ref = rms(band[:loop_n]) if band_tracks else 0.08  # 合成器按乐队电平对齐；没有乐队时用固定电平
 
     def save(arr, path):
         with wave.open(str(path), "wb") as w:
@@ -308,7 +317,7 @@ def render(tracks, out_dir):
             w.writeframes(arr.tobytes())
 
     # 合成器轨相对乐队（低音提琴、套鼓、钢琴）的音量：旋律最突出，特雷门琴垫在下面
-    level = {"analog": 0.9, "theremin": 0.5}
+    level = {"analog": 0.9, "theremin": 0.5, "pad": 0.45}
     mix = band.copy()
     for t in tracks:
         if t.synth:
@@ -316,20 +325,27 @@ def render(tracks, out_dir):
             x = synth(notes, bends, n, sr, t.synth)
             # 按发声部分的电平对齐，避免长时间静默拉低平均
             active = np.abs(x[:loop_n]).max(axis=1) > 1e-3
-            x *= level[t.synth] * rms(band[:loop_n]) / max(rms(x[:loop_n][active]), 1e-9)
+            x *= level[t.synth] * ref / max(rms(x[:loop_n][active]), 1e-9)
             mix += x
-    loop = mix[:loop_n].copy()
-    tail = mix[loop_n:]
-    loop[: len(tail)] += tail[: loop_n]  # 尾巴叠回开头，接缝处不断
-    loop *= 0.89 / max(np.abs(loop).max(), 1e-9)
-    pcm = (loop * 32767).astype(np.int16)
+    if loop:
+        out = mix[:loop_n].copy()
+        tail = mix[loop_n:]
+        out[: len(tail)] += tail[: loop_n]  # 尾巴叠回开头，接缝处不断
+    else:
+        a = np.abs(mix).max(axis=1)
+        last = np.nonzero(a > 1e-4 * a.max())[0][-1]
+        out = mix[: last + int(0.05 * sr)].copy()
+        out[-int(0.05 * sr):] *= np.linspace(1, 0, int(0.05 * sr))[:, None]
+    out *= 0.89 / max(np.abs(out).max(), 1e-9)
+    pcm = (out * 32767).astype(np.int16)
     stem = out_dir / NAME
     save(pcm, stem.with_suffix(".wav"))
-    save(np.concatenate([pcm, pcm]), Path(f"{stem}_x2.wav"))  # 连放两遍，听接缝
+    if loop:
+        save(np.concatenate([pcm, pcm]), Path(f"{stem}_x2.wav"))  # 连放两遍，听接缝
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(stem.with_suffix(".wav")),
                     "-c:a", "vorbis", "-strict", "-2", "-ac", "2", "-b:a", "192k",
                     str(stem.with_suffix(".ogg"))], check=True)
-    print(f"循环长度 {loop_n / sr:.2f} 秒 → {out_dir}")
+    print(f"{'循环' if loop else '全长'} {len(out) / sr:.2f} 秒 → {stem}.ogg")
 
 
 if __name__ == "__main__":

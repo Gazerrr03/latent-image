@@ -130,7 +130,7 @@ func _physics_process(dt: float) -> void:
 	if _stride >= STRIDE:
 		_stride -= STRIDE
 		steps += 1
-		Director.world.play_sound("footstep_wood")
+		Director.world.play_sound(Director.world.footstep_sound())
 	_update_hover()
 
 

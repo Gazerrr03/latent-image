@@ -25,7 +25,12 @@
 | 曲名 | 文件 | 用途 | 状态 |
 | --- | --- | --- | --- |
 | 《潜影》Latent Image | 脚本 `scripts/compose_latent_image.py`，MIDI `midi/latent_image.mid`，循环 `preview/latent_image.ogg` | 探索曲：白天走访与调查（配乐表 `explore`） | **定稿，已接入游戏**（`godot/audio/music/latent_image.ogg`） |
+| 推理 think | `scripts/compose_cues.py think` | 证据板连线时循环（配乐表 `think`） | 已接入 |
+| 显影 develop | `scripts/compose_cues.py develop` | 第 6 章亲手冲洗底片，只放一遍 | 已接入 |
+| 尾声 ending | `scripts/compose_cues.py ending` | 尾声十二块屏幕，只放一遍 | 已接入 |
 
 **《潜影》**：曲名取自摄影术语——底片已经曝光、影像已经在上面，只是还没显影，看不见。C 大调，84 BPM 摇摆，16 小节一个循环（45.7 秒），Cmaj7–Am7–Dm7–G7，中段转 Em7–A7。低音提琴二分音符、叮叮镲、钢琴查尔斯顿节奏垫底；模拟合成器唱旋律；低音区的特雷门琴两小节一轮，反复同一个音型 E B G B E B F♯ B。怪异细节见脚本开头的 a—f。在库乐队里改动时，别把这些“错”修掉。
+
+**推理、显影、尾声**与《潜影》同一套乐器和母题（`compose_cues.py` 复用《潜影》脚本里的合成器与渲染）：推理只有低音提琴和特雷门琴，66 BPM；显影去掉鼓，《潜影》的旋律第一次被慢慢、清楚地奏出来，最后停在升 F 上；尾声乐队全部消失，只剩合成器。
 
 试听过、已删除的草稿（10-17）：v1—v2 紧绷的小调悬疑爵士（被否：太紧张，鼓刷有“沙子”声）；v3 大调日常爵士 + 钢片琴八音盒（方向对，八音盒音色被否）；v4 合成器音型（选了特雷门琴）；v5 放慢到 84 BPM、音型拉宽到两小节。

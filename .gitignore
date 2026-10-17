@@ -29,3 +29,5 @@ assets/audio/**/preview/*.wav
 # Python
 __pycache__/
 *.pyc
+# 音效试听带只留在本机（10-17）
+assets/audio/sfx/preview/

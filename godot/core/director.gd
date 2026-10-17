@@ -94,8 +94,7 @@ func _play(row: Dictionary) -> void:
 	world.apply_room_states(row.get("shot_id", ""))
 	world.set_mode(mode, row.get("camera", ""))
 	ui.set_cinematic(mode == "camera")
-	for s in str(row.get("sound", "")).split(";", false):
-		world.play_sound(s.strip_edges())
+	world.play_sounds(row.get("sound", ""))
 	var acts := Actions.parse(row.get("actions", ""))
 	# 火车的当下画面：在文字出现前退出片头录像样式；其他关卡保持原顺序。
 	var staging: Array = STAGING.duplicate()
@@ -208,6 +207,7 @@ func _collect(id: String) -> void:
 		return
 	if not GameState.evidence.has(id):
 		GameState.add_evidence(id)
+		world.play_sound("ui_collect")
 		ui.toast("收入证据板：" + ContentDB.evidence[id]["name"])
 
 
@@ -216,6 +216,7 @@ func _show_hotspot(id: String) -> void:
 	if not GameState.inspected.has(id):
 		GameState.inspected.append(id)
 	world.set_frozen(true)
+	world.play_sounds(h.get("sound", ""))
 	if h.get("footage", "") != "":
 		await ui.footage.play_clip(h["footage"])
 	if h.get("text", "") != "":
@@ -411,6 +412,7 @@ func _say(set_id: String) -> void:
 		if ContentDB.condition_matches(r.get("condition", ""), v):
 			var sp: String = r.get("speaker", "")
 			var talking: bool = sp != "" and world.has_method("figure_anim") and world.figure_anim(sp, "talk")
+			world.play_sounds(r.get("sound", ""))
 			await ui.show_text(("%s：%s" % [sp, r["text"]]) if sp != "" else r["text"])
 			if talking:
 				world.figure_anim(sp, "idle")

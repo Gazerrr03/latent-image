@@ -32,6 +32,8 @@ var characters: Array = []
 var sounds := {}
 ## 配乐表：id -> 行（文件在 res://audio/music/）
 var music := {}
+## 脚步表：房间 -> 行（这个房间里走路用哪个脚步声）
+var footsteps := {}
 ## 模型资产表：prop_<id> -> 行（关卡里同名占位方块换成哪个模型）
 var props := {}
 var wordlists: Array = []
@@ -55,6 +57,7 @@ func reload() -> void:
 	characters = load_table(STORY + "characters.csv")
 	sounds = index_by(load_table(AUDIO + "sounds.csv"), "id")
 	music = index_by(load_table(AUDIO + "music.csv"), "id")
+	footsteps = index_by(load_table(AUDIO + "footsteps.csv"), "room")
 	props = index_by(load_table(VISUAL + "props.csv"), "id")
 	wordlists = load_table(AI + "wordlists.csv")
 

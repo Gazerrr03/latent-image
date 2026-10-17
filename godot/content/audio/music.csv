@@ -1,2 +1,5 @@
-id,name,file,volume_db,note
-explore,《潜影》Latent Image：探索曲（日常的爵士，藏着怪异）,latent_image.ogg,-9,assets/audio/music/scripts/compose_latent_image.py 生成；84 BPM，循环 45.7 秒。白天走访与调查时放，证据板与夜里停
+id,name,file,volume_db,loop,note
+explore,《潜影》Latent Image：探索曲（日常的爵士，藏着怪异）,latent_image.ogg,-9,是,assets/audio/music/scripts/compose_latent_image.py 生成；84 BPM，循环 45.7 秒。白天走访与调查时放，证据板与夜里停
+think,推理：证据板连线时（只有低音提琴和特雷门琴）,think.ogg,-10,是,compose_cues.py 生成；66 BPM，循环 29 秒
+develop,显影：第 6 章亲手冲洗底片（《潜影》的旋律第一次被完整奏出）,develop.ogg,-7,否,compose_cues.py 生成；72 BPM，全长 46 秒，只放一遍
+ending,尾声：十二块屏幕（乐队消失，只剩合成器）,ending.ogg,-7,否,compose_cues.py 生成；76 BPM，全长 58 秒，只放一遍

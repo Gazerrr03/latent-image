@@ -298,11 +298,13 @@ func board_pick_pair(title: String) -> Array:
 
 
 func board_result(a: String, b: String, ok: bool) -> void:
+	Director.world.play_sound("ui_link_ok" if ok else "ui_link_wrong")
 	await board.show_result(a, b, ok)
 
 
 func board_open(title: String) -> void:
 	_release_mouse()
+	Director.world.play_sound("ui_board_open")
 	board.open(title)
 
 
@@ -473,6 +475,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	_release_mouse()
 	objective_label.visible = false
 	Director.world.set_frozen(true)
+	Director.world.play_sound("ui_board_open")
 	await board.browse()
 	Director.world.set_frozen(false)
 	objective_label.visible = true

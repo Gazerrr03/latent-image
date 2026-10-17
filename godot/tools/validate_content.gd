@@ -110,15 +110,14 @@ func _init() -> void:
 				warn("镜头表", id, "关卡场景 levels/%s.tscn 里没有机位 cam_%s，会用默认机位" % [room, cam], "在关卡场景里加一个 Camera3D，命名为 cam_%s" % cam)
 		elif cam != "" and room != "" and not _has_layout(layout, room, "机位", cam):
 			warn("镜头表", id, "机位“%s”在房间布局表的 %s 里找不到，会用默认机位" % [cam, room], "在房间布局表给这个房间加一行“机位”")
-		for snd in str(r.get("sound", "")).split(";", false):
-			if not sounds.has(snd.strip_edges()):
-				err("镜头表", id, "声音“%s”不在音效表里" % snd.strip_edges(), "在音效表加这一行，或改成已有的声音编号")
+		_check_sound_spec("镜头表", id, str(r.get("sound", "")), sounds)
 		_check_next(r, i, shots, ids)
 		for a in Actions.parse(r.get("actions", "")):
 			_check_action(id, a, mode, cur_room, hotspots, evidence, links, ann, lines, layout)
 
 	# ── 线索 ──
 	for h in hotspots.values():
+		_check_sound_spec("可检查物件表", h["id"], str(h.get("sound", "")), sounds)
 		var fc: String = h.get("footage", "")
 		if fc != "" and not footage.has(fc):
 			err("可检查物件表", h["id"], "影像片段“%s”不在影像片段表里" % fc)
@@ -222,9 +221,20 @@ func _init() -> void:
 			err("房间状态表", where, "from（%s）不在 until（%s）之前" % [a_, b_])
 
 	# ── 声音 ──
+	for set_id in lines:
+		for row in lines[set_id]:
+			_check_sound_spec("台词表", set_id, str(row.get("sound", "")), sounds)
+	var steps := DB.index_by(DB.load_table(AUDIO + "footsteps.csv"), "room")
+	for room_id in steps:
+		if not rooms.has(room_id):
+			err("脚步表", room_id, "房间“%s”不在房间登记表里" % room_id)
+		if not sounds.has(String(steps[room_id].get("sound", ""))):
+			err("脚步表", room_id, "脚步声“%s”不在音效表里" % steps[room_id].get("sound", ""))
 	var missing_files := 0
 	for s in sounds.values():
 		var f: String = s.get("file", "")
+		if s["id"] == "silence":
+			continue
 		if f == "":
 			missing_files += 1
 		elif not FileAccess.file_exists("res://audio/" + f):
@@ -298,6 +308,17 @@ func _check_next(r: Dictionary, i: int, shots: Array, ids: Dictionary) -> void:
 	for t in targets:
 		if t != "END" and not ids.has(t):
 			err("镜头表", id, "“下一镜”指向的 %s 不存在" % t)
+
+
+## 声音列：编号必须在音效表里；延迟写成 编号@秒；-编号 只能停循环声
+func _check_sound_spec(table: String, id: String, spec: String, sounds: Dictionary) -> void:
+	for s in Actions.parse_sounds(spec):
+		if not sounds.has(s["id"]):
+			err(table, id, "声音“%s”不在音效表里" % s["id"], "在音效表加这一行，或改成已有的声音编号")
+		elif s["delay"] < 0:
+			err(table, id, "声音“%s”的延迟写法不对" % s["id"], "写成 编号@秒，例如 door_bang@3.2")
+		elif s["stop"] and sounds[s["id"]].get("loop", "否") != "是":
+			warn(table, id, "“-%s”要停的不是循环声，不会有效果" % s["id"])
 
 
 func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspots: Dictionary, evidence: Dictionary, links: Dictionary, ann: Dictionary, lines: Dictionary, layout: Dictionary) -> void:
@@ -549,8 +570,10 @@ func _level_report(shots: Array, rooms: Dictionary, sounds: Dictionary, ann: Dic
 			d["ai"].append(s["ai_slot"])
 		if "待补" in str(s.get("text", "")):
 			d["todo"] += 1
-		for snd in str(s.get("sound", "")).split(";", false):
-			var sid2 := snd.strip_edges()
+		for snd in Actions.parse_sounds(str(s.get("sound", ""))):
+			var sid2: String = snd["id"]
+			if snd["stop"] or sid2 == "silence":
+				continue
 			if not d["snd"].has(sid2):
 				d["snd"].append(sid2)
 				if sounds.get(sid2, {}).get("file", "") == "":

@@ -1,0 +1,14 @@
+room,sound,note
+guest_room,footstep_wood,客房：木地板
+hall,footstep_wood,门厅：木地板
+darkroom,footstep_wood,暗房：木地板
+archive,footstep_wood,书房资料室：木地板
+dining,footstep_carpet,餐厅：地毯
+seance,footstep_carpet,客厅：地毯
+child_room,footstep_carpet,小女孩的卧室：地毯
+amb_room,footstep_carpet,主人的卧室兼书房：地毯
+con_room,footstep_carpet,女主人的卧室：地毯
+greenhouse,footstep_stone,温室：地砖
+garden,footstep_gravel,花园：碎石小路
+manor_gate,footstep_gravel,庄园大门：碎石路
+white_hall,footstep_white,白色走廊：发空，没有回响
