@@ -69,7 +69,7 @@ def section(head, stop):
 
 def doc_chapters():
     out = {}
-    for line in section("### 9.2", "### 9.3").splitlines():
+    for line in section("### 9.1", "### 9.2").splitlines():
         m = re.match(r"\| (\d) [^|]*\| ([^|]+)\| ([^|]+)\| ([^|]+)\| ([^|]+)\|", line)
         if m:
             out[int(m[1])] = dict(date=m[2].strip(), what=m[3].strip(), inf=m[4].strip(), level=m[5].strip())
@@ -319,7 +319,7 @@ def worksheet(num, title):
 def must_read():
     parts = [section("## 2. 固定事实", "## 3."), section("## 5. 人物", "## 6."),
              section("## 6. 怪谈", "## 7."), section("## 8. 真实时间线", "## 9."),
-             section("### 9.1 推论", "### 9.2"), section("## 11. 叙述自查", "**规则**")]
+             section("### 9.2 推论", "### 9.3"), section("## 11. 叙述自查", "**规则**")]
     txt = ["# 读前必看：真相", "", GEN,
            "> 这一页是开发者视角，**包含全部真相**。逐章剧本（[[剧本/第0章]] 起）是玩家看到的样子；两者对照读，才能看出格雷省略了什么。",
            "> 原文在 `docs/02-剧情设计.md`，这里只摘几节。", ""]
