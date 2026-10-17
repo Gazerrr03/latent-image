@@ -25,6 +25,8 @@ var _env: WorldEnvironment
 var _cam_key := ""
 var _camera_tween: Tween
 var _missing_sounds := {}
+## 能开关的门：门扇上导入时生成的 StaticBody3D -> {leaf, closed}（closed = 关着时的朝向，第一次开门时找）
+var doors := {}
 var _loops := {}
 
 
@@ -67,6 +69,7 @@ func show_scene(id: String) -> void:
 		remove_child(room)
 		room.queue_free()
 	markers.clear()
+	doors.clear()
 	named.clear()
 	hotspot_nodes.clear()
 	_surfaces.clear()
@@ -240,15 +243,21 @@ func apply_room_states(shot_id: String) -> void:
 	for r in rows:
 		var n = named.get("层·" + String(r.get("layer", "")))
 		if n is Node3D:
-			n.visible = on.has(r["layer"])
+			_set_present(n, on.has(r["layer"]))
 
 
 ## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏关卡里的某个节点（如终局的镜中人形）
 func set_shown(id: String, on: bool) -> void:
 	if named.has(id) and is_instance_valid(named[id]):
-		named[id].visible = on
+		_set_present(named[id], on)
 	else:
 		push_warning("当前房间里没有：" + id)
+
+
+## 隐藏的东西也不留碰撞（例如“门完好”层关掉后，那扇关着的门不能还挡在门洞里）
+func _set_present(n: Node, on: bool) -> void:
+	n.visible = on
+	n.process_mode = Node.PROCESS_MODE_INHERIT if on else Node.PROCESS_MODE_DISABLED
 
 
 static func _num(row: Dictionary, key: String, default: float) -> float:
@@ -336,10 +345,18 @@ func _adopt_level(r: Node) -> void:
 			_surfaces.append(n)
 			_orig_mats[n] = n.material_override
 	for n in _walk(r):
+		if n is MeshInstance3D and _is_door(String(n.name)):
+			for c in n.get_children():
+				if c is StaticBody3D:
+					c.set_meta("door", true)
+					doors[c] = {"leaf": n}
+	for n in _walk(r):
 		if not n is Node3D or n == r:
 			continue
 		var nm := String(n.name)
 		named[nm] = n
+		if not n.visible:
+			_set_present(n, false)
 		if nm == "spawn":
 			spawn = [n.global_position, n.global_rotation_degrees.y]
 		elif nm.begins_with("cam_"):
@@ -356,6 +373,96 @@ func _adopt_level(r: Node) -> void:
 			var who := nm.trim_prefix("chr_")
 			_figure(n, who, Vector3.ZERO)
 			named[who] = n
+
+
+# ───────────── 门 ─────────────
+
+## 能开关的门扇：名字以“门”结尾、不带括号说明（“（锁着）”“（关着、插上）”“（撞开）”都开不了）。
+## 门扇的原点在合页轴上（房间模块 SOP），碰撞在导入设置里生成（见《房间模块SOP》）。
+static func _is_door(nm: String) -> bool:
+	return nm.ends_with("门") and not nm.contains("（") and not nm.begins_with("门窗_")
+
+
+func door_is_open(body: Node) -> bool:
+	if not doors.has(body):
+		return false
+	var d: Dictionary = doors[body]
+	var leaf: Node3D = d["leaf"]
+	if not d.has("closed"):
+		d["closed"] = _find_closed(leaf, body)
+	return absf(angle_difference(leaf.rotation.y, d["closed"])) > 0.2
+
+
+## 开门往离开玩家的一侧推开（推不开就换一边、开小一点）；关门转回关着的朝向
+func toggle_door(body: Node, from: Vector3) -> void:
+	if not doors.has(body):
+		return
+	var d: Dictionary = doors[body]
+	var leaf: Node3D = d["leaf"]
+	var target: float = d.get("closed", 0.0)
+	if not door_is_open(body):
+		target = d["closed"]
+		var side := (from - leaf.global_position).dot(leaf.global_basis.z)
+		var first := 1.0 if side > 0 else -1.0
+		var found := false
+		for sgn in [first, -first]:
+			for deg in [90.0, 75.0, 60.0, 45.0]:
+				if _swing_free(leaf, body, d["closed"] + sgn * deg_to_rad(deg)):
+					target = d["closed"] + sgn * deg_to_rad(deg)
+					found = true
+					break
+			if found:
+				break
+		if not found:
+			return
+	play_sound("door_creak")
+	var t := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t.tween_property(leaf, "rotation:y", leaf.rotation.y + angle_difference(leaf.rotation.y, target), 0.7)
+
+
+## 门扇宽度（本地 +x 方向，从合页量起）与把手高度
+func _leaf_span(leaf: MeshInstance3D) -> Vector2:
+	var a := leaf.mesh.get_aabb()
+	return Vector2(a.end.x, a.position.y + a.size.y * 0.45)
+
+
+## 关着的门：门扇末端再往外一点就碰到门洞的墙。从当前朝向起左右逐步转，找最近的那个朝向
+func _find_closed(leaf: MeshInstance3D, body: Node) -> float:
+	var base := leaf.rotation.y
+	for k in range(0, 37):
+		for sgn in ([1.0] if k == 0 else [1.0, -1.0]):
+			var yaw: float = base + sgn * deg_to_rad(5.0 * k)
+			if _tip_in_wall(leaf, body, yaw):
+				return yaw
+	return base
+
+
+func _tip_in_wall(leaf: MeshInstance3D, body: Node, yaw: float) -> bool:
+	var span := _leaf_span(leaf)
+	var dir := _leaf_dir(leaf, yaw)
+	var start := leaf.global_position + Vector3(0, span.y, 0) + dir * (span.x - 0.03)
+	return _ray_hits(start, start + dir * 0.15, body)
+
+
+func _swing_free(leaf: MeshInstance3D, body: Node, yaw: float) -> bool:
+	var span := _leaf_span(leaf)
+	var dir := _leaf_dir(leaf, yaw)
+	var origin := leaf.global_position + Vector3(0, span.y, 0)
+	# 合页一侧留出门套的厚度，末端多留几厘米
+	return not _ray_hits(origin + dir * 0.12, origin + dir * (span.x + 0.05), body)
+
+
+## 门扇在世界里的朝向（本地 +x 绕父节点的竖轴转到 yaw）
+func _leaf_dir(leaf: Node3D, yaw: float) -> Vector3:
+	var parent_basis: Basis = leaf.get_parent().global_basis if leaf.get_parent() is Node3D else Basis()
+	return (parent_basis * Basis(Vector3.UP, yaw) * Vector3.RIGHT).normalized()
+
+
+func _ray_hits(a: Vector3, b: Vector3, body: Node) -> bool:
+	var q := PhysicsRayQueryParameters3D.create(a, b)
+	q.exclude = [body.get_rid(), player.get_rid()] if player else [body.get_rid()]
+	q.hit_back_faces = true
+	return not get_world_3d().direct_space_state.intersect_ray(q).is_empty()
 
 
 ## hs_<id>：网格或方块本身就是物件的样子，热区比它略大一圈（准星先碰到热区）；空节点就放一个默认大小的高亮方块

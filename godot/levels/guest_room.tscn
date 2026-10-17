@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room.gltf" id="2_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room__夹层未发现.gltf" id="3_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room__夹层已打开.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="5_r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
 sky_top_color = Color(0.33, 0.42, 0.55, 1)
@@ -39,6 +40,8 @@ glow_intensity = 0.35
 [node name="层·夹层未发现" parent="结构" instance=ExtResource("3_r")]
 
 [node name="层·夹层已打开" parent="结构" instance=ExtResource("4_r")]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("5_r")]
 
 [node name="灯光" type="Node3D" parent="."]
 

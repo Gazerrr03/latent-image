@@ -96,6 +96,7 @@ def hs(sc, name, p, size):
 FF, TOP, CEIL = 3.615, 3.615 + 0.76, 6.5
 sc = Scene('guest_room'); env(sc, 0.45)
 base(sc, [('guest_room', '客房', ['夹层未发现', '夹层已打开'])])
+sc.node('邻·门厅', None, '结构', inst=sc.res('res://art/levels/manor/room_hall.gltf'))     # 10-17：主楼梯与走廊归门厅模块，不带它出门就是空楼梯井
 sun(sc, 1.4)
 omni(sc, '吊灯', '灯光', (2.55, 2.55, CEIL - 0.75), (1.0, 0.78, 0.55), 1.2, 5.0)
 omni(sc, '台灯', '灯光', (0.49, 3.87, TOP + 0.26), (1.0, 0.75, 0.45), 0.9, 2.5)
@@ -121,6 +122,8 @@ sc.write()
 # ═════ 暗房 ═════
 sc = Scene('darkroom'); env(sc, 0.05, sky=False)
 base(sc, [('darkroom', '暗房', ['门完好', '门撞坏', '冲洗布置'])])
+sc.node('邻·温室', None, '结构', inst=sc.res('res://art/levels/manor/room_greenhouse.gltf'))   # 10-17：侧门那边的地面与玻璃
+sc.node('邻·门厅', None, '结构', inst=sc.res('res://art/levels/manor/room_hall.gltf'))     # 10-17：撞开的门外是楼梯平台与主楼梯
 sc.node('层·红灯', 'Node3D', '灯光')
 omni(sc, '红色安全灯', '灯光/层·红灯', (17.15, 10.35, CEIL - 0.8), (1.0, 0.08, 0.04), 2.2, 6.0)
 sc.node('层·白灯', 'Node3D', '灯光')
@@ -156,6 +159,7 @@ G0 = 3.6
 sc = Scene('garden'); env(sc, 0.55)
 base(sc, [('garden', '花园百叶外侧', ['遮光布', '泥地鞋印'])])
 sc.node('邻·温室', None, '结构', inst=sc.res('res://art/levels/manor/room_greenhouse.gltf'))     # 温室的碰撞在温室模块里（manor 外壳的温室不带碰撞）
+sc.node('邻·门厅', None, '结构', inst=sc.res('res://art/levels/manor/room_hall.gltf'))     # 10-17：后门过道与楼梯井
 sun(sc, 1.3)
 sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((16.4, 14.0, G0), 197)})           # 站在北侧碎石路上，面朝通风口（南偏东）
 cam(sc, 'garden_wide', (14.6, 13.6, G0 + 1.65), (18.6, 11.4, G0 + 0.55), 24)

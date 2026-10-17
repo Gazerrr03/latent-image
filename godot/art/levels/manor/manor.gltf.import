@@ -39,7 +39,35 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:门窗_glass": {
+"generate/physics": true,
+"physics/body_type": 0,
+"physics/shape_type": 2
+},
+"PATH:门窗_iron": {
+"generate/physics": true,
+"physics/body_type": 0,
+"physics/shape_type": 2
+},
+"PATH:门窗_oak": {
+"generate/physics": true,
+"physics/body_type": 0,
+"physics/shape_type": 2
+},
+"PATH:门窗_olive": {
+"generate/physics": true,
+"physics/body_type": 0,
+"physics/shape_type": 2
+},
+"PATH:门窗_paint": {
+"generate/physics": true,
+"physics/body_type": 0,
+"physics/shape_type": 2
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1

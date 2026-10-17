@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门完好.gltf" id="3_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__门撞坏.gltf" id="4_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom__冲洗布置.gltf" id="5_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="6_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="7_r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
 sky_top_color = Color(0.33, 0.42, 0.55, 1)
@@ -42,6 +44,10 @@ glow_intensity = 0.35
 [node name="层·门撞坏" parent="结构" instance=ExtResource("4_r")]
 
 [node name="层·冲洗布置" parent="结构" instance=ExtResource("5_r")]
+
+[node name="邻·温室" parent="结构" instance=ExtResource("6_r")]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("7_r")]
 
 [node name="灯光" type="Node3D" parent="."]
 
