@@ -10,7 +10,7 @@ signal finished
 const Actions := preload("res://core/actions.gd")
 const CANCEL := "__cancel__"
 ## 在镜头文字出现之前执行的动作
-const STAGING := ["reveal", "conceal"]
+const STAGING := ["reveal", "conceal", "music"]
 
 var ui: Node
 var world: Node
@@ -177,6 +177,10 @@ func _do(name: String, args: Array, mode: String) -> void:
 			world.show_scene(args[0])
 		"fx":
 			ui.fx.set_override(args[0] if args.size() > 0 else "")
+		"music":
+			# music(曲名[,淡入秒])；music(关闭[,淡出秒])，淡出秒填 0 = 直接切断
+			var fade := float(args[1]) if args.size() > 1 and args[1].is_valid_float() else 1.5
+			world.play_music(args[0] if args.size() > 0 else "关闭", fade)
 		"anim":
 			# anim(人物, 动作)：idle / walk / talk / tap / sit
 			if args.size() >= 2:

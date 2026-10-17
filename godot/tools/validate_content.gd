@@ -21,6 +21,7 @@ const LAYOUT_TYPES := ["家具", "可检查物件", "机位", "灯光", "出生�
 var issues: Array = []
 var fx_presets := {}
 var footage := {}
+var music := {}
 ## 关卡进度（纵切面），写进检查报告
 var level_rows: Array = []
 ## 人工搭的关卡场景：房间 id -> 从场景里读出的名字（机位、物件、人物、小物件占位）
@@ -49,6 +50,7 @@ func _init() -> void:
 	var layout_rows := DB.load_table(SPACE + "layout.csv")
 	var layout := DB.group_by(layout_rows, "room")
 	var sounds := DB.index_by(DB.load_table(AUDIO + "sounds.csv"), "id")
+	music = DB.index_by(DB.load_table(AUDIO + "music.csv"), "id")
 	var props := DB.index_by(DB.load_table(VISUAL + "props.csv"), "id")
 	for rid in rooms:
 		var lv := _scan_level(rid)
@@ -227,6 +229,9 @@ func _init() -> void:
 			missing_files += 1
 		elif not FileAccess.file_exists("res://audio/" + f):
 			err("音效表", s["id"], "文件 audio/%s 不存在" % f, "检查文件名是否一致，包括扩展名")
+	for m in music.values():
+		if not FileAccess.file_exists("res://audio/music/" + String(m.get("file", ""))):
+			err("配乐表", m["id"], "文件 audio/music/%s 不存在" % m.get("file", ""), "把 .ogg 放进 godot/audio/music/，文件名与表里一致")
 	if missing_files > 0:
 		warn("音效表", "全表", "%d / %d 个声音还没有文件（游戏里会静音）" % [missing_files, sounds.size()])
 
@@ -355,6 +360,11 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"fx":
 			if args.size() > 0 and not args[0] in ["", "自动"] and not fx_presets.has(args[0]):
 				err("镜头表", id, "滤镜预设“%s”不在滤镜表里" % args[0])
+		"music":
+			if args.is_empty() or (args[0] != "关闭" and not music.has(args[0])):
+				err("镜头表", id, "配乐“%s”不在配乐表里" % str(args), "写配乐表里的曲名，或 music(关闭) 停止")
+			if args.size() > 1 and not args[1].is_valid_float():
+				err("镜头表", id, "music 的第二个参数是淡入 / 淡出秒数，现在是“%s”" % args[1])
 		"leak":
 			if args.is_empty() or not args[0].is_valid_int() or int(args[0]) < 0 or int(args[0]) > 4:
 				err("镜头表", id, "渗漏等级必须是 0—4")

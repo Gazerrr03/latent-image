@@ -30,6 +30,8 @@ var room_states := {}          # 房间状态表：房间 → [层、类型、�
 var characters: Array = []
 ## 音效表：id -> 行
 var sounds := {}
+## 配乐表：id -> 行（文件在 res://audio/music/）
+var music := {}
 ## 模型资产表：prop_<id> -> 行（关卡里同名占位方块换成哪个模型）
 var props := {}
 var wordlists: Array = []
@@ -52,6 +54,7 @@ func reload() -> void:
 	room_states = group_by(load_table(SPACE + "room_states.csv"), "room")
 	characters = load_table(STORY + "characters.csv")
 	sounds = index_by(load_table(AUDIO + "sounds.csv"), "id")
+	music = index_by(load_table(AUDIO + "music.csv"), "id")
 	props = index_by(load_table(VISUAL + "props.csv"), "id")
 	wordlists = load_table(AI + "wordlists.csv")
 

@@ -30,6 +30,8 @@ var _missing_sounds := {}
 ## 能开关的门：门扇上导入时生成的 StaticBody3D -> {leaf, closed}（closed = 关着时的朝向，第一次开门时找）
 var doors := {}
 var _loops := {}
+var _music: AudioStreamPlayer
+var _music_id := ""
 
 
 func _ready() -> void:
@@ -644,6 +646,47 @@ func play_sound(id: String) -> void:
 		_loops[id] = p
 	else:
 		p.finished.connect(p.queue_free)
+
+
+## 配乐：跨镜头、跨房间一直放，直到 music(关闭) 或换成另一首；换房间不停
+func play_music(id: String, fade := 1.5) -> void:
+	if id == "" or id == "关闭":
+		stop_music(fade)
+		return
+	if id == _music_id and is_instance_valid(_music):
+		return
+	stop_music(fade)
+	var row: Dictionary = ContentDB.music.get(id, {})
+	var path := "res://audio/music/" + String(row.get("file", ""))
+	if row.is_empty() or not ResourceLoader.exists(path):
+		push_warning("配乐“%s”没有文件，静音" % id)
+		return
+	var stream: AudioStream = load(path)
+	if stream is AudioStreamOggVorbis or stream is AudioStreamMP3:
+		stream.loop = true
+	var target := float(row.get("volume_db", "0")) if str(row.get("volume_db", "")).is_valid_float() else 0.0
+	var p := AudioStreamPlayer.new()
+	p.stream = stream
+	p.volume_db = -60.0 if fade > 0 else target
+	add_child(p)
+	p.play()
+	if fade > 0:
+		create_tween().tween_property(p, "volume_db", target, fade)
+	_music = p
+	_music_id = id
+
+
+func stop_music(fade := 1.5) -> void:
+	if is_instance_valid(_music):
+		var p := _music
+		if fade > 0:
+			var tw := create_tween()
+			tw.tween_property(p, "volume_db", -60.0, fade)
+			tw.tween_callback(p.queue_free)
+		else:
+			p.queue_free()
+	_music = null
+	_music_id = ""
 
 
 ## 换房间时停掉上一个房间的循环声

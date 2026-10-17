@@ -10,7 +10,7 @@
 | 1.2 人物 | [人物表](1.2-人物.md) | `godot/content/story/` |
 | 1.3 线索与推理 | [证据表、可检查物件表、连线规则表](1.3-线索与推理.md) | `godot/content/story/` |
 | 1.4 空间与地图 | [关卡场景（编辑器里搭，不填表）、模型资产表](1.4-空间与地图.md) | `godot/levels/`、`godot/content/visual/` |
-| 1.5 视听素材 | [音效表、声音文件、图片](1.5-视听素材.md) | `godot/content/audio/` |
+| 1.5 视听素材 | [音效表、配乐表、声音文件、图片](1.5-视听素材.md) | `godot/content/audio/` |
 | 1.6 AI 规则 | [词表、案卷自述兜底](1.6-AI规则.md) | `godot/content/ai/` |
 
 ## 关卡表 `godot/content/levels.csv`

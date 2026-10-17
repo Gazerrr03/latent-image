@@ -1,0 +1,2 @@
+id,name,file,volume_db,note
+explore,《潜影》Latent Image：探索曲（日常的爵士，藏着怪异）,latent_image.ogg,-9,assets/audio/music/scripts/compose_latent_image.py 生成；84 BPM，循环 45.7 秒。白天走访与调查时放，证据板与夜里停
