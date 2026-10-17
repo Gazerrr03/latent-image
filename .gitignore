@@ -19,3 +19,6 @@ output/
 .playwright-cli/
 # 3D 审查渲染：PNG 只留在本机，入库的是同名 JPG（10-15）
 assets/3d/**/review/**/*.png
+
+# 日程画布：Obsidian 的本机设置
+godot/content/flow/.obsidian/

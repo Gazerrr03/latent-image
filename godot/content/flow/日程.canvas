@@ -1,0 +1,1385 @@
+{
+	"nodes": [
+		{
+			"id": "legend",
+			"x": -720,
+			"y": 0,
+			"width": 460,
+			"height": 760,
+			"type": "text",
+			"text": "## 怎么读这张日程\n\n**列是天，行是时段**（早晨 / 白天 / 晚上 / 深夜），像日历。\n**连线是顺序**：游戏沿连线往下走。\n**自由时段**（青色框）里的卡片不连线，顺序不限；框顶写着怎么离开。\n\n颜色：\n- 灰：过场（看）\n- 绿：调查、问话（玩家在大地图上做）\n- 紫：演绎（线索背后的小关卡）\n- 黄：书桌（连线、打字机）\n- 青：录像 / 外面\n- 红：被省略的时间（不播放，只给做的人看）\n\n卡片写法：第一行标题；第二行地点和镜号（镜号对应镜头表）；“得到”是这一段拿到的线索；**待做**是还没有镜头的部分。\n\n改法：拖动卡片、改字、连线、删线，保存即可。要新增一段，复制一张同类卡片改字。"
+		},
+		{
+			"id": "band_早晨",
+			"x": -200,
+			"y": 160,
+			"width": 160,
+			"height": 155,
+			"type": "text",
+			"text": "## 早晨"
+		},
+		{
+			"id": "band_白天",
+			"x": -200,
+			"y": 335,
+			"width": 160,
+			"height": 1174,
+			"type": "text",
+			"text": "## 白天"
+		},
+		{
+			"id": "band_晚上",
+			"x": -200,
+			"y": 1529,
+			"width": 160,
+			"height": 1058,
+			"type": "text",
+			"text": "## 晚上"
+		},
+		{
+			"id": "band_深夜",
+			"x": -200,
+			"y": 2607,
+			"width": 160,
+			"height": 182,
+			"type": "text",
+			"text": "## 深夜"
+		},
+		{
+			"id": "day_0",
+			"x": 0,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 前史\n**1919—1926** · 片头（录像）"
+		},
+		{
+			"id": "film",
+			"x": 0,
+			"y": 335,
+			"width": 620,
+			"height": 134,
+			"type": "text",
+			"text": "### 片头·家庭电影\n火车车厢 · `C0-01` `C0-01`\n*警告卡 → 怪谈。每年秋天的合影，多出一个人，第二年不见了*",
+			"color": "5"
+		},
+		{
+			"id": "day_1",
+			"x": 760,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-16 星期六\n**序章·暗房** · 渗漏 L0"
+		},
+		{
+			"id": "train",
+			"x": 760,
+			"y": 335,
+			"width": 620,
+			"height": 161,
+			"type": "text",
+			"text": "### 火车·读信\n火车车厢 · `C0-02`—`C0-03`\n得到：信的第一页\n*时刻不写*"
+		},
+		{
+			"id": "omit",
+			"x": 760,
+			"y": 524,
+			"width": 620,
+			"height": 134,
+			"type": "text",
+			"text": "### （省略的两小时）\n*19:00 从温室进暗房，19:30—21:00 在庄园外的小路上。叙述不写，不播放；第 6 章补全*",
+			"color": "1"
+		},
+		{
+			"id": "arrive",
+			"x": 760,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 21:00 到达·门厅\n庄园大门 · `C0-04`—`C0-06`"
+		},
+		{
+			"id": "explore0",
+			"x": 760,
+			"y": 1664,
+			"width": 620,
+			"height": 578,
+			"type": "group",
+			"label": "第一次自由探索·一楼与花园",
+			"color": "5"
+		},
+		{
+			"id": "explore0_how",
+			"x": 780,
+			"y": 1704,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：走向花园（不设条件）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "meet_gideon",
+			"x": 780,
+			"y": 1831,
+			"width": 280,
+			"height": 107,
+			"type": "text",
+			"text": "### 认识吉迪恩\n**待做**：镜头待写",
+			"color": "4"
+		},
+		{
+			"id": "meet_latente",
+			"x": 780,
+			"y": 1958,
+			"width": 280,
+			"height": 107,
+			"type": "text",
+			"text": "### 认识拉坦特夫人\n**待做**：镜头待写",
+			"color": "4"
+		},
+		{
+			"id": "walk_floor1",
+			"x": 780,
+			"y": 2085,
+			"width": 280,
+			"height": 107,
+			"type": "text",
+			"text": "### 一楼与花园\n**待做**：镜头待写",
+			"color": "4"
+		},
+		{
+			"id": "garden2120",
+			"x": 760,
+			"y": 2270,
+			"width": 620,
+			"height": 134,
+			"type": "text",
+			"text": "### 21:20 我去花园看了看\n**待做**：黑场，记录只留这一句\n*取走遮光布（叙述省略）*"
+		},
+		{
+			"id": "break_in",
+			"x": 760,
+			"y": 2432,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 22:00 撞门·密室\n暗房 · `C0-07`—`C0-08`"
+		},
+		{
+			"id": "record0",
+			"x": 760,
+			"y": 2607,
+			"width": 620,
+			"height": 134,
+			"type": "text",
+			"text": "### 23:30 打字机·第一页记录\n客房（大厅） · `C0-09` `C0-09`\n得到：第一页记录",
+			"color": "3"
+		},
+		{
+			"id": "day_2",
+			"x": 1520,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-17 星期日\n**第 1 章·书桌** · 渗漏 L0 · 无推论"
+		},
+		{
+			"id": "wake1",
+			"x": 1520,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 醒来·早饭\n客房（大厅） · `C1-01` `C1-01`"
+		},
+		{
+			"id": "desk1",
+			"x": 1520,
+			"y": 335,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 认识这张书桌（教程）\n客房（大厅） · `C1-02` `C1-02`",
+			"color": "4"
+		},
+		{
+			"id": "explore1",
+			"x": 1520,
+			"y": 470,
+			"width": 620,
+			"height": 405,
+			"type": "group",
+			"label": "自由时段",
+			"color": "5"
+		},
+		{
+			"id": "explore1_how",
+			"x": 1540,
+			"y": 510,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：回客房（看过暗房）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "darkroom1",
+			"x": 1540,
+			"y": 637,
+			"width": 280,
+			"height": 188,
+			"type": "text",
+			"text": "### 初查暗房\n暗房 · `C1-03` `C1-03`\n得到：全黑的相纸、打字机打的药瓶标签",
+			"color": "4"
+		},
+		{
+			"id": "ded_locked",
+			"x": 1840,
+			"y": 637,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·密室（P0，兼教程）\n入口：从里面闩上的门\n得到：这是一间密室（不进推论）\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "type1",
+			"x": 1520,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·当天的记录\n客房（大厅） · `C1-04` `C1-04`",
+			"color": "3"
+		},
+		{
+			"id": "sleep1",
+			"x": 1520,
+			"y": 2607,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 睡下\n客房（大厅） · `C1-05` `C1-05`"
+		},
+		{
+			"id": "day_3",
+			"x": 2280,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-18 星期一\n**第 2 章·风口** · 渗漏 L0 · 推论 D1"
+		},
+		{
+			"id": "wake2",
+			"x": 2280,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 醒来\n客房（大厅） · `C2-01` `C2-01`"
+		},
+		{
+			"id": "explore2",
+			"x": 2280,
+			"y": 335,
+			"width": 620,
+			"height": 894,
+			"type": "group",
+			"label": "自由时段",
+			"color": "5"
+		},
+		{
+			"id": "explore2_how",
+			"x": 2300,
+			"y": 375,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：回客房书桌（D1 够数）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "ask_constance2",
+			"x": 2300,
+			"y": 502,
+			"width": 280,
+			"height": 134,
+			"type": "text",
+			"text": "### 问康斯坦斯\n餐厅 · `C2-02` `C2-02`",
+			"color": "4"
+		},
+		{
+			"id": "ask_gideon2",
+			"x": 2300,
+			"y": 656,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 问吉迪恩\n温室 · `C2-03` `C2-03`\n得到：吉迪恩：风口从没关过",
+			"color": "4"
+		},
+		{
+			"id": "ask_iris2",
+			"x": 2300,
+			"y": 837,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 问艾瑞斯\n艾瑞斯的房间 · `C2-04` `C2-04`\n得到：艾瑞斯的儿歌",
+			"color": "4"
+		},
+		{
+			"id": "vent_outside",
+			"x": 2300,
+			"y": 1018,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 花园·通风口外侧\n花园·通风口外侧 · `C2-05` `C2-05`\n得到：通风口下的半个鞋印",
+			"color": "4"
+		},
+		{
+			"id": "ded_blackcloth",
+			"x": 2600,
+			"y": 502,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·黑布（P1）\n入口：艾瑞斯画里外墙上的黑布\n得到：外墙窗台上的黑色棉绒\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "ded_footprint",
+			"x": 2600,
+			"y": 683,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·鞋印（P1）\n入口：通风口外的半个鞋印\n得到：外侧百叶上新鲜的擦痕\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "link2",
+			"x": 2280,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 桌面·连线 D1\n客房（大厅） · `C2-06` `C2-06`",
+			"color": "3"
+		},
+		{
+			"id": "type2",
+			"x": 2280,
+			"y": 1664,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·当天的记录\n客房（大厅） · `C2-07` `C2-07`",
+			"color": "3"
+		},
+		{
+			"id": "sleep2",
+			"x": 2280,
+			"y": 2607,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 睡下\n客房（大厅） · `C2-08` `C2-08`"
+		},
+		{
+			"id": "day_4",
+			"x": 3040,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-19 星期二\n**第 3 章·合影** · 渗漏 L1 · 推论 D2"
+		},
+		{
+			"id": "wake3",
+			"x": 3040,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 醒来\n客房（大厅） · `C3-01` `C3-01`"
+		},
+		{
+			"id": "explore3",
+			"x": 3040,
+			"y": 335,
+			"width": 620,
+			"height": 559,
+			"type": "group",
+			"label": "上午·自由时段",
+			"color": "5"
+		},
+		{
+			"id": "explore3_how",
+			"x": 3060,
+			"y": 375,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：去餐厅吃午饭（看过照片档案室）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "archive3",
+			"x": 3060,
+			"y": 502,
+			"width": 280,
+			"height": 188,
+			"type": "text",
+			"text": "### 照片档案室\n照片档案室 · `C3-02` `C3-02`\n得到：底片簿上的名字、门框上的 L、1925 年的剪报",
+			"color": "4"
+		},
+		{
+			"id": "ded_photo",
+			"x": 3360,
+			"y": 502,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·合影（P0）\n入口：历年合影\n得到：底片簿里逐年在场者的名字\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "ded_negatives",
+			"x": 3360,
+			"y": 683,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·底片走廊（P1）\n入口：底片清楚、照片模糊\n得到：照相馆的退件信\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "lunch3",
+			"x": 3040,
+			"y": 922,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 午饭·多一副餐具\n餐厅 · `C3-03` `C3-03`"
+		},
+		{
+			"id": "seance3",
+			"x": 3040,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 降灵会\n客厅·降灵会 · `C3-04`—`C3-05`"
+		},
+		{
+			"id": "link3",
+			"x": 3040,
+			"y": 1664,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 桌面·连线 D2\n客房（大厅） · `C3-06` `C3-06`",
+			"color": "3"
+		},
+		{
+			"id": "type3",
+			"x": 3040,
+			"y": 1799,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·当天的记录\n客房（大厅） · `C3-07` `C3-07`",
+			"color": "3"
+		},
+		{
+			"id": "sleep3",
+			"x": 3040,
+			"y": 2607,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 睡下\n客房（大厅） · `C3-08` `C3-08`"
+		},
+		{
+			"id": "day_5",
+			"x": 3800,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-20 星期三\n**第 4 章·铃声** · 渗漏 L1 · 推论 D3"
+		},
+		{
+			"id": "wake4",
+			"x": 3800,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 醒来\n客房（大厅） · `C4-01` `C4-01`"
+		},
+		{
+			"id": "receipt4",
+			"x": 3800,
+			"y": 335,
+			"width": 620,
+			"height": 161,
+			"type": "text",
+			"text": "### 温室·吉迪恩拍下签收单\n温室 · `C4-02` `C4-02`\n得到：药房签收单\n*先让他成为嫌疑人*"
+		},
+		{
+			"id": "explore4",
+			"x": 3800,
+			"y": 524,
+			"width": 620,
+			"height": 586,
+			"type": "group",
+			"label": "自由时段",
+			"color": "5"
+		},
+		{
+			"id": "explore4_how",
+			"x": 3820,
+			"y": 564,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：回客房书桌（D3 够数）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "bell4",
+			"x": 3820,
+			"y": 691,
+			"width": 280,
+			"height": 188,
+			"type": "text",
+			"text": "### 暗房·那两声铃\n暗房 · `C4-03` `C4-03`\n得到：上好弦的计时铃、全黑的相纸",
+			"color": "4"
+		},
+		{
+			"id": "ask_constance4",
+			"x": 3820,
+			"y": 899,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 问康斯坦斯\n餐厅 · `C4-04` `C4-04`\n得到：康斯坦斯：八点一刻的碎响",
+			"color": "4"
+		},
+		{
+			"id": "ded_bells",
+			"x": 4120,
+			"y": 691,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·两声铃（P1）\n入口：计时铃的发条与定时销\n得到：康斯坦斯：八点一刻的碎响\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "link4",
+			"x": 3800,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 桌面·连线 D3\n客房（大厅） · `C4-05` `C4-05`",
+			"color": "3"
+		},
+		{
+			"id": "alibi4",
+			"x": 3800,
+			"y": 1664,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 不在场证明全部作废\n客房（大厅） · `C4-06` `C4-06`"
+		},
+		{
+			"id": "type4",
+			"x": 3800,
+			"y": 1799,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·当天的记录\n客房（大厅） · `C4-07` `C4-07`",
+			"color": "3"
+		},
+		{
+			"id": "sleep4",
+			"x": 3800,
+			"y": 2607,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 睡下\n客房（大厅） · `C4-08` `C4-08`"
+		},
+		{
+			"id": "day_6",
+			"x": 4560,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-21 星期四\n**第 5 章·同一个人** · 渗漏 L2 · 推论 D4"
+		},
+		{
+			"id": "wake5",
+			"x": 4560,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 醒来\n客房（大厅） · `C5-01` `C5-01`"
+		},
+		{
+			"id": "explore5",
+			"x": 4560,
+			"y": 335,
+			"width": 620,
+			"height": 975,
+			"type": "group",
+			"label": "自由时段",
+			"color": "5"
+		},
+		{
+			"id": "explore5_how",
+			"x": 4580,
+			"y": 375,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：回客房书桌（D4 够数）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "desk5",
+			"x": 4580,
+			"y": 502,
+			"width": 280,
+			"height": 188,
+			"type": "text",
+			"text": "### 客房·摊开的字与抽屉\n客房（大厅） · `C5-02` `C5-02`\n得到：不碰竖画的 t、另一位侦探的笔记",
+			"color": "4"
+		},
+		{
+			"id": "scar5",
+			"x": 4580,
+			"y": 710,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 温室·吉迪恩的疤\n温室 · `C5-03` `C5-03`\n得到：虎口的新月形疤",
+			"color": "4"
+		},
+		{
+			"id": "portrait5",
+			"x": 4580,
+			"y": 891,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 艾瑞斯的全家福\n艾瑞斯的房间 · `C5-04` `C5-04`\n得到：艾瑞斯的全家福",
+			"color": "4"
+		},
+		{
+			"id": "archive5",
+			"x": 4580,
+			"y": 1072,
+			"width": 280,
+			"height": 188,
+			"type": "text",
+			"text": "### 档案室·手册与合影背面\n照片档案室 · `C5-05` `C5-05`\n得到：摄影手册的折角、合影背面的编号",
+			"color": "4"
+		},
+		{
+			"id": "ded_longexposure",
+			"x": 4880,
+			"y": 502,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·长曝光（P1）\n入口：摄影手册折角的一页\n得到：六个人左手同一道疤\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "ded_portrait",
+			"x": 4880,
+			"y": 683,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·全家福（P1）\n入口：艾瑞斯画的全家福\n得到：同一个名字写了又涂掉\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "link5",
+			"x": 4560,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 桌面·连线 D4\n客房（大厅） · `C5-06` `C5-06`",
+			"color": "3"
+		},
+		{
+			"id": "type5",
+			"x": 4560,
+			"y": 1664,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·当天的记录\n客房（大厅） · `C5-07` `C5-07`",
+			"color": "3"
+		},
+		{
+			"id": "sleep5",
+			"x": 4560,
+			"y": 2607,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 睡下\n客房（大厅） · `C5-08` `C5-08`"
+		},
+		{
+			"id": "day_7",
+			"x": 5320,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-22 星期五\n**第 6 章·显影** · 渗漏 L3 · 推论 D5、D6"
+		},
+		{
+			"id": "wake6",
+			"x": 5320,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 醒来\n客房（大厅） · `C6-01` `C6-01`"
+		},
+		{
+			"id": "develop6",
+			"x": 5320,
+			"y": 335,
+			"width": 620,
+			"height": 161,
+			"type": "text",
+			"text": "### 暗房·亲手冲洗底片\n暗房 · `C6-02`—`C6-03`\n得到：叠印\n*固定情节，必做*",
+			"color": "4"
+		},
+		{
+			"id": "ded_1900",
+			"x": 5320,
+			"y": 524,
+			"width": 620,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·19:00（P0）\n入口：相机里的底片\n**待做**：待做\n*可能与冲洗合成一场，待定*",
+			"color": "6"
+		},
+		{
+			"id": "ledger6",
+			"x": 5320,
+			"y": 713,
+			"width": 620,
+			"height": 134,
+			"type": "text",
+			"text": "### 档案室·底片簿最后一页\n照片档案室 · `C6-04` `C6-04`\n得到：底片簿的最后一页",
+			"color": "4"
+		},
+		{
+			"id": "explore6",
+			"x": 5320,
+			"y": 875,
+			"width": 620,
+			"height": 586,
+			"type": "group",
+			"label": "自由时段",
+			"color": "5"
+		},
+		{
+			"id": "explore6_how",
+			"x": 5340,
+			"y": 915,
+			"width": 580,
+			"height": 107,
+			"type": "text",
+			"text": "**顺序不限**。离开：回客房书桌（D5 够数）\n没到条件时走过去，格雷会说还缺什么。"
+		},
+		{
+			"id": "traces6",
+			"x": 5340,
+			"y": 1042,
+			"width": 280,
+			"height": 188,
+			"type": "text",
+			"text": "### 客房·七点的痕迹\n客房（大厅） · `C6-05` `C6-05`\n得到：信的第二页、鞋底的泥、炉栅里的相纸、上弦钥匙",
+			"color": "4"
+		},
+		{
+			"id": "iris6",
+			"x": 5340,
+			"y": 1250,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 问艾瑞斯\n艾瑞斯的房间 · `C6-06` `C6-06`\n得到：艾瑞斯：铃响以前来的",
+			"color": "4"
+		},
+		{
+			"id": "ded_greenhouse",
+			"x": 5640,
+			"y": 1042,
+			"width": 280,
+			"height": 161,
+			"type": "text",
+			"text": "### 演绎·温室小路（P1）\n入口：温室侧门门闩上的线头\n得到：上弦钥匙\n**待做**：待做",
+			"color": "6"
+		},
+		{
+			"id": "link6a",
+			"x": 5320,
+			"y": 1529,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 桌面·连线 D5\n客房（大厅） · `C6-07` `C6-07`",
+			"color": "3"
+		},
+		{
+			"id": "typetest6",
+			"x": 5320,
+			"y": 1664,
+			"width": 620,
+			"height": 134,
+			"type": "text",
+			"text": "### 打字机·打一行药名\n客房（大厅） · `C6-08` `C6-08`\n得到：同一台打字机",
+			"color": "3"
+		},
+		{
+			"id": "link6b",
+			"x": 5320,
+			"y": 1826,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 桌面·连线 D6\n客房（大厅） · `C6-09` `C6-09`",
+			"color": "3"
+		},
+		{
+			"id": "type6",
+			"x": 5320,
+			"y": 1961,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·当天的记录\n客房（大厅） · `C6-10` `C6-10`",
+			"color": "3"
+		},
+		{
+			"id": "nosleep6",
+			"x": 5320,
+			"y": 2607,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 我没有睡\n客房（大厅） · `C6-11` `C6-11`"
+		},
+		{
+			"id": "day_8",
+			"x": 6080,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 10-23 星期六\n**第 7 章·镜子** · 渗漏 L4 · 开庭"
+		},
+		{
+			"id": "wake7",
+			"x": 6080,
+			"y": 160,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 开庭的早晨\n客房（大厅） · `C7-01` `C7-01`"
+		},
+		{
+			"id": "telling7",
+			"x": 6080,
+			"y": 335,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 打字机·最后的记录（两种讲法）\n客房（大厅） · `C7-02` `C7-02`",
+			"color": "3"
+		},
+		{
+			"id": "mirror7",
+			"x": 6080,
+			"y": 470,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 第一次照镜子\n客房（大厅） · `C7-03`—`C7-04`"
+		},
+		{
+			"id": "day_9",
+			"x": 6840,
+			"y": 0,
+			"width": 620,
+			"height": 130,
+			"type": "text",
+			"text": "# 外面\n**尾声** · 干净的数字画面"
+		},
+		{
+			"id": "epilogue",
+			"x": 6840,
+			"y": 335,
+			"width": 620,
+			"height": 107,
+			"type": "text",
+			"text": "### 尾声·白色的房间\n尾声·白色的房间 · `EP-01`—`EP-04`",
+			"color": "5"
+		},
+		{
+			"id": "ws_0",
+			"type": "file",
+			"file": "章节拆分/第0章.md",
+			"x": 760,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_1",
+			"type": "file",
+			"file": "章节拆分/第1章.md",
+			"x": 1520,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_2",
+			"type": "file",
+			"file": "章节拆分/第2章.md",
+			"x": 2280,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_3",
+			"type": "file",
+			"file": "章节拆分/第3章.md",
+			"x": 3040,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_4",
+			"type": "file",
+			"file": "章节拆分/第4章.md",
+			"x": 3800,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_5",
+			"type": "file",
+			"file": "章节拆分/第5章.md",
+			"x": 4560,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_6",
+			"type": "file",
+			"file": "章节拆分/第6章.md",
+			"x": 5320,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_7",
+			"type": "file",
+			"file": "章节拆分/第7章.md",
+			"x": 6080,
+			"y": -420,
+			"width": 620,
+			"height": 380,
+			"color": "2"
+		},
+		{
+			"id": "ws_overview",
+			"type": "file",
+			"file": "剧本/章节总览.md",
+			"x": -720,
+			"y": -420,
+			"width": 460,
+			"height": 380,
+			"color": "2"
+		}
+	],
+	"edges": [
+		{
+			"id": "e_film_train",
+			"fromNode": "film",
+			"fromSide": "right",
+			"toNode": "train",
+			"toSide": "left"
+		},
+		{
+			"id": "e_train_arrive",
+			"fromNode": "train",
+			"fromSide": "bottom",
+			"toNode": "arrive",
+			"toSide": "top"
+		},
+		{
+			"id": "e_arrive_explore0",
+			"fromNode": "arrive",
+			"fromSide": "bottom",
+			"toNode": "explore0",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore0_garden2120",
+			"fromNode": "explore0",
+			"fromSide": "bottom",
+			"toNode": "garden2120",
+			"toSide": "top"
+		},
+		{
+			"id": "e_garden2120_break_in",
+			"fromNode": "garden2120",
+			"fromSide": "bottom",
+			"toNode": "break_in",
+			"toSide": "top"
+		},
+		{
+			"id": "e_break_in_record0",
+			"fromNode": "break_in",
+			"fromSide": "bottom",
+			"toNode": "record0",
+			"toSide": "top"
+		},
+		{
+			"id": "e_record0_wake1",
+			"fromNode": "record0",
+			"fromSide": "right",
+			"toNode": "wake1",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake1_desk1",
+			"fromNode": "wake1",
+			"fromSide": "bottom",
+			"toNode": "desk1",
+			"toSide": "top"
+		},
+		{
+			"id": "e_desk1_explore1",
+			"fromNode": "desk1",
+			"fromSide": "bottom",
+			"toNode": "explore1",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore1_type1",
+			"fromNode": "explore1",
+			"fromSide": "bottom",
+			"toNode": "type1",
+			"toSide": "top"
+		},
+		{
+			"id": "e_type1_sleep1",
+			"fromNode": "type1",
+			"fromSide": "bottom",
+			"toNode": "sleep1",
+			"toSide": "top"
+		},
+		{
+			"id": "e_sleep1_wake2",
+			"fromNode": "sleep1",
+			"fromSide": "right",
+			"toNode": "wake2",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake2_explore2",
+			"fromNode": "wake2",
+			"fromSide": "bottom",
+			"toNode": "explore2",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore2_link2",
+			"fromNode": "explore2",
+			"fromSide": "bottom",
+			"toNode": "link2",
+			"toSide": "top"
+		},
+		{
+			"id": "e_link2_type2",
+			"fromNode": "link2",
+			"fromSide": "bottom",
+			"toNode": "type2",
+			"toSide": "top"
+		},
+		{
+			"id": "e_type2_sleep2",
+			"fromNode": "type2",
+			"fromSide": "bottom",
+			"toNode": "sleep2",
+			"toSide": "top"
+		},
+		{
+			"id": "e_sleep2_wake3",
+			"fromNode": "sleep2",
+			"fromSide": "right",
+			"toNode": "wake3",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake3_explore3",
+			"fromNode": "wake3",
+			"fromSide": "bottom",
+			"toNode": "explore3",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore3_lunch3",
+			"fromNode": "explore3",
+			"fromSide": "bottom",
+			"toNode": "lunch3",
+			"toSide": "top"
+		},
+		{
+			"id": "e_lunch3_seance3",
+			"fromNode": "lunch3",
+			"fromSide": "bottom",
+			"toNode": "seance3",
+			"toSide": "top"
+		},
+		{
+			"id": "e_seance3_link3",
+			"fromNode": "seance3",
+			"fromSide": "bottom",
+			"toNode": "link3",
+			"toSide": "top"
+		},
+		{
+			"id": "e_link3_type3",
+			"fromNode": "link3",
+			"fromSide": "bottom",
+			"toNode": "type3",
+			"toSide": "top"
+		},
+		{
+			"id": "e_type3_sleep3",
+			"fromNode": "type3",
+			"fromSide": "bottom",
+			"toNode": "sleep3",
+			"toSide": "top"
+		},
+		{
+			"id": "e_sleep3_wake4",
+			"fromNode": "sleep3",
+			"fromSide": "right",
+			"toNode": "wake4",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake4_receipt4",
+			"fromNode": "wake4",
+			"fromSide": "bottom",
+			"toNode": "receipt4",
+			"toSide": "top"
+		},
+		{
+			"id": "e_receipt4_explore4",
+			"fromNode": "receipt4",
+			"fromSide": "bottom",
+			"toNode": "explore4",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore4_link4",
+			"fromNode": "explore4",
+			"fromSide": "bottom",
+			"toNode": "link4",
+			"toSide": "top"
+		},
+		{
+			"id": "e_link4_alibi4",
+			"fromNode": "link4",
+			"fromSide": "bottom",
+			"toNode": "alibi4",
+			"toSide": "top"
+		},
+		{
+			"id": "e_alibi4_type4",
+			"fromNode": "alibi4",
+			"fromSide": "bottom",
+			"toNode": "type4",
+			"toSide": "top"
+		},
+		{
+			"id": "e_type4_sleep4",
+			"fromNode": "type4",
+			"fromSide": "bottom",
+			"toNode": "sleep4",
+			"toSide": "top"
+		},
+		{
+			"id": "e_sleep4_wake5",
+			"fromNode": "sleep4",
+			"fromSide": "right",
+			"toNode": "wake5",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake5_explore5",
+			"fromNode": "wake5",
+			"fromSide": "bottom",
+			"toNode": "explore5",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore5_link5",
+			"fromNode": "explore5",
+			"fromSide": "bottom",
+			"toNode": "link5",
+			"toSide": "top"
+		},
+		{
+			"id": "e_link5_type5",
+			"fromNode": "link5",
+			"fromSide": "bottom",
+			"toNode": "type5",
+			"toSide": "top"
+		},
+		{
+			"id": "e_type5_sleep5",
+			"fromNode": "type5",
+			"fromSide": "bottom",
+			"toNode": "sleep5",
+			"toSide": "top"
+		},
+		{
+			"id": "e_sleep5_wake6",
+			"fromNode": "sleep5",
+			"fromSide": "right",
+			"toNode": "wake6",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake6_develop6",
+			"fromNode": "wake6",
+			"fromSide": "bottom",
+			"toNode": "develop6",
+			"toSide": "top"
+		},
+		{
+			"id": "e_develop6_ded_1900",
+			"fromNode": "develop6",
+			"fromSide": "bottom",
+			"toNode": "ded_1900",
+			"toSide": "top"
+		},
+		{
+			"id": "e_ded_1900_ledger6",
+			"fromNode": "ded_1900",
+			"fromSide": "bottom",
+			"toNode": "ledger6",
+			"toSide": "top"
+		},
+		{
+			"id": "e_ledger6_explore6",
+			"fromNode": "ledger6",
+			"fromSide": "bottom",
+			"toNode": "explore6",
+			"toSide": "top"
+		},
+		{
+			"id": "e_explore6_link6a",
+			"fromNode": "explore6",
+			"fromSide": "bottom",
+			"toNode": "link6a",
+			"toSide": "top"
+		},
+		{
+			"id": "e_link6a_typetest6",
+			"fromNode": "link6a",
+			"fromSide": "bottom",
+			"toNode": "typetest6",
+			"toSide": "top"
+		},
+		{
+			"id": "e_typetest6_link6b",
+			"fromNode": "typetest6",
+			"fromSide": "bottom",
+			"toNode": "link6b",
+			"toSide": "top"
+		},
+		{
+			"id": "e_link6b_type6",
+			"fromNode": "link6b",
+			"fromSide": "bottom",
+			"toNode": "type6",
+			"toSide": "top"
+		},
+		{
+			"id": "e_type6_nosleep6",
+			"fromNode": "type6",
+			"fromSide": "bottom",
+			"toNode": "nosleep6",
+			"toSide": "top"
+		},
+		{
+			"id": "e_nosleep6_wake7",
+			"fromNode": "nosleep6",
+			"fromSide": "right",
+			"toNode": "wake7",
+			"toSide": "left"
+		},
+		{
+			"id": "e_wake7_telling7",
+			"fromNode": "wake7",
+			"fromSide": "bottom",
+			"toNode": "telling7",
+			"toSide": "top"
+		},
+		{
+			"id": "e_telling7_mirror7",
+			"fromNode": "telling7",
+			"fromSide": "bottom",
+			"toNode": "mirror7",
+			"toSide": "top"
+		},
+		{
+			"id": "e_mirror7_epilogue",
+			"fromNode": "mirror7",
+			"fromSide": "right",
+			"toNode": "epilogue",
+			"toSide": "left"
+		}
+	]
+}
