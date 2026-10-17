@@ -124,5 +124,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2, 4.885, -7.72)
 metadata/size = Vector3(0.2, 0.2, 0.2)
 
 [node name="chr_尸体" type="Node3D" parent="接口"]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 16.55, 3.775, -9.85)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 16.45, 3.6, -9.25)
 visible = false

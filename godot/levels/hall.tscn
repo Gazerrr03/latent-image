@@ -122,6 +122,13 @@ light_energy = 0.5
 omni_range = 3.0
 shadow_enabled = false
 
+[node name="楼梯下补光" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6, 1.9, -7.4)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.45
+omni_range = 3.5
+shadow_enabled = false
+
 [node name="spawn" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 9.6, 0.015, -1.1)
 

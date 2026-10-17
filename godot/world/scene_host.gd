@@ -199,6 +199,9 @@ func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
 			if n is GeometryInstance3D:
 				_surfaces.append(n)
 				_orig_mats[n] = n.material_override
+				# 镜中的人是镜像，不在墙上投影
+				if who.begins_with("镜中"):
+					n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 			elif n is AnimationPlayer:
 				for a in ["idle", "walk", "talk", "sit"]:
 					if n.has_animation(a):
@@ -395,6 +398,7 @@ func _adopt_level(r: Node) -> void:
 		if n is GeometryInstance3D and not n.is_in_group("no_leak"):
 			_surfaces.append(n)
 			_orig_mats[n] = n.material_override
+	_unshadow_lamp_housings(r)
 	for n in _walk(r):
 		if n is MeshInstance3D and _is_door(String(n.name)):
 			for c in n.get_children():
@@ -549,6 +553,27 @@ func _swap_prop(n: Node3D, nm: String) -> void:
 	n.queue_free()
 	m.name = nm
 	named[nm] = m
+
+
+## 光源放在灯具模型里（灯笼、壁灯）时，灯罩和框架会把整面墙切成几道通顶的黑影。
+## 包住投影光源的小模型（水平不到 1 米，即灯具本身）不投影；房间墙体等大模型不受影响。
+func _unshadow_lamp_housings(r: Node) -> void:
+	var lights: Array = []
+	for n in _walk(r):
+		if n is Light3D and n.shadow_enabled:
+			lights.append(n.global_position)
+	if lights.is_empty():
+		return
+	for n in _walk(r):
+		if not n is GeometryInstance3D or n.cast_shadow == GeometryInstance3D.SHADOW_CASTING_SETTING_OFF:
+			continue
+		var box: AABB = n.global_transform * n.get_aabb()
+		if box.size.x > 1.0 or box.size.z > 1.0:
+			continue
+		for p in lights:
+			if box.grow(0.05).has_point(p):
+				n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+				break
 
 
 func _walk(n: Node) -> Array:

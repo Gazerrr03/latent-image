@@ -2,7 +2,7 @@ shot_id,node,line,scene,camera,mode,sound,text,ai_slot,actions,next,note
 C0-01,C0,*,train,seat,camera,projector,,,fx(关闭);footage(片头_警告);footage(片头_怪谈);diary(diary0),,0A：片头家庭电影（怪谈）。只讲怪谈，不讲世界观
 C0-02,C0,*,train,seat,camera,-projector;train_rattle;train_whistle@3,火车往西开。天还亮着。窗外是威尔特郡的秋天：一棵树，一道石墙，一个赶羊的人。\n过了一会儿，又是一棵树，一道石墙，一个赶羊的人。,,osd();fx(关闭);leak(0),,上层露出（接缝）：窗外风景重复；他两天前刚坐过这条线。docs/02 第 7 节
 C0-03,C0,*,train,letter_close,camera,paper_rustle;train_brake@5,亲爱的格雷：\n好久不见。十月十六日星期六，来奥瑞尔庄园住几天吧，晚上九点到。我就不派车去车站接你了，那段路你一向喜欢走。\n我有一样东西，必须给你看。\n——安布罗斯　十月十三日\n\n我手里只有信的第一页。,,osd();fx(关闭);collect(ev_letter_p1),,朋友的邀请；第二页在大衣内袋（第 6 章）。“我手里只有第一页”是真话
-C0-04,C0,*,manor_gate,wide_symmetric,,-train_rattle;rain_night;iron_gate;thunder_far@1.5;clock_chime@3,我从车站走过来。九点，我到达奥瑞尔庄园。,,wait(2),,T3：真话；省略的是两天前那一次（他自己也不记得）
+C0-04,C0,*,manor,c1_gate,,-train_rattle;rain_night;iron_gate;thunder_far@1.5;clock_chime@3,我从车站走过来。九点，我到达奥瑞尔庄园。,,wait(2),,T3：真话；省略的是两天前那一次（他自己也不记得）
 C0-05,C0,*,hall,hall_mid,,door_front;clock_tick,门厅里挂着一面镜子。镜子里有门，有帽架，有一盏灯。\n康斯坦斯·塔尔博特迎上来，眼睛上系着一条黑缎带。\n楼梯上走下来一个系着围裙的人，指尖染着药水。是安布罗斯。,,"music(explore,3)",,镜子里没有格雷（镜头回避，不点出）
 C0-06,C0,*,hall,stair,,clock_tick,,,say(c0_ambrose);collect(ev_amb_words),,和还活着的主人对话；“主人的话”第 5 章要用
 C0-07,C0,*,hall,hall_mid,,door_creak;bolt_slide@1.2,他走进暗房，门闩响了一声。,,say(c0_constance);objective(在一楼走走：认识这家人。),,
