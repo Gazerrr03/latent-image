@@ -40,13 +40,10 @@ func _ready() -> void:
 	if cap != "":
 		_capture(cap)
 		return
-	if GameState.load_save() and GameState.shot != "":
-		var k: int = await ui.choose("奥瑞尔庄园", ["继续调查", "从头开始"])
-		if k == 0:
-			Director.start(GameState.shot)
-			return
-	GameState.reset()
-	Director.start()
+	# 标题页：有存档时“继续调查”（ui/menus.gd）
+	if not GameState.load_save():
+		GameState.reset()
+	ui.menus.show_title()
 
 
 ## 走到结尾（尾声之后）：▸ 再读一遍
@@ -86,7 +83,7 @@ func _arg(prefix: String) -> String:
 	return ""
 
 
-## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--examine=ev_id] [--fx=纪录片片头] [--clean] [--play=片头_怪谈] [--view=取代] [--out=/tmp/x.png]
+## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--examine=ev_id] [--fx=纪录片片头] [--clean] [--play=片头_怪谈] [--view=取代] [--menu=标题|暂停|设置|操作|确认] [--out=/tmp/x.png]
 ## 跳到指定镜号，等画面稳定后截图并退出。供 agent 自查画面用。
 func _capture(shot_id: String) -> void:
 	GameState.reset()
@@ -130,6 +127,10 @@ func _capture(shot_id: String) -> void:
 		out = "/tmp/godot_capture_%s.png" % shot_id
 	if OS.get_cmdline_user_args().has("--debug-ui"):
 		print("board ", Director.ui.board.size)
+	if _arg("--menu=") != "":
+		# 截图自查：--menu=标题|确认|暂停|设置|操作
+		Director.ui.menus.open_for_capture(_arg("--menu="))
+		await get_tree().create_timer(0.6).timeout
 	get_viewport().get_texture().get_image().save_png(out)
 	print("截图已保存：", out)
 	get_tree().quit()

@@ -20,6 +20,8 @@ var autoplay := false
 var skip_text := false
 var running := false
 var _jump_to := ""
+## 回到标题：停下来，不发 finished
+var _stopping := false
 var _played := 0
 var _train_present := false
 var _before_train_fx := ""
@@ -54,6 +56,21 @@ func _interrupted() -> bool:
 	return _jump_to != ""
 
 
+## 回到标题页：打断正在播放的镜头，等它停下（不发 finished，不改存档）
+func stop() -> void:
+	if not running:
+		return
+	_stopping = true
+	_jump_to = "END"
+	ui.cancel()
+	inspected.emit(CANCEL)
+	for i in 120:
+		if not running:
+			break
+		await get_tree().process_frame
+	_stopping = false
+
+
 func _run(first: String) -> void:
 	running = true
 	var cur := first
@@ -74,6 +91,8 @@ func _run(first: String) -> void:
 			continue
 		cur = resolve_next(row)
 	running = false
+	if _stopping:
+		return
 	finished.emit()
 
 

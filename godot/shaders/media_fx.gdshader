@@ -26,6 +26,7 @@ uniform float bleed = 0.0;       // 颜色向右拖影 0—1
 uniform float glitch = 0.0;      // 方块错位 0—1
 // —— 总强度（用于淡入淡出） ——
 uniform float amount = 1.0;
+uniform float brightness = 1.0;  // 设置里的亮度：gamma，1 = 原样
 
 float hash(vec2 p) {
 	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -112,5 +113,6 @@ void fragment() {
 	vec2 v = SCREEN_UV - 0.5;
 	col *= 1.0 - dot(v, v) * vignette * 1.8;
 
-	COLOR = vec4(mix(clean, col, amount), 1.0);
+	vec3 outc = max(mix(clean, col, amount), vec3(0.0));
+	COLOR = vec4(pow(outc, vec3(1.0 / brightness)), 1.0);
 }

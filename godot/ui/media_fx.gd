@@ -29,6 +29,9 @@ func _ready() -> void:
 	reload()
 	GameState.changed.connect(_follow_leak)
 	_follow_leak()
+	# 设置里的亮度：画面的 gamma（只作用于 3D 画面，纸质界面不变）
+	Settings.changed.connect(func(): _mat.set_shader_parameter("brightness", Settings.gamma()))
+	_mat.set_shader_parameter("brightness", Settings.gamma())
 
 
 func reload() -> void:

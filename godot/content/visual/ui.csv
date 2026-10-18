@@ -1,0 +1,39 @@
+id,text,note
+title,奥瑞尔庄园,标题页的大字
+title_sub,一九二六年十月　威尔特郡,标题下面一行小字
+title_image,ui/title_manor.png,标题页背景（art/ 下的路径）：庄园雨夜的一帧，--capture=C0-04 --clean 截取
+title_sound,rain_night,标题页循环的环境声（音效表 id）；离开标题页时停掉
+menu_continue,继续调查,有存档才出现；下面一行小字自动写出“第几章 · 日期 · 离开庭还有几天”
+menu_new,从头开始,
+menu_settings,设置,
+menu_quit,离开,
+confirm_new,从头开始，会覆盖现在这份调查记录。,有存档时按“从头开始”的二次确认
+confirm_yes,覆盖，从头开始,
+confirm_no,算了,
+pause_head,记录暂停,暂停页的抬头；下面一行是当天的日期角标
+pause_resume,继续,
+pause_board,证据板,
+pause_settings,设置,
+pause_controls,操作说明,
+pause_title,回到标题,先存档再回到标题页
+back,返回,
+settings_head,设置,
+set_master,总音量,
+set_music,音乐,
+set_sfx,音效,
+set_sens,鼠标灵敏度,
+set_invert,Y 轴反转,
+set_text,文字速度,
+set_brightness,亮度,
+set_window,画面,
+val_on,开,
+val_off,关,
+val_typed,逐字,
+val_instant,直接显示,
+val_fullscreen,全屏,
+val_windowed,窗口,
+controls_head,操作说明,
+controls,W A S D／方向键｜走动\n鼠标｜环顾\nE／左键｜检查 · 推门 · 交谈\nTab｜翻开证据板\n空格／回车／左键｜读下一句\nEsc｜暂停,每行“按键｜做什么”
+key_hint,E,准星提示前面的按键
+sound_select,paper_rustle,菜单确认一项时的声音（音效表 id）
+sound_pause,ui_board_open,打开暂停页时的声音（音效表 id）

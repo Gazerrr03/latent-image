@@ -10,6 +10,8 @@ const INK := Color("#1f1a14")
 const BAR_RATIO := 0.128  # 16:9 画面上加 2.39:1 黑边
 const EvidenceBoard := preload("res://ui/evidence_board.gd")
 const MediaFx := preload("res://ui/media_fx.gd")
+const Menus := preload("res://ui/menus.gd")
+const H := preload("res://ui/hud_text.gd")
 
 var font: SystemFont
 var _waiting := false
@@ -27,6 +29,19 @@ var choice_title: Label
 var objective_label: Label
 var toast_label: Label
 var hint_label: Label
+## 准星下面的提示：“［E］检查 · 药柜”
+var hint_box: HBoxContainer
+var hint_key: Label
+## 自由行走时走进新房间，屏幕下方淡入淡出房间名
+var room_label: Label
+var _room_tween: Tween
+var _room_last := ""
+var _room_last_t := -100.0
+## 右下角常驻的日期角标：“十月十八日 星期一 · 第二章 · 离开庭还有五天”
+var day_label: Label
+var _hud_on := true
+## 标题页、暂停页、设置、操作说明
+var menus: CanvasLayer
 var progress_label: Label
 var checklist_box: VBoxContainer
 var crosshair: Label
@@ -108,8 +123,7 @@ func _ready() -> void:
 	objective_label.offset_top = 70
 	toast_label = _label(root, Control.PRESET_CENTER_TOP, 18)
 	toast_label.offset_top = 110
-	hint_label = _label(root, Control.PRESET_CENTER, 18)
-	hint_label.offset_top = 40
+	_build_hint(root)
 	progress_label = _label(root, Control.PRESET_TOP_LEFT, 18)
 	progress_label.offset_left = 24
 	progress_label.offset_top = 24
@@ -122,8 +136,29 @@ func _ready() -> void:
 	crosshair = _label(root, Control.PRESET_CENTER, 18)
 	crosshair.text = "·"
 
+	room_label = _label(root, Control.PRESET_CENTER_BOTTOM, 30)
+	room_label.offset_top = -190
+	room_label.offset_bottom = -150
+	room_label.add_theme_constant_override("shadow_offset_x", 2)
+	room_label.add_theme_constant_override("shadow_offset_y", 2)
+	room_label.modulate.a = 0.0
+	day_label = _label(root, Control.PRESET_BOTTOM_RIGHT, 16)
+	day_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	day_label.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	day_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	day_label.offset_right = -28
+	day_label.offset_bottom = -22
+	day_label.add_theme_color_override("font_color", Color("#cfc3a6"))
+	day_label.add_theme_constant_override("shadow_offset_x", 1)
+	day_label.add_theme_constant_override("shadow_offset_y", 1)
+
 	_build_interlude(root)
+	menus = Menus.new()
+	menus.font = font
+	add_child(menus)
 	GameState.changed.connect(_refresh)
+	Director.shot_started.connect(_on_shot)
+	Director.inspected.connect(_on_event)
 	_refresh()
 
 
@@ -166,7 +201,81 @@ func _label(root: Control, preset: int, size: int) -> Label:
 
 
 func _refresh() -> void:
-	pass
+	day_label.text = H.day_line(GameState.shot)
+
+
+## 准星提示：按键印成一枚小小的打字机键帽，后面是“动作 · 对象”
+func _build_hint(root: Control) -> void:
+	hint_box = HBoxContainer.new()
+	hint_box.set_anchors_preset(Control.PRESET_CENTER)
+	hint_box.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	hint_box.offset_top = 34
+	hint_box.alignment = BoxContainer.ALIGNMENT_CENTER
+	hint_box.add_theme_constant_override("separation", 10)
+	hint_box.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(hint_box)
+	hint_key = Label.new()
+	hint_key.text = H.t("key_hint")
+	hint_key.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint_key.custom_minimum_size = Vector2(26, 26)
+	hint_key.add_theme_font_size_override("font_size", 15)
+	hint_key.add_theme_color_override("font_color", INK)
+	var cap := StyleBoxFlat.new()
+	cap.bg_color = Color("#e8dcc0")
+	cap.set_corner_radius_all(13)
+	cap.set_border_width_all(2)
+	cap.border_color = Color("#3a3128")
+	cap.content_margin_left = 4
+	cap.content_margin_right = 4
+	hint_key.add_theme_stylebox_override("normal", cap)
+	hint_box.add_child(hint_key)
+	hint_label = Label.new()
+	hint_label.add_theme_font_size_override("font_size", 18)
+	hint_label.add_theme_color_override("font_color", Color("#e8dcc0"))
+	hint_label.add_theme_color_override("font_shadow_color", Color.BLACK)
+	hint_label.add_theme_constant_override("shadow_offset_x", 1)
+	hint_label.add_theme_constant_override("shadow_offset_y", 1)
+	hint_box.add_child(hint_label)
+	hint_box.hide()
+
+
+func _on_shot(_row: Dictionary) -> void:
+	_refresh()
+	# 进入一个镜头（交谈、走进房间触发的镜头），房间名立刻收起，别和文字框叠在一起
+	if _room_tween:
+		_room_tween.kill()
+	room_label.modulate.a = 0.0
+
+
+## 自由行走时走进一个房间（scene_host 发出 enter:<房间>）：屏幕下方淡入淡出房间名
+func _on_event(id: String) -> void:
+	if not id.begins_with("enter:") or Director.autoplay:
+		return
+	var rid := id.trim_prefix("enter:")
+	var now := Time.get_ticks_msec() / 1000.0
+	# 在门口来回跨的时候不要一遍遍出现
+	if rid == _room_last and now - _room_last_t < 6.0:
+		_room_last_t = now
+		return
+	_room_last = rid
+	_room_last_t = now
+	var n := H.room_name(rid)
+	if n == "":
+		return
+	room_label.text = n
+	if _room_tween:
+		_room_tween.kill()
+	_room_tween = create_tween()
+	_room_tween.tween_property(room_label, "modulate:a", 1.0, 0.9).set_trans(Tween.TRANS_SINE)
+	_room_tween.tween_interval(2.2)
+	_room_tween.tween_property(room_label, "modulate:a", 0.0, 1.4).set_trans(Tween.TRANS_SINE)
+
+
+## 日期角标在影像档案、黑场、冲洗、证据板、菜单上面不出现；房间名在菜单上面不出现
+func _process(_dt: float) -> void:
+	room_label.visible = _hud_on and not menus.visible
+	day_label.visible = _hud_on and day_label.text != "" and not (footage and footage.active) \
+		and not interlude_layer.visible and not develop_layer.visible and not board.visible and not menus.visible
 
 
 ## 暗房：红灯下的显影盘。相纸先是一片白，随着显影慢慢浮出影像
@@ -294,9 +403,15 @@ func show_text(text: String) -> void:
 	text_label.visible_ratio = 0.0
 	more_label.modulate.a = 0.0
 	text_panel.show()
-	_typing = create_tween()
-	_typing.tween_property(text_label, "visible_ratio", 1.0, clampf(text.length() * 0.03, 0.3, 2.5))
-	_typing.tween_property(more_label, "modulate:a", 1.0, 0.3)
+	if Settings.text_instant:
+		# 设置：文字直接显示
+		text_label.visible_ratio = 1.0
+		more_label.modulate.a = 1.0
+		_typing = null
+	else:
+		_typing = create_tween()
+		_typing.tween_property(text_label, "visible_ratio", 1.0, clampf(text.length() * 0.03, 0.3, 2.5))
+		_typing.tween_property(more_label, "modulate:a", 1.0, 0.3)
 	_waiting = true
 	await _resolved
 	_waiting = false
@@ -590,14 +705,23 @@ func set_checklist(items: Array) -> void:
 		checklist_box.add_child(l)
 
 
+## 准星提示。玩家脚本传来“E　检查：药柜”“E　开门”，统一成键帽 + “检查 · 药柜”；空字符串收起
 func set_hint(text: String) -> void:
-	hint_label.text = text
+	if text.strip_edges() == "":
+		hint_label.text = ""
+		hint_box.hide()
+		return
+	var p := H.hint_parts(text)
+	hint_label.text = p[0] if p[1] == "" else "%s · %s" % p
+	hint_box.visible = _hud_on
 
 
 ## 播放影像档案、冲洗底片时隐藏目标、提示等界面
 func set_hud(on: bool) -> void:
-	for n in [objective_label, hint_label, progress_label, checklist_box, toast_label, crosshair]:
+	_hud_on = on
+	for n in [objective_label, progress_label, checklist_box, toast_label, crosshair, room_label]:
 		n.visible = on
+	hint_box.visible = on and hint_label.text != ""
 	if on:
 		_refresh()
 
@@ -611,23 +735,41 @@ func set_cinematic(on: bool) -> void:
 
 # ───────────── 输入 ─────────────
 
-## Tab：随时翻开证据板，一张一张拿起来看（不在问话、选项、读字的时候）
+## Tab：随时翻开证据板，一张一张拿起来看；Esc：自由行走时打开暂停页。
+## 问话、选项、读字、黑场、冲洗、影像档案、证据板上都不响应
 func _unhandled_input(event: InputEvent) -> void:
-	if not (event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_TAB):
+	if not (event is InputEventKey and event.pressed and not event.echo):
 		return
-	if board.visible or _waiting or choice_panel.visible or develop_layer.visible or interlude_layer.visible or Director.autoplay:
+	var tab: bool = event.physical_keycode == KEY_TAB
+	var esc: bool = event.is_action_pressed("ui_cancel")
+	if not (tab or esc) or _busy():
 		return
-	if footage and footage.active:
+	if esc:
+		var pl: Node = Director.world.player if Director.world else null
+		if pl and pl.active and not pl.frozen:
+			get_viewport().set_input_as_handled()
+			menus.open_pause()
 		return
 	get_viewport().set_input_as_handled()
+	browse_board()
+
+
+func _busy() -> bool:
+	return board.visible or _waiting or choice_panel.visible or develop_layer.visible or interlude_layer.visible \
+		or Director.autoplay or menus.visible or (footage and footage.active)
+
+
+## 翻开证据板浏览（Tab，或暂停页的“证据板”）；合上以后回到原来的样子
+func browse_board(restore_mouse := true) -> void:
 	_release_mouse()
 	objective_label.visible = false
 	Director.world.set_frozen(true)
 	Director.world.play_sound("ui_board_open")
 	await board.browse()
-	Director.world.set_frozen(false)
 	objective_label.visible = true
-	_restore_mouse()
+	if restore_mouse:
+		Director.world.set_frozen(false)
+		_restore_mouse()
 
 
 func _input(event: InputEvent) -> void:
