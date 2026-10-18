@@ -17,6 +17,10 @@ REFS = {'客房': {'全景': 'T-026-客房/guest_room_透视_establish-v3.png', 
         '客厅': {'客厅朝西': 'T-033-客厅·降灵会/seance_seance_mid-v3.png', '降灵会布置': 'T-033-客厅·降灵会/seance_table_candle-v3.png'},
         '照片档案室': {'朝南凸窗': 'T-028-照片档案室/archive_archive_mid-v3b.png', '门框': 'T-028-照片档案室/archive_doorframe-v3.png'},
         '艾瑞斯的房间': {'朝北看窗': 'T-031-艾瑞斯的房间/child_room_child_mid-v3.png', '贴画的墙': 'T-031-艾瑞斯的房间/child_room_child_wall-v3.png'},
+        '主人的卧室': {'门口朝南': 'T-041-主人的卧室兼书房/amb_room_door-v3.png', '床': 'T-041-主人的卧室兼书房/amb_room_bed-v3.png', '书房一角': 'T-041-主人的卧室兼书房/amb_room_study-v3.png',
+                       '床头柜近景': 'T-041-主人的卧室兼书房/amb_room_bedside_close-v3.png', '写字台近景': 'T-041-主人的卧室兼书房/amb_room_desk_close-v3.png'},
+        '女主人的卧室': {'门口朝北': 'T-041-女主人的卧室/con_room_door-v3.png', '窗前朝南': 'T-041-女主人的卧室/con_room_window-v3.png', '朝东': 'T-041-女主人的卧室/con_room_east-v3.png',
+                         '梳妆台近景': 'T-041-女主人的卧室/con_room_dresser_close-v3.png'},
         '温室': {'全景': 'T-030-温室/greenhouse_透视_green_mid-v2.png', '手压泵': 'T-030-温室/greenhouse_透视_pump_detail-v2.png', '侧门': 'T-030-温室/greenhouse_透视_side_door-v2.png'}}
 room = sys.argv[1] if len(sys.argv) > 1 else '客房'
 D = f'{ROOT}/assets/3d/manor/review/rooms/{room}'

@@ -1,0 +1,107 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_amb_room.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="3_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="amb_room" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="主人的卧室" parent="结构" instance=ExtResource("2_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("3_r")]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 0.9
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="吊灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 5.865, -2.55)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 1.0
+omni_range = 6.0
+shadow_enabled = true
+
+[node name="床头台灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.84, 4.615, -3.7)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.6
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="写字台台灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.97, 4.715, -0.61)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.6
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, 14.65, 3.615, -4.3)
+
+[node name="cam_amb_mid" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.979179, 0.0193047, -0.20208, 0, 0.995468, 0.0950967, 0.203, 0.0931166, -0.974741, 14.65, 5.165, -4.4)
+environment = SubResource("env")
+fov = 61.6
+near = 0.03
+
+[node name="cam_amb_bed" type="Camera3D" parent="接口"]
+transform = Transform3D(0.42394, -0.104023, 0.899697, 0, 0.993382, 0.114855, -0.90569, -0.0486916, 0.421135, 17.7, 5.165, -1.4)
+environment = SubResource("env")
+fov = 58.7
+near = 0.03
+
+[node name="cam_amb_study" type="Camera3D" parent="接口"]
+transform = Transform3D(0.311039, 0.057375, -0.948664, -0, 0.998176, 0.0603695, 0.950397, -0.0187773, 0.310472, 13.4, 5.165, -1.2)
+environment = SubResource("env")
+fov = 58.7
+near = 0.03
+
+[node name="hs_amb_notes" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.86, 4.28, -3.49)
+metadata/size = Vector3(0.3, 0.08, 0.26)
+
+[node name="hs_amb_clippings" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.42, 4.245, -3)
+metadata/size = Vector3(0.35, 0.08, 0.3)
+
+[node name="hs_amb_carbon" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4.385, -0.86)
+metadata/size = Vector3(0.3, 0.06, 0.35)
+
+[node name="hs_amb_photo" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.87, 5.165, -3.2)
+metadata/size = Vector3(0.08, 0.55, 0.75)

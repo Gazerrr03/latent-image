@@ -1,4 +1,4 @@
-"""一次性生成 godot/levels/{guest_room,darkroom,greenhouse,garden,hall,dining,seance,archive,child_room}.tscn 的初稿（10-15 起；10-16 加门厅组与四个房间）：引用庄园与房间模块的 glTF，摆好接口节点。
+"""一次性生成 godot/levels/{guest_room,darkroom,greenhouse,garden,hall,dining,seance,archive,child_room,amb_room,con_room}.tscn 的初稿（10-15 起；10-16 加门厅组与四个房间；10-18 加两间卧室 T-041）：引用庄园与房间模块的 glTF，摆好接口节点。
 **只用于初稿。** 之后机位、热区、灯光以用户在 Godot 编辑器里的修改为准；重跑会覆盖这三个文件里的所有手改。
 机位与 assets/3d/manor/scripts/16、17、21 的审查相机同视角；热区是不可见的 Marker3D（metadata/size）；
 状态层与开关命名为“层·<层名>”，由 world/scene_host.gd 的 apply_room_states 按 content/space/room_states.csv 切换。
@@ -247,5 +247,36 @@ sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((2.75, 7.4, F2), 0)})
 cam(sc, 'child_mid', (2.8, 7.15, F2 + 1.45), (2.15, 11.1, F2 + 1.15), 17)
 cam(sc, 'child_wall', (2.6, 10.7, F2 + 1.45), (2.0, 6.9, F2 + 1.25), 17)
 sc.node('chr_艾瑞斯·塔尔博特', 'Node3D', '接口', {'transform': yaw((2.0, 9.6, F2), 18)})        # 书桌前一步，朝着 child_mid 机位
+sc.write()
+# ═════ 主人的卧室兼书房（C1-06，T-041；31_room_amb.py） ═════
+sc = Scene('amb_room'); env(sc, 0.35)
+base(sc, [('amb_room', '主人的卧室', [])])
+neighbor(sc, 'hall', '门厅')                                                                  # 走廊与锁着的门扇（门扇仍归门厅组）
+sun(sc, 0.9)
+omni(sc, '吊灯', '灯光', (15.75, 2.55, F2 + 2.25), WARM, 1.0, 6.0)
+omni(sc, '床头台灯', '灯光', (12.84, 3.7, F2 + 1.0), WARM, 0.6, 2.5, shadow=False)
+omni(sc, '写字台台灯', '灯光', (14.97, 0.61, F2 + 1.1), WARM, 0.6, 2.5, shadow=False)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((14.65, 4.3, F2), 180)})                # 进门，面朝南窗
+cam(sc, 'amb_mid', (14.65, 4.4, F2 + 1.55), (15.5, 0.3, F2 + 1.15), 17)
+cam(sc, 'amb_bed', (17.7, 1.4, F2 + 1.55), (13.0, 3.6, F2 + 0.95), 18)
+cam(sc, 'amb_study', (13.4, 1.2, F2 + 1.55), (18.9, 3.0, F2 + 1.2), 18)
+for n, p, sz in [('hs_amb_notes', (12.86, 3.49, F2 + 0.665), (0.3, 0.08, 0.26)), ('hs_amb_clippings', (13.42, 3.0, F2 + 0.63), (0.35, 0.08, 0.3)),
+                 ('hs_amb_carbon', (15.5, 0.86, F2 + 0.77), (0.3, 0.06, 0.35)), ('hs_amb_photo', (18.87, 3.2, F2 + 1.55), (0.08, 0.55, 0.75))]:
+    hs(sc, n, p, sz)
+sc.write()
+
+# ═════ 女主人的卧室（C2-04，T-041；32_room_con.py） ═════
+sc = Scene('con_room'); env(sc, 0.35)
+base(sc, [('con_room', '女主人的卧室', [])])
+neighbor(sc, 'hall', '门厅')
+sun(sc, 0.6)
+omni(sc, '吊灯', '灯光', (6.1, 9.0, F2 + 2.3), WARM, 0.9, 5.0)
+omni(sc, '床头台灯', '灯光', (7.37, 9.9, F2 + 0.95), WARM, 0.5, 2.5, shadow=False)
+sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((6.05, 7.4, F2), 0)})                  # 进门，面朝北窗
+cam(sc, 'con_mid', (6.05, 7.3, F2 + 1.55), (5.8, 11.1, F2 + 1.15), 17)
+cam(sc, 'con_window', (5.9, 10.65, F2 + 1.55), (6.6, 6.9, F2 + 1.05), 17)
+for n, p, sz in [('hs_con_ledger', (4.92, 10.65, F2 + 0.78), (0.3, 0.08, 0.3)), ('hs_con_ringbox', (4.92, 10.35, F2 + 0.78), (0.12, 0.1, 0.12)),
+                 ('hs_con_sweater', (7.26, 7.55, F2 + 0.18), (0.6, 0.3, 0.5))]:
+    hs(sc, n, p, sz)
 sc.write()
 print('ok')

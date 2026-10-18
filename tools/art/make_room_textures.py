@@ -5,7 +5,7 @@
 
 · 合影 photo_1919 … photo_1925：用片头家庭电影的庄园立面层与人物剪纸拼成，旧照片褐色调、白边。
   一家人（安布罗斯、康斯坦斯、艾瑞斯、吉迪恩）每年都在；“多出来的人”按《02》：1920 彭罗斯、1922 索尔特、1924 卢西恩。
-  1926 年那张背面朝上放在书桌上（模型里只做背面），墙上那一格空着。索尔特、卢西恩没有剪纸，暂用彭罗斯的剪纸压暗代替（合影图片待美术）。
+  1926 年那张背面朝上放在书桌上（模型里只做背面），墙上那一格空着；正面 photo_1926 挂在主人的卧室（T-041），只生成它：--only=1926。索尔特、卢西恩没有剪纸，暂用彭罗斯的剪纸压暗代替（合影图片待美术）。
 · 墙纸 wallpaper_floral：淡蓝底、深蓝碎花，四方连续。
 · 艾瑞斯的画：四张状态画直接取 T-031 v3 生成图；另画三张背景乱线画（黑色乱线、网格圆眼睛）。
 """
@@ -37,8 +37,11 @@ def group_photo(year, people):
     bg.alpha_composite(ground, (0, H - ground.height + 40))
     n = len(people); x0 = 120; step = (W - 240) / max(1, n - 1) if n > 1 else 0
     for k, (who, h, dark) in enumerate(people):
+        if who is None: continue                                                     # 空着的位置（1926：主位空着）
         im = cut(who)
         s = h / im.height; im = im.resize((max(1, int(im.width * s)), int(h)))
+        if who == 'latente':                                                         # 这张剪纸外沿有一圈白边：收进几个像素
+            r_, g_, b_, a_ = im.split(); im = Image.merge('RGBA', (r_, g_, b_, a_.filter(ImageFilter.MinFilter(9))))
         if dark:
             r, g, b, a = im.split(); im = Image.merge('RGBA', (r.point(lambda v: v * 0.45), g.point(lambda v: v * 0.45), b.point(lambda v: v * 0.45), a))
         cx = int(x0 + k * step) if n > 1 else W // 2
@@ -52,6 +55,11 @@ def group_photo(year, people):
     mount = Image.new('RGB', (W + 80, H + 110), (226, 216, 192)); mount.paste(ph, (40, 40))
     mount = mount.resize((768, int(768 * mount.height / mount.width)))
     mount.save(f'{OUT}/photo_{year}.jpg', quality=88)
+
+# 1926（T-041 主人卧室墙上那张，与档案室书桌上背面朝上的是同一张）：主位空着，面纱女人站在队伍边上（《02》9.5 第 2 章“合影”）
+import sys
+group_photo(1926, [('gideon', 520, False), (None, 0, False), ('constance', 540, False), ('constance', 330, False), ('latente', 545, False)])
+if '--only=1926' in sys.argv: print('ok', f'{OUT}/photo_1926.jpg'); sys.exit(0)
 
 FAMILY = [('gideon', 520, False), ('ambrose', 560, False), ('constance', 540, False), ('constance', 330, False)]   # 最后一个是艾瑞斯（暂用缩小的剪纸）
 EXTRA = {1920: ('penrose', 550, False), 1922: ('penrose', 545, True), 1924: ('penrose', 470, True)}

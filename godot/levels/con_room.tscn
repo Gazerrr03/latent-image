@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_con_room.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="3_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="con_room" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="女主人的卧室" parent="结构" instance=ExtResource("2_r")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("3_r")]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 0.6
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="吊灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 5.915, -9)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.9
+omni_range = 5.0
+shadow_enabled = true
+
+[node name="床头台灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37, 4.565, -9.9)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.5
+omni_range = 2.5
+shadow_enabled = false
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 6.05, 3.615, -7.4)
+
+[node name="cam_con_mid" type="Camera3D" parent="接口"]
+transform = Transform3D(0.997843, -0.00685764, 0.0652884, 0, 0.994529, 0.104461, -0.0656476, -0.104236, 0.992384, 6.05, 5.165, -7.3)
+environment = SubResource("env")
+fov = 61.6
+near = 0.03
+
+[node name="cam_con_window" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.98302, 0.0238469, -0.181941, 0, 0.99152, 0.129958, 0.183497, 0.127751, -0.974684, 5.9, 5.165, -10.65)
+environment = SubResource("env")
+fov = 61.6
+near = 0.03
+
+[node name="hs_con_ledger" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92, 4.395, -10.65)
+metadata/size = Vector3(0.3, 0.08, 0.3)
+
+[node name="hs_con_ringbox" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92, 4.395, -10.35)
+metadata/size = Vector3(0.12, 0.1, 0.12)
+
+[node name="hs_con_sweater" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26, 3.795, -7.55)
+metadata/size = Vector3(0.6, 0.3, 0.5)

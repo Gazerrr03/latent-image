@@ -1,0 +1,252 @@
+[
+  {
+    "id": "amb_room_door-v3",
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_door-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "253dd7ee972a970a5421c1fe80716b498778d3aa9168fa77df15c5d651444ff9",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-8b551f4a-079f-4dc8-bd35-4d4a10daf13a.png",
+    "prompt": "assets/2d/T-041-主人的卧室兼书房/prompts/amb_room_door-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "三扇南窗、雨、中窗下书桌、西墙床及东墙壁炉可辨；已去掉碎花墙纸、多余侧门和西墙柜体。床头纸张以近景为准；窗格细分及家具尺寸按平面和统一规范。"
+    }
+  },
+  {
+    "id": "amb_room_bed-v3",
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_bed-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "a9d16452efc5cce9b4a620eddf0e28c8ea0a3ba167299ec9310382251c226783",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-8fa4d1a7-4178-4913-9e28-f69429e4f174.png",
+    "prompt": "assets/2d/T-041-主人的卧室兼书房/prompts/amb_room_bed-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "西墙床头、双床头柜、北墙门与衣柜/书柜、左下书桌角可辨；已改奶油灰泥和桃花心木床，去掉错误出现在右侧的壁炉。门合页方向按平面图，勿照透视图复制。"
+    }
+  },
+  {
+    "id": "amb_room_study-v3",
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_study-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "6a7e30c9995479fcf7a51a6bfdc8c0ddd7e48076761ce6318f28c66a1b3fd618",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-32b04fa3-c5e9-4db0-b57e-0f3a6b6e547d.png",
+    "prompt": "assets/2d/T-041-主人的卧室兼书房/prompts/amb_room_study-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "东墙合影与下方矮柜、右侧壁炉、左侧书柜、右下书桌形成一组；已删除东墙多余门。合影边缘有面纱女人。北墙柜体顺序、纸张和床头柜位置仍以尺寸图为准。"
+    }
+  },
+  {
+    "id": "amb_room_bedside_close-v3",
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_bedside_close-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "d08621845cb9be6e0845000d8b6af44c489ddeab2fd594b43db7084a1001c1d4",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-0df24a6d-2a82-4053-982c-69cfa11a5a24.png",
+    "prompt": "assets/2d/T-041-主人的卧室兼书房/prompts/amb_room_bedside_close-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "摊开黑皮笔记本、铅笔、旧剪报与带铅笔圈的小样清楚可辨；已去花瓶与装饰盒，改木床与素墙，字迹为不可读纹理。"
+    }
+  },
+  {
+    "id": "amb_room_desk_close-v3",
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_desk_close-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "769d2c98a8ef1aab9a3801dc926de9e08026b84fb3f55d4ea5d38b9da375a09f",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-d20c169d-2866-4c2d-920a-bb3c42d713c0.png",
+    "prompt": "assets/2d/T-041-主人的卧室兼书房/prompts/amb_room_desk_close-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "已纠正为单张桌面近景，紧邻雨窗；吸墨垫、蓝黑复写纸、信纸信封、钢笔、墨水瓶齐全。压痕为不可读反字状纹理。"
+    }
+  },
+  {
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_平面布置图.svg",
+    "sha256": "159b61544a0c65d837268e736096811d0b0913f9e791d45d4797dab8d733ccc0"
+  },
+  {
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_平面布置图.png",
+    "sha256": "5139419ab99786b8a0c75eaf1b505098ab2c201b4e49310ab77f98ff52800783",
+    "dimensions": [
+      3360,
+      2376
+    ]
+  },
+  {
+    "path": "assets/2d/T-041-主人的卧室兼书房/amb_room_平面布置图.pdf",
+    "sha256": "7b67b85cb91913af774704479de29baf0c1fc40f4bf61a10ef772fbbf4d83d6b",
+    "page_mm": [
+      420.0,
+      297.0
+    ]
+  },
+  {
+    "id": "con_room_door-v3",
+    "path": "assets/2d/T-041-女主人的卧室/con_room_door-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "d849e1a032c6207a358f72d45f65b27127ad688162cc4ccff486f31c68459a6f",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-c55aef7a-4c3d-4901-9a54-cf8ed4dbe979.png",
+    "prompt": "assets/2d/T-041-女主人的卧室/prompts/con_room_door-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "北窗与平视草坪、左侧盖黑布三联镜、右侧东墙床头及床头柜齐全；已去碎花墙纸与错误的窗边扶手椅。梳妆台/软凳的通行微调按平面图。"
+    }
+  },
+  {
+    "id": "con_room_window-v3",
+    "path": "assets/2d/T-041-女主人的卧室/con_room_window-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "cee3c14b9a9fd4c1cd7ca334ff668e82c1d80ed43e4c2ad0a42bdf567e717158",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-3b12504d-7f08-40d9-aa67-a610af17d6b5.png",
+    "prompt": "assets/2d/T-041-女主人的卧室/prompts/con_room_window-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "反向朝南：门在前方、衣柜与床尾在左、扶手椅与针线小桌在右，梳妆台裁入右前景；已修奶油墙与木床。无额外窗、壁炉。"
+    }
+  },
+  {
+    "id": "con_room_east-v3",
+    "path": "assets/2d/T-041-女主人的卧室/con_room_east-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "482560e52a1c5abadb129b2a39c8b3bbdb311c886261a1d56d6b571bba6bb0dd",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-1233e098-b03e-49de-a850-6c0ad376dd2d.png",
+    "prompt": "assets/2d/T-041-女主人的卧室/prompts/con_room_east-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "东墙床头、右侧衣柜、左侧床头柜与北窗可辨；已移除本应在相机背后的梳妆台和扶手椅。光感比任务书的冷阴天略暖，最终场景布光需统一；不影响家具朝向参考。"
+    }
+  },
+  {
+    "id": "con_room_dresser_close-v3",
+    "path": "assets/2d/T-041-女主人的卧室/con_room_dresser_close-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "9d370f4e8c5c1d906a58b90b603d045a6687a2c2bcc8fa4dfbc56600e1723aab",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-805342a4-3984-48c8-a961-232773b3584a.png",
+    "prompt": "assets/2d/T-041-女主人的卧室/prompts/con_room_dresser_close-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "黑布完整盖住三联镜，账簿、打开且空的戒指盒、发刷和香水瓶清楚；已去碎花墙纸、错误的窗旁扶手椅和花瓶。"
+    }
+  },
+  {
+    "id": "con_room_wardrobe_close-v3",
+    "path": "assets/2d/T-041-女主人的卧室/con_room_wardrobe_close-v3.png",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "format": "PNG",
+    "sha256": "6f51aef69de82f2dd4565596db81607bbc4d66d48aacd7bfce3dec9d4ae906af",
+    "generated_original": "/Users/qizhi_dong/.codex/generated_images/01a14b28-5586-7672-b162-51c3082e9b09/exec-14ca3b0e-741d-48c3-ad55-57856dde33bb.png",
+    "prompt": "assets/2d/T-041-女主人的卧室/prompts/con_room_wardrobe_close-v3.txt",
+    "status": "candidate_pending_user_review",
+    "review": {
+      "status": "candidate_pending_user_review",
+      "notes": "成人深色长裙整齐悬挂，底层深蓝少年毛衣的领口、袖口与粗针织纹理清楚；已改为净布部分叠压在毛衣右上方，收紧构图并移除错误的远景家具。"
+    }
+  },
+  {
+    "path": "assets/2d/T-041-女主人的卧室/con_room_平面布置图.svg",
+    "sha256": "7f1dadbea7a455ed5b033a7bae1e515979ec15eda7367e0ad4bee1807250987f"
+  },
+  {
+    "path": "assets/2d/T-041-女主人的卧室/con_room_平面布置图.png",
+    "sha256": "1e44673f102b7fb98bc02ee174cbc0eefc37dc34a5faeb33cb51921d46482885",
+    "dimensions": [
+      3360,
+      2376
+    ]
+  },
+  {
+    "path": "assets/2d/T-041-女主人的卧室/con_room_平面布置图.pdf",
+    "sha256": "b750c0007cf52b2bd2c93cf86e29c19e826333a65c1b3ece9675ae2b8c3e44ae",
+    "page_mm": [
+      420.0,
+      297.0
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "images_loaded": 12,
+  "effect_images": 10,
+  "effect_native_dimensions": [
+    1672,
+    941
+  ],
+  "drawing_png_dimensions": [
+    3360,
+    2376
+  ],
+  "missing_links": [],
+  "page_errors": [],
+  "mobile_horizontal_overflow": false,
+  "pdf_size": "A3 420x297mm, one page each",
+  "original_sha256_matches": 10,
+  "status": "candidate_pending_user_review"
+}

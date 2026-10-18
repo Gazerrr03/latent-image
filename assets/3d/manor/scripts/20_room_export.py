@@ -7,7 +7,7 @@
 import bpy, os, sys
 DST = '/Users/qizhi_dong/Projects/DigitalMedia/godot/art/levels/manor'
 IDS = {'客房': 'guest_room', '温室': 'greenhouse', '暗房': 'darkroom', '门厅': 'hall', '花园百叶外侧': 'garden', '餐厅': 'dining', '客厅': 'seance',
-       '照片档案室': 'archive', '艾瑞斯的房间': 'child_room'}
+       '照片档案室': 'archive', '艾瑞斯的房间': 'child_room', '主人的卧室': 'amb_room', '女主人的卧室': 'con_room'}
 only = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else []
 vl = bpy.context.view_layer
 def find(l, name):

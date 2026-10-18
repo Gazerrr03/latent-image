@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_seance.gltf" id="10_seance"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_archive.gltf" id="11_archive"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room.gltf" id="12_child"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_amb_room.gltf" id="13_amb"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_con_room.gltf" id="14_con"]
 
 [node name="manor" type="Node3D" unique_id=381912937]
 
@@ -42,6 +44,11 @@
 [node name="照片档案室" type="Node3D" parent="结构/房间" instance=ExtResource("11_archive")]
 
 [node name="艾瑞斯的房间" type="Node3D" parent="结构/房间" instance=ExtResource("12_child")]
+
+
+[node name="主人的卧室" type="Node3D" parent="结构/房间" instance=ExtResource("13_amb")]
+
+[node name="女主人的卧室" type="Node3D" parent="结构/房间" instance=ExtResource("14_con")]
 
 [node name="灯光" type="Node3D" parent="." unique_id=1156300904]
 
