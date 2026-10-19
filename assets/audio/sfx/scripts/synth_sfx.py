@@ -6,10 +6,11 @@
 
 每个配方登记：编号、描述、分类、是否循环、建议音量。音效表里没有的编号会自动加一行；
 已有的行只更新 file 和 note，不动别人填的描述与音量。
-不用外部素材，全部由代码合成（用户 10-17）；以后有更好的录音，直接替换同名文件即可。
+默认由代码合成；雨声已按用户 10-19 要求换成实录，recordings/rain/sources.json 中的编号不再覆盖。
 """
 
 import csv
+import json
 import subprocess
 import sys
 import wave
@@ -883,7 +884,15 @@ if __name__ == "__main__":
         for sid, m in RECIPES.items():
             print(f"{sid:22s} {m['category']}  {'循环' if m['loop'] else '单次'}  {m['name']}")
         sys.exit()
-    ids = args or list(RECIPES)
+    recorded_manifest = Path(__file__).resolve().parents[1] / "recordings/rain/sources.json"
+    recorded = json.loads(recorded_manifest.read_text()) if recorded_manifest.exists() else {}
+    requested = args or list(RECIPES)
+    ids = [sid for sid in requested if sid not in recorded]
+    for sid in requested:
+        if sid in recorded:
+            print(f"  {sid}: 保留实录，不合成覆盖（重建请用 import_recorded_rain.py）")
+    if not ids:
+        sys.exit()
     for sid in ids:
         meta = RECIPES[sid]
         x = normalize(np.asarray(meta["fn"](), float), meta["loop"])

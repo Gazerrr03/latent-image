@@ -9,7 +9,7 @@ red_hum,暗房红灯的嗡鸣,环境,sfx/red_hum.ogg,-16,是,脚本合成：asse
 typewriter_return,打字机回车,器物,sfx/typewriter_return.ogg,-6,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 typewriter,打字机声,器物,sfx/typewriter.ogg,-6,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 birds_morning,早晨的鸟叫,环境,sfx/birds_morning.ogg,-10,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
-rain_glass,雨打温室玻璃,环境,sfx/rain_glass.ogg,-6,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+rain_glass,雨打温室玻璃,环境,sfx/rain_glass.ogg,-6,是,真实录音：mmorgaine / Freesound 333510；CC0；公开 HQ MP3；来源 assets/audio/sfx/recordings/rain/sources.json
 music_box,八音盒,器物,sfx/music_box.ogg,-12,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 wind,花园里的风,环境,sfx/wind.ogg,-8,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 pin,图钉轻响,器物,sfx/pin.ogg,-8,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
@@ -29,7 +29,7 @@ projector,放映机（片头家庭电影）,器物,sfx/projector.ogg,-8,是,脚�
 train_whistle,火车汽笛（远）,环境,sfx/train_whistle.ogg,-6,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 train_brake,火车减速进站：刹车尖声与放汽,环境,sfx/train_brake.ogg,-8,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 footstep_gravel,脚步（碎石路）,人声,sfx/footstep_gravel.ogg,-6,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
-rain_night,夜雨（室外与窗外）,环境,sfx/rain_night.ogg,-6,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+rain_night,夜雨（室外与窗外）,环境,sfx/rain_night.ogg,-6,是,真实录音：soundrecorder7 / Freesound 167034；CC0；公开 HQ MP3；来源 assets/audio/sfx/recordings/rain/sources.json
 door_front,推开庄园的前门：门锁、沉重的吱呀,器物,sfx/door_front.ogg,-4,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 clock_chime,座钟报时（一声）,环境,sfx/clock_chime.ogg,-6,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 bolt_slide,插上门闩（金属滑动，咔）,器物,sfx/bolt_slide.ogg,-4,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py

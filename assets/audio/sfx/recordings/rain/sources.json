@@ -1,0 +1,28 @@
+{
+  "rain_night": {
+    "title": "Light Rain",
+    "author": "soundrecorder7",
+    "page": "https://freesound.org/people/soundrecorder7/sounds/167034/",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "download": "https://cdn.freesound.org/previews/167/167034_2328971-hq.mp3",
+    "file": "freesound-167034-hq.mp3",
+    "source_quality": "Public HQ MP3 preview, not the original WAV; original download requires login",
+    "sha256": "e96de7229dd13c42798e8bdad265123d4e1d1377135c9c54c829fe4c7cd3ed55",
+    "recording_description": "Light rain recorded in August; author describes no thunder or other background noises",
+    "retrieved": "2026-10-19"
+  },
+  "rain_glass": {
+    "title": "January rain on a window.aif",
+    "author": "mmorgaine",
+    "page": "https://freesound.org/people/mmorgaine/sounds/333510/",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "download": "https://cdn.freesound.org/previews/333/333510_5887515-hq.mp3",
+    "file": "freesound-333510-hq.mp3",
+    "source_quality": "Public HQ MP3 preview, not the original AIFF; original download requires login",
+    "sha256": "61b19282f5450f6c592086c6101f5916efddafc80c40fb66512e61561b25f02d",
+    "recording_description": "Light rain hitting the skylight of the author's studio; original is mono",
+    "retrieved": "2026-10-19"
+  }
+}

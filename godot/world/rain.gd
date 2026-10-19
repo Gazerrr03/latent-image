@@ -4,7 +4,8 @@ extends Node
 
 const NEAR := 0.8
 const FAR := 3.5
-const INDOOR_OUTSIDE_DB := -14.0
+const INDOOR_GLASS_DB := -8.0       # 玻璃上的近处雨滴收轻，避免盖住窗外雨和配乐。
+const INDOOR_OUTSIDE_DB := -6.0     # 窗外小雨作为室内混合的底声。
 const GLASS_NAMES := ["门窗_glass", "温室_玻璃", "温室_补玻璃"]
 const OUTDOOR_ROOMS := ["manor", "garden"]
 const RATE := 1.5
@@ -15,22 +16,27 @@ var _glass_root_id := 0
 var _players := {}
 var _amp := {"rain_night": 0.0, "rain_glass": 0.0}
 var _weather_cache := {}
+var _indoor_gain := 0.0
+var _outdoor_gain := 0.0
 
 
 func _process(dt: float) -> void:
-	var target := {"rain_night": 0.0, "rain_glass": 0.0}
+	var indoor := 0.0
+	var outdoor := 0.0
 	if host and raining():
 		var cam := get_viewport().get_camera_3d()
 		if cam:
 			var p := cam.global_position
 			if _outdoors(p):
-				target["rain_night"] = 1.0
+				outdoor = 1.0
 			else:
-				var gain := _closeness(p)
-				target["rain_glass"] = gain
-				target["rain_night"] = gain * db_to_linear(INDOOR_OUTSIDE_DB)
-	for id in target:
-		_amp[id] = move_toward(_amp[id], target[id], RATE * dt)
+				indoor = _closeness(p)
+	# 两条实录共享同一个距离淡入淡出，走近、走远时混合比例不变。
+	_indoor_gain = move_toward(_indoor_gain, indoor, RATE * dt)
+	_outdoor_gain = move_toward(_outdoor_gain, outdoor, RATE * dt)
+	_amp["rain_glass"] = _indoor_gain * db_to_linear(INDOOR_GLASS_DB)
+	_amp["rain_night"] = _outdoor_gain + _indoor_gain * db_to_linear(INDOOR_OUTSIDE_DB)
+	for id in _amp:
 		_apply(id, _amp[id])
 
 

@@ -10,6 +10,13 @@ func check(ok: bool, label: String) -> void:
 	if not ok:
 		bad += 1
 
+
+func _check_recordings() -> void:
+	# 验证实际加载的素材已替换为长录音，不能误用旧的约 12 秒合成音。
+	for sid in ["rain_glass", "rain_night"]:
+		var stream: AudioStream = load("res://audio/sfx/%s.ogg" % sid)
+		check(stream != null and stream.get_length() > 20.0, "recorded rain asset loaded: " + sid)
+
 func _initialize() -> void:
 	call_deferred("run")
 
@@ -26,6 +33,7 @@ func run() -> void:
 		return
 	var state = root.get_node("GameState")
 	state.persist = false
+	_check_recordings()
 	var host = host_script.new()
 	root.add_child(host)
 	var player = load("res://world/player.gd").new()
@@ -77,7 +85,13 @@ func run() -> void:
 	check(rain._amp["rain_glass"] > 0 and rain._amp["rain_glass"] < 0.1, "approaching window fades in")
 	for i in 60:
 		rain._process(1.0 / 60.0)
-	check(is_equal_approx(rain._amp["rain_glass"], 1.0), "near window reaches intended level")
+	check(is_equal_approx(rain._amp["rain_glass"], db_to_linear(-8.0)), "near window glass layer reduced by 8 dB")
+	check(is_equal_approx(rain._amp["rain_night"], db_to_linear(-6.0)), "near window includes outdoor rain bed")
+	check(rain._players.has("rain_glass") and rain._players.has("rain_night"), "both recordings play together near window")
+	# 在室内移动时，两层声音应共享相同的距离变化，不能分别提前淡出。
+	cam.global_position = host._room_spawn["dining"][0] + Vector3(0, 1.6, 0)
+	rain._process(0.1)
+	check(is_equal_approx(rain._amp["rain_glass"] / rain._amp["rain_night"], db_to_linear(-2.0)), "indoor fade preserves layer balance")
 	cam.global_position = Vector3(1000, 1.6, 1000)
 	for i in 60:
 		rain._process(1.0 / 60.0)
@@ -156,6 +170,9 @@ func _check_room_loading(host: Node3D, player: Node3D, state: Node) -> void:
 	rain.set_process(true)
 	await create_timer(0.8).timeout
 	check(rain._players.has("rain_glass") and rain._players["rain_glass"].playing, "engine frames start rain near window")
+	check(rain._players.has("rain_night") and rain._players["rain_night"].playing, "engine frames also play outdoor layer near window")
+	check(is_equal_approx(rain._players["rain_glass"].volume_db, -14.0), "glass layer matches approved mix volume")
+	check(is_equal_approx(rain._players["rain_night"].volume_db, -12.0), "outdoor layer matches approved mix volume")
 	cam.global_position = Vector3(1000, 1.6, 1000)
 	await create_timer(0.8).timeout
 	check(rain._players.is_empty(), "far from windows stops both rain layers")
