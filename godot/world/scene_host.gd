@@ -1172,7 +1172,26 @@ func set_mode(mode: String, cam: String) -> void:
 	else:
 		shot_cam.global_transform = target
 		shot_cam.fov = fov
+	_focus_dof(target)
 	_cam_key = key
+
+
+## 剧情机位的景深：只给近景（镜头中线 2 米内碰到东西，如显影盘、桌面）加，焦点后面轻轻虚掉；
+## 全景不加，免得站在后面的人被虚掉。自由行走的相机不加
+func _focus_dof(t: Transform3D) -> void:
+	if not shot_cam.attributes:
+		shot_cam.attributes = CameraAttributesPractical.new()
+	var a: CameraAttributesPractical = shot_cam.attributes
+	var from := t.origin
+	var q := PhysicsRayQueryParameters3D.create(from, from - t.basis.z * 30.0, 1)
+	if player:
+		q.exclude = [player.get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(q)
+	var d: float = from.distance_to(hit["position"]) if not hit.is_empty() else 8.0
+	a.dof_blur_far_enabled = d < 2.0
+	a.dof_blur_far_distance = d + 0.4
+	a.dof_blur_far_transition = 1.0
+	a.dof_blur_amount = 0.08
 
 
 func highlight_hotspots(ids: Array) -> void:
