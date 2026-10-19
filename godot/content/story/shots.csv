@@ -19,7 +19,7 @@ C1-01,C1,*,guest_room,establish,,,窗外下着小雨。\n康斯坦斯在门外�
 C1-02,C1,*,dining,dining_mid,,clock_tick;hum_rhyme_line@2;child_steps@7.5,,,say(c1_constance);collect(ev_never_wrong),,
 C1-03,C1,*,greenhouse,green_mid,,,,,say(c1_gideon),,
 C1-04,C1,*,seance,seance_mid,,clock_tick,,,say(c1_latente),,
-C1-05,C1,*,darkroom,,walk,red_hum;light_switch,,,"objective(暗房：他是怎么死的？屋里有哪些东西不对劲？);inspect(hs_bottles,hs_tray,hs_vent_inside,hs_camera,hs_clock_dark)",,
+C1-05,C1,*,darkroom,,walk,,,,"objective(暗房：他是怎么死的？屋里有哪些东西不对劲？);inspect(hs_bottles,hs_tray,hs_vent_inside,hs_camera,hs_clock_dark)",,
 C1-06,C1,*,amb_room,,walk,,,,"objective(他的卧室：这几天他在做什么？);inspect(hs_amb_notes,hs_amb_carbon,hs_amb_clippings,hs_amb_photo)",,新房间：主人的卧室兼书房（灰盒）
 C1-07,C1,*,guest_room,board,,pin,,,music(think);objective(证据板：哪两样东西说明，这不是意外？);link(d1),,
 C1-08,C1,*,guest_room,typewriter_close,,typewriter,,,music(关闭);objective();annotate(c1),,

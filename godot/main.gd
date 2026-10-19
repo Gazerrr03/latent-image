@@ -91,7 +91,7 @@ func _arg(prefix: String) -> String:
 	return ""
 
 
-## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--examine=ev_id] [--fx=纪录片片头] [--clean [--keep-fx]] [--play=片头_怪谈] [--view=取代] [--at=x,y,z,朝向[,俯仰]] [--menu=标题|暂停|设置|操作|确认] [--out=/tmp/x.png]
+## 截图：Godot --path godot -- --capture=C1-02 [--leak=3] [--grant-all] [--examine=ev_id] [--fx=纪录片片头] [--clean [--keep-fx]] [--play=片头_怪谈] [--view=取代] [--at=x,y,z,朝向[,俯仰]] [--switch=红灯] [--menu=标题|暂停|设置|操作|确认] [--out=/tmp/x.png]
 ## 跳到指定镜号，等画面稳定后截图并退出。供 agent 自查画面用。
 ## 截图自查：直接进回廊的第 N 层（1—6），走几步后截图
 func _corridor_capture(which: int) -> void:
@@ -163,6 +163,12 @@ func _capture(shot_id: String) -> void:
 		if f.size() > 4:
 			pl._pitch = deg_to_rad(float(f[4]))
 			pl.cam.rotation.x = pl._pitch
+	if _arg("--switch=") != "":
+		# 截图自查：按一下墙上的电灯开关（--switch=红灯）
+		await get_tree().create_timer(1.5).timeout
+		for b in get_tree().get_nodes_in_group("light_switch"):
+			if String(b.get_meta("switch_name", "")) == _arg("--switch="):
+				Director.world.toggle_switch(b)
 	await get_tree().create_timer(float(_arg("--wait=")) if _arg("--wait=") != "" else 2.5).timeout
 	if OS.get_cmdline_user_args().has("--clean"):
 		# 不显示界面与滤镜，用来截取素材

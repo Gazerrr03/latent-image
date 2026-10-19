@@ -33,6 +33,7 @@ var _camera_tween: Tween
 var _missing_sounds := {}
 ## 能开关的门：门扇上导入时生成的 StaticBody3D -> {leaf, closed}（closed = 关着时的朝向，第一次开门时找）
 var doors := {}
+var _switch_lit := false       # 开关现在描不描边（玩家自由行走时描）
 var _loops := {}
 var _music: AudioStreamPlayer
 var _music_id := ""
@@ -299,6 +300,7 @@ func focus_room(rid: String) -> void:
 	spawn = _room_spawn.get(rid, _room_spawn.get("guest_room", [Vector3.ZERO, 0.0]))
 	_apply_look(rid)
 	_apply_presence()
+	_sync_switch_hums()
 
 
 ## 一个房间的样子：这个房间的方向光（太阳、月光）与环境，只有这个房间的灯投影（灯多了阴影图集不够分）
@@ -350,7 +352,11 @@ func room_at(p: Vector3) -> String:
 
 
 func _process(_dt: float) -> void:
-	if current_id != MAP_ID or not player or not player.active:
+	var walking: bool = player != null and player.active
+	if walking != _switch_lit:
+		_switch_lit = walking
+		paint_switches()
+	if current_id != MAP_ID or not walking:
 		return
 	var r := room_at(player.global_position)
 	if r == _player_room:
@@ -358,6 +364,7 @@ func _process(_dt: float) -> void:
 	_player_room = r
 	_focus = r
 	_apply_look(r)
+	_sync_switch_hums()
 	Director.inspected.emit("enter:" + r)
 
 
@@ -766,6 +773,8 @@ func _adopt_level(r: Node, rid := "") -> void:
 				n.environment if n is Camera3D else null, n.near if n is Camera3D else 0.05]
 		elif nm.begins_with("hs_"):
 			_hotspot_on(n, nm)
+		elif nm.begins_with("sw_"):
+			_bind_switch(n, nm.trim_prefix("sw_"), rid)
 		elif nm.begins_with("chr_"):
 			# 人形挂在站位节点下，面朝站位节点的 +z；reveal / conceal 用人名或 chr_人名都行
 			var who := nm.trim_prefix("chr_")
@@ -789,6 +798,69 @@ func _bind_meta_hotspots(r: Node) -> void:
 			hotspot_nodes[id] = n
 			n.collision_layer = 1 << (HOTSPOT_LAYER - 1)
 			n.collision_mask = 0
+
+
+# ───────────── 灯的开关 ─────────────
+
+## sw_<层名>：墙上的电灯开关，玩家按 E 打开 / 关上同一房间的“层·<层名>”（例如暗房的 sw_红灯 → 层·红灯）。
+## 开关节点上可写 metadata/hum = 音效编号：灯亮着、玩家在这个房间时一直响（红灯的嗡鸣）。
+## 换镜头时房间状态表照样会把层设回表里的样子。
+func _bind_switch(n: Node3D, layer: String, rid: String) -> void:
+	var body := StaticBody3D.new()
+	body.collision_layer = 1 << (HOTSPOT_LAYER - 1)
+	body.collision_mask = 0
+	var shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = n.get_meta("size", Vector3(0.2, 0.24, 0.12))   # 比开关面板大一圈，好瞄
+	shape.shape = box
+	body.add_child(shape)
+	n.add_child(body)
+	body.set_meta("switch", (rid + "/" if rid != "" else "") + "层·" + layer)
+	body.set_meta("switch_name", layer)
+	body.set_meta("switch_room", rid)
+	body.set_meta("hum", n.get_meta("hum", ""))
+	body.add_to_group("light_switch")
+
+
+## 玩家自由行走时，开关和要检查的物件一样描一圈边（暗房进门是黑的，不描边找不到）；准星对着时加粗
+func paint_switches(hovered: Node = null) -> void:
+	for b in get_tree().get_nodes_in_group("light_switch"):
+		var g = b.get_parent()
+		if g is GeometryInstance3D:
+			g.material_overlay = (_outline_hover if b == hovered else _outline_mat) if _switch_lit else null
+
+
+func switch_is_on(body: Node) -> bool:
+	var n = named.get(String(body.get_meta("switch", "")))
+	return n is Node3D and n.visible
+
+
+## 准星对着开关时的提示：“开灯：红灯” / “关灯：红灯”
+func switch_label(body: Node) -> String:
+	return ("关灯：" if switch_is_on(body) else "开灯：") + String(body.get_meta("switch_name", ""))
+
+
+func toggle_switch(body: Node) -> void:
+	var n = named.get(String(body.get_meta("switch", "")))
+	if not n is Node3D:
+		return
+	_set_present(n, not n.visible)
+	play_sound("light_switch")
+	_sync_switch_hums()
+
+
+## 开着的灯在玩家所在的房间里嗡嗡响，离开房间或关灯就停
+func _sync_switch_hums() -> void:
+	for b in get_tree().get_nodes_in_group("light_switch"):
+		var hum := String(b.get_meta("hum", ""))
+		if hum == "":
+			continue
+		var here: bool = String(b.get_meta("switch_room", "")) in ["", _focus]
+		if here and switch_is_on(b):
+			if not _loops.has(hum):
+				play_sound(hum)
+		else:
+			stop_loop(hum)
 
 
 # ───────────── 门 ─────────────
