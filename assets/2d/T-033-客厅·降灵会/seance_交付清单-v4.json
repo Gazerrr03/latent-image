@@ -1,0 +1,129 @@
+{
+  "status": "checkpoint draft, not accepted",
+  "generated_view_count": 1,
+  "required_view_count": 7,
+  "remaining_views": [
+    "south",
+    "fireside",
+    "north",
+    "night",
+    "table_close",
+    "tea_close"
+  ],
+  "files": [
+    {
+      "file": "seance_物件清单-v4.md",
+      "bytes": 6693,
+      "sha256": "5f8cbd4bec1963a0338f01ff37d5f35a0990f0aec28210776405f622c1cc03fb"
+    },
+    {
+      "file": "seance_平面布置图_降灵会-v4.svg",
+      "bytes": 270660,
+      "sha256": "165e45a587b3edf8c36b98afb6b2b74893554003b37af79adca7456145435a6c"
+    },
+    {
+      "file": "seance_生图记录-v4.json",
+      "bytes": 2059,
+      "sha256": "562bf67b32053775eafc0e7e1be43a73f16e070adde04d5b3d5c26b530b41fc3"
+    },
+    {
+      "file": "seance_平面布置图_降灵会-v4.png",
+      "bytes": 386539,
+      "sha256": "2f7bbfa078bc5f8f69b3bef0a4edf76de7b2185ee4d2fca01fac38df89ea2389",
+      "dimensions": [
+        3508,
+        2481
+      ]
+    },
+    {
+      "file": "seance_构图底图_east.png",
+      "bytes": 2315442,
+      "sha256": "709562a61889db5fe98ab0a22ff6bf69409ab9b1eefdf2233d480c2b5857fa89",
+      "dimensions": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "file": "seance_平面布置图_降灵会-v4.pdf",
+      "bytes": 8912,
+      "sha256": "98c844928ae5e415b36d18f27ae28c8188f4eaa88214e47c22312a176d3f46bb"
+    },
+    {
+      "file": "seance_east-v4.png",
+      "bytes": 2358845,
+      "sha256": "a655d85ff699e3f088ee1c98a1e049c2b1a46f06a9abb52650489216b2f88ecc",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "seance_平面布置图_平日-v4.svg",
+      "bytes": 244118,
+      "sha256": "ce02108082eeed347af12804fbc78a2e82923d0f02de92b8f2afc96ba8bb1add"
+    },
+    {
+      "file": "seance_平面布置图_平日-v4.png",
+      "bytes": 325941,
+      "sha256": "b3241c5be0e9186a770718ea79ed49d3e6c8c20249e7ba41e9cdf56729eef15b",
+      "dimensions": [
+        3508,
+        2481
+      ]
+    },
+    {
+      "file": "seance_平面布置图_平日-v4.pdf",
+      "bytes": 7867,
+      "sha256": "feadbcfff781bda23f4d64cb24104ff021036533a9dfc3f41e8143a58e251583"
+    },
+    {
+      "file": "seance_设计审查-v4.html",
+      "bytes": 3964,
+      "sha256": "87ac228c406a9f007655cf1dd108985125a0782f1c245e4117469d556a5ecb00"
+    },
+    {
+      "file": "seance_审查说明-v4.md",
+      "bytes": 2174,
+      "sha256": "28f68c6140c08b4274a1b0a26cfff183ac63623c43e55a5a332eeab0edf45350"
+    },
+    {
+      "file": "seance_坐标与检查-v4.json",
+      "bytes": 6378,
+      "sha256": "fe5becf49fe7a9499c2ebceefb7a63144dc2e0fbfc6c4cc855be55d25e9d7b00"
+    },
+    {
+      "file": "review/v4-iterations/seance_east-v4-r0.png",
+      "bytes": 2461415,
+      "sha256": "5b18ed1698a9d7666aae504d4942b96db6616f41f7f807d6d9fd99596864caa5",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "review/v4-iterations/seance_east-v4-r1.png",
+      "bytes": 2355417,
+      "sha256": "12a789acfdd0ff562070418460584f1bae6648fa8fea48fcc3b45a79d601ad16",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "file": "prompts/seance_east-v4-r1.txt",
+      "bytes": 6324,
+      "sha256": "cd6d02843c95a0a6f6591c36301c2cd0465fcfb1207a157fefb84638dcfc63ec"
+    },
+    {
+      "file": "prompts/seance_east-v4-r0.txt",
+      "bytes": 5213,
+      "sha256": "12391796b47a94517ea7583c7a1317056ac3c696d8ab8557517d2e684cda2be8"
+    },
+    {
+      "file": "prompts/seance_east-v4.txt",
+      "bytes": 1306,
+      "sha256": "cb8fccfbb6bdad4f2510363ae41ae9ee2a203e6e77721b25ba365dff6be612e6"
+    }
+  ]
+}

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="2_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_dining.gltf" id="3_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_seance.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_seance__平日.gltf" id="seance_daily"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_archive.gltf" id="5_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_child_room.gltf" id="6_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room.gltf" id="7_r"]
@@ -48,6 +49,8 @@ glow_intensity = 0.35
 [node name="邻·餐厅" parent="结构" instance=ExtResource("3_r")]
 
 [node name="邻·客厅" parent="结构" instance=ExtResource("4_r")]
+
+[node name="邻·客厅·平日" parent="结构" instance=ExtResource("seance_daily")]
 
 [node name="邻·照片档案室" parent="结构" instance=ExtResource("5_r")]
 

@@ -3,12 +3,15 @@
 输出 review/rooms/<房间>/排布体检.json，并渲染一张平涂的俯视平面图。
 
     Blender -b assets/3d/manor/manor.blend --python assets/3d/manor/scripts/23_layout_audit.py -- 温室
+    … -- 客厅 平日 灵媒的随身物      # 后面跟状态名：把这几层一起体检（状态里有挪动的家具时用），输出 排布体检-<状态>.json
 """
 import bpy, bmesh, json, sys, os, math
 from mathutils import Vector
 from mathutils.bvhtree import BVHTree
 
-ROOM = sys.argv[sys.argv.index('--') + 1] if '--' in sys.argv else '温室'
+ARGS = sys.argv[sys.argv.index('--') + 1:] if '--' in sys.argv else ['温室']
+ROOM, STATES = ARGS[0], ARGS[1:]
+SUFFIX = ('-' + '+'.join(STATES)) if STATES else ''
 OUT = f'/Users/qizhi_dong/Projects/DigitalMedia/assets/3d/manor/review/rooms/{ROOM}'; os.makedirs(OUT, exist_ok=True)
 BOX = {'温室': [(19.2, 24.9, 7.9, 13.3, 3.6, 7.2)],                            # 室内可用范围（矮墙内侧、主楼石墙）；可以是几个盒子拼起来
        '门厅': [(6.9, 12.3, 0.3, 4.8, -0.1, 3.3), (0.3, 14.8, 5.1, 6.6, -0.1, 3.3), (7.9, 12.7, 6.6, 11.1, -0.1, 6.5), (0.3, 18.9, 5.1, 6.9, 3.3, 6.5),
@@ -65,8 +68,9 @@ def islands(ob):
     bm.free(); return out
 
 root = bpy.data.collections.get(f'房间_{ROOM}_空间')
+objs = list(root.all_objects) + [o for s_ in STATES for o in bpy.data.collections[f'房间_{ROOM}_状态_{s_}'].all_objects]
 items = []                                                                       # (物体名, 序号, 是否卡片, BVH, min, max, 材质)
-for ob in root.all_objects:
+for ob in objs:
     if ob.type != 'MESH' or ob.name.endswith('-colonly'): continue                  # 只有碰撞的物体（导进 Godot 不显示）不查
     card = any(k in ob.name for k in CARD_HINT)
     for i, (t, mn, mx, nf, mname, pts) in enumerate(islands(ob)):
@@ -131,7 +135,7 @@ for name, its in by_ob.items():
         if best is not None and best > 0.02: rep['悬空'].append(tag(low) + f' 离下面 {best * 100:.0f} cm（整组 {len(g)} 块）')
 for k in rep: rep[k] = sorted(set(rep[k]))
 summary = {k: len(v) for k, v in rep.items()}
-json.dump(dict(summary=summary, detail=rep), open(f'{OUT}/排布体检.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+json.dump(dict(summary=summary, detail=rep), open(f'{OUT}/排布体检{SUFFIX}.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print('LAYOUT', ROOM, summary)
 for k, v in rep.items():
     for s in v[:40]: print('  ', k, '|', s)
@@ -140,13 +144,23 @@ for k, v in rep.items():
 sc = bpy.context.scene
 sc.render.engine = 'BLENDER_WORKBENCH'; sc.display.shading.light = 'FLAT'; sc.display.shading.color_type = 'RANDOM'
 sc.render.resolution_x, sc.render.resolution_y = 1400, 1400
+def _lc(l, name):
+    if l.name == name: return l
+    for c in l.children:
+        r = _lc(c, name)
+        if r: return r
+for c in bpy.data.collections:                                                   # 只显示体检的这几层
+    if c.name.startswith(f'房间_{ROOM}_状态_'):
+        lc = _lc(bpy.context.view_layer.layer_collection, c.name)
+        if lc: lc.exclude = c.name.split('_状态_')[-1] not in STATES
+names = {o.name for o in objs}
 for o in sc.objects:
-    o.hide_render = not (o.name in root.all_objects or o.name in ('温室_石', '温室_铸铁', '主体结构-col'))
+    o.hide_render = not (o.name in names or o.name in ('温室_石', '温室_铸铁', '主体结构-col'))
 cd = bpy.data.cameras.new('排布俯视'); cd.type = 'ORTHO'; cd.ortho_scale = max(x1 - x0, y1 - y0) + 0.6
 cam = bpy.data.objects.new('排布俯视', cd); sc.collection.objects.link(cam)
 ztop = 6.6 if ROOM == '温室' else max(b[5] for b in BOX) - 0.05
 cam.location = ((x0 + x1) / 2, (y0 + y1) / 2, ztop); cam.rotation_euler = (0, 0, 0); cd.clip_start = 0.1; cd.clip_end = 3.5 if ROOM == '温室' else ztop - min(b[4] for b in BOX) + 0.2
 sc.render.resolution_y = int(1400 * min(1.0, (y1 - y0 + 0.6) / (x1 - x0 + 0.6))) if x1 - x0 > y1 - y0 else 1400
-sc.camera = cam; sc.render.filepath = f'{OUT}/排布俯视.png'; sc.render.image_settings.file_format = 'PNG'
+sc.camera = cam; sc.render.filepath = f'{OUT}/排布俯视{SUFFIX}.png'; sc.render.image_settings.file_format = 'PNG'
 bpy.ops.render.render(write_still=True)
 print('top view', sc.render.filepath)

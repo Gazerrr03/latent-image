@@ -208,14 +208,14 @@ sc.write()
 
 # ═════ 客厅·降灵会（C3-04、C3-05） ═════
 sc = Scene('seance'); env(sc, 0.35)
-base(sc, [('seance', '客厅', ['降灵会布置', '窗帘拉上'])])
+base(sc, [('seance', '客厅', ['降灵会布置', '窗帘拉上', '平日', '灵媒的随身物'])])    # 10-18 T-042：沙发组在平日层，降灵会挪动家具；烛光挂在“层·降灵会布置”下（已在 seance.tscn 手加）
 neighbor(sc, 'hall', '门厅')
 sun(sc, 1.1)
 omni(sc, '吊灯', '灯光', (3.6, 2.6, 2.55), WARM, 1.1, 5.5)
-omni(sc, '台灯', '灯光', (6.31, 3.3, 1.3), WARM, 0.6, 3.0, shadow=False)
+omni(sc, '落地灯', '灯光', (4.45, 0.8, 1.4), WARM, 0.6, 3.0, shadow=False)
 sc.node('spawn', 'Marker3D', '接口', {'transform': yaw((6.1, 2.35, 0.015), 90)})
 cam(sc, 'seance_mid', (6.35, 2.35, 0.015 + 1.55), (0.3, 2.3, 0.015 + 1.25), 16)
-sc.node('chr_拉坦特夫人', 'Node3D', '接口', {'transform': yaw((2.55, 2.6, 0.015), 86)})          # 圆桌西侧，朝着 seance_mid 机位
+sc.node('chr_拉坦特夫人', 'Node3D', '接口', {'transform': yaw((1.22, 1.75, 0.015), 90)})         # 壁炉前（降灵会时是她那把椅子的位置），朝着 seance_mid 机位
 sc.write()
 
 # ═════ 照片档案室（C3-02、C5-05 自由检查；C6-04） ═════

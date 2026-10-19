@@ -1,0 +1,53 @@
+[
+  {
+    "iteration": "r0",
+    "tool": "Codex built-in image_gen",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a1507e-0228-7250-96d7-a007f04db947/exec-70ef1bfe-c572-4f2e-85d9-6210b7e1f09f.png",
+    "destination": "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-033-客厅·降灵会/review/v4-iterations/seance_east-v4-r0.png",
+    "prompt": "prompts/seance_east-v4-r0.txt",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "5b18ed1698a9d7666aae504d4942b96db6616f41f7f807d6d9fd99596864caa5",
+    "copy_hash_equal": true,
+    "reference_images": [
+      "seance_构图底图_east.png",
+      "assets/2d/T-031-艾瑞斯的房间/child_room_child_mid-v3.png"
+    ]
+  },
+  {
+    "iteration": "r1",
+    "tool": "Codex built-in image_gen",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a1507e-0228-7250-96d7-a007f04db947/exec-91af883a-debf-479c-a4a3-00f3479cfced.png",
+    "destination": "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-033-客厅·降灵会/review/v4-iterations/seance_east-v4-r1.png",
+    "prompt": "prompts/seance_east-v4-r1.txt",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "12a789acfdd0ff562070418460584f1bae6648fa8fea48fcc3b45a79d601ad16",
+    "copy_hash_equal": true,
+    "reference_images": [
+      "seance_构图底图_east.png",
+      "review/v4-iterations/seance_east-v4-r0.png"
+    ]
+  },
+  {
+    "iteration": "r2",
+    "tool": "Codex built-in image_gen",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a1507e-0228-7250-96d7-a007f04db947/exec-573bae3d-484a-420b-8197-96fb3b0fe0a1.png",
+    "destination": "/Users/qizhi_dong/Projects/DigitalMedia/assets/2d/T-033-客厅·降灵会/seance_east-v4.png",
+    "prompt": "prompts/seance_east-v4.txt",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "sha256": "a655d85ff699e3f088ee1c98a1e049c2b1a46f06a9abb52650489216b2f88ecc",
+    "copy_hash_equal": true,
+    "reference_images": [
+      "seance_构图底图_east.png",
+      "review/v4-iterations/seance_east-v4-r1.png"
+    ]
+  }
+]

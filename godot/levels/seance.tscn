@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_seance__降灵会布置.gltf" id="3_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_seance__窗帘拉上.gltf" id="4_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="5_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_seance__平日.gltf" id="6_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_seance__灵媒的随身物.gltf" id="7_r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
 sky_top_color = Color(0.33, 0.42, 0.55, 1)
@@ -41,6 +43,10 @@ glow_intensity = 0.35
 
 [node name="层·窗帘拉上" parent="结构" instance=ExtResource("4_r")]
 
+[node name="层·平日" parent="结构" instance=ExtResource("6_r")]
+
+[node name="层·灵媒的随身物" parent="结构" instance=ExtResource("7_r")]
+
 [node name="灯光" type="Node3D" parent="."]
 
 [node name="接口" type="Node3D" parent="."]
@@ -61,12 +67,19 @@ light_energy = 1.1
 omni_range = 5.5
 shadow_enabled = true
 
-[node name="台灯" type="OmniLight3D" parent="灯光"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.31, 1.3, -3.3)
+[node name="落地灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.45, 1.4, -0.8)
 light_color = Color(1.0, 0.72, 0.42, 1)
 light_energy = 0.6
 omni_range = 3.0
 shadow_enabled = false
+
+[node name="烛光" type="OmniLight3D" parent="结构/层·降灵会布置"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45, 1.0, -1.75)
+light_color = Color(1.0, 0.66, 0.34, 1)
+light_energy = 1.2
+omni_range = 3.2
+shadow_enabled = true
 
 [node name="spawn" type="Marker3D" parent="接口"]
 transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, 6.1, 0.015, -2.35)
@@ -78,4 +91,4 @@ fov = 64.7
 near = 0.03
 
 [node name="chr_拉坦特夫人" type="Node3D" parent="接口"]
-transform = Transform3D(0.0697565, 0, 0.997564, 0, 1, 0, -0.997564, 0, 0.0697565, 2.55, 0.015, -2.6)
+transform = Transform3D(6.12323e-17, 0, 1, 0, 1, 0, -1, 0, 6.12323e-17, 1.22, 0.015, -1.75)
