@@ -1,6 +1,8 @@
 """Build an offline Canvas animation from source portraits and measured landmarks.
 Reads pixels only for embedding; does not edit source raster images.
 """
+raise SystemExit('拟真叠印已停用并清理；当前来源为 assets/2d/T-024-人物三视图/composite-blocky/。')
+
 import base64
 import json
 from pathlib import Path

@@ -1,0 +1,1356 @@
+{
+  "date": "2026-10-19",
+  "files": [
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/aligned/ambrose.png",
+      "bytes": 1000763,
+      "sha256": "1365c8d0d03d29ea4af96ad6b486c5aaf2ba612c89973c470ce8642e37d0bc6b",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/aligned/constance.png",
+      "bytes": 1012413,
+      "sha256": "ec67572d0963736f1d9aebf4a26cf47132b9afccf5a5e173d837b12a43588d34",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/aligned/gideon.png",
+      "bytes": 1104407,
+      "sha256": "a8f52e991a5fbb1877e3fc09ef3d79e4c09b8d39204ceaa4ddd75c6854cbfb0a",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/aligned/grey.png",
+      "bytes": 1175696,
+      "sha256": "bb6dbc523500066ac9955b453e72a6b692b1e01eb3e2efb028c6fb053dc5e85e",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/aligned/iris.png",
+      "bytes": 1059367,
+      "sha256": "1f9b093a444c94522cf0550182fb3397bf370a9ccc7e34ca7c564d2a707debd5",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/aligned/latente.png",
+      "bytes": 1048810,
+      "sha256": "87fadf63bda0d3ee8328b14ebdd362bbb03ce7ad6cc503c6c1652c83737eacf3",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/final/composite.png",
+      "bytes": 1175696,
+      "sha256": "bb6dbc523500066ac9955b453e72a6b692b1e01eb3e2efb028c6fb053dc5e85e",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/portraits/ambrose.png",
+      "bytes": 2401664,
+      "sha256": "d175e51343eb7590466f58b03b8ff26bfacdcf6211ecde03317692db52688116",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/portraits/constance.png",
+      "bytes": 2229005,
+      "sha256": "9c2c3f8c76644724a39a4ea1af9d3cc48ffb59f03123c29fee5ca6aab402fb25",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/portraits/gideon.png",
+      "bytes": 2478973,
+      "sha256": "6d6b71b43297171f7d48d5016d005c1fbe8e69afc876c2bdb1c454568a171c3f",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/portraits/grey.png",
+      "bytes": 2387756,
+      "sha256": "ab870b28e6f2860377187ee15bc46fbcbb22ba3ed95f543a9ad170c8197d056f",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/portraits/iris.png",
+      "bytes": 2329345,
+      "sha256": "a601dc8be91370855d6264fc032a6fd05805f247fd4451bd9e7905b893f0a9b5",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/portraits/latente.png",
+      "bytes": 2247929,
+      "sha256": "be7d7b7da8026914d2317e6fe8dc2b06d4ba25ec6e466788b8ecf78a6091b9b7",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/preview.html",
+      "bytes": 39919990,
+      "sha256": "f35c750574270348dbbd2cd11dab80eff0cfdff496dd8bcb38f334211613a9ad",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/composite-preview-v1.mp4",
+      "bytes": 2879239,
+      "sha256": "73603cd10fef0dc44c56a69e0ca291eaf7fad7e3c2f46e482bbfed59e713a444",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/frame-00.png",
+      "bytes": 7328,
+      "sha256": "9632a576ff86162d5997cab8629914833e5124851acd89cab958ad3a68da3d36",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/frame-03.png",
+      "bytes": 1104056,
+      "sha256": "399e950d26cc89ff160c7929d43f90a82795bfe335f110845fb024b344e17dfa",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/frame-06.png",
+      "bytes": 1106475,
+      "sha256": "6731d47e077cc9cef6d41adef727731eeb65ea6c73e6d273c20f69692900a2df",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/frame-08.png",
+      "bytes": 1143069,
+      "sha256": "a7ea280cb2ec60124a2f2ce9e2256030b061ab2293d5e04792ab34107f801c17",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/frame-10.png",
+      "bytes": 1175696,
+      "sha256": "bb6dbc523500066ac9955b453e72a6b692b1e01eb3e2efb028c6fb053dc5e85e",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/frame-12.png",
+      "bytes": 1175696,
+      "sha256": "bb6dbc523500066ac9955b453e72a6b692b1e01eb3e2efb028c6fb053dc5e85e",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-024-人物三视图/composite-v1/review/godot-C6-02.png",
+      "bytes": 828008,
+      "sha256": "b5986b4443a78c1b4222c199b70267f486063677e9be377b7b3b0742edf04905",
+      "reason": "拟真叠印已被 composite-blocky 取代"
+    },
+    {
+      "path": "assets/2d/T-033-客厅·降灵会/review/v3-作废/seance_seance_mid-v3.png",
+      "bytes": 2777282,
+      "sha256": "81e797c96f92e2fe0123487f292bb8be3092ce5bc2a28d20aea7d44aa67d87c5",
+      "reason": "客厅比例错误，T-042 已明确作废"
+    },
+    {
+      "path": "assets/2d/T-033-客厅·降灵会/review/v3-作废/seance_table_candle-v3.png",
+      "bytes": 2229529,
+      "sha256": "6b2e62c183e49c531238c2175da4ff9e5dea5d2342809d75b9696e4d62493c2f",
+      "reason": "客厅比例错误，T-042 已明确作废"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_人视角_1-复核.png",
+      "bytes": 2981977,
+      "sha256": "e389d943830492333cc1dd8f28464e05d8b61603d7f35e79e2d56173f0789701",
+      "reason": "与当前选用图片字节完全相同"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_人视角_4-复核.png",
+      "bytes": 2917859,
+      "sha256": "d2e5d319b25293df10c8227bc7d1f795a8143caa962751d15814b9298384cc99",
+      "reason": "与当前选用图片字节完全相同"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_剖面.pdf",
+      "bytes": 6742575,
+      "sha256": "5851587c48dac2e9c100d3ed968293459ee137278603647ddbc634fa579d8009",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_完整图集-v1.pdf",
+      "bytes": 30740014,
+      "sha256": "09f827459518a75072af72238a361640ab90f960ce9ff65f3f9801cceb0a1203",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_完整设计图集-v1.pdf",
+      "bytes": 27418293,
+      "sha256": "627bc0a78f27fac391a165c702771be430c0ff30ef7d1b740b4f6ddea493d042",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_平面_一楼.pdf",
+      "bytes": 2030854,
+      "sha256": "889b1ad8975ef8b48bd91c3d8d7cb4ed51b8e79f9a50717b6f9c2ed406f0b833",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_平面_二楼.pdf",
+      "bytes": 1080410,
+      "sha256": "8e8d44aeebf9d56da926cd1cc8b6b58a60cdfea740fdfcb37b494b3483734734",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_总平面.pdf",
+      "bytes": 1009564,
+      "sha256": "3c94fbcbf258d44fecf0767cc586f12fa1a3601de1a34a8638f41a0dce8ced59",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_设计图集-v1.html",
+      "bytes": 25826646,
+      "sha256": "d0bf9dbd92afb84c7f350782f1aa591f08193e734e0e0012ca35596d52e5b7ce",
+      "reason": "重复内嵌图集，保留一个外链图片的审查入口"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_设计图集-v1.pdf",
+      "bytes": 10757995,
+      "sha256": "8d96bb4b282c7ad16453af086e440f5fa8524e4ec56d9388a0deaf1eeb63825b",
+      "reason": "图纸与图集 PDF 改为按需导出"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_设计总览-v1.html",
+      "bytes": 27606844,
+      "sha256": "28671ed5c0d8e5254e7776d5f3657597cec9884d505a28ecf4df926c9fcd1317",
+      "reason": "重复内嵌图集，保留一个外链图片的审查入口"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/manor_鸟瞰_后-复核.png",
+      "bytes": 3320596,
+      "sha256": "c1d85fbabf9ce171d7307887fbe25c77cf7696e30966534704935e5e84dc90ab",
+      "reason": "与当前选用图片字节完全相同"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-01.png",
+      "bytes": 3676159,
+      "sha256": "ef0c506c82b326bc6eff8aaf6b70a8f82d86940dbc431ce4c382813f690e781d",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-02.png",
+      "bytes": 124374,
+      "sha256": "c909a48fb9d7c6f98d47e0c614bf4d125f4c3548ddbb9ea81a2178af2baf27f7",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-03.png",
+      "bytes": 190836,
+      "sha256": "4fff4de75133a3f49896824353222bdb2a6bdcf4f4b4ba4f675872d8ed2fbc9f",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-04.png",
+      "bytes": 151977,
+      "sha256": "826aefda9e90a8dbdb5c0684059227c4dd9adb1f081c250c61bfd436777f9888",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-05.png",
+      "bytes": 250352,
+      "sha256": "f54336b29a0829b2214be658ca354358f587d5f7954a02b022a1905c2f58d190",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-06.png",
+      "bytes": 3834941,
+      "sha256": "90c507b3bf6f8a24186a72ff83382a1658d775d6262c19c290222647a41da7d3",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-07.png",
+      "bytes": 3462498,
+      "sha256": "73b24114ed23abec3b524f3d27d9cc01a363bcdd5785ffa247f0c54c3a965780",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-08.png",
+      "bytes": 3784321,
+      "sha256": "94112aa6da67ad44d0d3e98c8669de6ee1789fe2570a79b954f8258c86ecc638",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-09.png",
+      "bytes": 3450000,
+      "sha256": "3144065697aa3f011ce98a8886a089d9678dcd579d5f92a31a3fe456ba907427",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-check/page-10.png",
+      "bytes": 3329085,
+      "sha256": "51d9c83575ffa5ad7943e2324760a09123eda9b49342315b93178b3d03701a93",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-01.png",
+      "bytes": 1798625,
+      "sha256": "98e05c640d61483aa53972b44f74f5f31f9517ca4b840b241e7f09987736e59d",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-02.png",
+      "bytes": 74931,
+      "sha256": "679e3420a760662aaac5f76a081cabb742525a2269866f02e673a79d479097b2",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-03.png",
+      "bytes": 110899,
+      "sha256": "2894f54bf084fc3ab00723fbcb78d2b4436ce8c223a00b928167818715b525f8",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-04.png",
+      "bytes": 91210,
+      "sha256": "e6045265fc0019bd675a730b8367ed7319dcd69ae24850cd9eb119df2ac7e218",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-05.png",
+      "bytes": 142410,
+      "sha256": "02b343b7b3d232a4aa345a19c52440c92cc4d64dd27bf516951487e5b20228fd",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-06.png",
+      "bytes": 1884638,
+      "sha256": "c207ba59ab28e9951063df988695876f3b56c724c1737c262dfa5917b4f0b5cf",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-07.png",
+      "bytes": 1710047,
+      "sha256": "8598069e70fbbcf25f6de432c8ede6fb2c0ce2df4c0c3612329401dd07c7c89c",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-08.png",
+      "bytes": 1860454,
+      "sha256": "e6bd40486898402c49f9f932a117d4c2bbcb142c657b7810135d190d2dea46d1",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-09.png",
+      "bytes": 1702100,
+      "sha256": "195eac453d0c369756d682c9fa65e92ad4d0c58e734617e38d22df8fd6cafe4f",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-final/page-10.png",
+      "bytes": 1650550,
+      "sha256": "8f07325336547fbb06183f4def2c3df81b55ab4bb1c40d290f1604ca1877a56a",
+      "reason": "PDF 导出或逐页检查的可再生中间文件"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-pages/manor_人视角_1.pdf",
+      "bytes": 3988818,
+      "sha256": "3b9754997b0d46b7babf0c59b0283ade16a27aa4cf1ab6c7241ac143f771fa5f",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-pages/manor_人视角_2.pdf",
+      "bytes": 4364527,
+      "sha256": "079bd7e636b9675e8ecd6a5c079e46e39b3d28a6ef8ce60fdf14e06ecf6a5ea2",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-pages/manor_人视角_3.pdf",
+      "bytes": 3963552,
+      "sha256": "6b7a009bc7bb0eb211a1f2e3eb828dcff355227dce1550cc5720c93ed2e8de9d",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-pages/manor_人视角_4.pdf",
+      "bytes": 3822812,
+      "sha256": "9a12b149e3ee3eb77f92394de9bcd184e016166f8a891d45fef6fc313249d000",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-pages/manor_鸟瞰_前.pdf",
+      "bytes": 4255442,
+      "sha256": "0e3ffbf211bc71d58846dc6578af66625f4e7bc6a52da97ba9a377eda2e02bdb",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/pdf-pages/manor_鸟瞰_后.pdf",
+      "bytes": 4411437,
+      "sha256": "391fb416c1fd29f6670c72154340fc84d1a163c116bc4d19000f19e718e77776",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/perspectives.pdf",
+      "bytes": 24195641,
+      "sha256": "01691c34db0fcd7f21fa2be522be13b290175052b044e940f0032796dff2b4ab",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-01.png",
+      "bytes": 1876990,
+      "sha256": "2b3765e5a6dd444bf931e7bd848cf9d9f492aaa410853c48637e1ea7459cce1d",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-02.png",
+      "bytes": 90474,
+      "sha256": "1420b43cc712b14d92cb697933344be72893a514d16ea1d9d9b548134a8b0402",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-03.png",
+      "bytes": 135370,
+      "sha256": "d9d9e559adde47665f65f826b8eda6ee86085f08203a9e5ab940663478032880",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-04.png",
+      "bytes": 110344,
+      "sha256": "7f07cf49860f2131a6dbc6e41e5dbcbcab4ed74fb77ec9344bc1dba61a619622",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-05.png",
+      "bytes": 177744,
+      "sha256": "353383ddd61ac1c700bc851c5abae64c50820384deaf97de570417f7165751e6",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-06.png",
+      "bytes": 1549351,
+      "sha256": "16e5addcc7a21ebd295d3228a53fd4110cd7f2f08a18e81d316aefd47804081d",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-07.png",
+      "bytes": 2452338,
+      "sha256": "95a8c664b952741fc49d0d735575091a9c48f02573003fcc46fd0e61283f79ec",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-08.png",
+      "bytes": 1475690,
+      "sha256": "cffbc899f4b5d9ae21190d8b7d92edf90a768cc4f0afe97b4f859287cc948056",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-09.png",
+      "bytes": 1603812,
+      "sha256": "02c86ff9efe255d16117d28cb82504d623adfa01ae0bf2d56c9a565c6ac34d0f",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-10.png",
+      "bytes": 1468816,
+      "sha256": "9b1b91b312270992afb9582a5e8053f98505f1e80822a0c290988b253ec0d001",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-11.png",
+      "bytes": 2140479,
+      "sha256": "35c1255bb44d4a08b8f887f3f6d5ab84d40549b64be8210a0545c9142d354432",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-12.png",
+      "bytes": 84710,
+      "sha256": "d31ee4f036b972021465f7d5f2e6c9a09e80b8054b403cecd36d6f0b3dbfd63c",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/图集页-13.png",
+      "bytes": 77221,
+      "sha256": "4cc063e17b7f882c3dd7890572ca89db4c4d80bf5a11c0f2653110e8b05d918b",
+      "reason": "旧图集逐页检查截图"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/复核前/manor_设计图集-v1.pdf",
+      "bytes": 10757632,
+      "sha256": "98cee9f72d88e1ef40e9c3ed63dae6b01f71c9cfeaa6f254d153b1615815be02",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/2d/T-039-奥瑞尔庄园全貌/v1/review/汇编/支持页面.pdf",
+      "bytes": 27800250,
+      "sha256": "5b8ff40ba5914b77915dd7f23e3290e61b1ae6d819fa8a965c0f78e14d09d5c8",
+      "reason": "旧 PDF 检查副本，可按需重建当前版本"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_00_cover.png",
+      "bytes": 9817072,
+      "sha256": "0d3cb3b9ece5d5705b7b8cce838dd13b1cb1ea6d5dc1d4730ea2074bc8db7230",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_01.png",
+      "bytes": 10183078,
+      "sha256": "3b19b1fa750972200eaf56e23d0e9b291fd9366a443ff5a3d8ebd325110df992",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_02.png",
+      "bytes": 10033459,
+      "sha256": "efcdc5688bff8bdac975f7458eb4f036779203f7f78e60256a31e62db4d97a02",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_03.png",
+      "bytes": 10967967,
+      "sha256": "5b84540f7470ccfd4325e88cdd662378627ac416eac9997caf8dc63237618a39",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_04.png",
+      "bytes": 10001463,
+      "sha256": "e92f267719297bafc9e20c54fbc51f8812c68abec240277994d55fd3691e7064",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_05.png",
+      "bytes": 9848705,
+      "sha256": "a8ded9339d3639e12071a01abf03b9cb40f6faf47e92d3de4c7aab2d4fa25650",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_06.png",
+      "bytes": 9632029,
+      "sha256": "84793d94afd3b6efa2c44ff2c07cb4466a918b77a3b27203755f0bc74ccb3ba4",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_07.png",
+      "bytes": 9937966,
+      "sha256": "d962f0f262d7abc88922e6bbbf5d1fa579d2d484f34e86b3dee1fc195ca8c7e3",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_08.png",
+      "bytes": 9766236,
+      "sha256": "139879ece4fb26898cbdf954ddf3e3e7fdf681ce669317614bdeb0723d412865",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_09-10.png",
+      "bytes": 16777884,
+      "sha256": "9b9be3276783e7153e95af27c873116079a52b936d44150a362fed05c5fe0e1a",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_11.png",
+      "bytes": 8893026,
+      "sha256": "deaafb3fc5e80b272a698d053cfef6ae8276002ea33ad9e1a4d309fc182feda7",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_12.png",
+      "bytes": 9697093,
+      "sha256": "e8af6be4a6e45c514f52cd1316b9edcd9b7712f3ba055107a5ea65785a719ec0",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_13.png",
+      "bytes": 9964610,
+      "sha256": "686f70f23b8f20d55deab86896e9e9e3b11f1ca805e6c37a27d111e14716d019",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_14.png",
+      "bytes": 8901566,
+      "sha256": "1425d868b8868747e452b9addd34fef9ef2a944a0d4a8752892f840ff27ae791",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_15.png",
+      "bytes": 8318028,
+      "sha256": "6651582e77e8c6b36e44c93706023a66b0a133dade1b522d3901fc579a85c572",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_16.png",
+      "bytes": 9646312,
+      "sha256": "04f60bbca0632788a9a6e934161adc8ad02d61996c3064a585c34aa5d03daa38",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_17.png",
+      "bytes": 9266798,
+      "sha256": "4e2d2965fdd65d7ed7164723b54b1cac238ef0fda09e12813cf49b1377bdba60",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_18.png",
+      "bytes": 9854671,
+      "sha256": "12eb9e7b096007a63822869b33bf4b6a6c5af0a83fb57100fd5f44fa49448ff6",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_19.png",
+      "bytes": 9546607,
+      "sha256": "6aefd41ea2fe036cf0ab284e86815ccd995005aedac2b11f8d5bad58ef09c80b",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_20.png",
+      "bytes": 10324417,
+      "sha256": "ee0171993a4baa463621d462deb92fa5bfbe90e5d292b54362bcf6b136210a15",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_21.png",
+      "bytes": 183634,
+      "sha256": "c4c669d77308733a835334dac68e0e8d17f311e6946a0db57c73ad86638be773",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_character_sheet.png",
+      "bytes": 7066219,
+      "sha256": "746c75de304717ac37e471ae21b7c1726342962cf180f480b963824f2e3b61ab",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/pb_thumbnails.pdf",
+      "bytes": 5480696,
+      "sha256": "f37d4cb75a5db7cd59d8c3494a7b00440e8a170d2b35c8d05375c4222fa08eae",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/pdf-1.png",
+      "bytes": 963398,
+      "sha256": "16fd9230a6302ba62b7a439bf6acdfadc8ef63030646913a5b0b25985fb2500f",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/pdf-2.png",
+      "bytes": 1470347,
+      "sha256": "b24581a05ff7fcf2bfaa7f5daac5faa870d885e8cb70e3245729485d9aea9140",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/pdf-3.png",
+      "bytes": 1430171,
+      "sha256": "47d2146abe93698c31d1a3d0f9c36cd6a1ba2dd7a660469aef685aea471a82bd",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/final-p12-13.png",
+      "bytes": 1085077,
+      "sha256": "73a8059c694f5c7722b1b2060d0d96bd2797894a1a440d3329f3fe8723d42527",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/final-p3-04.png",
+      "bytes": 1253167,
+      "sha256": "e60496bb1f3f4dc8f8f8180fbed4dea3b37a71cbe4ea361bf314eb48a46dd023",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-01.png",
+      "bytes": 893863,
+      "sha256": "5e6479563d2466d83bcb05108b2e8972acfe8718b0b4b666520cdfaccadac3be",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-02.png",
+      "bytes": 966617,
+      "sha256": "671d8cadd912591e0d38f55a9713cb34058443f9ad6224b4df527a72858d6ab8",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-03.png",
+      "bytes": 947003,
+      "sha256": "a24b85cd80214564278f38138efe3f07457ca66a77c642ceac1f70d4e94c3b4c",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-04.png",
+      "bytes": 1028250,
+      "sha256": "e5ccbefe8609ec7b2474f93f2467c7cc06f8b501961abc521324e37523c4bd77",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-05.png",
+      "bytes": 926478,
+      "sha256": "e2f9a8f05be179a842632937b22d1b133c69075e9818fd74d176c0c836b891c1",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-06.png",
+      "bytes": 901528,
+      "sha256": "14338bbaa880dcea517bccae04ba70e7b8d34582d6e65b33c6b5d4722720b3ef",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-07.png",
+      "bytes": 950238,
+      "sha256": "f550741e69c76a4ad245a4891583bb85565daa6829089399abaf577984ecf500",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-08.png",
+      "bytes": 902031,
+      "sha256": "acfab64098f271f685ea51a2cefbc53c6acddcc8ee991f7d9d718e73607c8954",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-09.png",
+      "bytes": 909120,
+      "sha256": "03e1eea08d8e37cf8e146038383af50c8f4f4b17a0af7b735f154f8729d2220e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-10.png",
+      "bytes": 750978,
+      "sha256": "b867fe31eb8ae2a6ed05a7087f2e700fc625e808b3a61e9025b04737242a72f6",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-11.png",
+      "bytes": 849692,
+      "sha256": "b23c6f8eda694413492934f47e3e16d5059807c91ad86b1201ab4756f42e7ff9",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-12.png",
+      "bytes": 801198,
+      "sha256": "e078981d828c87679c0fd1746708091432e8133f9f7f7b307a035bc565c7ae1c",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-13.png",
+      "bytes": 896238,
+      "sha256": "16c882e7d6560ad09690e35b47cb4b3bb0c447200b4c755cab0c7d15ba444d5e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-14.png",
+      "bytes": 953223,
+      "sha256": "89c429082d0f0e5f76823173b74b879d94830e4fc20f421848ecb427ea3cf223",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-15.png",
+      "bytes": 840476,
+      "sha256": "e33247aca7568c9e5b4a8aad256038351759fe3cffeccb199e2d2f53cb6da8ab",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-16.png",
+      "bytes": 660354,
+      "sha256": "aab70d940fffc1d4094b81f98fa79b32a67995038b5f39151f1e0ec23b39d7ba",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-17.png",
+      "bytes": 883713,
+      "sha256": "918266f13a16fbc02b6a892a87a20a0f495577b104265faf749353132a26449d",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-18.png",
+      "bytes": 835246,
+      "sha256": "50af5610d1e899ce3f9f47a4d83369ca7a5651bd7e4f6de7fa849d6892f24be4",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-19.png",
+      "bytes": 922411,
+      "sha256": "d9fcd273e6c99fddb673c3fe984574faa6fa94cb187be442dca32cc3ed93159b",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-20.png",
+      "bytes": 864788,
+      "sha256": "aeaf4fe5e237b038874da704e57ca4ba49ada1a734c77d1fd273f3c9555f51e2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-21.png",
+      "bytes": 967731,
+      "sha256": "01d2b4216850d918171a6de039bae7743c377eda0cebf8b5ade9e7e65d89948d",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/page-22.png",
+      "bytes": 16082,
+      "sha256": "d82ff53c1dafd9bd8d04cce0ff20bd2d1c53bea350f1d0e433cd66cbc125da31",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/reader-overview.png",
+      "bytes": 2446313,
+      "sha256": "ba1d32e8060f0778ee7489a4f3f9540061476a3509c92f4300a4733107af8ce7",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/text-check.json",
+      "bytes": 248,
+      "sha256": "9ae20ac67e4e2665e42678fc7260da97d3518fe603fb375ffcb36b3332c94154",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/review/whole-book/text.txt",
+      "bytes": 3905,
+      "sha256": "e4e555bb23eb205e813f121057345f3310daa21b9aa821d4ef04b023773125db",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/character-reference-draft.png",
+      "bytes": 2213113,
+      "sha256": "8f7d4947b8ea4f48a3124de3be91159c3a2e57339c562a9f7b342e9b9352b133",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/character-v1.png",
+      "bytes": 2584353,
+      "sha256": "3f84a5585b054d7c94029475ff1606d168e7e0c669ce3cee97180d7e47329887",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-00_cover-art-v1.png",
+      "bytes": 2708394,
+      "sha256": "5a4fd494778fe13a47f854ab370addbbf74bc215da0405e5bb1659878cece5a2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-01-art.png",
+      "bytes": 2818191,
+      "sha256": "8b422354cce16850e147fe69d2ce4c2e04f05355bb87c895fbf0f099e42d60f9",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-02-art-v1.png",
+      "bytes": 2750419,
+      "sha256": "1134a78e93cafc25f7911abb62af1dbf09a0772435e427c4dc65efbf1a95e208",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-03-art-v1.png",
+      "bytes": 3071408,
+      "sha256": "097de8a519294ae8f4c42be80b0c615ab7626307722af5c145b5e74510b6af42",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-04-art-v1.png",
+      "bytes": 2706225,
+      "sha256": "5211af07e33aac5969c0ba98bd8b36820eaf361f621d3327073728472fecc72d",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-05-art-v1.png",
+      "bytes": 2641304,
+      "sha256": "858471a81e5648ae8fa02de784108c7ba69b8029643993dcdf5dd518a0060fe2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-06-art-v1.png",
+      "bytes": 2918059,
+      "sha256": "1aaa88bccd2f2b5adc283165efe0c2dba3c8839f0aebdb8d73c80395bfefb48d",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-06-art-v2.png",
+      "bytes": 2555670,
+      "sha256": "6e59657ac8818b6b6bbf378b68d1f844e96beda7755984d1ae37085ec99d97dd",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-07-art.png",
+      "bytes": 2738962,
+      "sha256": "e528920ee58e7a0dd08358bafac82f0a1c02c08e4eac3b95e79b10177feaa56c",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-08-art-v1.png",
+      "bytes": 2605563,
+      "sha256": "ab1f5d204302f6131a28fa494603918e6579d948a1c8fd4a43092a06151de036",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-09-10-art-v1.png",
+      "bytes": 2837290,
+      "sha256": "5e506bffb4ce4f9e27d59665656247f315295a9e9eb77993c80ee47e218577a5",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-09-10-art-v2.png",
+      "bytes": 2501526,
+      "sha256": "610b028db7c55a79c5484db75328f2f63aab87e932971a515622177bc8262e5e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-11-art-v1.png",
+      "bytes": 2763541,
+      "sha256": "ab9873bac1ba4a84dcbb2db7f5f3da94406fb3debe3b38b8502e90413cb255d5",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-11-art-v2.png",
+      "bytes": 2372866,
+      "sha256": "dd3d3389cfe77562a05b8393b49b6bf8744b4884b0962cf6150d86f57946034c",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-12-art-v1.png",
+      "bytes": 2601954,
+      "sha256": "a66a33898f8917c0805baabaf36e596905e3829df09a516649f6359dae4add47",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-13-art-v1.png",
+      "bytes": 2664473,
+      "sha256": "41e357c630fdcb41bb0b2f85ec630dc18cac2c39ccf451817e51ede76bbd6a94",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-14-art-v1.png",
+      "bytes": 2627777,
+      "sha256": "510d754324ef953961a3400b9fa1013db8c41e246bcdf4499ecb383981045a5f",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-14-art-v2.png",
+      "bytes": 2308717,
+      "sha256": "52c92268d5eb33d1baf60c6cb89b59cac60b2049d8080ed772fb5ed3fe5d95cd",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-15-art-v1.png",
+      "bytes": 2631038,
+      "sha256": "eac90190dc4e0700b54eab8f594948186a2ba1b549c5bb9dbf4b871a5a804adf",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-15-art-v2.png",
+      "bytes": 2210625,
+      "sha256": "622cae65559c6c4f5414e6998367cde9b2012a9bc1e57ac065db234429fe87dd",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-16-art-v1.png",
+      "bytes": 2683833,
+      "sha256": "e970caaefb7ef0e1d2d5bf4ca647605d09e28d0e7819c642cb52e97d5d7f8006",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-17-art-v1.png",
+      "bytes": 2492516,
+      "sha256": "0d319178aea346120851c186bd3b344d8e24e6ec3bcf1c99b1da1185ed9bc08e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-18-art-v1.png",
+      "bytes": 2646570,
+      "sha256": "ba83930124d190eff046ec0a3b26cedf9a00e9461ddf205e455feab474a117cd",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-19-art-v1.png",
+      "bytes": 2645085,
+      "sha256": "cd95094013a9e80d08818f33eeeb4a59fb67cc90aa17e927856b6516f2f441f2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/art/pb-20-art-v1.png",
+      "bytes": 2839266,
+      "sha256": "4125fbbb1b999a9063751381f1f0b5e609b1d3de5e7ac093898aa5884b3ec570",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/build-checkpoint.cjs",
+      "bytes": 6182,
+      "sha256": "3de8c94a52c5db1be2ba6a6d28f79dbd2707eb87d616e4062b916782155daf60",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/checkpoint-print.html",
+      "bytes": 10364596,
+      "sha256": "23bda8b341a937e5393a0282dac6a557e97a435b309e892415df6745c5c9d0d3",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/pb_01.svg",
+      "bytes": 3758784,
+      "sha256": "f3e8119aa707afb0362aa80884bf86bc3f94268f7da8cdfddbf5241787dd3d28",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/pb_07.svg",
+      "bytes": 3653852,
+      "sha256": "78e81b48d5a3c92e1df6c0b095549546630ea3d2e5d146b50ce608a9950655b9",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/pb_character_sheet.svg",
+      "bytes": 2951656,
+      "sha256": "bed9f8d1b96f2ae3b817454373199fc6db21b1fa475b288f2e7be79dc83c50ac",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/character-correction.txt",
+      "bytes": 797,
+      "sha256": "c339bb06813aae8883630271a9cfb46c2d0b17ccc5d98c183a31d5c5ba146474",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/character-sheet.txt",
+      "bytes": 3420,
+      "sha256": "4383bed7331e4fc1fc2f8eaf918871d2f1aa2af2ffffddb9fb3b048b8402398e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-00_cover.txt",
+      "bytes": 3111,
+      "sha256": "406851bab5bea383ff957e22518fd184cdc33c0e5a155e4f40389becc656e3e2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-01.txt",
+      "bytes": 3607,
+      "sha256": "4df79701bb3dfe5ff3142a0766a5e7dfb255514a4883e793299914fb3f7b27c0",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-02.txt",
+      "bytes": 2737,
+      "sha256": "4f5c0e5fbcb81e5925cad09ddc02bcb9d933c568202b472e1be43771f496d905",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-03.txt",
+      "bytes": 2617,
+      "sha256": "71a46a924a609a4b93874e05b29e82acaf4d1f2dedbff98f1ca9033f2108a09b",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-04.txt",
+      "bytes": 3040,
+      "sha256": "cd3337737950d74a7e34ef80aeef6aa01fda729de6170cda41755e250c5a64a1",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-05.txt",
+      "bytes": 2807,
+      "sha256": "f64d41aaec61c096e038ad83107e5062cf0536fc3db7ce3c5fdc49330fffdc51",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-06-correction.txt",
+      "bytes": 856,
+      "sha256": "3f9c61537f345d786d2a484569c4e0c74439124f112d994b2ace7a35bc2d0b69",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-06.txt",
+      "bytes": 2809,
+      "sha256": "85fced466dd8f198cf12fefe954cb82f3e4ed0072e9fea2c85f35c24b9eababd",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-07.txt",
+      "bytes": 3947,
+      "sha256": "5c0a1f6bb0ce08168edece625ab6c477ff7a4d89f5a3d633e1ef848df044d0d5",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-08.txt",
+      "bytes": 2962,
+      "sha256": "706f41f8c9f0f33ddfcecafa803ff87e7f0c4805a0aba076d8a105ca3f27f953",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-09-10-correction.txt",
+      "bytes": 840,
+      "sha256": "82eb8a5c8729347a1aa01e8db61b8a1cc1b921cb6e21aeae9eae005f195f7447",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-09-10.txt",
+      "bytes": 3085,
+      "sha256": "a1b524f65bebd213f1b3b0fc463b43121e358cce7de582947abe3fc6bdc53ff8",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-11-correction.txt",
+      "bytes": 651,
+      "sha256": "772c5f5961a3f65d4344951210ead06bd0bc2d3eaf1bd10f259cf3ba31523d55",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-11.txt",
+      "bytes": 2870,
+      "sha256": "e591901a17d289c8e2000b8f646a212d95095f7d08cbe13e58097a7ff844536b",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-12.txt",
+      "bytes": 2923,
+      "sha256": "b3f15077905b307126b221d4eac8df205b6422f52e2a09627fd358cba1016e9d",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-13.txt",
+      "bytes": 3069,
+      "sha256": "e2049d92d9f3de2b1e4515d21dbd36f25e3f17d08a89fe68ffc5be3fa7027ce2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-14-correction.txt",
+      "bytes": 792,
+      "sha256": "77c120dfbf810a45e84e5a4f5991c69fe8b592fce4cc9060079497452872e40e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-14.txt",
+      "bytes": 3018,
+      "sha256": "396d1fee9c25452cbf85e5e53a17b18d198acfd7cb54288a3798a6a18c72b767",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-15-correction.txt",
+      "bytes": 748,
+      "sha256": "b8e4aae139646cad0fda98f4d21d4b83bea01a2fa0024994a02f692192a808f2",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-15.txt",
+      "bytes": 2813,
+      "sha256": "afeb3e354472d4163f9388586a472344d95edf379d54da338561b8e45fa0c568",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-16.txt",
+      "bytes": 3388,
+      "sha256": "4ef1708bdcc09e4f449ed56ba3eeaf3b722a38bd9161f9eba9f9989fce8ed55b",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-17.txt",
+      "bytes": 3065,
+      "sha256": "9f879c3ddc2292943f6e8c84d4f7f4d85fb7513efa4c9069ecc2343b7818365e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-18.txt",
+      "bytes": 3247,
+      "sha256": "aa8e63f948cb6ce6b1e1ea79a4750abd12937f583469c7bb46eb81b1ec76d381",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-19.txt",
+      "bytes": 3430,
+      "sha256": "d05ccbfacaab50cd9a585628eaec01421616244145370b4f5d9d0b89041da7c6",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/prompts/pb-20.txt",
+      "bytes": 3142,
+      "sha256": "5eac94dcadb4ab2ece3fdf211335e913b9c826951ac0d9c6458a545902bbc97c",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/storyboard-manifest.json",
+      "bytes": 19127,
+      "sha256": "165f29ac14f83277632f0bec75a24d0effbe436b49ebbe2f76a6abd95200e802",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/annotations.json",
+      "bytes": 14992,
+      "sha256": "7564f69166e9e9d4fb66bd2adb7f59f6a264635e5dadeab3d42cfe35f55bff03",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/book-share-print.html",
+      "bytes": 14841090,
+      "sha256": "0a4910b1dbc0e54d732d54662bf7f6642dc570f0bc4dee364a90fc8034a98255",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/build-book.cjs",
+      "bytes": 8783,
+      "sha256": "00255783a9a5a5fc21be00ee9ff31c1df941c1db4f31507e063d90bf45b590b5",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/optimize-book.cjs",
+      "bytes": 2861,
+      "sha256": "045d0bee524eb14420b6956689ae0f0bc96009e5d7daa646e84e6baff12a5e52",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_00_cover.svg",
+      "bytes": 3613237,
+      "sha256": "dc112431552d7903cdc2d24e02da526df625e45741f0f4b20e57caa033305aaa",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_01.svg",
+      "bytes": 3758784,
+      "sha256": "f3e8119aa707afb0362aa80884bf86bc3f94268f7da8cdfddbf5241787dd3d28",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_02.svg",
+      "bytes": 3669248,
+      "sha256": "86321152971c52d63f2d3df24b6bb8c0d9605c2849ed97fbdab91e3c174401d3",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_03.svg",
+      "bytes": 4096288,
+      "sha256": "f9834ed6f4f449ec69e87338bd6c6d56f9561fb7da6f28060f512337a3c3a1e8",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_04.svg",
+      "bytes": 3610291,
+      "sha256": "e1101c66df34a9a35101a27054deaa8886789ebe8ef9aa25e00b2b2a27e6e0a5",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_05.svg",
+      "bytes": 3523506,
+      "sha256": "865d0be770562638fc249d6e65baaf1cecba10533b6345b6022f024cf076f8d6",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_06.svg",
+      "bytes": 3409012,
+      "sha256": "d1f8da9a0b477b7a344f571fda6485c951b9fae01f6e0cca3a6d94084cd0e6ef",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_07.svg",
+      "bytes": 3653852,
+      "sha256": "78e81b48d5a3c92e1df6c0b095549546630ea3d2e5d146b50ce608a9950655b9",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_08.svg",
+      "bytes": 3475354,
+      "sha256": "f66e88390d13c11b0dc0b965746d616c5c8f109920ec61c5c0416eaa89a96753",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_09-10.svg",
+      "bytes": 3338068,
+      "sha256": "b21648d363350d69a2027cffec7b3bb1cdfc5a102909437f53a25fc7de40c256",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_11.svg",
+      "bytes": 3166283,
+      "sha256": "85f4b12fdec6e0592896040c460c83795de4b7d828058c2814b20233df4848c0",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_12.svg",
+      "bytes": 3470689,
+      "sha256": "ea3f08e0c6403bb607edf341bf27b3ed5badda702a4dc8dc4f7423bf43148891",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_13.svg",
+      "bytes": 3553860,
+      "sha256": "b958b288b2c93d474ab78c41ea30e45cae44eeeab855998e11ed4feee7111e4e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_14.svg",
+      "bytes": 3079806,
+      "sha256": "3fb205d6696acc3460cb69b760039b6bb900961fb6ff2a7457d134089a4a9736",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_15.svg",
+      "bytes": 2948469,
+      "sha256": "8515a3bbd3819da20a366cf1895b6b891c6acd65740dd2332c2a115fc55d5eee",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_16.svg",
+      "bytes": 3580602,
+      "sha256": "eb6f1b0ca23ea4fced9229ca4901512dab377158db0754c25f28184b4287f3ec",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_17.svg",
+      "bytes": 3324172,
+      "sha256": "59d845f59b1dabddf12fd9c09c6a85e3fab639099e2f16a98d028d4e5deea544",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_18.svg",
+      "bytes": 3530082,
+      "sha256": "a4c2c926949fb2681c1cb1d7b5888257231c170ddcb74e4d5c1dab23639bad94",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_19.svg",
+      "bytes": 3527723,
+      "sha256": "d6bdcb804f8fb48f8e0382fcad2c73f34e5f93b57e156c955ea59bc6260fe460",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_20.svg",
+      "bytes": 3787108,
+      "sha256": "8c92a53d843852bb3ad78cbc96a8ddd1791f7cfb63fdf72392d758eb8b2df212",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/pb_21.svg",
+      "bytes": 1322,
+      "sha256": "92f81dfc7ad49268d641b1b5c756b72d4a26f5848434935a74f19b704788242a",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/source/whole-book/thumbnails-share-print.html",
+      "bytes": 7248405,
+      "sha256": "96815a976e3d8e4e741100b27575eff157243fccb734e872e415bdd19f431186",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/交付说明-完整分镜初版.md",
+      "bytes": 3595,
+      "sha256": "e03d2bf5b59a2c7eda5f98e91011a04500b49de6e3b69587a056c17edc550402",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/来源.md",
+      "bytes": 3403,
+      "sha256": "5ce86717538b25689f5fafb6c13dbcb65e13432e4f71177560d0d68a7660684d",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/检查点01.html",
+      "bytes": 1241,
+      "sha256": "fc9fda41092f05b4195232923d9451c5717d88fa10953b0edff38871cf8e5973",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/绘本-已收悉-检查点01.pdf",
+      "bytes": 9442424,
+      "sha256": "082e2d7da7c96e157063a463428504fba59eee78d9680f88138821fb18825a2e",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/绘本-已收悉.html",
+      "bytes": 14073626,
+      "sha256": "0cb46a3c8d22742acbc849b8d5422a0c20370932b8790370c19162a0aef41feb",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/绘本-已收悉.pdf",
+      "bytes": 10889191,
+      "sha256": "46b7e0bd497db09e1054e82fbdc3963661f1fe3ed5484922bbf08e3d4c3a9f97",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/2026-10-13-绘本旧版21页/美术基准与剧情阅读.md",
+      "bytes": 5491,
+      "sha256": "cb3b4c688e8111a31ac8490f00d8a39e9e5f7172e8e1d272285378af27c90019",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    },
+    {
+      "path": "assets/_归档/人物参考-旧版设定.png",
+      "bytes": 1987459,
+      "sha256": "59880b28055a451261050c675a2621876a2e11dcee85d380643024202c3ba3b7",
+      "reason": "已推翻的旧绘本与旧人物参考；用户授权清理"
+    }
+  ],
+  "total_bytes": 814548139
+}

@@ -72,12 +72,6 @@
       ]
     },
     {
-      "file": "manor_总平面.pdf",
-      "bytes": 1009564,
-      "sha256": "3c94fbcbf258d44fecf0767cc586f12fa1a3601de1a34a8638f41a0dce8ced59",
-      "pages": 1
-    },
-    {
       "file": "manor_平面_一楼.svg",
       "bytes": 31173,
       "sha256": "7da19eb02e0e68cc13bece86ca2cfdc0d88ed59462f633012cf17e2a8a6dad81"
@@ -90,12 +84,6 @@
         3564,
         2520
       ]
-    },
-    {
-      "file": "manor_平面_一楼.pdf",
-      "bytes": 2030854,
-      "sha256": "889b1ad8975ef8b48bd91c3d8d7cb4ed51b8e79f9a50717b6f9c2ed406f0b833",
-      "pages": 1
     },
     {
       "file": "manor_平面_二楼.svg",
@@ -112,12 +100,6 @@
       ]
     },
     {
-      "file": "manor_平面_二楼.pdf",
-      "bytes": 1080410,
-      "sha256": "8e8d44aeebf9d56da926cd1cc8b6b58a60cdfea740fdfcb37b494b3483734734",
-      "pages": 1
-    },
-    {
       "file": "manor_剖面.svg",
       "bytes": 24506,
       "sha256": "2dc1a0383df1ca214b78dda5e42a720b8d2b6790717f851ebc06c82e41df09b4"
@@ -132,27 +114,9 @@
       ]
     },
     {
-      "file": "manor_剖面.pdf",
-      "bytes": 6742575,
-      "sha256": "5851587c48dac2e9c100d3ed968293459ee137278603647ddbc634fa579d8009",
-      "pages": 1
-    },
-    {
-      "file": "manor_设计图集-v1.pdf",
-      "bytes": 10757995,
-      "sha256": "8d96bb4b282c7ad16453af086e440f5fa8524e4ec56d9388a0deaf1eeb63825b",
-      "pages": 4
-    },
-    {
-      "file": "manor_完整设计图集-v1.pdf",
-      "bytes": 27418293,
-      "sha256": "627bc0a78f27fac391a165c702771be430c0ff30ef7d1b740b4f6ddea493d042",
-      "pages": 10
-    },
-    {
       "file": "manor_设计审查-v1.html",
-      "bytes": 25836714,
-      "sha256": "652590c8d7270582131bac3e98f68c66f010b0f261c93edf8c85d17ca9bd51b6"
+      "bytes": 25563,
+      "sha256": "5dd2620b376b631efa425d818d7fc11255817826549df848447df1be6283a58f"
     },
     {
       "file": "manor_尺寸表.md",

@@ -34,7 +34,8 @@ def sha(path):
 
 
 def main():
-    items = json.loads((OUT / 'generation-log.json').read_text())
+    items = [x for x in json.loads((OUT / 'generation-log.json').read_text())
+             if x['name'] not in {'seance_seance_mid-v3', 'seance_table_candle-v3'}]
     cards, rows = [], []
     for x in items:
         x['selected_source'] = x['revision_source'] or x['source']
@@ -55,18 +56,18 @@ def main():
                      f'<div><h2>{label}</h2><p>{path.parent.name} · {width} × {height} · PNG</p>'
                      f'<p>{note}</p><a href="{url}">打开原图</a></div></article>')
         rows.append(f"| {x['name']} | [预览]({os.path.relpath(path, OUT)}) | {width} × {height} | {x['review_note']} |")
-    assert len(items) == 17 and len({x['sha256'] for x in items}) == 17
+    assert len(items) == 15 and len({x['sha256'] for x in items}) == 15
     (OUT / 'manifest.json').write_text(json.dumps(items, ensure_ascii=False, indent=2) + '\n')
     (OUT / 'index.html').write_text('''<!doctype html><html lang="zh-CN"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>补图 v3 · 17 张参考预览</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>补图 v3 · 15 张保留预览</title>
 <style>body{margin:0;background:#f3f0e8;color:#263732;font:16px/1.7 system-ui,sans-serif}main{max-width:1400px;margin:auto;padding:40px 24px}h1{font-size:30px}header{max-width:1000px;margin-bottom:32px}section{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,540px),1fr));gap:24px}article{background:#fff;border:1px solid #d4d9cf}article img{display:block;width:100%;height:auto}article div{padding:18px 22px}h2{font-size:18px;overflow-wrap:anywhere;margin:0}a{color:#35675e}p{margin:8px 0}.notice{border-left:3px solid #a77943;padding-left:16px}</style>
-<main><header><p>奥瑞尔庄园 / 2026-10-16</p><h1>补图 v3 · 17 张参考预览</h1>
-<p>13 张空间 / 状态图 + 4 张艾瑞斯的画。使用 Codex 内置 image 工具生成，原图保存到对应设计包根目录。点击图片查看原图。</p>
+<main><header><p>奥瑞尔庄园 / 2026-10-16</p><h1>补图 v3 · 15 张保留预览</h1>
+<p>11 张空间 / 状态图 + 4 张历史画稿（其中两张剧情停用，仅保留贴图重建来源）；客厅 v3 两张已作废并清理。使用 Codex 内置 image 工具生成，原图保存到对应设计包根目录。点击图片查看原图。</p>
 <p class="notice">本页确认缺失文件已补齐；未代表全部通过建模验收。楼梯级数、门板和窗格细分等偏差逐图列出。尺寸和洞口以 T-039 v1 平面及共同规范为准。餐桌近景和降灵会状态图不增加新的观察朝向，不能据此声称所有房间已满足 SOP 的三朝向条件。</p>
 </header><section>''' + ''.join(cards) + '</section></main></html>')
     (OUT / '审查说明.md').write_text('''# 补图需求 v3：生成与审查记录
 
-日期：2026-10-16。17/17 缺失参考预览已补齐；工具：Codex 内置 image_gen。没有覆盖旧 v2 图。
+日期：2026-10-16。原交付 17 张；10-19 清理客厅 v3 两张，保留 15 张；工具：Codex 内置 image_gen。没有覆盖旧 v2 图。
 
 - 房间图原生输出 1672 × 941；画作原生输出 1448 × 1086。未放大冒充原生 1080p。
 - 所选文件均已检查 PNG 签名、尺寸、SHA-256；项目副本与生成原图字节一致。机器检查见 `manifest.json`。

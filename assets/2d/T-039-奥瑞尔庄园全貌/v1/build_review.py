@@ -1,9 +1,13 @@
-"""Build a self-contained review page and a ten-page A2 design collection.
+"""Build a linked-image review page and a ten-page A2 design collection.
 
-Read the v1 SVG/PNG sources beside this file. Never regenerate from the other
+Read the v1 SVG/PNG sources beside this file. Default output uses relative image links; PDF is opt-in. Never regenerate from the other
 manor layout in tools/art/build_manor_design.py.
 """
 from pathlib import Path
+import tempfile
+import argparse
+import subprocess
+import sys
 import base64
 import hashlib
 import html
@@ -67,11 +71,11 @@ def build_html():
     figures=[]
     for name,number,label,title,note in VIEWS:
         figures.append(f'''<figure id="view-{number}"><div class="figure-head"><p>{number} / {label}</p><h3>{title}</h3></div>
-<button class="zoomable" data-title="{label}" aria-label="放大查看{label}"><img src="{data_uri(P/(name+'.png'))}" width="1672" height="941" alt="{note}" loading="lazy"><span>放大查看 ↗</span></button><figcaption>{note}</figcaption></figure>''')
+<button class="zoomable" data-title="{label}" aria-label="放大查看{label}"><img src="{name+'.png'}" width="1672" height="941" alt="{note}" loading="lazy"><span>放大查看 ↗</span></button><figcaption>{note}</figcaption></figure>''')
     drawings=[]
     for name,no,label,note,scale in DRAWINGS:
         drawings.append(f'''<figure id="{no}"><div class="figure-head"><p>{no} / {scale} @ A2</p><h3>{label}</h3></div>
-<button class="zoomable drawing" data-title="{label}" aria-label="放大查看{label}"><img src="{data_uri(P/(name+'.svg'),'image/svg+xml')}" width="3564" height="2520" alt="{note}" loading="lazy"><span>放大查看 ↗</span></button><figcaption>{note}。SVG 矢量图可放大；页面缩放后按标注与比例尺量取。</figcaption></figure>''')
+<button class="zoomable drawing" data-title="{label}" aria-label="放大查看{label}"><img src="{name+'.svg'}" width="3564" height="2520" alt="{note}" loading="lazy"><span>放大查看 ↗</span></button><figcaption>{note}。SVG 矢量图可放大；页面缩放后按标注与比例尺量取。</figcaption></figure>''')
     page='''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>奥瑞尔庄园 · v1 设计审查</title><link rel="icon" href="data:,"><style>
 :root{color-scheme:light;--paper:#f5f3ed;--ink:#263732;--quiet:#627169;--line:#c6cdc1;--accent:#845636}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif}header{position:sticky;top:0;z-index:2;background:rgba(245,243,237,.96);border-bottom:1px solid var(--line);padding:17px 4vw;display:flex;align-items:center;justify-content:space-between;gap:20px}header a{color:inherit;text-decoration:none}header strong{font-size:15px;letter-spacing:.04em}nav{display:flex;gap:22px;align-items:center;font-size:13px}main{max-width:1440px;padding:0 4vw;margin:auto}.intro{padding:72px 0 44px;display:grid;grid-template-columns:1.25fr 1fr;gap:40px}.eyebrow{font-size:12px;letter-spacing:.16em;color:var(--quiet)}h1{font-family:'Songti SC',Georgia,serif;font-weight:500;font-size:clamp(40px,5vw,68px);margin:17px 0 24px;line-height:1.18}.intro p{line-height:1.8;max-width:560px}.intro aside{align-self:end;border-left:1px solid var(--line);padding-left:32px;font-size:14px}.intro aside p{margin:10px 0}.section-title{border-top:1px solid var(--line);margin-top:50px;padding-top:25px;display:flex;justify-content:space-between;gap:24px;align-items:baseline}h2{font-weight:500;font-size:29px;letter-spacing:.02em}.section-title p{font-size:13px;color:var(--quiet)}.figure-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline;margin-bottom:14px}.figure-head p{font-size:12px;letter-spacing:.05em;color:var(--quiet)}h3{font-size:20px;font-weight:500}figure{margin:20px 0 60px}.zoomable{display:block;width:100%;padding:0;border:0;position:relative;background:#deded5;cursor:zoom-in}.zoomable img{display:block;width:100%;height:auto}.zoomable span{position:absolute;bottom:16px;right:16px;background:#f5f3edf2;color:var(--ink);padding:9px 14px;font-size:12px}.drawing{border:1px solid var(--line)}figcaption{max-width:900px;font-size:14px;line-height:1.8;margin-top:16px;color:var(--quiet)}.jump{display:flex;flex-wrap:wrap;gap:12px 23px;margin:5px 0 30px}.jump a{font-size:13px;color:var(--ink);text-underline-offset:5px}.notes{line-height:1.85;font-size:14px;padding:20px 0 50px}.notes h2{font-size:28px}.notes h3{font-size:20px;margin-top:32px}.notes h4{font-size:16px;margin-top:30px}.table-scroll{overflow:auto}table{border-collapse:collapse;min-width:780px;width:100%;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:12px 14px;text-align:left;vertical-align:top}th{font-weight:600;background:#e9ede3}code{font:12px ui-monospace,monospace;word-break:break-all}details{border-top:1px solid var(--line);margin:25px 0}summary{cursor:pointer;padding:20px 0;font-size:17px}.status{color:var(--accent)}footer{padding:32px 0 48px;border-top:1px solid var(--line);font-size:12px;line-height:1.8;color:var(--quiet)}dialog{width:96vw;height:94vh;max-width:none;max-height:none;padding:0;border:0;background:var(--paper);color:var(--ink)}dialog::backdrop{background:#101912cf}.dialog-top{display:flex;align-items:center;gap:20px;padding:12px 20px;border-bottom:1px solid var(--line);height:65px}.dialog-top strong{margin-right:auto}.dialog-top button{padding:7px 15px;border:1px solid var(--line);background:none;cursor:pointer}.dialog-top label{display:flex;align-items:center;gap:8px;font-size:12px}.viewport{height:calc(100% - 65px);overflow:auto;padding:12px}.viewport img{display:block;width:100%;max-width:none;height:auto}.dialog-top input{width:100px}a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}@media(max-width:700px){header{padding:15px 5vw;flex-wrap:wrap;gap:12px}header strong{font-size:14px}nav{gap:20px}.intro{grid-template-columns:1fr;padding:38px 0 16px;gap:10px}.intro aside{padding:0;border:0}.intro p{font-size:14px}.section-title{display:block;margin-top:25px}h2{font-size:25px}.figure-head{display:block;margin-bottom:12px}.figure-head h3{margin:5px 0;font-size:19px}figure{margin-bottom:38px}.zoomable span{bottom:8px;right:8px;padding:6px 9px}.dialog-top{gap:10px;padding:10px}.dialog-top input{width:68px}.dialog-top strong{font-size:13px}.notes{font-size:13px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head><body><header><strong>ORIEL HOUSE / 奥瑞尔庄园</strong><nav><a href="#perspectives">透视效果</a><a href="#drawings">平面与剖面</a><a href="#dimensions">尺寸说明</a></nav></header><main>
@@ -82,7 +86,7 @@ def build_html():
     page+=''.join(f'<a href="#{no}">{label}</a>' for _,no,label,_,_ in DRAWINGS)+'</div>'+''.join(drawings)+'</section>'
     page+='<section id="dimensions" class="notes">'+markdown((P/'manor_尺寸表.md').read_text())
     page+='<details><summary>查看来源、修改记录与交付边界</summary>'+markdown((P/'来源.md').read_text())+'</details></section>'
-    page+='''<footer>这是一份自包含离线文件，图片与图纸均已嵌入；打开时不需要本地服务或网络。<br>本轮交付为设计审查材料。没有修改 Godot 场景，也没有把图纸检查当作实际漫游验收。</footer></main>
+    page+='''<footer>这是一份同目录图片文件，图片与图纸均已嵌入；打开时不需要本地服务或网络。<br>本轮交付为设计审查材料。没有修改 Godot 场景，也没有把图纸检查当作实际漫游验收。</footer></main>
 <dialog id="viewer" aria-label="图纸与图片放大查看"><div class="dialog-top"><strong id="viewer-title"></strong><label>缩放<input id="zoom" aria-label="缩放" type="range" min="100" max="300" value="100" step="25"><output id="zoom-value">100%</output></label><button id="close" type="button">关闭</button></div><div class="viewport"><img id="large-image" alt=""></div></dialog><script>
 const viewer=document.querySelector('#viewer'),large=document.querySelector('#large-image'),zoom=document.querySelector('#zoom');
 document.querySelectorAll('.zoomable').forEach(button=>button.addEventListener('click',()=>{const img=button.querySelector('img');large.src=img.src;large.alt=img.alt;document.querySelector('#viewer-title').textContent=button.dataset.title;zoom.value=100;large.style.width='100%';document.querySelector('#zoom-value').textContent='100%';viewer.showModal();document.querySelector('.viewport').scrollTo(0,0);}));
@@ -99,7 +103,8 @@ def visual_svg(item):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="594mm" height="420mm" viewBox="0 0 594 420"><rect width="594" height="420" fill="#faf9f5"/><g fill="#263732" font-family="PingFang SC,sans-serif"><text x="18" y="18" font-size="4">ORIEL HOUSE / 奥瑞尔庄园 / T-039</text><text x="18" y="35" font-size="8">{no} / {label}：{title}</text><text x="576" y="20" font-size="3.3" text-anchor="end">v1 · 设计讨论稿 · 2026.10.14</text><image x="18" y="51" width="558" height="314" preserveAspectRatio="xMidYMid meet" href="{data_uri(P/(name+'.png'))}"/>{note_lines}<path d="M18,400H576" stroke="#bbc4b8" stroke-width=".3"/><text x="18" y="409" font-size="2.8">原生 1672 × 941 概念图 / 空间尺寸以 SVG 为准 / 1920 × 1080 输出条目待补 / 不代表 Godot 已建场景</text><text x="576" y="409" font-size="2.8" text-anchor="end">A2 · 594 × 420 mm</text></g></svg>'''
 
 def build_pdf():
-    review=P/'review'/'pdf-pages';review.mkdir(parents=True,exist_ok=True)
+    temporary = tempfile.TemporaryDirectory(prefix='digitalmedia-manor-pdf-')
+    review = Path(temporary.name)
     with sync_playwright() as pw:
         browser=pw.chromium.launch(executable_path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless=True)
         page=browser.new_page()
@@ -122,11 +127,15 @@ def build_pdf():
     doc.save(P/'manor_完整设计图集-v1.pdf',garbage=4,deflate=True)
     assert len(doc)==10
     doc.close()
+    temporary.cleanup()
 
 def manifest():
     files=[]
     for name in [x[0]+'.png' for x in VIEWS]+[x[0]+ext for x in DRAWINGS for ext in ['.svg','.png','.pdf']]+['manor_设计图集-v1.pdf','manor_完整设计图集-v1.pdf','manor_设计审查-v1.html','manor_尺寸表.md','来源.md']:
-        p=P/name;row={'file':name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
+        p=P/name
+        if not p.exists():
+            continue  # PDF is an optional export.
+        row={'file':name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()}
         if p.suffix=='.png':
             with Image.open(p) as im:row['dimensions']=list(im.size)
         if p.suffix=='.pdf':
@@ -135,5 +144,12 @@ def manifest():
     (P/'交付清单.json').write_text(json.dumps({'version':'v1-review','date':'2026-10-14','status':'设计候选，待用户审查；效果图原生分辨率尚未满足任务书','files':files},ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
-    build_html();build_pdf();manifest()
-    print('Built offline HTML, 10-page A2 PDF, and artifact manifest.')
+    parser=argparse.ArgumentParser(description='Build lightweight review HTML; optionally export print PDFs.')
+    parser.add_argument('--pdf',action='store_true',help='Export A2 drawing PDFs and complete collection')
+    args=parser.parse_args()
+    build_html()
+    if args.pdf:
+        subprocess.run([sys.executable,str(P/'render_drawings.py'),'--pdf'],check=True)
+        build_pdf()
+    manifest()
+    print('Built linked-image review HTML and manifest; PDF exported only with --pdf.')
