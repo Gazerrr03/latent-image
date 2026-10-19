@@ -40,7 +40,20 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"manor_草坪": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/look/materials/manor_草坪.tres",
+"use_external/path": "res://art/look/materials/manor_草坪.tres"
+}
+},
 "nodes": {
+"PATH:远景_山丘": {
+"import/skip_import": true
+},
+"PATH:远景_树林": {
+"import/skip_import": true
+},
 "PATH:门窗_glass": {
 "generate/physics": true,
 "physics/body_type": 0,

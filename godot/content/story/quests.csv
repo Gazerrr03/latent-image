@@ -1,0 +1,12 @@
+id,group,hint,trigger,shot,until,require,note
+# 任务表（10-17）：章节里的自由探索。镜头表 explore(组) 把玩家放进庄园大地图，按这张表给提示、等玩家去触发。
+# trigger：talk:人名@房间（走到这个人面前按 E）／enter:房间（走进这个房间）／door:门的节点名（对着这扇门按 E）／hs_<id>（检查这个物件）。
+# shot ~ until：触发后依次播放的镜头（含两端，按镜头表的 next 走）；空 = 不播镜头，只算完成。
+# require：要先完成哪些任务，用 | 隔开；“2:a,b,c” = a、b、c 里完成任意两个。写了 require 的任务完成后，这一轮探索结束，回到镜头表。
+# 当天谁在哪：本组所有 talk 任务里的人，站在各自的房间里（完成以后也还在）。
+c1_constance,c1,餐厅：康斯坦斯在那里。问问她，他是怎么死的。,talk:康斯坦斯·塔尔博特@dining,C1-02,C1-02,,
+c1_gideon,c1,温室：撞开暗房门的是园丁吉迪恩。,talk:吉迪恩·沃登@greenhouse,C1-03,C1-03,,
+c1_latente,c1,客厅：灵媒拉坦特夫人还住在庄园里。,talk:拉坦特夫人@seance,C1-04,C1-04,,
+c1_darkroom,c1,暗房（二楼）：他是怎么死的？屋里有哪些东西不对劲？,enter:darkroom,C1-05,C1-05,,
+c1_amb_room,c1,他的卧室（二楼走廊）：这几天他在做什么？,door:二楼·主卧门（锁着）,C1-06,C1-06,,
+c1_return,c1,回客房：把今天找到的东西摊在证据板上。,enter:guest_room,,,"c1_darkroom|c1_amb_room|2:c1_constance,c1_gideon,c1_latente",

@@ -30,6 +30,7 @@ ssao_radius = 0.8
 ssil_enabled = true
 glow_enabled = true
 glow_intensity = 0.35
+metadata/own_look = true
 
 [node name="darkroom" type="Node3D"]
 

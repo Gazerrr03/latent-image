@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+FILTER_TRANSITIONS PASS
+PERF_META {"gpu":"Apple M4 (Apple9)","viewport":"(1600.0, 900.0)","vsync":1,"window":"(1600, 900)"}
+PERF_RESULT {"draw_calls":1236.0,"fps":60.0104999660647,"mode":"baseline","p95_ms":17.755,"p99_ms":18.732,"primitives":1950644.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":2485.0,"fps":59.9971801325338,"mode":"baseline","p95_ms":17.722,"p99_ms":18.78,"primitives":5853993.0,"room":"hall"}
+PERF_RESULT {"draw_calls":2850.0,"fps":60.0006187173988,"mode":"baseline","p95_ms":17.906,"p99_ms":18.69,"primitives":4511296.0,"room":"dining"}
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

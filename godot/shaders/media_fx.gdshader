@@ -25,6 +25,7 @@ uniform float bleed = 0.0;       // 颜色向右拖影 0—1
 // —— 数字 ——
 uniform float glitch = 0.0;      // 方块错位 0—1
 // —— 总强度（用于淡入淡出） ——
+uniform float exploration = 0.0; // 行走舒适度：颗粒保留 65%，闪烁 50%，片门抖动 35%，划痕 30%，灰尘 50%
 uniform float amount = 1.0;
 uniform float brightness = 1.0;  // 设置里的亮度：gamma，1 = 原样
 
@@ -42,7 +43,7 @@ void fragment() {
 	float frame = floor(t * fps);
 
 	// 胶片：整体抖动（片门晃动）
-	uv += (vec2(hash1(frame), hash1(frame + 7.0)) - 0.5) * weave * amount;
+	uv += (vec2(hash1(frame), hash1(frame + 7.0)) - 0.5) * weave * amount * mix(1.0, 0.35, exploration);
 
 	// 录像带：每行横向抖动
 	float line = floor(uv.y * 240.0);
@@ -85,7 +86,7 @@ void fragment() {
 	col = mix(col, vec3(lum), desat);
 
 	// 胶片：亮度闪烁
-	col *= 1.0 + (hash1(frame * 1.37) - 0.5) * flicker * 2.0;
+	col *= 1.0 + (hash1(frame * 1.37) - 0.5) * flicker * 2.0 * mix(1.0, 0.5, exploration);
 
 	// 录像带：扫描线与跟踪条纹里的噪点
 	col *= 1.0 - scanlines * 0.35 * (0.5 + 0.5 * sin(FRAGCOORD.y * 3.14159 * 0.5));
@@ -94,7 +95,7 @@ void fragment() {
 	// 胶片：竖向划痕（每帧随机出现 0—2 条）
 	for (int k = 0; k < 2; k++) {
 		float fk = float(k);
-		if (hash1(frame + fk * 5.3) < scratches) {
+		if (hash1(frame + fk * 5.3) < scratches * mix(1.0, 0.3, exploration)) {
 			float x = hash1(frame * 0.37 + fk * 13.1);
 			float d = abs(SCREEN_UV.x - x);
 			float s = smoothstep(0.0012, 0.0, d);
@@ -103,11 +104,11 @@ void fragment() {
 	}
 
 	// 胶片：灰尘斑点
-	float speck = step(1.0 - dust * 0.003, hash(floor(FRAGCOORD.xy / 3.0) + frame));
+	float speck = step(1.0 - dust * mix(1.0, 0.5, exploration) * 0.003, hash(floor(FRAGCOORD.xy / 3.0) + frame));
 	col = mix(col, vec3(0.06), speck);
 
 	// 颗粒
-	col += (hash(FRAGCOORD.xy + frame) - 0.5) * grain;
+	col += (hash(FRAGCOORD.xy + frame) - 0.5) * grain * mix(1.0, 0.65, exploration);
 
 	// 暗角
 	vec2 v = SCREEN_UV - 0.5;

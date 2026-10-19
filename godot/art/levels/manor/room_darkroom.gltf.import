@@ -40,6 +40,28 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"manor_室内_桃花心木家具": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/look/materials/manor_室内_桃花心木家具.tres",
+"use_external/path": "res://art/look/materials/manor_室内_桃花心木家具.tres"
+},
+"manor_室内_橡木地板": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/look/materials/manor_室内_橡木地板.tres",
+"use_external/path": "res://art/look/materials/manor_室内_橡木地板.tres"
+},
+"manor_室内_灰绿木作漆": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/look/materials/manor_室内_灰绿木作漆.tres",
+"use_external/path": "res://art/look/materials/manor_室内_灰绿木作漆.tres"
+},
+"manor_黄铜": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://art/look/materials/manor_黄铜.tres",
+"use_external/path": "res://art/look/materials/manor_黄铜.tres"
+}
+},
 "nodes": {
 "PATH:暗房·温室侧门": {
 "generate/physics": true,

@@ -730,6 +730,8 @@ func set_hud(on: bool) -> void:
 
 
 func set_cinematic(on: bool) -> void:
+	if fx:
+		fx.set_exploring(not on)
 	crosshair.visible = not on
 	var t := create_tween().set_parallel()
 	t.tween_property(bar_top, "modulate:a", 1.0 if on else 0.0, 0.6)

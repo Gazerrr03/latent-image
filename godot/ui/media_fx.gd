@@ -15,6 +15,8 @@ var _override := ""
 var _rect: ColorRect
 var _mat: ShaderMaterial
 var _tween: Tween
+var _exploring := false
+var _explore_tween: Tween
 
 
 func _ready() -> void:
@@ -24,6 +26,7 @@ func _ready() -> void:
 	_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_mat = ShaderMaterial.new()
 	_mat.shader = load("res://shaders/media_fx.gdshader")
+	_mat.set_shader_parameter("exploration", 0.0)
 	_rect.material = _mat
 	add_child(_rect)
 	reload()
@@ -45,6 +48,7 @@ func reload() -> void:
 ## 由镜头表调用：fx(纪录片片头)；fx() / fx(自动) 回到跟随渗漏
 func set_override(name: String) -> void:
 	_override = "" if name in ["", "自动"] else name
+	_update_exploration()
 	apply(_override if _override != "" else "L%d" % GameState.leak_level, 1.2)
 
 
@@ -87,3 +91,19 @@ func apply(name: String, duration := 1.0) -> void:
 
 func set_enabled(on: bool) -> void:
 	_rect.visible = on
+
+
+## 行走时降低颗粒和画面跳动；具名的剧情滤镜仍按原预设播放。
+func set_exploring(on: bool) -> void:
+	_exploring = on
+	_update_exploration()
+
+
+func _update_exploration() -> void:
+	if not _mat:
+		return
+	if _explore_tween:
+		_explore_tween.kill()
+	var target := 1.0 if _exploring and _override == "" else 0.0
+	_explore_tween = create_tween()
+	_explore_tween.tween_method(func(v): _mat.set_shader_parameter("exploration", v), float(_mat.get_shader_parameter("exploration")), target, 0.4)

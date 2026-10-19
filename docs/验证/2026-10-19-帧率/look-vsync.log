@@ -1,0 +1,22 @@
+PERF_META {"gpu":"Apple M4 (Apple9)","viewport":"(1600.0, 900.0)","vsync":1,"window":"(1600, 900)"}
+PERF_RESULT {"draw_calls":607.0,"fps":60.0119075602028,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.615,"p99_ms":18.354,"primitives":1097273.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":603.0,"fps":60.0001097715106,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.508,"p99_ms":18.099,"primitives":1096883.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":1826.0,"fps":59.9993025081083,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.646,"p99_ms":18.215,"primitives":2864453.0,"room":"hall"}
+PERF_RESULT {"draw_calls":1827.0,"fps":60.006651880828,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.827,"p99_ms":18.674,"primitives":2857287.0,"room":"hall"}
+PERF_RESULT {"draw_calls":1193.0,"fps":60.0087031333276,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.973,"p99_ms":18.989,"primitives":1962561.0,"room":"dining"}
+PERF_RESULT {"draw_calls":1199.0,"fps":59.9960777564167,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.585,"p99_ms":18.407,"primitives":1964771.0,"room":"dining"}
+PERF_RESULT {"draw_calls":1364.0,"fps":59.9988299604469,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.905,"p99_ms":18.731,"primitives":2043408.0,"room":"seance"}
+PERF_RESULT {"draw_calls":1363.0,"fps":60.0053717906638,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.573,"p99_ms":18.483,"primitives":2043406.0,"room":"seance"}
+PERF_RESULT {"draw_calls":119.0,"fps":59.9973751148387,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.531,"p99_ms":18.302,"primitives":850526.0,"room":"garden"}
+PERF_RESULT {"draw_calls":117.0,"fps":59.9972176290325,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.505,"p99_ms":18.088,"primitives":850344.0,"room":"garden"}
+PERF_META {"gpu":"Apple M4 (Apple9)","viewport":"(1600.0, 900.0)","vsync":1,"window":"(1600, 900)"}
+PERF_RESULT {"draw_calls":604.0,"fps":60.0102603821493,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.553,"p99_ms":18.479,"primitives":1096885.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":603.0,"fps":60.0025348264193,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.683,"p99_ms":18.465,"primitives":1096883.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":1826.0,"fps":59.9996250023437,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.562,"p99_ms":18.123,"primitives":2864453.0,"room":"hall"}
+PERF_RESULT {"draw_calls":1825.0,"fps":59.9911588029714,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.503,"p99_ms":17.934,"primitives":2864451.0,"room":"hall"}
+PERF_RESULT {"draw_calls":1199.0,"fps":59.9929283335727,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.837,"p99_ms":18.728,"primitives":1964413.0,"room":"dining"}
+PERF_RESULT {"draw_calls":1192.0,"fps":60.0002669450546,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.893,"p99_ms":18.496,"primitives":1962559.0,"room":"dining"}
+PERF_RESULT {"draw_calls":1364.0,"fps":60.0103053039877,"gpu_ms":0.0,"mode":"baseline","p95_ms":18.129,"p99_ms":18.968,"primitives":2043408.0,"room":"seance"}
+PERF_RESULT {"draw_calls":1401.0,"fps":59.9987925243004,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.795,"p99_ms":18.379,"primitives":2060950.0,"room":"seance"}
+PERF_RESULT {"draw_calls":119.0,"fps":59.9923584733395,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.83,"p99_ms":18.789,"primitives":850526.0,"room":"garden"}
+PERF_RESULT {"draw_calls":94.0,"fps":60.0017339378415,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.591,"p99_ms":18.287,"primitives":824388.0,"room":"garden"}

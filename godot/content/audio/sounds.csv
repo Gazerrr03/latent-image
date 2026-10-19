@@ -71,3 +71,5 @@ ui_board_open,翻开证据板：纸页与软木,界面,sfx/ui_board_open.ogg,-10
 ui_collect,收进证据板：铅笔记了一笔,界面,sfx/ui_collect.ogg,-10,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 ui_link_ok,连线连上：红线绷紧,界面,sfx/ui_link_ok.ogg,-8,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 ui_link_wrong,连错：红线松掉，弹回去,界面,sfx/ui_link_wrong.ogg,-8,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+needle_scratch,唱针跳了：一声刮擦,器物,sfx/needle_scratch.ogg,-4,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+room_hum,回廊底噪：空房间的低鸣,环境,sfx/room_hum.ogg,-16,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py

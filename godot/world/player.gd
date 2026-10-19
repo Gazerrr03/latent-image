@@ -19,6 +19,10 @@ var active := false
 var frozen := false
 var needs_spawn := true
 var steps := 0
+## 回廊里没有自己的脚步声（第 5 章）
+var silent_steps := false
+## 这一帧是不是朝着自己的前方在走（回廊判断正放 / 倒放用）
+var forward := true
 var _stride := 0.0
 var _hover := ""
 ## 准星对着的门（门扇的碰撞体）
@@ -112,11 +116,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		if _hover != "" and Director.world.corridor_interact(_hover):
+			return
 		if _hover != "":
 			Director.inspected.emit(_hover)
 		elif _door:
 			Director.world.toggle_door(_door, global_position)
 			_door = null
+		elif Director.world.corridor_answering():
+			# 回廊第 3 层：屏幕上有个“回答”。按了就是回答了
+			Director.world.corridor_answer()
 
 
 func _physics_process(dt: float) -> void:
@@ -127,10 +136,14 @@ func _physics_process(dt: float) -> void:
 	var before := global_position
 	walk(dir, dt)
 	_stride += Vector2(global_position.x - before.x, global_position.z - before.z).length()
+	var moved := Vector3(global_position.x - before.x, 0, global_position.z - before.z)
+	_stride = moved.length()
+	forward = moved.dot(-global_transform.basis.z) > 0.0
 	if _stride >= STRIDE:
-		_stride -= STRIDE
+		_stride = 0.0
 		steps += 1
-		Director.world.play_sound(Director.world.footstep_sound())
+		if not silent_steps:
+			Director.world.play_sound(Director.world.footstep_sound())
 	_update_hover()
 
 
@@ -156,12 +169,16 @@ func _update_hover() -> void:
 			id = c.get_meta("hotspot_id")
 		elif c and c.has_meta("door"):
 			door = c
-	if id == _hover and door == _door:
+	# 回廊的提示是会变的（回答选项出现 / 消失），所以不能只看“目标没变就返回”
+	if id == _hover and door == _door and not Director.world.corridor_running():
 		return
 	_hover = id
 	_door = door
+	Director.world.hover_hotspot(id)
 	if id != "":
-		Director.ui.set_hint("E　检查：" + ContentDB.hotspots.get(id, {}).get("label", id))
+		Director.ui.set_hint("E　" + Director.world.target_label(id))
+	elif Director.world.corridor_hint() != "":
+		Director.ui.set_hint(Director.world.corridor_hint())
 	elif door:
 		Director.ui.set_hint("E　关门" if Director.world.door_is_open(door) else "E　开门")
 	else:

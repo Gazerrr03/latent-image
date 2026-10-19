@@ -2,11 +2,11 @@ shot_id,node,line,scene,camera,mode,sound,text,ai_slot,actions,next,note
 C0-01,C0,*,train,seat,camera,projector,,,"fx(关闭);footage(片头_警告);footage(片头_怪谈,接日记);diary(diary0)",,0A：片头家庭电影（怪谈）。只讲怪谈，不讲世界观
 C0-02,C0,*,train,seat,camera,-projector;train_rattle;train_whistle@3,火车往西开。天还亮着。窗外是威尔特郡的秋天：一棵树，一道石墙，一个赶羊的人。\n过了一会儿，又是一棵树，一道石墙，一个赶羊的人。,,osd();fx(关闭);leak(0),,上层露出（接缝）：窗外风景重复；他两天前刚坐过这条线。docs/02 第 7 节
 C0-03,C0,*,train,letter_close,camera,paper_rustle;train_brake@5,亲爱的格雷：\n好久不见。十月十六日星期六，来奥瑞尔庄园住几天吧，晚上九点到。我就不派车去车站接你了，那段路你一向喜欢走。\n我有一样东西，必须给你看。\n——安布罗斯　十月十三日\n\n我手里只有信的第一页。,,osd();fx(关闭);collect(ev_letter_p1),,朋友的邀请；第二页在大衣内袋（第 6 章）。“我手里只有第一页”是真话
-C0-04,C0,*,manor,c1_gate,,-train_rattle;rain_night;iron_gate;thunder_far@1.5;clock_chime@3,我从车站走过来。九点，我到达奥瑞尔庄园。,,wait(2),,T3：真话；省略的是两天前那一次（他自己也不记得）
+C0-04,C0,*,manor,c1_gate,,-train_rattle;iron_gate;thunder_far@1.5;clock_chime@3,我从车站走过来。九点，我到达奥瑞尔庄园。,,wait(2),,T3：真话；省略的是两天前那一次（他自己也不记得）
 C0-05,C0,*,hall,hall_mid,,door_front;clock_tick,门厅里挂着一面镜子。镜子里有门，有帽架，有一盏灯。\n康斯坦斯·塔尔博特迎上来，眼睛上系着一条黑缎带。\n楼梯上走下来一个系着围裙的人，指尖染着药水。是安布罗斯。,,"music(explore,3)",,镜子里没有格雷（镜头回避，不点出）
 C0-06,C0,*,hall,stair,,clock_tick,,,say(c0_ambrose);collect(ev_amb_words),,和还活着的主人对话；“主人的话”第 5 章要用
 C0-07,C0,*,hall,hall_mid,,door_creak;bolt_slide@1.2,他走进暗房，门闩响了一声。,,say(c0_constance);objective(在一楼走走：认识这家人。),,
-C0-08,C0,*,greenhouse,green_mid,,rain_glass,,,say(c0_gideon),,园丁戴着工作手套
+C0-08,C0,*,greenhouse,green_mid,,,,,say(c0_gideon),,园丁戴着工作手套
 C0-09,C0,*,seance,seance_mid,,clock_tick,,,say(c0_latente),,灵媒的蕾丝手套
 C0-10,C0,*,hall,stair,,child_steps,楼梯口，一个蒙着布条的小女孩看了我一眼，跑上楼去了。,,,,
 C0-11,C0,*,guest_room,,walk,clock_tick;luggage,,,"objective(客房：这几天我住在这里。书桌上有什么？);inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed)",,新手教程：安全屋的功能。镜子不点出
@@ -15,12 +15,12 @@ C0-13,C0,*,darkroom,door_push,,door_knock;door_bang@3.2;scream_constance@4.4;red
 C0-14,C0,*,darkroom,wide,,red_hum,医生说，是配错了药水的意外。警察点了头。,,reveal(尸体),,
 C0-15,C0,*,hall,hall_mid,,clock_tick,康斯坦斯在门厅里等我。\n“他冲洗照片二十年，从没配错过一次药水。您是侦探，请您留下来，住到下星期六验尸官开庭的那一天，把它查清楚。”,,,,女主人知道他是侦探，委托他调查；开庭日 10-23 即终局
 C0-16,C0,*,guest_room,typewriter_close,,typewriter;typewriter_return@3.6,那一夜，我在客房的打字机上打下第一页记录：\n“十月十六日。九点，我到达奥瑞尔庄园。十点，园丁撞开暗房的门。安布罗斯·塔尔博特死了。”,,collect(ev_record_c0);recap(r0);diary(diary1),,
-C1-01,C1,*,guest_room,establish,,rain_glass,窗外下着小雨。\n康斯坦斯在门外说：“警察下午还会再来。在那之前，您还能进去看看。”,,music(explore);leak(0);objective(暗房与他的卧室：他是怎么死的？他这几天在做什么？),,
+C1-01,C1,*,guest_room,establish,,,窗外下着小雨。\n康斯坦斯在门外说：“警察下午还会再来。在那之前，您还能进去看看。”,,music(explore);leak(0);objective(暗房与他的卧室：他是怎么死的？他这几天在做什么？),,
 C1-02,C1,*,dining,dining_mid,,clock_tick;hum_rhyme_line@2;child_steps@7.5,,,say(c1_constance);collect(ev_never_wrong),,
-C1-03,C1,*,greenhouse,green_mid,,rain_glass,,,say(c1_gideon),,
+C1-03,C1,*,greenhouse,green_mid,,,,,say(c1_gideon),,
 C1-04,C1,*,seance,seance_mid,,clock_tick,,,say(c1_latente),,
 C1-05,C1,*,darkroom,,walk,red_hum;light_switch,,,"objective(暗房：他是怎么死的？屋里有哪些东西不对劲？);inspect(hs_bottles,hs_tray,hs_vent_inside,hs_camera,hs_clock_dark)",,
-C1-06,C1,*,amb_room,,walk,rain_glass,,,"objective(他的卧室：这几天他在做什么？);inspect(hs_amb_notes,hs_amb_carbon,hs_amb_clippings,hs_amb_photo)",,新房间：主人的卧室兼书房（灰盒）
+C1-06,C1,*,amb_room,,walk,,,,"objective(他的卧室：这几天他在做什么？);inspect(hs_amb_notes,hs_amb_carbon,hs_amb_clippings,hs_amb_photo)",,新房间：主人的卧室兼书房（灰盒）
 C1-07,C1,*,guest_room,board,,pin,,,music(think);objective(证据板：哪两样东西说明，这不是意外？);link(d1),,
 C1-08,C1,*,guest_room,typewriter_close,,typewriter,,,music(关闭);objective();annotate(c1),,
 C1-09,C1,*,guest_room,bed,,clock_tick;door_knock,晚上，康斯坦斯敲了敲门：“他在查的东西，都在书房资料室。明天我带您去。”\n我睡下了。,,wait(1);recap(r1);diary(diary2),,钩子 → 第 2 章女主人
@@ -40,8 +40,8 @@ C3-06,C3,*,guest_room,board,,pin,,,music(think);objective(证据板：画里的�
 C3-07,C3,*,guest_room,typewriter_close,,typewriter,,,music(关闭);objective();annotate(c3),,
 C3-08,C3,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r3);diary(diary4),,
 C4-01,C4,*,guest_room,establish,,birds_morning;cutlery@0.5,早饭时，康斯坦斯说：“他本来打算下个月辞退吉迪恩。”,,music(explore);leak(1);objective(园丁：药是他买的，温室的钥匙也在他手上。),,
-C4-02,C4,*,greenhouse,green_mid,,rain_glass;paper_slap,吉迪恩把药房的签收单拍在桌上。“药是我买的。我买的是对的。”,,"collect(ev_receipt);inquire(c4_ask_gideon);say(c4_gideon);collect(ev_once_a_year,ev_vent_always_open,ev_thursday_latch,ev_boots)",,园丁讲主人生前的习惯
-C4-03,C4,*,greenhouse,green_mid,camera,rain_glass,,,"objective(温室：通往暗房的那扇侧门，和他留下的照片。);inspect(hs_gh_latch,hs_gh_photos)",,
+C4-02,C4,*,greenhouse,green_mid,,paper_slap,吉迪恩把药房的签收单拍在桌上。“药是我买的。我买的是对的。”,,"collect(ev_receipt);inquire(c4_ask_gideon);say(c4_gideon);collect(ev_once_a_year,ev_vent_always_open,ev_thursday_latch,ev_boots)",,园丁讲主人生前的习惯
+C4-03,C4,*,greenhouse,green_mid,camera,,,,"objective(温室：通往暗房的那扇侧门，和他留下的照片。);inspect(hs_gh_latch,hs_gh_photos)",,
 C4-04,C4,*,garden,,walk,wind,,,"objective(暗房外墙下：那个“一定开着”的通风口，外面是什么样子？);inspect(hs_vent_louver,hs_vent_print)",,
 C4-05,C4,*,guest_room,board,,pin,,,music(think);objective(证据板：机关是什么时候布下的？那一夜谁不在？);link(d4),,
 C4-06,C4,*,guest_room,establish,,clock_tick;door_knock,傍晚，吉迪恩替拉坦特夫人带来一句话：\n“明晚我点蜡烛。你想问的，可以直接问他。”,,music(关闭),,钩子 → 第 5 章灵媒
@@ -50,14 +50,21 @@ C4-08,C4,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r4);diary(d
 C5-01,C5,*,guest_room,establish,,birds_morning,离上一个星期四，正好一个星期。,,music(explore);leak(2);objective(灵媒：上星期四夜里，她听见了什么？),,
 C5-02,C5,*,seance,seance_mid,,clock_tick,,,say(c5_latente);collect(ev_latente_footsteps),,
 C5-03,C5,*,seance,seance_mid,camera,clock_tick,,,"objective(她随身带的东西。);inspect(hs_se_cards,hs_se_photo,hs_se_gloves)",,
-C5-04,C5,*,seance,seance_mid,,-clock_tick;candle;cloth_rustle,晚上，拉坦特夫人拉上窗帘，点起蜡烛。我在桌边坐下。,,"music(关闭,3)",,
-C5-05,C5,*,seance,seance_mid,,candle,,,say(c5_seance);collect(ev_seance_voice),,S5-01 固定情节：主人的声音说出序章那句话
-C5-06,C5,*,seance,seance_mid,,candle;glove_burn;cry_latente@0.3,烛火烧破了她的蕾丝手套。她左手的虎口上，有一道新月形的旧疤。\n她醒过来，问我们刚才她说了什么。没有人回答她。,,collect(ev_scar),,上层露出：“有人在看着我们。稳定率已经很低了。”在 c5_seance 里
-C5-07,C5,*,guest_room,,walk,clock_tick,,,objective(书桌：把这几天收到的字摊开来看。);inspect(hs_handwriting),,
-C5-08,C5,*,guest_room,board,,pin,,,music(think);objective(证据板：这家人的手、字和脸，有什么是一样的？);link(d5),,
-C5-09,C5,*,guest_room,establish,,clock_tick,降灵会上那句话，和那天晚上在门厅里安布罗斯问我的，一字不差。\n那句话，只有他对我一个人说过。\n我第一次想到，我的大衣里也许不止一页纸。,,music(关闭),,D5 后半：那句话指向我。钩子 → 第 6 章
-C5-10,C5,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c5),,
-C5-11,C5,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r5);diary(diary6),,
+C5-04,C5,*,seance,seance_mid,,cloth_rustle;candle,"晚上，拉坦特夫人拉上窗帘，点起蜡烛。
+她把第 4 章那张夜拍照片放到圆桌正中。“照片拍不清的，声音还留着。我能让它出声。”
+她在空白卡片的背面写下我的问题：照片里的人是谁？",,"music(关闭,3);say(c5_seance);objective(降灵会：认出照片里的人。)",,降灵会的目的：认出夜拍照片里的人
+C5-05,C5,*,seance,seance_mid,,seance_bell;candle,"“我是唱片，”她说，“你是唱针。”
+然后她讲了三条规矩：蜡烛灭一支，往回走一层；铃响的时候，不要回头；有人问你话，不要回答。
+第一支蜡烛灭了。",,say(c5_rules),,回廊前；三条规矩由台词表给出
+C5-06,C5,*,seance,seance_mid,camera,,,,corridor(),,第 5 章演绎·回廊：唱针玩法；走完收 S5-01、回敲两下、合拍的脚印、第四把椅子
+C5-07,C5,*,seance,seance_mid,,candle;glove_burn;cry_latente@0.3,"我坐在客厅的圆桌边。烛火烧破了她的蕾丝手套。她左手的虎口上，有一道新月形的旧疤。
+照片还在桌上。照片里的人还是没有脸。
+她醒过来，问我刚才她说了什么。没有人回答她。她把那张空白的卡片推回到我面前：“这一张还没有人。”",,collect(ev_scar);objective(),,醒来；照片仍没有脸，卡片仍是空的
+C5-08,C5,*,guest_room,,walk,clock_tick,,,objective(书桌：把这几天收到的字摊开来看。);inspect(hs_handwriting),,
+C5-09,C5,*,guest_room,board,,pin,,,music(think);objective(证据板：这家人的手、字和脸，有什么是一样的？);link(d5),,
+C5-10,C5,*,guest_room,establish,,clock_tick,降灵会上那句话，和那天晚上在门厅里安布罗斯问我的，一字不差。\n那句话，只有他对我一个人说过。\n我第一次想到，我的大衣里也许不止一页纸。,,music(关闭),,D5 后半：那句话指向我。钩子 → 第 6 章
+C5-11,C5,*,guest_room,typewriter_close,,typewriter,,,objective();annotate(c5),,
+C5-12,C5,*,guest_room,bed,,clock_tick,我睡下了。,,wait(1);recap(r5);diary(diary6),,
 C6-01,C6,*,guest_room,establish,,clock_tick;wardrobe_open,衣柜里挂着我的大衣。,,leak(3);objective(我自己：上星期四夜里，我在哪里？),,
 C6-02,C6,*,guest_room,,walk,clock_tick,,,"inspect(hs_coat,hs_waistcoat,hs_shoes)",,安全屋变成现场
 C6-03,C6,*,darkroom,tray,,red_hum;camera_case,我取下三脚架上的相机。皮套的夹层里，夹着几页从底片簿上裁下来的纸。,,collect(ev_ledger_last),,

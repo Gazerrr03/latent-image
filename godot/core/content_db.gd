@@ -37,6 +37,10 @@ var footsteps := {}
 ## 模型资产表：prop_<id> -> 行（关卡里同名占位方块换成哪个模型）
 var props := {}
 var wordlists: Array = []
+## 任务表：组 -> 行数组（按表格顺序）；自由探索用
+var quests := {}
+## 第 5 章回廊：每层一行（content/story/corridor.csv）
+var corridor: Array = []
 
 
 func _ready() -> void:
@@ -60,6 +64,8 @@ func reload() -> void:
 	footsteps = index_by(load_table(AUDIO + "footsteps.csv"), "room")
 	props = index_by(load_table(VISUAL + "props.csv"), "id")
 	wordlists = load_table(AI + "wordlists.csv")
+	quests = group_by(load_table(STORY + "quests.csv"), "group")
+	corridor = load_table(STORY + "corridor.csv")
 
 
 ## 某一镜时，这个房间打开的层（状态层与开关）：from ≤ 当前镜 < until

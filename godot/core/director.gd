@@ -6,6 +6,7 @@ extends Node
 signal shot_started(row: Dictionary)
 signal inspected(id: String)
 signal finished
+signal corridor_done
 
 const Actions := preload("res://core/actions.gd")
 const CANCEL := "__cancel__"
@@ -219,11 +220,31 @@ func _do(name: String, args: Array, mode: String) -> void:
 			await _recap(args[0] if args.size() > 0 else "")
 		"diary":
 			await _diary(args[0] if args.size() > 0 else "")
+		"explore":
+			# explore(组)：放进庄园大地图自由探索，按任务表给提示、等玩家触发（docs/06 2.2）
+			await _explore(args[0] if args.size() > 0 else "")
+		"corridor":
+			# corridor()：进入第 5 章的回廊，走完（或退化为跳过）继续下一镜
+			await _corridor()
 		"osd":
 			# osd(样式,文件名,编号,时间)；osd() 关闭
 			ui.footage.set_live(args[0] if args.size() > 0 else "", args[1] if args.size() > 1 else "", args[2] if args.size() > 2 else "", args[3] if args.size() > 3 else "")
 		_:
 			push_warning("未知动作，已跳过：" + name)
+
+
+func _corridor() -> void:
+	if autoplay:
+		# 无界面回归：不真的走，直接按表把每层该收的线索收掉
+		for r in ContentDB.corridor:
+			_collect(String(r.get("collect", "")))
+		return
+	world.start_corridor()
+	await corridor_done
+	# 走完：把每层该收的线索收进证据板
+	for r in ContentDB.corridor:
+		_collect(String(r.get("collect", "")))
+	GameState.record("corridor", "回廊")
 
 
 func _collect(id: String) -> void:
@@ -266,6 +287,8 @@ func _inspect(ids: Array, mode: String) -> void:
 				world.highlight_hotspots([])
 				ui.set_checklist([])
 				return
+			if not pending.has(id):
+				continue  # 走进别的房间（enter:）之类的探索事件，这里不管
 			await _show_hotspot(id)
 			pending.erase(id)
 			ui.set_progress(ids.size() - pending.size(), ids.size())
@@ -282,6 +305,104 @@ func _inspect(ids: Array, mode: String) -> void:
 		var id: String = pending[k]
 		await _show_hotspot(id)
 		pending.erase(id)
+
+
+# ───────────── 自由探索（任务表） ─────────────
+
+## 一轮自由探索：玩家在庄园里走，左上角列出提示；走到人面前交谈、走进房间、推开某扇门，就播放对应的镜头，
+## 播完回到原地继续走。写了 require 的任务（回客房）完成后，这一轮结束，回到镜头表的下一镜。
+func _explore(group: String) -> void:
+	var qs: Array = ContentDB.quests.get(group, [])
+	if qs.is_empty():
+		push_warning("任务表里没有这一组：" + group)
+		return
+	var present: Array = []
+	for q in qs:
+		var t: String = q.get("trigger", "")
+		if t.begins_with("talk:"):
+			present.append(t.get_slice("@", 1) + "/" + t.trim_prefix("talk:").get_slice("@", 0))
+	while true:
+		var open: Array = qs.filter(func(q): return not GameState.quests_done.has(q["id"]) and quest_ready(q))
+		if open.is_empty():
+			break
+		var pick: Dictionary = {}
+		if autoplay:
+			for q in open:
+				if q.get("require", "") == "":
+					pick = q
+					break
+			if pick.is_empty():
+				pick = open[0]
+		else:
+			if world.current_id != "manor":
+				world.show_scene("guest_room")
+			ui.set_cinematic(false)
+			world.set_mode("walk", "")
+			world.set_explore(open.map(func(q): return q["trigger"]), present)
+			_explore_checklist(qs)
+			var id: String = await inspected
+			if id == CANCEL:
+				world.end_explore()
+				ui.set_checklist([])
+				return
+			for q in open:
+				if q["trigger"] == id:
+					pick = q
+			if pick.is_empty():
+				continue
+		world.end_explore()
+		ui.set_checklist([])
+		GameState.quests_done.append(pick["id"])
+		GameState.save()
+		if pick.get("shot", "") != "":
+			await _play_range(pick["shot"], pick.get("until", ""))
+			if _interrupted():
+				return
+		if pick.get("require", "") != "":
+			break
+	world.end_explore()
+	ui.set_checklist([])
+
+
+## require 列：a|b|2:c,d,e（a、b 都完成，且 c、d、e 里至少两个）
+static func quest_ready(q: Dictionary) -> bool:
+	for part in String(q.get("require", "")).split("|", false):
+		var p := part.strip_edges()
+		if p.contains(":"):
+			var need := int(p.get_slice(":", 0))
+			var n := 0
+			for id in p.get_slice(":", 1).split(",", false):
+				if GameState.quests_done.has(id.strip_edges()):
+					n += 1
+			if n < need:
+				return false
+		elif not GameState.quests_done.has(p):
+			return false
+	return true
+
+
+func _explore_checklist(qs: Array) -> void:
+	var items: Array = []
+	for q in qs:
+		var done: bool = GameState.quests_done.has(q["id"])
+		if done or quest_ready(q):
+			items.append({"text": fill(q.get("hint", "")), "done": done})
+	ui.set_checklist(items)
+
+
+## 播放一段镜头：从 first 到 last（含），按 next 列走；last 为空只播 first
+func _play_range(first: String, last: String) -> void:
+	var cur := first
+	var guard := 0
+	while cur != "" and cur != "END" and ContentDB.shots.has(cur) and guard < 64:
+		guard += 1
+		var row: Dictionary = ContentDB.shots[cur]
+		GameState.shot = cur
+		_played += 1
+		await _play(row)
+		if _interrupted() or last == "" or cur == last:
+			return
+		cur = resolve_next(row)
 
 
 ## 观察清单：可检查物件表的 hint 列（带方向的问题）；没写 hint 的用物件名

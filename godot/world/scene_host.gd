@@ -6,6 +6,7 @@ extends Node3D
 
 const HOTSPOT_LAYER := 2
 const Actions := preload("res://core/actions.gd")
+const Look := preload("res://world/look.gd")
 const PAD := Vector3(0.04, 0.04, 0.04)
 
 var player: Node3D
@@ -25,6 +26,8 @@ var _surfaces: Array = []
 var _orig_mats := {}
 var _leak_mat: ShaderMaterial
 var _env: WorldEnvironment
+## 当前单独加载的关卡（不在大地图里）自带的画面环境
+var _level_env: Environment = null
 var _cam_key := ""
 var _camera_tween: Tween
 var _missing_sounds := {}
@@ -33,6 +36,10 @@ var doors := {}
 var _loops := {}
 var _music: AudioStreamPlayer
 var _music_id := ""
+var _hovered := ""
+var _outline_mat := _make_outline(Color(1.0, 0.82, 0.5, 0.55), 0.008)
+var _outline_hover := _make_outline(Color(1.0, 0.9, 0.7, 1.0), 0.014)
+var _outline_box := _make_outline(Color(0, 0, 0, 0), 0.0)
 
 
 func _ready() -> void:
@@ -44,10 +51,31 @@ func _ready() -> void:
 	add_child(_env)
 	_leak_mat = ShaderMaterial.new()
 	_leak_mat.shader = load("res://shaders/leak_white.gdshader")
-	var rain := preload("res://world/rain.gd").new()
+	var rain := preload("res://world/rain.gd").new()      # 雨声按天气与离窗远近自己放（world/rain.gd）
 	rain.name = "雨声"
 	rain.host = self
 	add_child(rain)
+	var amb := preload("res://world/ambience.gd").new()  # 灰尘、炉火的火星、室外的雨丝（world/ambience.gd）
+	amb.name = "氛围粒子"
+	amb.host = self
+	amb.rain = rain
+	add_child(amb)
+	GameState.changed.connect(_on_state_changed)
+
+
+## 换章时天气可能变了（入夜、下雨、起雾）：重新套一遍天光
+func _on_state_changed() -> void:
+	if not Look.preset_changed():
+		return
+	if current_id == MAP_ID:
+		_apply_look(_focus)
+	elif room:
+		_env.environment = Look.env(_level_env) if _level_env else _make_env()
+		if not Look.owns(_level_env):
+			for n in _walk(room):
+				if n is Light3D:
+					Look.light(n)
+		apply_leak(GameState.leak_level)
 
 
 func _make_env() -> Environment:
@@ -67,24 +95,25 @@ func _make_env() -> Environment:
 # ───────────── 场景 ─────────────
 
 func show_scene(id: String) -> void:
+	# 庄园里有关卡场景的房间都在同一张大地图里：换房间只换“镜头所在的房间”，不重新加载
+	if is_map_room(id):
+		if current_id != MAP_ID:
+			_enter_map()
+		focus_room(id)
+		return
 	if id == current_id:
 		return
 	if _camera_tween:
 		_camera_tween.kill()
-	current_id = id
 	_cam_key = ""
 	stop_loops()
-	if room:
+	if current_id == MAP_ID:
+		_stash_map()
+	elif room:
 		remove_child(room)
 		room.queue_free()
-	markers.clear()
-	doors.clear()
-	named.clear()
-	figures.clear()
-	hotspot_nodes.clear()
-	_surfaces.clear()
-	_orig_mats.clear()
-	spawn = [Vector3.ZERO, 0.0]
+	current_id = id
+	_reset_state()
 	var level := ContentDB.level_path(id)
 	if ResourceLoader.exists(level):
 		room = (load(level) as PackedScene).instantiate()
@@ -99,10 +128,303 @@ func show_scene(id: String) -> void:
 		if m.size() > 3 and m[3] != null:
 			level_env = m[3]
 			break
-	_env.environment = level_env if level_env else _make_env()
+	# 庄园里的房间套共用的天光（world/look.gd）；灰盒仍用默认的暗环境
+	_level_env = level_env
+	Look.preset_changed()
+	_env.environment = Look.env(level_env) if level_env else _make_env()
+	if not Look.owns(level_env):
+		for n in _walk(room):
+			if n is Light3D:
+				Look.light(n)
 	apply_leak(GameState.leak_level)
 	if player:
 		player.needs_spawn = true
+
+
+func _reset_state() -> void:
+	markers.clear()
+	doors.clear()
+	named.clear()
+	figures.clear()
+	hotspot_nodes.clear()
+	active_hotspots = []
+	_surfaces.clear()
+	_orig_mats.clear()
+	_chr_nodes.clear()
+	spawn = [Vector3.ZERO, 0.0]
+
+
+# ───────────── 大地图 ─────────────
+## 第 1 章起，白天在整座庄园里自由走动（《01》、《12》H17）。大地图 = 庄园外景 levels/manor.tscn
+## + 每个房间的关卡场景里属于这个房间的部分（房间本身、状态层、灯光、接口）。房间都按原位摆，坐标通用，
+## 所以空间仍然只以各关卡场景为准；关卡场景里为了构图放的庄园外壳和邻房（“庄园”“邻·*”）不进大地图。
+
+const MAP_ID := "manor"
+const MAP_ROOMS := ["hall", "dining", "seance", "archive", "child_room", "guest_room", "darkroom", "greenhouse", "garden"]
+
+## 镜头所在的房间（机位、reveal、人物动作先在这里找）
+var _focus := ""
+## 玩家现在站在哪个房间（走动时按位置算；进了新房间发出 enter:<房间>）
+var _player_room := ""
+## 第 5 章回廊：当前的回廊节点（不在 current_id 里，单独挂）
+var corridor: Node3D = null
+var _room_box := {}
+var _room_env := {}
+var _room_spawn := {}
+var _room_lights := {}
+var _chr_nodes: Array = []
+## 离开大地图（灰盒房间、火车）时把整张地图和它的索引收起来，回来时原样放回
+var _map_stash := {}
+## 自由探索时，哪些人站在哪里：["dining/康斯坦斯·塔尔博特", ...]；空数组 = 不在探索，按镜头所在房间显示
+var _present: Array = []
+var exploring := false
+
+
+func _exit_tree() -> void:
+	# 收起来的大地图不在场景树里，退出时要自己释放
+	if _map_stash.has("room") and is_instance_valid(_map_stash["room"]):
+		_map_stash["room"].free()
+	_map_stash.clear()
+
+
+static func is_map_room(id: String) -> bool:
+	return id == MAP_ID or MAP_ROOMS.has(id)
+
+
+func _enter_map() -> void:
+	if room and current_id != MAP_ID:
+		remove_child(room)
+		room.queue_free()
+	current_id = MAP_ID
+	if not _map_stash.is_empty():
+		room = _map_stash["room"]
+		for k in ["markers", "doors", "named", "figures", "hotspot_nodes", "_surfaces", "_orig_mats", "_chr_nodes"]:
+			set(k, _map_stash[k])
+		add_child(room)
+		var pos = _map_stash.get("player")
+		_map_stash.clear()
+		_player_room = ""
+		if player and pos != null:
+			player.global_transform = pos
+			player.needs_spawn = false
+		apply_leak(GameState.leak_level)
+		return
+	_reset_state()
+	room = Node3D.new()
+	room.name = "庄园大地图"
+	add_child(room)
+	var ext: Node3D = (load(ContentDB.level_path(MAP_ID)) as PackedScene).instantiate()
+	var dup := ext.get_node_or_null("结构/房间")
+	if dup:
+		dup.get_parent().remove_child(dup)
+		dup.free()
+	room.add_child(ext)
+	_adopt_level(ext, MAP_ID)
+	_collect_room(MAP_ID, ext)
+	for rid in MAP_ROOMS:
+		var path := ContentDB.level_path(rid)
+		if not ResourceLoader.exists(path):
+			continue
+		var lv: Node3D = (load(path) as PackedScene).instantiate()
+		lv.name = rid
+		var own: Node3D = null
+		var st := lv.get_node_or_null("结构")
+		if st:
+			for c in st.get_children():
+				var keep := String(c.name).begins_with("层·") or String(c.scene_file_path).ends_with("/room_%s.gltf" % rid)
+				if keep and String(c.scene_file_path).ends_with("/room_%s.gltf" % rid):
+					own = c
+				if not keep:
+					st.remove_child(c)
+					c.free()
+		room.add_child(lv)
+		_adopt_level(lv, rid)
+		_collect_room(rid, lv, own)
+	apply_leak(GameState.leak_level)
+	if player:
+		player.needs_spawn = true
+	# 室外的房间（花园百叶外侧）模型只有墙根一小块：范围扩到出生点周围，走到那里就算到了
+	for rid in _room_box:
+		var sp: Array = _room_spawn.get(rid, [])
+		if not sp.is_empty() and not _room_box[rid].grow(0.05).has_point(sp[0] + Vector3(0, 0.9, 0)):
+			_room_box[rid] = _room_box[rid].merge(AABB(sp[0] - Vector3(1.5, 0, 1.5), Vector3(3, 2.5, 3)))
+	# 自查：每个房间的出生点要落在这个房间的范围里，否则“走进房间”的任务永远触发不了
+	for rid in _room_spawn:
+		if rid != MAP_ID and room_at(_room_spawn[rid][0]) != rid:
+			push_warning("大地图：%s 的出生点被认成了 %s" % [rid, room_at(_room_spawn[rid][0])])
+
+
+## 记下一个房间的范围（判断玩家在哪）、画面环境（机位带的环境）、灯
+func _collect_room(rid: String, lv: Node, own: Node = null) -> void:
+	if own:
+		var first := true
+		var box := AABB()
+		for n in _walk(own):
+			if n is MeshInstance3D:
+				var b: AABB = n.global_transform * n.get_aabb()
+				box = b if first else box.merge(b)
+				first = false
+		if not first:
+			_room_box[rid] = box
+	for n in _walk(lv):
+		if n is Camera3D and n.environment and not _room_env.has(rid):
+			_room_env[rid] = n.environment
+		elif n is Light3D:
+			n.set_meta("shadow_default", n.shadow_enabled)
+			if not _room_lights.has(rid):
+				_room_lights[rid] = []
+			_room_lights[rid].append(n)
+
+
+func _stash_map() -> void:
+	_map_stash = {"room": room, "markers": markers, "doors": doors, "named": named, "figures": figures,
+		"hotspot_nodes": hotspot_nodes, "_surfaces": _surfaces, "_orig_mats": _orig_mats, "_chr_nodes": _chr_nodes,
+		"player": player.global_transform if player else null}
+	remove_child(room)
+	room = null
+	markers = {}
+	doors = {}
+	named = {}
+	figures = {}
+	hotspot_nodes = {}
+	_surfaces = []
+	_orig_mats = {}
+	_chr_nodes = []
+	active_hotspots = []
+
+
+## 镜头切到大地图里的某个房间：机位、出生点、画面环境都按这个房间
+func focus_room(rid: String) -> void:
+	_focus = rid
+	spawn = _room_spawn.get(rid, _room_spawn.get("guest_room", [Vector3.ZERO, 0.0]))
+	_apply_look(rid)
+	_apply_presence()
+
+
+## 一个房间的样子：这个房间的方向光（太阳、月光）与环境，只有这个房间的灯投影（灯多了阴影图集不够分）
+func _apply_look(rid: String) -> void:
+	var look := rid if _room_lights.has(rid) or _room_env.has(rid) else MAP_ID
+	var has_sun := false
+	for r in _room_lights:
+		for l in _room_lights[r]:
+			if l is DirectionalLight3D and r == look:
+				has_sun = true
+	Look.preset_changed()
+	for r in _room_lights:
+		for l in _room_lights[r]:
+			if not is_instance_valid(l):
+				continue
+			if not Look.owns(_room_env.get(r)):
+				Look.light(l)
+			if l is DirectionalLight3D:
+				l.visible = r == look or (not has_sun and r == MAP_ID)
+			else:
+				l.shadow_enabled = l.get_meta("shadow_default", false) and r == look
+	_env.environment = Look.env(_room_env.get(look, _room_env.get(MAP_ID)))
+	apply_leak(GameState.leak_level)
+
+
+## 谁在画面里：探索时按当天的任务摆人；看镜头时只有镜头所在房间的人在
+func _apply_presence() -> void:
+	for c in _chr_nodes:
+		if not is_instance_valid(c["node"]) or not c["default"]:
+			continue
+		var on: bool
+		if exploring:
+			on = _present.has(c["room"] + "/" + c["who"])
+		else:
+			on = c["room"] == _focus
+		_set_present(c["node"], on)
+
+
+## 玩家在哪个房间：包住玩家的房间里最小的那个；都不在 = 庄园外面
+func room_at(p: Vector3) -> String:
+	var best := MAP_ID
+	var best_vol := INF
+	for rid in _room_box:
+		var b: AABB = _room_box[rid]
+		if b.grow(0.05).has_point(p + Vector3(0, 0.9, 0)) and b.get_volume() < best_vol:
+			best = rid
+			best_vol = b.get_volume()
+	return best
+
+
+func _process(_dt: float) -> void:
+	if current_id != MAP_ID or not player or not player.active:
+		return
+	var r := room_at(player.global_position)
+	if r == _player_room:
+		return
+	_player_room = r
+	_focus = r
+	_apply_look(r)
+	Director.inspected.emit("enter:" + r)
+
+
+# ───────────── 自由探索的目标 ─────────────
+
+## 探索开始或回到探索：摆好当天的人，标出能交谈的人、能推的门，再加上要检查的物件
+## targets：talk:人名@房间 / door:门的节点名 / hs_<id>；enter:<房间> 不用标，走进去就算
+func set_explore(targets: Array, present: Array) -> void:
+	exploring = true
+	_present = present
+	_apply_presence()
+	var ids: Array = []
+	for t in targets:
+		var id := String(t)
+		if id.begins_with("talk:"):
+			var who := id.trim_prefix("talk:").get_slice("@", 0)
+			var rid := id.get_slice("@", 1)
+			var n: Node = named.get(rid + "/chr_" + who)
+			if n and n.get_child_count() > 0:
+				_register_target(id, n.get_child(0))
+				ids.append(id)
+			else:
+				push_warning("任务目标找不到人：%s（%s 的关卡场景里要有 chr_%s）" % [id, rid, who])
+		elif id.begins_with("door:"):
+			var leaf: Node = named.get(id.trim_prefix("door:"))
+			if leaf:
+				var body: Node = null
+				for c in leaf.get_children():
+					if c is StaticBody3D:
+						body = c
+				if body:
+					_register_target(id, body, [leaf])
+					ids.append(id)
+				else:
+					push_warning("任务目标的门没有碰撞体：" + id)
+			else:
+				push_warning("任务目标找不到门：" + id)
+		elif not id.begins_with("enter:"):
+			ids.append(id)
+	highlight_hotspots(ids)
+
+
+func end_explore() -> void:
+	exploring = false
+	_present = []
+	highlight_hotspots([])
+	_apply_presence()
+
+
+## 人和门不是热区，但用同一套：准星对着它、按 E 发出它的 id，描边也一样
+func _register_target(id: String, body: Node, meshes: Array = []) -> void:
+	body.set_meta("hotspot_id", id)
+	if meshes.is_empty():
+		for n in _walk(body):
+			if n is GeometryInstance3D:
+				meshes.append(n)
+	body.set_meta("outline", meshes)
+	hotspot_nodes[id] = body
+
+
+## 准星提示的文字
+func target_label(id: String) -> String:
+	if id.begins_with("talk:"):
+		return "交谈：" + id.trim_prefix("talk:").get_slice("@", 0)
+	if id.begins_with("door:"):
+		return "推门：" + id.trim_prefix("door:").get_slice("（", 0).get_slice("·", 1)
+	return "检查：" + String(ContentDB.hotspots.get(id, {}).get("label", id))
 
 
 ## 灰盒（过渡用）：还没有关卡场景的房间，按房间登记表（尺寸）与房间布局表搭出来。
@@ -181,7 +503,7 @@ func _apply_layout(r: Node3D, id: String) -> void:
 
 ## 灰盒人形：身体 + 头 + 眼部处理（docs/02 第 5 节：除侦探外，所有人的眼睛都被遮住）。
 ## 人形面朝 +z（玩家通常从 +z 方向看过来）。“镜中人形”是终局镜子里没有脸的白色人形。
-func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
+func _figure(parent: Node3D, who: String, foot: Vector3, rid := "") -> Node3D:
 	var c: Dictionary = {}
 	for row in ContentDB.characters:
 		if row["name"] == who:
@@ -210,7 +532,7 @@ func _figure(parent: Node3D, who: String, foot: Vector3) -> Node3D:
 				for a in ["idle", "walk", "talk", "sit"]:
 					if n.has_animation(a):
 						n.get_animation(a).loop_mode = Animation.LOOP_LINEAR
-				figures[who] = n
+				figures[(rid + "/" + who) if rid != "" else who] = n
 				if n.has_animation("idle"):
 					n.play("idle")
 					n.seek(randf() * n.current_animation_length)
@@ -276,14 +598,17 @@ func _mesh(parent: Node3D, pos: Vector3, size: Vector3, color: Color) -> MeshIns
 ## 房间状态表（content/space/room_states.csv）：这一镜打开哪些层。关卡里的层节点命名为“层·<层名>”，
 ## 状态层是一份 glTF 的实例，开关是一组灯 / 发光件；表里没写的层不动。
 func apply_room_states(shot_id: String) -> void:
-	var rows: Array = ContentDB.room_states.get(current_id, [])
-	if rows.is_empty() or shot_id == "":
+	if shot_id == "":
 		return
-	var on: Array = ContentDB.room_layers(current_id, shot_id)
-	for r in rows:
-		var n = named.get("层·" + String(r.get("layer", "")))
-		if n is Node3D:
-			_set_present(n, on.has(r["layer"]))
+	var rooms: Array = MAP_ROOMS if current_id == MAP_ID else [current_id]
+	for rid in rooms:
+		var rows: Array = ContentDB.room_states.get(rid, [])
+		var on: Array = ContentDB.room_layers(rid, shot_id)
+		for r in rows:
+			var nm := "层·" + String(r.get("layer", ""))
+			var n = named.get(rid + "/" + nm, named.get(nm) if current_id != MAP_ID else null)
+			if n is Node3D:
+				_set_present(n, on.has(r["layer"]))
 
 
 ## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏关卡里的某个节点（如终局的镜中人形）
@@ -291,9 +616,14 @@ func apply_room_states(shot_id: String) -> void:
 ## 不循环的动作（tap）播完自动回到 idle。找不到人物或动作时返回 false。
 func figure_anim(who: String, anim: String) -> bool:
 	var ap: AnimationPlayer = null
-	for k in figures:
-		if k == who or String(k).begins_with(who):
-			ap = figures[k]
+	# 大地图里人物的键是“房间/人名”：先找镜头所在房间里的那一个
+	for pass_room in [_focus + "/", ""]:
+		for k in figures:
+			var bare := String(k).get_slice("/", 1) if String(k).contains("/") else String(k)
+			if (pass_room == "" or String(k).begins_with(pass_room)) and (bare == who or bare.begins_with(who)):
+				ap = figures[k]
+				break
+		if ap:
 			break
 	if ap == null or not is_instance_valid(ap) or not ap.has_animation(anim):
 		return false
@@ -306,7 +636,10 @@ func figure_anim(who: String, anim: String) -> bool:
 
 
 func set_shown(id: String, on: bool) -> void:
-	if named.has(id) and is_instance_valid(named[id]):
+	var key := _focus + "/" + id
+	if named.has(key) and is_instance_valid(named[key]):
+		_set_present(named[key], on)
+	elif named.has(id) and is_instance_valid(named[id]):
 		_set_present(named[id], on)
 	else:
 		push_warning("当前房间里没有：" + id)
@@ -393,7 +726,7 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_mode
 
 
 ## 关卡场景：空间、灯光、构图全部以场景为准，这里只按名字认出需要接上剧情的节点
-func _adopt_level(r: Node) -> void:
+func _adopt_level(r: Node, rid := "") -> void:
 	# 先换小物件模型，再记下房间表面（渗漏变白用），最后接上出生点、机位、热区、人物
 	for n in _walk(r):
 		if n is Node3D and String(n.name).begins_with("prop_"):
@@ -413,11 +746,17 @@ func _adopt_level(r: Node) -> void:
 		if not n is Node3D or n == r:
 			continue
 		var nm := String(n.name)
-		named[nm] = n
+		if rid == "" or not named.has(nm):
+			named[nm] = n
+		if rid != "":
+			named[rid + "/" + nm] = n
 		if not n.visible:
 			_set_present(n, false)
 		if nm == "spawn":
-			spawn = [n.global_position, n.global_rotation_degrees.y]
+			if rid == "":
+				spawn = [n.global_position, n.global_rotation_degrees.y]
+			else:
+				_room_spawn[rid] = [n.global_position, n.global_rotation_degrees.y]
 		elif nm.begins_with("cam_"):
 			var fwd: Vector3 = -n.global_transform.basis.z
 			var fov: float = n.fov if n is Camera3D else 45.0
@@ -430,8 +769,26 @@ func _adopt_level(r: Node) -> void:
 		elif nm.begins_with("chr_"):
 			# 人形挂在站位节点下，面朝站位节点的 +z；reveal / conceal 用人名或 chr_人名都行
 			var who := nm.trim_prefix("chr_")
-			_figure(n, who, Vector3.ZERO)
-			named[who] = n
+			_figure(n, who, Vector3.ZERO, rid)
+			if rid == "" or not named.has(who):
+				named[who] = n
+			if rid != "":
+				named[rid + "/" + who] = n
+				# 大地图里同一个人可能在几个房间都有站位：平时都不出现，由镜头所在的房间或当天的任务决定谁在哪里
+				_chr_nodes.append({"room": rid, "who": who, "node": n, "default": n.visible})
+	# 回廊这种自己搭空间、自带热区的关卡：挂在 r 下面、带 hotspot_id 的 Area3D 也要能选
+		_bind_meta_hotspots(r)
+	_bind_outlines(r)
+
+
+## 关卡里手工放的 Area3D（名字 hs_、set_meta("hotspot_id")）：直接当热区用，不做描边
+func _bind_meta_hotspots(r: Node) -> void:
+	for n in _walk(r):
+		if n is Area3D and n.has_meta("hotspot_id"):
+			var id: String = n.get_meta("hotspot_id")
+			hotspot_nodes[id] = n
+			n.collision_layer = 1 << (HOTSPOT_LAYER - 1)
+			n.collision_mask = 0
 
 
 # ───────────── 门 ─────────────
@@ -561,6 +918,8 @@ func _swap_prop(n: Node3D, nm: String) -> void:
 
 ## 光源放在灯具模型里（灯笼、壁灯）时，灯罩和框架会把整面墙切成几道通顶的黑影。
 ## 包住投影光源的小模型（水平不到 1 米，即灯具本身）不投影；房间墙体等大模型不受影响。
+## 光源常挂在灯罩下沿一点（餐叙区吊灯低于灯罩 9 cm，把灯罩投成天花板上一大块黑影），所以盒子放宽 0.3 米。
+## 名字带“灯”的小模型（壁灯、台灯、吊灯）本身是发光的东西，也不投影（餐厅壁灯的灯罩被吊灯投到墙上，像一团黑影）。
 func _unshadow_lamp_housings(r: Node) -> void:
 	var lights: Array = []
 	for n in _walk(r):
@@ -574,8 +933,11 @@ func _unshadow_lamp_housings(r: Node) -> void:
 		var box: AABB = n.global_transform * n.get_aabb()
 		if box.size.x > 1.0 or box.size.z > 1.0:
 			continue
+		if String(n.name).contains("灯"):
+			n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			continue
 		for p in lights:
-			if box.grow(0.05).has_point(p):
+			if box.grow(0.3).has_point(p):
 				n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 				break
 
@@ -589,11 +951,66 @@ func _walk(n: Node) -> Array:
 
 # ───────────── 模式与机位 ─────────────
 
+## 第 5 章：进入回廊（降灵会之后）。回廊自己是空间，走完发 done 给 Director。
+func start_corridor() -> void:
+	if corridor == null:
+		corridor = preload("res://levels/ded_corridor.gd").new()
+		corridor.name = "回廊"
+		# 回廊是独立空间，挪到远离庄园的一张空地上，免得和大地图叠在一起
+		corridor.position = Vector3(500, 0, 500)
+		add_child(corridor)
+	corridor.done.connect(_on_corridor_done, CONNECT_ONE_SHOT)
+	await get_tree().process_frame
+	# 回廊自带一套环境（暗、雾），换掉庄园的那一套
+	if corridor.has_method("environment"):
+		_env.environment = corridor.environment()
+	# 切第一人称：镜头相机让位给玩家自己的相机
+	player.activate()
+	player.frozen = false
+	active_hotspots = []
+	hotspot_nodes.clear()
+	_bind_meta_hotspots(corridor)
+	corridor.start(player)
+	exploring = false
+
+
+func _on_corridor_done() -> void:
+	hotspot_nodes.clear()
+	active_hotspots = []
+	Director.corridor_done.emit()
+
+
+## 玩家按 E 时先问回廊：它自己处理（敲门、坐第四把椅子）
+func corridor_interact(id: String) -> bool:
+	return corridor != null and corridor.running and corridor.interact(id)
+
+
+func corridor_running() -> bool:
+	return corridor != null and corridor.running
+
+
+func corridor_hint() -> String:
+	return corridor.current_hint if corridor != null and corridor.running else ""
+
+
+func corridor_answer() -> void:
+	if corridor != null and corridor.running:
+		corridor.answer()
+
+
+func corridor_answering() -> bool:
+	return corridor != null and corridor.running and corridor.answering()
+
+
 func set_mode(mode: String, cam: String) -> void:
 	if _camera_tween:
 		_camera_tween.kill()
 	if mode == "walk":
-		if player.needs_spawn or not player.active:
+		# 大地图里：自由探索时玩家从哪里来就站在哪里；按镜头走的行走镜头，玩家不在这个房间就送到房间的出生点
+		var respawn: bool = player.needs_spawn or not player.active
+		if current_id == MAP_ID and not player.needs_spawn:
+			respawn = not exploring and room_at(player.global_position) != _focus
+		if respawn:
 			player.place(spawn[0], spawn[1])
 		player.activate()
 		return
@@ -611,7 +1028,7 @@ func set_mode(mode: String, cam: String) -> void:
 	var m: Array = markers[key]
 	var target := Transform3D(Basis(), m[0]).looking_at(m[1])
 	var fov: float = m[2] if m.size() > 2 else 45.0
-	shot_cam.environment = m[3] if m.size() > 3 else null
+	shot_cam.environment = Look.env(m[3]) if m.size() > 3 and m[3] else null
 	shot_cam.near = m[4] if m.size() > 4 else 0.05
 	if _cam_key != "" and _cam_key != key and not Director.autoplay:
 		_camera_tween = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
@@ -625,11 +1042,90 @@ func set_mode(mode: String, cam: String) -> void:
 
 func highlight_hotspots(ids: Array) -> void:
 	active_hotspots = ids.duplicate()
+	_hovered = ""
 	for id in hotspot_nodes:
-		var mi: MeshInstance3D = hotspot_nodes[id].get_child(1)
-		(mi.material_override as StandardMaterial3D).emission_energy_multiplier = 0.6 if ids.has(id) else 0.0
-		if hotspot_nodes[id].has_meta("from_model"):
-			mi.visible = ids.has(id)
+		_paint_hotspot(id)
+
+
+## 准星对着的目标：描边加粗、变亮（player 调用；id 为空 = 没有对着任何目标）
+func hover_hotspot(id: String) -> void:
+	if id == _hovered:
+		return
+	var was := _hovered
+	_hovered = id
+	if hotspot_nodes.has(was):
+		_paint_hotspot(was)
+	if hotspot_nodes.has(id):
+		_paint_hotspot(id)
+
+
+## 指引时，物件模型本身描一圈暖色的边（模板描边，模型的共用材质不动）；找不到模型的热区才显示方块
+func _paint_hotspot(id: String) -> void:
+	var a: Node3D = hotspot_nodes[id]
+	var on := active_hotspots.has(id)
+	var meshes: Array = a.get_meta("outline", [])
+	if not meshes.is_empty():
+		for g in meshes:
+			if is_instance_valid(g):
+				g.material_overlay = (_outline_hover if id == _hovered else _outline_mat) if on else null
+		return
+	if a.get_child_count() < 2:
+		# 回廊这种自己搭的热区：只有碰撞体，没有占位方块，不描边
+		return
+	var mi: MeshInstance3D = a.get_child(1)
+	if mi == null or not mi is MeshInstance3D or mi.material_override == null:
+		return
+	if a.has_meta("from_model"):
+		# 物件长在墙面这类大网格里（百叶）：只描出热区盒子的轮廓
+		mi.material_override = _outline_box
+		mi.material_overlay = (_outline_hover if id == _hovered else _outline_mat) if on else null
+		mi.visible = on
+		return
+	(mi.material_override as StandardMaterial3D).emission_energy_multiplier = (1.0 if id == _hovered else 0.6) if on else 0.0
+
+
+static func _make_outline(color: Color, thickness: float) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	m.albedo_color = Color(0, 0, 0, 0)
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	m.no_depth_test = false
+	m.stencil_mode = BaseMaterial3D.STENCIL_MODE_OUTLINE
+	m.stencil_color = color
+	m.stencil_outline_thickness = thickness
+	return m
+
+
+## 热区（来自美术模型的）对应哪些网格：大半落在热区盒子里的小网格，或者占满热区盒子、又不比它大太多的网格（药品柜、显影盘）。
+## 房间模块里每件家具是单独的网格，所以按位置就能认出来，不需要在表里登记。
+func _bind_outlines(r: Node) -> void:
+	var cands: Array = []
+	for n in _walk(r):
+		if n is GeometryInstance3D and not n is Label3D and n.is_visible_in_tree():
+			var b: AABB = n.global_transform * n.get_aabb()
+			if b.size.x < 3.0 and b.size.z < 3.0 and b.size.y < 3.0:
+				cands.append([n, b])
+	for id in hotspot_nodes:
+		var a: Node3D = hotspot_nodes[id]
+		if not a.has_meta("from_model") or not a.is_inside_tree():
+			continue
+		var cs: CollisionShape3D = a.get_child(0)
+		var half: Vector3 = (cs.shape as BoxShape3D).size / 2
+		var box: AABB = a.global_transform * AABB(-half, half * 2)
+		box = box.grow(0.03)
+		var hits: Array = []
+		for c in cands:
+			if c[0] == a.get_child(1) or a.is_ancestor_of(c[0]):
+				continue
+			var b: AABB = c[1]
+			var inter := box.intersection(b)
+			var vol := maxf(b.get_volume(), 1e-6)
+			if inter.has_volume() and (inter.get_volume() / vol >= 0.5 or (inter.get_volume() / box.get_volume() >= 0.4 and vol <= box.get_volume() * 30.0)):
+				hits.append(c[0])
+			elif b.size.y < 0.02 and box.has_point(b.get_center()):
+				hits.append(c[0])  # 纸、照片这类扁平的东西
+		if not hits.is_empty():
+			a.set_meta("outline", hits)
 
 
 func set_frozen(b: bool) -> void:
@@ -645,7 +1141,8 @@ func apply_leak(level: int) -> void:
 		if not is_instance_valid(mi):
 			continue
 		mi.material_override = _leak_mat if level >= 3 else _orig_mats.get(mi)
-	_env.environment.fog_light_color = Color("#d8d6d0") if level >= 3 else Color("#0b0b10")
+	var calm := Look.fog_color() if _env.environment.has_meta("look") else Color("#0b0b10")
+	_env.environment.fog_light_color = Color("#d8d6d0") if level >= 3 else calm
 
 
 ## 按声音列播放一串声音（写法见 actions.gd 的 parse_sounds）：立刻、延迟、停掉循环
@@ -661,15 +1158,15 @@ func play_sounds(spec: String) -> void:
 
 ## 当前房间的脚步声（脚步表 content/audio/footsteps.csv；没写的房间用木地板）
 func footstep_sound() -> String:
-	return String(ContentDB.footsteps.get(current_id, {}).get("sound", "footstep_wood"))
+	var rid := _player_room if current_id == MAP_ID else current_id
+	return String(ContentDB.footsteps.get(rid, {}).get("sound", "footstep_wood"))
 
 
 ## 按音效表播放：文件放在 res://audio/，音量与是否循环由表决定；还没有文件的声音保持静音
 func play_sound(id: String) -> void:
-	# 雨声统一由距离控制器播放，防止镜头表开启全局循环。
-	if id.begins_with("rain_"):
-		return
 	if id == "" or id == "silence":
+		return
+	if id.begins_with("rain_"):                           # 雨声由 world/rain.gd 按天气与离窗远近放，镜头表里写了也不重复放
 		return
 	var row: Dictionary = ContentDB.sounds.get(id, {})
 	var file: String = row.get("file", "")
