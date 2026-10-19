@@ -5,7 +5,7 @@ extends SceneTree
 ## 不代表加载耗时、连续走动或完整剧情的性能。截图入口会关闭存档写入。
 ## --off=dust,fog,sky,shadows,sun,ssil：关掉某一项看开销。
 ## --shots=/tmp/dir：每个房间采样前截一张图。
-## 可加 --no-vsync（关掉垂直同步，看真实余量）、--day（换成第 2 章阴天的天光；默认是序章夜里）。
+## 可加 --no-vsync（关掉垂直同步，看真实余量）、--day（换成第 2 章阴天的天光；默认是序章夜里）、--shot=C3-01（按那一镜的天气）。
 func _initialize():
 	call_deferred("run")
 func run():
@@ -49,15 +49,19 @@ func run():
 			root.get_viewport().get_camera_3d().get_world_3d().environment.fog_enabled = false
 		elif off == "sky":
 			RenderingServer.environment_set_sky(root.get_viewport().get_camera_3d().get_world_3d().environment.get_rid(), RID())
-	if args.has("--day"):
-		root.get_node("GameState").shot = "C2-03"
+	var at_shot := "C2-03" if args.has("--day") else ""
+	for a in args:
+		if a.begins_with("--shot="):
+			at_shot = a.trim_prefix("--shot=")   # 例如 --shot=C3-01：第 3 章晴天
+	if at_shot != "":
+		root.get_node("GameState").shot = at_shot
 		host._on_state_changed()
 	print("PERF_META ", JSON.stringify({"viewport":str(root.get_visible_rect().size),"window":str(DisplayServer.window_get_size()),"gpu":RenderingServer.get_video_adapter_name(),"vsync":DisplayServer.window_get_vsync_mode()}))
 	var shots := ""
 	for a in args:
 		if a.begins_with("--shots="):
 			shots = a.trim_prefix("--shots=")
-	for room_id in ["guest_room", "hall", "dining", "seance", "garden"]:
+	for room_id in ["guest_room", "hall", "dining", "seance", "garden", "darkroom"]:
 		if not host._room_spawn.has(room_id):
 			continue
 		host.focus_room(room_id)

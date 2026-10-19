@@ -96,6 +96,13 @@ static func env(base: Environment) -> Environment:
 	e.fog_aerial_perspective = 0.85
 	e.fog_sky_affect = 0.0
 	e.fog_light_color = fog_color()
+	# 晴天才开体积雾：太阳从窗口斜照进来，空气里看得见光柱（开销较大，只给晴天）
+	var vol := _f(row, "vol_fog", 0.0)
+	e.volumetric_fog_enabled = vol > 0.0
+	e.volumetric_fog_density = vol
+	e.volumetric_fog_albedo = Color(0.9, 0.88, 0.84)
+	e.volumetric_fog_anisotropy = 0.6
+	e.volumetric_fog_length = 16.0
 	var lut := _lut()
 	e.adjustment_enabled = lut != null
 	e.adjustment_color_correction = lut
