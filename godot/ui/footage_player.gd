@@ -47,6 +47,7 @@ var _ts_base := 0
 var _ts_has := false
 var _t0 := 0.0
 var _prev_fx := ""
+var _return_mode := ""
 var _garble_t := 0.0
 var _row_token := 0
 
@@ -240,7 +241,8 @@ func subtitle(text: String) -> void:
 
 
 ## 播放一个影像片段（若干行），返回时恢复原来的画面
-func play_clip(id: String) -> void:
+## handoff 为真时，放完后不撤掉影像层，由接下来的黑场（日记）盖住后调用 finish_handoff()
+func play_clip(id: String, handoff := false) -> void:
 	if clips.is_empty():
 		reload()
 	var rows: Array = clips.get(id, [])
@@ -253,7 +255,7 @@ func play_clip(id: String) -> void:
 				print("  ▍", r["subtitle"])
 		return
 	playing = true
-	var was_mode := mode
+	_return_mode = mode
 	_remember_fx()
 	_img_layer.get_node("img_root").visible = true
 	Director.ui.set_hud(false)
@@ -263,11 +265,18 @@ func play_clip(id: String) -> void:
 		await _play_row(rows[i])
 		if i < rows.size() - 1:
 			await _flash_static(0.22)
+	if handoff and playing:
+		playing = false
+		return
+	finish_handoff()
+
+
+func finish_handoff() -> void:
 	_img_layer.get_node("img_root").visible = false
 	_subtitle.visible = false
 	Director.ui.set_hud(true)
 	playing = false
-	_set_mode(was_mode)
+	_set_mode(_return_mode)
 	_restore_fx()
 
 

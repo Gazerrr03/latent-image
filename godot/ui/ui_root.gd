@@ -622,13 +622,16 @@ func dream(lines: Array, clip := "") -> void:
 
 ## 日记：新一章开头，在日记本上写下这一天：日期、天气、标题，下面一两行小字。
 ## page：{date, weather, title, notes:[文字]}；字一笔一笔写出来（按字数显露）
-func diary(page: Dictionary) -> void:
+## on_covered：黑场完全盖住画面之后调用（用来撤掉被盖住的东西）
+func diary(page: Dictionary, on_covered := Callable()) -> void:
 	if Director.autoplay:
 		print("  ✎ %s　%s　《%s》" % [page.get("date", ""), page.get("weather", ""), page.get("title", "")])
 		for n in page.get("notes", []):
 			print("  ✎ ", n)
 		return
 	await _interlude_enter()
+	if on_covered.is_valid():
+		on_covered.call()
 	interlude_layer.color = Color.BLACK
 	interlude_box.hide()
 	diary_date.text = page.get("date", "")

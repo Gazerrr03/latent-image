@@ -10,6 +10,7 @@ signal finished
 const Actions := preload("res://core/actions.gd")
 const CANCEL := "__cancel__"
 ## 在镜头文字出现之前执行的动作
+var _footage_handoff := false
 const STAGING := ["reveal", "conceal", "music"]
 
 var ui: Node
@@ -210,7 +211,10 @@ func _do(name: String, args: Array, mode: String) -> void:
 			for id in args:
 				world.set_shown(id, false)
 		"footage":
-			await ui.footage.play_clip(args[0])
+			# footage(片段,接日记)：放完先不撤影像层，等紧接着的日记黑场盖住后再撤，免得露出底下的场景
+			var handoff: bool = args.size() > 1 and args[1] == "接日记"
+			await ui.footage.play_clip(args[0], handoff)
+			_footage_handoff = handoff and not _interrupted()
 		"recap":
 			await _recap(args[0] if args.size() > 0 else "")
 		"diary":
@@ -358,7 +362,13 @@ func _diary(set_id: String) -> void:
 	if page["date"] == "" and page["title"] == "":
 		push_warning("日记组为空：" + set_id)
 		return
-	await ui.diary(page)
+	var covered := Callable()
+	if _footage_handoff:
+		_footage_handoff = false
+		covered = func():
+			ui.footage.finish_handoff()
+			world.fade_loop("projector", 2.5)
+	await ui.diary(page, covered)
 
 
 ## 弹出一组预设（annotations.csv），记录选择与人格属性，显示回应；返回所选文本

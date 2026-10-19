@@ -740,6 +740,17 @@ func stop_loop(id: String) -> void:
 		_loops.erase(id)
 
 
+## 循环声渐弱后停掉
+func fade_loop(id: String, sec: float) -> void:
+	if not _loops.has(id) or not is_instance_valid(_loops[id]):
+		return
+	var p: AudioStreamPlayer = _loops[id]
+	_loops.erase(id)
+	var tw := create_tween()
+	tw.tween_property(p, "volume_db", -60.0, sec)
+	tw.tween_callback(p.queue_free)
+
+
 ## 换房间时停掉上一个房间的循环声
 func stop_loops() -> void:
 	for p in _loops.values():
