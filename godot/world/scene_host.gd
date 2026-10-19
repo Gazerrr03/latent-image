@@ -44,6 +44,10 @@ func _ready() -> void:
 	add_child(_env)
 	_leak_mat = ShaderMaterial.new()
 	_leak_mat.shader = load("res://shaders/leak_white.gdshader")
+	var rain := preload("res://world/rain.gd").new()
+	rain.name = "雨声"
+	rain.host = self
+	add_child(rain)
 
 
 func _make_env() -> Environment:
@@ -662,6 +666,9 @@ func footstep_sound() -> String:
 
 ## 按音效表播放：文件放在 res://audio/，音量与是否循环由表决定；还没有文件的声音保持静音
 func play_sound(id: String) -> void:
+	# 雨声统一由距离控制器播放，防止镜头表开启全局循环。
+	if id.begins_with("rain_"):
+		return
 	if id == "" or id == "silence":
 		return
 	var row: Dictionary = ContentDB.sounds.get(id, {})
