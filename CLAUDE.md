@@ -32,7 +32,7 @@ $G --headless --path godot -- --autoplay                # 两种讲法都要跑�
 $G --headless --path godot -- --autoplay --view=取代
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=C2-05 --wait=4 --out=/tmp/x.png
-# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材；再加 --keep-fx 则保留滤镜，用于滤镜对比）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--examine=ev_xxx（打开证据板检视一张证据）、--view=保护|取代（强制终局倾向）
+# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材；再加 --keep-fx 则保留滤镜，用于滤镜对比）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--examine=ev_xxx（打开证据板检视一张证据）、--view=保护|取代（强制终局倾向）、--switch=红灯（按一下墙上的电灯开关）、--lut=off|neutral（不套调色表，对比用）
 # 可加 --at=x,y,z,朝向[,俯仰]：自由探索时把玩家放到某处再截图（看描边、交谈提示）
 # 4. 大地图体检（改了关卡场景、任务表后跑）：从客房能不能走到每个房间和这一组的每个任务目标（退出码 0 = 都走得到）
 $G --headless --path godot -- --probe-map --group=c1

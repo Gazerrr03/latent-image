@@ -7,6 +7,8 @@ extends RefCounted
 const LOOK_TABLE := "res://content/visual/look.csv"
 const PANORAMA := "res://art/look/stuttgart_hillside_2k.hdr"
 const SKY_SHADER := "res://shaders/sky_panorama.gdshader"
+## 调色查找表：暗部偏冷、亮部偏暖、轻微 S 曲线（tools/make_lut.py 生成）。截图对比可加 --lut=off / --lut=neutral
+const LUT := "res://art/look/grade_lut.png"
 
 ## 灯具发光（按 glTF 材质名认）：灯泡亮、奶白灯罩透光、灯笼玻璃微亮；数字是自发光强度
 const PRACTICAL_GLOW := {"manor_室内_灯泡": 4.0, "manor_室内_奶白灯罩": 0.8, "manor_灯笼玻璃": 0.6}
@@ -94,6 +96,9 @@ static func env(base: Environment) -> Environment:
 	e.fog_aerial_perspective = 0.85
 	e.fog_sky_affect = 0.0
 	e.fog_light_color = fog_color()
+	var lut := _lut()
+	e.adjustment_enabled = lut != null
+	e.adjustment_color_correction = lut
 	e.set_meta("look", true)
 	_derived[key] = e
 	return e
@@ -154,6 +159,13 @@ static func _update_sky() -> void:
 	var tint := Color.from_string(String(row.get("sky_tint", "#ffffff")), Color.WHITE)
 	_sky_mat.set_shader_parameter("tint", Vector3(tint.r, tint.g, tint.b))
 	_sky_mat.set_shader_parameter("energy", _f(row, "sky_energy", 0.75))
+
+
+static func _lut() -> Texture:
+	var args := OS.get_cmdline_user_args()
+	if args.has("--lut=off"):
+		return null
+	return load(LUT.replace(".png", "_neutral.png") if args.has("--lut=neutral") else LUT)
 
 
 ## 没有机位环境的地方（庄园外景）用的底子
