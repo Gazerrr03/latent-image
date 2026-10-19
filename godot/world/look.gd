@@ -8,6 +8,14 @@ const LOOK_TABLE := "res://content/visual/look.csv"
 const PANORAMA := "res://art/look/stuttgart_hillside_2k.hdr"
 const SKY_SHADER := "res://shaders/sky_panorama.gdshader"
 
+## 灯具发光（按 glTF 材质名认）：灯泡亮、奶白灯罩透光、灯笼玻璃微亮；数字是自发光强度
+const PRACTICAL_GLOW := {"manor_室内_灯泡": 4.0, "manor_室内_奶白灯罩": 0.8, "manor_灯笼玻璃": 0.6}
+## 灯具附近 0.7 米内没有真灯时补的小灯：暖色、不投影、照亮一小团
+const PRACTICAL_COLOR := Color(1.0, 0.76, 0.5)
+const PRACTICAL_ENERGY := 0.6
+const PRACTICAL_RANGE := 2.6
+
+static var _glow_mats := {}
 static var _rows: Array = []
 static var _sky_mat: ShaderMaterial
 static var _sky: Sky
@@ -112,6 +120,21 @@ static func light(l: Light3D) -> void:
 		if l is OmniLight3D:
 			# 立方体阴影要把房间画 6 遍，双抛物面只画 2 遍；吊灯、灯笼的软影看不出差别
 			l.omni_shadow_mode = OmniLight3D.SHADOW_DUAL_PARABOLOID
+
+
+## 灯具发光的材质（同一种材质共用一份）
+static func glow_material(base: Material) -> Material:
+	var key := base.resource_name
+	if _glow_mats.has(key):
+		return _glow_mats[key]
+	var m: Material = base
+	if base is StandardMaterial3D:
+		m = base.duplicate()
+		m.emission_enabled = true
+		m.emission = PRACTICAL_COLOR.lerp(Color.WHITE, 0.15)
+		m.emission_energy_multiplier = float(PRACTICAL_GLOW.get(key, 1.0))
+	_glow_mats[key] = m
+	return m
 
 
 ## 室内灯的倍数（夜里灯更显眼）

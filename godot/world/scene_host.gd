@@ -249,10 +249,73 @@ func _enter_map() -> void:
 		var sp: Array = _room_spawn.get(rid, [])
 		if not sp.is_empty() and not _room_box[rid].grow(0.05).has_point(sp[0] + Vector3(0, 0.9, 0)):
 			_room_box[rid] = _room_box[rid].merge(AABB(sp[0] - Vector3(1.5, 0, 1.5), Vector3(3, 2.5, 3)))
+	_add_practicals()
 	# 自查：每个房间的出生点要落在这个房间的范围里，否则“走进房间”的任务永远触发不了
 	for rid in _room_spawn:
 		if rid != MAP_ID and room_at(_room_spawn[rid][0]) != rid:
 			push_warning("大地图：%s 的出生点被认成了 %s" % [rid, room_at(_room_spawn[rid][0])])
+
+
+## 让灯具亮起来（docs/06 第 9 节）：壁灯、台灯、吊灯这些模型原来只是摆设，灯泡与灯罩不发光、身边也没有光。
+## 按材质名（Look.PRACTICAL_GLOW）认出灯具，灯泡、灯罩换成发光的材质；附近 0.7 米内没有真灯的，补一盏不投影的暖色小灯，
+## 挂在灯具模型下面（灯具在状态层里时跟着显隐），记进所在房间的灯（随天光表的 lamps 倍数变）。
+## 自己管样子的房间（暗房、火车）不动。
+func _add_practicals() -> void:
+	var lights: Array = []
+	for n in _walk(room):
+		if n is Light3D:
+			lights.append(n.global_position)
+	for n in _walk(room):
+		if not n is MeshInstance3D or n.mesh == null:
+			continue
+		var glow := AABB()
+		var found := false
+		for i in n.mesh.get_surface_count():
+			var mat: Material = n.get_active_material(i)
+			if mat == null or not Look.PRACTICAL_GLOW.has(mat.resource_name):
+				continue
+			var b := _surface_box(n.mesh, i)
+			glow = b if not found else glow.merge(b)
+			found = true
+		if not found:
+			continue
+		var at: Vector3 = n.global_transform * glow.get_center()
+		var rid := room_at(at - Vector3(0, 0.9, 0))   # room_at 按脚下算，灯在头顶：减回去，免得一楼吊灯算进二楼
+		if Look.owns(_room_env.get(rid)):
+			continue
+		for i in n.mesh.get_surface_count():
+			var mat: Material = n.get_active_material(i)
+			if mat and Look.PRACTICAL_GLOW.has(mat.resource_name):
+				n.set_surface_override_material(i, Look.glow_material(mat))
+		n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		var near := false
+		for p in lights:
+			if p.distance_to(at) < 0.7:
+				near = true
+				break
+		if near:
+			continue
+		var l := OmniLight3D.new()
+		l.name = "补光·" + String(n.name)
+		l.light_color = Look.PRACTICAL_COLOR
+		l.light_energy = Look.PRACTICAL_ENERGY
+		l.omni_range = Look.PRACTICAL_RANGE
+		l.shadow_enabled = false
+		n.add_child(l)
+		l.global_position = at
+		l.set_meta("shadow_default", false)
+		lights.append(at)
+		if not _room_lights.has(rid):
+			_room_lights[rid] = []
+		_room_lights[rid].append(l)
+
+
+static func _surface_box(mesh: Mesh, i: int) -> AABB:
+	var v: PackedVector3Array = mesh.surface_get_arrays(i)[Mesh.ARRAY_VERTEX]
+	var b := AABB(v[0], Vector3.ZERO) if v.size() > 0 else AABB()
+	for p in v:
+		b = b.expand(p)
+	return b
 
 
 ## 记下一个房间的范围（判断玩家在哪）、画面环境（机位带的环境）、灯
