@@ -25,7 +25,7 @@
 | `epilogue` | 尾声·白色的房间 | 外面 | 尾声 | P0 | 待写 | 灰盒（房间 id `monitor_room`） |
 | `ded_locked` | 密室 | 演绎 | 1 | P0 | 待写 | — |
 | `ded_photo` | 合影 | 演绎 | 2 | P0 | 待写 | — |
-| `ded_corridor` | 回廊（降灵会） | 演绎 | 5 | P0 | [ded_corridor](ded_corridor.md) | 待写（10-18 设计定稿） |
+| `ded_corridor` | 回廊（降灵会） | 演绎 | 5 | P0 | [ded_corridor](ded_corridor.md) | 代码搭的第一版可玩；10-20 第二版设计定稿（追逐 + 支线 + 走进照片），按需求文档第 10 节落地，模型改为独立的 `ded_corridor.blend` |
 | `ded_thursday` | 星期四夜里 | 演绎 | 6 | P0 | 待写 | — |
 | `ded_blackcloth` | 黑布 | 演绎 | 3 | P1 | 待写 | — |
 | `ded_footprint` | 鞋印 | 演绎 | 4 | P1 | 待写 | — |

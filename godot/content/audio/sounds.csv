@@ -73,3 +73,4 @@ ui_link_ok,连线连上：红线绷紧,界面,sfx/ui_link_ok.ogg,-8,否,脚本�
 ui_link_wrong,连错：红线松掉，弹回去,界面,sfx/ui_link_wrong.ogg,-8,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 needle_scratch,唱针跳了：一声刮擦,器物,sfx/needle_scratch.ogg,-4,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 room_hum,回廊底噪：空房间的低鸣,环境,sfx/room_hum.ogg,-16,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+footstep_shoe_rev,男式皮鞋倒放（回廊里倒着走回来的那个人）,人声,sfx/footstep_shoe_rev.ogg,-4,否,ffmpeg areverse 由 footstep_shoe 生成（10-20）

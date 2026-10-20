@@ -8,11 +8,27 @@ extends Node3D
 ## 每层的内容在 content/story/corridor.csv，代码不写死。
 
 const SEG_A := 8.0          # 第一段：从起点沿 -z
-const SEG_B := 6.0          # 左转后沿 -x
+const SEG_B := 6.0          # 左转后沿 -x（最长；每圈按表里的 seg_b 截短，唱片越放越靠里）
 const PATH_LEN := SEG_A + SEG_B
 const LANE := 2.2
 const STEP := 0.7
 const SPEED := 1.4
+
+## 这一圈第二段的长度与路径总长（表 corridor.csv 的 seg_b 列）
+var _seg_b := SEG_B
+var _path_len := PATH_LEN
+
+## 追逐：唱片里那个人的脚步。他在玩家前方 _gap 米处，跟着唱针走、停、倒退
+var _man: AudioStreamPlayer3D
+var _step_fwd: AudioStream
+var _step_rev: AudioStream
+var _door_far: AudioStreamPlayer3D
+var _gap := -1.0            # < 0 = 这一圈没有他
+var _gap_base := -1.0
+var _man_prev := 0.0
+var _man_acc := 0.0
+var _man_arrived := false
+var _merged := false
 
 var rows: Array = []
 var layer := 0
@@ -140,18 +156,30 @@ func _build_hall() -> void:
 	for i in range(1, 5):
 		for side in [-1.0, 1.0]:
 			_box("板B%d_%d" % [i, int(side)], Vector3(-i * 1.45, 0.9, -SEG_A + side * (LANE / 2 - 0.02)), Vector3(0.04, 1.8, 0.05), trim, false)
-	# 尽头的门：一个门洞加一扇关着的门，走过它就进入下一层
-	_box("门框B", Vector3(-SEG_B - 0.02, 1.05, -SEG_A), Vector3(0.1, 2.1, 1.05), _mat(Color("#1e1712")), false)
-	var leaf := _box("end_leaf", Vector3(-SEG_B + 0.05, 1.03, -SEG_A), Vector3(0.06, 2.06, 0.95), _mat(Color("#3a2a1d")), false)
+	# 尽头：端墙 + 门洞 + 一扇关着的门，走过它就进入下一层。整组是 segB_end，每圈沿 -x 挪到第二段的尽头
+	var end := Node3D.new()
+	end.name = "segB_end"
+	end.position = Vector3(-SEG_B, 0, -SEG_A)
+	add_child(end)
+	var endwall := _box_child(end, "端墙", Vector3(-0.12, 1.3, 0), Vector3(0.1, 2.6, LANE), wall_m)
+	var ew_body := StaticBody3D.new()
+	var ew_cs := CollisionShape3D.new()
+	var ew_bs := BoxShape3D.new()
+	ew_bs.size = Vector3(0.1, 2.6, LANE)
+	ew_cs.shape = ew_bs
+	ew_body.add_child(ew_cs)
+	endwall.add_child(ew_body)
+	_box_child(end, "门框B", Vector3(-0.02, 1.05, 0), Vector3(0.1, 2.1, 1.05), _mat(Color("#1e1712")))
+	var leaf := _box_child(end, "end_leaf", Vector3(0.05, 1.03, 0), Vector3(0.06, 2.06, 0.95), _mat(Color("#3a2a1d")))
 	leaf.set_meta("corridor_gate", true)
 	# 门缝下的一道暖光，每一层都是“出口”的提示
 	var glow := OmniLight3D.new()
 	glow.name = "门缝光"
-	glow.position = Vector3(-SEG_B + 0.35, 0.12, -SEG_A)
+	glow.position = Vector3(0.35, 0.12, 0)
 	glow.light_color = Color("#d8a868")
 	glow.light_energy = 1.4
 	glow.omni_range = 3.4
-	add_child(glow)
+	end.add_child(glow)
 	# 走廊的灯
 	for i in range(1, 5):
 		var l := OmniLight3D.new()
@@ -251,6 +279,28 @@ func _build_audio() -> void:
 	_amb = _player("底噪", -14.0, "room_hum")
 	if _amb.stream:
 		_amb.stream.loop = true
+	# 那个人：一个会动的定位声源，一步一响；倒着走用倒放的步声
+	_man = AudioStreamPlayer3D.new()
+	_man.name = "那个人"
+	_man.unit_size = 3.0
+	_man.max_distance = 22.0
+	_man.volume_db = -3.0
+	_man.max_polyphony = 3
+	add_child(_man)
+	_step_fwd = _sfx("footstep_shoe")
+	_step_rev = _sfx("footstep_shoe_rev")
+	_door_far = AudioStreamPlayer3D.new()
+	_door_far.name = "尽头的门声"
+	_door_far.unit_size = 3.0
+	_door_far.max_distance = 30.0
+	_door_far.volume_db = -4.0
+	_door_far.stream = _sfx("door_creak")
+	add_child(_door_far)
+
+
+func _sfx(id: String) -> AudioStream:
+	var path := "res://audio/sfx/%s.ogg" % id
+	return load(path) if ResourceLoader.exists(path) else null
 
 
 func _player(n: String, db: float, id := "") -> AudioStreamPlayer:
@@ -299,6 +349,14 @@ func _enter(i: int) -> void:
 	_sitting = false
 	_last_pos = Vector2(global_position.x, global_position.z)
 	var r := _row()
+	_set_seg_b(float(r.get("seg_b", "")) if String(r.get("seg_b", "")).is_valid_float() else SEG_B)
+	var g := String(r.get("chase_gap", ""))
+	_gap_base = float(g) if g.is_valid_float() else -1.0
+	_gap = _gap_base
+	_man_prev = _gap
+	_man_acc = 0.0
+	_man_arrived = false
+	_merged = false
 	_place()
 	_set_lights()
 	_set_track(String(r.get("track", "")), String(r.get("track", "")))
@@ -321,6 +379,23 @@ func _parse_beats(spec: String) -> void:
 			_beats.append([float(t[0].strip_edges()), t[1].strip_edges()])
 	if sub_label:
 		sub_label.text = ""
+
+
+## 第二段截到 seg 米：挪尽头那一组，地毯跟着短，尽头以外的壁灯关掉
+func _set_seg_b(seg: float) -> void:
+	_seg_b = clampf(seg, 1.5, SEG_B)
+	_path_len = SEG_A + _seg_b
+	var end := get_node_or_null("segB_end")
+	if end:
+		end.position = Vector3(-_seg_b, 0, -SEG_A)
+	var rug := get_node_or_null("地毯B") as Node3D
+	if rug:
+		rug.scale.x = _seg_b / SEG_B
+		rug.position.x = -_seg_b / 2
+	for i in range(1, 5):
+		var l := get_node_or_null("壁灯B%d" % i) as Node3D
+		if l:
+			l.visible = l.position.x > -_seg_b + 0.2
 
 
 func _row() -> Dictionary:

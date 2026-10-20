@@ -533,6 +533,7 @@ func room_at(p: Vector3) -> String:
 
 func _process(_dt: float) -> void:
 	var walking: bool = player != null and player.active
+	_keep_inside()
 	if walking != _switch_lit:
 		_switch_lit = walking
 		paint_switches()
@@ -1261,11 +1262,21 @@ func set_mode(mode: String, cam: String) -> void:
 		# 大地图里：自由探索时玩家从哪里来就站在哪里；按镜头走的行走镜头，玩家不在这个房间就送到房间的出生点
 		var respawn: bool = player.needs_spawn or not player.active
 		if current_id == MAP_ID and not player.needs_spawn:
-			respawn = not exploring and room_at(player.global_position) != _focus
+			respawn = not exploring and _locked == "" and room_at(player.global_position) != _focus
 		if respawn:
 			player.place(spawn[0], spawn[1])
+		# 从剧情机位回到玩家眼里：镜头平滑地回到玩家的视线，而不是一刀切回去（10-20）
+		if not player.active and shot_cam.current and not respawn and not Director.autoplay \
+				and shot_cam.global_position.distance_to(player.cam.global_position) < GLIDE_RANGE:
+			_glide(shot_cam.global_transform, player.cam.global_transform, shot_cam.fov, player.cam.fov, 0.8)
+			_camera_tween.tween_callback(player.activate)
+			_cam_key = ""
+			return
 		player.activate()
 		return
+	# 从玩家眼里进剧情机位（交谈、坐到桌前）：从玩家的视线滑过去
+	var from_eye: bool = player.active and not Director.autoplay
+	var eye: Transform3D = player.cam.global_transform
 	player.deactivate()
 	shot_cam.current = true
 	shot_cam.environment = null
@@ -1283,7 +1294,9 @@ func set_mode(mode: String, cam: String) -> void:
 	# 大地图里剧情机位也用共用环境（不切环境，镜头前后不跳）；火车这类单独的关卡仍用机位自己的环境
 	shot_cam.environment = null if current_id == MAP_ID else (Look.env(m[3]) if m.size() > 3 and m[3] else null)
 	shot_cam.near = m[4] if m.size() > 4 else 0.05
-	if _cam_key != "" and _cam_key != key and not Director.autoplay:
+	if from_eye and eye.origin.distance_to(target.origin) < GLIDE_RANGE:
+		_glide(eye, target, player.cam.fov, fov, 1.0)
+	elif _cam_key != "" and _cam_key != key and not Director.autoplay:
 		_camera_tween = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		_camera_tween.tween_property(shot_cam, "global_transform", target, 1.2)
 		_camera_tween.tween_property(shot_cam, "fov", fov, 1.2)
@@ -1292,6 +1305,262 @@ func set_mode(mode: String, cam: String) -> void:
 		shot_cam.fov = fov
 	_focus_dof(target)
 	_cam_key = key
+
+
+## 玩家眼睛与剧情机位之间平滑过渡的最远距离：再远（换了房间）就直接切
+const GLIDE_RANGE := 9.0
+
+func _glide(from: Transform3D, to: Transform3D, fov_from: float, fov_to: float, sec: float) -> void:
+	shot_cam.current = true
+	shot_cam.global_transform = from
+	shot_cam.fov = fov_from
+	_camera_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_camera_tween.set_parallel()
+	_camera_tween.tween_property(shot_cam, "global_transform", to, sec)
+	_camera_tween.tween_property(shot_cam, "fov", fov_to, sec)
+	_camera_tween.set_parallel(false)
+
+
+# ───────────── 回想：地面指引（docs/01 第 4 节） ─────────────
+
+const Guide := preload("res://world/guide.gd")
+var guide: Node3D
+
+## 把任务的触发（talk:/enter:/door:/hs_）换成地面上的一个点，画出通往最近那个的路；没有可指的返回 false
+func show_guide(ids: Array) -> bool:
+	if current_id != MAP_ID or player == null or not player.active:
+		return false
+	if guide == null:
+		guide = Guide.new()
+		guide.name = "回想"
+		guide.host = self
+		add_child(guide)
+	var pts: Array = []
+	for id in ids:
+		var p = target_position(String(id))
+		if p != null:
+			pts.append(p)
+	return await guide.show_path(pts)
+
+
+func target_position(id: String) -> Variant:
+	if id.begins_with("talk:"):
+		var n: Node3D = named.get(id.get_slice("@", 1) + "/chr_" + id.trim_prefix("talk:").get_slice("@", 0))
+		return n.global_position if n else null
+	if id.begins_with("door:"):
+		var d: Node3D = named.get(id.trim_prefix("door:"))
+		return d.global_position if d else null
+	if id.begins_with("enter:"):
+		var sp: Array = _room_spawn.get(id.trim_prefix("enter:"), [])
+		return sp[0] if not sp.is_empty() else null
+	var h: Node3D = hotspot_nodes.get(id)
+	if h and is_instance_valid(h) and h.is_inside_tree():
+		var g := h.global_position
+		var q := PhysicsRayQueryParameters3D.create(g, g + Vector3.DOWN * 3.0, 1)
+		var hit := get_world_3d().direct_space_state.intersect_ray(q)
+		return hit["position"] if not hit.is_empty() else g
+	return null
+
+
+# ───────────── 客房：收尾、躺下、醒来（docs/01 第 4 节） ─────────────
+
+## 回客房收尾时锁住这个房间：走出房间范围就被送回来，侦探说一句话
+var _locked := ""
+var _last_inside := Vector3.ZERO
+var _lock_said := 0.0
+## 床的朝向（床头在哪一头、从哪一边上下床），第一次用到时按床的模型算出来
+var _bed := {}
+
+func lock_room(rid: String) -> void:
+	if _locked != rid and player:
+		_last_inside = player.global_position
+	_locked = rid
+
+
+func unlock_room() -> void:
+	_locked = ""
+
+
+func room_locked() -> String:
+	return _locked
+
+
+func _keep_inside() -> void:
+	if _locked == "" or not player or not player.active or player.frozen:
+		return
+	if room_at(player.global_position) == _locked:
+		_last_inside = player.global_position
+		return
+	player.global_position = _last_inside
+	player.velocity = Vector3.ZERO
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _lock_said > 4.0:
+		_lock_said = now
+		Director.ui.toast("今天就到这里。该把今天的东西理一理了。")
+
+
+## 床：像人一样躺下去（10-20，用户：原来的动作不符合人体）——
+## 走到床边、面朝床 → 转过身背对床 → 坐到床沿（视线降到坐高）→ 侧身仰躺，头落在床头的枕头上，看见天花板
+func lie_down() -> void:
+	var f := _bed_frame()
+	if f.is_empty() or player == null:
+		return
+	var eye: Transform3D = player.cam.global_transform
+	player.deactivate()
+	_cam_free(eye)
+	await _cam_path([
+		[_bed_pose(f, "face_bed"), 1.1],
+		[_bed_pose(f, "stand_out"), 0.7],
+		[_bed_pose(f, "sit"), 0.9],
+		[_bed_pose(f, "lean"), 0.8],
+		[_bed_pose(f, "lie"), 1.1],
+	])
+
+
+## 醒来：眼睑闭着，仰躺在枕头上睁眼 → 撑起上身、把腿放下床，坐在床沿 → 站起来，交给玩家
+func wake_up() -> void:
+	show_scene("guest_room")
+	var f := _bed_frame()
+	if f.is_empty() or player == null:
+		Director.ui.eyelids_set(1.0)
+		return
+	player.deactivate()
+	var stand: Transform3D = _bed_pose(f, "stand_out")
+	var fwd: Vector3 = -stand.basis.z
+	player.place(stand.origin - Vector3.UP * player.EYE, rad_to_deg(atan2(-fwd.x, -fwd.z)))
+	focus_room("guest_room")
+	Director.ui.eyelids_set(0.0)
+	_cam_free(_bed_pose(f, "lie"))
+	await Director.ui.eyelids_open()
+	await _cam_path([
+		[_bed_pose(f, "lean"), 1.2],
+		[_bed_pose(f, "sit"), 1.0],
+		[_bed_pose(f, "sit_look"), 0.6],
+		[player.cam.global_transform, 1.1],
+	])
+	_cam_key = ""
+	player.activate()
+
+
+func _cam_free(from: Transform3D) -> void:
+	if _camera_tween:
+		_camera_tween.kill()
+	shot_cam.current = true
+	shot_cam.environment = null
+	shot_cam.near = 0.05
+	shot_cam.attributes = null
+	shot_cam.global_transform = from
+	shot_cam.fov = player.cam.fov
+	_cam_key = ""
+
+
+## 一段接一段地移动镜头：位置直线过去、朝向平滑转过去（四元数插值，不会绕着视线打滚）
+func _cam_path(steps: Array) -> void:
+	var prev := shot_cam.global_transform
+	_camera_tween = create_tween()
+	for st in steps:
+		var a := prev
+		var b: Transform3D = st[0]
+		_camera_tween.tween_method(func(k: float): shot_cam.global_transform = a.interpolate_with(b, k), 0.0, 1.0, st[1]) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		prev = b
+	await _camera_tween.finished
+
+
+## 床的框架：中心、床面高度、床头方向（沿床长）、上下床的那一边、半长、半宽、地面高度。
+## 床的模型是“客房·床”开头的节点；模型原点在床头（Blender 里床头靠墙），所以原点在中心的哪一头，哪一头就是床头。
+## 上下床的那一边：两边各往外打一条射线，空出来的那一边
+func _bed_frame() -> Dictionary:
+	if not _bed.is_empty():
+		return _bed
+	var hs: Node3D = hotspot_nodes.get("hs_bed")
+	if hs == null:
+		return {}
+	var model: Node3D = null
+	for k in named:
+		var n = named[k]
+		if String(k).begins_with("客房·床") and not String(k).begins_with("客房·床头") and n is Node3D and is_instance_valid(n):
+			model = n
+			break
+	var box := AABB(hs.global_position - Vector3(1.0, 0.3, 0.45), Vector3(2.0, 0.6, 0.9))
+	var origin := hs.global_position
+	if model:
+		var first := true
+		for m in _walk(model):
+			if m is MeshInstance3D:
+				var bb: AABB = m.global_transform * m.get_aabb()
+				box = bb if first else box.merge(bb)
+				first = false
+		origin = model.global_position
+	var c := box.get_center()
+	var along_x: bool = box.size.x >= box.size.z
+	var axis := Vector3.RIGHT if along_x else Vector3.BACK
+	var head := axis if (origin - c).dot(axis) >= 0.0 else -axis
+	var side := Vector3.BACK if along_x else Vector3.RIGHT
+	var half_len: float = (box.size.x if along_x else box.size.z) * 0.5
+	var half_wid: float = (box.size.z if along_x else box.size.x) * 0.5
+	var top := _bed_top(Vector3(c.x, box.end.y, c.z) + head * half_len * 0.2)
+	var floor_y: float = player.global_position.y if player else box.position.y
+	# 哪一边空着：从床面往两边各量 1.2 米
+	var space := get_world_3d().direct_space_state
+	var room_on := {}
+	for sgn in [1.0, -1.0]:
+		var from: Vector3 = Vector3(c.x, floor_y + 0.9, c.z) + side * sgn * (half_wid + 0.05)
+		var q := PhysicsRayQueryParameters3D.create(from, from + side * sgn * 1.2, 1)
+		if player:
+			q.exclude = [player.get_rid()]
+		var hit := space.intersect_ray(q)
+		room_on[sgn] = from.distance_to(hit["position"]) if not hit.is_empty() else 1.2
+	var out := side if room_on[1.0] >= room_on[-1.0] else -side
+	# 地面：床边往下打一条射线（醒来时玩家还不在客房，不能用玩家的高度）
+	var down := PhysicsRayQueryParameters3D.create(Vector3(c.x, top, c.z) + out * (half_wid + 0.4), Vector3(c.x, top - 3.0, c.z) + out * (half_wid + 0.4), 1)
+	if player:
+		down.exclude = [player.get_rid()]
+	var fh := space.intersect_ray(down)
+	if not fh.is_empty():
+		floor_y = fh["position"].y
+	_bed = {"c": Vector3(c.x, top, c.z), "head": head, "out": out, "len": half_len, "wid": half_wid, "floor": floor_y}
+	return _bed
+
+
+## 床边的几个姿势（镜头 = 眼睛）。坐高：床面上 0.72 米；躺下：头在枕头上，眼睛离床面 0.2 米
+func _bed_pose(f: Dictionary, which: String) -> Transform3D:
+	var c: Vector3 = f["c"]
+	var head: Vector3 = f["head"]
+	var out: Vector3 = f["out"]
+	var edge: Vector3 = c + out * f["wid"] + head * f["len"] * 0.25   # 坐的地方：床沿，偏床头一点
+	var eye_y: float = f["floor"] + player.EYE
+	match which:
+		"face_bed":
+			var p: Vector3 = Vector3(edge.x, eye_y, edge.z) + out * 0.5
+			return Transform3D(Basis.looking_at(-out - Vector3.UP * 0.45, Vector3.UP), p)
+		"stand_out":
+			var p: Vector3 = Vector3(edge.x, eye_y, edge.z) + out * 0.45
+			return Transform3D(Basis.looking_at(out - Vector3.UP * 0.1, Vector3.UP), p)
+		"sit":
+			var p: Vector3 = edge - out * 0.12 + Vector3.UP * 0.72
+			return Transform3D(Basis.looking_at(out - Vector3.UP * 0.3, Vector3.UP), p)
+		"sit_look":
+			var p: Vector3 = edge - out * 0.05 + Vector3.UP * 0.74
+			return Transform3D(Basis.looking_at(out - Vector3.UP * 0.05, Vector3.UP), p)
+		"lean":
+			# 先往后仰、撑在手肘上（仍朝着屋里，视线抬向天花板）；转到枕头上是下一步
+			var p: Vector3 = edge - out * 0.35 + Vector3.UP * 0.4
+			return Transform3D(Basis.looking_at((Vector3.UP + out * 0.5).normalized(), Vector3.UP), p)
+		"lie":
+			# 仰躺：头在枕头上（离床头 0.32 米），视线朝上、略朝脚那头；画面的上方是床头
+			var p: Vector3 = c + head * (f["len"] - 0.32) + Vector3.UP * 0.2
+			return Transform3D(Basis.looking_at((Vector3.UP - head * 0.3).normalized(), head), p)
+	return Transform3D()
+
+
+## 床面的高度：从床的热区上方往下打一条射线
+func _bed_top(p: Vector3) -> float:
+	var q := PhysicsRayQueryParameters3D.create(p + Vector3.UP * 1.2, p + Vector3.DOWN * 1.5, 1)
+	if player:
+		q.exclude = [player.get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(q)
+	return hit["position"].y if not hit.is_empty() else p.y + 0.1
 
 
 ## 剧情机位的景深：只给近景（镜头中线 2 米内碰到东西，如显影盘、桌面）加，焦点后面轻轻虚掉；

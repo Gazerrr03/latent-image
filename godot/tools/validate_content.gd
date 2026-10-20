@@ -259,6 +259,8 @@ func _init() -> void:
 			if req != "":
 				exits += 1
 			for part in req.split("|", false):
+				if part.strip_edges() == "全部":
+					continue  # 这一组能拿到线索的任务都做完（线索收齐，docs/01 第 4 节）
 				var ids_ := part.get_slice(":", 1) if part.contains(":") else part
 				for x in ids_.split(",", false):
 					if not quest_ids.has(x.strip_edges()):
@@ -432,6 +434,15 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 				err("镜头表", id, "配乐“%s”不在配乐表里" % str(args), "写配乐表里的曲名，或 music(关闭) 停止")
 			if args.size() > 1 and not args[1].is_valid_float():
 				err("镜头表", id, "music 的第二个参数是淡入 / 淡出秒数，现在是“%s”" % args[1])
+		"station":
+			# 客房的一站：桌面 / 打字机 / 床（docs/01 第 4 节）
+			if args.size() != 1 or not ["hs_desk_board", "hs_typewriter", "hs_bed"].has(args[0]):
+				err("镜头表", id, "station 只能写客房的三站：hs_desk_board、hs_typewriter、hs_bed")
+			elif room != "guest_room":
+				err("镜头表", id, "station 只用在客房（scene 写 guest_room）")
+		"wake", "sleep":
+			if room != "guest_room" and room != "":
+				err("镜头表", id, "%s 只用在客房（scene 写 guest_room）" % nm)
 		"explore":
 			if args.is_empty() or not quests.has(args[0]):
 				err("镜头表", id, "explore 的任务组“%s”不在任务表里" % str(args), "在 content/story/quests.csv 的 group 列写这个组名")
