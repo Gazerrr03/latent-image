@@ -48,7 +48,7 @@ Godot MCP 已在 `.mcp.json` 配置（Coding-Solo/godot-mcp）：可启动编辑
 
 ## Git
 
-- 远端：`github.com/Gazerrr03/acknowledged`（private），主分支 `main`。
+- 远端：`github.com/Gazerrr03/latent-image`（private），主分支 `main`。
 - 本机 git 未配置 GitHub 凭据，推送时用：`git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`（或由用户运行一次 `gh auth setup-git`）。
 
 ## 协作

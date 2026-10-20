@@ -65,9 +65,9 @@
 | 表格 | 覆盖 `godot/content/<板块>/` 下同名 `.csv` | 直接生效 |
 | 房间空间 | 不交模型：由负责人在 Godot 里搭关卡场景 `godot/levels/<房间id>.tscn` | 场景存在即生效 |
 | 小物件模型 `.glb` | `godot/art/props/<名称>.glb`，尺寸按检查报告“小物件规格”，原点在底面中心 | 模型资产表 `content/visual/props.csv` 的 `model` 列填路径 |
-| 人物模型 `.glb` | agent 用 Tripo 生成，放 `godot/art/characters/`（T-025），不由队友交付 | 等程序接入（[#6](https://github.com/Gazerrr03/acknowledged/issues/6)） |
+| 人物模型 `.glb` | agent 用 Tripo 生成，放 `godot/art/characters/`（T-025），不由队友交付 | 等程序接入（[#6](https://github.com/Gazerrr03/latent-image/issues/6)） |
 | 图片（叠印、合影、片头） | `godot/art/footage/` | 影像片段表 `image` 列或 `develop(...)` 填文件名 |
-| 证据卡上的图片 | — | 等程序接入（[#7](https://github.com/Gazerrr03/acknowledged/issues/7)） |
+| 证据卡上的图片 | — | 等程序接入（[#7](https://github.com/Gazerrr03/latent-image/issues/7)） |
 | 声音 | `godot/audio/` | 音效表 `file` 列填文件名 |
 | 设计稿、三视图等 | `assets/2d/<任务编号>-<名称>/` | 在 `assets/登记表.csv` 登记 |
 

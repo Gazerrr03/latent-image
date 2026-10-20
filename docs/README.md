@@ -39,10 +39,10 @@
 
 | Issue | 内容 |
 | --- | --- |
-| [#1](https://github.com/Gazerrr03/acknowledged/issues/1) | 父 issue：暗房主线与 B 方案千人千面 |
-| [#4](https://github.com/Gazerrr03/acknowledged/issues/4) | 剧情定稿：时间线、推论与线索槽展开 |
-| [#2](https://github.com/Gazerrr03/acknowledged/issues/2) | 上下文模块 |
-| [#3](https://github.com/Gazerrr03/acknowledged/issues/3) | 旧剧情内容表迁移到暗房主线（10-13 完成） |
+| [#1](https://github.com/Gazerrr03/latent-image/issues/1) | 父 issue：暗房主线与 B 方案千人千面 |
+| [#4](https://github.com/Gazerrr03/latent-image/issues/4) | 剧情定稿：时间线、推论与线索槽展开 |
+| [#2](https://github.com/Gazerrr03/latent-image/issues/2) | 上下文模块 |
+| [#3](https://github.com/Gazerrr03/latent-image/issues/3) | 旧剧情内容表迁移到暗房主线（10-13 完成） |
 
 ## 状态标记
 
