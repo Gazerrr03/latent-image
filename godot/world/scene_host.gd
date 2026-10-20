@@ -251,6 +251,7 @@ func _enter_map() -> void:
 			_room_box[rid] = _room_box[rid].merge(AABB(sp[0] - Vector3(1.5, 0, 1.5), Vector3(3, 2.5, 3)))
 	_add_practicals()
 	_add_shafts()
+	_add_room_probes()
 	# 自查：每个房间的出生点要落在这个房间的范围里，否则“走进房间”的任务永远触发不了
 	for rid in _room_spawn:
 		if rid != MAP_ID and room_at(_room_spawn[rid][0]) != rid:
@@ -309,6 +310,71 @@ func _add_practicals() -> void:
 		if not _room_lights.has(rid):
 			_room_lights[rid] = []
 		_room_lights[rid].append(l)
+
+
+## 灯的影子按离镜头的远近淡出（8 米起、4 米淡完），不再按“在不在这个房间”开关：跨门时影子不会突然出现、消失
+static func _fade_lamp_shadows(l: Light3D) -> void:
+	l.distance_fade_enabled = true
+	l.distance_fade_begin = 40.0
+	l.distance_fade_shadow = 8.0
+	l.distance_fade_length = 4.0
+
+
+## 房间的局部补光（docs/06 第 9 节）：引擎的环境光是全局的、墙挡不住，以前每个房间换一套环境来调明暗，跨门就跳。
+## 实测（10-20）：只用共用环境，客房、门厅、餐厅、客厅的亮度和原来差不到几个百分点（屋里亮不亮主要看灯），
+## 只有原来特意压暗的房间（房间机位环境的环境光 ÷ 共用值 0.5 小于 0.35，目前只有暗房 0.1）会变亮。
+## 所以只给这种房间按自己的范围自动放一个 ReflectionProbe 压暗环境光；盒子比房间大一圈（过渡带落在墙里和门口），
+## 门口 0.6 米内和外面平滑过渡。
+## 房间环境开了体积雾的（暗房），换成只在这个房间里的 FogVolume。只在载入时拍一次，换天光时补拍。
+const OUTDOOR_LOOK := ["garden", "greenhouse"]
+var _probes: Array = []
+
+func _add_room_probes() -> void:
+	_probes.clear()
+	var base := 0.5
+	for rid in _room_box:
+		if rid == MAP_ID or OUTDOOR_LOOK.has(rid):
+			continue
+		var e: Environment = _room_env.get(rid)
+		var factor: float = (e.ambient_light_energy / base) if e else 1.0
+		if factor >= 0.35:
+			continue
+		var box: AABB = _room_box[rid].grow(0.6)
+		var p := ReflectionProbe.new()
+		p.name = "局部补光·" + rid
+		p.size = box.size
+		p.interior = true
+		p.box_projection = true
+		p.blend_distance = 0.6
+		p.update_mode = ReflectionProbe.UPDATE_ONCE
+		p.ambient_mode = ReflectionProbe.AMBIENT_COLOR
+		p.set_meta("factor", factor)
+		if e and e.ambient_light_source == Environment.AMBIENT_SOURCE_COLOR:
+			p.set_meta("tint", e.ambient_light_color)   # 房间环境自己写了环境光颜色的（暗房），沿用这个颜色
+		room.add_child(p)
+		p.global_position = box.get_center()
+		_probes.append(p)
+		if e and e.volumetric_fog_enabled:
+			var fog := FogVolume.new()
+			fog.name = "局部雾·" + rid
+			fog.size = _room_box[rid].size - Vector3(0.2, 0.2, 0.2)
+			var fm := FogMaterial.new()
+			fm.density = e.volumetric_fog_density
+			fm.albedo = e.volumetric_fog_albedo
+			fm.edge_fade = 0.3
+			fog.material = fm
+			room.add_child(fog)
+			fog.global_position = box.get_center()
+	_update_room_probes()
+
+
+func _update_room_probes() -> void:
+	for p in _probes:
+		if not is_instance_valid(p):
+			continue
+		var amb: Array = Look.probe_ambient(float(p.get_meta("factor")))
+		p.ambient_color = p.get_meta("tint", amb[0])
+		p.ambient_color_energy = amb[1]
 
 
 ## 假光柱（docs/06 第 9 节）：Look.SHAFT_ROOMS 里每扇窗前拉一束斜向屋里、向下的光，几乎不耗性能，
@@ -372,6 +438,12 @@ func _collect_room(rid: String, lv: Node, own: Node = null) -> void:
 			_room_env[rid] = n.environment
 		elif n is Light3D:
 			n.set_meta("shadow_default", n.shadow_enabled)
+			if n is DirectionalLight3D:
+				n.set_meta("basis_default", n.global_basis)
+				if rid != MAP_ID and not has_meta("room_sun_basis"):
+					set_meta("room_sun_basis", n.global_basis)   # 房间里的太阳都朝同一个方向，按房间布的窗光
+			else:
+				_fade_lamp_shadows(n)
 			if not _room_lights.has(rid):
 				_room_lights[rid] = []
 			_room_lights[rid].append(n)
@@ -403,26 +475,34 @@ func focus_room(rid: String) -> void:
 	_sync_switch_hums()
 
 
-## 一个房间的样子：这个房间的方向光（太阳、月光）与环境，只有这个房间的灯投影（灯多了阴影图集不够分）
+## 画面的样子。大地图里全庄园只有一套：一个共用环境、一个太阳（庄园外景的那盏，夜里用月光的方向，白天用房间里太阳的方向）、
+## 所有灯都投影（离远了影子自己淡掉，见 _fade_lamp_shadows）；房间之间的明暗差别交给房间里的局部补光（_add_room_probes），
+## 所以走过门口只有渐变，不会整屏跳。不在大地图里（火车、灰盒）时仍按那个房间的环境。
 func _apply_look(rid: String) -> void:
-	var look := rid if _room_lights.has(rid) or _room_env.has(rid) else MAP_ID
-	var has_sun := false
-	for r in _room_lights:
-		for l in _room_lights[r]:
-			if l is DirectionalLight3D and r == look:
-				has_sun = true
 	Look.preset_changed()
+	if current_id != MAP_ID:
+		var look := rid if _room_lights.has(rid) or _room_env.has(rid) else MAP_ID
+		for r in _room_lights:
+			for l in _room_lights[r]:
+				if is_instance_valid(l) and not Look.owns(_room_env.get(r)):
+					Look.light(l)
+		_env.environment = Look.env(_room_env.get(look, _room_env.get(MAP_ID)))
+		apply_leak(GameState.leak_level)
+		return
 	for r in _room_lights:
 		for l in _room_lights[r]:
 			if not is_instance_valid(l):
 				continue
-			if not Look.owns(_room_env.get(r)):
-				Look.light(l)
+			Look.light(l)
 			if l is DirectionalLight3D:
-				l.visible = r == look or (not has_sun and r == MAP_ID)
+				l.visible = r == MAP_ID
+				if r == MAP_ID:
+					var night := String(Look.current().get("preset", "")) == "夜"
+					l.global_basis = l.get_meta("basis_default") if night or not has_meta("room_sun_basis") else get_meta("room_sun_basis")
 			else:
-				l.shadow_enabled = l.get_meta("shadow_default", false) and r == look
-	_env.environment = Look.env(_room_env.get(look, _room_env.get(MAP_ID)))
+				l.shadow_enabled = l.get_meta("shadow_default", false)
+	_env.environment = Look.shared_env()
+	_update_room_probes()
 	apply_leak(GameState.leak_level)
 
 
@@ -1200,7 +1280,8 @@ func set_mode(mode: String, cam: String) -> void:
 	var m: Array = markers[key]
 	var target := Transform3D(Basis(), m[0]).looking_at(m[1])
 	var fov: float = m[2] if m.size() > 2 else 45.0
-	shot_cam.environment = Look.env(m[3]) if m.size() > 3 and m[3] else null
+	# 大地图里剧情机位也用共用环境（不切环境，镜头前后不跳）；火车这类单独的关卡仍用机位自己的环境
+	shot_cam.environment = null if current_id == MAP_ID else (Look.env(m[3]) if m.size() > 3 and m[3] else null)
 	shot_cam.near = m[4] if m.size() > 4 else 0.05
 	if _cam_key != "" and _cam_key != key and not Director.autoplay:
 		_camera_tween = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
