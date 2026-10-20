@@ -250,6 +250,7 @@ func _enter_map() -> void:
 		if not sp.is_empty() and not _room_box[rid].grow(0.05).has_point(sp[0] + Vector3(0, 0.9, 0)):
 			_room_box[rid] = _room_box[rid].merge(AABB(sp[0] - Vector3(1.5, 0, 1.5), Vector3(3, 2.5, 3)))
 	_add_practicals()
+	_add_shafts()
 	# 自查：每个房间的出生点要落在这个房间的范围里，否则“走进房间”的任务永远触发不了
 	for rid in _room_spawn:
 		if rid != MAP_ID and room_at(_room_spawn[rid][0]) != rid:
@@ -308,6 +309,42 @@ func _add_practicals() -> void:
 		if not _room_lights.has(rid):
 			_room_lights[rid] = []
 		_room_lights[rid].append(l)
+
+
+## 假光柱（docs/06 第 9 节）：Look.SHAFT_ROOMS 里每扇窗前拉一束斜向屋里、向下的光，几乎不耗性能，
+## 不受太阳方向和窗外树木影响。窗玻璃按 rain.gd 认的名字找，一扇窗一束；光到地面为止。
+func _add_shafts() -> void:
+	var rain_script: GDScript = load("res://world/rain.gd")
+	var tilt := deg_to_rad(Look.SHAFT_TILT)
+	for n in _walk(room):
+		if not n is MeshInstance3D or not rain_script.GLASS_NAMES.has(String(n.name)) or n.mesh == null:
+			continue
+		for b: AABB in rain_script._panes(n):
+			var c: Vector3 = b.get_center()
+			var thin_x: bool = b.size.x < b.size.z
+			var ax := Vector3.RIGHT if thin_x else Vector3.BACK
+			var rid := ""
+			var inward := Vector3.ZERO
+			for sgn in [1.0, -1.0]:
+				var r := room_at(c + ax * sgn * 0.4 - Vector3(0, 1.2, 0))
+				if Look.SHAFT_ROOMS.has(r) and _room_box.has(r) and absf(_room_box[r].position.y - (c.y - b.size.y * 0.5)) < 1.6:
+					rid = r
+					inward = ax * sgn
+			if rid == "":
+				continue
+			var half: Vector3 = b.size * 0.5
+			var side := Vector3.BACK if thin_x else Vector3.RIGHT
+			var w: float = half.z if thin_x else half.x
+			var dir := (inward * cos(tilt) + Vector3.DOWN * sin(tilt)).normalized()
+			var floor_y: float = _room_box[rid].position.y
+			var length: float = (c.y + half.y - floor_y) / sin(tilt)
+			var mi := MeshInstance3D.new()
+			mi.name = "光柱·" + rid
+			mi.mesh = Look.shaft_mesh(c + inward * 0.05, side, w, half.y, dir, length)
+			mi.material_override = Look.shaft_material()
+			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			mi.add_to_group("no_leak")
+			room.add_child(mi)
 
 
 static func _surface_box(mesh: Mesh, i: int) -> AABB:
@@ -1295,6 +1332,7 @@ func apply_leak(level: int) -> void:
 		if not is_instance_valid(mi):
 			continue
 		mi.material_override = _leak_mat if level >= 3 else _orig_mats.get(mi)
+	Look.update_shafts()
 	var calm := Look.fog_color() if _env.environment.has_meta("look") else Color("#0b0b10")
 	_env.environment.fog_light_color = Color("#d8d6d0") if level >= 3 else calm
 

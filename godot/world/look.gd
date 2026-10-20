@@ -17,6 +17,12 @@ const PRACTICAL_COLOR := Color(1.0, 0.76, 0.5)
 const PRACTICAL_ENERGY := 0.6
 const PRACTICAL_RANGE := 2.6
 
+## 假光柱只放在这几个房间朝南的窗户上（客房、餐厅、客厅）；向屋里、向下斜 38°
+const SHAFT_ROOMS := ["guest_room", "dining", "seance"]
+const SHAFT_TILT := 38.0
+const SHAFT_SHADER := "res://shaders/light_shaft.gdshader"
+
+static var _shaft_mat: ShaderMaterial
 static var _glow_mats := {}
 static var _rows: Array = []
 static var _sky_mat: ShaderMaterial
@@ -63,6 +69,7 @@ static func preset_changed() -> bool:
 		return false
 	_preset = name
 	_update_sky()
+	update_shafts()
 	return true
 
 
@@ -132,6 +139,48 @@ static func light(l: Light3D) -> void:
 		if l is OmniLight3D:
 			# 立方体阴影要把房间画 6 遍，双抛物面只画 2 遍；吊灯、灯笼的软影看不出差别
 			l.omni_shadow_mode = OmniLight3D.SHADOW_DUAL_PARABOLOID
+
+
+## 所有假光柱共用一份材质：强度按天光表 shafts 列（晴天最亮、夜里 0），渗漏 L3 起关掉
+static func shaft_material() -> ShaderMaterial:
+	if not _shaft_mat:
+		_shaft_mat = ShaderMaterial.new()
+		_shaft_mat.shader = load(SHAFT_SHADER)
+		update_shafts()
+	return _shaft_mat
+
+
+static func update_shafts() -> void:
+	if not _shaft_mat:
+		return
+	var row := current()
+	var on := GameState.leak_level < 3
+	_shaft_mat.set_shader_parameter("amount", _f(row, "shafts", 0.0) if on else 0.0)
+	var sun := Color.from_string(String(row.get("sun_color", "#dedcd6")), Color.WHITE)
+	_shaft_mat.set_shader_parameter("tint", Vector3(sun.r, sun.g, sun.b))
+
+
+## 一扇窗的光柱：在窗洞里横竖各摆三张薄片，都沿 dir 拉长 length；薄片两边自己淡出（UV.y 0—1 横跨薄片），
+## 外侧的薄片暗一些（COLOR.r 是权重），叠起来像一束边缘柔和的光。UV.x = 离窗口的远近
+static func shaft_mesh(center: Vector3, side: Vector3, w: float, h: float, dir: Vector3, length: float) -> ArrayMesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for k in [-0.55, 0.0, 0.55]:
+		var weight := 1.0 - absf(k) * 0.8
+		_card(st, center + Vector3.UP * h * k, side * w, dir, length, weight)   # 横片：跨整个窗宽
+		_card(st, center + side * w * k, Vector3.UP * h, dir, length, weight)   # 竖片：跨整个窗高
+	return st.commit()
+
+
+static func _card(st: SurfaceTool, mid: Vector3, half_span: Vector3, dir: Vector3, length: float, weight: float) -> void:
+	var a := mid - half_span
+	var b := mid + half_span
+	var n := half_span.cross(dir).normalized()
+	for v in [[a, 0.0, 0.0], [b, 0.0, 1.0], [b + dir * length, 1.0, 1.0], [a, 0.0, 0.0], [b + dir * length, 1.0, 1.0], [a + dir * length, 1.0, 0.0]]:
+		st.set_normal(n)
+		st.set_color(Color(weight, 0, 0))
+		st.set_uv(Vector2(v[1], v[2]))
+		st.add_vertex(v[0])
 
 
 ## 灯具发光的材质（同一种材质共用一份）
