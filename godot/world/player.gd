@@ -19,10 +19,16 @@ var active := false
 var frozen := false
 var needs_spawn := true
 var steps := 0
+## 回廊里没有自己的脚步声（第 5 章）
+var silent_steps := false
+## 这一帧是不是朝着自己的前方在走（回廊判断正放 / 倒放用）
+var forward := true
 var _stride := 0.0
 var _hover := ""
 ## 准星对着的门（门扇的碰撞体）
 var _door: Node = null
+var _switch: Node = null
+var _shut: Node = null    # 打不开、但推了有一句话的门（正门、序章里闩着的暗房门）
 var _pitch := 0.0
 ## 刚抓住鼠标时先忽略一小段鼠标位移：系统把光标拉回窗口中心会产生一次很大的相对位移，
 ## 不忽略的话进关卡的第一帧镜头会突然甩到天花板或桌面上。
@@ -124,11 +130,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		capture_mouse()
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		if _hover != "" and Director.world.corridor_interact(_hover):
+			return
 		if _hover != "":
 			Director.inspected.emit(_hover)
 		elif _door and Director.world:
 			Director.world.toggle_door(_door, global_position)
 			_door = null
+		elif _switch:
+			Director.world.toggle_switch(_switch)
+			Director.ui.set_hint("E　" + Director.world.switch_label(_switch))
+		elif _shut:
+			Director.ui.toast(Director.world.door_line(_shut))
+		elif Director.world.corridor_answering():
+			# 回廊第 3 层：屏幕上有个“回答”。按了就是回答了
+			Director.world.corridor_answer()
 
 
 func _physics_process(dt: float) -> void:
@@ -139,10 +155,13 @@ func _physics_process(dt: float) -> void:
 	var before := global_position
 	walk(dir, dt)
 	_stride += Vector2(global_position.x - before.x, global_position.z - before.z).length()
+	var moved := Vector3(global_position.x - before.x, 0, global_position.z - before.z)
+	_stride = moved.length()
+	forward = moved.dot(-global_transform.basis.z) > 0.0
 	if _stride >= STRIDE:
-		_stride -= STRIDE
+		_stride = 0.0
 		steps += 1
-		if Director.world:
+		if not silent_steps and Director.world:
 			Director.world.play_sound(Director.world.footstep_sound())
 	_update_hover()
 
@@ -166,19 +185,41 @@ func _update_hover() -> void:
 		return
 	var id := ""
 	var door: Node = null
+	var sw: Node = null
+	var shut: Node = null
 	if ray.is_colliding():
 		var c := ray.get_collider()
 		if c and c.has_meta("hotspot_id") and Director.world.active_hotspots.has(c.get_meta("hotspot_id")):
 			id = c.get_meta("hotspot_id")
 		elif c and c.has_meta("door"):
-			door = c
-	if id == _hover and door == _door:
+			# 能开的门这一镜闩着（门的说法表有话）：推不开，只说那句话；已经开着的照常能关
+			if Director.world.door_line(c) != "" and not Director.world.door_is_open(c):
+				shut = c
+			else:
+				door = c
+		elif c and c.has_meta("switch"):
+			sw = c
+		elif c and c.has_meta("door_line") and Director.world.door_line(c) != "":
+			shut = c
+	# 回廊的提示是会变的（回答选项出现 / 消失），所以不能只看“目标没变就返回”
+	if id == _hover and door == _door and sw == _switch and shut == _shut and not Director.world.corridor_running():
 		return
 	_hover = id
 	_door = door
+	if sw != _switch:
+		Director.world.paint_switches(sw)
+	_switch = sw
+	_shut = shut
+	Director.world.hover_hotspot(id)
 	if id != "":
-		Director.ui.set_hint("E　检查：" + ContentDB.hotspots.get(id, {}).get("label", id))
+		Director.ui.set_hint("E　" + Director.world.target_label(id))
+	elif Director.world.corridor_hint() != "":
+		Director.ui.set_hint(Director.world.corridor_hint())
 	elif door:
 		Director.ui.set_hint("E　关门" if Director.world.door_is_open(door) else "E　开门")
+	elif sw:
+		Director.ui.set_hint("E　" + Director.world.switch_label(sw))
+	elif shut:
+		Director.ui.set_hint("E　" + Director.world.door_line_label(shut))
 	else:
 		Director.ui.set_hint("")

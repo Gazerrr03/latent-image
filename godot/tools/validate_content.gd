@@ -22,6 +22,8 @@ var issues: Array = []
 var fx_presets := {}
 var footage := {}
 var music := {}
+## 任务表：组 -> 行数组
+var quests := {}
 ## 关卡进度（纵切面），写进检查报告
 var level_rows: Array = []
 ## 人工搭的关卡场景：房间 id -> 从场景里读出的名字（机位、物件、人物、小物件占位）
@@ -51,6 +53,7 @@ func _init() -> void:
 	var layout := DB.group_by(layout_rows, "room")
 	var sounds := DB.index_by(DB.load_table(AUDIO + "sounds.csv"), "id")
 	music = DB.index_by(DB.load_table(AUDIO + "music.csv"), "id")
+	quests = DB.group_by(DB.load_table(STORY + "quests.csv"), "group")
 	var props := DB.index_by(DB.load_table(VISUAL + "props.csv"), "id")
 	for rid in rooms:
 		var lv := _scan_level(rid)
@@ -199,6 +202,15 @@ func _init() -> void:
 	for id in rooms:
 		if not levels.has(id) and not layout.has(id):
 			err("房间登记表", id, "既没有关卡场景，也没有灰盒布局", "在 Godot 里搭 levels/%s.tscn" % id)
+	# ── 门的说法表：话不空，起止镜号存在且先后正确（门名对不对要进游戏看：准星对着门有没有“推门”提示）──
+	for row in DB.load_table(STORY + "doors.csv"):
+		var where := String(row.get("door", ""))
+		if where == "" or String(row.get("text", "")) == "":
+			err("门的说法表", where, "door 和 text 都不能空")
+		for k in ["from", "until"]:
+			var v: String = row.get(k, "")
+			if v != "" and not shots.map(func(r): return r.get("shot_id", "")).has(v):
+				err("门的说法表", where, "%s 写的镜号 %s 不在镜头表里" % [k, v], "写成镜头表 shot_id 列里的镜号，或留空")
 	# ── 房间状态表：房间在登记表里、类型合法、起止镜号存在且先后正确 ──
 	var shot_ids := shots.map(func(r): return r.get("shot_id", ""))
 	for row in DB.load_table(SPACE + "room_states.csv"):
@@ -219,6 +231,51 @@ func _init() -> void:
 		var a_: String = row.get("from", ""); var b_: String = row.get("until", "")
 		if a_ != "" and b_ != "" and shot_ids.find(a_) >= shot_ids.find(b_):
 			err("房间状态表", where, "from（%s）不在 until（%s）之前" % [a_, b_])
+
+	# ── 任务表（自由探索） ──
+	var shot_set := {}
+	for r in shots:
+		shot_set[r.get("shot_id", "")] = true
+	var quest_ids := {}
+	for g in quests:
+		for q in quests[g]:
+			quest_ids[q.get("id", "")] = true
+	var map_rooms := ["hall", "dining", "seance", "archive", "child_room", "guest_room", "darkroom", "greenhouse", "garden", "manor"]
+	for g in quests:
+		var exits := 0
+		for q in quests[g]:
+			var qid: String = q.get("id", "")
+			var t: String = q.get("trigger", "")
+			if t.begins_with("talk:"):
+				var who := t.trim_prefix("talk:").get_slice("@", 0)
+				var rid := t.get_slice("@", 1)
+				if not t.contains("@") or not map_rooms.has(rid):
+					err("任务表", qid, "talk 要写成 talk:人名@房间，房间是庄园大地图里的房间（%s）" % "、".join(PackedStringArray(map_rooms)))
+				elif levels.has(rid) and not levels[rid]["names"].has("chr_" + who):
+					err("任务表", qid, "关卡场景 levels/%s.tscn 里没有 chr_%s，玩家找不到这个人" % [rid, who], "在关卡场景里放一个站位节点 chr_%s" % who)
+			elif t.begins_with("enter:"):
+				if not map_rooms.has(t.trim_prefix("enter:")):
+					err("任务表", qid, "enter 的房间“%s”不在庄园大地图里" % t.trim_prefix("enter:"))
+			elif t.begins_with("door:"):
+				pass  # 门是模型里的节点，运行时找不到会提醒
+			elif not hotspots.has(t):
+				err("任务表", qid, "trigger“%s”看不懂" % t, "写 talk:人名@房间、enter:房间、door:门的节点名，或可检查物件表里的 hs_ 编号")
+			for k in ["shot", "until"]:
+				var v: String = q.get(k, "")
+				if v != "" and not shot_set.has(v):
+					err("任务表", qid, "%s 写的镜号 %s 不在镜头表里" % [k, v])
+			var req: String = q.get("require", "")
+			if req != "":
+				exits += 1
+			for part in req.split("|", false):
+				if part.strip_edges() == "全部":
+					continue  # 这一组能拿到线索的任务都做完（线索收齐，docs/01 第 4 节）
+				var ids_ := part.get_slice(":", 1) if part.contains(":") else part
+				for x in ids_.split(",", false):
+					if not quest_ids.has(x.strip_edges()):
+						err("任务表", qid, "require 里的任务 %s 不存在" % x.strip_edges())
+		if exits == 0:
+			err("任务表", g, "这一组没有写 require 的任务，探索永远结束不了", "加一行“回客房”之类的收尾任务，require 写要先完成的任务")
 
 	# ── 声音 ──
 	for set_id in lines:
@@ -394,6 +451,18 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 				err("镜头表", id, "配乐“%s”不在配乐表里" % str(args), "写配乐表里的曲名，或 music(关闭) 停止")
 			if args.size() > 1 and not args[1].is_valid_float():
 				err("镜头表", id, "music 的第二个参数是淡入 / 淡出秒数，现在是“%s”" % args[1])
+		"station":
+			# 客房的一站：桌面 / 打字机 / 床（docs/01 第 4 节）
+			if args.size() != 1 or not ["hs_desk_board", "hs_typewriter", "hs_bed"].has(args[0]):
+				err("镜头表", id, "station 只能写客房的三站：hs_desk_board、hs_typewriter、hs_bed")
+			elif room != "guest_room":
+				err("镜头表", id, "station 只用在客房（scene 写 guest_room）")
+		"wake", "sleep":
+			if room != "guest_room" and room != "":
+				err("镜头表", id, "%s 只用在客房（scene 写 guest_room）" % nm)
+		"explore":
+			if args.is_empty() or not quests.has(args[0]):
+				err("镜头表", id, "explore 的任务组“%s”不在任务表里" % str(args), "在 content/story/quests.csv 的 group 列写这个组名")
 		"leak":
 			if args.is_empty() or not args[0].is_valid_int() or int(args[0]) < 0 or int(args[0]) > 4:
 				err("镜头表", id, "渗漏等级必须是 0—4")

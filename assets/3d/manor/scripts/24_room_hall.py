@@ -294,12 +294,19 @@ build(picture(0.9, 0.7, 'paint1'), '门厅·东墙油画', SP, (12.288 - 0.004, 
 build(rug(3.0, 2.3), '门厅·地毯', SP, (9.6, 2.45, FF1), 90)
 build(lantern(0.42, 0.16, 0.42), '门厅·吊灯笼', SP, (9.6, 2.55, C1 - 0.052), 0)
 build(lantern(1.3, 0.18, 0.46), '楼梯井·吊灯笼', SP, (9.4, 8.9, C2 - 0.052), 0)
-# 一楼走廊与楼梯区
-RUN = Prop()
-for x0, x1, y0, y1, z in [(0.8, 14.3, 5.55, 6.25, FF1), (0.8, 18.5, 5.55, 6.25, FF2)]:
-    r_ = RUN.flat('rug'); r_.face([r_.V((x0, y0, z + 0.009)), r_.V((x1, y0, z + 0.009)), r_.V((x1, y1, z + 0.009)), r_.V((x0, y1, z + 0.009))])
-    for xx0, xx1, yy0, yy1 in [(x0, x1, y0, y0 + 0.008), (x0, x1, y1 - 0.008, y1)]: RUN['rug_edge'].box(xx0, xx1, yy0, yy1, z + 0.001, z + 0.0115)
-build(RUN, '门厅·走廊长地毯', SP, smooth=0)
+# 一楼走廊长地毯（与二楼长地毯共同使用专属走廊长毯贴图）
+RUN1 = Prop()
+for x0, x1, y0, y1, z in [(0.8, 14.3, 5.55, 6.25, FF1)]:
+    r_ = RUN1.flat('rug_corridor'); r_.face([r_.V((x0, y0, z + 0.009)), r_.V((x1, y0, z + 0.009)), r_.V((x1, y1, z + 0.009)), r_.V((x0, y1, z + 0.009))])
+    for xx0, xx1, yy0, yy1 in [(x0, x1, y0, y0 + 0.008), (x0, x1, y1 - 0.008, y1)]: RUN1['rug_edge'].box(xx0, xx1, yy0, yy1, z + 0.001, z + 0.0115)
+build(RUN1, '门厅·走廊长地毯', SP, smooth=0)
+
+# 二楼走廊长地毯（使用专属走廊长毯贴图，比例适配，避免拉伸）
+RUN2 = Prop()
+for x0, x1, y0, y1, z in [(0.8, 18.5, 5.55, 6.25, FF2)]:
+    r_ = RUN2.flat('rug_corridor'); r_.face([r_.V((x0, y0, z + 0.009)), r_.V((x1, y0, z + 0.009)), r_.V((x1, y1, z + 0.009)), r_.V((x0, y1, z + 0.009))])
+    for xx0, xx1, yy0, yy1 in [(x0, x1, y0, y0 + 0.008), (x0, x1, y1 - 0.008, y1)]: RUN2['rug_edge'].box(xx0, xx1, yy0, yy1, z + 0.001, z + 0.0115)
+build(RUN2, '二楼·走廊长地毯', SP, smooth=0)
 console_with('一楼·楼梯旁条案-col', (12.688 - G - 0.19, 8.9, FF1), -90, w=0.9, d=0.38, deco='vase')
 build(picture(0.6, 0.75, 'paint2'), '一楼·楼梯旁油画', SP, (12.688 - 0.004, 8.9, FF1 + 1.75), -90)
 for x in (5.0, 7.1, 11.4):

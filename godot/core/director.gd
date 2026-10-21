@@ -6,12 +6,17 @@ extends Node
 signal shot_started(row: Dictionary)
 signal inspected(id: String)
 signal finished
+signal corridor_done
 
 const Actions := preload("res://core/actions.gd")
 const CANCEL := "__cancel__"
 ## 在镜头文字出现之前执行的动作
 var _footage_handoff := false
-const STAGING := ["reveal", "conceal", "music"]
+## 客房的一站（station）、醒来（wake）也在文字之前：玩家先走过去、按 E，或先睁开眼，文字才出现；
+## 目标（objective）也提前写出来，玩家走过去之前就知道去哪
+const STAGING := ["reveal", "conceal", "music", "objective", "wake", "station"]
+## 客房的三站：按 E 以后镜头坐到哪个机位（床由 world.lie_down 处理）
+const STATION_CAM := {"hs_desk_board": "board", "hs_typewriter": "typewriter_close"}
 
 var ui: Node
 var world: Node
@@ -26,6 +31,12 @@ var _stopping := false
 var _played := 0
 var _train_present := false
 var _before_train_fx := ""
+## 正在进行的自由探索（任务表的一组）；空 = 不在探索
+var _explore_group := ""
+## 正在进行的行走检查（inspect）里还没看的物件
+var _inspect_pending: Array = []
+## 这一组“回客房”已经出现过（只在第一次出现时响一声）
+var _end_announced := {}
 
 
 func _ready() -> void:
@@ -45,6 +56,7 @@ func jump(shot_id: String) -> void:
 	if not ContentDB.shots.has(shot_id):
 		push_warning("没有这个镜号：" + shot_id)
 		return
+	ui.eyelids_set(1.0)
 	if running:
 		_jump_to = shot_id
 		ui.cancel()
@@ -112,10 +124,17 @@ func _play(row: Dictionary) -> void:
 	if row.get("scene", "") != "":
 		world.show_scene(row["scene"])
 	world.apply_room_states(row.get("shot_id", ""))
+	var acts := Actions.parse(row.get("actions", ""))
+	var names: Array = acts.map(func(a): return a["name"])
+	# 眼睛只在“睡下 → 醒来”之间闭着；跳镜、读档时不该还闭着
+	if not names.has("wake") and not names.has("sleep"):
+		ui.eyelids_set(1.0)
 	world.set_mode(mode, row.get("camera", ""))
 	ui.set_cinematic(mode == "camera")
-	world.play_sounds(row.get("sound", ""))
-	var acts := Actions.parse(row.get("actions", ""))
+	# 客房的一站：声音（敲门、钟声）等玩家按了 E、躺下以后才响
+	var late_sound: bool = names.has("station")
+	if not late_sound:
+		world.play_sounds(row.get("sound", ""))
 	# 火车的当下画面：在文字出现前退出片头录像样式；其他关卡保持原顺序。
 	var staging: Array = STAGING.duplicate()
 	if row.get("scene", "") == "train":
@@ -124,8 +143,18 @@ func _play(row: Dictionary) -> void:
 	for a in acts:
 		if a["name"] in staging:
 			await _do(a["name"], a["args"], mode)
+			if _interrupted():
+				return
+	if late_sound:
+		world.play_sounds(row.get("sound", ""))
 	if row.get("text", "") != "" and not skip_text:
+		# 行走镜头里读字时人站住（文字框要点击翻页，不该边读边走）
+		var hold: bool = world.player != null and world.player.active
+		if hold:
+			world.set_frozen(true)
 		await ui.show_text(fill(row["text"]))
+		if hold:
+			world.set_frozen(false)
 		if _interrupted():
 			return
 	for a in acts:
@@ -228,11 +257,45 @@ func _do(name: String, args: Array, mode: String) -> void:
 			await _recap(args[0] if args.size() > 0 else "")
 		"diary":
 			await _diary(args[0] if args.size() > 0 else "")
+		"explore":
+			# explore(组)：放进庄园大地图自由探索，按任务表给提示、等玩家触发（docs/06 2.2）
+			await _explore(args[0] if args.size() > 0 else "")
+		"station":
+			# station(物件)：客房的一站（桌面 / 打字机 / 床）。只有这一站描边，玩家走过去按 E；回客房后不能再出门（docs/01 第 4 节）
+			await _station(args[0] if args.size() > 0 else "")
+		"wake":
+			# wake()：在客房的床上睁眼、坐起、站到床边，把控制权交给玩家
+			if not autoplay:
+				world.unlock_room()
+				await world.wake_up()
+		"sleep":
+			# sleep()：眼睑合上，结束这一天；sleep(睁眼) = 这一夜没有睡，眼睛不合上（第 6 章）
+			if not autoplay:
+				world.unlock_room()
+				if not (args.size() > 0 and args[0] == "睁眼"):
+					await ui.eyelids_close()
+		"corridor":
+			# corridor()：进入第 5 章的回廊，走完（或退化为跳过）继续下一镜
+			await _corridor()
 		"osd":
 			# osd(样式,文件名,编号,时间)；osd() 关闭
 			ui.footage.set_live(args[0] if args.size() > 0 else "", args[1] if args.size() > 1 else "", args[2] if args.size() > 2 else "", args[3] if args.size() > 3 else "")
 		_:
 			push_warning("未知动作，已跳过：" + name)
+
+
+func _corridor() -> void:
+	if autoplay:
+		# 无界面回归：不真的走，直接按表把每层该收的线索收掉
+		for r in ContentDB.corridor:
+			_collect(String(r.get("collect", "")))
+		return
+	world.start_corridor()
+	await corridor_done
+	# 走完：把每层该收的线索收进证据板
+	for r in ContentDB.corridor:
+		_collect(String(r.get("collect", "")))
+	GameState.record("corridor", "回廊")
 
 
 func _collect(id: String) -> void:
@@ -242,7 +305,8 @@ func _collect(id: String) -> void:
 	if not GameState.evidence.has(id):
 		GameState.add_evidence(id)
 		world.play_sound("ui_collect")
-		ui.toast("收入证据板：" + ContentDB.evidence[id]["name"])
+		ui.toast("收入笔记本：" + ContentDB.evidence[id]["name"])
+		ui.notebook_ping()
 
 
 func _show_hotspot(id: String) -> void:
@@ -269,16 +333,21 @@ func _inspect(ids: Array, mode: String) -> void:
 	if mode == "walk":
 		world.highlight_hotspots(ids)
 		_checklist(ids, pending)
+		_inspect_pending = pending
 		while not pending.is_empty():
 			var id: String = await inspected
 			if id == CANCEL:
+				_inspect_pending = []
 				world.highlight_hotspots([])
 				ui.set_checklist([])
 				return
+			if not pending.has(id):
+				continue  # 走进别的房间（enter:）之类的探索事件，这里不管
 			await _show_hotspot(id)
 			pending.erase(id)
 			ui.set_progress(ids.size() - pending.size(), ids.size())
 			_checklist(ids, pending)
+		_inspect_pending = []
 		world.highlight_hotspots([])
 		ui.set_progress(0, 0)
 		ui.set_checklist([])
@@ -291,6 +360,213 @@ func _inspect(ids: Array, mode: String) -> void:
 		var id: String = pending[k]
 		await _show_hotspot(id)
 		pending.erase(id)
+
+
+# ───────────── 自由探索（任务表） ─────────────
+
+## 一轮自由探索：玩家在庄园里走，左上角列出提示；走到人面前交谈、走进房间、推开某扇门，就播放对应的镜头，
+## 播完回到原地继续走。写了 require 的任务（回客房）完成后，这一轮结束，回到镜头表的下一镜。
+func _explore(group: String) -> void:
+	var qs: Array = ContentDB.quests.get(group, [])
+	if qs.is_empty():
+		push_warning("任务表里没有这一组：" + group)
+		return
+	_explore_group = group
+	var present: Array = []
+	for q in qs:
+		var t: String = q.get("trigger", "")
+		if t.begins_with("talk:"):
+			present.append(t.get_slice("@", 1) + "/" + t.trim_prefix("talk:").get_slice("@", 0))
+	while true:
+		var open: Array = qs.filter(func(q): return not GameState.quests_done.has(q["id"]) and quest_ready(q))
+		if open.is_empty():
+			break
+		var pick: Dictionary = {}
+		if autoplay:
+			for q in open:
+				if q.get("require", "") == "":
+					pick = q
+					break
+			if pick.is_empty():
+				pick = open[0]
+		else:
+			if world.current_id != "manor":
+				world.show_scene("guest_room")
+			ui.set_cinematic(false)
+			# 先进入探索状态再交给玩家：从单独加载的房间（主卧）回到大地图时，玩家站回原处，不被送回客房
+			world.set_explore(open.map(func(q): return q["trigger"]), present)
+			world.set_mode("walk", "")
+			_explore_checklist(qs)
+			var id: String = await inspected
+			if id == CANCEL:
+				_explore_group = ""
+				world.end_explore()
+				ui.set_checklist([])
+				return
+			for q in open:
+				if q["trigger"] == id:
+					pick = q
+			if pick.is_empty():
+				continue
+		world.end_explore()
+		ui.set_checklist([])
+		GameState.quests_done.append(pick["id"])
+		GameState.save()
+		if pick.get("shot", "") != "":
+			await _play_range(pick["shot"], pick.get("until", ""))
+			if _interrupted():
+				_explore_group = ""
+				return
+		if pick.get("require", "") != "":
+			break
+	_explore_group = ""
+	world.end_explore()
+	ui.set_checklist([])
+
+
+## require 列：a|b|2:c,d,e（a、b 都完成，且 c、d、e 里至少两个）；
+## “全部” = 这一组里能拿到线索的任务都做完了（这一章的线索收齐，docs/01 第 4 节）
+static func quest_ready(q: Dictionary) -> bool:
+	for part in String(q.get("require", "")).split("|", false):
+		var p := part.strip_edges()
+		if p == "全部":
+			for o in ContentDB.quests.get(q.get("group", ""), []):
+				if o["id"] != q["id"] and o.get("require", "") == "" and not quest_evidence(o).is_empty() \
+						and not GameState.quests_done.has(o["id"]):
+					return false
+			continue
+		if p.contains(":"):
+			var need := int(p.get_slice(":", 0))
+			var n := 0
+			for id in p.get_slice(":", 1).split(",", false):
+				if GameState.quests_done.has(id.strip_edges()):
+					n += 1
+			if n < need:
+				return false
+		elif not GameState.quests_done.has(p):
+			return false
+	return true
+
+
+func _explore_checklist(qs: Array) -> void:
+	var items: Array = []
+	# 线索计数：这一组任务能拿到的线索，已经收进笔记本的有几条
+	var all: Array = group_evidence(qs[0].get("group", "")) if not qs.is_empty() else []
+	if not all.is_empty():
+		var got: int = all.filter(func(e): return GameState.evidence.has(e)).size()
+		items.append({"text": "线索 %d / %d" % [got, all.size()], "done": false, "head": true})
+	for q in qs:
+		var done: bool = GameState.quests_done.has(q["id"])
+		if done or quest_ready(q):
+			items.append({"text": fill(q.get("hint", "")), "done": done})
+			# 收尾任务（回客房）第一次出现：打字机“叮”一声，告诉玩家这一天可以结束了
+			if not done and q.get("require", "") != "" and not _end_announced.has(q["id"]):
+				_end_announced[q["id"]] = true
+				if not all.is_empty():
+					world.play_sound("typewriter_return")
+					ui.toast("今天的线索收齐了。")
+	ui.set_checklist(items)
+
+
+## 一条任务能拿到的线索：它的镜头里 collect(...) 的，加上 inspect(...) 检查的物件给出的
+static func quest_evidence(q: Dictionary) -> Array:
+	var out: Array = []
+	var cur: String = q.get("shot", "")
+	var last: String = q.get("until", "")
+	var guard := 0
+	while cur != "" and ContentDB.shots.has(cur) and guard < 64:
+		guard += 1
+		var row: Dictionary = ContentDB.shots[cur]
+		for a in Actions.parse(row.get("actions", "")):
+			if a["name"] == "collect":
+				out.append_array(a["args"])
+			elif a["name"] == "inspect":
+				for h in a["args"]:
+					var e: String = ContentDB.hotspots.get(h, {}).get("evidence", "")
+					if e != "":
+						out.append(e)
+		if last == "" or cur == last:
+			break
+		var n: String = row.get("next", "").strip_edges()
+		cur = ContentDB.next_in_order(cur) if n == "" else n
+	return out
+
+
+static func group_evidence(group: String) -> Array:
+	var out: Array = []
+	for q in ContentDB.quests.get(group, []):
+		if q.get("require", "") != "":
+			continue  # 收尾任务自己的镜头（如降灵会）不算在“收齐”里
+		for e in quest_evidence(q):
+			if not out.has(e):
+				out.append(e)
+	return out
+
+
+# ───────────── 客房的一站 ─────────────
+
+## 一天结束时，客房里按顺序只有一站可以交互（桌面 → 打字机 → 床）。玩家走过去按 E，镜头坐到那一站；
+## 走到客房门口会被挡回来（这一天不能再出门）。床：躺下，眼睑半合；之后 sleep() 合上
+func _station(id: String) -> void:
+	if autoplay or id == "":
+		return
+	if world.current_id != "manor":
+		world.show_scene("guest_room")
+	ui.set_cinematic(false)
+	world.set_mode("walk", "")
+	world.lock_room("guest_room")
+	world.highlight_hotspots([id])
+	while true:
+		var got: String = await inspected
+		if got == CANCEL:
+			world.highlight_hotspots([])
+			return
+		if got == id:
+			break
+	world.highlight_hotspots([])
+	ui.set_objective("")
+	world.play_sounds(ContentDB.hotspots.get(id, {}).get("sound", ""))
+	if id == "hs_bed":
+		await world.lie_down()
+		await ui.eyelids_to(0.45, 1.6)
+	elif STATION_CAM.has(id):
+		world.set_mode("camera", STATION_CAM[id])
+		await _wait(1.0)
+
+
+# ───────────── 回想（地面指引） ─────────────
+
+## Q：指向哪里。行走检查时 = 还没看的物件；自由探索时 = 还没做的任务（先做能拿线索的，收齐后才指客房）；
+## 回到客房收尾（锁着）或不在走动时 = 不指（图标变灰）
+func guide_targets() -> Array:
+	var out: Array = []
+	if world == null or world.room_locked() != "":
+		return out
+	if not _inspect_pending.is_empty():
+		for id in _inspect_pending:
+			out.append(id)
+		return out
+	if _explore_group == "":
+		return out
+	for q in ContentDB.quests.get(_explore_group, []):
+		if not GameState.quests_done.has(q["id"]) and quest_ready(q):
+			out.append(q["trigger"])
+	return out
+
+
+## 播放一段镜头：从 first 到 last（含），按 next 列走；last 为空只播 first
+func _play_range(first: String, last: String) -> void:
+	var cur := first
+	var guard := 0
+	while cur != "" and cur != "END" and ContentDB.shots.has(cur) and guard < 64:
+		guard += 1
+		var row: Dictionary = ContentDB.shots[cur]
+		GameState.shot = cur
+		_played += 1
+		await _play(row)
+		if _interrupted() or last == "" or cur == last:
+			return
+		cur = resolve_next(row)
 
 
 ## 观察清单：可检查物件表的 hint 列（带方向的问题）；没写 hint 的用物件名

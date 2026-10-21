@@ -1,5 +1,5 @@
 extends Node
-## 雨天的室内雨声只在窗边响；近于 0.8 m 为设定音量，远于 3.5 m 静音。
+## 雨天的室内雨声只在窗边响；近于 0.8 m 为设定音量，远于 3.5 m 静音。下雨时窗玻璃上挂雨滴。
 ## 天气来自当前章日记；听音点沿用当前相机，探索时即玩家眼睛。
 
 const NEAR := 0.8
@@ -17,10 +17,14 @@ var _players := {}
 var _amp := {"rain_night": 0.0, "rain_glass": 0.0}
 var _weather_cache := {}
 var _indoor_gain := 0.0
+var _glass_meshes: Array = []
+var _wet := false
+var _drops: ShaderMaterial
 var _outdoor_gain := 0.0
 
 
 func _process(dt: float) -> void:
+	_paint_glass(host != null and raining())
 	var indoor := 0.0
 	var outdoor := 0.0
 	if host and raining():
@@ -84,6 +88,8 @@ func _refresh_glass() -> void:
 		return
 	_glass_root_id = rid
 	_glass.clear()
+	_glass_meshes.clear()
+	_wet = false
 	if room == null:
 		return
 	var stack: Array = [room]
@@ -92,6 +98,23 @@ func _refresh_glass() -> void:
 		stack.append_array(node.get_children())
 		if node is MeshInstance3D and GLASS_NAMES.has(String(node.name)) and node.mesh:
 			_glass.append_array(_panes(node))
+			_glass_meshes.append(node)
+
+
+## 雨天给窗玻璃挂上雨滴（shaders/rain_glass.gdshader），不下雨时摘掉
+func _paint_glass(wet: bool) -> void:
+	if host == null:
+		return
+	_refresh_glass()
+	if wet == _wet:
+		return
+	_wet = wet
+	if not _drops:
+		_drops = ShaderMaterial.new()
+		_drops.shader = load("res://shaders/rain_glass.gdshader")
+	for m in _glass_meshes:
+		if is_instance_valid(m):
+			m.material_overlay = _drops if wet else null
 
 
 ## 同一网格可能含有多扇窗，按相交的三角形包围盒分开，避免整面墙都被算成窗。

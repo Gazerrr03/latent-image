@@ -1,6 +1,6 @@
 id,text,note
-title,奥瑞尔庄园,标题页的大字
-title_sub,一九二六年十月　威尔特郡,标题下面一行小字
+title,潜影,标题页的大字
+title_sub,奥瑞尔庄园　一九二六年十月,标题下面一行小字
 title_image,ui/title_manor.png,标题页背景（art/ 下的路径）：庄园雨夜的一帧，--capture=C0-04 --clean 截取
 title_sound,rain_night,标题页循环的环境声（音效表 id）；离开标题页时停掉
 menu_continue,继续调查,有存档才出现；下面一行小字自动写出“第几章 · 日期 · 离开庭还有几天”
@@ -33,7 +33,7 @@ val_instant,直接显示,
 val_fullscreen,全屏,
 val_windowed,窗口,
 controls_head,操作说明,
-controls,W A S D／方向键｜走动\n鼠标｜环顾\nE／左键｜检查 · 推门 · 交谈\nTab｜翻开证据板\n空格／回车／左键｜读下一句\nEsc｜暂停,每行“按键｜做什么”
+controls,W A S D／方向键｜走动\n鼠标｜环顾\nE／左键｜检查 · 推门 · 交谈\nTab｜翻开笔记本（线索）\nQ｜回想：地面浮现该去哪里的路\n空格／回车／左键｜读下一句\nEsc｜暂停,每行“按键｜做什么”
 key_hint,E,准星提示前面的按键
 sound_select,paper_rustle,菜单确认一项时的声音（音效表 id）
 sound_pause,ui_board_open,打开暂停页时的声音（音效表 id）

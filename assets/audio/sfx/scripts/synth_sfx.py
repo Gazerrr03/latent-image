@@ -829,6 +829,34 @@ def ui_link_wrong():
 
 # ======================= 输出 =======================
 
+# ======================= 第 5 章：回廊 =======================
+
+@sfx("needle_scratch", "唱针跳了：一声刮擦", "器物", vol=-4)
+def needle_scratch():
+    d = 0.45
+    n = int(d * SR)
+    # 一段被猛地拖回沟槽的摩擦：窄带噪声 + 频率快速下滑的叫声
+    hiss = bandpass(white(n, 7), 1800, 7000) * env_shape(n, [(0, 0), (0.01, 1), (0.12, 0.7), (0.45, 0)])
+    sweep = modal(d, [(1700, 0.12, 0.9)], seed=8)
+    t = secs(d)
+    glide = np.sin(2 * np.pi * np.cumsum(1600 * np.exp(-t * 6) + 200) / SR) * np.exp(-t * 9) * 0.5
+    x = hiss + 0.5 * sweep + glide
+    return reverb(x, 0.5, 0.15)
+
+
+@sfx("room_hum", "回廊底噪：空房间的低鸣", "环境", loop=True, vol=-16)
+def room_hum():
+    d = 8.0
+    n = int(d * SR)
+    base = (np.sin(2 * np.pi * 48 * secs(d)) * 0.3
+            + np.sin(2 * np.pi * 97 * secs(d)) * 0.12
+            + np.sin(2 * np.pi * 151 * secs(d)) * 0.05)
+    air = lowpass(white(n, 11), 420) * 0.35
+    x = base + air
+    x *= 0.8 + 0.2 * smooth_noise(n, 0.2, 12)
+    return loopify(x, 1.2)
+
+
 def normalize(x, loop):
     if x.ndim == 1:
         x = stereo(x)

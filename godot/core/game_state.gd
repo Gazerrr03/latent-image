@@ -13,6 +13,8 @@ var evidence: Array = []
 var found_at := {}
 var inspected: Array = []
 var links_done: Array = []
+## 完成了的任务（任务表 id）
+var quests_done: Array = []
 ## 连对的证据对 [[a, b], ...]，证据板上画红线用
 var link_pairs: Array = []
 var leak_level := 0
@@ -36,6 +38,7 @@ func reset() -> void:
 	found_at = {}
 	inspected = []
 	links_done = []
+	quests_done = []
 	link_pairs = []
 	leak_level = 0
 	tendency = {}
@@ -92,7 +95,7 @@ func set_leak(level: int) -> void:
 func to_dict() -> Dictionary:
 	return {
 		"version": 2, "shot": shot, "evidence": evidence, "found_at": found_at, "inspected": inspected,
-		"links_done": links_done, "link_pairs": link_pairs, "leak_level": leak_level, "tendency": tendency,
+		"links_done": links_done, "quests_done": quests_done, "link_pairs": link_pairs, "leak_level": leak_level, "tendency": tendency,
 		"journal": journal, "objective": objective, "ending": ending, "statement": statement, "container": container,
 	}
 
@@ -104,6 +107,7 @@ func from_dict(d: Dictionary) -> void:
 	found_at = d.get("found_at", {})
 	inspected = d.get("inspected", [])
 	links_done = d.get("links_done", [])
+	quests_done = d.get("quests_done", [])
 	link_pairs = d.get("link_pairs", [])
 	leak_level = int(d.get("leak_level", 0))
 	tendency = d.get("tendency", {})

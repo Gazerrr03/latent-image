@@ -15,10 +15,10 @@
 - 分镜即数据：剧情内容全部在 `godot/content/story/*.csv`，代码不写死内容。表头与列含义见 `docs/06-技术方案.md` 第 2 节。
 - 镜头表的 `actions` 列只能使用 `godot/core/actions.gd` 中的白名单；新增动作要同时改 `actions.gd`、`director.gd` 的 `_do`，并更新 `docs/06` 2.2 节。
 - 每个 `.csv` 旁必须有 `importer="keep"` 的 `.csv.import`（校验工具会自动补）。
-- **空间不进表（10-14）**：关卡空间与机位构图由用户在 Godot 编辑器里搭成 `godot/levels/<房间id>.tscn`，是空间的唯一依据；不要用代码或表格生成、改写关卡空间。表格只放靠名字就能接上的内容（线索、小物件用哪个模型等）。节点命名见 `docs/填表说明/1.4`（`spawn`、`cam_<机位>`、`hs_<编号>`、`chr_<人名>`、`prop_<编号>`）；小物件模型放 `godot/art/props/`，在 `content/visual/props.csv` 登记。还没有关卡场景的房间暂按 `content/space/`（rooms.csv、layout.csv）搭灰盒，全部搭完后删除。镜头的节奏与运镜优先由 agent 完成。每个关卡的需求写在 `docs/关卡/<关卡id>.md`（一个关卡一篇，索引 `docs/关卡/README.md`），新增或改动关卡时同步。关卡的开发流程、中间产物与最终产物放哪里，按 `docs/关卡/关卡开发规范.md`（基准案例 `train`）。
+- **空间不进表（10-14）**：关卡空间与机位构图由用户在 Godot 编辑器里搭成 `godot/levels/<房间id>.tscn`，是空间的唯一依据；不要用代码或表格生成、改写关卡空间。表格只放靠名字就能接上的内容（线索、小物件用哪个模型等）。节点命名见 `docs/填表说明/1.4`（`spawn`、`cam_<机位>`、`hs_<编号>`、`chr_<人名>`、`prop_<编号>`）；小物件模型放 `godot/art/props/`，在 `content/visual/props.csv` 登记。还没有关卡场景的房间暂按 `content/space/`（rooms.csv、layout.csv）搭灰盒，全部搭完后删除。镜头的节奏与运镜优先由 agent 完成。每个关卡的需求写在 `docs/关卡/<关卡id>.md`（一个关卡一篇，索引 `docs/关卡/README.md`），新增或改动关卡时同步。做 3D 关卡或房间先读 `docs/关卡/3D建模工作流SOP.md`（空间预期 → 预览图 → Blender 建模 → Godot 试玩，第 5 节是防穿模的建模规范）；中间产物与最终产物放哪里，按 `docs/关卡/关卡开发规范.md`（基准案例 `train`）；庄园里的房间按 `docs/关卡/房间模块SOP.md`。
 - 人物资产（设定依据、三视图、模型、管线现状）的总入口是 `docs/人物/README.md`；只以现行六个人物为准，旧剧情的人物资产已于 10-14 删除。
 - 项目按两套视角管理：横切面（模块 H1—H16）与纵切面（关卡 0—7），见 `docs/12-关卡拆解.md`；关卡表 `godot/content/levels.csv`，检查报告会按关卡统计进度。现阶段先纵向贯通。
-- 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线）、`content/space/`（房间、布局）、`content/audio/`（音效表、配乐表、脚步表）、`content/ai/`（词表、自述兜底）、`content/visual/`（滤镜表、影像片段表）；影像素材放 `godot/art/footage/`。填表说明在 `docs/填表说明/`。
+- 内容表分四个文件夹：`content/story/`（镜头、台词、预设、人物、证据、物件、连线、任务）、`content/space/`（房间、布局）、`content/audio/`（音效表、配乐表、脚步表）、`content/ai/`（词表、自述兜底）、`content/visual/`（滤镜表、天光表、影像片段表）；影像素材放 `godot/art/footage/`。画面的视觉基准、天光与材质的做法见 `docs/06` 第 9 节：先调灯光与天空，再材质，最后才调滤镜；改了画面后用 `tools/probe_fps.gd` 复测帧率（重点场景不低于 45 帧）。填表说明在 `docs/填表说明/`。
 - 结构：`core/`（状态、内容、播放器、动作）、`world/`（场景宿主、玩家）、`ui/`（临时界面、调试面板）、`shaders/`、`tools/`。
 
 ## 验证命令（改动后必须跑）
@@ -32,8 +32,13 @@ $G --headless --path godot -- --autoplay                # 两种讲法都要跑�
 $G --headless --path godot -- --autoplay --view=取代
 # 3. 截图自查：跳到镜号截图后退出（会短暂弹出窗口）
 $G --path godot --resolution 1280x720 -- --capture=C2-05 --wait=4 --out=/tmp/x.png
-# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--examine=ev_xxx（打开证据板检视一张证据）、--view=保护|取代（强制终局倾向）
-# 4. 关卡碰撞体检（改了关卡场景或模型后跑）：用玩家本身从出生点向各方向走，看会不会掉下去
+# 可加 --leak=0..4、--grant-all（发放全部证据）、--fx=纪录片片头、--play=片头_怪谈（播放影像片段）、--wait=秒、--clean（不显示界面，用于截素材；再加 --keep-fx 则保留滤镜，用于滤镜对比）、--skip-text（文字不等点击；截带文字的镜头时不要加，否则会跑过头）、--hint-test=1..3（看连错提示）、--examine=ev_xxx（打开证据板检视一张证据）、--view=保护|取代（强制终局倾向）、--switch=红灯（按一下墙上的电灯开关）、--lut=off|neutral（不套调色表，对比用）
+# 可加 --at=x,y,z,朝向[,俯仰]：自由探索时把玩家放到某处再截图（看描边、交谈提示）
+# 4. 大地图体检（改了关卡场景、任务表后跑）：从客房能不能走到每个房间和这一组的每个任务目标（退出码 0 = 都走得到）
+$G --headless --path godot -- --probe-map --group=c1
+# 4b. 跨门体检（改了天光、房间环境、灯光后跑，会弹出窗口）：每道门两边的画面设置一样不一样（退出码 0 = 都不跳）
+$G --path godot --resolution 1280x720 --script res://tools/probe_doorway.gd -- --capture=C0-11 --wait=1000
+# 5. 关卡碰撞体检（改了关卡场景或模型后跑）：用玩家本身从出生点向各方向走，看会不会掉下去
 $G --headless --path godot --script res://tools/probe_walk.gd -- --level=hall --dirs=8
 ```
 
@@ -45,7 +50,7 @@ Godot MCP 已在 `.mcp.json` 配置（Coding-Solo/godot-mcp）：可启动编辑
 
 ## Git
 
-- 远端：`github.com/Gazerrr03/acknowledged`（private），主分支 `main`。
+- 远端：`github.com/Gazerrr03/latent-image`（private），主分支 `main`。
 - 本机 git 未配置 GitHub 凭据，推送时用：`git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`（或由用户运行一次 `gh auth setup-git`）。
 
 ## 协作
