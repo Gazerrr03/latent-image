@@ -104,10 +104,10 @@ TX, TY = 15.75, 2.55                                              # 长桌：南
 RUGZ = FF + 0.0115                                                                              # 站在地毯上的家具
 build(dining_table(2.7, 1.1, 0.75), '餐厅·长餐桌-col', SP, (TX, TY, RUGZ), 0)
 TOP = RUGZ + 0.75
-CHAIRS = [(TX - 0.75, TY - 0.8, 90), (TX - 0.75, TY, 90), (TX - 0.75, TY + 0.8, 90), (TX + 0.75, TY - 0.8, -90), (TX + 0.75, TY, -90), (TX + 0.75, TY + 0.8, -90),
-          (TX, TY - 1.55, 180), (TX, TY + 1.55, 0)]
+CHAIRS = [(TX - 0.75, TY - 0.8, 90), (TX - 0.75, TY, 90), (TX - 0.75, TY + 0.8, 90), (TX + 0.75, TY - 0.8, -90), (TX + 0.75, TY, -90), (TX + 0.75, TY + 0.8, -90)]
 for k, (x, y, r) in enumerate(CHAIRS):
-    build(dining_chair(arms=(k == 7)), f'餐厅·餐椅{k + 1}{"（主位）" if k == 7 else "（南端空椅）" if k == 6 else ""}-col', SP, (x, y, RUGZ), r + rng.uniform(-3, 3))
+    build(dining_chair(), f'餐厅·餐椅{k + 1}-col', SP, (x, y, RUGZ), r + rng.uniform(-3, 3))
+for _ in range(2): rng.uniform(-3, 3)                              # 10-21 去掉两端的椅子（南端空椅、主位）：挡住玩家走进餐叙区、绕桌的路；照旧消耗随机数，后面的摆设不变
 cp = Prop()
 top = vase(cp, 0.0, 0.0, 0.0, 0.2, 'silver')
 for dy in (-0.55, 0.55): candelabrum(cp, 0.0, dy, 0.0, arms=3, key='silver', h=0.42)
