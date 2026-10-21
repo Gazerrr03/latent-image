@@ -930,6 +930,16 @@ func _adopt_level(r: Node, rid := "") -> void:
 				if c is StaticBody3D:
 					c.set_meta("door", true)
 					doors[c] = {"leaf": n}
+					# 能开的门在某几镜里也可以闩着（暗房温室侧门：序章当晚从里面闩上，T1）：门的说法表这一镜有话就推不开
+					if ContentDB.door_lines.has(String(n.name)):
+						c.set_meta("door_line", String(n.name))
+						c.add_to_group("door_line")
+		elif n is MeshInstance3D and ContentDB.door_lines.has(String(n.name)):
+			# 打不开、但推了有一句话的门（门的说法表 doors.csv）：正门、序章里闩着的暗房门
+			for c in n.get_children():
+				if c is StaticBody3D:
+					c.set_meta("door_line", String(n.name))
+					c.add_to_group("door_line")
 	for n in _walk(r):
 		if not n is Node3D or n == r:
 			continue
@@ -1060,6 +1070,15 @@ func door_is_open(body: Node) -> bool:
 	if not d.has("closed"):
 		d["closed"] = _find_closed(leaf, body)
 	return absf(angle_difference(leaf.rotation.y, d["closed"])) > 0.2
+
+
+## 推打不开的门：这一镜有话说就返回那句话，没有就是空的（准星不提示）
+func door_line(body: Node) -> String:
+	return ContentDB.door_line(String(body.get_meta("door_line", "")), GameState.shot) if is_instance_valid(body) and body.is_visible_in_tree() else ""
+
+
+func door_line_label(body: Node) -> String:
+	return "推门：" + String(body.get_meta("door_line", "")).get_slice("（", 0).get_slice("·", 1)
 
 
 ## 开门往离开玩家的一侧推开（推不开就换一边、开小一点）；关门转回关着的朝向

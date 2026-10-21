@@ -202,6 +202,15 @@ func _init() -> void:
 	for id in rooms:
 		if not levels.has(id) and not layout.has(id):
 			err("房间登记表", id, "既没有关卡场景，也没有灰盒布局", "在 Godot 里搭 levels/%s.tscn" % id)
+	# ── 门的说法表：话不空，起止镜号存在且先后正确（门名对不对要进游戏看：准星对着门有没有“推门”提示）──
+	for row in DB.load_table(STORY + "doors.csv"):
+		var where := String(row.get("door", ""))
+		if where == "" or String(row.get("text", "")) == "":
+			err("门的说法表", where, "door 和 text 都不能空")
+		for k in ["from", "until"]:
+			var v: String = row.get(k, "")
+			if v != "" and not shots.map(func(r): return r.get("shot_id", "")).has(v):
+				err("门的说法表", where, "%s 写的镜号 %s 不在镜头表里" % [k, v], "写成镜头表 shot_id 列里的镜号，或留空")
 	# ── 房间状态表：房间在登记表里、类型合法、起止镜号存在且先后正确 ──
 	var shot_ids := shots.map(func(r): return r.get("shot_id", ""))
 	for row in DB.load_table(SPACE + "room_states.csv"):

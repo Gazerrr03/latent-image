@@ -28,6 +28,7 @@ var _hover := ""
 ## 准星对着的门（门扇的碰撞体）
 var _door: Node = null
 var _switch: Node = null
+var _shut: Node = null    # 打不开、但推了有一句话的门（正门、序章里闩着的暗房门）
 var _pitch := 0.0
 
 
@@ -127,6 +128,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif _switch:
 			Director.world.toggle_switch(_switch)
 			Director.ui.set_hint("E　" + Director.world.switch_label(_switch))
+		elif _shut:
+			Director.ui.toast(Director.world.door_line(_shut))
 		elif Director.world.corridor_answering():
 			# 回廊第 3 层：屏幕上有个“回答”。按了就是回答了
 			Director.world.corridor_answer()
@@ -168,22 +171,30 @@ func _update_hover() -> void:
 	var id := ""
 	var door: Node = null
 	var sw: Node = null
+	var shut: Node = null
 	if ray.is_colliding():
 		var c := ray.get_collider()
 		if c and c.has_meta("hotspot_id") and Director.world.active_hotspots.has(c.get_meta("hotspot_id")):
 			id = c.get_meta("hotspot_id")
 		elif c and c.has_meta("door"):
-			door = c
+			# 能开的门这一镜闩着（门的说法表有话）：推不开，只说那句话；已经开着的照常能关
+			if Director.world.door_line(c) != "" and not Director.world.door_is_open(c):
+				shut = c
+			else:
+				door = c
 		elif c and c.has_meta("switch"):
 			sw = c
+		elif c and c.has_meta("door_line") and Director.world.door_line(c) != "":
+			shut = c
 	# 回廊的提示是会变的（回答选项出现 / 消失），所以不能只看“目标没变就返回”
-	if id == _hover and door == _door and sw == _switch and not Director.world.corridor_running():
+	if id == _hover and door == _door and sw == _switch and shut == _shut and not Director.world.corridor_running():
 		return
 	_hover = id
 	_door = door
 	if sw != _switch:
 		Director.world.paint_switches(sw)
 	_switch = sw
+	_shut = shut
 	Director.world.hover_hotspot(id)
 	if id != "":
 		Director.ui.set_hint("E　" + Director.world.target_label(id))
@@ -193,5 +204,7 @@ func _update_hover() -> void:
 		Director.ui.set_hint("E　关门" if Director.world.door_is_open(door) else "E　开门")
 	elif sw:
 		Director.ui.set_hint("E　" + Director.world.switch_label(sw))
+	elif shut:
+		Director.ui.set_hint("E　" + Director.world.door_line_label(shut))
 	else:
 		Director.ui.set_hint("")
