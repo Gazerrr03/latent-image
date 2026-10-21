@@ -1,50 +1,70 @@
-id,scene,label,hint,text,evidence,footage,sound,note
-hs_notebook,guest_room,记事本,书桌上的记事本——线索都记在哪里？,记事本。我收到的每一条线索都记在这里，随时可以翻开来看。,,,page_turn,
-hs_typewriter,guest_room,打字机,书桌上的打字机——每天的记录写在哪里？,我的便携打字机。每天结束时，我在这里写下当天的记录。,,,typewriter_return,
-hs_desk_board,guest_room,桌面,书桌的桌面——线索摊开以后怎么比对？,桌面。把两条线索摊在一起，看它们能不能说明同一件事。,,,pin,
-hs_bed,guest_room,床,床——一天查完以后做什么？,床。一天查完，就在这里睡下。,,,cloth_rustle,
-hs_mirror_guest,guest_room,镜子,前室的镜子——照一照。,镜子。镜子里是床、书桌和窗。,,,,
-hs_handwriting,guest_room,摊开的字,把这几天收到的字摊在书桌上——每个人写的小写字母，有没有一样的习惯？,我把这几天收到的字摊在桌上：康斯坦斯的账簿、吉迪恩的签收单、拉坦特夫人的降灵卡片、安布罗斯的笔记，还有我自己的记事本。\n每一个小写的 t，横画都不碰竖画。,ev_t_cross,,paper_rustle,
-hs_drawer,guest_room,抽屉,书桌的抽屉——里面有什么？,抽屉里只有一叠空白的信纸。,,,drawer,
-hs_coat,guest_room,大衣,我的大衣——内袋里有什么？,大衣内袋里，是信的第二页：\n“另：星期四晚上先来一趟。从温室那边进来，直接到暗房。别让家里任何人知道。这张照片，我想让你第一个看。”,ev_letter_p2,,cloth_rustle,
-hs_shoes,guest_room,皮鞋,我的皮鞋——鞋底沾了什么？,我的皮鞋底上，干了的泥。拿去比一比，正好对上通风口下面的鞋印。,ev_shoe_mud,,footstep_shoe,
-hs_fireplace,guest_room,壁炉,壁炉——炉栅里有什么？,壁炉里只有木灰。,,,,
-hs_waistcoat,guest_room,背心,我的背心——口袋里有什么？,背心口袋里，有一张车票存根：十月十四日，星期四，伦敦到威尔特郡。\n这一趟，我不记得。,ev_ticket,,cloth_rustle,
-hs_typewriter_test,guest_room,色带,打字机的色带——上面印着什么？,色带上反着印着我这几天写下的记录。,,,typewriter_return,
-hs_tray,darkroom,急停液盘,急停液盘——盘底有什么？,急停液盘的盘底结着一圈白色的结晶。两种药水在这里混过。,ev_tray_crystal,,liquid,
-hs_bottles,darkroom,药柜,药柜——每只瓶子都在它原来的位置上吗？,药柜里的标签都是安布罗斯的手写。\n“调色液·最后一张用”那只瓶子，瓶底的灰圈和它现在站的位置对不上：它被人挪过。瓶里的液体发黄，和标签上写的颜色不一样。,ev_bottle_moved,,bottles_clink,
-hs_vent_inside,darkroom,通风口,墙上的通风口——外面是什么？,通风口的格栅外面是黑的，看不见花园。,,,,
-hs_camera,darkroom,相机,三脚架上的相机——里面还装着底片吗？,三脚架上的相机里，还装着一张底片。我没有动它。,,,,
-hs_clock_dark,darkroom,钟,墙上的钟——还在走吗？,墙上的钟停着。,,,clock_tick,
-hs_bell,darkroom,计时铃,门边的计时铃,计时铃。他冲底片的时候，用它计时。,,,timer_tick,
-hs_vent_print,garden,泥地,通风口正下方的泥地——有人在这里站过吗？,通风口下面的泥地上，有一串干了的男式皮鞋印，从温室那边的小路过来，又回去。只看得出是皮鞋，看不出大小。,ev_vent_print,,,
-hs_vent_louver,garden,百叶,通风口外侧的百叶——里面塞着什么？,通风口外侧的百叶里，从外面塞着一块遮光布，塞得很紧。是暗房里用的那种布。,ev_vent_cloth,,cloth_rustle,
-hs_photos,archive,历年合影,墙上的历年合影——每一年照片里的人数一样吗？,历年合影按年份挂满了一面墙。每一张都用长曝光，每一张脸都有点糊。\n1920 年、1922 年、1924 年、1926 年，人群里各多出一张谁也不认识的脸。,,,paper_rustle,
-hs_ledger,archive,底片簿,桌上的底片簿——每张合影旁边记下了谁的名字？,底片簿。每年合影的底片编号旁，安布罗斯写下了在场者的名字。\n1920 年起多了“彭罗斯先生”，1922 年起多了“索尔特太太”，1924 年起多了“卢西恩”。第二年，名字就没有了。\n簿子的最后几页被裁掉了。,ev_ledger_names,,page_turn,
-hs_doorframe,archive,门框,出门往东，二楼储物间的门框——上面刻着什么？,储物间的门框上刻着一道道身高线，旁边刻着一个 L。最后一道停在 1924 年。,ev_doorframe_l,,,
-hs_clipping,archive,剪报,桌上的剪报——报纸是怎么说这些照片的？,《威尔特郡时报》1925 年趣闻栏：《奥瑞尔庄园的“第五张脸”》。\n照相馆称底片无损。塔尔博特一家称，照片上的人从未在府上住过。,ev_clipping,,paper_rustle,
-hs_manual,archive,摄影手册,桌上的摄影手册——折了角的那一页写着什么？,安布罗斯的摄影手册，折了角的一页：\n长时间曝光时，如果一个人在镜头前走动，底片上会留下好几个半透明的人影。,ev_manual_page,,page_turn,
-hs_photo_back,archive,1926 年合影的背面,1926 年的合影——翻过来，背面写着什么？,1926 年合影的背面，安布罗斯手写着这一年的序号。,,,paper_rustle,
-hs_amb_notes,amb_room,笔记本,床头的笔记本——最后一页写着什么？,床头的笔记本，最后一页写着：\n“星期六，格雷来。最后一张冲出来，他们就都会想起来。”,ev_amb_notes,,page_turn,
-hs_amb_carbon,amb_room,复写纸,写字台上的复写纸——印着什么？,写字台上的复写纸，印着那封信第一页的反字。第二页那张被撕掉了。,ev_carbon,,paper_rustle,
-hs_amb_clippings,amb_room,剪报与小样,床头柜——他睡前在看什么？,床头柜上摊着怪谈的剪报，还有历年合影的小样。每一张小样上，多出来的那张脸都被他用铅笔圈了出来。,,,paper_rustle,
-hs_amb_photo,amb_room,1926 年合影,墙上的合影——今年多出来的是谁？,墙上挂着今年的合影。一个戴面纱的女人站在队伍边上。,,,paper_rustle,
-hs_con_ledger,con_room,账簿,梳妆台上的家用账簿——她记下了谁？,康斯坦斯的家用账簿，是她自己的字。1920 年 5 月起，每个月都有一笔“彭罗斯先生 薪水”，1921 年 3 月起就没有了。,ev_con_ledger,,page_turn,
-hs_con_sweater,con_room,衣柜底层,衣柜的底层——叠着什么？,衣柜的底层，叠着一件少年的毛衣。艾瑞斯穿，太大了。,ev_sweater,,wardrobe_open,
-hs_con_ringbox,con_room,戒指盒,梳妆台上的戒指盒,戒指盒是空的。她的戒指一直戴在手上，从不摘下。,,,ring_box,
-hs_draw_path,child_room,玻璃房子,画里的玻璃房子——里面有一条什么？,一座玻璃房子，里面一条虚线，通到一扇小门。,ev_draw_path,,paper_rustle,
-hs_draw_wall,child_room,暗房的外墙,画里的暗房外墙——通风口上有什么？,暗房的外墙，通风口上堵着一块黑布，旁边一只没有身体的手。,ev_draw_cloth,,crayon,
-hs_draw_family,child_room,全家福,画里的全家福——每个人长什么样？,全家福：爸爸、妈妈、吉迪恩、夫人，还有她自己。所有人手拉手，连成一个身体。每个人都长着同一张脸。,ev_iris_portrait,,paper_rustle,
-hs_draw_boxes,child_room,方盒子,一排方盒子——盒子里是什么？,一排方盒子，每个盒子里站着一个小人。盒子上写着她不认识的数字。,ev_draw_boxes,,paper_rustle,
-hs_draw_train,child_room,火车,一列火车——窗外画了什么？,一列火车。窗外的树，一棵一棵，画得一模一样。和我来的路上看见的一样。,ev_draw_train,,paper_rustle,
-hs_gh_latch,greenhouse,侧门门闩,通往暗房的侧门——门闩上有什么？,温室侧门的门闩内侧，挂着一根深灰色的呢子线头。,ev_latch_thread,,latch_greenhouse,
-hs_gh_photos,greenhouse,夜拍照片,工具间里的一叠照片——他在拍什么？,安布罗斯在温室里架着相机，用长曝光拍夜里的小路。其中一张，有一个模糊的人影走向暗房的侧门，看不见脸。\n背面写着：“星期四，十一点四十分。”,ev_night_photo,,paper_rustle,
-hs_se_cards,seance,降灵卡片,桌上的降灵卡片——她感应到了谁？,降灵卡片：彭罗斯、索尔特、卢西恩。还有一张空白的。\n她说：“这一张还没有人。”,ev_seance_cards,,paper_rustle,
-hs_se_photo,seance,合影小样,她随身带的合影小样——背面印着什么？,她随身带着一张 1926 年合影的小样。背面印着一行很小的字，字体不像这个年代的东西：\n#{容器号} / 12  SYNC,ev_photo_back,,paper_rustle,
-hs_se_gloves,seance,蕾丝手套,她的蕾丝手套,黑色的蕾丝手套。左手那只，虎口的地方磨得发亮。,,,cloth_rustle,
-hs_wh_train,white_hall,第一间,第一间客房——里面有谁？,这一间里，一个格雷坐在车厢里读信。窗外的树，一棵一棵，都是同一棵。\n桌上一叠笔记，是我的笔迹：“凶手是园丁沃登。案结。”下面被划掉，又写：“不对。他只穿靴子。”,,,,
-hs_wh_darkroom,white_hall,第二间,第二间客房——里面有谁？,这一间里，一个格雷站在红灯下，对着显影台。\n桌上一叠笔记：“凶手是灵媒。她就是照片里多出来的那张脸。”最后一行：“为什么我想不起来星期四？”,,,,
-hs_wh_desk,white_hall,第三间,第三间客房——里面有谁？,这一间里，一个格雷坐在打字机前，一动不动。\n桌上只有一页，反复写着同一句：“去冲洗那张底片。”,,,,
-hs_doorway,ded_corridor,尽头的门,走廊尽头的那扇门——推开它。,一条普通的房门。推开，就回到起点。,,,door_creak,第 5 章回廊：每层的出口
-hs_darkroom_door,ded_corridor,暗房的门,转角那扇暗房的门——敲一敲。,门缝里有红光。里面很轻地敲回来两下。,,,door_knock,第 5 章回廊第 2 层
-hs_chair4,ded_corridor,第四把椅子,门边那把椅子——坐上去。,椅背是温的。坐下去，声音就停了。,,,,第 5 章回廊第 5 层
+id,scene,label,hint,text,evidence,footage,sound,note,verb
+hs_notebook,guest_room,记事本,书桌上的皮面记事本——线索都记在哪里？,牛皮记事本。调查中收集到的每一段证词、每一处物证都记录在册，随时可以翻阅对照。,,,page_turn,,
+hs_typewriter,guest_room,打字机,书桌上的便携打字机——每天的记录写在哪里？,我的便携式打字机。铅字击锤在纸上敲击出的痕迹，是我对抗遗忘与谎言的唯一武器。,,,typewriter_return,,
+hs_desk_board,guest_room,桌面,书桌的木质台面——线索摊开以后怎么比对？,桌面。将收集到的线索并排摊开，寻找那些看似孤立的事实之间暗藏的咬合。,,,pin,,
+hs_bed,guest_room,床,深陷在阴影中的床榻——一天查完以后做什么？,厚重阴冷的床铺。在这座疑云密布的宅邸里，沉入梦境就像滑入幽暗的暗房。,,,cloth_rustle,,
+hs_mirror_guest,guest_room,镜子,前室的水银镜——照一照。,水银镜。冷硬的镜面上唯独映出床、书桌与窗外的铅云。镜前空无一物。,,,,,
+hs_handwriting,guest_room,摊开的字,把这几天收到的字摊在书桌上——每个人写的小写字母，有没有一样的习惯？,"我把这几天收到的字纸摊在桌上：康斯坦斯的账簿、吉迪恩的签收单、拉坦特夫人的降灵卡片、安布罗斯的笔记，还有我自己的手记。
+每一个小写字母 t，横画都在左侧孤悬，绝不碰及竖画。",ev_t_cross,,paper_rustle,,
+hs_drawer,guest_room,抽屉,书桌的樟木抽屉——里面藏着什么？,抽屉深处只有一叠边缘发黄的空白信纸，散发着干燥的陈墨味。,,,drawer,,
+hs_coat,guest_room,大衣,我的呢子大衣——内袋里藏着什么？,"厚重的深灰色呢子大衣。大衣内袋深处，折叠着那张被我彻底遗忘的第二页信纸：
+“另：星期四晚上先来一趟。从温室那边进来，直接到暗房。别让家里任何人知道。这张照片，我想让你第一个看。”",ev_letter_p2,,cloth_rustle,,
+hs_shoes,guest_room,皮鞋,我的牛津皮鞋——鞋底沾着什么？,皮鞋边缘早已风干剥落的泥痕。鞋底凹槽里嵌着的硬泥，与暗房百叶风口下方的泥地分毫不差。,ev_shoe_mud,,footstep_shoe,,
+hs_fireplace,guest_room,壁炉,生锈的铁铸壁炉——炉栅里残留着什么？,壁炉深处只有冷透了的细白木灰，连一丝余温都未曾留下。,,,,,
+hs_waistcoat,guest_room,背心,我的马甲背心——口袋里摸出了什么？,"背心内袋里滑出的一张微卷车票存根：十月十四日，星期四，伦敦尤斯顿至威尔特郡。
+在我的记忆深处，这趟行程是一片空白的死寂。",ev_ticket,,cloth_rustle,,
+hs_typewriter_test,guest_room,色带,打字机的双色色带——上面留下了什么字迹？,深色色带上密密麻麻地留着反向咬合的铅字凹印，忠实地刻录着我这几日打下的所有手记。,,,typewriter_return,,
+hs_tray,darkroom,急停液盘,显影台上的急停液盘——盘底有什么？,急停液盘的搪瓷盘底，凝结着一圈薄霜般锋利的白色结晶。酸性的停显液与不该混入的盐类在此剧烈反应，释放出了无声的剧毒。,ev_tray_crystal,,liquid,,
+hs_bottles,darkroom,药柜,松木药柜——每只瓶子都在原本的位置上吗？,"药柜各层均有安布罗斯亲手写下的标签。
+“调色液·最后一张用”那只瓶底的灰圈和它当前站立的位置错开了三寸：它分明被人挪动过。标签注明“无色透明”，但瓶中液体已然泛出枯黄。在暗房的红光下，常人根本无法察觉这种液色变异。",ev_bottle_moved,,bottles_clink,,
+hs_vent_inside,darkroom,通风口,暗房内墙的通风口——百叶外透着什么？,通风口的铸铁格栅外一片漆黑，感受不到丝毫穿堂而过的夜风。,,,,,
+hs_camera,darkroom,相机,立在木质三脚架上的大型相机——里面装着什么？,笨重的木质三脚架相机，镜头正对着显影台。暗盒里的底片尚未取出。我没有碰它。,,,,,
+hs_clock_dark,darkroom,钟,暗房墙上的铜摆钟——还在走动吗？,墙上的挂钟静止着，发条早已走尽，指针凝固在暗沉的阴影里。,,,clock_tick,,
+hs_bell,darkroom,计时铃,暗房门畔的机械计时铃,金属计时铃。他在红灯下冲洗敏感底片时，用这只铃铛计算曝光与定影的秒数。,,,timer_tick,,
+hs_vent_print,garden,泥地,通风口正下方的泥地——有人曾在此驻足吗？,百叶窗正下方的软泥上，留着一串干涸凹陷的男式皮鞋印，自温室小径延伸而来，又折返碎石路。我倚着花坛石沿俯身勘验，并未踏入泥淖。,ev_vent_print,,,,
+hs_vent_louver,garden,百叶,通风口外侧的木百叶——缝隙里塞着什么？,外墙百叶窗的通风缝隙里，从外侧被粗暴地死死塞进了一大团暗房遮光布，密不透风。,ev_vent_cloth,,cloth_rustle,,
+hs_photos,archive,历年合影,档案室整面墙的历年合影——每一年照片里的人数一样吗？,"历年全家合影依序悬挂。每一张都因漫长的曝光而透着虚幻的静止，队列边缘的树冠被风吹得微微发颤。
+1920、1922、1924、1926 年，人群末端各多出一张陌生而苍白的面孔。",,,paper_rustle,,
+hs_ledger,archive,底片簿,长桌上的底片簿——每张合影旁记下了谁的名字？,"底片簿。每张合影的底片号旁，安布罗斯工整地记下了在场者的名字。
+彭罗斯、索尔特、卢西恩的名字依次浮现，又在次年彻底消失。
+整本簿子的最后几页被利刃整齐裁去了。",ev_ledger_names,,page_turn,,
+hs_doorframe,archive,门框,出门往东，二楼储物间的门框——木纹上刻着什么？,储物间的门框边缘，用小刀刻着一道道逐年上升的身高线，末端刻着字母 L。最后一道刻痕深深嵌在木纹里，停在 1924 年的秋天。,ev_doorframe_l,,,,
+hs_clipping,archive,剪报,桌上的发黄剪报——当年报纸是怎么报道那些照片的？,"《威尔特郡时报》1925 年趣闻栏：《奥瑞尔庄园的“第五张脸”》。
+照相馆声称底片全无瑕疵。塔尔博特一家则对外坚称，照片上多出来的少年从未在此留宿。",ev_clipping,,paper_rustle,,
+hs_manual,archive,摄影手册,桌上的摄影手册——折了角的那一页写着什么？,"安布罗斯的摄影手册，折了角的一页：
+长时间曝光时，若被摄者在镜头前走动，底片上便会留下数个半透明的人影虚像。",ev_manual_page,,page_turn,,
+hs_photo_back,archive,1926 年合影的背面,1926 年的合影试样——翻过来，背面写着什么？,1926 年合影的背面，安布罗斯手写着“08”。从 1919 年的第一张算起，这刚好是第八张年度合影。,,,paper_rustle,,
+hs_amb_notes,amb_room,笔记本,床头的牛皮笔记本——最后一页写着什么？,"床头的牛皮笔记本，最后一页留着他的笔迹：
+“星期六，格雷来。最后一张冲出来，他们就都会想起来。”",ev_amb_notes,,page_turn,,
+hs_amb_carbon,amb_room,复写纸,写字台上的复写纸——纸面透着什么字迹？,写字台上的复写纸，留着那封信第一页清晰的反字压痕。而垫在下方的第二页复写纸，却被整齐裁掉了。,ev_carbon,,paper_rustle,,
+hs_amb_clippings,amb_room,剪报与小样,床头柜——他在深夜灯下反复翻看什么？,床头柜上散落着泛黄的怪谈剪报与历年合影小样。每一张小样边缘多出来的脸庞，都被他用红铅笔重重圈出。,,,paper_rustle,,
+hs_amb_photo,amb_room,1926 年合影,墙上的最新合影——今年多出来的是谁？,墙上挂着今年秋天的合影。一个黑纱覆面的女人，突兀地立在队列最边缘的荒草上。,,,paper_rustle,,
+hs_con_ledger,con_room,账簿,梳妆台上的家用账簿——她亲手记下了谁的开销？,康斯坦斯的家用账簿，字迹清秀端庄。1920 年 5 月起，每月均有一笔付给“彭罗斯先生”的薪资，直到 1921 年 3 月戛然而止。,ev_con_ledger,,page_turn,,
+hs_con_sweater,con_room,衣柜底层,衣柜最底层——整齐叠放着什么？,衣柜最底层，静静叠着一件洗得发白的深蓝少年毛衣。八岁的艾瑞斯穿，肩宽大了整整一倍。,ev_sweater,,wardrobe_open,,
+hs_con_ringbox,con_room,戒指盒,梳妆台上的丝绒戒指盒,丝绒盒空置无物。那枚宽大的无名指银戒，她始终紧扣在手上，从未取下。,,,ring_box,,
+hs_draw_path,child_room,玻璃房子,画里的玻璃花房——里面画着一条什么小径？,一座透明的玻璃花房，内里画着一条断续的红色虚线，自幽暗的花径直通暗房偏门。,ev_draw_path,,paper_rustle,,
+hs_draw_wall,child_room,暗房的外墙,画里的暗房外墙——通风口百叶上画着什么？,暗房的灰石外墙，百叶风口上堵着一大团黑蜡笔涂抹的黑布，旁边绘着一只悬空的苍白手掌。,ev_draw_cloth,,crayon,,
+hs_draw_family,child_room,全家福,画里的全家福——每个人的五官长什么样？,全家福：爸爸、妈妈、吉迪恩、拉坦特夫人，还有她自己。所有人肢体相连，每个人的面孔都被画成了完全相同的一张脸。,ev_iris_portrait,,paper_rustle,,
+hs_draw_boxes,child_room,方盒子,画里的一排方盒子——里面站着什么？,一排整齐排列的铁灰色方盒子，每个盒子里各立着一个小人。盒体表面涂抹着她尚不识得的数字。,ev_draw_boxes,,paper_rustle,,
+hs_draw_train,child_room,火车,画里飞驰的列车——窗外描绘了什么？,一列在黑夜荒原上飞驰的列车。车窗外画着一排树木与石墙，彼此毫无二致，一如我来时在窗前所见。,ev_draw_train,,paper_rustle,,
+hs_gh_latch,greenhouse,侧门门闩,通往暗房的侧门铁栓——搭扣缝隙里挂着什么？,温室侧门的生锈门闩内侧，死死挂着一截撕裂的深灰色粗支呢子线头。,ev_latch_thread,,latch_greenhouse,,
+hs_gh_photos,greenhouse,夜拍照片,工具间架子上的长曝光试样——他在记录什么？,"安布罗斯在温室暗处架设的长曝光底片。在漆黑的玻璃廊道里，一个模糊灰暗的人形正走向暗房侧门，面目虚化不可辨。
+照片背面留有铅笔字迹：“星期四，十一点四十分。”",ev_night_photo,,paper_rustle,,
+hs_se_cards,seance,降灵卡片,桌上的通灵降灵卡——上面写着谁的名字？,"拉坦特夫人的通灵降灵卡：彭罗斯、索尔特、卢西恩。末尾还有一张崭新的空白卡片。
+她低语道：“这一张，还没有人。”",ev_seance_cards,,paper_rustle,,
+hs_se_photo,seance,合影小样,她随身携带的合影小样——翻过来，背面印着什么？,"她随身携带的一张 1926 年合影小样。背面印着一行细小的现代冷凝字体：
+#{容器号} / 12  SYNC",ev_photo_back,,paper_rustle,,
+hs_se_gloves,seance,蕾丝手套,她的黑色蕾丝手套,黑色的丝质蕾丝手套。左手虎口处的丝线已然磨损发亮，隐隐透出底下的肤色。,,,cloth_rustle,,
+hs_wh_train,white_hall,第一间,第一间客房——里面有谁？,这一间里，一个格雷坐在车厢里读信。窗外的树，一棵一棵，都是同一棵。\n桌上一叠笔记，是我的笔迹：“凶手是园丁沃登。案结。”下面被划掉，又写：“不对。他只穿靴子。”,,,,,
+hs_wh_darkroom,white_hall,第二间,第二间客房——里面有谁？,这一间里，一个格雷站在红灯下，对着显影台。\n桌上一叠笔记：“凶手是灵媒。她就是照片里多出来的那张脸。”最后一行：“为什么我想不起来星期四？”,,,,,
+hs_wh_desk,white_hall,第三间,第三间客房——里面有谁？,这一间里，一个格雷坐在打字机前，一动不动。\n桌上只有一页，反复写着同一句：“去冲洗那张底片。”,,,,,
+hs_doorway,ded_corridor,尽头的门,走廊尽头的那扇门——推开它。,一条普通的房门。推开，就回到起点。,,,door_creak,第 5 章回廊：每层的出口,推开
+hs_darkroom_door,ded_corridor,暗房的门,转角那扇暗房的门——敲一敲。,门缝里有红光。里面很轻地敲回来两下。,,,door_knock,第 5 章回廊第 2 层,敲门
+hs_chair4,ded_corridor,第四把椅子,门边那把椅子——坐上去。,椅背是温的。坐下去，声音就停了。,,,,第 5 章回廊第 5 层,坐下
+hs_corridor_door_1,ded_corridor,衣帽间的门,,,,,,,推开
+hs_corridor_door_2,ded_corridor,空房间的门,,,,,,,推开
+hs_corridor_door_3,ded_corridor,窄楼梯的门,,,,,,,推开
+hs_room_1,ded_corridor,空挂钩与水渍,,空着的那个挂钩还在晃。下面一摊水。,ev_corridor_hook,,,,观察
+hs_room_2,ded_corridor,磨亮的圆圈,,有人在这里绕着圈走，走了很久。,ev_corridor_circle,,,,观察
+hs_room_3,ded_corridor,楼梯内窗,,从上面看，那条走廊没有出口。,ev_corridor_window,,,,观察
+hs_corridor_figure,ded_corridor,照片里的人影,,,,,,,伸手
