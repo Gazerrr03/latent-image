@@ -1,0 +1,75 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_garden.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_garden__遮光布.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_garden__泥地鞋印.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="gh_nb"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="5_r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.55
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="garden" type="Node3D"]
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="花园百叶外侧" parent="结构" instance=ExtResource("2_r")]
+
+[node name="层·遮光布" parent="结构" instance=ExtResource("3_r")]
+
+[node name="层·泥地鞋印" parent="结构" instance=ExtResource("4_r")]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("5_r")]
+
+[node name="邻·温室" parent="结构" instance=ExtResource("gh_nb")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 1.3
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(-0.956305, 0, -0.292372, 0, 1, 0, 0.292372, 0, -0.956305, 16.4, 3.6, -14)
+
+[node name="cam_garden_wide" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.481919, 0.205258, -0.851835, 0, 0.972175, 0.234255, 0.876216, 0.112892, -0.468509, 14.6, 5.25, -13.6)
+environment = SubResource("env")
+fov = 45.7
+near = 0.03
+
+[node name="hs_vent_print" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.15, 3.65, -11.75)
+metadata/size = Vector3(0.5, 0.15, 0.6)
+
+[node name="hs_vent_louver" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.15, 4.1, -11.45)
+metadata/size = Vector3(0.6, 0.6, 0.25)

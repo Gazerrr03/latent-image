@@ -1,0 +1,12 @@
+{
+  "pickup": {"position": [0.36, 1.15, -0.64], "size": [0.75, 0.75, 0.60], "kind": "pickup", "required_camera": false},
+  "notebook": {"position": [0.82, 0.92, -0.32], "size": [0.50, 0.22, 0.40], "kind": "notebook", "required_camera": false},
+  "tray": {"position": [-4.50, 1.00, -0.90], "size": [0.46, 0.20, 0.40], "kind": "tray", "required_camera": false},
+  "holder": {"position": [0.86, 1.08, -0.52], "size": [0.40, 0.28, 0.35], "kind": "holder", "required_camera": false},
+  "cabinet": {"position": [-4.55, 0.85, 2.95], "size": [0.65, 1.10, 0.75], "kind": "cabinet", "required_camera": false},
+  "plate_1926": {"position": [-4.15, 1.02, 2.85], "size": [0.34, 0.22, 0.34], "kind": "plate", "required_camera": false},
+  "relics": {"position": [-4.30, 1.00, -1.90], "size": [0.55, 1.20, 0.75], "kind": "trace", "required_camera": true},
+  "crate_plates": {"position": [3.18, 0.82, -1.73], "size": [0.55, 0.40, 0.55], "kind": "trace", "required_camera": true},
+  "ladder_print": {"position": [3.72, 0.92, -2.25], "size": [0.45, 0.75, 0.40], "kind": "trace", "required_camera": true},
+  "owner_reflection": {"position": [2.0, 1.70, -1.2], "size": [0.5, 1.8, 0.5], "kind": "owner", "required_camera": true}
+}
