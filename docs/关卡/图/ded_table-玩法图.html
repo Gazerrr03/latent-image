@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>华堂仍设故人筵 · 餐桌关卡玩法示意</title>
+<style>
+  :root{
+    --paper:#efe5d1;
+    --paper2:#e7dac2;
+    --ink:#2b241e;
+    --muted:#6d5f4e;
+    --line:rgba(43,36,30,.22);
+    --oxblood:#6c2f2a;
+    --brass:#a27a3f;
+    --brass2:#c6a46a;
+    --green:#3f4a3a;
+    --white:rgba(255,255,255,.46);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#d8cbb4}
+  body{
+    width:1600px;height:2100px;
+    font-family:"Microsoft YaHei","Noto Sans SC","PingFang SC",sans-serif;
+    color:var(--ink);
+  }
+  .poster{
+    width:1600px;height:2100px;padding:54px 64px 40px;
+    position:relative;overflow:hidden;display:flex;flex-direction:column;
+    background:
+      radial-gradient(circle at 12% 8%,rgba(255,255,255,.62),transparent 34%),
+      radial-gradient(circle at 88% 78%,rgba(110,78,42,.10),transparent 42%),
+      repeating-linear-gradient(0deg,rgba(70,50,30,.022) 0 1px,transparent 1px 4px),
+      linear-gradient(135deg,var(--paper),var(--paper2));
+  }
+  .poster:before{
+    content:"";position:absolute;inset:20px;border:1px solid rgba(43,36,30,.30);
+    pointer-events:none;
+  }
+  .poster:after{
+    content:"";position:absolute;inset:26px;border:1px solid rgba(162,122,63,.35);
+    pointer-events:none;
+  }
+  .hero{display:grid;grid-template-columns:1.06fr .94fr;gap:28px;align-items:stretch;position:relative;z-index:1}
+  .hero-text{padding:8px 0 0 8px}
+  .eyebrow{
+    font-size:13px;letter-spacing:.18em;color:var(--oxblood);
+    font-weight:700;text-transform:uppercase;margin-bottom:12px;
+  }
+  h1{
+    font-family:"Songti SC","SimSun",serif;
+    font-size:64px;line-height:1.08;margin:0 0 8px;letter-spacing:.05em;
+    font-weight:700;color:#241d18;
+  }
+  .subtitle{font-size:20px;letter-spacing:.08em;color:var(--muted);margin-bottom:16px}
+  .lede{
+    font-size:19px;line-height:1.7;margin:0 0 16px;max-width:760px;
+    color:#3a3028;
+  }
+  .meta{
+    display:inline-block;padding:8px 14px;border:1px solid var(--brass);
+    color:var(--oxblood);font-size:13px;letter-spacing:.12em;font-weight:700;
+  }
+  .hero-img{position:relative;min-height:300px;border:1px solid rgba(43,36,30,.35);overflow:hidden;background:#1f1a16}
+  .hero-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.86) contrast(1.02)}
+  .hero-img .img-caption{
+    position:absolute;left:14px;bottom:12px;padding:6px 10px;
+    background:rgba(25,20,16,.74);color:#f4e9d4;font-size:13px;letter-spacing:.06em;
+  }
+  .stamp{
+    position:absolute;right:14px;top:14px;width:64px;height:64px;border:2px solid rgba(240,222,190,.8);
+    color:#f0debe;display:flex;align-items:center;justify-content:center;
+    font-family:"Songti SC","SimSun",serif;font-size:16px;line-height:1.1;text-align:center;
+    transform:rotate(7deg);background:rgba(108,47,42,.42);letter-spacing:.08em;
+  }
+  main{display:grid;grid-template-columns:1.08fr .92fr;gap:26px;margin-top:24px;position:relative;z-index:1}
+  .steps{display:flex;flex-direction:column;gap:15px}
+  .step{
+    background:rgba(255,255,255,.38);border:1px solid rgba(43,36,30,.20);
+    border-left:4px solid var(--brass);padding:16px 18px 15px;position:relative;
+  }
+  .step-head{display:flex;gap:13px;align-items:flex-start}
+  .num{
+    flex:0 0 44px;height:44px;border:1px solid var(--oxblood);color:var(--oxblood);
+    display:flex;align-items:center;justify-content:center;font-weight:800;
+    font-size:15px;letter-spacing:.04em;background:rgba(108,47,42,.05);
+  }
+  h2{font-size:21px;margin:0 0 5px;letter-spacing:.04em}
+  .step p{font-size:14.5px;line-height:1.62;margin:0;color:#453a30}
+  .step .small{font-size:13px;color:var(--muted);margin-top:6px}
+  .mini-table{
+    position:relative;height:176px;margin-top:12px;border:1px solid rgba(43,36,30,.18);
+    background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(180,150,105,.08));
+  }
+  .mini-table .tabletop{
+    position:absolute;left:96px;right:96px;top:42px;bottom:42px;
+    border:1px solid rgba(60,45,30,.45);border-radius:10px;
+    background:linear-gradient(180deg,rgba(92,58,34,.15),rgba(92,58,34,.05));
+    box-shadow:inset 0 0 20px rgba(255,255,255,.25);
+  }
+  .seat{
+    position:absolute;width:112px;text-align:center;font-size:12.5px;line-height:1.35;
+  }
+  .seat b{display:block;font-size:13px;color:var(--oxblood)}
+  .seat.n{left:50%;top:8px;transform:translateX(-50%)}
+  .seat.s{left:50%;bottom:5px;transform:translateX(-50%)}
+  .seat.e1{right:18px;top:38px}
+  .seat.e2{right:18px;bottom:34px}
+  .seat.w{left:18px;top:64px}
+  .dot{
+    display:block;width:16px;height:16px;border:1px solid var(--brass);border-radius:50%;
+    margin:0 auto 4px;background:rgba(255,255,255,.45);
+  }
+  .dot.child{border-color:var(--oxblood);background:rgba(108,47,42,.18)}
+  .lining{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:11px;
+  }
+  .plate{
+    border:1px solid rgba(43,36,30,.20);padding:8px 5px 7px;text-align:center;
+    background:rgba(255,255,255,.32);font-size:11.5px;line-height:1.35;
+  }
+  .plate i{
+    display:block;width:38px;height:38px;border-radius:50%;margin:0 auto 6px;
+    border:2px solid #64778a;background:radial-gradient(circle,#f7f2e6 0 42%,#dfd4bf 44% 62%,#b9b0a0 64%);
+  }
+  .plate.gold i{border-color:#b08a4a}
+  .plate.floral i{border-color:#8a6d63;background:radial-gradient(circle,#f7f2e6 0 42%,#e8d9cf 44% 62%,#c9a99f 64%)}
+  .plate.brown i{border-color:#775b3e}
+  .plate.repair i{border-color:#8c5a43;background:radial-gradient(circle,#f7f2e6 0 42%,#e6d5bd 44% 62%,#b88e6d 64%)}
+  .decoy{
+    margin-top:8px;padding:8px 10px;border:1px dashed rgba(108,47,42,.42);
+    font-size:12px;color:var(--muted);background:rgba(108,47,42,.035);
+  }
+  .flow-map{
+    display:grid;grid-template-columns:1fr 44px 1.1fr;gap:8px;align-items:center;margin-top:12px;
+  }
+  .slotbox{
+    border:1px solid rgba(43,36,30,.24);padding:10px 12px;background:rgba(255,255,255,.34);
+  }
+  .slotbox h3{font-size:14px;margin:0 0 7px;color:var(--oxblood);letter-spacing:.06em}
+  .slotline{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:3px 0;border-bottom:1px dotted rgba(43,36,30,.18)}
+  .slotline:last-child{border-bottom:0}
+  .arrowcol{font-size:22px;text-align:center;color:var(--brass)}
+  .branch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .branch > div{border:1px solid rgba(43,36,30,.22);padding:10px 12px;background:rgba(255,255,255,.32)}
+  .branch h3{font-size:14px;margin:0 0 6px;letter-spacing:.06em}
+  .branch.wrong h3{color:var(--oxblood)}
+  .branch.right h3{color:var(--green)}
+  .branch p{font-size:12.5px;line-height:1.6;margin:0;color:#4c4034}
+  .memory{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:12px;margin-top:12px;
+  }
+  .memory-img{position:relative;min-height:174px;overflow:hidden;border:1px solid rgba(43,36,30,.28);background:#1f1a16}
+  .memory-img img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.45) saturate(.7) brightness(.72)}
+  .memory-img .overlay{
+    position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:12px;background:linear-gradient(180deg,rgba(60,20,16,.08),rgba(24,14,12,.72));
+    color:#f4e6ce;
+  }
+  .memory-img .overlay b{font-family:"Songti SC","SimSun",serif;font-size:22px;letter-spacing:.12em}
+  .memory-img .overlay span{font-size:12.5px;letter-spacing:.08em;opacity:.88}
+  .clue{
+    border:1px solid rgba(108,47,42,.42);background:rgba(255,250,239,.72);padding:11px 12px;
+    font-size:12px;line-height:1.58;color:#3e332a;
+  }
+  .clue h3{font-size:13px;margin:0 0 7px;color:var(--oxblood);letter-spacing:.04em}
+  .clue code{font-size:11px;background:rgba(108,47,42,.10);padding:1px 4px;color:var(--oxblood)}
+  aside{display:flex;flex-direction:column;gap:15px}
+  .card{
+    border:1px solid rgba(43,36,30,.24);background:rgba(255,255,255,.40);
+    padding:15px 16px;position:relative;
+  }
+  .card .kicker{
+    font-size:11.5px;letter-spacing:.14em;color:var(--oxblood);font-weight:700;margin-bottom:7px;
+  }
+  .card h2{font-size:18px;margin:0 0 8px;letter-spacing:.03em}
+  .card p{font-size:13.5px;line-height:1.65;margin:0;color:#453a30}
+  .identity{display:flex;gap:13px;align-items:center;margin-bottom:9px}
+  .identity .badge{
+    width:54px;height:54px;border:1px solid var(--brass);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-family:"Songti SC","SimSun",serif;
+    font-size:17px;color:var(--oxblood);background:rgba(162,122,63,.10);letter-spacing:.04em;
+  }
+  .identity b{font-size:17px}
+  .identity span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .counts{display:flex;flex-direction:column;gap:8px;margin-top:9px}
+  .countrow{display:grid;grid-template-columns:58px 1fr;gap:8px;font-size:12.5px;line-height:1.55}
+  .countrow b{color:var(--oxblood)}
+  .countrow span{color:#4a3e33}
+  .divider{height:1px;background:var(--line);margin:9px 0}
+  .chain{font-size:12.5px;line-height:1.8;color:#43382e}
+  .chain b{color:var(--oxblood)}
+  .chain code{font-size:11px;background:rgba(108,47,42,.09);padding:1px 4px}
+  .loop{display:flex;flex-direction:column;margin-top:10px}
+  .lstep{display:grid;grid-template-columns:32px 1fr;gap:9px;position:relative;padding:5px 0}
+  .lstep:not(:last-child):after{
+    content:"";position:absolute;left:15px;top:32px;bottom:-5px;width:1px;
+    background:rgba(162,122,63,.45)
+  }
+  .lnum{
+    width:30px;height:30px;border:1px solid var(--brass);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:10.5px;
+    color:var(--oxblood);background:rgba(255,255,255,.35);font-weight:700;
+  }
+  .ltext{font-size:12.5px;line-height:1.45;color:#43382e;padding-top:3px}
+  .ltext b{color:var(--oxblood)}
+  .rules{display:flex;flex-direction:column;gap:7px;margin-top:9px}
+  .rule{display:grid;grid-template-columns:22px 1fr;gap:7px;font-size:12.5px;line-height:1.5;color:#43382e}
+  .rule b{color:var(--oxblood)}
+  .quote{
+    font-family:"Songti SC","SimSun",serif;font-size:18px;line-height:1.55;color:var(--oxblood);
+    border-left:3px solid var(--brass);padding-left:12px;margin:10px 0 0;
+  }
+  .footer{
+    position:relative;z-index:1;margin-top:auto;padding-top:12px;border-top:1px solid rgba(43,36,30,.30);
+    display:flex;justify-content:space-between;align-items:flex-end;gap:20px;
+  }
+  .footer .fleft{font-size:12px;letter-spacing:.10em;color:var(--muted)}
+  .footer .fright{font-size:12px;color:var(--oxblood);letter-spacing:.06em;text-align:right}
+  .tiny{font-size:11.5px;color:var(--muted);line-height:1.55}
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">CHAPTER 02 · CONSTANCE · DEDUCTION LEVEL</div>
+      <h1>华堂仍设故人筵</h1>
+      <div class="subtitle">餐桌关卡 <b>ded_table</b> · 玩法示意</div>
+      <p class="lede">玩家仍然是格雷。他在早饭后独自留在餐厅，从餐边柜里找到一张 1924 年的餐桌草图，用柜子里的餐具在 3D 餐桌上复原那顿饭。</p>
+      <div class="meta">1926 · ORIEL HOUSE · 演绎 / 记忆复原</div>
+    </div>
+    <div class="hero-img">
+      <img src="../../../assets/2d/T-029-餐厅/dining_dining_mid-v3.png" alt="餐厅与餐边柜">
+      <div class="stamp">1926<br>ORIEL</div>
+      <div class="img-caption">餐边柜在右。旧餐桌图就藏在抽屉里。</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="steps">
+
+      <article class="step">
+        <div class="step-head">
+          <div class="num">01</div>
+          <div>
+            <h2>找到图</h2>
+            <p>早饭后，家人离开。餐边柜抽屉微开，里面是一张手绘餐桌图：五个位置，南端写着 <b>L. 的位子</b>。图是安布罗斯留下的记录。</p>
+            <div class="small">不是康斯坦斯有意识的记忆；她忘了卢西恩，只留下每天摆餐具的习惯。</div>
+          </div>
+        </div>
+        <div class="mini-table">
+          <div class="tabletop"></div>
+          <div class="seat n"><span class="dot"></span><b>北端</b>安布罗斯</div>
+          <div class="seat e1"><span class="dot"></span><b>东一</b>康斯坦斯</div>
+          <div class="seat e2"><span class="dot"></span><b>东二</b>艾瑞斯</div>
+          <div class="seat w"><span class="dot"></span><b>西侧</b>吉迪恩</div>
+          <div class="seat s"><span class="dot child"></span><b>南端</b>L. / 卢西恩</div>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-head">
+          <div class="num">02</div>
+          <div>
+            <h2>在柜子里认出五套餐具</h2>
+            <p>柜子分三层：成人餐具、包着的旧餐具、抽屉里的图和地点卡。正确的五套混在干扰物里。玩家不是扫像素，而是看尺寸、缺口、花纹和首字母。</p>
+          </div>
+        </div>
+        <div class="lining">
+          <div class="plate"><i></i>蓝边大盘<br>安布罗斯</div>
+          <div class="plate gold"><i></i>金边茶杯<br>康斯坦斯</div>
+          <div class="plate floral"><i></i>碎花小盘<br>艾瑞斯</div>
+          <div class="plate brown"><i></i>棕边厚盘<br>吉迪恩</div>
+          <div class="plate repair"><i></i>修补旧盘<br>卢西恩</div>
+        </div>
+        <div class="decoy">干扰：客人备用蓝边套 · 普通小盘 · 缺口位置不同的锡杯 · 绣 <b>I.</b> 的餐巾 · “彭罗斯”旧地点卡</div>
+      </article>
+
+      <article class="step">
+        <div class="step-head">
+          <div class="num">03</div>
+          <div>
+            <h2>按图摆到 3D 桌面</h2>
+            <p>把五套餐具放到五个吸附位。可以拿起、换位、回柜子；可以随时打开餐桌图对照。不需要对齐角度，也不做物理碰撞。</p>
+          </div>
+        </div>
+        <div class="flow-map">
+          <div class="slotbox">
+            <h3>柜子里的五套</h3>
+            <div class="slotline"><span>蓝边大盘</span><b>安布罗斯</b></div>
+            <div class="slotline"><span>金边茶杯</span><b>康斯坦斯</b></div>
+            <div class="slotline"><span>碎花小盘</span><b>艾瑞斯</b></div>
+            <div class="slotline"><span>棕边厚盘</span><b>吉迪恩</b></div>
+            <div class="slotline"><span>修补旧盘 + 锡杯</span><b>卢西恩</b></div>
+          </div>
+          <div class="arrowcol">→</div>
+          <div class="slotbox">
+            <h3>桌面五个位置</h3>
+            <div class="slotline"><span>北端</span><b>安布罗斯</b></div>
+            <div class="slotline"><span>东一</span><b>康斯坦斯</b></div>
+            <div class="slotline"><span>东二</span><b>艾瑞斯</b></div>
+            <div class="slotline"><span>西侧</span><b>吉迪恩</b></div>
+            <div class="slotline"><span>南端</span><b>卢西恩</b></div>
+          </div>
+        </div>
+        <div class="small">玩家复原的是 1924 年的五副，不是现在的六副。</div>
+      </article>
+
+      <article class="step">
+        <div class="step-head">
+          <div class="num">04</div>
+          <div>
+            <h2>摇铃判定</h2>
+            <p>五套都放好后，摇桌上的铃。错了只重置桌面，不重置关卡；图和笔记都保留。</p>
+          </div>
+        </div>
+        <div class="branch">
+          <div class="wrong">
+            <h3>摆错</h3>
+            <p>餐具滑回柜子。<br>提示：还少一个 / 不是这套 / 那里不是他的位置。<br>不扣时间，不扣生命。</p>
+          </div>
+          <div class="right">
+            <h3>摆对</h3>
+            <p>切到“演绎”滤镜。<br>1924 年的餐桌短暂回来。<br>南端坐着卢西恩的剪影。</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="step">
+        <div class="step-head">
+          <div class="num">05</div>
+          <div>
+            <h2>记忆与线索</h2>
+            <p>复原成功，格雷得到一张纸面线索。线索不是“摆对了”，而是“南端那个人是谁”。</p>
+          </div>
+        </div>
+        <div class="memory">
+          <div class="memory-img">
+            <img src="../../../assets/2d/T-029-餐厅/dining_table_close-v3.png" alt="餐桌记忆">
+            <div class="overlay">
+              <b>1924 · 五个人</b>
+              <span>南端：L. 的位子 · 修补旧盘 · 锡杯</span>
+            </div>
+          </div>
+          <div class="clue">
+            <h3><code>ev_table_diagram</code> · 1924 年的餐桌摆放图</h3>
+            五个位置。南端是卢西恩的旧餐具：修补过缺口的旧盘、锡杯、短叉、绣着 <b>L.</b> 的餐巾。图背写着“1924”和“L. 的位子”。<br><br>
+            图是安布罗斯留下的记录。康斯坦斯说不认识卢西恩，但每天还是摆着同一副餐具。
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <aside>
+      <div class="card">
+        <div class="kicker">WHO ARE YOU</div>
+        <div class="identity">
+          <div class="badge">GREY</div>
+          <div><b>伊波利特·格雷</b><span>侦探 / 记述者 / 第一人称</span></div>
+        </div>
+        <p>不是康斯坦斯，也不是 1924 年的人。第二章叫“康斯坦斯的章节”，因为她是被调查的人。</p>
+      </div>
+
+      <div class="card">
+        <div class="kicker">FIVE vs SIX</div>
+        <h2>为什么图上是五副，现在是六副</h2>
+        <div class="counts">
+          <div class="countrow"><b>1924</b><span>安布罗斯、康斯坦斯、艾瑞斯、吉迪恩、卢西恩 = 5</span></div>
+          <div class="countrow"><b>现在</b><span>康斯坦斯、艾瑞斯、吉迪恩、拉坦特、格雷 + 卢西恩的旧餐具 = 6</span></div>
+        </div>
+        <div class="divider"></div>
+        <p class="tiny">玩家复原的是 1924 年的五副。现在多出来的那一副，是同一个南端位置。康斯坦斯忘了卢西恩，但习惯还在。</p>
+      </div>
+
+      <div class="card">
+        <div class="kicker">CLUE CHAIN</div>
+        <h2>这条线索往哪走</h2>
+        <div class="chain">
+          <code>ev_table_diagram</code> + <code>ev_ledger_names</code><br>
+          → <b>D2：住过这里的人一个个被忘掉</b><br><br>
+          → 第 4 章温室下的地下室：<b>卢西恩的板球帽</b><br>
+          → 第 5 章：五个人其实是同一个人（D5 回声）
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kicker">CORE LOOP</div>
+        <h2>六步完成一次复原</h2>
+        <div class="loop">
+          <div class="lstep"><div class="lnum">01</div><div class="ltext"><b>找到图</b>：抽屉里的 1924 年餐桌草图</div></div>
+          <div class="lstep"><div class="lnum">02</div><div class="ltext"><b>认餐具</b>：五套正确物，混在干扰物里</div></div>
+          <div class="lstep"><div class="lnum">03</div><div class="ltext"><b>摆桌面</b>：五个吸附位，对照图</div></div>
+          <div class="lstep"><div class="lnum">04</div><div class="ltext"><b>摇铃</b>：错了只重置桌面</div></div>
+          <div class="lstep"><div class="lnum">05</div><div class="ltext"><b>看记忆</b>：1924 年的五个人短暂回来</div></div>
+          <div class="lstep"><div class="lnum">06</div><div class="ltext"><b>拿线索</b>：南端是卢西恩的旧位置</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kicker">THREE RULES</div>
+        <h2>三条底线</h2>
+        <div class="rules">
+          <div class="rule"><b>一</b><span>摆错只重置桌面，不重置关卡和图。</span></div>
+          <div class="rule"><b>二</b><span>每件正确物至少两个识别点，不做像素找茬。</span></div>
+          <div class="rule"><b>三</b><span>线索是做完这件事的副作用，不是点出来的奖励。</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="kicker">DESIGN PRINCIPLE</div>
+        <h2>不是“进房间点热点”</h2>
+        <p>先做一件事：复原一张旧餐桌。线索是做完这件事的副作用。</p>
+        <div class="quote">“2D 图不是答案，<br>是安布罗斯留下的记忆。”</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="fleft">华堂仍设故人筵 · <b>ded_table</b> · 10-19 剧情对齐版</div>
+    <div class="fright">玩家 = 格雷　/　图 = 安布罗斯的记录　/　线索 = 卢西恩</div>
+  </footer>
+
+</div>
+</body>
+</html>

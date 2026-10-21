@@ -33,6 +33,10 @@ var doors := {}
 var _loops := {}
 var _music: AudioStreamPlayer
 var _music_id := ""
+## 正在播放的独立小关卡（演绎关卡 ded_*）；同一时间只允许一个
+var _sublevel: Node = null
+## 进第一人称小关卡期间被临时关掉碰撞的原房间节点：节点 -> [layer, mask]
+var _room_muted := {}
 
 
 func _ready() -> void:
@@ -103,6 +107,91 @@ func show_scene(id: String) -> void:
 	apply_leak(GameState.leak_level)
 	if player:
 		player.needs_spawn = true
+
+
+## 独立小关卡（演绎关卡 ded_*）：把 levels/<id>.tscn 叠到当前房间上，隐藏房间与主界面，
+## 等关卡自己发出 finished 再收场。空间与玩法都在关卡场景里，这里只管进出。
+## 由镜头表的 level(关卡id) 动作调用（core/director.gd）。
+func enter_level(id: String) -> void:
+	if _sublevel != null:
+		push_warning("已经在小关卡里，忽略：" + id)
+		return
+	var path := ContentDB.level_path(id)
+	if not ResourceLoader.exists(path):
+		push_error("没有小关卡场景：" + path)
+		return
+	var lvl: Node = (load(path) as PackedScene).instantiate()
+	# 第一人称小关卡（ded_table）自己接管玩家：不要在这里把玩家收起来
+	var takes_player: bool = lvl.get("takes_over_player") == true
+	_sublevel = lvl
+	# 走动的关卡要临时关掉原房间的碰撞：否则主房间的墙、家具会和关卡里的同一间房叠在一起
+	# （最明显的是餐厅原先那个闭合的餐边柜，会把关卡里打开的柜子重新堵上）
+	if takes_player:
+		_mute_room_collision()
+	add_child(lvl)
+	var room_was_visible := true
+	if room:
+		room_was_visible = room.visible
+		room.visible = false
+	# 主界面整体让位：小关卡自带 HUD，同时停掉 Tab / Esc 这些主界面输入
+	var ui: Node = Director.ui if Director.ui else null
+	var ui_was_visible := true
+	if ui:
+		ui_was_visible = ui.visible
+		ui.visible = false
+		ui.process_mode = Node.PROCESS_MODE_DISABLED
+	# 媒介滤镜也让开：小关卡有自己的光，不要叠章节的划痕、暗角和渗漏
+	var fx: CanvasLayer = null
+	if ui and ui.get("fx") != null:
+		fx = ui.fx
+	var fx_was_visible := true
+	if fx:
+		fx_was_visible = fx.visible
+		fx.visible = false
+	if player and not takes_player:
+		player.deactivate()
+		player.frozen = true
+	if shot_cam:
+		shot_cam.current = false
+	# 关卡脚本在收场时发出 finished（如 ded_table.gd 收起成功卡之后）
+	if lvl.has_signal("finished"):
+		await lvl.finished
+	if is_instance_valid(lvl):
+		lvl.queue_free()
+	_sublevel = null
+	if takes_player:
+		_restore_room_collision()
+	if room and is_instance_valid(room):
+		room.visible = room_was_visible
+	if ui and is_instance_valid(ui):
+		ui.visible = ui_was_visible
+		ui.process_mode = Node.PROCESS_MODE_INHERIT
+	if fx and is_instance_valid(fx):
+		fx.visible = fx_was_visible
+	if player:
+		player.frozen = false
+	if shot_cam and is_instance_valid(shot_cam):
+		shot_cam.current = true
+
+
+## 第一人称小关卡期间，临时关掉原房间的碰撞（进入前调用，收场时恢复）
+func _mute_room_collision() -> void:
+	_room_muted.clear()
+	if room == null:
+		return
+	for n in _walk(room):
+		if n is CollisionObject3D:
+			_room_muted[n] = [n.collision_layer, n.collision_mask]
+			n.collision_layer = 0
+			n.collision_mask = 0
+
+
+func _restore_room_collision() -> void:
+	for n in _room_muted:
+		if is_instance_valid(n):
+			n.collision_layer = _room_muted[n][0]
+			n.collision_mask = _room_muted[n][1]
+	_room_muted.clear()
 
 
 ## 灰盒（过渡用）：还没有关卡场景的房间，按房间登记表（尺寸）与房间布局表搭出来。

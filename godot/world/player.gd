@@ -24,6 +24,9 @@ var _hover := ""
 ## 准星对着的门（门扇的碰撞体）
 var _door: Node = null
 var _pitch := 0.0
+## 刚抓住鼠标时先忽略一小段鼠标位移：系统把光标拉回窗口中心会产生一次很大的相对位移，
+## 不忽略的话进关卡的第一帧镜头会突然甩到天花板或桌面上。
+var _capture_until := 0
 
 
 func _ready() -> void:
@@ -88,7 +91,13 @@ func activate() -> void:
 	cam.current = true
 	set_physics_process(true)
 	if not Director.autoplay:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		capture_mouse()
+
+
+## 抓住鼠标，并给 300 毫秒的“忽略位移”窗口（进关卡、关掉图纸后重新抓鼠标都走这里）
+func capture_mouse() -> void:
+	_capture_until = Time.get_ticks_msec() + 300
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func deactivate() -> void:
@@ -96,7 +105,8 @@ func deactivate() -> void:
 		return
 	active = false
 	set_physics_process(false)
-	Director.ui.set_hint("")
+	if Director.ui:
+		Director.ui.set_hint("")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
@@ -104,17 +114,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not active or frozen:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Time.get_ticks_msec() < _capture_until:
+			return
 		# 灵敏度与 Y 轴反转来自设置（core/settings.gd）；Esc 由界面层打开暂停页
 		var k := SENS * Settings.mouse_scale()
 		rotate_y(-event.relative.x * k)
 		_pitch = clampf(_pitch - event.relative.y * k * (-1.0 if Settings.invert_y else 1.0), -1.3, 1.3)
 		cam.rotation.x = _pitch
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		capture_mouse()
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
 		if _hover != "":
 			Director.inspected.emit(_hover)
-		elif _door:
+		elif _door and Director.world:
 			Director.world.toggle_door(_door, global_position)
 			_door = null
 
@@ -130,7 +142,8 @@ func _physics_process(dt: float) -> void:
 	if _stride >= STRIDE:
 		_stride -= STRIDE
 		steps += 1
-		Director.world.play_sound(Director.world.footstep_sound())
+		if Director.world:
+			Director.world.play_sound(Director.world.footstep_sound())
 	_update_hover()
 
 
@@ -148,6 +161,9 @@ func walk(dir: Vector3, dt: float) -> void:
 
 
 func _update_hover() -> void:
+	# 单独运行小关卡时没有 SceneHost：这一关自己处理准星与交互
+	if Director.world == null:
+		return
 	var id := ""
 	var door: Node = null
 	if ray.is_colliding():

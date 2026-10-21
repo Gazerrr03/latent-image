@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>餐桌关卡游戏界面效果图</title>
+<style>
+  :root{
+    --paper:#f4e9d5; --ink:#34261c; --muted:#756049; --red:#8a3f32;
+    --brass:#a9803e; --blue:#3f6579; --gold:#a9803e; --brown:#6b4a2f;
+    --line:#94795a; --green:#3f4a3a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#120d09}
+  body{width:2000px;height:1200px;font-family:"Microsoft YaHei","Noto Sans SC",sans-serif;color:var(--ink)}
+  .screen{
+    width:2000px;height:1200px;position:relative;overflow:hidden;
+    background:#1a120d;
+  }
+  .screen > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.85)}
+  .screen:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,8,5,.55),rgba(12,8,5,.18) 45%,rgba(12,8,5,.62))}
+  .top{
+    position:absolute;z-index:4;top:28px;left:44px;right:44px;display:flex;justify-content:space-between;align-items:flex-start;
+  }
+  .objective{
+    background:rgba(244,233,213,.92);border-left:5px solid var(--red);padding:12px 18px;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);max-width:900px;
+  }
+  .objective .k{font-size:11px;letter-spacing:.15em;color:var(--red);font-weight:700;margin-bottom:5px}
+  .objective .t{font-family:"KaiTi","STKaiti","SimSun",serif;font-size:24px;letter-spacing:.5px}
+  .mocktag{
+    background:rgba(20,14,10,.8);border:1px solid rgba(233,206,159,.55);color:#ecd9b8;
+    padding:9px 13px;font-size:11px;letter-spacing:.13em;text-align:right;line-height:1.5
+  }
+  .ui{
+    position:absolute;z-index:3;left:44px;right:44px;top:112px;bottom:38px;
+    display:grid;grid-template-columns:1.28fr .72fr;gap:16px;
+  }
+  .paper{
+    background:
+      radial-gradient(circle at 10% 8%,rgba(255,255,255,.55),transparent 35%),
+      repeating-linear-gradient(0deg,rgba(75,55,35,.025) 0 1px,transparent 1px 5px),
+      var(--paper);
+    border:1px solid rgba(52,38,28,.55);box-shadow:0 18px 35px rgba(0,0,0,.3);
+    position:relative;overflow:hidden
+  }
+  .left{padding:16px 18px 14px;display:flex;flex-direction:column}
+  .headline{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(52,38,28,.25);padding-bottom:8px;margin-bottom:12px}
+  .headline h2{font-family:"KaiTi","STKaiti","SimSun",serif;font-size:25px;margin:0;letter-spacing:.04em}
+  .headline span{font-family:Georgia,serif;font-size:12px;color:var(--red);letter-spacing:.08em}
+  .blueprint{
+    flex:1;position:relative;border:1px solid rgba(52,38,28,.3);background:#e4d2b3;
+    overflow:hidden;box-shadow:inset 0 0 25px rgba(80,55,30,.12)
+  }
+  .blueprint img{width:100%;height:100%;object-fit:contain;display:block;background:#e9dbc1}
+  .pin{
+    position:absolute;width:19px;height:19px;border-radius:50%;background:#b08a4d;
+    border:2px solid #6b4a25;box-shadow:0 2px 4px rgba(0,0,0,.35)
+  }
+  .pin.p1{left:18px;top:18px}.pin.p2{right:18px;top:18px}
+  .blueprint .note{
+    position:absolute;left:18px;bottom:16px;background:rgba(244,233,213,.92);
+    border:1px solid var(--line);padding:6px 10px;font-family:"KaiTi","STKaiti","SimSun",serif;
+    font-size:13px;color:var(--ink)
+  }
+  .left .hint{
+    display:flex;justify-content:space-between;align-items:center;margin-top:10px;
+    font-size:13px;color:var(--muted)
+  }
+  .left .hint b{color:var(--red)}
+  .right{padding:16px 16px 12px;display:flex;flex-direction:column}
+  .right h2{font-family:"KaiTi","STKaiti","SimSun",serif;font-size:24px;margin:0 0 3px}
+  .right .sub{font-size:11.5px;color:var(--muted);letter-spacing:.04em;margin-bottom:10px}
+  .inventory{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .item{
+    min-height:84px;border:1px solid rgba(52,38,28,.22);background:rgba(255,255,255,.36);
+    padding:7px 8px;display:grid;grid-template-columns:40px 1fr;gap:7px;position:relative
+  }
+  .item.selected{border:2px solid var(--red);background:rgba(138,63,50,.08);box-shadow:0 0 0 2px rgba(138,63,50,.08)}
+  .item .plate{
+    width:34px;height:34px;border-radius:50%;background:#f7eedf;border:6px solid var(--blue);
+    margin:3px auto 0
+  }
+  .item.gold .plate{border-color:var(--gold);border-width:3px}
+  .item.floral .plate{border-color:#8a6d63;border-width:3px;background:radial-gradient(circle,#f8eee1 0 58%,#ead8cb 59%)}
+  .item.brown .plate{border-color:var(--brown);border-width:8px}
+  .item.repair .plate{border-color:#8c5a43;border-width:3px;position:relative}
+  .item.repair .plate:after{content:"";position:absolute;left:45%;top:8%;width:2px;height:78%;background:#76533d;transform:rotate(20deg)}
+  .item .name{font-family:"KaiTi","STKaiti","SimSun",serif;font-size:13px;font-weight:700;line-height:1.25}
+  .item .desc{font-size:10px;line-height:1.35;color:#6d5a46;margin-top:2px}
+  .item .tag{position:absolute;right:5px;top:4px;font-size:9px;color:var(--red);letter-spacing:.04em}
+  .item.decoy{opacity:.72;border-style:dashed;background:rgba(138,63,50,.03)}
+  .selected-card{
+    margin-top:10px;border:1px solid var(--red);background:rgba(255,250,240,.7);padding:9px 11px;
+    font-size:12px;line-height:1.55;color:#4c3d2f
+  }
+  .selected-card b{color:var(--red)}
+  .progress{margin-top:8px;display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--muted)}
+  .bar{flex:1;height:7px;background:rgba(52,38,28,.14);position:relative}
+  .bar:after{content:"";position:absolute;left:0;top:0;bottom:0;width:60%;background:var(--brass)}
+  .buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+  .button{
+    border:1px solid var(--red);background:rgba(138,63,50,.08);padding:10px;text-align:center;
+    font-family:"KaiTi","STKaiti","SimSun",serif;font-size:15px;color:var(--red);font-weight:700
+  }
+  .button.secondary{border-color:var(--line);color:#5b4938;background:rgba(255,255,255,.28)}
+  .memory{
+    margin-top:10px;height:156px;position:relative;overflow:hidden;border:1px solid rgba(52,38,28,.3);
+    background:#1d120c
+  }
+  .memory img{width:100%;height:100%;object-fit:cover;filter:sepia(.55) brightness(.38) saturate(.7)}
+  .memory .silhouettes{position:absolute;inset:0}
+  .person{position:absolute;bottom:33px;width:42px;height:74px;background:#0b0806;border-radius:45% 45% 20% 20%;opacity:.9}
+  .person:before{content:"";position:absolute;left:9px;top:-19px;width:24px;height:25px;border-radius:50%;background:#0b0806}
+  .person.a{left:24%}.person.b{left:40%}.person.c{left:54%}.person.d{left:68%}.person.e{left:82%;height:58px;width:34px}
+  .memory .caption{position:absolute;left:11px;bottom:9px;right:11px;color:#ecd9b8;font-size:11px;line-height:1.45;text-shadow:0 1px 3px #000}
+  .memory .lab{position:absolute;left:11px;top:9px;color:#e8c892;font-family:"KaiTi","STKaiti","SimSun",serif;font-size:16px;letter-spacing:.1em}
+  .bottom{
+    position:absolute;z-index:4;left:44px;right:44px;bottom:10px;display:flex;justify-content:space-between;
+    color:#d6c3a2;font-size:11px;letter-spacing:.05em;text-shadow:0 1px 2px #000
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+  <img class="bg" src="../../../assets/2d/T-029-餐厅/dining_dining_mid-v3.png" alt="餐厅">
+  <div class="top">
+    <div class="objective">
+      <div class="k">CHAPTER 02 · 餐厅 · 女主人</div>
+      <div class="t">按这张图，把 1924 年的餐桌复原出来。</div>
+    </div>
+    <div class="mocktag">MISSING UI MOCKUP<br>2D 图纸 + 柜内物品 + 摇铃判定</div>
+  </div>
+
+  <div class="ui">
+    <section class="paper left">
+      <div class="headline"><h2>柜中图纸 · 1924</h2><span>TABLE PLAN / 05 PLACES</span></div>
+      <div class="blueprint">
+        <img src="ded_table-2D摆放图-v3.png" alt="1924 年餐桌摆放图">
+        <span class="pin p1"></span><span class="pin p2"></span>
+        <div class="note">图上：北 / 东一 / 东二 / 西 / 南。南端只写 L.，全名要回旧地点卡对。</div>
+      </div>
+      <div class="hint"><span>已放 <b>3 / 5</b> 套 · 当前选中：卢西恩的旧餐具</span><span>图纸可随时收起，不影响桌面</span></div>
+    </section>
+
+    <aside class="paper right">
+      <h2>餐边柜 · 可拿取物品</h2>
+      <div class="sub">正确五套 + 干扰物。每件至少两个识别点。</div>
+      <div class="inventory">
+        <div class="item"><div class="plate"></div><div><div class="name">蓝边大盘</div><div class="desc">蓝边宽 · 玻璃杯 · 白餐巾</div></div><span class="tag">安布罗斯</span></div>
+        <div class="item gold"><div class="plate"></div><div><div class="name">金边盘</div><div class="desc">金边细 · 茶杯茶碟</div></div><span class="tag">康斯坦斯</span></div>
+        <div class="item floral"><div class="plate"></div><div><div class="name">碎花小盘</div><div class="desc">碎花 · 小杯 · I. 餐巾</div></div><span class="tag">艾瑞斯</span></div>
+        <div class="item brown"><div class="plate"></div><div><div class="name">棕边厚盘</div><div class="desc">厚沿 · 锡制杯 · 素餐巾</div></div><span class="tag">吉迪恩</span></div>
+        <div class="item repair selected"><div class="plate"></div><div><div class="name">卢西恩的旧餐具</div><div class="desc">修补旧盘 · 缺角锡杯 · L. 餐巾</div></div><span class="tag">已选中</span></div>
+        <div class="item decoy"><div class="plate"></div><div><div class="name">客人备用蓝边套</div><div class="desc">像安布罗斯，但没有餐巾首字母</div></div><span class="tag">干扰</span></div>
+        <div class="item decoy floral"><div class="plate"></div><div><div class="name">普通小盘</div><div class="desc">像艾瑞斯，但没有碎花</div></div><span class="tag">干扰</span></div>
+        <div class="item decoy"><div class="plate"></div><div><div class="name">错锡杯</div><div class="desc">有缺口，但位置不同，杯底无 L.</div></div><span class="tag">干扰</span></div>
+        <div class="item decoy"><div class="plate"></div><div><div class="name">绣 I. 的餐巾</div><div class="desc">像南端，但首字母是 I.</div></div><span class="tag">干扰</span></div>
+        <div class="item decoy"><div class="plate"></div><div><div class="name">“彭罗斯”旧地点卡</div><div class="desc">另一个被忘掉的人，引向错误年代</div></div><span class="tag">干扰</span></div>
+      </div>
+
+      <div class="selected-card"><b>已选中：卢西恩的旧餐具。</b><br>点击右侧桌面槽位放置。它只能放在南端；放错会提示“那里不是他的位置”。</div>
+      <div class="progress"><span>桌面复原</span><div class="bar"></div><span>3 / 5</span></div>
+      <div class="buttons"><div class="button">摇铃确认</div><div class="button secondary">收起图纸</div></div>
+
+      <div class="memory">
+        <img src="../../../assets/2d/T-029-餐厅/dining_table_close-v3.png" alt="1924 餐桌记忆">
+        <div class="silhouettes">
+          <span class="person a"></span><span class="person b"></span><span class="person c"></span><span class="person d"></span><span class="person e"></span>
+        </div>
+        <div class="lab">1924 · 五个人</div>
+        <div class="caption">摆对后：切到“演绎”滤镜。南端是 L. 的位置；茶倒进锡杯，时钟走一下。</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="bottom"><span>餐桌复原 · 2D 图纸 / 3D 桌面 / 柜内物品</span><span>错了只重置桌面，不重置关卡</span></div>
+</div>
+</body>
+</html>

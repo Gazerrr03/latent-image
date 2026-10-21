@@ -381,6 +381,14 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 		"fx":
 			if args.size() > 0 and not args[0] in ["", "自动"] and not fx_presets.has(args[0]):
 				err("镜头表", id, "滤镜预设“%s”不在滤镜表里" % args[0])
+		"level":
+			if args.is_empty() or args[0] == "":
+				err("镜头表", id, "level 需要一个小关卡 id（对应 levels/<id>.tscn）")
+			elif not FileAccess.file_exists("res://levels/%s.tscn" % args[0]):
+				err("镜头表", id, "小关卡场景 levels/%s.tscn 不存在" % args[0], "先把这个关卡场景搭好，或改掉镜头表里的 level")
+			for e in args.slice(1):
+				if not evidence.has(e):
+					err("镜头表", id, "小关卡完成后要收的证据 %s 不在证据表里" % e)
 		"music":
 			if args.is_empty() or (args[0] != "关闭" and not music.has(args[0])):
 				err("镜头表", id, "配乐“%s”不在配乐表里" % str(args), "写配乐表里的曲名，或 music(关闭) 停止")

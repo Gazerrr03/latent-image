@@ -23,6 +23,7 @@
 | `epilogue` | 尾声·白色的房间 | 外面 | 尾声 | P0 | 待写 | 灰盒（房间 id `monitor_room`） |
 | `ded_locked` | 密室 | 演绎 | 1 | P0 | 待写 | — |
 | `ded_photo` | 合影 | 演绎 | 2 | P0 | 待写 | — |
+| `ded_table` | 1924 年的餐桌 | 演绎 | 2 | P1 | [ded_table](ded_table.md) | 已搭：第一人称（餐边柜抽屉入口，9 件）、格雷聊天框、自动判定、自动摇铃；记忆演出 3D 已接（四大人 + 剪影 + 倒茶 + 滤镜 + 声音） |
 | `ded_thursday` | 星期四夜里 | 演绎 | 6 | P0 | 待写 | — |
 | `ded_blackcloth` | 黑布 | 演绎 | 3 | P1 | 待写 | — |
 | `ded_footprint` | 鞋印 | 演绎 | 4 | P1 | 待写 | — |

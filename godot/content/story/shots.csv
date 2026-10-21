@@ -26,6 +26,7 @@ C1-08,C1,*,guest_room,typewriter_close,,typewriter,,,music(关闭);objective();a
 C1-09,C1,*,guest_room,bed,,clock_tick;door_knock,晚上，康斯坦斯敲了敲门：“他在查的东西，都在书房资料室。明天我带您去。”\n我睡下了。,,wait(1);recap(r1);diary(diary2),,钩子 → 第 2 章女主人
 C2-01,C2,*,dining,table_close,,cutlery,早饭时，桌上多摆了一副餐具。康斯坦斯看见我在看，说：“摆错了。”她把它收走了。,,music(explore);collect(ev_extra_plate);objective(女主人：他在查什么？合影里多出来的是谁？),,玩家亲眼看到多摆的餐具
 C2-02,C2,*,dining,dining_mid,,clock_tick,,,say(c2_constance);inquire(c2_ask_constance),,
+C2-02a,C2,*,dining,dining_mid,camera,,她出去了。餐边柜的抽屉没关严，里面压着一张折起来的旧纸。,,"level(ded_table,ev_table_diagram)",,演绎关卡 ded_table：复原 1924 年的餐桌；收起成功卡后收入 ev_table_diagram
 C2-03,C2,*,archive,,walk,clock_tick,,,"objective(书房资料室：合影里多出来的那些人，在这里留下过什么？);inspect(hs_photos,hs_ledger,hs_clipping,hs_manual,hs_doorframe)",,
 C2-04,C2,*,con_room,,walk,clock_tick,,,"objective(女主人的卧室：她记得什么，又说自己不记得什么？);inspect(hs_con_ledger,hs_con_sweater,hs_con_ringbox)",,新房间：女主人的卧室（灰盒）
 C2-05,C2,*,guest_room,board,,pin,,,music(think);objective(证据板：哪些东西还记得那些被忘掉的人？);link(d2),,

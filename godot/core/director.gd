@@ -194,6 +194,15 @@ func _do(name: String, args: Array, mode: String) -> void:
 			GameState.record("develop", args[0] if args.size() > 0 else "")
 		"goto":
 			world.show_scene(args[0])
+		"level":
+			# level(关卡id[,证据id…])：进入独立小关卡（levels/<id>.tscn），走完回到本房间，
+			# 返回后再收证据，保证证据是在演出之后才进证据板
+			if args.is_empty():
+				push_warning("level 需要一个关卡 id")
+				return
+			await world.enter_level(args[0])
+			for i in range(1, args.size()):
+				_collect(args[i])
 		"fx":
 			ui.fx.set_override(args[0] if args.size() > 0 else "")
 		"music":
