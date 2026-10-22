@@ -114,8 +114,6 @@ var table_body: StaticBody3D
 
 var player
 var player_own := false
-var env: Environment
-var camera: Camera3D
 
 var hover := {}
 var held := ""
@@ -123,31 +121,12 @@ var fail_count := 0
 var solved := false
 var blueprint_open := false
 var _finished := false
+var cancelled := false
 
-var ui_root: Control
-var hud_root: Control
-var font: SystemFont
-var prompt_panel: PanelContainer
-var prompt_label: Label
-var held_panel: PanelContainer
-var held_label: Label
-var status_label: Label
-var objective_label: Label
-var q_line: Label
-var blueprint_hint_panel: PanelContainer
-var blueprint_hint_label: Label
-var crosshair: Control
-## 3D 图纸：按 Q 时像端在手里一样出现在镜头前（不是全屏 UI）
-var blueprint_3d: Node3D
-var blueprint_held_hidden := false
-var clue_layer: ColorRect
 var table_bell: Node3D
 var bell_fx: Node3D
 var bell_seq := false
 var chat_open := false
-var chat_panel: PanelContainer
-var chat_label: Label
-var chat_hint: Label
 var _last_wrong_sig := ""
 var _idle_seconds := 0.0
 var _idle_hint_shown := false
@@ -161,42 +140,12 @@ func _ready() -> void:
 	_build_slots()
 	_build_bell()
 	_build_ui()
-	var cam := _find_node(self, "cam_dining_mid")
-	if cam is Camera3D:
-		camera = cam
 	if DisplayServer.get_name() != "headless":
 		_setup_player()
-	if OS.get_cmdline_user_args().has("--capture-ded"):
-		_capture_and_quit()
-	if OS.get_cmdline_user_args().has("--capture-hud"):
-		_capture_hud()
-	if OS.get_cmdline_user_args().has("--self-test"):
-		_self_test()
-	if OS.get_cmdline_user_args().has("--chat-test"):
-		_chat_test()
-	if OS.get_cmdline_user_args().has("--bell-test"):
-		_bell_test()
-	if OS.get_cmdline_user_args().has("--idle-test"):
-		_idle_test()
-	if OS.get_cmdline_user_args().has("--memory-test"):
-		_memory_test()
-	if OS.get_cmdline_user_args().has("--memory-capture"):
-		_memory_capture()
-	if OS.get_cmdline_user_args().has("--memory-close-capture"):
-		_memory_close_capture()
-	if OS.get_cmdline_user_args().has("--memory-skip-test"):
-		_memory_skip_test()
-	if OS.get_cmdline_user_args().has("--memory-line2-capture"):
-		_memory_line2_capture()
-	if OS.get_cmdline_user_args().has("--ring-capture"):
-		_ring_capture()
-	if OS.get_cmdline_user_args().has("--auto-solve") or Director.autoplay:
-		# 无界面回归（--autoplay）时也要能走完这一关，不能卡在等点击
-		_auto_solve()
 
 
 func _process(dt: float) -> void:
-	if player == null or solved or blueprint_open or clue_layer.visible or chat_open or bell_seq:
+	if player == null or player.frozen or solved or blueprint_open or chat_open or bell_seq:
 		return
 	_update_hover()
 	_update_ring_visibility()
@@ -222,16 +171,7 @@ func _setup_player() -> void:
 		player = PlayerScene.new()
 		add_child(player)
 		player_own = true
-	var cam := _find_node(self, "cam_dining_mid")
 	var pcam = player.get("cam")
-	if cam is Camera3D and cam.environment and pcam is Camera3D:
-		env = cam.environment
-		pcam.environment = env
-	# 3D 图纸挂在玩家镜头前，像端在手里
-	if blueprint_3d and pcam is Node3D:
-		blueprint_3d.reparent(pcam, false)
-		blueprint_3d.position = Vector3(-0.01, -0.07, -0.58)
-		blueprint_3d.rotation = Vector3(deg_to_rad(-7), 0, deg_to_rad(2))
 	if Director.world:
 		Director.world.highlight_hotspots([])
 	var sp := _find_node(self, "spawn")
@@ -249,15 +189,10 @@ func _teardown_player() -> void:
 	# 手上有餐具 / 镜头前的图纸都是玩家的孩子，收场前先收回关卡，免得跟着宿主玩家进下一关
 	if held != "":
 		_return_item(held)
-	if blueprint_3d and is_instance_valid(blueprint_3d):
-		blueprint_3d.queue_free()
-		blueprint_3d = null
 	if player == null:
 		return
 	player.frozen = true
 	var pcam = player.get("cam")
-	if env != null and pcam is Camera3D:
-		pcam.environment = null
 	player.deactivate()
 
 
@@ -565,13 +500,10 @@ func _refresh_prompt() -> void:
 
 
 func _set_prompt(text: String) -> void:
-	if prompt_panel == null:
-		return
-	prompt_panel.visible = text != ""
-	prompt_label.text = text
+	var hand := "手上：%s · R 放回　" % ITEM_LABELS[held] if held != "" else ""
+	Director.ui.set_hint(hand + text if text != "" or hand != "" else "")
 
 
-## 圆环只在端着餐具时出现，放好/空手时隐藏，避免桌面上一直浮着一圈金环
 func _update_ring_visibility() -> void:
 	var show := held != "" and not solved and not chat_open and not blueprint_open and not bell_seq
 	for slot in slot_rings:
@@ -724,13 +656,8 @@ func _take_diagram() -> void:
 	diagram_taken = true
 	drawer_paper.visible = false
 	drawer_paper_area.collision_layer = 0
-	if objective_label:
-		objective_label.text = "按这张图，把 1924 年的餐桌复原出来。"
-	if q_line:
-		q_line.visible = true
-	if blueprint_hint_panel:
-		blueprint_hint_panel.visible = true
-	_status("按这张图，把餐具摆回桌上。滚轮缩放图纸，Q / Esc 收起。")
+	Director.ui.set_objective("按旧图复原餐桌 · Q 查看图纸 · R 放回物件")
+	_status("按这张图，把餐具摆回桌上。沿用物品检视的拖动、缩放、翻面与放下。")
 	_open_blueprint()
 
 
@@ -815,27 +742,21 @@ func _wrong_chat_text(wrong: Dictionary) -> String:
 
 
 func _show_chat(text: String) -> void:
-	if chat_panel == null:
-		return
 	chat_open = true
 	_update_ring_visibility()
-	chat_label.text = text
-	chat_panel.visible = true
 	_idle_seconds = 0.0
 	_idle_hint_shown = false
 	_set_prompt("")
 	_set_crosshair(false)
 	if player:
 		player.frozen = true
+	await Director.ui.show_text(text)
+	_close_chat()
 
 
 func _close_chat() -> void:
-	if not chat_open:
-		return
 	chat_open = false
 	_update_ring_visibility()
-	if chat_panel:
-		chat_panel.visible = false
 	if player:
 		player.frozen = false
 	_set_crosshair(true)
@@ -852,8 +773,7 @@ func _start_bell_sequence() -> void:
 	_set_prompt("")
 	_set_crosshair(false)
 	_status("")
-	if hud_root:
-		hud_root.visible = false
+	Director.ui.set_hud(false)
 	if player:
 		player.frozen = true
 	# 回归测试/自动通关跳过演出，免得每次等十秒
@@ -890,8 +810,7 @@ func _start_bell_sequence() -> void:
 	_play_memory()
 
 
-## 记忆演出的转场占位：先黑场、两句独白，再回到证据卡。
-## 3D 的 1924 剪影/倒茶/时钟下一步替换这里，不影响前面判定与铃声。
+## 保留 PR 的记忆场面，阅读和媒介表现使用当前公共系统。
 func _play_memory() -> void:
 	if table_bell:
 		table_bell.visible = false
@@ -910,390 +829,69 @@ func _success() -> void:
 	if solved:
 		return
 	solved = true
-	blueprint_open = false
 	_update_ring_visibility()
-	if blueprint_3d:
-		blueprint_3d.visible = false
-	if blueprint_held_hidden and held != "" and items.has(held):
-		items[held].visible = true
-	blueprint_held_hidden = false
-	if clue_layer:
-		clue_layer.visible = true
-	if hud_root:
-		hud_root.visible = false
 	_set_prompt("")
-	_update_held()
 	_set_crosshair(false)
 	if player:
 		player.frozen = true
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	if Director.autoplay or OS.get_cmdline_user_args().has("--auto-solve"):
-		_finish()
+	await Director.ui.inspect_evidence("ev_table_diagram", "", "")
+	_finish()
 
 
-## 收场：收起成功卡，把控制权交回 scene_host（镜头表的 level(...) 动作继续往下走）
 func _finish() -> void:
 	if _finished:
 		return
 	_finished = true
-	if clue_layer:
-		clue_layer.visible = false
-	if blueprint_3d:
-		blueprint_3d.visible = false
-	if hud_root:
-		hud_root.visible = true
 	_teardown_player()
 	finished.emit()
 
 
-# ───────────── UI ─────────────
-
 func _build_ui() -> void:
-	font = SystemFont.new()
-	font.font_names = PackedStringArray(["Microsoft YaHei", "SimHei", "Noto Sans SC"])
-	var layer := CanvasLayer.new()
-	layer.layer = 20
-	add_child(layer)
-	ui_root = Control.new()
-	ui_root.set_anchors_preset(Control.PRESET_FULL_RECT)
-	ui_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	ui_root.theme = _theme()
-	layer.add_child(ui_root)
-
-	# 常驻 HUD 单独一层：打开图纸 / 成功卡时整层让位，免得纸面板透在下面
-	hud_root = Control.new()
-	hud_root.set_anchors_preset(Control.PRESET_FULL_RECT)
-	hud_root.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	ui_root.add_child(hud_root)
-
-	var obj := PanelContainer.new()
-	obj.position = Vector2(24, 20)
-	obj.custom_minimum_size = Vector2(560, 96)
-	obj.add_theme_stylebox_override("panel", _paper_style())
-	hud_root.add_child(obj)
-	var ov := VBoxContainer.new()
-	ov.add_theme_constant_override("separation", 2)
-	obj.add_child(ov)
-	ov.add_child(_label("CHAPTER 02 · 餐厅 · 女主人", 12, Color("#8a3f32")))
-	objective_label = _label("餐边柜里有一张旧餐桌图。它记的是哪一年？", 20, Color("#35271d"))
-	ov.add_child(objective_label)
-	q_line = _label("Q　查看 1924 年图纸（也可以对着柜里的纸按 E）", 13, Color("#6b4a32"))
-	q_line.visible = false
-	ov.add_child(q_line)
-
-	# 右上角常驻的键位提示：不靠底部那行小字，玩家一眼能看到
-	var bp_hint := PanelContainer.new()
-	bp_hint.set_anchors_preset(Control.PRESET_TOP_RIGHT)
-	bp_hint.offset_left = -300
-	bp_hint.offset_right = -24
-	bp_hint.offset_top = 20
-	bp_hint.offset_bottom = 64
-	bp_hint.add_theme_stylebox_override("panel", _paper_style())
-	bp_hint.visible = false
-	hud_root.add_child(bp_hint)
-	blueprint_hint_panel = bp_hint
-	blueprint_hint_label = _label("Q　查看 1924 年图纸", 18, Color("#8a3f32"))
-	blueprint_hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	bp_hint.add_child(blueprint_hint_label)
-
-	status_label = _label("", 16, Color("#ffe3b0"))
-	status_label.position = Vector2(26, 124)
-	status_label.custom_minimum_size = Vector2(700, 24)
-	status_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	status_label.add_theme_color_override("font_outline_color", Color(0.03, 0.02, 0.01, 0.92))
-	status_label.add_theme_constant_override("outline_size", 5)
-	status_label.visible = false
-	hud_root.add_child(status_label)
-
-	# 格雷的内心独白：屏幕下方的纸质聊天框，一次最多两行
-	chat_panel = PanelContainer.new()
-	chat_panel.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	chat_panel.offset_left = -380
-	chat_panel.offset_right = 380
-	chat_panel.offset_top = -164
-	chat_panel.offset_bottom = -24
-	chat_panel.add_theme_stylebox_override("panel", _paper_style())
-	chat_panel.visible = false
-	hud_root.add_child(chat_panel)
-	var cv := VBoxContainer.new()
-	cv.add_theme_constant_override("separation", 4)
-	chat_panel.add_child(cv)
-	var who := _label("格雷", 14, Color("#8a3f32"))
-	cv.add_child(who)
-	chat_label = _label("", 17, Color("#35271d"))
-	chat_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	chat_label.max_lines_visible = 2
-	chat_label.custom_minimum_size = Vector2(720, 0)
-	cv.add_child(chat_label)
-	chat_hint = _label("E　继续", 12, Color("#7a5c3e"))
-	chat_hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	cv.add_child(chat_hint)
-
-	# 准星（不用主界面的准星，这一关单独运行也要有）
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	hud_root.add_child(center)
-	crosshair = ColorRect.new()
-	crosshair.custom_minimum_size = Vector2(10, 10)
-	crosshair.color = Color(0, 0, 0, 0.35)
-	crosshair.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	center.add_child(crosshair)
-	var dot := ColorRect.new()
-	dot.custom_minimum_size = Vector2(6, 6)
-	dot.color = Color(1, 1, 1, 0.85)
-	dot.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	center.add_child(dot)
-
-	# 手上拿着什么
-	held_panel = PanelContainer.new()
-	held_panel.set_anchors_preset(Control.PRESET_CENTER_TOP)
-	held_panel.offset_left = -230
-	held_panel.offset_right = 230
-	held_panel.offset_top = 16
-	held_panel.offset_bottom = 54
-	held_panel.add_theme_stylebox_override("panel", _pill_style())
-	held_panel.visible = false
-	hud_root.add_child(held_panel)
-	held_label = _label("", 16, Color("#f4e7cf"))
-	held_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	held_panel.add_child(held_label)
-
-	# 准星下面的交互提示
-	prompt_panel = PanelContainer.new()
-	prompt_panel.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	prompt_panel.offset_left = -250
-	prompt_panel.offset_right = 250
-	prompt_panel.offset_top = -136
-	prompt_panel.offset_bottom = -92
-	prompt_panel.add_theme_stylebox_override("panel", _pill_style())
-	prompt_panel.visible = false
-	hud_root.add_child(prompt_panel)
-	prompt_label = _label("", 17, Color("#f4e7cf"))
-	prompt_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	prompt_panel.add_child(prompt_label)
-
-	var controls := _label("WASD 移动 · 鼠标看 · E 交互 · Q 图纸 · R 放回", 12, Color("#d8c8b0"))
-	controls.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
-	controls.offset_left = -460
-	controls.offset_right = -24
-	controls.offset_top = -34
-	controls.offset_bottom = -12
-	controls.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	controls.add_theme_color_override("font_outline_color", Color(0.03, 0.02, 0.01, 0.85))
-	controls.add_theme_constant_override("outline_size", 4)
-	hud_root.add_child(controls)
-
-	_build_blueprint_3d()
-	_build_clue_overlay()
-	_set_crosshair(true)
-	_update_held()
-	_status("先走到右手边的餐边柜，拉开抽屉看看里面有什么。")
-
-
-func _theme() -> Theme:
-	var t := Theme.new()
-	t.default_font = font
-	t.default_font_size = 16
-	return t
-
-
-func _label(text: String, size: int, color: Color) -> Label:
-	var l := Label.new()
-	l.text = text
-	l.add_theme_font_size_override("font_size", size)
-	l.add_theme_color_override("font_color", color)
-	return l
-
-
-func _paper_style() -> StyleBoxFlat:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0.95, 0.90, 0.80, 0.94)
-	sb.border_color = Color("#94795a")
-	sb.set_border_width_all(1)
-	sb.set_corner_radius_all(4)
-	sb.set_content_margin_all(10)
-	return sb
-
-
-func _pill_style() -> StyleBoxFlat:
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0.04, 0.03, 0.02, 0.78)
-	sb.border_color = Color(0.75, 0.62, 0.42, 0.5)
-	sb.set_border_width_all(1)
-	sb.set_corner_radius_all(4)
-	sb.set_content_margin_all(8)
-	return sb
-
-
-func _button(text: String, kind: String) -> Button:
-	var b := Button.new()
-	b.text = text
-	b.custom_minimum_size = Vector2(160, 42)
-	b.add_theme_font_size_override("font_size", 16)
-	b.add_theme_color_override("font_color", Color("#3b2c20"))
-	b.add_theme_color_override("font_hover_color", Color("#8a3f32"))
-	b.add_theme_stylebox_override("normal", _paper_style())
-	b.add_theme_stylebox_override("hover", _paper_style())
-	b.add_theme_stylebox_override("pressed", _paper_style())
-	if kind == "red":
-		b.add_theme_color_override("font_color", Color("#8a3f32"))
-	return b
+	Director.ui.set_objective("餐边柜里有一张旧餐桌图。它记的是哪一年？")
+	_status("先拉开餐边柜的抽屉。E 交互 · Q 图纸 · R 放回")
 
 
 func _set_crosshair(on: bool) -> void:
-	if crosshair:
-		crosshair.visible = on
+	Director.ui.crosshair.visible = on
 
 
 func _update_held() -> void:
-	if held_panel == null:
-		return
-	held_panel.visible = held != ""
-	if held != "":
-		held_label.text = "手上：%s　　E 摆放 · R 放回" % ITEM_LABELS[held]
+	_set_prompt("")
 
 
 func _status(text: String) -> void:
-	if status_label == null:
-		return
-	status_label.text = text
-	status_label.visible = text != ""
+	Director.ui.toast(text)
 
 
-func _build_blueprint_3d() -> void:
-	# 图纸是 3D 纸片：按 Q 时像端在手里一样挂在玩家镜头前，而不是全屏 UI
-	blueprint_3d = Node3D.new()
-	blueprint_3d.name = "蓝图纸"
-	var back := MeshInstance3D.new()
-	var bm := BoxMesh.new()
-	bm.size = Vector3(0.64, 0.49, 0.006)
-	back.mesh = bm
-	var bmat := StandardMaterial3D.new()
-	bmat.albedo_color = Color("#e7dcc2")
-	bmat.roughness = 0.95
-	back.material_override = bmat
-	back.position.z = -0.005
-	blueprint_3d.add_child(back)
-	var quad := QuadMesh.new()
-	quad.size = Vector2(0.62, 0.465)
-	var face := MeshInstance3D.new()
-	face.mesh = quad
-	var mat := StandardMaterial3D.new()
-	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mat.albedo_texture = load("res://art/footage/ded_table_blueprint.png")
-	mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-	mat.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	face.material_override = mat
-	blueprint_3d.add_child(face)
-	blueprint_3d.visible = false
-	add_child(blueprint_3d)
-
-
+## 图纸和收起线索共用当前物品检视器，不另做纸片镜头、缩放和关闭输入。
 func _open_blueprint() -> void:
-	if solved or blueprint_open:
+	if solved or blueprint_open or Director.ui._busy():
 		return
 	if not diagram_taken:
 		_status("先拉开餐边柜的抽屉，找到那张旧餐桌图。")
 		return
 	blueprint_open = true
-	player.frozen = true
 	_update_ring_visibility()
-	if blueprint_3d:
-		blueprint_3d.position.z = -0.58
-		blueprint_3d.visible = true
-	# 图纸盖住视线时先把手里那件藏起来，收起图纸再还原
-	if held != "" and items.has(held):
-		items[held].visible = false
-		blueprint_held_hidden = true
-	_set_prompt("滚轮　缩放 · Q / Esc 收起图纸")
-	if blueprint_hint_label:
-		blueprint_hint_label.text = "Q / Esc 收起 · 滚轮缩放"
-	_set_crosshair(false)
-
-
-func _zoom_blueprint(delta: float) -> void:
-	if blueprint_3d == null:
-		return
-	blueprint_3d.position.z = clampf(blueprint_3d.position.z + delta, -1.10, -0.38)
-
-
-func _close_blueprint() -> void:
-	player.frozen = false
+	var data := preload("res://ui/inspection_catalog.gd").evidence("ev_table_diagram", Director.world, "", "")
+	# 尚未复原时只读纸面，成功后的推论仍在收场时才给出。
+	data["notes"] = "纸上画着五处座位和桌上公用物件的位置。"
+	var ui = Director.ui
+	ui.inspector.open(data, [], Vector3.ZERO, [ui.objective_label, ui.crosshair, ui.hint_box, ui.keys])
+	await ui.inspector.closed
 	blueprint_open = false
 	_update_ring_visibility()
-	if blueprint_3d:
-		blueprint_3d.visible = false
-	if blueprint_held_hidden and held != "" and items.has(held):
-		items[held].visible = true
-	blueprint_held_hidden = false
-	if blueprint_hint_label:
-		blueprint_hint_label.text = "Q　查看 1924 年图纸"
 	_set_prompt("")
-	_set_crosshair(true)
 
 
-func _build_clue_overlay() -> void:
-	clue_layer = ColorRect.new()
-	clue_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
-	clue_layer.color = Color(0.03, 0.02, 0.01, 0.88)
-	clue_layer.mouse_filter = Control.MOUSE_FILTER_STOP
-	clue_layer.visible = false
-	ui_root.add_child(clue_layer)
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	clue_layer.add_child(center)
-	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(780, 430)
-	panel.add_theme_stylebox_override("panel", _paper_style())
-	center.add_child(panel)
-	var v := VBoxContainer.new()
-	v.add_theme_constant_override("separation", 12)
-	panel.add_child(v)
-	v.add_child(_label("复原成功", 30, Color("#8a3f32")))
-	var body := _label("1924 年的餐桌摆放图\n\n五个位置。南端是卢西恩的旧餐具：修补过缺口的旧盘、锡杯、短叉、绣着卢西恩名字的餐巾。图背写着 1924 和卢西恩的位子。\n\n图是安布罗斯留下的记录。康斯坦斯说不认识卢西恩，但每天还是摆着同一副餐具。", 17, Color("#3b2c20"))
-	body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	body.custom_minimum_size.y = 250
-	v.add_child(body)
-	var close := _button("收起线索", "red")
-	close.pressed.connect(_finish)
-	v.add_child(close)
+func cancel_level() -> void:
+	cancelled = true
+	_finish()
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if solved and event.is_action_pressed("interact"):
-		_finish()
-		get_viewport().set_input_as_handled()
+	if chat_open or solved or bell_seq:
 		return
-	if chat_open:
-		var advance := event.is_action_pressed("interact")
-		if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_E:
-			advance = true
-		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-			advance = true
-		if advance:
-			_close_chat()
-			get_viewport().set_input_as_handled()
-		return
-	if solved or bell_seq:
-		return
-	if blueprint_open:
-		if event is InputEventKey and event.pressed and not event.echo:
-			if event.physical_keycode == KEY_Q or event.physical_keycode == KEY_ESCAPE:
-				_close_blueprint()
-				get_viewport().set_input_as_handled()
-		elif event is InputEventMouseButton and event.pressed:
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				_zoom_blueprint(-0.06)
-				get_viewport().set_input_as_handled()
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				_zoom_blueprint(0.06)
-				get_viewport().set_input_as_handled()
-			elif event.button_index == MOUSE_BUTTON_LEFT:
-				_close_blueprint()
-				get_viewport().set_input_as_handled()
-		return
-	if clue_layer.visible:
+	if blueprint_open or (player and player.frozen) or Director.ui._busy():
 		return
 	if event is InputEventJoypadButton and event.is_action_pressed("interact"):
 		_interact()
@@ -1313,388 +911,3 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_interact()
 		get_viewport().set_input_as_handled()
-
-
-# ───────────── 自查：截图与自动通关 ─────────────
-
-func _ring_capture() -> void:
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	_pick_up("small_bowl")
-	var pcam = player.get("cam")
-	player.global_position = Vector3(15.75, 0.02, -4.35)
-	await get_tree().physics_frame
-	pcam.look_at(Vector3(15.75, 0.79, -2.55), Vector3.UP)
-	await get_tree().physics_frame
-	_update_hover()
-	_update_ring_visibility()
-	await RenderingServer.frame_post_draw
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_rings.png"))
-	get_tree().quit(0)
-
-
-func _memory_line2_capture() -> void:
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	if hud_root:
-		hud_root.visible = false
-	var mem = MEMORY.new()
-	add_child(mem)
-	mem.play(self, player)
-	await get_tree().create_timer(9.2).timeout
-	get_tree().paused = true
-	await RenderingServer.frame_post_draw
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_memory_line2.png"))
-	get_tree().quit(0)
-
-
-func _memory_skip_test() -> void:
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	if hud_root:
-		hud_root.visible = false
-	var mem = MEMORY.new()
-	add_child(mem)
-	mem.play(self, player)
-	await get_tree().create_timer(1.2).timeout
-	var ev := InputEventKey.new()
-	ev.physical_keycode = KEY_E
-	ev.pressed = true
-	mem._unhandled_input(ev)
-	await get_tree().create_timer(1.0).timeout
-	print("[memory-skip] finished=", mem._finished)
-	get_tree().quit(0 if mem._finished else 1)
-
-
-func _memory_close_capture() -> void:
-	# 暂停时间线再截特写，避免截图阻塞把演出跑过头
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	if hud_root:
-		hud_root.visible = false
-	var mem = MEMORY.new()
-	add_child(mem)
-	mem.play(self, player)
-	await get_tree().create_timer(5.7).timeout
-	get_tree().paused = true
-	await RenderingServer.frame_post_draw
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_memory_pour.png"))
-	get_tree().quit(0)
-
-
-func _memory_capture() -> void:
-	# 只截记忆画面，不等完整时间线（截图后直接退出）
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	if hud_root:
-		hud_root.visible = false
-	var mem = MEMORY.new()
-	add_child(mem)
-	mem.play(self, player)
-	await get_tree().create_timer(2.2).timeout
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_memory_wide.png"))
-	await get_tree().create_timer(3.0).timeout
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_memory_pour.png"))
-	await get_tree().create_timer(3.0).timeout
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_memory_line2.png"))
-	get_tree().quit(0)
-
-
-func _memory_test() -> void:
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	if hud_root:
-		hud_root.visible = false
-	var mem = MEMORY.new()
-	add_child(mem)
-	mem.play(self, player)
-	await get_tree().create_timer(12.0).timeout
-	print("[memory-test] finished=", mem._finished)
-	var ok: bool = mem._finished
-	mem.queue_free()
-	get_tree().quit(0 if ok else 1)
-
-func _idle_test() -> void:
-	# 八件摆满后发呆五秒，HUD 只提示还空一个位置
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for i in CHECK_ORDER.size() - 1:
-		var slot: String = CHECK_ORDER[i]
-		_place_direct(slot, CORRECT[slot])
-	await get_tree().create_timer(5.3).timeout
-	print("[idle-test] status=", status_label.text, " visible=", status_label.visible)
-	var ok := status_label.text.contains("空着") and status_label.visible
-	get_tree().quit(0 if ok else 1)
-
-
-func _bell_test() -> void:
-	# 摆对九件，等自动摇铃 + 记忆演出结束，最后应出成功卡
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	_after_table_changed()
-	await get_tree().create_timer(16.0).timeout
-	print("[bell-test] solved=", solved, " bell_seq=", bell_seq)
-	get_tree().quit(0 if solved else 1)
-
-
-func _chat_test() -> void:
-	# 把九件用错位方式摆满，确认格雷的聊天框会指出第一个错，E 能继续
-	await get_tree().create_timer(0.5).timeout
-	diagram_taken = true
-	for i in CHECK_ORDER.size():
-		var slot: String = CHECK_ORDER[i]
-		var wrong_slot: String = CHECK_ORDER[(i + 1) % CHECK_ORDER.size()]
-		_place_direct(slot, String(CORRECT[wrong_slot]))
-	_after_table_changed()
-	print("[chat-test] open=", chat_open, " frozen=", player.frozen if player else "no-player", " text=", chat_label.text)
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_hud_chat.png"))
-	var opened := chat_open and chat_label.text.contains("北端")
-	var ev := InputEventKey.new()
-	ev.physical_keycode = KEY_E
-	ev.pressed = true
-	_unhandled_input(ev)
-	await get_tree().create_timer(0.2).timeout
-	print("[chat-test] closed=", not chat_open, " frozen=", player.frozen if player else "no-player")
-	if chat_open:
-		_close_chat()
-	get_tree().quit(0 if opened and not chat_open else 1)
-
-
-func _self_test() -> void:
-	await get_tree().create_timer(0.3).timeout
-	var pcam = player.get("cam") if player else null
-	if not (pcam is Camera3D):
-		print("[self-test] 没有玩家相机")
-		get_tree().quit(1)
-		return
-	var ok := true
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	# 先按流程拉开抽屉、拿出图，后面的拿取才会解锁
-	player.global_position = Vector3(13.95, 0.02, -1.10)
-	player.rotation = Vector3.ZERO
-	await get_tree().physics_frame
-	pcam.look_at(Vector3(13.47, 0.14, -1.10), Vector3.UP)
-	await get_tree().physics_frame
-	_update_hover()
-	print("[self-test] 抽屉 hover=", hover)
-	if String(hover.get("kind", "")) == "drawer":
-		_interact()
-	else:
-		ok = false
-	await get_tree().create_timer(0.6).timeout
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_hud_drawer.png"))
-	pcam.look_at(drawer_paper.global_position + Vector3(0, 0.02, 0), Vector3.UP)
-	await get_tree().physics_frame
-	_update_hover()
-	print("[self-test] 图纸 hover=", hover)
-	if String(hover.get("kind", "")) == "diagram":
-		_interact()
-	else:
-		ok = false
-	await get_tree().create_timer(0.2).timeout
-	if blueprint_open:
-		_close_blueprint()
-	if not diagram_taken:
-		ok = false
-	if not ok:
-		print("[self-test] 抽屉/图纸入口失败")
-		get_tree().quit(1)
-		return
-	# 图纸：3D 纸片再看一次，留一张图（放在摆桌之前，最后一件会自动进成功流程）
-	_open_blueprint()
-	_zoom_blueprint(-0.08)
-	print("[self-test] 图纸缩放后 z=", blueprint_3d.position.z)
-	await RenderingServer.frame_post_draw
-	get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_hud_blueprint.png"))
-	_close_blueprint()
-	for slot in CORRECT:
-		var id: String = CORRECT[slot]
-		player.global_position = Vector3(13.95, 0.02, -1.10)
-		player.rotation = Vector3.ZERO
-		await get_tree().physics_frame
-		pcam.look_at(items[id].global_position + Vector3(0, 0.08, 0), Vector3.UP)
-		await get_tree().physics_frame
-		_update_hover()
-		print("[self-test] 柜内 hover=", hover, " 想要=", id)
-		if String(hover.get("id", "")) != id:
-			ok = false
-			break
-		if id == "ambrose":
-			await RenderingServer.frame_post_draw
-			get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_hud_prompt.png"))
-		_interact()
-		if held != id:
-			print("[self-test] 没拿起来：held=", held)
-			ok = false
-			break
-		if id == "ambrose":
-			await RenderingServer.frame_post_draw
-			get_viewport().get_texture().get_image().save_png(dir.path_join("ded_table_hud_held.png"))
-		var sp: Vector3 = SLOT_POS[slot]
-		var away := Vector3(0, 0, 1.0)
-		match slot:
-			"slot_north":
-				away = Vector3(0, 0, -1.0)
-			"slot_east_1", "slot_east_2":
-				away = Vector3(1.0, 0, 0)
-			"slot_west":
-				away = Vector3(-1.0, 0, 0)
-		player.global_position = Vector3(sp.x, 0.02, sp.z) + away
-		await get_tree().physics_frame
-		pcam.look_at(Vector3(sp.x, sp.y + 0.10, sp.z), Vector3.UP)
-		await get_tree().physics_frame
-		_update_hover()
-		print("[self-test] 桌面 hover=", hover, " 想要=", slot)
-		if String(hover.get("id", "")) != slot:
-			ok = false
-			break
-		_interact()
-		if String(slot_items.get(slot, "")) != id:
-			ok = false
-			break
-	print("[self-test] solved=", solved, " -> ", "PASS" if ok and solved else "FAIL")
-	await get_tree().create_timer(0.3).timeout
-	get_tree().quit(0 if ok and solved else 1)
-
-
-func _capture_and_quit() -> void:
-	# 输出目录可通过 --capture-dir=<绝对路径> 指定，默认 assets/3d/ded_table/review/
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	await get_tree().create_timer(1.2).timeout
-	# 宽景：和原来的 cam_dining_mid 一样，从南端看整张桌子
-	_capture_camera(Vector3(15.75, 1.515, -4.65), Vector3(15.55, 0.82, -2.55), 59.0)
-	await _save_view(dir.path_join("ded_table_wide.png"))
-
-	# 餐边柜：正面略微俯视，能同时看到五套餐具的盘沿与杯形
-	_add_capture_light(Vector3(13.60, 1.10, -1.06), 1.1, 2.2)
-	_capture_camera(Vector3(13.98, 0.96, -1.11), Vector3(13.00, 0.57, -1.11), 52.0)
-	await get_tree().create_timer(0.6).timeout
-	await _save_view(dir.path_join("ded_table_cabinet.png"))
-
-	_showcase_solve()
-	_capture_lights()
-	_capture_camera(Vector3(15.75, 1.515, -4.65), Vector3(15.55, 0.82, -2.55), 59.0)
-	await get_tree().create_timer(0.5).timeout
-	await _save_view(dir.path_join("ded_table_solved.png"))
-	_capture_camera(Vector3(15.74, 1.20, -0.86), Vector3(15.74, 0.79, -1.47), 44.0)
-	await get_tree().create_timer(0.6).timeout
-	await _save_view(dir.path_join("ded_table_close.png"))
-	_capture_camera(Vector3(15.78, 0.94, -1.20), Vector3(15.74, 0.80, -1.47), 38.0)
-	await get_tree().create_timer(0.5).timeout
-	await _save_view(dir.path_join("ded_table_macro.png"))
-	_teardown_player()
-	get_tree().quit()
-
-
-func _capture_hud() -> void:
-	# 自查：从玩家视角截图（带 HUD），用来检查出生点、准星与提示
-	var dir := _capture_dir()
-	DirAccess.make_dir_recursive_absolute(dir)
-	await get_tree().create_timer(2.0).timeout
-	await RenderingServer.frame_post_draw
-	var path := dir.path_join("ded_table_hud.png")
-	get_viewport().get_texture().get_image().save_png(path)
-	print("[ded_table] 第一人称截图：", path)
-	_teardown_player()
-	get_tree().quit()
-
-
-func _capture_dir() -> String:
-	for a in OS.get_cmdline_user_args():
-		if a.begins_with("--capture-dir="):
-			return a.substr("--capture-dir=".length())
-	# 截图属于中间产物：默认落到 assets/3d/ded_table/review/，不要堆在 godot/ 根目录
-	return ProjectSettings.globalize_path("res://").path_join("../assets/3d/ded_table/review").simplify_path()
-
-
-func _add_capture_light(pos: Vector3, energy: float, reach: float) -> void:
-	var l := OmniLight3D.new()
-	l.light_color = Color(1.0, 0.97, 0.92)
-	l.light_energy = energy
-	l.omni_range = reach
-	l.omni_attenuation = 1.2
-	l.position = pos
-	add_child(l)
-
-
-func _capture_lights() -> void:
-	# 只为截图补的中性光：餐厅本身偏暖，近景看不清器物细节
-	for offset in [Vector3(0.0, 1.45, 0.35), Vector3(0.0, 1.42, -0.35)]:
-		_add_capture_light(Vector3(15.74, 0.79, -1.47) + offset, 1.1, 2.0)
-
-
-func _capture_camera(pos: Vector3, target: Vector3, fov := 42.0) -> void:
-	var cam := Camera3D.new()
-	# 餐厅的天空/环境光是挂在相机上的；新相机不继承就会变成无环境光 → 器物全黑
-	if camera != null and camera.environment != null:
-		cam.environment = camera.environment
-	cam.fov = fov
-	cam.near = 0.02
-	add_child(cam)
-	cam.global_position = pos
-	cam.look_at(target, Vector3.UP)
-	cam.current = true
-	camera = cam
-	# 截图不想要 HUD 挡画面
-	if ui_root != null:
-		ui_root.visible = false
-
-
-func _save_view(path: String) -> void:
-	await RenderingServer.frame_post_draw
-	var img := get_viewport().get_texture().get_image()
-	img.save_png(path)
-	print("[ded_table] 截图：", path)
-
-
-func _showcase_solve() -> void:
-	# 只摆放、不摇铃：避免成功面板挡住桌面
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-
-
-func _place_direct(slot: String, id: String) -> void:
-	var n: Node3D = items[id]
-	n.reparent(self, false)
-	n.global_position = SLOT_POS[slot] + Vector3(0, 0.012, 0)
-	n.rotation = Vector3(0, deg_to_rad(SLOT_FACING.get(slot, 0.0)), 0)
-	n.scale = Vector3.ONE
-	item_areas[id].collision_layer = 0
-	slot_items[slot] = id
-	slot_rings[slot].visible = false
-
-
-func _auto_solve() -> void:
-	await get_tree().create_timer(0.5).timeout
-	for slot in CORRECT:
-		_place_direct(slot, CORRECT[slot])
-	_success()

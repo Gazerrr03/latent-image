@@ -62,6 +62,7 @@ func jump(shot_id: String) -> void:
 	if running:
 		_jump_to = shot_id
 		ui.cancel()
+		world.cancel_level()
 		inspected.emit(CANCEL)
 	else:
 		_run(shot_id)
@@ -78,6 +79,7 @@ func stop() -> void:
 	_stopping = true
 	_jump_to = "END"
 	ui.cancel()
+	world.cancel_level()
 	inspected.emit(CANCEL)
 	for i in 120:
 		if not running:

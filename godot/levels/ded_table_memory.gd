@@ -4,7 +4,6 @@ extends Node3D
 ## 机位与人物站位先集中在这里，方便整段调整；空间本身仍是 ded_table.tscn。
 
 signal finished
-const MediaFxScript := preload("res://ui/media_fx.gd")
 
 const CAM_WIDE_POS := Vector3(13.95, 2.05, -0.45)
 const CAM_WIDE_TARGET := Vector3(15.75, 0.85, -2.40)
@@ -35,12 +34,8 @@ var figures: Array[Node] = []
 var saved_lights: Dictionary = {}
 var key_light: SpotLight3D
 var rim_light: OmniLight3D
-var overlay: CanvasLayer
-var fade_rect: ColorRect
-var subtitle: Label
 var skip_requested := false
 var _finished := false
-var fx: CanvasLayer
 var _active_timer: Timer
 var clock_audio: AudioStreamPlayer
 var pour_audio: AudioStreamPlayer
@@ -55,52 +50,11 @@ func play(level_ref: Node, player_ref: Node) -> void:
 		return
 	if player:
 		player.frozen = true
-	_build_overlay()
+	await Director.ui.eyelids_to(0.0, 0.2)
 	_build_stage()
-	fx = MediaFxScript.new()
-	add_child(fx)
-	fx.apply("餐桌记忆", 0.01)
 	await _run()
 	_restore()
 	finished.emit()
-
-
-func _build_overlay() -> void:
-	overlay = CanvasLayer.new()
-	overlay.layer = 30
-	add_child(overlay)
-	# 2.39:1 黑边
-	for top in [true, false]:
-		var bar := ColorRect.new()
-		bar.color = Color(0.0, 0.0, 0.0, 1.0)
-		bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		bar.set_anchors_preset(Control.PRESET_FULL_RECT)
-		bar.offset_top = 0 if top else 0
-		bar.offset_bottom = 0
-		bar.anchor_top = 0.0 if top else 0.89
-		bar.anchor_bottom = 0.11 if top else 1.0
-		overlay.add_child(bar)
-	fade_rect = ColorRect.new()
-	fade_rect.color = Color(0.015, 0.012, 0.01, 1.0)
-	fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
-	overlay.add_child(fade_rect)
-	subtitle = Label.new()
-	var f := SystemFont.new()
-	f.font_names = PackedStringArray(["Microsoft YaHei", "SimHei", "Noto Sans SC"])
-	subtitle.add_theme_font_override("font", f)
-	subtitle.add_theme_font_size_override("font_size", 24)
-	subtitle.add_theme_color_override("font_color", Color("#efe2c8"))
-	subtitle.add_theme_color_override("font_outline_color", Color(0.02, 0.01, 0.008, 0.9))
-	subtitle.add_theme_constant_override("outline_size", 6)
-	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	subtitle.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	subtitle.offset_left = -420
-	subtitle.offset_right = 420
-	subtitle.offset_top = -115
-	subtitle.offset_bottom = -56
-	subtitle.modulate.a = 0.0
-	overlay.add_child(subtitle)
 
 
 func _build_stage() -> void:
@@ -357,26 +311,12 @@ func _run() -> void:
 	await get_tree().create_timer(0.1).timeout
 
 
-func _say(text: String, hold: float) -> void:
-	subtitle.text = text
-	var tw := create_tween().set_parallel(true)
-	tw.tween_property(subtitle, "modulate:a", 1.0, 0.35)
-	await tw.finished
-	if skip_requested:
-		return
-	await _wait(hold)
-	if skip_requested:
-		return
-	var tw2 := create_tween().set_parallel(true)
-	tw2.tween_property(subtitle, "modulate:a", 0.0, 0.45)
-	await tw2.finished
+func _say(text: String, _hold: float) -> void:
+	await Director.ui.show_text(text)
 
 
-func _fade(from_a: float, to_a: float, duration: float) -> void:
-	fade_rect.color.a = from_a
-	var tw := create_tween()
-	tw.tween_property(fade_rect, "color:a", to_a, duration)
-	await tw.finished
+func _fade(_from_a: float, to_a: float, duration: float) -> void:
+	await Director.ui.eyelids_to(1.0 - to_a, duration)
 
 
 func _wait(seconds: float) -> void:
@@ -415,7 +355,5 @@ func _restore() -> void:
 	for n in saved_lights:
 		if is_instance_valid(n):
 			n.light_energy = saved_lights[n]
+	Director.ui.eyelids_set(1.0)
 	stage.queue_free()
-	overlay.queue_free()
-	if fx:
-		fx.queue_free()

@@ -27,3 +27,4 @@ ev_photo_back,0,photo,.10,.07,1926 年合影的小样。面纱女人站在队伍
 prop_photo_1926,0,photo,.26,.19,1926 年的庄园合影。戴面纱的女人站在队伍边上，主位空着。,08,docs/02-剧情设计.md；用户授权年度序号08,godot/art/levels/manor/textures/photo_1926.jpg,,,,,
 ev_receipt,0,receipt,.18,.25,药房签收单\n\n显影液　2 瓶\n停显液　1 瓶\n定影液　1 瓶\n专用调色液　1 瓶\n\n签收人：吉迪恩·沃登,,story/evidence.csv; docs/02; 2026-10-21 user authorized item/count details,,,,Receipt\n\nDeveloper — 2 bottles\nStop bath — 1 bottle\nFixer — 1 bottle\nToning solution — 1 bottle\n\nGideon Warden,,detached_t
 prop_grey_notebook,0,journal,.15,.22,我收到的每一条线索都记在这里，随时可以翻开来看。,,story/hotspots.csv:hs_notebook; literal English translation,,,,Every clue I receive goes into this notebook.\n\nI can return to it at any time.,,detached_t
+ev_table_diagram,0,drawing,.28,.21,纸上画着五处座位和桌上公用物件的位置。,1924\nL.,PR33:650f3b24;godot/art/footage/ded_table_blueprint.png,godot/art/footage/ded_table_blueprint.png,,,,,

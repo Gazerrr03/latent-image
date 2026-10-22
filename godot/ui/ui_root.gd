@@ -983,6 +983,10 @@ func set_cinematic(on: bool) -> void:
 ## Tab：随时翻开证据板，一张一张拿起来看；Esc：自由行走时打开暂停页。
 ## 问话、选项、读字、黑场、冲洗、影像档案、证据板上都不响应
 func _unhandled_input(event: InputEvent) -> void:
+	if Director.world and is_instance_valid(Director.world.player.interaction_owner):
+		# 图纸/读字期间由关卡或阅读器处理；Q 留给图纸，Tab 仍可翻现有证据板。
+		if Director.world.player.frozen or event.is_action_pressed("recall"):
+			return
 	if not event.is_pressed() or event.is_echo():
 		return
 	var tab: bool = event.is_action_pressed("notebook")
@@ -1073,6 +1077,8 @@ func _on_key_icon(which: String) -> void:
 		return
 	if which == "notebook":
 		browse_board()
+	elif is_instance_valid(Director.world.player.interaction_owner):
+		Director.world.player.interaction_owner._open_blueprint()
 	else:
 		recall()
 
