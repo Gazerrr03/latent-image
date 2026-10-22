@@ -9,3 +9,6 @@
 - 实际运行审查：`docs/验证/2026-10-20-物品检视/检视审查.html`。
 
 复现：在仓库根目录运行 `python3 assets/3d/inspection/scripts/build_documents.py`，然后让 Godot 导入资源。需要 Pillow 与 macOS 的宋体字体；跨平台应显式提供同款中文字体，不能默默改成缺字字体。
+
+
+2026-10-22最终交付：回廊三处笔记本复查使用原GLB裁切；1926合影采用用户授权四人侧后方新构图。生成原图、准确提示与来源hash见assets/2d/inspection/generated/photo1926-redesign-v1.json。完整验收矩阵见docs/验证/2026-10-20-物品检视/完成核对.md，历史资源缺口不代表当前状态。
