@@ -17,6 +17,8 @@ var cam := Camera3D.new()
 var ray := RayCast3D.new()
 var active := false
 var frozen := false
+## 交谈只限制移动，仍允许转头。
+var conversing := false
 var needs_spawn := true
 var steps := 0
 ## 回廊里没有自己的脚步声（第 5 章）
@@ -64,19 +66,7 @@ func _ready() -> void:
 
 
 static func _ensure_input() -> void:
-	var keys := {
-		"move_forward": [KEY_W, KEY_UP], "move_back": [KEY_S, KEY_DOWN],
-		"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT],
-		"interact": [KEY_E],
-	}
-	for action in keys:
-		if InputMap.has_action(action):
-			continue
-		InputMap.add_action(action)
-		for k in keys[action]:
-			var ev := InputEventKey.new()
-			ev.physical_keycode = k
-			InputMap.action_add_event(action, ev)
+	preload("res://core/controls.gd").ensure_actions()
 
 
 func place(pos: Vector3, yaw_deg: float) -> void:
@@ -117,6 +107,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam.rotation.x = _pitch
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	elif conversing:
+		return
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
 		if _hover != "" and Director.world.corridor_interact(_hover):
 			return
@@ -138,8 +130,15 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(dt: float) -> void:
 	if frozen:
 		return
+	var look := Controls.look_vector() * deg_to_rad(110.0) * Settings.pad_scale() * dt
+	rotate_y(-look.x)
+	_pitch = clampf(_pitch - look.y * (-1.0 if Settings.invert_y else 1.0), -1.3, 1.3)
+	cam.rotation.x = _pitch
+	if conversing:
+		velocity = Vector3.ZERO
+		return
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var dir := (transform.basis * Vector3(input.x, 0, input.y)).normalized()
+	var dir := (transform.basis * Vector3(input.x, 0, input.y))
 	var before := global_position
 	walk(dir, dt)
 	_stride += Vector2(global_position.x - before.x, global_position.z - before.z).length()
