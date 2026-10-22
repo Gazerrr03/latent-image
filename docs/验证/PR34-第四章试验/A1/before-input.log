@@ -1,0 +1,39 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS hs_cellar_book 室内站位可选中
+PASS hs_cellar_book 阅读F不误举镜
+PASS hs_cellar_notes 室内站位可选中
+PASS hs_cellar_notes 阅读F不误举镜
+PASS hs_cellar_relics 室内站位可选中
+PASS hs_cellar_relics 阅读F不误举镜
+PASS hs_cellar_portraits 室内站位可选中
+PASS hs_cellar_portraits 阅读F不误举镜
+PASS hs_cellar_camera 室内站位可选中
+PASS hs_cellar_camera 阅读F不误举镜
+SCRIPT ERROR: Invalid access to property or key 'done' on a base object of type 'Dictionary'.
+          at: set_checklist (res://ui/ui_root.gd:937)
+          GDScript backtrace (most recent call first):
+              [0] set_checklist (res://ui/ui_root.gd:937)
+              [1] _set_checklist (res://levels/gh_cellar.gd:102)
+              [2] await_cellar_cleared (res://levels/gh_cellar.gd:127)
+              [3] _do (res://core/director.gd:237)
+              [4] _play (res://core/director.gd:170)
+              [5] _do (res://core/director.gd:216)
+              [6] _inspect (res://core/director.gd:368)
+              [7] _show_hotspot (res://core/director.gd:337)
+              [8] inspect_hotspot (res://ui/ui_root.gd:531)
+              [9] close (res://ui/item_inspector.gd:581)
+PASS 正常E拿到相机
+PASS F举镜
+PASS 滚轮对焦并瞄准1920
+PASS 举镜时Esc打开暂停
+FAIL 暂停不响应摄影操作
+FAIL 正常左键首曝
+FAIL 首曝后显影盘是实际交互目标
+CH4_INPUT failures=3
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
+WARNING: 19 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 4 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

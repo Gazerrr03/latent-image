@@ -48,16 +48,18 @@ func _ready() -> void:
 	if OS.get_cmdline_user_args().has("--trial-cellar"):
 		GameState.persist = false
 		GameState.reset()
-		DisplayServer.window_set_title("第四章试验 · M01 地下室密室直通试玩")
-		print("CH4_TRIAL checkpoint=M01 start=C4-09 persist=false")
-		Director.start("C4-09")
+		DisplayServer.window_set_title("第四章试验 · A1 摄影流程复测")
+		print("CH4_TRIAL checkpoint=A1 start=C4-09 persist=false")
+		await Director._play_range("C4-09", "C4-09")
+		ui.set_objective("A1 试玩完成：已返回温室。可关闭窗口并反馈。")
+		ui.set_checklist([])
 		return
 	# 第四章试验：从第四章开始，体验完整流程（温室 -> 活板门 -> 地下室 -> 返回 -> D4 连线 -> 晚间复盘）。
 	if OS.get_cmdline_user_args().has("--trial-chapter4"):
 		GameState.persist = false
 		GameState.reset()
-		DisplayServer.window_set_title("第四章 · 完整主线连续试玩（含温室地下暗房与摄影机玩法）")
-		print("CH4_TRIAL checkpoint=M01 start=C4-01 persist=false (第四章完整主线连续试玩)")
+		DisplayServer.window_set_title("第四章试验 · A1 从章首复测")
+		print("CH4_TRIAL checkpoint=A1 start=C4-01 persist=false (第四章完整主线连续试玩)")
 		Director.start("C4-01")
 		return
 	if Director.autoplay:

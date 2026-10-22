@@ -114,10 +114,10 @@ func run() -> void:
 	check("取景器 UI 层已隐藏", overlay != null and overlay.visible == false)
 	check("相机双重视角节点已隐藏", cam_only != null and cam_only.visible == false)
 
-	# 11. 验证通关后通过木梯离开地下室
+	# 11. 木梯交互不抢先释放关卡；正常返回由镜头表执行，见真实输入测试。
 	cellar_node.call("_on_director_inspected", "hs_cellar_ladder")
 	await process_frame
-	check("通关后爬梯成功离开 gh_cellar", host.current_id == "manor" or host.current_id == "greenhouse")
+	check("木梯事件不在检视完成前释放关卡", host.current_id == "gh_cellar")
 
 	print("\n=== 相机玩法循环自动化校验结果：失败数 = %d ===" % failures)
 	quit(0 if failures == 0 else 1)

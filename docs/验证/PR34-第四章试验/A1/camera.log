@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 成功载入 gh_cellar 场景
+PASS 初始未持有相机
+PASS 初始相机未举起
+PASS 未持有相机时底部提示药丸隐藏
+PASS 通关前爬梯仍留在 gh_cellar
+PASS 拿起相机后 has_camera 为 true
+PASS 拿起相机后底部提示药丸显示
+PASS 底部提示包含按 F 举起相机
+PASS 举镜后 camera_raised 为 true
+PASS 举镜后提示药丸包含滚轮与快门
+PASS 相机双重视角节点可见
+PASS 取景器 UI 层可见
+PASS 对焦值更新成功 (focus >= 0.82)
+PASS 首次曝光后 plate_state 为 EXPOSED
+PASS 曝光年份记录为 1920
+PASS 水槽显影后 plate_state 为 DEVELOPED
+PASS 拨动拨杆后 plate_state 为 ARMED
+PASS 二次曝光后 plate_state 为 EXPOSED2
+PASS 最终显影后 plate_state 为 CLEARED
+PASS 1920 年已记录在 cleared_years 中
+PASS 放下相机后 camera_raised 为 false
+PASS 取景器 UI 层已隐藏
+PASS 相机双重视角节点已隐藏
+PASS 木梯事件不在检视完成前释放关卡
+
+=== 相机玩法循环自动化校验结果：失败数 = 0 ===

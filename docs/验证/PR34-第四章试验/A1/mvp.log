@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 温室热点包含 hs_gh_trapdoor
+PASS 活板门节点有效
+PASS 地下室当前场景为 gh_cellar
+PASS 地下室包含记录本 hs_cellar_book
+PASS 地下室包含笔记 hs_cellar_notes
+PASS 地下室包含旧物 hs_cellar_relics
+PASS 地下室包含返回木梯 hs_cellar_ladder
+PASS 切回温室成功
+
+=== MVP 自动化校验结果：失败数 = 0 ===

@@ -27,6 +27,8 @@ var focus := 0.0
 var plate_state := "NONE" # NONE, EXPOSED, DEVELOPED, ARMED, EXPOSED2, CLEARED
 var exposed_year := 0
 var cleared_years := {}
+var _gameplay_active := false
+var _rest_fov := 70.0
 
 var frame_mats := {}
 var frame_years := [1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926]
@@ -113,7 +115,9 @@ func _exit_tree() -> void:
 	if is_instance_valid(guide_pill_layer):
 		guide_pill_layer.queue_free()
 	if is_instance_valid(player_cam):
-		player_cam.fov = 70.0
+		player_cam.fov = _rest_fov
+	if camera_raised:
+		_set_cinematic(false)
 
 
 # ---------------------------------------------------------------------------
@@ -123,13 +127,23 @@ func _exit_tree() -> void:
 func await_cellar_cleared() -> void:
 	if not cleared_years.is_empty():
 		return
+	_gameplay_active = true
 	_set_objective("透镜真相：按 [F] 举镜对准北墙肖像，滚轮调焦清晰后按左键拍照。")
 	_set_checklist([
-		{"text": "大画幅相机收人：", "head": true},
+		{"text": "大画幅相机收人：", "head": true, "done": false},
 		{"text": "按 [F] 举镜观察北墙肖像", "done": false},
 		{"text": "滚轮调焦清晰并按左键拍照", "done": false}
 	])
 	await cellar_cleared
+	_gameplay_active = false
+
+
+## 摄影阶段由本关管理即时交互，不能只更新清单而没有实际目标。
+func _update_gameplay_targets() -> void:
+	var d := _dir()
+	if not _gameplay_active or not d or d.world.room != self:
+		return
+	d.world.highlight_hotspots(["hs_cellar_tray"] if plate_state in ["EXPOSED", "EXPOSED2"] else [])
 
 
 func autoplay_cellar() -> void:
@@ -499,17 +513,22 @@ func _update_camera_guide_hud() -> void:
 # 输入与玩法循环
 # ---------------------------------------------------------------------------
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
+	var d := _dir()
+	if not d or d.world.room != self or not is_instance_valid(player) or not player.active or player.frozen or d.ui._busy():
+		return
+	# 先于玩家的普通左键检查处理快门；阅读/暂停交由原UI处理。
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_F:
 			_toggle_camera_raise()
 			get_viewport().set_input_as_handled()
-		elif event.keycode == KEY_R and camera_raised:
+		elif event.keycode == KEY_R and has_camera and _gameplay_active:
 			_handle_arm_second_exposure()
 			get_viewport().set_input_as_handled()
 
 	elif event is InputEventMouseButton and event.pressed:
 		if camera_raised:
+			_update_aim_detection()
 			match event.button_index:
 				MOUSE_BUTTON_WHEEL_UP:
 					_step_focus(0.08)
@@ -526,6 +545,8 @@ func _toggle_camera_raise() -> void:
 	if not has_camera:
 		_toast("得先在桌上拿起大画幅相机。")
 		return
+	if not camera_raised and player_cam:
+		_rest_fov = player_cam.fov
 	camera_raised = not camera_raised
 	_play_sfx("cloth_rustle")
 	if viewmodel:
@@ -535,7 +556,7 @@ func _toggle_camera_raise() -> void:
 	if camera_only_node:
 		camera_only_node.visible = camera_raised
 	if player_cam:
-		player_cam.fov = 48.0 if camera_raised else 70.0
+		player_cam.fov = 48.0 if camera_raised else _rest_fov
 
 	for y in frame_mats:
 		frame_mats[y].set_shader_parameter("camera_mix", 1.0 if camera_raised else 0.0)
@@ -557,7 +578,15 @@ func _step_focus(delta: float) -> void:
 
 
 func _process(_dt: float) -> void:
-	if not camera_raised or player_cam == null:
+	var d := _dir()
+	var shown: bool = camera_raised and d != null and not d.ui._busy() and is_instance_valid(player) and not player.frozen
+	if camera_overlay:
+		camera_overlay.visible = shown
+	if viewmodel:
+		viewmodel.visible = shown
+	if guide_pill_panel:
+		guide_pill_panel.visible = has_camera and d != null and not d.ui._busy()
+	if not shown or player_cam == null:
 		return
 	_update_aim_detection()
 
@@ -636,6 +665,7 @@ func _trigger_shutter() -> void:
 	if plate_state == "NONE":
 		plate_state = "EXPOSED"
 		exposed_year = current_aim_year
+		_update_gameplay_targets()
 		_toast("快门闭合！潜影已留存于底片。人影未散，请移步西侧显影盘。")
 		_set_objective("首次显影：移步西侧显影盘（hs_cellar_tray），浸入药水进行显影。")
 		_set_checklist([{"text": "前往西侧水槽显影盘显影", "done": false}])
@@ -644,6 +674,7 @@ func _trigger_shutter() -> void:
 			_toast("年份不符！二次曝光必须针对同一年份的同一张相框。")
 		else:
 			plate_state = "EXPOSED2"
+			_update_gameplay_targets()
 			_toast("二次曝光快门已闭合！前往西侧水槽显影盘完成最终收人。")
 			_set_objective("最终收人：前往西侧显影盘进行最终显影。")
 			_set_checklist([{"text": "前往西侧水槽显影盘完成最终收人", "done": false}])
@@ -701,15 +732,14 @@ func _on_director_inspected(id: String) -> void:
 			else:
 				_play_sfx("door_creak")
 				_toast("推开顶部的橡木活板门，顺着木梯回到了温室……")
-				var d := _dir()
-				if d and d.world:
-					d.world.show_scene("greenhouse")
+				# 场景返回由镜头表在inspect结束后执行，避免检视尚未结束就释放关卡。
 
 
 func _handle_tray_interaction() -> void:
 	if plate_state == "EXPOSED":
 		_play_sfx("liquid")
 		plate_state = "DEVELOPED"
+		_update_gameplay_targets()
 		_toast("药水渗入乳剂！潜影浮现但人影仍存。按 [R] 拨动拨杆设定二次曝光。")
 		_set_objective("二次曝光：按 [R] 拨动拨杆设定二次曝光，再次对准同一张相框拍照。")
 		_set_checklist([{"text": "按 [R] 拨动二次曝光拨杆并再次拍摄", "done": false}])
@@ -717,14 +747,16 @@ func _handle_tray_interaction() -> void:
 		_play_sfx("liquid")
 		_play_sfx("ui_link_ok")
 		plate_state = "CLEARED"
+		_update_gameplay_targets()
 		cleared_years[exposed_year] = true
 		if frame_mats.has(exposed_year):
 			var tween := create_tween()
 			tween.tween_method(func(val): frame_mats[exposed_year].set_shader_parameter("state", val), 0.0, 1.0, 1.2)
 		_toast("【收走完成】相框里的位置空了……所有人都会忘记他，只有拍照的人记得。")
-		cellar_cleared.emit()
 		_set_objective("木梯：地下室的异状已收尾。顺着木梯返回温室。")
 		_set_checklist([{"text": "顺着木梯返回温室", "done": false}])
+		# 发信号后Director会立即激活梯子，不能再覆盖它的新目标/清单。
+		cellar_cleared.emit()
 	elif plate_state == "CLEARED":
 		_toast("这一张干版已收尾。显影盘里散发着刺鼻的定影药味与白霜结晶。")
 	else:

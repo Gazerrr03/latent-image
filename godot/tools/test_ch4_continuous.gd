@@ -25,24 +25,17 @@ func run() -> void:
 	root.get_node("GameState").reset()
 
 	var director := root.get_node("Director")
-	var host: Node = director.world
 	director.ui.menus.hide()
 	director.autoplay = true
 
-	# 从 C4-01 启动
+	# 用有边界的范围播放避免跑到全游戏结尾；此检查仍跳过摄影操作。
 	var state: Node = root.get_node("GameState")
-	print(">>> 启动第四章 C4-01")
-	director.start("C4-01")
-	await process_frame
-
-	# 等待探索与关卡推进
-	var max_ticks := 300
-	while max_ticks > 0 and director._running:
-		await process_frame
-		max_ticks -= 1
-		# 如果已经进入了第 5 章，说明第 4 章已完整连续跑通
-		if state.shot.begins_with("C5"):
-			break
+	print(">>> 播放第四章 C4-01 至 C4-08")
+	await director._play_range("C4-01", "C4-08")
+	var next: String = director.resolve_next(root.get_node("ContentDB").shots["C4-08"])
+	check("第四章出口指向 C5-01", next == "C5-01")
+	if next == "C5-01":
+		await director._play_range("C5-01", "C5-01")
 
 	print(">>> 最终停留在镜号：", state.shot)
 	print(">>> 已完成任务：", state.quests_done)

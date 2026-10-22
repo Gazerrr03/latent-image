@@ -1,7 +1,7 @@
 {
   "branch": "codex/chapter4-pr34-trial",
   "baseline_commit": "60fdbce1797b28c47ec4bd2190dbb914fcd22ac5",
-  "active_checkpoint": "A0-current-implementation",
+  "active_checkpoint": "A1-ready-for-human-test",
   "process": "逐个模块实现 -> 基础启动检查 -> 用户人工试玩 -> 用户决定接纳或调整 -> 下一模块",
   "modules": [
     {
@@ -117,5 +117,12 @@
     }
   ],
   "current_plan": "现行剧情与PR玩法接入计划.md",
-  "policy": "剧情遵循现行《02》；玩法遵循PR34；实现存在不等于人工验收；本轮仅A0/A1"
+  "policy": "剧情遵循现行《02》；玩法遵循PR34；实现存在不等于人工验收；本轮仅A0/A1",
+  "a0_commit": "312d638d4cf157570ba9a91b46d64a4c61abee85",
+  "a1": {
+    "status": "ready-for-human-test",
+    "human_result": "pending",
+    "report": "A1/README.md",
+    "next": "A2 requires human feedback"
+  }
 }
