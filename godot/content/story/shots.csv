@@ -35,6 +35,7 @@ C2-06,C2,*,guest_room,,walk,typewriter,,,objective(打字机：把今天的事�
 C2-07,C2,*,guest_room,,walk,clock_tick;paper_slide@1,深夜，门缝里塞进来一张画。\n红光里，一个没有脸的人。\n我睡下了。,,objective(床：睡下。);station(hs_bed);objective();sleep();recap(r2);diary(diary3),,客房第三站：躺下、合眼，结束这一天
 C3-01,C3,*,guest_room,,walk,birds_morning,昨夜塞进门缝的那张画还在桌上。,,wake();music(explore);leak(1);collect(ev_drawing_red);objective(小女孩：画画的人想告诉我什么？);explore(c3),C3-06,醒来（docs/01 第 4 节），然后自由探索（任务 c3）
 C3-02,C3,*,child_room,child_mid,,music_box,,,"music(关闭,1);say(c3_iris);collect(ev_rhyme)",,
+C3-T1,C3,*,ded_house,cam_hero,walk,,,,,,画中世界：临时测试镜
 C3-03,C3,*,child_room,child_mid,,music_box,她不回答问题。我把记事本里的东西拿给她看。,,inquire(c3_show_iris),,问话改成“递线索”：她用画、儿歌和布条回答
 C3-04,C3,*,child_room,child_wall,camera,music_box,,,"objective(墙上的画：她看见了什么？);inspect(hs_draw_path,hs_draw_wall,hs_draw_family,hs_draw_boxes,hs_draw_train)",,L0、L1 开始渗出：方盒子与数字、重复的火车、同一张脸
 C3-05,C3,*,child_room,child_mid,,music_box,我走的时候，她在门口说了半句：“园丁叔叔有玻璃房子的钥匙……”,,collect(ev_iris_key),,钩子 → 第 4 章园丁

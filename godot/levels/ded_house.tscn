@@ -1,0 +1,318 @@
+[gd_scene load_steps=55 format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/ded_house/ded_house.glb" id="1_model"]
+[ext_resource type="PackedScene" path="res://art/levels/ded_house/doors.glb" id="2_doors"]
+[ext_resource type="Script" path="res://levels/ded_house.gd" id="3_script"]
+[sub_resource type="BoxShape3D" id="Shape_00"]
+size = Vector3(3.850, 3.600, 0.400)
+[sub_resource type="BoxShape3D" id="Shape_01"]
+size = Vector3(5.550, 3.600, 0.400)
+[sub_resource type="BoxShape3D" id="Shape_02"]
+size = Vector3(5.250, 3.600, 0.400)
+[sub_resource type="BoxShape3D" id="Shape_03"]
+size = Vector3(4.250, 3.600, 0.400)
+[sub_resource type="BoxShape3D" id="Shape_04"]
+size = Vector3(0.900, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_05"]
+size = Vector3(0.900, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_06"]
+size = Vector3(0.150, 3.600, 2.000)
+[sub_resource type="BoxShape3D" id="Shape_07"]
+size = Vector3(0.400, 3.600, 5.600)
+[sub_resource type="BoxShape3D" id="Shape_08"]
+size = Vector3(0.400, 3.600, 2.000)
+[sub_resource type="BoxShape3D" id="Shape_09"]
+size = Vector3(3.300, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_10"]
+size = Vector3(2.250, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_11"]
+size = Vector3(7.200, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_12"]
+size = Vector3(0.200, 3.600, 7.600)
+[sub_resource type="BoxShape3D" id="Shape_13"]
+size = Vector3(0.200, 3.600, 7.600)
+[sub_resource type="BoxShape3D" id="Shape_14"]
+size = Vector3(4.800, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_15"]
+size = Vector3(4.800, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_16"]
+size = Vector3(0.200, 3.600, 1.050)
+[sub_resource type="BoxShape3D" id="Shape_17"]
+size = Vector3(0.200, 3.600, 3.150)
+[sub_resource type="BoxShape3D" id="Shape_18"]
+size = Vector3(0.200, 3.600, 3.950)
+[sub_resource type="BoxShape3D" id="Shape_19"]
+size = Vector3(0.200, 3.600, 0.250)
+[sub_resource type="BoxShape3D" id="Shape_20"]
+size = Vector3(2.400, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_21"]
+size = Vector3(2.400, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_22"]
+size = Vector3(0.200, 3.600, 2.800)
+[sub_resource type="BoxShape3D" id="Shape_23"]
+size = Vector3(0.200, 3.600, 1.550)
+[sub_resource type="BoxShape3D" id="Shape_24"]
+size = Vector3(0.200, 3.600, 0.250)
+[sub_resource type="BoxShape3D" id="Shape_25"]
+size = Vector3(0.200, 3.600, 1.000)
+[sub_resource type="BoxShape3D" id="Shape_26"]
+size = Vector3(0.200, 3.600, 1.000)
+[sub_resource type="BoxShape3D" id="Shape_27"]
+size = Vector3(1.000, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_28"]
+size = Vector3(0.200, 3.600, 1.000)
+[sub_resource type="BoxShape3D" id="Shape_29"]
+size = Vector3(2.200, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_30"]
+size = Vector3(2.200, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_31"]
+size = Vector3(0.200, 3.600, 2.600)
+[sub_resource type="BoxShape3D" id="Shape_32"]
+size = Vector3(0.400, 3.600, 6.950)
+[sub_resource type="BoxShape3D" id="Shape_33"]
+size = Vector3(0.400, 3.600, 1.550)
+[sub_resource type="BoxShape3D" id="Shape_34"]
+size = Vector3(0.150, 3.600, 2.000)
+[sub_resource type="BoxShape3D" id="Shape_35"]
+size = Vector3(0.950, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_36"]
+size = Vector3(0.950, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_37"]
+size = Vector3(2.200, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_38"]
+size = Vector3(2.200, 3.600, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_39"]
+size = Vector3(0.200, 3.600, 2.600)
+[sub_resource type="BoxShape3D" id="Shape_40"]
+size = Vector3(0.200, 3.600, 1.850)
+[sub_resource type="BoxShape3D" id="Shape_41"]
+size = Vector3(0.200, 3.600, 1.850)
+[sub_resource type="BoxShape3D" id="Shape_42"]
+size = Vector3(17.800, 0.800, 0.350)
+[sub_resource type="BoxShape3D" id="Shape_43"]
+size = Vector3(13.400, 0.800, 0.350)
+[sub_resource type="BoxShape3D" id="Shape_44"]
+size = Vector3(0.350, 0.800, 45.000)
+[sub_resource type="BoxShape3D" id="Shape_45"]
+size = Vector3(0.350, 0.800, 45.000)
+[sub_resource type="BoxShape3D" id="Shape_46"]
+size = Vector3(35.000, 0.800, 0.350)
+[sub_resource type="BoxShape3D" id="Shape_47"]
+size = Vector3(0.500, 2.000, 0.500)
+[sub_resource type="BoxShape3D" id="Shape_48"]
+size = Vector3(0.500, 2.000, 0.500)
+[sub_resource type="BoxShape3D" id="Shape_49"]
+size = Vector3(4.000, 2.200, 0.200)
+[sub_resource type="BoxShape3D" id="Shape_Floor"]
+size = Vector3(10.4, 0.3, 10.4)
+[sub_resource type="BoxShape3D" id="Shape_Ground"]
+size = Vector3(80, 0.4, 90)
+
+[node name="ded_house" type="Node3D"]
+script = ExtResource("3_script")
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="模型" parent="结构" instance=ExtResource("1_model")]
+
+[node name="门" parent="结构" instance=ExtResource("2_doors")]
+
+[node name="碰撞" type="StaticBody3D" parent="结构"]
+[node name="墙00" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.275, 1.800, -9.000)
+shape = SubResource("Shape_00")
+[node name="墙01" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.425, 1.800, -9.000)
+shape = SubResource("Shape_01")
+[node name="墙02" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.575, 1.800, -19.000)
+shape = SubResource("Shape_02")
+[node name="墙03" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.075, 1.800, -19.000)
+shape = SubResource("Shape_03")
+[node name="墙04" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.650, 1.800, -14.900)
+shape = SubResource("Shape_04")
+[node name="墙05" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.650, 1.800, -16.700)
+shape = SubResource("Shape_05")
+[node name="墙06" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.025, 1.800, -15.800)
+shape = SubResource("Shape_06")
+[node name="墙07" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.000, 1.800, -12.000)
+shape = SubResource("Shape_07")
+[node name="墙08" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.000, 1.800, -17.800)
+shape = SubResource("Shape_08")
+[node name="墙09" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.300, 1.800, -17.700)
+shape = SubResource("Shape_09")
+[node name="墙10" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.475, 1.800, -17.700)
+shape = SubResource("Shape_10")
+[node name="墙11" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.800, -10.300)
+shape = SubResource("Shape_11")
+[node name="墙12" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.700, 1.800, -14.000)
+shape = SubResource("Shape_12")
+[node name="墙13" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.700, 1.800, -14.000)
+shape = SubResource("Shape_13")
+[node name="墙14" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.800, -16.500)
+shape = SubResource("Shape_14")
+[node name="墙15" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.800, -11.500)
+shape = SubResource("Shape_15")
+[node name="墙16" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.500, 1.800, -11.925)
+shape = SubResource("Shape_16")
+[node name="墙17" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.500, 1.800, -15.025)
+shape = SubResource("Shape_17")
+[node name="墙18" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.500, 1.800, -13.375)
+shape = SubResource("Shape_18")
+[node name="墙19" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.500, 1.800, -16.475)
+shape = SubResource("Shape_19")
+[node name="墙20" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.800, -15.300)
+shape = SubResource("Shape_20")
+[node name="墙21" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 1.800, -12.700)
+shape = SubResource("Shape_21")
+[node name="墙22" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.300, 1.800, -14.000)
+shape = SubResource("Shape_22")
+[node name="墙23" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.300, 1.800, -13.375)
+shape = SubResource("Shape_23")
+[node name="墙24" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.300, 1.800, -15.275)
+shape = SubResource("Shape_24")
+[node name="墙25" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250, 1.800, -9.700)
+shape = SubResource("Shape_25")
+[node name="墙26" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.650, 1.800, -17.100)
+shape = SubResource("Shape_26")
+[node name="墙27" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.100, 1.800, -13.350)
+shape = SubResource("Shape_27")
+[node name="墙28" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.000, 1.800, -18.300)
+shape = SubResource("Shape_28")
+[node name="墙29" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.900, 1.800, -15.400)
+shape = SubResource("Shape_29")
+[node name="墙30" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.900, 1.800, -17.800)
+shape = SubResource("Shape_30")
+[node name="墙31" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.900, 1.800, -16.600)
+shape = SubResource("Shape_31")
+[node name="墙32" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.000, 1.800, -12.675)
+shape = SubResource("Shape_32")
+[node name="墙33" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.000, 1.800, -18.025)
+shape = SubResource("Shape_33")
+[node name="D1背墙" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.025, 1.800, -15.800)
+shape = SubResource("Shape_34")
+[node name="D1南墙" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.475, 1.800, -14.900)
+shape = SubResource("Shape_35")
+[node name="D1北墙" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.475, 1.800, -16.700)
+shape = SubResource("Shape_36")
+[node name="D3南墙" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.700, 1.800, -15.400)
+shape = SubResource("Shape_37")
+[node name="D3北墙" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.700, 1.800, -17.800)
+shape = SubResource("Shape_38")
+[node name="D3东墙" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.900, 1.800, -16.600)
+shape = SubResource("Shape_39")
+[node name="门廊西" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050, 1.800, -20.125)
+shape = SubResource("Shape_40")
+[node name="门廊东" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.050, 1.800, -20.125)
+shape = SubResource("Shape_41")
+[node name="围墙S1" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.600, 0.200, 22.325)
+shape = SubResource("Shape_42")
+[node name="围墙S2" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.800, 0.200, 22.325)
+shape = SubResource("Shape_43")
+[node name="围墙W" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.325, 0.200, -0.000)
+shape = SubResource("Shape_44")
+[node name="围墙E" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.325, 0.200, -0.000)
+shape = SubResource("Shape_45")
+[node name="围墙N" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 0.200, -22.325)
+shape = SubResource("Shape_46")
+[node name="门柱W" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550, 0.800, 22.200)
+shape = SubResource("Shape_47")
+[node name="门柱E" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.850, 0.800, 22.200)
+shape = SubResource("Shape_48")
+[node name="大门挡" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.200, 1.100, 22.200)
+shape = SubResource("Shape_49")
+[node name="迷宫地面" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -14)
+shape = SubResource("Shape_Floor")
+[node name="场地地面" type="CollisionShape3D" parent="结构/碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22, 0)
+shape = SubResource("Shape_Ground")
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="月光" type="DirectionalLight3D" parent="灯光"]
+rotation_degrees = Vector3(-52, -38, 0)
+light_color = Color(0.62, 0.74, 1, 1)
+light_energy = 0.55
+shadow_enabled = true
+
+[node name="窗光1" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55, 1.75, -8.1)
+light_color = Color(1, 0.09, 0.04, 1)
+light_energy = 1.6
+omni_range = 5.0
+
+[node name="窗光2" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65, 1.75, -8.1)
+light_color = Color(1, 0.09, 0.04, 1)
+light_energy = 1.6
+omni_range = 5.0
+
+[node name="出口红光" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, -20.2)
+light_color = Color(1, 0.06, 0.02, 1)
+light_energy = 3.0
+omni_range = 6.0
+
+[node name="门廊暖光" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 2.15, -8.55)
+light_color = Color(1, 0.35, 0.12, 1)
+light_energy = 1.2
+omni_range = 3.5
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2, 0.05, 21.6)
+
+[node name="cam_hero" type="Camera3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0.95, 13.5)
+rotation_degrees = Vector3(7.9, 17.7, 0)
+fov = 52.0
