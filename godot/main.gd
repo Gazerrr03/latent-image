@@ -51,6 +51,14 @@ func _ready() -> void:
 	if cap != "":
 		_capture(cap)
 		return
+	# 第四章试验：直接进入当前章节基线，人工试玩，不读写正式存档。
+	if OS.get_cmdline_user_args().has("--trial-chapter4"):
+		GameState.persist = false
+		GameState.reset()
+		DisplayServer.window_set_title("第四章试验 · M00 本地基线 · 尚未接入地下室补丁")
+		print("CH4_TRIAL checkpoint=M00 start=C4-01 persist=false")
+		Director.start("C4-01")
+		return
 	# 标题页：有存档时“继续调查”（ui/menus.gd）
 	if not GameState.load_save():
 		GameState.reset()

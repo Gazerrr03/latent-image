@@ -1,0 +1,109 @@
+{
+  "branch": "codex/chapter4-pr34-trial",
+  "baseline_commit": "60fdbce1797b28c47ec4bd2190dbb914fcd22ac5",
+  "active_checkpoint": "M00",
+  "process": "逐个模块实现 -> 基础启动检查 -> 用户人工试玩 -> 用户决定接纳或调整 -> 下一模块",
+  "modules": [
+    {
+      "id": "M00",
+      "title": "当前本地基线",
+      "depends_on": [],
+      "status": "ready-for-human-test",
+      "scope": "从 C4-01 开始，记录当前问话、检视、D4 与收尾体验；尚无地下室补丁",
+      "human_result": "pending"
+    },
+    {
+      "id": "M01",
+      "title": "地下室空间",
+      "depends_on": [
+        "M00"
+      ],
+      "status": "planned",
+      "scope": "模型、场景、灯光、碰撞、出生点；先独立审查空间，不接章节任务",
+      "human_result": "pending"
+    },
+    {
+      "id": "M02",
+      "title": "记录本与今年笔记",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "planned",
+      "scope": "复用本地检视；补历年失踪、主人动机和星期四安排",
+      "human_result": "pending"
+    },
+    {
+      "id": "M03",
+      "title": "旧剪报与旧物",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "planned",
+      "scope": "补判词与旧物对应；不引入人形虚影或相机收人",
+      "human_result": "pending"
+    },
+    {
+      "id": "M04",
+      "title": "温室入口与返回",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "planned",
+      "scope": "园丁松口、花盆活板门、进入返回；处理现有任务前置与结束条件混用",
+      "human_result": "pending"
+    },
+    {
+      "id": "M05",
+      "title": "章节完成与收尾",
+      "depends_on": [
+        "M02",
+        "M03",
+        "M04"
+      ],
+      "status": "planned",
+      "scope": "定义调查完成、保存恢复、回客房、r4 和第五章衔接；不替换 D4",
+      "human_result": "pending"
+    },
+    {
+      "id": "X01",
+      "title": "举镜观察与对焦",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "deferred-product-decision",
+      "scope": "仅评估观察价值；不默认获得收人能力",
+      "human_result": "pending"
+    },
+    {
+      "id": "X02",
+      "title": "二次曝光收人",
+      "depends_on": [
+        "X01"
+      ],
+      "status": "deferred-product-decision",
+      "scope": "改变怪谈因果，需明确故事规则",
+      "human_result": "pending"
+    },
+    {
+      "id": "X03",
+      "title": "记录本页码与钥匙",
+      "depends_on": [
+        "M02"
+      ],
+      "status": "deferred-product-decision",
+      "scope": "评估往返与门槛价值，不采用第二页提示词",
+      "human_result": "pending"
+    },
+    {
+      "id": "X04",
+      "title": "1926底片双结局",
+      "depends_on": [
+        "X02",
+        "X03"
+      ],
+      "status": "deferred-product-decision",
+      "scope": "与主线死因、主人出现、第四至第五章交接冲突，单独提案",
+      "human_result": "pending"
+    }
+  ]
+}
