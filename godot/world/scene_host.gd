@@ -751,7 +751,7 @@ func _figure(parent: Node3D, who: String, foot: Vector3, rid := "") -> Node3D:
 					if n.has_animation(a):
 						n.get_animation(a).loop_mode = Animation.LOOP_LINEAR
 				figures[(rid + "/" + who) if rid != "" else who] = n
-				if n.has_animation("idle"):
+				if n.has_animation("idle") and not who.begins_with("镜中"):
 					n.play("idle")
 					n.seek(randf() * n.current_animation_length)
 		var mcs := CollisionShape3D.new()

@@ -27,7 +27,7 @@ func run() -> void:
 	var toward_camera: Vector3 = camera.global_position - marker.global_position
 	toward_camera.y = 0.0
 	toward_camera = toward_camera.normalized()
-	print("CAMERA ", camera.global_position, " MARKER ", marker.global_position, " FRONT ", marker.global_basis.z, " DOT ", marker.global_basis.z.dot(toward_camera))
+	assert(marker.global_basis.z.dot(toward_camera) > 0.85, "Reflection must face the mirror camera")
 	print("GUEST_MIRROR PASS: one surface; oxidized/fixed/replay reset; face toward camera")
 	if "--mirror-render" in OS.get_cmdline_user_args():
 		Mirror.apply(room, true)
@@ -35,6 +35,10 @@ func run() -> void:
 		camera.make_current()
 		await process_frame
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/tmp/guest-mirror-fixed.png")
+		root.get_texture().get_image().save_png("res://../docs/验证/2026-10-22-C6-C7/guest-mirror-fixed.png")
+		Mirror.apply(room, false)
+		await process_frame
+		await RenderingServer.frame_post_draw
+		root.get_texture().get_image().save_png("res://../docs/验证/2026-10-22-C6-C7/guest-mirror-oxidized.png")
 	room.free()
 	quit()

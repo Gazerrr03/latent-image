@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 暗房任务不会提前结束探索
+PASS 未完成暗房不能返回收尾
+PASS 仅持有证据不能跳过暗房演出
+PASS 暗房完成后可返回客房并结束探索
+PASS 暗房播放包含完整显影对质范围
+PASS C5-12保持不眠连续性
+PASS C6-01保持不眠连续性
+PASS C6-10保持不眠连续性
+PASS C7-01保持不眠连续性
+PASS 客房自查包含镜子
+PASS 自查后从暗房任务回到证据板
+PASS 无眠段固定在打字机
