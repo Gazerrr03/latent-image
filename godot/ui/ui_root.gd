@@ -1,5 +1,5 @@
 extends CanvasLayer
-## 临时界面层（灰盒阶段）：文字框、选项、提示、宽银幕黑边、冲洗底片。
+## 界面层：轻量字幕、人物气泡、选项、提示、宽银幕黑边、冲洗底片。
 ## 之后会逐步换成场景中的实物 UI（纸、打字机、证据板），但 Director 调用的接口保持不变：
 ## show_text / choose / cancel / toast / set_objective / set_progress / set_cinematic / wait_seconds
 
@@ -7,7 +7,6 @@ signal _resolved(value: int)
 
 const PAPER := Color("#efe6d2")
 const INK := Color("#1f1a14")
-const BAR_RATIO := 0.128  # 16:9 画面上加 2.39:1 黑边
 const EvidenceBoard := preload("res://ui/evidence_board.gd")
 const MediaFx := preload("res://ui/media_fx.gd")
 const Menus := preload("res://ui/menus.gd")
@@ -15,6 +14,17 @@ const H := preload("res://ui/hud_text.gd")
 const HudKeys := preload("res://ui/hud_keys.gd")
 
 var font: SystemFont
+var _cinematic := false
+var _bar_amount := 0.0
+var _bars_tween: Tween
+var _text_epoch := 0
+var bubble: PanelContainer
+var bubble_text: RichTextLabel
+var bubble_more: Label
+var _speaker_node: Node3D
+var _speaker_height := 1.75
+var _reading_label: RichTextLabel
+var _reading_more: Label
 var _waiting := false
 var _typing: Tween
 var _prev_mouse := Input.MOUSE_MODE_VISIBLE
@@ -89,27 +99,36 @@ func _ready() -> void:
 	root.add_child(board)
 	_build_develop(root)
 
-	text_panel = _paper_panel()
-	text_panel.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
-	text_panel.anchor_left = 0.18
-	text_panel.anchor_right = 0.82
-	text_panel.anchor_top = 0.66
-	text_panel.anchor_bottom = 0.95
+	text_panel = PanelContainer.new()
+	text_panel.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
+	text_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	root.add_child(text_panel)
 	var v := VBoxContainer.new()
 	text_panel.add_child(v)
-	text_label = RichTextLabel.new()
-	text_label.fit_content = true
-	text_label.bbcode_enabled = false
-	text_label.add_theme_color_override("default_color", INK)
-	text_label.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	text_label = _subtitle_label(24)
 	v.add_child(text_label)
-	more_label = Label.new()
-	more_label.text = "▸"
-	more_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	more_label.add_theme_color_override("font_color", INK)
+	more_label = _continue_label()
 	v.add_child(more_label)
-	root.add_child(text_panel)
 	text_panel.hide()
+
+	bubble = PanelContainer.new()
+	bubble.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var speech_style := StyleBoxFlat.new()
+	speech_style.bg_color = Color(0.055, 0.05, 0.045, 0.88)
+	speech_style.set_corner_radius_all(8)
+	speech_style.content_margin_left = 18
+	speech_style.content_margin_right = 18
+	speech_style.content_margin_top = 12
+	speech_style.content_margin_bottom = 10
+	bubble.add_theme_stylebox_override("panel", speech_style)
+	var speech_box := VBoxContainer.new()
+	bubble.add_child(speech_box)
+	bubble_text = _subtitle_label(24)
+	speech_box.add_child(bubble_text)
+	bubble_more = _continue_label()
+	speech_box.add_child(bubble_more)
+	root.add_child(bubble)
+	bubble.hide()
 
 	choice_panel = _paper_panel()
 	choice_panel.set_anchors_preset(Control.PRESET_CENTER)
@@ -120,9 +139,6 @@ func _ready() -> void:
 	choice_box = VBoxContainer.new()
 	choice_box.add_theme_constant_override("separation", 10)
 	choice_panel.add_child(choice_box)
-	choice_title = Label.new()
-	choice_title.add_theme_color_override("font_color", INK.lightened(0.3))
-	choice_title.add_theme_font_size_override("font_size", 18)
 	root.add_child(choice_panel)
 	choice_panel.hide()
 
@@ -189,16 +205,81 @@ func _ready() -> void:
 	_refresh()
 
 
-func _bar(root: Control, top: bool) -> ColorRect:
+func _subtitle_label(size: int) -> RichTextLabel:
+	var label := RichTextLabel.new()
+	label.fit_content = true
+	label.scroll_active = false
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.add_theme_font_size_override("normal_font_size", size)
+	label.add_theme_color_override("default_color", Color("#f4efdf"))
+	label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+	label.add_theme_constant_override("outline_size", 3)
+	label.add_theme_constant_override("line_separation", 0)
+	return label
+
+
+func _continue_label() -> Label:
+	var label := Label.new()
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	label.add_theme_font_size_override("font_size", 12)
+	label.add_theme_color_override("font_color", Color("#d1cbbf"))
+	label.add_theme_color_override("font_outline_color", Color.BLACK)
+	label.add_theme_constant_override("outline_size", 2)
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return label
+
+
+func _bar(root: Control, _top: bool) -> ColorRect:
 	var r := ColorRect.new()
 	r.color = Color.BLACK
 	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	r.anchor_left = 0
-	r.anchor_right = 1
-	r.anchor_top = 0.0 if top else 1.0 - BAR_RATIO
-	r.anchor_bottom = BAR_RATIO if top else 1.0
 	root.add_child(r)
 	return r
+
+
+func _layout_subtitles() -> void:
+	var vp := get_viewport().get_visible_rect().size
+	var bar_height := maxf(0.0, (vp.y - vp.x / 2.39) / 2.0) * _bar_amount
+	bar_top.position = Vector2.ZERO
+	bar_top.size = Vector2(vp.x, bar_height)
+	bar_bottom.position = Vector2(0, vp.y - bar_height)
+	bar_bottom.size = Vector2(vp.x, bar_height)
+	var width := minf(960.0, vp.x * 0.76)
+	text_panel.position.x = (vp.x - width) / 2.0
+	text_panel.size.x = width
+	text_label.custom_minimum_size.x = width
+	# 演出字幕居于下黑边；探索字幕保持底部安全距离。
+	text_panel.position.y = vp.y - (bar_height + text_panel.size.y) / 2.0 if _cinematic and bar_height >= text_panel.size.y else vp.y - text_panel.size.y - 34
+
+
+func _position_speech() -> void:
+	if not is_instance_valid(_speaker_node):
+		bubble.hide()
+		return
+	var cam := get_viewport().get_camera_3d()
+	if cam == null or not _speaker_node.is_visible_in_tree():
+		bubble.hide()
+		return
+	var head := _speaker_node.global_position + Vector3.UP * _speaker_height
+	if cam.is_position_behind(head):
+		bubble.hide()
+		return
+	# 检查到脸前的位置，避免把气泡当作穿墙人物标记。
+	var face := head - Vector3.UP * 0.2
+	var query := PhysicsRayQueryParameters3D.create(cam.global_position, face, 1 | 4)
+	if Director.world.player:
+		query.exclude = [Director.world.player.get_rid()]
+	var hit := cam.get_world_3d().direct_space_state.intersect_ray(query)
+	if not hit.is_empty() and not _speaker_node.is_ancestor_of(hit["collider"]) and hit["position"].distance_to(face) > 0.1:
+		bubble.hide()
+		return
+	var vp := get_viewport().get_visible_rect().size
+	var point := cam.unproject_position(head)
+	if not Rect2(Vector2.ZERO, vp).has_point(point):
+		bubble.hide()
+		return
+	bubble.show()
+	bubble.position = Vector2(clampf(point.x - bubble.size.x / 2, 18, maxf(18, vp.x - bubble.size.x - 18)), maxf(18, point.y - bubble.size.y - 16))
 
 
 func _paper_panel() -> PanelContainer:
@@ -300,9 +381,13 @@ func _on_event(id: String) -> void:
 
 ## 日期角标在影像档案、黑场、冲洗、证据板、菜单上面不出现；房间名在菜单上面不出现
 func _process(dt: float) -> void:
+	_layout_subtitles()
+	_position_speech()
 	_update_keys(dt)
-	room_label.visible = _hud_on and not menus.visible and not text_panel.visible
-	day_label.visible = _hud_on and day_label.text != "" and not (footage and footage.active) \
+	hint_key.text = "A / ×" if Controls.gamepad else H.t("key_hint")
+	keys.set_gamepad(Controls.gamepad)
+	room_label.visible = _hud_on and not _cinematic and not menus.visible and not text_panel.visible
+	day_label.visible = _hud_on and not _cinematic and day_label.text != "" and not (footage and footage.active) \
 		and not interlude_layer.visible and not develop_layer.visible and not board.visible and not menus.visible
 
 
@@ -418,33 +503,107 @@ func _diary_label(size: int, align: int) -> Label:
 
 # ───────────── Director 调用的接口 ─────────────
 
+## 用实际字体宽度分页，最多两行，优先在后半段的标点处分段。
+func subtitle_pages(text: String, width: float, font_size: int) -> Array[String]:
+	var pages: Array[String] = []
+	var rest := text.strip_edges()
+	while not rest.is_empty():
+		var line := 1
+		var used := 0.0
+		var limit := 0
+		var punctuation := 0
+		for i in rest.length():
+			var ch := rest.substr(i, 1)
+			var advance := font.get_string_size(ch, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+			if ch == "\n" or used + advance > width:
+				line += 1
+				used = 0.0
+			if line > 2:
+				break
+			used += advance if ch != "\n" else 0.0
+			limit = i + 1
+			if ch in "。！？；，、.!?;":
+				punctuation = limit
+		limit = maxi(limit, 1)
+		if limit < rest.length() and punctuation > limit / 2:
+			limit = punctuation
+		pages.append(rest.left(limit).strip_edges())
+		rest = rest.substr(limit).strip_edges()
+	return pages
+
+
 func show_text(text: String) -> void:
-	# 取景器 / 档案卡叠加时，文字以纪录片字幕的形式出现
 	if footage and footage.active:
-		await footage.subtitle(text)
+		# 档案字幕仍由原播放器处理输入与媒介层。
+		for page in subtitle_pages(text, minf(960, get_viewport().get_visible_rect().size.x * 0.76), 24):
+			var epoch := _text_epoch
+			await footage.subtitle(page)
+			if epoch != _text_epoch:
+				break
 		return
+	await _read_subtitle(text, false)
+
+
+func show_speech(speaker: String, text: String) -> void:
+	_speaker_node = null
+	var room_id: String = Director.conversation.get_slice("@", 1)
+	for c in Director.world._chr_nodes:
+		if c["room"] == room_id and (String(c["who"]) == speaker or String(c["who"]).begins_with(speaker)):
+			_speaker_node = c["node"]
+			break
+	if not is_instance_valid(_speaker_node):
+		await show_text(speaker + "：" + text)
+		return
+	_speaker_height = 1.75
+	for c in ContentDB.characters:
+		if String(c["name"]).begins_with(speaker):
+			_speaker_height = float(c.get("height", "1.75"))
+			break
+	await _read_subtitle(text, true)
+	_speaker_node = null
+	bubble.hide()
+
+
+func _read_subtitle(text: String, speech: bool) -> void:
 	if Director.autoplay:
-		print("  │ ", text.replace("\n", "\n  │ "))
+		print("  │ ", text)
 		return
-	_release_mouse()
-	text_label.text = text
-	text_label.visible_ratio = 0.0
-	more_label.modulate.a = 0.0
-	text_panel.show()
-	if Settings.text_instant:
-		# 设置：文字直接显示
-		text_label.visible_ratio = 1.0
-		more_label.modulate.a = 1.0
-		_typing = null
-	else:
-		_typing = create_tween()
-		_typing.tween_property(text_label, "visible_ratio", 1.0, clampf(text.length() * 0.03, 0.3, 2.5))
-		_typing.tween_property(more_label, "modulate:a", 1.0, 0.3)
-	_waiting = true
-	await _resolved
-	_waiting = false
-	text_panel.hide()
-	_restore_mouse()
+	var epoch := _text_epoch
+	var in_conversation: bool = Director.conversation != ""
+	if not in_conversation:
+		_release_mouse()
+	_reading_label = bubble_text if speech else text_label
+	_reading_more = bubble_more if speech else more_label
+	var panel: PanelContainer = bubble if speech else text_panel
+	var width := minf(480, get_viewport().get_visible_rect().size.x * 0.6) if speech else minf(960, get_viewport().get_visible_rect().size.x * 0.76)
+	_reading_label.custom_minimum_size.x = width
+	panel.size = Vector2.ZERO
+	var pages := subtitle_pages(text, width - 12, 24)
+	for i in pages.size():
+		_reading_label.text = pages[i]
+		_reading_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_reading_label.visible_ratio = 0.0
+		_reading_more.text = ("A / ×" if Controls.gamepad else "空格 / 点击") + " 继续" + ("  %d/%d" % [i + 1, pages.size()] if pages.size() > 1 else "")
+		_reading_more.modulate.a = 0.0
+		panel.show()
+		if Settings.text_instant:
+			_reading_label.visible_ratio = 1.0
+			_reading_more.modulate.a = 1.0
+			_typing = null
+		else:
+			_typing = create_tween()
+			_typing.tween_property(_reading_label, "visible_ratio", 1.0, clampf(pages[i].length() * 0.03, 0.3, 2.5))
+			_typing.tween_property(_reading_more, "modulate:a", 1.0, 0.2)
+		_waiting = true
+		var result: int = await _resolved
+		_waiting = false
+		if _typing:
+			_typing.kill()
+		if result < 0 or epoch != _text_epoch:
+			break
+	panel.hide()
+	if not in_conversation:
+		_restore_mouse()
 
 
 ## 返回所选序号；被 cancel() 打断时返回 -1
@@ -470,6 +629,8 @@ func choose(title: String, options: Array) -> int:
 		b.pressed.connect(func(): _resolved.emit(i))
 		choice_box.add_child(b)
 	choice_panel.show()
+	if options.size() > 0:
+		choice_box.get_child(1).grab_focus()
 	var k: int = await _resolved
 	choice_panel.hide()
 	_restore_mouse()
@@ -477,6 +638,9 @@ func choose(title: String, options: Array) -> int:
 
 
 func cancel() -> void:
+	_text_epoch += 1
+	_speaker_node = null
+	bubble.hide()
 	_resolved.emit(-1)
 	board.cancel()
 	develop_layer.hide()
@@ -744,15 +908,15 @@ func set_hint(text: String) -> void:
 		return
 	var p := H.hint_parts(text)
 	hint_label.text = p[0] if p[1] == "" else "%s · %s" % p
-	hint_box.visible = _hud_on
+	hint_box.visible = _hud_on and not _cinematic and Director.conversation == ""
 
 
 ## 播放影像档案、冲洗底片时隐藏目标、提示等界面
 func set_hud(on: bool) -> void:
 	_hud_on = on
 	for n in [objective_label, progress_label, checklist_box, toast_label, crosshair, room_label]:
-		n.visible = on
-	hint_box.visible = on and hint_label.text != ""
+		n.visible = on and not _cinematic
+	hint_box.visible = on and not _cinematic and hint_label.text != ""
 	if on:
 		_refresh()
 
@@ -760,10 +924,17 @@ func set_hud(on: bool) -> void:
 func set_cinematic(on: bool) -> void:
 	if fx:
 		fx.set_exploring(not on)
-	crosshair.visible = not on
-	var t := create_tween().set_parallel()
-	t.tween_property(bar_top, "modulate:a", 1.0 if on else 0.0, 0.6)
-	t.tween_property(bar_bottom, "modulate:a", 1.0 if on else 0.0, 0.6)
+	for n in [objective_label, progress_label, checklist_box, toast_label, crosshair]:
+		n.visible = _hud_on and not on
+	crosshair.visible = _hud_on and not on and Director.conversation == ""
+	hint_box.visible = _hud_on and not on and hint_label.text != ""
+	if _cinematic == on:
+		return
+	_cinematic = on
+	if _bars_tween:
+		_bars_tween.kill()
+	_bars_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_bars_tween.tween_property(self, "_bar_amount", 1.0 if on else 0.0, 0.6)
 
 
 # ───────────── 输入 ─────────────
@@ -771,11 +942,11 @@ func set_cinematic(on: bool) -> void:
 ## Tab：随时翻开证据板，一张一张拿起来看；Esc：自由行走时打开暂停页。
 ## 问话、选项、读字、黑场、冲洗、影像档案、证据板上都不响应
 func _unhandled_input(event: InputEvent) -> void:
-	if not (event is InputEventKey and event.pressed and not event.echo):
+	if not event.is_pressed() or event.is_echo():
 		return
-	var tab: bool = event.physical_keycode == KEY_TAB
-	var esc: bool = event.is_action_pressed("ui_cancel")
-	if event.physical_keycode == KEY_Q and not _busy():
+	var tab: bool = event.is_action_pressed("notebook")
+	var esc: bool = event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel")
+	if event.is_action_pressed("recall") and not _busy():
 		var pl: Node = Director.world.player if Director.world else null
 		if pl and pl.active and not pl.frozen:
 			get_viewport().set_input_as_handled()
@@ -794,7 +965,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _busy() -> bool:
-	return board.visible or _waiting or choice_panel.visible or develop_layer.visible or interlude_layer.visible \
+	return Director.conversation != "" or board.visible or _waiting or choice_panel.visible or develop_layer.visible or interlude_layer.visible \
 		or Director.autoplay or menus.visible or (footage and footage.active)
 
 
@@ -813,7 +984,10 @@ func browse_board(restore_mouse := true) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	Controls.note_event(event)
 	if not _waiting:
+		return
+	if event.is_echo():
 		return
 	var click: bool = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
 	var key: bool = event.is_action_pressed("ui_accept")
@@ -822,8 +996,8 @@ func _input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 	if _typing and _typing.is_running():
 		_typing.kill()
-		text_label.visible_ratio = 1.0
-		more_label.modulate.a = 1.0
+		_reading_label.visible_ratio = 1.0
+		_reading_more.modulate.a = 1.0
 		return
 	_resolved.emit(0)
 
@@ -842,7 +1016,7 @@ func _restore_mouse() -> void:
 ## 图标只在自由行走时出现；回想没有可指的路（客房收尾、不在探索）时变灰。目标每半秒问一次
 func _update_keys(dt: float) -> void:
 	var pl: Node = Director.world.player if Director.world else null
-	var show: bool = _hud_on and pl != null and pl.active and not pl.frozen and not text_panel.visible and not menus.visible and not board.visible \
+	var show: bool = _hud_on and not _cinematic and Director.conversation == "" and pl != null and pl.active and not pl.frozen and not text_panel.visible and not menus.visible and not board.visible \
 		and not interlude_layer.visible and not (footage and footage.active) and not Director.autoplay
 	keys.visible = show
 	if not show:

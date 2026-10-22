@@ -1,0 +1,20 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+Connected physical controllers: []
+PASS 标题菜单方向键获得焦点
+PASS 左摇杆死区不移动
+PASS 半推保留模拟力度
+PASS 角色按摇杆力度慢走
+PASS 右摇杆转动镜头
+PASS Menu 暂停并冻结角色
+PASS 暂停时镜头不动
+PASS B 返回探索
+PASS 方向键选项后 A 确认
+PASS Y 打开笔记本
+PASS B 合上笔记本
+PASS 旧版证据卡获得焦点
+PASS A打开旧版证据详情
+PASS B先返回证据板
+PASS B合上证据板恢复行动
+STABLE_INPUT failures=0

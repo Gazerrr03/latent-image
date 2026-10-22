@@ -37,3 +37,5 @@ controls,W A S D／方向键｜走动\n鼠标｜环顾\nE／左键｜检查 · �
 key_hint,E,准星提示前面的按键
 sound_select,paper_rustle,菜单确认一项时的声音（音效表 id）
 sound_pause,ui_board_open,打开暂停页时的声音（音效表 id）
+set_pad_sens,手柄视角灵敏度,1—10 档；独立于鼠标
+controls_pad,左 / 右摇杆｜移动 / 观察\nA / ×（下方）｜交互 / 确认\nB / ○（右侧）｜返回\nY / △（上方）｜笔记本\nX / □（左侧）｜回想\nMenu / Options｜暂停\n方向键｜菜单 / 证据卡选择\nLT / RT · LB / RB｜缩放 · 翻页,按键按物理位置映射；Xbox / PlayStation 标签

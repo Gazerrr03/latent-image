@@ -60,7 +60,7 @@ func _ready() -> void:
 func pick_pair(title: String) -> Array:
 	browsing = false
 	open(title)
-	hint_label.text = HINT_LINK
+	hint_label.text = "方向键选择　·　A / × 连线　·　X / □ 检视" if Controls.gamepad else HINT_LINK
 	var pair: Array = await _picked
 	return pair
 
@@ -69,7 +69,7 @@ func pick_pair(title: String) -> Array:
 func browse() -> void:
 	browsing = true
 	open("证据板")
-	hint_label.text = HINT_BROWSE if not GameState.evidence.is_empty() else "证据板上还什么都没有。"
+	hint_label.text = ("方向键选择　·　A / × 检视　·　B / ○ 合上" if Controls.gamepad else HINT_BROWSE) if not GameState.evidence.is_empty() else "证据板上还什么都没有。"
 	await closed
 
 
@@ -93,11 +93,11 @@ func cancel() -> void:
 		close()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not visible:
 		return
 	var esc: bool = event.is_action_pressed("ui_cancel")
-	var tab: bool = event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_TAB
+	var tab: bool = event.is_action_pressed("notebook")
 	if _exam.visible and (esc or tab):
 		_exam.hide()
 		get_viewport().set_input_as_handled()
@@ -156,9 +156,23 @@ func _rebuild() -> void:
 		card.set_meta("base_scale", k)
 		card.scale = Vector2(k, k)
 		card.rotation_degrees = float(hash(id + "r") % 7) - 3.0
-		card.gui_input.connect(func(ev): _on_card_input(id, ev))
+		card.focus_mode = Control.FOCUS_ALL
+		card.focus_entered.connect(func(): card.queue_redraw())
+		card.focus_exited.connect(func(): card.queue_redraw())
+		card.draw.connect(func():
+			if card.has_focus(): card.draw_rect(Rect2(Vector2.ZERO, CARD_SIZE).grow(5), Color("#f3ead6"), false, 3.0))
+		card.gui_input.connect(func(ev):
+			if ev.is_action_pressed("ui_accept"):
+				card.accept_event()
+				if browsing: examine(id)
+				else: _on_card(id)
+			elif ev.is_action_pressed("recall"):
+				card.accept_event()
+				examine(id)
+			else: _on_card_input(id, ev))
 		add_child(card)
 		cards[id] = card
+	if not cards.is_empty(): cards.values()[0].grab_focus()
 	move_child(_strings, get_child_count() - 1)
 	move_child(_exam, get_child_count() - 1)
 	for p in GameState.link_pairs:

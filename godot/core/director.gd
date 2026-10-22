@@ -33,6 +33,8 @@ var _train_present := false
 var _before_train_fx := ""
 ## 正在进行的自由探索（任务表的一组）；空 = 不在探索
 var _explore_group := ""
+## 仅探索交谈保留玩家机位。
+var conversation := ""
 ## 正在进行的行走检查（inspect）里还没看的物件
 var _inspect_pending: Array = []
 ## 这一组“回客房”已经出现过（只在第一次出现时响一声）
@@ -126,11 +128,16 @@ func _play(row: Dictionary) -> void:
 	world.apply_room_states(row.get("shot_id", ""))
 	var acts := Actions.parse(row.get("actions", ""))
 	var names: Array = acts.map(func(a): return a["name"])
+	# 交谈后的实地检查需要重新开放走动，不能把整段任务都锁在 NPC 身边。
+	if mode == "walk" and conversation != "":
+		conversation = ""
+		world.player.conversing = false
 	# 眼睛只在“睡下 → 醒来”之间闭着；跳镜、读档时不该还闭着
 	if not names.has("wake") and not names.has("sleep"):
 		ui.eyelids_set(1.0)
-	world.set_mode(mode, row.get("camera", ""))
-	ui.set_cinematic(mode == "camera")
+	if conversation == "":
+		world.set_mode(mode, row.get("camera", ""))
+	ui.set_cinematic(mode == "camera" and conversation == "")
 	# 客房的一站：声音（敲门、钟声）等玩家按了 E、躺下以后才响
 	var late_sound: bool = names.has("station")
 	if not late_sound:
@@ -149,7 +156,7 @@ func _play(row: Dictionary) -> void:
 		world.play_sounds(row.get("sound", ""))
 	if row.get("text", "") != "" and not skip_text:
 		# 行走镜头里读字时人站住（文字框要点击翻页，不该边读边走）
-		var hold: bool = world.player != null and world.player.active
+		var hold: bool = world.player != null and world.player.active and conversation == ""
 		if hold:
 			world.set_frozen(true)
 		await ui.show_text(fill(row["text"]))
@@ -404,7 +411,15 @@ func _explore(group: String) -> void:
 		GameState.quests_done.append(pick["id"])
 		GameState.save()
 		if pick.get("shot", "") != "":
+			var trigger: String = pick.get("trigger", "")
+			if trigger.begins_with("talk:"):
+				conversation = trigger
+				world.player.conversing = true
+				world.player.velocity = Vector3.ZERO
+				ui.set_hint("")
 			await _play_range(pick["shot"], pick.get("until", ""))
+			conversation = ""
+			world.player.conversing = false
 			if _interrupted():
 				_explore_group = ""
 				return
@@ -662,7 +677,10 @@ func _choose_from_set(set_id: String, kind: String, title: String) -> String:
 	GameState.add_tendency(r.get("tendency", ""))
 	GameState.record(kind, r["text"], {"set": set_id, "tendency": r.get("tendency", "")})
 	if r.get("response", "") != "":
-		await ui.show_text(r["response"])
+		if kind == "inquire" and conversation != "":
+			await ui.show_speech(conversation.trim_prefix("talk:").get_slice("@", 0), r["response"])
+		else:
+			await ui.show_text(r["response"])
 	return r["text"]
 
 
@@ -741,15 +759,19 @@ func _link_hint(group: String, pick: Array, usable: Array, fails: int) -> void:
 
 func _say(set_id: String) -> void:
 	var v := GameState.vars()
+	var epoch: int = ui._text_epoch
 	for r in ContentDB.lines.get(set_id, []):
 		if ContentDB.condition_matches(r.get("condition", ""), v):
 			var sp: String = r.get("speaker", "")
 			var talking: bool = sp != "" and world.has_method("figure_anim") and world.figure_anim(sp, "talk")
 			world.play_sounds(r.get("sound", ""))
-			await ui.show_text(("%s：%s" % [sp, r["text"]]) if sp != "" else r["text"])
+			if conversation != "" and sp != "" and sp != "我":
+				await ui.show_speech(sp, r["text"])
+			else:
+				await ui.show_text(("%s：%s" % [sp, r["text"]]) if sp != "" else r["text"])
 			if talking:
 				world.figure_anim(sp, "idle")
-			if _interrupted():
+			if _interrupted() or ui._text_epoch != epoch:
 				return
 
 

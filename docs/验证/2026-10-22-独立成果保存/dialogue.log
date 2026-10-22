@@ -1,0 +1,20 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+DEMO NPC target=talk:拉坦特夫人@seance feet=(0.837317, 0.00065, -2.67388) npc=(1.22, 0.015, -1.75) room=seance
+按 E 与拉坦特夫人交谈，鼠标转头，空格/点击继续。交谈后按 F8 看火车过场，F9 返回探索。
+PASS 真实 NPC 可被交互瞄准
+PASS E 接入原地 NPC 交谈且无黑边
+PASS 交互不切相机不改视角
+PASS 气泡可见且无底部重复字幕
+PASS 交谈能转头但站位不变
+PASS 转身离开视野气泡收起
+PASS 真实台词分页推进后恢复探索
+PASS 长台词生成多个页面
+PASS 真实过场黑边伸出且字幕位于下黑边
+PASS 演出隐藏非必要 HUD
+PASS 黑边可收回且恢复 HUD
+PASS 取消不会继续挂起下一句气泡
+PASS 交谈后进入实地检查会解除移动限制
+PASS 档案字幕保留独立播放入口
+DIALOGUE_DEMO failures=0
