@@ -1,7 +1,16 @@
 extends Node3D
-## 温室地下暗房：空间 + 相机双重视角 + 对焦与快门 + 显影与二次曝光收人
+## 温室地下暗房：空间 + 相机双重视角 + 对焦与快门 + 显影与历史记录复原
 
-signal cellar_cleared
+signal session_finished
+const Rules := preload("res://levels/cellar_state.gd")
+var rules = Rules.new()
+var texts := {}
+var _interaction_busy := false
+var _session_completed := false
+var _table_camera_nodes: Array = []
+var _cabinet_parts := {}
+var _key_ghost: Sprite3D
+var _key_prop: MeshInstance3D
 
 const FRAME_SHADER := preload("res://shaders/frame_view.gdshader")
 const FOCUS_RING_SCRIPT := preload("res://ui/focus_ring.gd")
@@ -21,12 +30,22 @@ var guide_pill_layer: CanvasLayer
 var guide_pill_panel: PanelContainer
 var guide_pill_label: Label
 
-var has_camera := false
+var has_camera: bool:
+	get: return rules.data.has_camera
+	set(value): rules.data.has_camera = value
 var camera_raised := false
 var focus := 0.0
-var plate_state := "NONE" # NONE, EXPOSED, DEVELOPED, ARMED, EXPOSED2, CLEARED
-var exposed_year := 0
-var cleared_years := {}
+var plate_state: String:
+	get: return rules.data.plate
+	set(value): rules.data.plate = value
+var exposed_year: int:
+	get: return rules.data.year
+	set(value): rules.data.year = value
+var cleared_years: Dictionary:
+	get:
+		var years := {}
+		for year in rules.data.cleared: years[int(year)] = true
+		return years
 var _gameplay_active := false
 var _rest_fov := 70.0
 
@@ -45,7 +64,6 @@ var frame_info := {
 
 var current_aim_year := 0
 var camera_only_node: Node3D
-var table_camera_node: Node3D
 var frame_labels_node: Node3D
 
 var _sfx: AudioStreamPlayer
@@ -53,6 +71,9 @@ var _red_hum: AudioStreamPlayer
 
 
 func _ready() -> void:
+	rules.restore(GameState.cellar)
+	for row in ContentDB.load_table("res://content/story/cellar.csv"):
+		texts[row.id] = row
 	_init_audio()
 	_configure_frame_materials()
 	_build_frame_labels()
@@ -60,6 +81,7 @@ func _ready() -> void:
 	_build_camera_overlay()
 	_build_camera_guide_hud()
 	_find_table_camera()
+	_build_archive_props()
 
 	# 延迟一帧绑定玩家组件，确保 Player 已在场景树中就位
 	call_deferred("_bind_player")
@@ -105,6 +127,7 @@ func _set_checklist(items: Array) -> void:
 
 
 func _exit_tree() -> void:
+	if _gameplay_active: _finish(false)
 	var d := _dir()
 	if d and d.inspected.is_connected(_on_director_inspected):
 		d.inspected.disconnect(_on_director_inspected)
@@ -124,35 +147,106 @@ func _exit_tree() -> void:
 # 外部流程驱动（Director cellar_gameplay 动作）
 # ---------------------------------------------------------------------------
 
-func await_cellar_cleared() -> void:
-	if not cleared_years.is_empty():
-		return
+func await_cellar_cleared() -> bool:
 	_gameplay_active = true
-	_set_objective("透镜真相：按 [F] 举镜对准北墙肖像，滚轮调焦清晰后按左键拍照。")
-	_set_checklist([
-		{"text": "大画幅相机收人：", "head": true, "done": false},
-		{"text": "按 [F] 举镜观察北墙肖像", "done": false},
-		{"text": "滚轮调焦清晰并按左键拍照", "done": false}
-	])
-	await cellar_cleared
-	_gameplay_active = false
+	rules.data.entrance_open = true
+	_save_progress()
+	_sync()
+	await session_finished
+	return _session_completed
 
+func _text(id: String) -> String:
+	return texts.get(id, {}).get("text", id)
 
-## 摄影阶段由本关管理即时交互，不能只更新清单而没有实际目标。
-func _update_gameplay_targets() -> void:
+func _save_progress() -> void:
+	GameState.cellar = rules.snapshot()
+	GameState.save()
+
+func refresh_from_saved() -> void:
+	rules.restore(GameState.cellar)
+	_sync()
+
+func _apply(result: String) -> void:
+	_save_progress()
+	_toast(_text(result))
+	_sync()
+
+func _sync() -> void:
+	for year in frame_mats:
+		frame_mats[year].set_shader_parameter("state", 1.0 if rules.data.cleared.has(str(year)) else 0.0)
+	for mesh in _table_camera_nodes:
+		mesh.visible = not has_camera
+	var hinge := Vector3(-4.30, 0, 3.23)
+	var turn := Transform3D(Basis(Vector3.UP, -PI / 2.0), hinge) * Transform3D(Basis.IDENTITY, -hinge)
+	for mesh in _cabinet_parts:
+		mesh.transform = turn * _cabinet_parts[mesh] if rules.data.box_open else _cabinet_parts[mesh]
+	if _key_ghost:
+		_key_ghost.visible = camera_raised and rules.data.cleared.has("1920") and not rules.data.has_key
+	if _key_prop: _key_prop.visible = rules.data.has_key
+	var plate := get_node_or_null("接口/hs_cellar_plate/原片")
+	if plate: plate.visible = rules.data.final_seen and not rules.data.final_taken
 	var d := _dir()
-	if not _gameplay_active or not d or d.world.room != self:
-		return
-	d.world.highlight_hotspots(["hs_cellar_tray"] if plate_state in ["EXPOSED", "EXPOSED2"] else [])
+	if not _gameplay_active or not d or d.world.room != self: return
+	d.world.highlight_hotspots(rules.target_ids())
+	var step: String = _text("step_" + rules.next_step())
+	_set_objective(step)
+	_set_checklist([
+		{"text": texts.get("milestone_camera", {}).get("text", ""), "done": has_camera},
+		{"text": texts.get("milestone_history", {}).get("text", ""), "done": rules.data.cleared.has("1920")},
+		{"text": texts.get("milestone_key", {}).get("text", ""), "done": rules.data.box_open},
+		{"text": texts.get("milestone_final", {}).get("text", ""), "done": rules.data.final_choice != ""},
+		{"text": texts.get("milestone_documents", {}).get("text", ""), "done": rules.data.complete}
+	])
 
+func _finish(completed: bool) -> void:
+	if not _gameplay_active: return
+	_gameplay_active = false
+	_session_completed = completed
+	if camera_raised: _toggle_camera_raise()
+	_save_progress()
+	session_finished.emit()
+
+func _build_archive_props() -> void:
+	_key_ghost = Sprite3D.new()
+	_key_ghost.texture = load("res://art/levels/gh_cellar/ui/key_ghost.png")
+	_key_ghost.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_key_ghost.pixel_size = 0.002
+	_key_ghost.position = Vector3(-4.48, 1.45, 2.9)
+	_key_ghost.visible = false
+	add_child(_key_ghost)
+	_key_prop = MeshInstance3D.new()
+	var shape := BoxMesh.new()
+	shape.size = Vector3(0.065, 0.008, 0.018)
+	_key_prop.mesh = shape
+	var brass := StandardMaterial3D.new()
+	brass.albedo_color = Color(0.65, 0.45, 0.16)
+	brass.metallic = 0.8
+	_key_prop.material_override = brass
+	_key_prop.position = Vector3(0.82, 0.973, -0.32)
+	add_child(_key_prop)
 
 func autoplay_cellar() -> void:
-	has_camera = true
-	cleared_years[1920] = true
-	plate_state = "CLEARED"
-	if frame_mats.has(1920):
-		frame_mats[1920].set_shader_parameter("state", 1.0)
-	cellar_cleared.emit()
+	# 只验证章节连接，真实输入另测；走同一套局部规则，不直接写完成标记。
+	if not rules.data.complete:
+		rules.pickup()
+		rules.shutter(1920, true)
+		rules.develop()
+		rules.read_page("reload")
+		rules.holder()
+		rules.arm()
+		rules.shutter(1920, true)
+		rules.develop()
+		rules.read_page("history")
+		rules.cabinet(true)
+		rules.read_page("key")
+		rules.cabinet(false)
+		rules.observe_final(true)
+		rules.take_final()
+		rules.cabinet(false)
+		for doc in ["notes", "clip", "relics"]: rules.read_document(doc)
+	_save_progress()
+	for id in ["ev_cellar_book", "ev_cellar_notes", "ev_cellar_clip", "ev_cellar_relics"]: _dir()._collect(id)
+	_sync()
 
 
 # ---------------------------------------------------------------------------
@@ -317,13 +411,12 @@ func _build_camera_only_traces() -> void:
 
 func _find_table_camera() -> void:
 	var model := get_node_or_null("model")
-	if model == null:
-		return
-	var anchor := Vector3(0.36, 1.15, -0.64)
-	for n in model.find_children("Camera*", "MeshInstance3D", true, false):
-		if n.global_position.distance_to(anchor) < 1.0:
-			table_camera_node = n
-			break
+	if model:
+		_table_camera_nodes = model.find_children("Camera*", "MeshInstance3D", true, false)
+		_table_camera_nodes.append_array(model.find_children("Lens*", "MeshInstance3D", true, false))
+		for mesh in model.find_children("Film cabinet*", "MeshInstance3D", true, false):
+			if mesh.name in ["Film cabinet door", "Film cabinet inset", "Film cabinet label", "Film cabinet latch", "Film cabinet padlock"]:
+				_cabinet_parts[mesh] = mesh.transform
 
 
 # ---------------------------------------------------------------------------
@@ -336,6 +429,7 @@ func _bind_player() -> void:
 	if player and player.cam:
 		player_cam = player.cam
 		_build_viewmodel()
+		_sync()
 
 
 func _build_viewmodel() -> void:
@@ -518,14 +612,24 @@ func _input(event: InputEvent) -> void:
 	if not d or d.world.room != self or not is_instance_valid(player) or not player.active or player.frozen or d.ui._busy():
 		return
 	# 先于玩家的普通左键检查处理快门；阅读/暂停交由原UI处理。
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_F:
+	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed() and not event.is_echo():
+		if event.is_action_pressed("cellar_raise"):
 			_toggle_camera_raise()
 			get_viewport().set_input_as_handled()
-		elif event.keycode == KEY_R and has_camera and _gameplay_active:
+		elif event.is_action_pressed("cellar_arm") and has_camera and _gameplay_active:
 			_handle_arm_second_exposure()
 			get_viewport().set_input_as_handled()
 
+		elif event.is_action_pressed("cellar_shutter") and camera_raised:
+			_update_aim_detection()
+			_trigger_shutter()
+			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("cellar_focus_up") and camera_raised:
+			_step_focus(0.08)
+			get_viewport().set_input_as_handled()
+		elif event.is_action_pressed("cellar_focus_down") and camera_raised:
+			_step_focus(-0.08)
+			get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.pressed:
 		if camera_raised:
 			_update_aim_detection()
@@ -562,6 +666,7 @@ func _toggle_camera_raise() -> void:
 		frame_mats[y].set_shader_parameter("camera_mix", 1.0 if camera_raised else 0.0)
 	_set_cinematic(camera_raised)
 	_update_camera_guide_hud()
+	_sync()
 	if camera_raised:
 		_hint("举镜中 · 滚轮调焦 · 左键快门 · F 放下")
 	else:
@@ -631,10 +736,10 @@ func _update_aim_hud() -> void:
 		return
 
 	var info: Dictionary = frame_info.get(current_aim_year, {})
-	var is_sharp := focus >= 0.82
+	var is_sharp := focus >= 0.88
 	var year_title: String = "【%d 年合影】" % current_aim_year
 	if cleared_years.has(current_aim_year):
-		aim_target_label.text = "%s 空位 · 该人影已被收走" % year_title
+		aim_target_label.text = "%s 过去记录中的空位 · 已对照" % year_title
 		aim_target_label.modulate = Color(0.6, 0.7, 0.8, 0.9)
 	elif not info.get("haunted", false):
 		aim_target_label.text = "%s 正常 · 无多余人影" % year_title
@@ -642,57 +747,21 @@ func _update_aim_hud() -> void:
 	else:
 		var name_str: String = info.get("name", "")
 		var status_str := "清晰 · 可按左键快门" if is_sharp else "模糊（滚轮调焦）"
-		aim_target_label.text = "%s 发现异状（%s） · %s" % [year_title, name_str, status_str]
+		aim_target_label.text = "%s 发现旧影（%s） · %s" % [year_title, name_str, status_str]
 		aim_target_label.modulate = Color(1.0, 0.82, 0.3) if is_sharp else Color(1.0, 0.5, 0.4)
 
 
 func _trigger_shutter() -> void:
-	if current_aim_year == 0:
-		_toast("未对准相框。请先对准北墙上的照片。")
-		return
-	var info: Dictionary = frame_info.get(current_aim_year, {})
-	if not info.get("haunted", false) or cleared_years.has(current_aim_year):
-		_toast("这张照片中没有可收走的幽灵人影。")
-		return
-	if focus < 0.82:
-		_toast("尚未看清。请使用鼠标滚轮将人影对焦清晰。")
-		return
-
-	# 触发快门
-	_play_sfx("shutter_old")
-	_play_flash()
-
-	if plate_state == "NONE":
-		plate_state = "EXPOSED"
-		exposed_year = current_aim_year
-		_update_gameplay_targets()
-		_toast("快门闭合！潜影已留存于底片。人影未散，请移步西侧显影盘。")
-		_set_objective("首次显影：移步西侧显影盘（hs_cellar_tray），浸入药水进行显影。")
-		_set_checklist([{"text": "前往西侧水槽显影盘显影", "done": false}])
-	elif plate_state == "ARMED":
-		if current_aim_year != exposed_year:
-			_toast("年份不符！二次曝光必须针对同一年份的同一张相框。")
-		else:
-			plate_state = "EXPOSED2"
-			_update_gameplay_targets()
-			_toast("二次曝光快门已闭合！前往西侧水槽显影盘完成最终收人。")
-			_set_objective("最终收人：前往西侧显影盘进行最终显影。")
-			_set_checklist([{"text": "前往西侧水槽显影盘完成最终收人", "done": false}])
-	else:
-		_toast("当前底片状态无法曝光，请先前往西侧显影盘处理。")
-
+	var result: String = rules.shutter(current_aim_year, focus >= 0.88)
+	if result in ["first_shutter", "second_shutter", "final_first", "final_observed"]:
+		_play_sfx("shutter_old")
+		_play_flash()
+	_apply(result)
 
 func _handle_arm_second_exposure() -> void:
-	if plate_state == "DEVELOPED":
-		_play_sfx("bolt_slide")
-		plate_state = "ARMED"
-		_toast("咔哒。已拨动二次曝光拨杆！第二次快门才是“收”，请再次对准同一年份相框拍照。")
-		_set_objective("二次快门：按 [F] 举镜对准 %d 年相框，按左键进行第二次快门拍摄。" % exposed_year)
-		_set_checklist([{"text": "对准 %d 年相框拍摄第二次快门" % exposed_year, "done": false}])
-	elif plate_state == "EXPOSED2":
-		_toast("已完成第二次快门，请去水槽显影盘显影。")
-	else:
-		_toast("当前底片尚未完成第一次显影，无法开启二次曝光。")
+	var result: String = rules.arm()
+	if result == "armed": _play_sfx("bolt_slide")
+	_apply(result)
 
 
 func _play_flash() -> void:
@@ -708,56 +777,74 @@ func _play_flash() -> void:
 # ---------------------------------------------------------------------------
 
 func _on_director_inspected(id: String) -> void:
+	if id == "__cancel__":
+		_finish(false)
+		return
+	if not _gameplay_active or _interaction_busy or not rules.target_ids().has(id): return
 	match id:
-		"hs_cellar_camera":
-			if not has_camera:
-				has_camera = true
-				_play_sfx("camera_case")
-				if table_camera_node:
-					table_camera_node.visible = false
-				_update_camera_guide_hud()
-				_toast("已拿起大画幅相机！按 [F] 举镜取景，使用滚轮调焦，左键快门拍照。")
-			else:
-				_toast("你已随身携带相机。按 [F] 即可举镜观察。")
-		"hs_cellar_tray":
-			_handle_tray_interaction()
+		"hs_cellar_camera": _apply(rules.pickup())
+		"hs_cellar_holder":
+			if camera_raised: _toast(_text("lower"))
+			else: _apply(rules.holder())
+		"hs_cellar_cabinet": _apply(rules.cabinet(camera_raised))
+		"hs_cellar_plate":
+			if camera_raised: _toast(_text("lower"))
+			else: _apply(rules.take_final())
+		"hs_cellar_tray": _handle_tray_interaction()
 		"hs_cellar_portraits":
-			if has_camera:
-				_toast("北墙上挂着 1919~1926 年的合影。按 [F] 举镜取景，使用滚轮调焦观察肖像中的异象。")
+			if camera_raised and current_aim_year == 1926:
+				_apply(rules.observe_final(true))
 			else:
-				_toast("北墙上整齐挂着 1919~1926 年的合影。肉眼看去只有四人，但昏暗的光线下似乎隐藏着不可见之物。")
+				await _show_document(id, "portraits")
+		"hs_cellar_book": await _show_document(id, "book")
+		"hs_cellar_notes": await _show_document(id, "notes")
+		"hs_cellar_clip": await _show_document(id, "clip")
+		"hs_cellar_relics": await _show_document(id, "relics")
 		"hs_cellar_ladder":
-			if cleared_years.is_empty():
-				_toast("现在还不能离开。暗房里还有未查清的秘密（需先使用大画幅相机收走肖像中的异样人影）。")
-			else:
-				_play_sfx("door_creak")
-				_toast("推开顶部的橡木活板门，顺着木梯回到了温室……")
-				# 场景返回由镜头表在inspect结束后执行，避免检视尚未结束就释放关卡。
+			_toast(_text("leave_done" if rules.data.complete else "leave_early"))
+			_finish(rules.data.complete)
 
+func _show_document(id: String, document: String) -> void:
+	if camera_raised: _toggle_camera_raise()
+	_interaction_busy = true
+	if document == "book":
+		rules.data.book_opened = true
+		_save_progress()
+	var d := _dir()
+	var info: Dictionary = preload("res://ui/inspection_catalog.gd").hotspot(id, d.world)
+	if document != "book":
+		info["pages"] = [texts[document].title + "\n\n" + _text(document)]
+		info["on_page_read"] = func(_index):
+			rules.read_document(document)
+			_save_progress()
+	var target: Node3D = d.world.hotspot_nodes[id]
+	d.ui.inspector.open(info, info.sources, target.global_position, [d.ui.objective_label, d.ui.checklist_box, d.ui.progress_label, d.ui.crosshair, d.ui.hint_box, d.ui.day_label, d.ui.room_label, d.ui.keys])
+	await d.ui.inspector.closed
+	if not is_inside_tree(): return
+	if not GameState.inspected.has(id): GameState.inspected.append(id)
+	var evidence: String = ContentDB.hotspots.get(id, {}).get("evidence", "")
+	if evidence != "": d._collect(evidence)
+	_interaction_busy = false
+	_save_progress()
+	_sync()
 
 func _handle_tray_interaction() -> void:
-	if plate_state == "EXPOSED":
-		_play_sfx("liquid")
-		plate_state = "DEVELOPED"
-		_update_gameplay_targets()
-		_toast("药水渗入乳剂！潜影浮现但人影仍存。按 [R] 拨动拨杆设定二次曝光。")
-		_set_objective("二次曝光：按 [R] 拨动拨杆设定二次曝光，再次对准同一张相框拍照。")
-		_set_checklist([{"text": "按 [R] 拨动二次曝光拨杆并再次拍摄", "done": false}])
-	elif plate_state == "EXPOSED2":
-		_play_sfx("liquid")
-		_play_sfx("ui_link_ok")
-		plate_state = "CLEARED"
-		_update_gameplay_targets()
-		cleared_years[exposed_year] = true
-		if frame_mats.has(exposed_year):
-			var tween := create_tween()
-			tween.tween_method(func(val): frame_mats[exposed_year].set_shader_parameter("state", val), 0.0, 1.0, 1.2)
-		_toast("【收走完成】相框里的位置空了……所有人都会忘记他，只有拍照的人记得。")
-		_set_objective("木梯：地下室的异状已收尾。顺着木梯返回温室。")
-		_set_checklist([{"text": "顺着木梯返回温室", "done": false}])
-		# 发信号后Director会立即激活梯子，不能再覆盖它的新目标/清单。
-		cellar_cleared.emit()
-	elif plate_state == "CLEARED":
-		_toast("这一张干版已收尾。显影盘里散发着刺鼻的定影药味与白霜结晶。")
-	else:
-		_toast("搪瓷显影盘中盛着酸性药液。需先在相机中完成曝光方可显影。")
+	if camera_raised:
+		_toast(_text("lower"))
+		return
+	var result: String = rules.develop()
+	if result in ["first_developed", "history_revealed"]: _play_sfx("liquid")
+	_apply(result)
+
+
+func guide_targets() -> Array:
+	if not _gameplay_active: return []
+	var targets := {
+		"pickup": "camera", "first": "portraits", "tray": "tray",
+		"read_reload": "book", "holder": "holder", "arm": "holder", "second": "portraits",
+		"find_key": "cabinet", "read_key": "book", "open_box": "cabinet",
+		"view_final": "portraits", "take_final": "plate", "choose_final": "cabinet",
+		"final_shoot": "portraits", "read_history": "book", "read_notes": "notes",
+		"read_clip": "clip", "read_relics": "relics", "leave": "ladder"
+	}
+	return ["hs_cellar_" + targets.get(rules.next_step(), "ladder")]

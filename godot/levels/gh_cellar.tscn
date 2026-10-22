@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://levels/gh_cellar.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://art/levels/gh_cellar/gh_cellar.glb" id="2_model"]
@@ -57,6 +57,17 @@ size = Vector3(0.75, 1.0, 0.75)
 
 [sub_resource type="BoxShape3D" id="shape_ladder_col"]
 size = Vector3(0.5, 2.6, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="mat_holder"]
+albedo_color = Color(0.16, 0.09, 0.045, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_plate"]
+albedo_color = Color(0.16, 0.23, 0.21, 1)
+metallic = 0.35
+roughness = 0.18
+
+[sub_resource type="StandardMaterial3D" id="mat_clip"]
+albedo_color = Color(0.65, 0.58, 0.42, 1)
 
 [node name="gh_cellar" type="Node3D"]
 script = ExtResource("1_script")
@@ -188,8 +199,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, -3.92)
 metadata/size = Vector3(5.5, 1.0, 0.5)
 
 [node name="hs_cellar_book" type="Marker3D" parent="接口"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, 0.95, -0.32)
-metadata/size = Vector3(0.5, 0.25, 0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, 0.88, -0.12)
+metadata/size = Vector3(0.45, 0.1, 0.22)
 
 [node name="hs_cellar_notes" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.95, -0.6)
@@ -202,3 +213,31 @@ metadata/size = Vector3(0.6, 1.0, 0.8)
 [node name="hs_cellar_ladder" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 1.1, 1.5)
 metadata/size = Vector3(0.8, 2.2, 0.8)
+
+[node name="hs_cellar_holder" type="Marker3D" parent="接口"]
+position = Vector3(0.82, 1.08, -0.46)
+metadata/size = Vector3(0.35, 0.22, 0.25)
+
+[node name="hs_cellar_cabinet" type="Marker3D" parent="接口"]
+position = Vector3(-4.55, 0.85, 2.95)
+metadata/size = Vector3(0.6, 1, 0.65)
+
+[node name="hs_cellar_plate" type="Marker3D" parent="接口"]
+position = Vector3(-4.15, 1.02, 2.85)
+metadata/size = Vector3(0.28, 0.1, 0.25)
+
+[node name="hs_cellar_clip" type="Marker3D" parent="接口"]
+position = Vector3(-0.9, 0.96, -0.35)
+metadata/size = Vector3(0.35, 0.1, 0.25)
+
+[node name="原片" type="CSGBox3D" parent="接口/hs_cellar_holder"]
+material = SubResource("mat_holder")
+size = Vector3(0.23, 0.04, 0.18)
+
+[node name="原片" type="CSGBox3D" parent="接口/hs_cellar_plate"]
+material = SubResource("mat_plate")
+size = Vector3(0.18, 0.012, 0.23)
+
+[node name="原片" type="CSGBox3D" parent="接口/hs_cellar_clip"]
+material = SubResource("mat_clip")
+size = Vector3(0.30, 0.008, 0.22)

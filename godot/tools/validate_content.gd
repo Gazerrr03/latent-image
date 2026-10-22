@@ -40,7 +40,11 @@ func warn(table: String, where: String, what: String, fix := "") -> void:
 	issues.append({"level": "提醒", "table": table, "where": where, "what": what, "fix": fix})
 
 
-func _init() -> void:
+func _initialize() -> void:
+	# 等 autoload 就绪再扫描带关卡脚本的场景，避免把正常脚本误报为缺少单例。
+	call_deferred("_validate")
+
+func _validate() -> void:
 	var shots := DB.load_table(STORY + "shots.csv")
 	var hotspots := DB.index_by(DB.load_table(STORY + "hotspots.csv"), "id")
 	var evidence := DB.index_by(DB.load_table(STORY + "evidence.csv"), "id")
@@ -266,7 +270,7 @@ func _init() -> void:
 				if v != "" and not shot_set.has(v):
 					err("任务表", qid, "%s 写的镜号 %s 不在镜头表里" % [k, v])
 			var req: String = q.get("require", "")
-			if req != "":
+			if req != "" and q.get("ends", "") != "no":
 				exits += 1
 			for part in req.split("|", false):
 				if part.strip_edges() == "全部":

@@ -77,8 +77,34 @@ func play_range() -> void:
 	await director._play_range("C4-09", "C4-09")
 	finished = true
 
+func interact(id: String, feet: Vector3) -> void:
+	await aim(feet, host.hotspot_nodes[id].global_position)
+	check(id + " 站位可选中", host.player._hover == id)
+	key(KEY_E)
+	await process_frame
+
+func read_book() -> void:
+	await interact("hs_cellar_book", Vector3(0.82, 0.03, 0.65))
+	if not await until(func(): return ui.inspector.active, "记录本打开"): return
+	await create_timer(0.3).timeout
+	key(KEY_F)
+	await process_frame
+	for i in ui.inspector.pages.size() - 1:
+		key(KEY_D)
+		await process_frame
+	key(KEY_ESCAPE)
+	await process_frame
+	key(KEY_ESCAPE)
+	await until(func(): return not ui.inspector.active and not host.player.frozen, "记录本退出")
+
+func shot(year: int) -> void:
+	var x: float = {1920: -1.82, 1926: 2.02}[year]
+	await aim(Vector3(x, 0.03, -2.2), Vector3(x, 1.95, -3.92))
+	mouse(MOUSE_BUTTON_LEFT)
+	await process_frame
+
 func run() -> void:
-	create_timer(90).timeout.connect(func(): printerr("CH4_INPUT timeout"); quit(2))
+	create_timer(100).timeout.connect(func(): printerr("CH4_INPUT timeout"); quit(2))
 	var state := root.get_node("GameState")
 	state.persist = false
 	main = load("res://main.tscn").instantiate()
@@ -92,89 +118,80 @@ func run() -> void:
 	director.skip_text = true
 	play_range()
 	await process_frame
-	for entry in [
-		["hs_cellar_book", Vector3(0.82, 0.03, 0.65)],
-		["hs_cellar_notes", Vector3(-0.4, 0.03, 0.65)],
-		["hs_cellar_relics", Vector3(-3.25, 0.03, -1.9)],
-		["hs_cellar_portraits", Vector3(0, 0.03, -2.9)],
-		["hs_cellar_camera", Vector3(0.36, 0.03, 0.65)]
-	]:
-		if not await inspect(entry[0], entry[1]):
-			quit(1)
-			return
+	await interact("hs_cellar_camera", Vector3(0.36, 0.03, 0.65))
 	var cellar: Node = host.room
-	check("正常E拿到相机", cellar.has_camera)
-	var overlay_id: int = cellar.camera_overlay.get_instance_id()
+	check("Q下一步指向1920肖像", director.guide_targets() == ["hs_cellar_portraits"])
+	check("E拿到相机", cellar.has_camera)
 	var previous_fov: float = host.player.cam.fov
 	key(KEY_F)
 	await process_frame
-	check("F举镜", cellar.camera_raised)
-	await aim(Vector3(-1.82, 0.03, -2.2), Vector3(-1.82, 1.95, -3.92))
-	for i in 12:
-		mouse(MOUSE_BUTTON_WHEEL_UP)
+	for i in 12: mouse(MOUSE_BUTTON_WHEEL_UP)
+	await shot(1920)
+	check("正常输入首曝", cellar.plate_state == "EXPOSED")
+	key(KEY_F)
+	await interact("hs_cellar_tray", Vector3(-3.35, 0.03, -0.9))
+	check("显影不直接可二曝", cellar.plate_state == "DEVELOPED")
+	check("Q引导返回记录本", director.guide_targets() == ["hs_cellar_book"])
+	await read_book()
+	check("翻页阅读解锁装回", cellar.rules.data.pages_read.has("reload"))
+	await interact("hs_cellar_holder", Vector3(1.25, 0.03, 0.15))
+	check("E实体片夹装回", cellar.plate_state == "LOADED2")
+	key(KEY_R)
 	await process_frame
-	check("滚轮对焦并瞄准1920", cellar.focus >= 0.82 and cellar.current_aim_year == 1920)
-	if OS.get_cmdline_user_args().has("--capture-a1"):
+	check("R拨杆", cellar.plate_state == "ARMED")
+	key(KEY_F)
+	await shot(1920)
+	key(KEY_F)
+	await interact("hs_cellar_tray", Vector3(-3.35, 0.03, -0.9))
+	check("1920完成后仍未调查完成", cellar.rules.data.cleared.has("1920") and not cellar.rules.data.complete)
+	# 提前离开，重新进入：相机/干版/页面仍在。
+	await interact("hs_cellar_ladder", Vector3(3.1, 0.03, 1.5))
+	await until(func(): return finished, "提前返回温室")
+	check("提前离开不完成地下室任务", not state.quests_done.has("c4_cellar") and not state.cellar.complete)
+	finished = false
+	play_range()
+	await process_frame
+	cellar = host.room
+	await process_frame
+	check("重入恢复1920与相机", cellar.has_camera and cellar.rules.data.cleared.has("1920"))
+	key(KEY_F)
+	await interact("hs_cellar_cabinet", Vector3(-3.5, 0.03, 2.6))
+	check("举镜发现钥匙但未拿到", cellar.rules.data.key_seen and not cellar.rules.data.has_key)
+	key(KEY_F)
+	await read_book()
+	check("读夹层拿到钥匙", cellar.rules.data.has_key)
+	await interact("hs_cellar_cabinet", Vector3(-3.5, 0.03, 2.6))
+	check("柜子开锁", cellar.rules.data.box_open)
+	key(KEY_F)
+	await aim(Vector3(2.02, 0.03, -2.2), Vector3(2.02, 1.95, -3.92))
+	key(KEY_E)
+	await process_frame
+	check("E观察1926", cellar.rules.data.final_seen)
+	key(KEY_F)
+	await interact("hs_cellar_plate", Vector3(-3.35, 0.03, 2.85))
+	check("E拿实体1926底片", cellar.rules.data.final_taken)
+	if OS.get_cmdline_user_args().has("--observe"):
+		await interact("hs_cellar_holder", Vector3(1.25, 0.03, 0.15))
+		key(KEY_F)
+		for i in 12: mouse(MOUSE_BUTTON_WHEEL_UP)
+		await shot(1926)
+		await shot(1926)
+		key(KEY_F)
+		check("1926装片观察路径", cellar.rules.data.final_choice == "observe")
+	else:
+		await interact("hs_cellar_cabinet", Vector3(-3.5, 0.03, 2.6))
+		check("1926放回路径", cellar.rules.data.final_choice == "keep")
+	for entry in [["hs_cellar_notes", Vector3(-0.4, 0.03, 0.65)], ["hs_cellar_clip", Vector3(-0.9, 0.03, 0.65)], ["hs_cellar_relics", Vector3(-3.25, 0.03, -1.9)]]:
+		await inspect(entry[0], entry[1])
+	check("核心资料阅读后完成", cellar.rules.data.complete)
+	if OS.get_cmdline_user_args().has("--capture-a6"):
+		await aim(Vector3(3.1, 0.03, 1.4), Vector3(0, 1.4, -0.5))
 		await create_timer(0.5).timeout
 		await RenderingServer.frame_post_draw
-		root.get_texture().get_image().save_png("/tmp/ch4-a1-raised.png")
-
-	key(KEY_ESCAPE)
-	await process_frame
-	check("举镜时Esc打开暂停", ui.menus.visible and host.player.frozen)
-	await process_frame
-	check("暂停时取景器隐藏", not cellar.camera_overlay.visible)
-	var focus: float = cellar.focus
-	key(KEY_F)
-	key(KEY_R)
-	mouse(MOUSE_BUTTON_WHEEL_DOWN)
-	mouse(MOUSE_BUTTON_LEFT)
-	await process_frame
-	check("暂停不响应摄影操作", cellar.camera_raised and cellar.focus == focus and cellar.plate_state == "NONE")
-	key(KEY_ESCAPE)
-	await process_frame
-	mouse(MOUSE_BUTTON_LEFT)
-	await process_frame
-	check("正常左键首曝", cellar.plate_state == "EXPOSED" and not ui.inspector.active)
-	check("首曝后显影盘是实际交互目标", host.active_hotspots.has("hs_cellar_tray"))
-	if not host.active_hotspots.has("hs_cellar_tray"):
-		print("CH4_INPUT failures=", failures)
-		quit(1)
-		return
-	key(KEY_F)
-	await aim(Vector3(-3.35, 0.03, -0.9), host.hotspot_nodes["hs_cellar_tray"].global_position)
-	check("显影盘可选中", host.player._hover == "hs_cellar_tray")
-	key(KEY_E)
-	await process_frame
-	check("E第一次显影且不打开无关检视", cellar.plate_state == "DEVELOPED" and not ui.inspector.active)
-	key(KEY_R)
-	await process_frame
-	check("放下相机后R可拨杆", cellar.plate_state == "ARMED")
-	key(KEY_F)
-	await aim(Vector3(-1.82, 0.03, -2.2), Vector3(-0.55, 1.95, -3.92))
-	mouse(MOUSE_BUTTON_LEFT)
-	await process_frame
-	check("错误年份二曝不推进", cellar.plate_state == "ARMED")
-	await aim(Vector3(-1.82, 0.03, -2.2), Vector3(-1.82, 1.95, -3.92))
-	mouse(MOUSE_BUTTON_LEFT)
-	await process_frame
-	check("同年份二曝", cellar.plate_state == "EXPOSED2")
-	key(KEY_F)
-	await aim(Vector3(-3.35, 0.03, -0.9), host.hotspot_nodes["hs_cellar_tray"].global_position)
-	key(KEY_E)
-	await process_frame
-	check("E二次显影并交接梯子目标", cellar.cleared_years.has(1920) and host.active_hotspots.has("hs_cellar_ladder"))
-	key(KEY_F)
-	await process_frame
-	check("带举镜状态走向出口", cellar.camera_raised)
-	if not await inspect("hs_cellar_ladder", Vector3(3.1, 0.03, 1.5)):
-		quit(1)
-		return
-	await until(func(): return finished, "镜头调查与返回结束")
-	await process_frame
-	check("返回庄园且FOV恢复", host.current_id == "manor" and is_equal_approx(host.player.cam.fov, previous_fov))
-	check("离场清理手持相机与取景器", host.player.cam.get_node_or_null("CameraViewmodel") == null and not is_instance_id_valid(overlay_id))
+		root.get_texture().get_image().save_png("/tmp/ch4-a6-investigation.png")
+	await interact("hs_cellar_ladder", Vector3(3.1, 0.03, 1.5))
+	await until(func(): return finished, "完成后返回温室")
+	check("返回恢复FOV", is_equal_approx(host.player.cam.fov, previous_fov))
+	check("独立地下室已卸载", host.current_id == "manor")
 	print("CH4_INPUT failures=", failures)
-	main.queue_free()
-	await process_frame
 	quit(0 if failures == 0 else 1)

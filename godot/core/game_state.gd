@@ -30,10 +30,17 @@ var statement := ""
 var container := ""
 ## 截图、自动测试时为 false：开发测试永远不写玩家的存档
 var persist := true
+## 第四章摄影与调查的可恢复进度；与全局结局分开。
+var cellar: Dictionary = {}
+var active_quest := ""
+var explore_shot := ""
 
 
 func reset() -> void:
 	shot = ""
+	cellar = {}
+	active_quest = ""
+	explore_shot = ""
 	evidence = []
 	found_at = {}
 	inspected = []
@@ -94,7 +101,7 @@ func set_leak(level: int) -> void:
 
 func to_dict() -> Dictionary:
 	return {
-		"version": 2, "shot": shot, "evidence": evidence, "found_at": found_at, "inspected": inspected,
+		"version": 2, "cellar": cellar.duplicate(true), "active_quest": active_quest, "explore_shot": explore_shot, "shot": shot, "evidence": evidence, "found_at": found_at, "inspected": inspected,
 		"links_done": links_done, "quests_done": quests_done, "link_pairs": link_pairs, "leak_level": leak_level, "tendency": tendency,
 		"journal": journal, "objective": objective, "ending": ending, "statement": statement, "container": container,
 	}
@@ -102,6 +109,9 @@ func to_dict() -> Dictionary:
 
 func from_dict(d: Dictionary) -> void:
 	reset()
+	cellar = d.get("cellar", {}).duplicate(true)
+	active_quest = d.get("active_quest", "")
+	explore_shot = d.get("explore_shot", "")
 	shot = d.get("shot", "")
 	evidence = d.get("evidence", [])
 	found_at = d.get("found_at", {})

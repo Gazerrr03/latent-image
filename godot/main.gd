@@ -46,21 +46,26 @@ func _ready() -> void:
 		return
 	# 第四章试验：直通地下室密室原型，用于快速验收密室探索与检视。
 	if OS.get_cmdline_user_args().has("--trial-cellar"):
-		GameState.persist = false
-		GameState.reset()
-		DisplayServer.window_set_title("第四章试验 · A1 摄影流程复测")
-		print("CH4_TRIAL checkpoint=A1 start=C4-09 persist=false")
+		GameState.persist = OS.get_cmdline_user_args().has("--resume-trial")
+		if not GameState.persist or not GameState.load_save(): GameState.reset()
+		DisplayServer.window_set_title("第四章试验 · A6 摄影流程复测")
+		print("CH4_TRIAL checkpoint=A6 start=C4-09 persist=", GameState.persist)
+		Director.running = true
 		await Director._play_range("C4-09", "C4-09")
-		ui.set_objective("A1 试玩完成：已返回温室。可关闭窗口并反馈。")
+		Director.running = false
+		if Director._interrupted():
+			Director._jump_to = ""
+			return
+		ui.set_objective("A6 试玩完成：已返回温室。可关闭窗口并反馈。")
 		ui.set_checklist([])
 		return
 	# 第四章试验：从第四章开始，体验完整流程（温室 -> 活板门 -> 地下室 -> 返回 -> D4 连线 -> 晚间复盘）。
 	if OS.get_cmdline_user_args().has("--trial-chapter4"):
-		GameState.persist = false
-		GameState.reset()
-		DisplayServer.window_set_title("第四章试验 · A1 从章首复测")
-		print("CH4_TRIAL checkpoint=A1 start=C4-01 persist=false (第四章完整主线连续试玩)")
-		Director.start("C4-01")
+		GameState.persist = OS.get_cmdline_user_args().has("--resume-trial")
+		if not GameState.persist or not GameState.load_save(): GameState.reset()
+		DisplayServer.window_set_title("第四章试验 · A6 从章首复测")
+		print("CH4_TRIAL checkpoint=A6 start=chapter4 persist=", GameState.persist)
+		Director.start(GameState.shot if GameState.persist and GameState.shot != "" else "C4-01")
 		return
 	if Director.autoplay:
 		_autoplay()
