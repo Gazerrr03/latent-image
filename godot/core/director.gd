@@ -135,6 +135,8 @@ func _play(row: Dictionary) -> void:
 	if row.get("scene", "") != "":
 		world.show_scene(row["scene"])
 	world.apply_room_states(row.get("shot_id", ""))
+	if row.get("shot_id", "") == "C0-13":
+		world.place_at_darkroom_door()
 	var acts := Actions.parse(row.get("actions", ""))
 	var names: Array = acts.map(func(a): return a["name"])
 	# 交谈后的实地检查需要重新开放走动，不能把整段任务都锁在 NPC 身边。
@@ -396,6 +398,8 @@ func _explore(group: String) -> void:
 		push_warning("任务表里没有这一组：" + group)
 		return
 	_explore_group = group
+	if group == "c0b":
+		world.place_at_darkroom_door()
 	var anchor: String = GameState.shot
 	var present: Array = []
 	for q in qs:
@@ -495,6 +499,15 @@ static func quest_ready(q: Dictionary) -> bool:
 		elif not GameState.quests_done.has(p):
 			return false
 	return true
+
+
+func is_return_quest_ready() -> bool:
+	if _explore_group == "":
+		return false
+	for q in ContentDB.quests.get(_explore_group, []):
+		if quest_ends(q) and not GameState.quests_done.has(q["id"]) and quest_ready(q):
+			return true
+	return false
 
 
 func _explore_checklist(qs: Array) -> void:

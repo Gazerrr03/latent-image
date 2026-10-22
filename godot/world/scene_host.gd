@@ -468,6 +468,23 @@ func _stash_map() -> void:
 	active_hotspots = []
 
 
+const DARKROOM_DOOR_OUTSIDE := Vector3(17.25, 3.62, -6.7)
+
+## 序章案发后把玩家送到暗房门口（走廊外侧）
+func place_at_darkroom_door() -> void:
+	if player == null:
+		return
+	var pos := DARKROOM_DOOR_OUTSIDE
+	var yaw := 0.0
+	var n: Node3D = named.get("darkroom/door_outside", named.get("door_outside"))
+	if n:
+		pos = n.global_position
+		yaw = n.global_rotation_degrees.y
+	player.place(pos, yaw)
+	_player_room = room_at(pos)
+	_focus = _player_room
+
+
 ## 镜头切到大地图里的某个房间：机位、出生点、画面环境都按这个房间
 func focus_room(rid: String) -> void:
 	_focus = rid
@@ -475,6 +492,13 @@ func focus_room(rid: String) -> void:
 	_apply_look(rid)
 	_apply_presence()
 	_sync_switch_hums()
+
+
+## 画面设置刷新：预设变动（如白昼切入黑夜）时重套环境、天空、日光/月光与灯光倍数
+func refresh_look() -> void:
+	if not is_inside_tree() or current_id == "":
+		return
+	_apply_look(_focus)
 
 
 ## 画面的样子。大地图里全庄园只有一套：一个共用环境、一个太阳（庄园外景的那盏，夜里用月光的方向，白天用房间里太阳的方向）、
@@ -801,6 +825,14 @@ func apply_room_states(shot_id: String) -> void:
 			var n = named.get(rid + "/" + nm, named.get(nm) if current_id != MAP_ID else null)
 			if n is Node3D:
 				_set_present(n, on.has(r["layer"]))
+	# 案发现场尸体：序章撞门后（C0-13）与第 1 章调查保留，自第 2 章起（C2-00 起）移走
+	var corpse: Node = named.get("darkroom/尸体", named.get("尸体"))
+	if corpse is Node3D:
+		var idx := ContentDB._shot_index(shot_id)
+		var c0_break := ContentDB._shot_index("C0-13")
+		var c2_start := ContentDB._shot_index("C2-00")
+		if idx >= 0 and c0_break >= 0 and c2_start >= 0:
+			_set_present(corpse, idx >= c0_break and idx < c2_start)
 
 
 ## 镜头表 reveal(名称) / conceal(名称)：显示或隐藏关卡里的某个节点（如终局的镜中人形）

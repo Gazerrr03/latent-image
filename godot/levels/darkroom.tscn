@@ -96,6 +96,9 @@ shadow_enabled = false
 [node name="spawn" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, 16.75, 3.615, -8.6)
 
+[node name="door_outside" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.25, 3.62, -6.7)
+
 [node name="cam_door_push" type="Camera3D" parent="接口"]
 transform = Transform3D(0.992061, -0.0338458, 0.121114, 0, 0.9631, 0.269142, -0.125754, -0.267006, 0.955455, 16.95, 5.215, -7.05)
 environment = SubResource("env")
