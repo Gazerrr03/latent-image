@@ -44,20 +44,28 @@ func _ready() -> void:
 		var code: int = await preload("res://tools/probe_map.gd").run(host, g if g != "" else "c1")
 		get_tree().quit(code)
 		return
+	# 第四章试验：直通地下室密室原型，用于快速验收密室探索与检视。
+	if OS.get_cmdline_user_args().has("--trial-cellar"):
+		GameState.persist = false
+		GameState.reset()
+		DisplayServer.window_set_title("第四章试验 · M01 地下室密室直通试玩")
+		print("CH4_TRIAL checkpoint=M01 start=C4-09 persist=false")
+		Director.start("C4-09")
+		return
+	# 第四章试验：从第四章开始，体验完整流程（温室 -> 活板门 -> 地下室 -> 返回 -> D4 连线 -> 晚间复盘）。
+	if OS.get_cmdline_user_args().has("--trial-chapter4"):
+		GameState.persist = false
+		GameState.reset()
+		DisplayServer.window_set_title("第四章 · 完整主线连续试玩（含温室地下暗房与摄影机玩法）")
+		print("CH4_TRIAL checkpoint=M01 start=C4-01 persist=false (第四章完整主线连续试玩)")
+		Director.start("C4-01")
+		return
 	if Director.autoplay:
 		_autoplay()
 		return
 	var cap := _arg("--capture=")
 	if cap != "":
 		_capture(cap)
-		return
-	# 第四章试验：直接进入当前章节基线，人工试玩，不读写正式存档。
-	if OS.get_cmdline_user_args().has("--trial-chapter4"):
-		GameState.persist = false
-		GameState.reset()
-		DisplayServer.window_set_title("第四章试验 · M00 本地基线 · 尚未接入地下室补丁")
-		print("CH4_TRIAL checkpoint=M00 start=C4-01 persist=false")
-		Director.start("C4-01")
 		return
 	# 标题页：有存档时“继续调查”（ui/menus.gd）
 	if not GameState.load_save():

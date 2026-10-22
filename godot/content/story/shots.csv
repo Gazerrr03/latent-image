@@ -63,6 +63,7 @@ C4-01,C4,*,guest_room,,walk,birds_morning;cutlery@0.5,早餐时，康斯坦斯�
 C4-02,C4,*,greenhouse,green_mid,,paper_slap,吉迪恩把药房签收单重重拍在木案上。“药是我按单子买回来的。买的是什么，交回来的就是什么。我绝没有买错！”,,"collect(ev_receipt);inquire(c4_ask_gideon);say(c4_gideon);collect(ev_once_a_year,ev_vent_always_open,ev_thursday_latch,ev_boots)",,园丁讲主人生前的习惯
 C4-03,C4,*,greenhouse,green_mid,walk,,,,"objective(温室：通往暗房的那扇侧门，和他留下的照片。);inspect(hs_gh_latch,hs_gh_photos)",,
 C4-04,C4,*,garden,,walk,wind,,,"objective(暗房外墙下：那个“一定开着”的通风口，外面是什么样子？);inspect(hs_vent_louver,hs_vent_print)",,
+C4-09,C4,*,gh_cellar,cellar_wide,walk,door_creak,"挪开角落沉重的大陶盆，拉开地面的橡木活板门。一股刺鼻酸涩的定影液气味扑面而来。顺着木梯走下幽暗的地窖……",,"objective(地下暗房：这里曾经发生过什么？);inspect(hs_cellar_book,hs_cellar_notes,hs_cellar_relics,hs_cellar_portraits);objective(大画幅相机：拿起工作台上的相机，透过镜头观察真相。);inspect(hs_cellar_camera);cellar_gameplay();objective(木梯：地下室的异状已收尾。顺着木梯返回温室。);inspect(hs_cellar_ladder)",,温室地下暗房：调查手记与肖像，使用大画幅相机收人，顺梯返回温室
 C4-05,C4,*,guest_room,,walk,pin,,,objective(书桌：机关是什么时候布下的？那一夜谁不在？);station(hs_desk_board);music(think);link(d4),,客房第一站：玩家走到书桌前按 E，坐下来连线（docs/01 第 4 节）
 C4-06,C4,*,guest_room,,walk,clock_tick;door_knock,"傍晚，吉迪恩替拉坦特夫人带来一句话：
 “明晚我在客厅点蜡烛。你想问的，可以直接问他。”",,music(关闭),,连完线以后，站在客房里听吉迪恩带来的话

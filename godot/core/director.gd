@@ -228,6 +228,13 @@ func _do(name: String, args: Array, mode: String) -> void:
 			# 第 6 章：玩家亲手冲洗底片（docs/02 第 9 节）
 			await ui.develop(args[0] if args.size() > 0 else "")
 			GameState.record("develop", args[0] if args.size() > 0 else "")
+		"cellar_gameplay":
+			if autoplay:
+				if world.room and world.room.has_method("autoplay_cellar"):
+					world.room.autoplay_cellar()
+			else:
+				if world.room and world.room.has_method("await_cellar_cleared"):
+					await world.room.await_cellar_cleared()
 		"goto":
 			world.show_scene(args[0])
 		"fx":

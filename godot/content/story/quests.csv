@@ -21,6 +21,7 @@ c2_return,c2,回客房：把搜集到的名单与账目摊在桌上。,enter:gue
 c3_iris,c3,艾瑞斯的房间（二楼）：蒙眼的孩童，试图通过蜡笔画倾诉什么？,talk:艾瑞斯·塔尔博特@child_room,C3-02,C3-05,,
 c3_return,c3,回客房：将画作与儿歌拼入推论。,enter:guest_room,,,全部,
 c4_gideon,c4,温室：药剂是他采购的，温室的钥匙也在他掌中。,talk:吉迪恩·沃登@greenhouse,C4-02,C4-03,,
+c4_cellar,c4,温室地窖：移开花盆，暗门下的地下暗房藏着什么？,hs_gh_trapdoor,C4-09,C4-09,,
 c4_vent,c4,花园（暗房外墙下）：那个“一定大开”的百叶风口，外侧究竟发生了什么？,enter:garden,C4-04,C4-04,,
 c4_return,c4,回客房：理清星期四夜里留下的足迹。,enter:guest_room,,,全部,
 c5_latente,c5,客厅：星期四深夜，她究竟听见了怎样的声响？,talk:拉坦特夫人@seance,C5-02,C5-03,,
