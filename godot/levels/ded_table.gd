@@ -109,6 +109,8 @@ var drawer_root: Node3D
 var drawer_paper: Node3D
 var drawer_paper_area: Area3D
 var drawer_open := false
+var drawer_moving := false
+var _plan_viewer: CanvasLayer
 var diagram_taken := false
 var table_body: StaticBody3D
 
@@ -249,32 +251,35 @@ func _build_open_sideboard() -> void:
 	_box(root, "柜顶", Vector3(12.92, 0.90, -1.11), Vector3(0.55, 0.05, 1.24), wood)
 	_box(root, "柜左侧", Vector3(12.92, 0.46, -1.72), Vector3(0.55, 0.90, 0.035), wood)
 	_box(root, "柜右侧", Vector3(12.92, 0.46, -0.50), Vector3(0.55, 0.90, 0.035), wood)
-	for y in [0.25, 0.55, 0.85]:
+	for y in [0.25, 0.55]:
 		_box(root, "柜层板", Vector3(12.92, y, -1.11), Vector3(0.50, 0.024, 1.16), shelf)
 
-	# 两扇门向外敞开到底（贴着柜体两端），免得挡住柜内陈列
-	var left_door := _box(root, "柜门左", Vector3(13.45, 0.46, -1.70), Vector3(0.028, 0.86, 0.54), wood)
-	left_door.rotation.y = deg_to_rad(94)
-	var right_door := _box(root, "柜门右", Vector3(13.45, 0.46, -0.52), Vector3(0.028, 0.86, 0.54), wood)
-	right_door.rotation.y = deg_to_rad(94)
-
-	# 抽屉：里面折着 1924 年的餐桌图，是这一关的入口
+	# 上部浅抽屉嵌入柜体，下部开放层架；门铰在柜体前沿两端。
+	for spec in [["左", -1.70, 1.0], ["右", -0.52, -1.0]]:
+		var hinge := Node3D.new()
+		hinge.position = Vector3(13.195, 0.37, spec[1])
+		hinge.rotation.y = deg_to_rad(100.0 * spec[2])
+		root.add_child(hinge)
+		_box(hinge, "柜门" + spec[0], Vector3(0, 0, 0.285 * spec[2]), Vector3(0.03, 0.60, 0.57), wood)
+	_box(root, "抽屉下隔板", Vector3(12.92, 0.68, -1.11), Vector3(0.50, 0.024, 1.16), shelf)
+	for z in [-1.66, -0.56]:
+		_box(root, "木滑轨", Vector3(12.96, 0.73, z), Vector3(0.43, 0.025, 0.025), shelf)
+	# 面板闭合时贴合柜体前沿，打开 30cm，抽屉后部仍留在滑轨上。
 	drawer_root = Node3D.new()
 	drawer_root.name = "餐边柜抽屉"
-	drawer_root.position = Vector3(13.47, 0.14, -1.10)
+	drawer_root.position = Vector3(13.20, 0.78, -1.11)
 	root.add_child(drawer_root)
-	_box(drawer_root, "抽屉底", Vector3(-0.18, -0.045, 0), Vector3(0.36, 0.02, 0.80), shelf)
-	_box(drawer_root, "抽屉面板", Vector3(0.0, 0.0, 0), Vector3(0.03, 0.12, 0.82), wood)
-	_box(drawer_root, "抽屉左侧", Vector3(-0.18, 0.0, -0.40), Vector3(0.36, 0.12, 0.02), wood)
-	_box(drawer_root, "抽屉右侧", Vector3(-0.18, 0.0, 0.40), Vector3(0.36, 0.12, 0.02), wood)
-	_box(drawer_root, "抽屉后板", Vector3(-0.36, 0.0, 0), Vector3(0.02, 0.12, 0.80), wood)
-	var knob := _box(drawer_root, "抽屉拉手", Vector3(0.03, 0.0, 0.0), Vector3(0.02, 0.025, 0.06), Color("#c39a52"), 0.6, 0.35)
-	knob.rotation.x = 0.0
-	_hit_area(drawer_root, "drawer", true, Vector3(0.10, 0.16, 0.86), Vector3.ZERO)
+	_box(drawer_root, "抽屉底", Vector3(-0.21, -0.065, 0), Vector3(0.42, 0.018, 1.08), shelf)
+	_box(drawer_root, "抽屉面板", Vector3.ZERO, Vector3(0.035, 0.18, 1.14), wood)
+	for z in [-0.53, 0.53]:
+		_box(drawer_root, "抽屉侧板", Vector3(-0.21, -0.015, z), Vector3(0.42, 0.11, 0.02), wood)
+	_box(drawer_root, "抽屉后板", Vector3(-0.41, -0.015, 0), Vector3(0.02, 0.11, 1.08), wood)
+	_box(drawer_root, "黄铜拉手", Vector3(0.05, 0, 0), Vector3(0.035, 0.025, 0.14), Color("#c39a52"), 0.6, 0.35)
+	_hit_area(drawer_root, "drawer", true, Vector3(0.08, 0.18, 1.14), Vector3(0.035, 0, 0))
 
 	drawer_paper = Node3D.new()
 	drawer_paper.name = "折起的餐桌图"
-	drawer_paper.position = Vector3(-0.16, 0.025, 0.0)
+	drawer_paper.position = Vector3(-0.18, -0.048, 0.0)
 	drawer_paper.rotation.y = deg_to_rad(8)
 	drawer_paper.visible = false
 	drawer_root.add_child(drawer_paper)
@@ -635,29 +640,33 @@ func _return_held() -> void:
 
 
 func _toggle_drawer() -> void:
+	if drawer_moving: return
+	drawer_moving = true
 	drawer_open = not drawer_open
-	var target := 13.72 if drawer_open else 13.47
-	var tw := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	drawer_paper_area.collision_layer = 0
+	if not diagram_taken: drawer_paper.visible = true
+	var target := 13.50 if drawer_open else 13.20
+	var tw := create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tw.tween_property(drawer_root, "position:x", target, 0.45)
+	await tw.finished
+	drawer_moving = false
 	if not diagram_taken:
 		drawer_paper.visible = drawer_open
 		drawer_paper_area.collision_layer = 1 if drawer_open else 0
 	if drawer_open and not diagram_taken:
-		_status("按 E 拿起那张纸，看看它记的是哪一年。")
-	elif not diagram_taken:
-		_status("把抽屉推回去了。")
+		_status("抽屉里有张旧图。对准纸张按 E 拿起；拿到后按 Q 可随时重看。")
 	else:
-		_status("抽屉空了。")
+		_status("抽屉空了。" if diagram_taken else "把抽屉推回去了。")
 
 
 func _take_diagram() -> void:
-	if diagram_taken or not drawer_open:
+	if diagram_taken or not drawer_open or drawer_moving:
 		return
 	diagram_taken = true
 	drawer_paper.visible = false
 	drawer_paper_area.collision_layer = 0
 	Director.ui.set_objective("按旧图复原餐桌 · Q 查看图纸 · R 放回物件")
-	_status("按这张图，把餐具摆回桌上。沿用物品检视的拖动、缩放、翻面与放下。")
+	_status("按图复原餐桌。Q 随时重看；打开后滚轮放大、拖动查看，Q 或 Esc 收起。")
 	_open_blueprint()
 
 
@@ -842,6 +851,7 @@ func _finish() -> void:
 	if _finished:
 		return
 	_finished = true
+	if is_instance_valid(_plan_viewer): _plan_viewer.close()
 	_teardown_player()
 	finished.emit()
 
@@ -863,21 +873,19 @@ func _status(text: String) -> void:
 	Director.ui.toast(text)
 
 
-## 图纸和收起线索共用当前物品检视器，不另做纸片镜头、缩放和关闭输入。
+## 任务图纸采用持续停留的正面阅读；不旋转纸张，放大后可平移。
 func _open_blueprint() -> void:
-	if solved or blueprint_open or Director.ui._busy():
-		return
+	if solved or blueprint_open or Director.ui._busy(): return
 	if not diagram_taken:
 		_status("先拉开餐边柜的抽屉，找到那张旧餐桌图。")
 		return
 	blueprint_open = true
 	_update_ring_visibility()
-	var data := preload("res://ui/inspection_catalog.gd").evidence("ev_table_diagram", Director.world, "", "")
-	# 尚未复原时只读纸面，成功后的推论仍在收场时才给出。
-	data["notes"] = "纸上画着五处座位和桌上公用物件的位置。"
-	var ui = Director.ui
-	ui.inspector.open(data, [], Vector3.ZERO, [ui.objective_label, ui.crosshair, ui.hint_box, ui.keys])
-	await ui.inspector.closed
+	_plan_viewer = preload("res://ui/table_plan_viewer.gd").new()
+	add_child(_plan_viewer)
+	_plan_viewer.open()
+	await _plan_viewer.closed
+	_plan_viewer = null
 	blueprint_open = false
 	_update_ring_visibility()
 	_set_prompt("")
