@@ -144,11 +144,10 @@ func take_final() -> String:
 	return "final_taken"
 
 func target_ids() -> Array:
-	var ids: Array = ["hs_cellar_camera", "hs_cellar_portraits", "hs_cellar_relics", "hs_cellar_clip", "hs_cellar_cabinet", "hs_cellar_ladder"]
+	var ids: Array = ["hs_cellar_camera", "hs_cellar_book", "hs_cellar_notes", "hs_cellar_portraits", "hs_cellar_relics", "hs_cellar_clip", "hs_cellar_cabinet", "hs_cellar_ladder"]
 	if data.has_camera:
 		ids.erase("hs_cellar_camera")
-		ids.append_array(["hs_cellar_book", "hs_cellar_tray", "hs_cellar_holder"])
-	if data.box_open: ids.append("hs_cellar_notes")
+		ids.append_array(["hs_cellar_tray", "hs_cellar_holder"])
 	if data.final_seen and not data.final_taken: ids.append("hs_cellar_plate")
 	return ids
 

@@ -197,10 +197,11 @@ metadata/size = Vector3(0.6, 0.4, 0.6)
 [node name="hs_cellar_portraits" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, -3.92)
 metadata/size = Vector3(5.5, 1.0, 0.5)
+metadata/interaction_reach = 6.0
 
 [node name="hs_cellar_book" type="Marker3D" parent="接口"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, 0.88, -0.12)
-metadata/size = Vector3(0.45, 0.1, 0.22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, 0.88, -0.32)
+metadata/size = Vector3(0.55, 0.2, 0.4)
 
 [node name="hs_cellar_notes" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.95, -0.6)
@@ -215,7 +216,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 1.1, 1.5)
 metadata/size = Vector3(0.8, 2.2, 0.8)
 
 [node name="hs_cellar_holder" type="Marker3D" parent="接口"]
-position = Vector3(0.82, 1.08, -0.46)
+position = Vector3(0.82, 1.038, -0.46)
 metadata/size = Vector3(0.35, 0.22, 0.25)
 
 [node name="hs_cellar_cabinet" type="Marker3D" parent="接口"]

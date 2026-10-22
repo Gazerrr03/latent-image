@@ -14,7 +14,7 @@ static func ensure_actions() -> void:
 		"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT],
 		"interact": [KEY_E], "notebook": [KEY_TAB], "recall": [KEY_Q], "pause": [KEY_ESCAPE],
 		"sprint": [KEY_SHIFT], "cellar_raise": [KEY_F], "cellar_arm": [KEY_R],
-		"cellar_shutter": [], "cellar_focus_up": [], "cellar_focus_down": []}
+		"cellar_shutter": [KEY_SPACE, KEY_ENTER], "cellar_focus_up": [KEY_UP, KEY_PAGEUP], "cellar_focus_down": [KEY_DOWN, KEY_PAGEDOWN]}
 	for action in keys:
 		if not InputMap.has_action(action): InputMap.add_action(action, 0.2)
 		for code in keys[action]:
