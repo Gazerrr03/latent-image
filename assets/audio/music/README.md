@@ -1,5 +1,6 @@
 # 配乐
 
+> 2026-10-22 独立保存分支说明：本文件保留来源工作区的历史交付记录。本分支实际保存范围及重新验证结果见 `docs/验证/2026-10-22-独立成果保存/README.md`；回廊正式运行接入与物品检视依赖仍留在原工作区。
 风格与分段见《04-美术与声音风格》第 14 节。
 
 ## 流程
@@ -28,6 +29,9 @@
 | 推理 think | `scripts/compose_cues.py think` | 证据板连线时循环（配乐表 `think`） | 已接入 |
 | 显影 develop | `scripts/compose_cues.py develop` | 第 6 章亲手冲洗底片，只放一遍 | 已接入 |
 | 尾声 ending | `scripts/compose_cues.py ending` | 尾声十二块屏幕，只放一遍 | 已接入 |
+| 回廊的响应式音乐 | `scripts/corridor_reactive.py`（不加参数出走走停停的试听 `preview/corridor_reactive.ogg`；`--game` 导出底色循环 `godot/audio/music/corridor_bed1—5(_rev).ogg` 与脚步音样 `godot/audio/music/steps/`） | 第 5 章回廊：底色一直放、倒走倒放；鼓与钢琴每走一步一下、对齐到十六分音符 | 已接入（回廊表 `music`、`steps`、`drums` 列） |
+| 回廊的结尾 | `scripts/compose_corridor.py --game`（只导出 `corridor_ending.ogg`；不加参数可听整张唱片连放） | 第 6 圈：小号吹《潜影》动机的开头，在第四个音之前断掉 | 已接入 |
+| （试过、作废）回廊的节奏层 | `scripts/corridor_steps.py`：班卓琴 / 钢琴两版按步触发的试听 | 10-20 由响应式音乐取代 | — |
 
 **《潜影》**：曲名取自摄影术语——底片已经曝光、影像已经在上面，只是还没显影，看不见。C 大调，84 BPM 摇摆，16 小节一个循环（45.7 秒），Cmaj7–Am7–Dm7–G7，中段转 Em7–A7。低音提琴二分音符、叮叮镲、钢琴查尔斯顿节奏垫底；模拟合成器唱旋律；低音区的特雷门琴两小节一轮，反复同一个音型 E B G B E B F♯ B。怪异细节见脚本开头的 a—f。在库乐队里改动时，别把这些“错”修掉。
 
