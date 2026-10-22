@@ -863,6 +863,46 @@ def room_hum():
     return loopify(x, 1.2)
 
 
+# ======================= 第六章不眠夜 / 第七章定影 =======================
+@sfx("heartbeat_low", "不眠夜：心跳与低频嗡鸣", "环境", loop=True, vol=-12)
+def heartbeat_low():
+    # 8 beats over 8 seconds: periodic envelope avoids a click at the loop seam.
+    t = secs(8.0)
+    phase = t % 1.0
+    pulse = np.exp(-((phase - 0.10) / 0.045) ** 2)
+    pulse += 0.65 * np.exp(-((phase - 0.28) / 0.035) ** 2)
+    carrier = np.sin(2 * np.pi * 56 * t) + 0.25 * np.sin(2 * np.pi * 112 * t)
+    return stereo(carrier * pulse + 0.045 * np.sin(2 * np.pi * 43 * t))
+
+
+@sfx("storm_window", "不眠夜：风拍窗框与闷雷", "环境", loop=True, vol=-10)
+def storm_window():
+    # A separate storm layer; recorded positional rain remains owned by rain.gd.
+    d = 24.0
+    t = secs(d)
+    n = len(t)
+    gust = 0.45 + 0.2 * np.sin(2 * np.pi * t / 8) + 0.15 * np.sin(2 * np.pi * t / 6)
+    x = lowpass(colored(n, 1, 621), 1400) * gust
+    for at, gain in [(2.3, 0.35), (8.8, 0.28), (15.5, 0.4), (20.1, 0.22)]:
+        knock = impact(0.25, [(105, 0.12, 1), (370, 0.06, 0.35)], 0.4, seed=int(at * 10))
+        place(x, knock, at, gain)
+    thunder = thunder_far()
+    # thunder_far is stereo; preserve a distant monaural rumble in this window bed.
+    place(x, thunder.mean(axis=1), 5.0, 0.55)
+    place(x, thunder.mean(axis=1), 16.0, 0.4)
+    x = loopify(x, 1.0)
+    return stereo(x, np.roll(x, 330))
+
+
+@sfx("shutter_lock", "定影：机械快门合拢并闭锁", "器物", vol=-6)
+def shutter_lock():
+    x = silence(0.65)
+    place(x, impact(0.07, [(2700, 0.014, 1), (5100, 0.008, 0.35)], 0.65, seed=71), 0.0)
+    place(x, impact(0.11, [(1250, 0.025, 1), (3200, 0.012, 0.4)], 0.45, seed=72), 0.075, 0.85)
+    place(x, impact(0.16, [(310, 0.045, 1), (1800, 0.016, 0.5)], 0.35, seed=73), 0.18, 0.65)
+    return x
+
+
 def normalize(x, loop):
     if x.ndim == 1:
         x = stereo(x)

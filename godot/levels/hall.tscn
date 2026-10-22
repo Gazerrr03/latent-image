@@ -159,5 +159,19 @@ environment = SubResource("env")
 fov = 58.7
 near = 0.03
 
+[node name="cam_corridor_iris" type="Camera3D" parent="接口"]
+transform = Transform3D(0.33282, -0.154794, 0.930199, 0, 0.986435, 0.164153, -0.94299, -0.054633, 0.328305, 4.8, 4.4, -5.8)
+environment = SubResource("env")
+fov = 48.0
+near = 0.03
+
 [node name="chr_康斯坦斯·塔尔博特" type="Node3D" parent="接口"]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 10.3, 0.015, -1.9)
+
+[node name="chr_安布罗斯·塔尔博特" type="Node3D" parent="接口"]
+transform = Transform3D(0.951056, 0, 0.309017, 0, 1, 0, -0.309017, 0, 0.951056, 8.72, 0.563, -7.6)
+visible = false
+
+[node name="chr_艾瑞斯·塔尔博特" type="Node3D" parent="接口"]
+transform = Transform3D(0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, 0.34202, 3.1, 3.615, -6.4)
+visible = false

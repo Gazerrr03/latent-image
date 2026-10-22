@@ -7,6 +7,7 @@ signal _resolved(value: int)
 
 const PAPER := Color("#efe6d2")
 const INK := Color("#1f1a14")
+const RED := Color("#7a1f12")
 const EvidenceBoard := preload("res://ui/evidence_board.gd")
 const MediaFx := preload("res://ui/media_fx.gd")
 const Menus := preload("res://ui/menus.gd")
@@ -340,6 +341,12 @@ func _paper_panel() -> PanelContainer:
 	p.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	p.grow_vertical = Control.GROW_DIRECTION_BOTH
 	return p
+
+
+func _plain_button(b: Button) -> void:
+	b.flat = true
+	for s in ["normal", "hover", "pressed", "focus", "hover_pressed", "disabled"]:
+		b.add_theme_stylebox_override(s, StyleBoxEmpty.new())
 
 
 func _label(root: Control, preset: int, size: int) -> Label:
@@ -860,11 +867,15 @@ func choose(title: String, options: Array) -> int:
 	choice_box.add_child(choice_title)
 	for i in options.size():
 		var b := Button.new()
+		_plain_button(b)
 		b.text = str(options[i])
-		b.flat = true
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.add_theme_color_override("font_color", INK)
-		b.add_theme_color_override("font_hover_color", Color("#7a1f12"))
+		b.add_theme_color_override("font_hover_color", RED)
+		b.add_theme_color_override("font_focus_color", RED)
+		b.add_theme_color_override("font_pressed_color", RED)
+		b.add_theme_color_override("font_hover_pressed_color", RED)
+		b.mouse_entered.connect(b.grab_focus)
 		b.pressed.connect(func(): _resolved.emit(i))
 		choice_box.add_child(b)
 	choice_panel.show()

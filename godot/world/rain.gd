@@ -40,14 +40,17 @@ func _process(dt: float) -> void:
 	_outdoor_gain = move_toward(_outdoor_gain, outdoor, RATE * dt)
 	_amp["rain_glass"] = _indoor_gain * db_to_linear(INDOOR_GLASS_DB)
 	_amp["rain_night"] = _outdoor_gain + _indoor_gain * db_to_linear(INDOOR_OUTSIDE_DB)
+	# 镜前定影切断天气实录；保留窗上的雨迹，避免视觉天气跟着突变。
+	var mirror_silence := GameState.shot in ["C7-03", "C7-04"]
 	for id in _amp:
-		_apply(id, _amp[id])
+		_apply(id, 0.0 if mirror_silence else _amp[id])
 
 
 func raining() -> bool:
 	var row: Dictionary = ContentDB.shots.get(GameState.shot, {})
 	var chapter := String(row.get("node", ""))
-	if chapter == "":
+	if chapter == "" or chapter == "C7":
+		# 不眠夜结束于黎明前，终章天气不再沿用旧日记中的雨。
 		return false
 	if not _weather_cache.has(chapter):
 		var wet := false

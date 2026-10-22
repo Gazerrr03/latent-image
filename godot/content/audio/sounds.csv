@@ -75,3 +75,6 @@ needle_scratch,唱针跳了：一声刮擦,器物,sfx/needle_scratch.ogg,-4,否,
 room_hum,回廊底噪：空房间的低鸣,环境,sfx/room_hum.ogg,-16,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
 footstep_shoe_rev,男式皮鞋倒放（回廊里倒着走回来的那个人）,人声,sfx/footstep_shoe_rev.ogg,-4,否,ffmpeg areverse 由 footstep_shoe 生成（10-20）
 typewriter_key,打字机单键击打声,器物,sfx/typewriter_key.ogg,-12,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+heartbeat_low,不眠夜：心跳与低频嗡鸣,环境,sfx/heartbeat_low.ogg,-12,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+storm_window,不眠夜：风拍窗框与闷雷,环境,sfx/storm_window.ogg,-10,是,脚本合成：assets/audio/sfx/scripts/synth_sfx.py
+shutter_lock,定影：机械快门合拢并闭锁,器物,sfx/shutter_lock.ogg,-6,否,脚本合成：assets/audio/sfx/scripts/synth_sfx.py

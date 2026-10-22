@@ -12,11 +12,11 @@ C0-04,C0,*,manor,c1_gate,,-train_rattle;iron_gate;thunder_far@1.5;clock_chime@3,
 C0-05,C0,*,hall,hall_mid,,door_front,"门厅里挂着一面椭圆的水银镜。镜面深处映出大门、帽架和一盏摇晃的吊灯。
 康斯坦斯·塔尔博特迎上来，双眼蒙着一条黑缎带，步态却异样沉静。
 安布罗斯从楼梯走下来，系着围裙，指尖满是暗房药水的黑褐色污渍。",,"music(explore,3)",,镜子里没有格雷（镜头回避，不点出）
-C0-06,C0,*,hall,stair,,,,,say(c0_ambrose);collect(ev_amb_words),,和还活着的主人对话；“主人的话”第 5 章要用
-C0-07,C0,*,hall,hall_mid,,door_creak;bolt_slide@1.2,他转身走进暗房，厚木门合拢，门闩发出清脆而沉重的机括声。,,say(c0_constance);objective(在一楼走走：认识这家人。);explore(c0),C0-11,0B 第一次自由探索（任务表 c0）：园丁在温室、灵媒在客厅，两个都见过以后上楼回客房（C0-10）
+C0-06,C0,*,hall,stair,,,,,reveal(安布罗斯·塔尔博特);say(c0_ambrose);collect(ev_amb_words),,和还活着的主人对话；“主人的话”第 5 章要用
+C0-07,C0,*,hall,hall_mid,,door_creak;bolt_slide@1.2,他转身走进暗房，厚木门合拢，门闩发出清脆而沉重的机括声。,,conceal(安布罗斯·塔尔博特);say(c0_constance);objective(在一楼走走：认识这家人。);explore(c0),C0-11,0B 第一次自由探索（任务表 c0）：园丁在温室、灵媒在客厅，两个都见过以后上楼回客房（C0-10）
 C0-08,C0,*,greenhouse,green_mid,,,,,say(c0_gideon),,园丁戴着工作手套
 C0-09,C0,*,seance,seance_mid,,,,,say(c0_latente),,灵媒的蕾丝手套
-C0-10,C0,*,guest_room,,walk,child_steps,上楼的时候，楼梯转角处一个双眼蒙着布条的小女孩看了我一眼，转瞬跑开了。,,,,回客房时触发（任务 c0_upstairs）；小女孩只出现在这句话里
+C0-10,C0,*,hall,corridor_iris,camera,child_steps,"推开客房门前，走廊那一端艾瑞斯房间的门口，一个双眼蒙着布条的小女孩静静地立在那里，面朝着我的方向。转瞬间，她退回了门后。",,reveal(艾瑞斯·塔尔博特);wait(1.5);conceal(艾瑞斯·塔尔博特),,回客房前触发：摄像机朝向小女孩，展现小女孩在门前注视主角
 C0-11,C0,*,guest_room,,walk,luggage,,,"objective(客房：这几天我住在这里。书桌上有什么？);inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed)",,新手教程：安全屋的功能。镜子不点出
 C0-12,C0,*,guest_room,establish,,glass_break;body_thud@0.5,走廊尽头突然传来一声清脆刺耳的玻璃碎响。,,"music(关闭,0);objective()",,
 C0-13,C0,*,darkroom,door_push,,door_knock;door_bang@3.2;scream_constance@4.4;red_hum,"暗房的厚木门从内侧死死闩着。扣门三声，内里死寂无声。
@@ -91,26 +91,21 @@ C5-10,C5,*,guest_room,,walk,,"降灵会上那个声音，和那天晚上在门�
 那句话，只有他对我一个人说过。
 背脊泛起浸透骨髓的寒意。我第一次想到，挂在客房衣柜深处的那件大衣里，也许不止一页纸。",,music(关闭),,连完线以后，站在客房里想
 C5-11,C5,*,guest_room,,walk,typewriter,,,objective(打字机：把今天的事记下来。);station(hs_typewriter);music(关闭);objective();annotate(c5),,客房第二站：打字机
-C5-12,C5,*,guest_room,,walk,,我睡下了。,,objective(床：睡下。);station(hs_bed);objective();sleep();recap(r5);diary(diary6),,客房第三站：躺下、合眼，结束这一天
-C6-01,C6,*,guest_room,,walk,wardrobe_open,客房角落的衣柜被我缓缓拉开。樟木的气味涌出，我的呢子大衣静静悬挂在阴影深处。,,wake();leak(3);objective(我自己：上星期四夜里，我在哪里？),,醒来（docs/01 第 4 节），然后自由探索（任务 c6x）
-C6-02,C6,*,guest_room,,walk,,,,"inspect(hs_coat,hs_waistcoat,hs_shoes);objective(暗房：相机还在三脚架上。);explore(c6)",C6-08,看完衣柜，自由走去暗房（任务 c6，触发 C6-03—C6-07），再回客房
-C6-03,C6,*,darkroom,tray,,red_hum;camera_case,我取下三脚架上的木质大型相机。皮套内衬的隐秘夹层里，赫然藏着几页从底片簿上齐整裁下的残页。,,conceal(尸体);collect(ev_ledger_last),,
+C5-12,C5,*,guest_room,typewriter_close,,,,,objective();wait(1),,降灵会后的同一深夜：留在打字机前直接进入自查，不睡眠不换日
+C6-01,C6,*,guest_room,,walk,wardrobe_open;heartbeat_low;storm_window,"降灵会后的深夜窗外疾雨倾盆，灵媒凄厉的质问在耳边挥之不去——“第二页，你看了吗？”，我战栗着猛然拉开客房衣柜，呢子大衣在阴影中悬挂如死寂的人形。",,leak(3);objective(我自己：上星期四夜里，我在哪里？),,降灵会后同一深夜，客房自查
+C6-02,C6,*,guest_room,,walk,,,,"inspect(hs_coat,hs_waistcoat,hs_shoes,hs_mirror_guest);objective(暗房：相机还在三脚架上。);explore(c6)",C6-08,看完衣柜，自由走去暗房（任务 c6，触发 C6-03—C6-07），再回客房
+C6-03,C6,*,darkroom,tray,,red_hum;camera_case;heartbeat_low;storm_window,我取下三脚架上的木质大型相机。皮套内衬的隐秘夹层里，赫然藏着几页从底片簿上齐整裁下的残页。,,conceal(尸体);collect(ev_ledger_last),,
 C6-04,C6,*,darkroom,tray,,page_turn,“十月十三日。叠印做出来了，只有一张脸。\n星期日早上，我要把这张照片拿给他们每一个人看。看过的人就会想起来，我们原本是谁，那年秋天发生了什么。\n然后这个家就不需要这么多人了。到最后只会留下一个。彭罗斯、索尔特、卢西恩是怎么走的，其他人也会怎么走。\n我会先给格雷看。他最不愿意想起来。”\n\n“十月十五日。星期四夜里他来了。我给他看了。他看了很久，什么也没说。我去书房取底片簿，留他一个人在药柜前。回来的时候，他站在原地。天亮前他走了。\n他会忘的，和他们一样。可他是侦探，他会查回来。\n星期六我把最后一张冲出来。如果星期日早上我还在，我就把它拿给他们每一个人看。”,,,,动机（底片簿最后几页）
 C6-05,C6,*,darkroom,tray,,red_hum;liquid;timer_tick@2,底片依然封存在暗盒里。在昏暗的红光下，我将它取出，浸入冰冷的显影液中。,,"music(develop,0);develop(composite.png);collect(ev_composite)",,S6-01 固定情节：亲手冲洗
-C6-06,C6,*,darkroom,tray,,red_hum,"银盐在液体中迅速沉淀、重组。全家所有人的肖像叠合在一起，显影而出的不是一片模糊的混沌，而是一张轮廓分明、目光冰冷的脸庞。
-那是我的脸。",,,,
-C6-07,C6,*,darkroom,wide,,red_hum;gasp_iris@4,"我想起来了。
-星期四夜里，也是在这猩红的光晕下，他将这张样张举到我面前。他说，星期日早上，全家看过之后，只会留下一个人。
-他转身去书房取底片簿，将整座药柜留给了我。那不是疏忽……是他为我布置的刑场。
-我亲手换掉了调色液，从外侧封死了百叶风口，踩着夜色从小路离开了。",,,,演绎“星期四夜里”（P0）做出来以前，用这段文字顶替
-C6-08,C6,*,guest_room,,walk,pin,,,objective(书桌：叠印里的那张脸，和我身上找到的东西，放在一起看。);station(hs_desk_board);link(d6),,客房第一站：玩家走到书桌前按 E，坐下来连线（docs/01 第 4 节）
+C6-06,C6,*,darkroom,tray,,red_hum,"银盐在猩红的药水中缓缓聚集沉淀。艾瑞斯画中那团空洞焦黑的无面阴影，此刻一层层凝聚出清晰的轮廓与冰冷深邃的双眸。全家所有人的重影在药水中收束为同一张分明冷峻的面孔——那正是镜前那团辨不清五官的黑影，正是我自己的脸孔。",,,,
+C6-07,C6,*,darkroom,wide,,red_hum;gasp_iris@4,"记忆深处的闸门被生生撕裂！猩红的暗室、药架前伸出的左手、冰冷调换的玻璃瓶、狂风呼啸的花园百叶窗、雨夜小径上的仓皇逃离……无数破碎的画面在脑海中炸开。安布罗斯那句“冲出来，你就会想起来的”在死寂中如丧钟般回荡。我踉跄着后退，我必须立刻回客房……那些证据……那一夜的真相……",,,,记忆风暴闪回（替代说明文剧透）
+C6-08,C6,*,guest_room,,walk,pin;heartbeat_low;storm_window,,,objective(书桌：叠印里的那张脸，和我身上找到的东西，放在一起看。);station(hs_desk_board);link(d6),,客房第一站：玩家走到书桌前按 E，坐下来连线（docs/01 第 4 节）
 C6-09,C6,*,guest_room,,walk,typewriter,,,objective(打字机：把今天的事记下来。);station(hs_typewriter);music(关闭);objective();annotate(c6),,客房第二站：打字机
-C6-10,C6,*,guest_room,,walk,,这一夜，我没有睡。,,objective(床：睡下。);station(hs_bed);objective();sleep(睁眼);recap(r6);diary(diary7),,客房第三站：躺下、合眼，结束这一天
-C7-01,C7,*,guest_room,establish,,,黎明未至。我坐在便携打字机前，指尖悬在冰冷的键帽上，写下我最后的陈述。,,leak(4),,
+C6-10,C6,*,guest_room,typewriter_close,,,"窗外的疾雨渐渐平息，唯有死寂在客房中漫延。这一夜，我无法合眼。死者已经长眠，而活下来的那个人，必须在拂晓开庭前写下交代。",,objective();wait(2),,留在打字机前未眠，直接衔接黎明前C7-01
+C7-01,C7,*,guest_room,typewriter_close,,-storm_window;heartbeat_low,"黎明未至，铅灰色的微光刺穿浓云。我独坐在便携打字机前，指尖悬在冰冷的金属键帽上。面对这叠泛黄的信纸，我必须敲下最后的自白。",,leak(4),,
 C7-02,C7,*,guest_room,typewriter_close,,typewriter,,,telling(n7_telling),,
-C7-03,C7,*,guest_room,mirror,,,"我第一次走到客房穿衣镜前。
-水银镜面深处，终于映出了一个人的倒影。",,reveal(镜中的格雷);wait(2),,
-C7-04,C7,*,guest_room,mirror,,click_clean,已定影。,,reveal(镜中的格雷);wait(1.5),,
+C7-03,C7,*,guest_room,mirror,,-heartbeat_low;-storm_window;-red_hum,"我缓缓起身，走向客房那面泛黄的水银穿衣镜。镜面上经年累月的氧化暗斑与厚重包浆仿佛被无形的力量瞬间剥离退散，底层的水银如退潮般恢复了冷冽与澄澈——镜中不再是艾瑞斯画里那团模糊焦黑的无面阴影，水银镜底，终于第一次清晰映出了一张轮廓冷峻的面庞。左手虎口一道一模一样的新月旧疤。那一双直视真理的双眼，正死死注视着我。",,"music(关闭,0);reveal(镜中的格雷);wait(2)",,
+C7-04,C7,*,guest_room,mirror,,shutter_lock,已定影。,,reveal(镜中的格雷);wait(1.5),,
 C7-05,C7,*,white_hall,white_mid,,room_tone_white,"镜面背后的房间并非客房。四壁是未上过色、毫无温度的惨白灰模。
 门外是一条笔直而空旷的白色走廊。两侧排列着一间又一间客房，分毫不差，宛如无穷的镜像。",,,,白盒关卡（揭示 L1，灰盒）
 C7-06,C7,*,white_hall,,walk,room_tone_white,,,"objective(走廊：每一间客房里都有什么？);inspect(hs_wh_train,hs_wh_darkroom,hs_wh_desk)",,

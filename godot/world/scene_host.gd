@@ -6,6 +6,7 @@ extends Node3D
 
 const HOTSPOT_LAYER := 2
 const Actions := preload("res://core/actions.gd")
+const GuestMirror := preload("res://world/guest_mirror.gd")
 const Look := preload("res://world/look.gd")
 const PAD := Vector3(0.04, 0.04, 0.04)
 
@@ -739,8 +740,9 @@ func _figure(parent: Node3D, who: String, foot: Vector3, rid := "") -> Node3D:
 		root.add_child(inst)
 		for n in _walk(inst):
 			if n is GeometryInstance3D:
-				_surfaces.append(n)
-				_orig_mats[n] = n.material_override
+				if not who.begins_with("镜中"):
+					_surfaces.append(n)
+					_orig_mats[n] = n.material_override
 				# 镜中的人是镜像，不在墙上投影
 				if who.begins_with("镜中"):
 					n.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
@@ -825,6 +827,9 @@ func apply_room_states(shot_id: String) -> void:
 			var n = named.get(rid + "/" + nm, named.get(nm) if current_id != MAP_ID else null)
 			if n is Node3D:
 				_set_present(n, on.has(r["layer"]))
+	var mirror_room: Node = room
+	if mirror_room:
+		GuestMirror.apply(mirror_room, ContentDB._shot_index(shot_id) >= ContentDB._shot_index("C7-04"))
 	# 案发现场尸体：序章撞门后（C0-13）与第 1 章调查保留，自第 2 章起（C2-00 起）移走
 	var corpse: Node = named.get("darkroom/尸体", named.get("尸体"))
 	if corpse is Node3D:
@@ -954,6 +959,7 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_mode
 
 ## 关卡场景：空间、灯光、构图全部以场景为准，这里只按名字认出需要接上剧情的节点
 func _adopt_level(r: Node, rid := "") -> void:
+	GuestMirror.prepare(r)
 	var declared_hotspot := RegEx.new()
 	declared_hotspot.compile("\\bhs_[a-z0-9_]+\\b")
 	# 先换小物件模型，再记下房间表面（渗漏变白用），最后接上出生点、机位、热区、人物
@@ -1849,6 +1855,10 @@ func apply_leak(level: int) -> void:
 
 ## 按声音列播放一串声音（写法见 actions.gd 的 parse_sounds）：立刻、延迟、停掉循环
 func play_sounds(spec: String) -> void:
+	# 定影前清除残留循环和音乐；空的声音列也必须执行这次切断。
+	if GameState.shot == "C7-03":
+		stop_loops()
+		stop_music(0.0)
 	for s in Actions.parse_sounds(spec):
 		if s["stop"]:
 			stop_loop(s["id"])
@@ -1866,6 +1876,9 @@ func footstep_sound() -> String:
 
 ## 按音效表播放：文件放在 res://audio/，音量与是否循环由表决定；还没有文件的声音保持静音
 func play_sound(id: String) -> void:
+	# 灯丝嗡鸣和前一镜头的延迟音效也不能打破镜前死寂。
+	if GameState.shot in ["C7-03", "C7-04"] and id != "shutter_lock":
+		return
 	if id == "" or id == "silence":
 		return
 	if id.begins_with("rain_"):                           # 雨声由 world/rain.gd 按天气与离窗远近放，镜头表里写了也不重复放

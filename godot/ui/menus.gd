@@ -466,6 +466,7 @@ func _item(v: VBoxContainer, text: String, f: Callable, sub := "") -> Button:
 	b.add_theme_color_override("font_hover_color", RED)
 	b.add_theme_color_override("font_focus_color", RED)
 	b.add_theme_color_override("font_pressed_color", RED)
+	b.add_theme_color_override("font_hover_pressed_color", RED)
 	b.focus_entered.connect(func(): b.text = "▸ " + text)
 	b.focus_exited.connect(func(): b.text = "　" + text)
 	b.mouse_entered.connect(b.grab_focus)

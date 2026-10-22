@@ -170,7 +170,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.55, 4.815, -3.75)
 metadata/size = Vector3(0.12, 1.6, 0.7)
 
 [node name="chr_镜中的格雷" type="Node3D" parent="接口"]
-transform = Transform3D(6.12323e-17, 0, -1, 0, 1, 0, 1, 0, 6.12323e-17, 6.42, 3.615, -3.75)
+transform = Transform3D(-0.342020, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.342020, 6.42, 3.615, -3.75)
 visible = false
 
 [node name="层·笔迹比对" parent="结构" instance=ExtResource("6_handwriting")]

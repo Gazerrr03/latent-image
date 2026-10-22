@@ -397,6 +397,8 @@ func _explore(group: String) -> void:
 	if qs.is_empty():
 		push_warning("任务表里没有这一组：" + group)
 		return
+	# 开始自由探索就结束客房收尾锁定；不眠章节不再依靠 wake() 解锁。
+	world.unlock_room()
 	_explore_group = group
 	if group == "c0b":
 		world.place_at_darkroom_door()
@@ -847,7 +849,16 @@ func _telling(set_id: String) -> void:
 	rows = rows.duplicate()
 	rows.sort_custom(func(a, b): return a.get("tendency", "") == lean and b.get("tendency", "") != lean)
 	var k := 0
-	if not autoplay:
+	if autoplay:
+		for arg in OS.get_cmdline_user_args():
+			if arg.begins_with("--ending="):
+				var requested := arg.trim_prefix("--ending=")
+				k = rows.find_custom(func(r): return r.get("tendency", "") == requested)
+				if k < 0:
+					push_error("未知自动通关讲法：" + requested)
+					get_tree().quit(3)
+					return
+	else:
 		k = await ui.choose("最后一份记录", rows.map(func(r): return r["text"]))
 	if k < 0:
 		return
