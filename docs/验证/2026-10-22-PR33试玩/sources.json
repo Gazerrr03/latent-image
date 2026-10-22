@@ -1,0 +1,16 @@
+{
+  "pr": 33,
+  "pr_head": "650f3b24ae5a679205129c12102301fa0d524529",
+  "baseline_snapshot": "e9a591e",
+  "chair_source_commit": "03595be5575b7bd677a2f41c492048ec85240f55",
+  "chair_names": [
+    "餐厅·餐椅7（南端空椅）-col",
+    "餐厅·餐椅8（主位）-col"
+  ],
+  "sha256": {
+    "godot/art/levels/manor/room_dining.gltf": "a10b9a85d538c7bf86e6ef283b4f81c058f2ad1bec07631e8600ed289c5623b7",
+    "godot/art/levels/manor/room_dining.bin": "1fa252f220d7364788f4375dc9edd0459acd1291fe3c0689a457064fa8135ff7",
+    "godot/art/levels/ded_table/chairs_1924.gltf": "f1e7d67bdb733400497dd5fba386916a8335e0bfba770c8b3dae5730be48fdb6",
+    "godot/art/levels/ded_table/chairs_1924_0.bin": "5d3be7d29b72ad314682c453b0b4d5c1577bb0d2eac11f51c60ff5763d2cf7f7"
+  }
+}

@@ -212,6 +212,11 @@ func _do(name: String, args: Array, mode: String) -> void:
 		"collect":
 			for id in args:
 				_collect(id)
+		"level":
+			if not args.is_empty():
+				if autoplay or await world.enter_level(args[0]):
+					for id in args.slice(1):
+						_collect(id)
 		"inspect":
 			await _inspect(args, mode)
 		"annotate":
@@ -495,6 +500,8 @@ static func quest_evidence(q: Dictionary) -> Array:
 		for a in Actions.parse(row.get("actions", "")):
 			if a["name"] == "collect":
 				out.append_array(a["args"])
+			elif a["name"] == "level":
+				out.append_array(a["args"].slice(1))
 			elif a["name"] == "inspect":
 				for h in a["args"]:
 					var e: String = ContentDB.hotspots.get(h, {}).get("evidence", "")

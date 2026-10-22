@@ -1,0 +1,99 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_dining.gltf" id="2_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_dining__晚饭未收.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_dining__多一副餐具.gltf" id="4_r"]
+[ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="5_r"]
+[ext_resource type="Script" path="res://levels/ded_table.gd" id="6_script"]
+
+[ext_resource type="PackedScene" path="res://art/levels/ded_table/chairs_1924.gltf" id="7_chairs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
+sky_top_color = Color(0.33, 0.42, 0.55, 1)
+sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
+ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
+ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
+
+[sub_resource type="Sky" id="sky"]
+sky_material = SubResource("sky_mat")
+
+[sub_resource type="Environment" id="env"]
+background_mode = 2
+background_color = Color(0.03, 0.03, 0.04, 1)
+sky = SubResource("sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.55, 0.5, 0.45, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 4
+ssao_enabled = true
+ssao_radius = 0.8
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.35
+
+[node name="ded_table" type="Node3D"]
+script = ExtResource("6_script")
+
+[node name="结构" type="Node3D" parent="."]
+
+[node name="庄园" parent="结构" instance=ExtResource("1_r")]
+
+[node name="餐厅" parent="结构" instance=ExtResource("2_r")]
+
+[node name="层·晚饭未收" parent="结构" instance=ExtResource("3_r")]
+
+[node name="层·多一副餐具" parent="结构" instance=ExtResource("4_r")]
+
+[node name="1924临时端椅" parent="结构" instance=ExtResource("7_chairs")]
+
+[node name="灯光" type="Node3D" parent="."]
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="邻·门厅" parent="结构" instance=ExtResource("5_r")]
+
+[node name="太阳" type="DirectionalLight3D" parent="灯光"]
+transform = Transform3D(0.748075, 0.299975, -0.591946, -0, 0.892002, 0.452031, 0.663615, -0.338153, 0.667284, 0, 30, 0)
+light_color = Color(1, 0.86, 0.68, 1)
+light_energy = 1.2
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="枝形吊灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 2.45, -2.55)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 1.4
+omni_range = 6.0
+shadow_enabled = true
+
+[node name="餐叙区吊灯" type="OmniLight3D" parent="灯光"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 2.05, -8.6)
+light_color = Color(1.0, 0.72, 0.42, 1)
+light_energy = 0.9
+omni_range = 4.5
+shadow_enabled = true
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 14.7, 0.015, -4.15)
+
+[node name="cam_dining_mid" type="Camera3D" parent="接口"]
+transform = Transform3D(-1, 0, -0, 0, 0.998945, 0.0459285, 0, 0.0459285, -0.998945, 15.75, 1.515, -4.65)
+environment = SubResource("env")
+fov = 64.7
+near = 0.03
+
+[node name="cam_table_close" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.990393, -0.0367903, 0.133297, 0, 0.963958, 0.266054, -0.138281, 0.263498, -0.954697, 16.07, 1.565, -4.05)
+environment = SubResource("env")
+fov = 39.8
+near = 0.03
+
+[node name="cam_snug" type="Camera3D" parent="接口"]
+transform = Transform3D(1, 0, -0, -0, 0.99968, 0.0253083, 0, -0.0253083, 0.99968, 17, 1.465, -3.2)
+environment = SubResource("env")
+fov = 53.7
+near = 0.03
+
+[node name="chr_康斯坦斯·塔尔博特" type="Node3D" parent="接口"]
+transform = Transform3D(-0.809017, 0, 0.587785, 0, 1, 0, -0.587785, 0, -0.809017, 13.6, 0.015, -1.7)
