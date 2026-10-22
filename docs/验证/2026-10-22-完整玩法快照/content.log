@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+内容检查：通过（0 个错误，9 个提醒）
+  提醒  [房间布局表] hall：这个房间已有关卡场景 levels/hall.tscn，布局表里的 7 行不再生效
+  提醒  [房间布局表] darkroom：这个房间已有关卡场景 levels/darkroom.tscn，布局表里的 21 行不再生效
+  提醒  [房间布局表] guest_room：这个房间已有关卡场景 levels/guest_room.tscn，布局表里的 32 行不再生效
+  提醒  [房间布局表] garden：这个房间已有关卡场景 levels/garden.tscn，布局表里的 10 行不再生效
+  提醒  [房间布局表] dining：这个房间已有关卡场景 levels/dining.tscn，布局表里的 6 行不再生效
+  提醒  [房间布局表] greenhouse：这个房间已有关卡场景 levels/greenhouse.tscn，布局表里的 6 行不再生效
+  提醒  [房间布局表] child_room：这个房间已有关卡场景 levels/child_room.tscn，布局表里的 5 行不再生效
+  提醒  [房间布局表] archive：这个房间已有关卡场景 levels/archive.tscn，布局表里的 14 行不再生效
+  提醒  [房间布局表] seance：这个房间已有关卡场景 levels/seance.tscn，布局表里的 5 行不再生效
+  关卡 0 序·鱼头：17 个镜头 · 缺口：7 个房间还没有关卡场景（仍是灰盒）
+  关卡 1 第一章·死者：9 个镜头 · 缺口：6 个房间还没有关卡场景（仍是灰盒）
+  关卡 2 第二章·女主人：9 个镜头 · 缺口：4 个房间还没有关卡场景（仍是灰盒）
+  关卡 3 第三章·小女孩：8 个镜头 · 缺口：2 个房间还没有关卡场景（仍是灰盒）
+  关卡 4 第四章·园丁：9 个镜头 · 缺口：4 个房间还没有关卡场景（仍是灰盒）
+  关卡 5 第五章·灵媒：14 个镜头 · 缺口：2 个房间还没有关卡场景（仍是灰盒）
+  关卡 6 第六章·显影：10 个镜头 · 缺口：2 个房间还没有关卡场景（仍是灰盒）
+  关卡 7 第七章·镜子、白盒与尾声：11 个镜头 · 缺口：3 个房间还没有关卡场景（仍是灰盒）
+报告：/Users/qizhi_dong/.codex/worktrees/gameplay-snapshot-2026-10-22/DigitalMedia/检查报告.md

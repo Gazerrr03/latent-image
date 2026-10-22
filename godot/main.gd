@@ -35,6 +35,11 @@ func _ready() -> void:
 		add_child(trial)
 		trial.begin(OS.get_cmdline_user_args().has("--chapter3-house-trial"))
 		return
+	# 快照正常流程也启用第三章绘画与小屋往返，不重置进度。
+	var chapter3 := preload("res://tools/chapter3_trial.gd").new()
+	chapter3.name = "Chapter3Trial"
+	add_child(chapter3)
+	chapter3.enable_snapshot()
 	if not Director.autoplay and _arg("--capture=") == "":
 		Director.finished.connect(_on_finished)
 

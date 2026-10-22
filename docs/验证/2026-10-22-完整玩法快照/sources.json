@@ -1,0 +1,65 @@
+[
+  {
+    "path": "/Users/qizhi_dong/Projects/DigitalMedia",
+    "branch": "feature/story-text-polish",
+    "head": "9633058c8abe4e62d4b229a603c5a9f2b8b7b70c",
+    "tree": "872a12f12efe8efa2a02a229ec01b148e623abf2",
+    "commit": "204df5786a2871a2f45a19485ccc32e7d23d07e2",
+    "ref": "refs/heads/codex/snapshot-source-20261022-0",
+    "dirty": true
+  },
+  {
+    "path": "/Users/qizhi_dong/.codex/worktrees/chapter3-pr35-trial/DigitalMedia",
+    "branch": "codex/chapter3-pr35-trial",
+    "head": "fb358a10776ebe89c1735d5e7dd3af14695e02b4",
+    "tree": "38392a456651fa52e372bec58150e958347e4a78",
+    "commit": "8a1a1ac18550c5fbd171dbdb73ded0794deb0620",
+    "ref": "refs/heads/codex/snapshot-source-20261022-1",
+    "dirty": true
+  },
+  {
+    "path": "/Users/qizhi_dong/.codex/worktrees/chapter4-pr34-trial/DigitalMedia",
+    "branch": "codex/chapter4-pr34-trial",
+    "head": "e7bdf3a1a7a2e2b0e19173f8b8d169697b9a6448",
+    "tree": "ad0933bedc32d4e253bfd29c6ff986d67185829e",
+    "commit": "ed48391e2acd88c03745ac8ca20182b7697c9f0b",
+    "ref": "refs/heads/codex/snapshot-source-20261022-2",
+    "dirty": false
+  },
+  {
+    "path": "/Users/qizhi_dong/.codex/worktrees/chapter5-corridor-pr/DigitalMedia",
+    "branch": "codex/chapter5-corridor-blender",
+    "head": "d5ad681b21acf5ca4702d5b37b41130065fab88c",
+    "tree": "ca772e7e7c1d7c71854730fb4042910283756a35",
+    "commit": "eec00f29cb5e7bd97f150f58904d3185b5a43918",
+    "ref": "refs/heads/codex/snapshot-source-20261022-3",
+    "dirty": true
+  },
+  {
+    "path": "/Users/qizhi_dong/.codex/worktrees/greenhouse-bench-fix/DigitalMedia",
+    "branch": "main",
+    "head": "4676d32579ac7bd00164b39480969a3cb676f722",
+    "tree": "7858482e71ea74f9441d26722e5341eb4e303532",
+    "commit": "edaed1c02a12e47fc69f0a791f961e5e68c674f4",
+    "ref": "refs/heads/codex/snapshot-source-20261022-5",
+    "dirty": false
+  },
+  {
+    "path": "/Users/qizhi_dong/.codex/worktrees/pr33-ch2-table-trial/DigitalMedia",
+    "branch": "codex/pr33-ch2-table-trial",
+    "head": "269a5e29735471c9832767a760d829df207fa7c5",
+    "tree": "09944bdbc33cbd6c744a322c722253d5c071e948",
+    "commit": "e35073bb838ff2007edd1c34961bd14c24b194ac",
+    "ref": "refs/heads/codex/snapshot-source-20261022-6",
+    "dirty": true
+  },
+  {
+    "path": "/Users/qizhi_dong/Projects/DigitalMedia/.claude/worktrees/hungry-chaum-18e889",
+    "branch": "claude/hungry-chaum-18e889",
+    "head": "bd93be0303fb950445e1a7e1c22391264e309eac",
+    "tree": "b2d8c05176df436c2da013744f466788d8879f5c",
+    "commit": "895d9b25e81c2f7c9af80c3f2af594f0f831bac8",
+    "ref": "refs/heads/codex/snapshot-source-20261022-7",
+    "dirty": false
+  }
+]

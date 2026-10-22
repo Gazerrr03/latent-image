@@ -8,6 +8,11 @@ var _returning := false
 var _saved := {}
 var _label: Label
 
+func enable_snapshot() -> void:
+	_label = Label.new()
+	_label.visible = false
+	add_child(_label)
+
 func begin(house_only: bool) -> void:
 	GameState.persist = false
 	GameState.reset()
