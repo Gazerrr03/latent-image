@@ -28,6 +28,12 @@ func _ready() -> void:
 	Director.ui = ui
 	Director.world = host
 	add_child(DebugPanel.new())
+	if OS.get_cmdline_user_args().has("--chapter3-trial") or OS.get_cmdline_user_args().has("--chapter3-house-trial") or OS.get_cmdline_user_args().has("--chapter3-drawings-trial"):
+		var trial := preload("res://tools/chapter3_trial.gd").new()
+		trial.name = "Chapter3Trial"
+		add_child(trial)
+		trial.begin(OS.get_cmdline_user_args().has("--chapter3-house-trial"))
+		return
 	if not Director.autoplay and _arg("--capture=") == "":
 		Director.finished.connect(_on_finished)
 

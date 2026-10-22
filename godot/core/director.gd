@@ -354,6 +354,10 @@ func _inspect(ids: Array, mode: String) -> void:
 		for id in ids:
 			await _show_hotspot(id)
 		return
+	var trial: Node = world.get_parent().get_node_or_null("Chapter3Trial")
+	if trial != null and ids.has("hs_draw_wall") and ids.has("hs_draw_train"):
+		await trial.inspect_drawings()
+		return
 	if mode == "walk":
 		world.highlight_hotspots(ids)
 		_checklist(ids, pending)

@@ -1,0 +1,3086 @@
+{
+  "source": "/Users/qizhi_dong/Projects/DigitalMedia",
+  "head": "fb358a10776ebe89c1735d5e7dd3af14695e02b4",
+  "copied_working_files": [
+    {
+      "path": "assets/2d/T-043-回廊/corridor_cloakroom-v2.png",
+      "sha256": "0322f558bff45f3514a7e7d1cbcdf4009196302ca377aa7ea4273cbac36b237e"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_darkroom-v2-r1.png",
+      "sha256": "e78acfed43039531e694845e4d3ed1d94c01c98007101bc8c363189a11414f7e"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_darkroom-v2.png",
+      "sha256": "b36f9b13086b99b9f19ad0f2e2210eb56e7d0fb827a3dcd6c2e5585d3da221e8"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_emptyroom-v2.png",
+      "sha256": "f33303657a6576b5e0c384ef571f4f71462e3c69915d0625ad87f6ba12883461"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_greenhouse_path-v2.png",
+      "sha256": "79a4f61ec6262c8df0c12d75a4d731e81cf314e2cdfad9093623267963fee0b1"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_layer1-v2-r1.png",
+      "sha256": "1d7ef2ce4c84751d9727568d8e0559f0279e8170600ccc6de58f54aeca8a6c37"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_layer1-v2.png",
+      "sha256": "7c09e0719ff0ea3e38f4fb5300ec5a885114fcfa991ce92ad04e6dc0a6dbefc4"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_photo_wall-v2.png",
+      "sha256": "16a6fb97408a8237b141271174fc95151ba55c16b969cb40ab0e247e11543e26"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_segB-v2.png",
+      "sha256": "f2c503c0c37cfd4f9334c8ac17d805e3f9ed4ebde31e2a20014bb4debe566797"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_stair_window-v2-r1.png",
+      "sha256": "67db70b90e1e3255bd57b96ed37b84335f27926be6027b6cb674fe8d006a02e0"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_stair_window-v2.png",
+      "sha256": "f4d6645fd62c8b30e6eb4b083a13318156d5dc1ae8182a20b51ee9364351a48d"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_turn-v2-r1.png",
+      "sha256": "d1b91624047c2b7d349a3f179934137568c189749df90e673a4f21767b55756d"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_turn-v2.png",
+      "sha256": "c0d865deab6092301da86717b7e100947eb6f0872d8facf8052377285250630f"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_剖面_楼梯-v2.pdf",
+      "sha256": "b20e5de4065299bdf1f06b2a8ca0b164e66cfa75afbb8eb67365f58f3fbea2d3"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_剖面_楼梯-v2.png",
+      "sha256": "6d2974391a295f6140251b7dcda804184cf22bf2bc9f2841ba412c75edb86a4d"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_剖面_楼梯-v2.svg",
+      "sha256": "b8453a4b2e8c6792a4992f4d3e04d581ea169d0db4ece59b1af9f20721680102"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_坐标与检查-v2.json",
+      "sha256": "c00819aef43c07ee26359e859653cf8083ebd78afe0ac1a1191841783321ebc3"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_平面图-v2.pdf",
+      "sha256": "74aac40d779924b41168a978c3658fe004af9f8d4f82a03f4528913c0407d548"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_平面图-v2.png",
+      "sha256": "184a0fad9fe929df62539502347c4bf385f2bf4a2be4d666b60160be35f0662a"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_平面图-v2.svg",
+      "sha256": "8b21da5b6ad6339dd8395c2057bfe22e55b6c18283d04a4d77b94ef0b8929cf4"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_物件清单-v2.md",
+      "sha256": "c9d7b4770637e4811b10dffd62fd093c3345ea821943a17992ca82aa996905d1"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/corridor_生图审查-v2.html",
+      "sha256": "4d0769687c09aa8687a5eb41460cb44f534fdc1786ba87a87e3d175f369666a2"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/final/night_photo.jpg",
+      "sha256": "22d950c073bd115c8f673a9077d9ed0698a721d89ccd055707530d8d66370f84"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_cloakroom-v2.txt",
+      "sha256": "acfabb05ef41c801e0abaa80dae11f47d9335f5b72b9eb7388e3863a282cb529"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_darkroom-v2-r1.txt",
+      "sha256": "b4c50183c01b0ff9771ada7caf200ab44f067f9268edec6386d9fdc7bf32a651"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_darkroom-v2.txt",
+      "sha256": "79da68bd65c25019f0f5215137309fbe6db012c9d60530a2b4e419831c561d0d"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_emptyroom-v2.txt",
+      "sha256": "d94b0f7b29d80cd0a8f26c8076f00c60f877c0e118823694f3ed898bd1febe72"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_greenhouse_path-v2.txt",
+      "sha256": "3e3192cd519eec58e0d7d86aec0518d4da8f2aaa8da86bd7d058ae07ec40bda1"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_layer1-v2-r1.txt",
+      "sha256": "dfc757e0dad60b5875bfb59f693e1244b2b790745836467d5f198c89ad94edd4"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_layer1-v2.txt",
+      "sha256": "a6ff68342fa4b4cc5884d564a9d43fda4250f4baecda8287ce4e4d0199d34063"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_photo_wall-v2.txt",
+      "sha256": "09c9f37701c05826a6f983c6894f94c905cb78e96a76c200ae23ce72b3e1190a"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_segB-v2.txt",
+      "sha256": "ef6d64e37db3567a2a47ef4c6cf3fbf536da1ca605f2e0d2c20c03e2af4f0266"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_stair_window-v2-r1.txt",
+      "sha256": "c306331afdef22e3d0a1ca4bb2305a946760a53b1cd9a5788eb44dc8c59278ac"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_stair_window-v2.txt",
+      "sha256": "e8b53342baa7a39d0a8c61519fbd349d1bf1cd43dc412b5fb34d59899ba1ad0e"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_turn-v2-r1.txt",
+      "sha256": "0d6c46768854e6a3e8070b13124b71fbebed03d53713642bb0128cde7d2ff307"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/prompts/corridor_turn-v2.txt",
+      "sha256": "edc11c7b69104273b35a25ba0f2b114abe441531a40ae92fc0ea673125dd6eb5"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/review/build_review.py",
+      "sha256": "b0d3a9c6b671db6b895830c265370c00cc0b528919d5d6e3ab472891d25cad1d"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/review/generation-v2.json",
+      "sha256": "5e691a3656e54e868cc004747885849618c87e826be4174c30affe74647f5f4b"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/review/检查记录-v2.md",
+      "sha256": "716946a57533e83800c4a8920c0fe91589d3ebaf602331bd03a82f065993e434"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_cloakroom.jpg",
+      "sha256": "137a36ba8ce49926ce0ba4d3a3ed9452b101370e4313cae15e4cd9b934ec00ad"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_darkroom.jpg",
+      "sha256": "0228966d78320b113635a7c984f4b464793812447f618dcec1490f8d5d4132c8"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_emptyroom.jpg",
+      "sha256": "cafde3553c540a0e14ce14ea06f75f4fb444f984ec0985b96c66d39143f7b64a"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_gramophone.jpg",
+      "sha256": "13999c03ec5034621777edca39cad34092bb4ffaeec7a5ec848219fb8bac648d"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_greenhouse_path.jpg",
+      "sha256": "9de71e89269bacfbfe5c6c3986cbdeee4c144c82b5bb126b375e3ae61e797406"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_layer1.jpg",
+      "sha256": "1886992a98ead4f4263182be635c3226f8dd851e72c19a8ceaf9884a77cac1e6"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_photo_wall.jpg",
+      "sha256": "d25487cab0b9bdf1b6de4491283f3f272807bf58f7bb49d97e6b40ba00fc8555"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_segB.jpg",
+      "sha256": "e8fac47be32d4c815bf6309228473b6a475ca9d9e2fee5b5b665598c3d9b5450"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_stair_window.jpg",
+      "sha256": "28f8d78a1a58f6cf59b785f020d08bb85da16f87ee8dc119177f4bc529ac77a1"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/底图/底图_turn.jpg",
+      "sha256": "0a2bfad8d7589df9f5e728001df668485e0ab00511f24d860600a9c8aa5bab7c"
+    },
+    {
+      "path": "assets/2d/T-043-回廊/来源.md",
+      "sha256": "e0c895afe25405cd1094de9fd34f4549b97c79e6c44a077576a3da02eb0382c8"
+    },
+    {
+      "path": "assets/2d/inspection/generated/iris_boxes-v1.png",
+      "sha256": "4debd86a6f5fea23be31ef8dda7edb3e77394069b8d718cd9299776497746c79"
+    },
+    {
+      "path": "assets/2d/inspection/generated/iris_family-v1.png",
+      "sha256": "660bf3b8eb43088131878950d2144fd56f26c92fc9d9cc29aa9bfb5d886ee65a"
+    },
+    {
+      "path": "assets/2d/inspection/generated/iris_path-v1.png",
+      "sha256": "fe57c09f3668d8d6a214f660c520d23372a23ddda71ab4e42739aacfa7181eb2"
+    },
+    {
+      "path": "assets/2d/inspection/generated/iris_train-v1.png",
+      "sha256": "381ea06ac4ddaa5092a5464915a358da0137b2116e6b904f8fdf93a3a3cf9f53"
+    },
+    {
+      "path": "assets/2d/inspection/generated/iris_vent-v1.png",
+      "sha256": "06d18c2fbeb25880c2b236c1acd36d350dcfb4e946204e6c8477bed72f2f35b8"
+    },
+    {
+      "path": "assets/2d/inspection/generated/manifest-v1.json",
+      "sha256": "635ca0c558e5310d82257a5bd167939f70622b47398915697aa177106bc3816c"
+    },
+    {
+      "path": "assets/2d/inspection/photo1926-attempt-v1.json",
+      "sha256": "a135360634bd1ca529befa7303247ae27431475087fd2d882a4b3e00ef797855"
+    },
+    {
+      "path": "assets/2d/inspection/prompts/iris_boxes-v1.txt",
+      "sha256": "d4fc059f015943c28e9e19683d8233f1889626a87408b4179709ccd327eb1b2c"
+    },
+    {
+      "path": "assets/2d/inspection/prompts/iris_family-v1.txt",
+      "sha256": "0063e22ee256a3ab4b3212600c052dd34a038beb2887446579291538c7d31cdb"
+    },
+    {
+      "path": "assets/2d/inspection/prompts/iris_path-v1.txt",
+      "sha256": "e391233a591a392fc66104f4cb7b6ae6e52cc5d16b825f173382cc7068182c75"
+    },
+    {
+      "path": "assets/2d/inspection/prompts/iris_train-v1.txt",
+      "sha256": "ce723b6eb22cc068daf9dd840acde4e3018c1c834b5ac5af1860058835931932"
+    },
+    {
+      "path": "assets/2d/inspection/prompts/iris_vent-v1.txt",
+      "sha256": "f34c3d6bd9380613f9fd69bc62d3644c10afbddeca27562164ac2e7e40cfec4e"
+    },
+    {
+      "path": "assets/2d/inspection/prompts/photo1926-v1.txt",
+      "sha256": "ef9e4813ec855618c1faa56dc3315255528b1426731469dc54672e1e37d38753"
+    },
+    {
+      "path": "assets/3d/ded_corridor/README.md",
+      "sha256": "4449b5fffed1bc3d76cba0599831d0d59b54803027fd3041c6a06b5024573ff3"
+    },
+    {
+      "path": "assets/3d/ded_corridor/archive/版本记录.md",
+      "sha256": "e4cbffc44176f10616ff291f841d27e39f4b2cc9cc42109e37daaf9a4e507e92"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/geometry_check.json",
+      "sha256": "9d96e86a7b68118a4103bf91a104eb991767f981b7f1f94c06ef531f9ec06ba4"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/cloakroom.jpg",
+      "sha256": "10d82492e04ef91406d4fd4f607abf6932be4f017853d2d129bd02d4c7873cc1"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/darkroom.jpg",
+      "sha256": "536e4014891545fe6d6b6352827eb7056ebe3aae69937aab2c6bc72dbe6f3a77"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/greenhouse.jpg",
+      "sha256": "935b4bbeb530a129967a08c1aff95d7b76bf0285f6e91d061170f50aa213a3c0"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/layer1.jpg",
+      "sha256": "258e2436fed645d99a3efc464fd209a7f3308f099ec3e03832d856bb612c3bdc"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/segB.jpg",
+      "sha256": "8e629b7bacb550c9f4fd2a713b55cfcbfc95f8cd008d15b646d1d158e94dd132"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/stair_window.jpg",
+      "sha256": "24e5c063cace23c51ea0ab8dd818a3a5296b795b2f31782eef1181ed7d93a175"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/godot/turn.jpg",
+      "sha256": "47a0fc86606b6bb3a0dc3c679f52d35d8ce19ab66cc8c8dade0e5248c915cf49"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_cloakroom.jpg",
+      "sha256": "71106baad7811b0c65bfe21cc20fddfee616993d8e79cc6af2398f9d3bc46964"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_darkroom.jpg",
+      "sha256": "dea47fa635a3edcd44ed96369ec7c9bb2b7fedda17be48e55e0936329132e5e9"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_emptyroom.jpg",
+      "sha256": "47931a9340e07ed5e46f6adb027b59602310f226e27f43dfb25954961f2141b3"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_greenhouse_path.jpg",
+      "sha256": "8b719db4656fa76755cf25c222b2a04df1d3bdfc107bb9bcd66b51e07add2bbd"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_layer1.jpg",
+      "sha256": "775c82ce5c8d4773b5bd407afa70351d3a9683c37cf3d7b560bfa27292b8c495"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_photo_wall.jpg",
+      "sha256": "71f6d0b024328ababfa179370fbc0a3b5c5c201abdb91f9b291dca3772d657cd"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_segB.jpg",
+      "sha256": "dca2ef6f1067fc91ed424f74db8816d5c0b51d942b0edb7eeb218cb333bae4fe"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_stair_window.jpg",
+      "sha256": "f1574d91ea7e3f6f896ad41a6516f723bcbafa6d894b0c0145aaa15f1a2dbc1f"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/对照_turn.jpg",
+      "sha256": "beef58ba556f9b67f5effdbf953081a029d379c9c03de19a7b94696abce41478"
+    },
+    {
+      "path": "assets/3d/ded_corridor/review/排布体检.json",
+      "sha256": "100f6dd62c08e52a955c720bbe57997ae75ab5e8f6d6fc047e2382ea27569124"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/00_plan.py",
+      "sha256": "f6aa1989cdb5ca85c8110c9d2af87f784d76fa4cfa1e125ccace81e0ffa3a293"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/00b_textures.py",
+      "sha256": "feaa162a0ad4c00883c493c1fc8abfeb82e8eb6403107f8525bf5cea916b7a2e"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/01_corridor.py",
+      "sha256": "904df67540374798cbb312235b4358cceae51239e0c6f1bf04d68bd7dcc92394"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/02_segB_end.py",
+      "sha256": "b96b9b6eab6572e21049db72fe074eb473113c61d1ad67a592883414cb3959b3"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/03_doors.py",
+      "sha256": "f8868a85e8c9cdd47cd3c90f60d398e1c981498483a16dd9593b17f9064e21e4"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/04_room_shell.py",
+      "sha256": "7efb4af143dc99f2a73552293c131c4ff0125a0f9b649429b65515dd6028604e"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/05_room_cloak.py",
+      "sha256": "db14f9e0798630b8d648047c2f008a165f6df14d4b4b1c3e8b219b49c7efd805"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/06_room_empty.py",
+      "sha256": "322b8be5b064e3bbce04aee178441408b103164fc143f54d4ab0622b1cec45e2"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/07_room_stair.py",
+      "sha256": "40ed6bad90d6126702ea1115a2b3dda818149e18dcb20045d3bf53d53db73b48"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/08_photo_wall.py",
+      "sha256": "ce91f66e9cdb1e2cb57c92afa44934fce9fc414bb2fddd17e12e582a0936743f"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/09_greenhouse_path.py",
+      "sha256": "a86f5e48431d8abe9637736c7a74fadcf6b303d94b8cae38b8bdfa79cb60cf5a"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/10_chairs_prints.py",
+      "sha256": "303537f8bc9e581a57f5c24dc1e4483db11c034886ae1609a0db39decdd4d069"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/20_review.py",
+      "sha256": "574ce3374ae704ba0fc03a37b8526fe460760c4caa4c488c4a3ffa1356e4d80e"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/21_compare.py",
+      "sha256": "f7bb4dcd1a3bfe731dc2d6319f8870b83f09678fc421ba9098be8c4c495d2c25"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/22_check_geometry.py",
+      "sha256": "f3c206b12bbb9615d5396aa74ecae4b2321d57b8516d82b8278dd99b5cbe6ad9"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/23_layout_audit.py",
+      "sha256": "4686a2cde4c72736c1b73acb22c4139c49f8911f5540cd10c82c9d6ce3b8a6ec"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/24_save_archive.py",
+      "sha256": "1f68811e03dd1d259e4c70cabf082f047027bb5c285fc0e42ab637dc40ad9442"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/25_export_glb.py",
+      "sha256": "3641b484281cf38aac18b7db84b1b44b45cb3af523a24d53638f202dab071fe7"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/_common.py",
+      "sha256": "02a6e90bfdae0ab5f5acea2e1145b031673567510c4289880bf5cc0ddb2fb497"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/build_all.py",
+      "sha256": "be60afff7338caef91ef8e3a4cb9a397d7310ac6b07702e2c07af3793615d9d7"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/run_all.py",
+      "sha256": "9291452739c2c6b672f28044893076323e2c8f371f35b544885213fd93373ddc"
+    },
+    {
+      "path": "assets/3d/ded_corridor/textures/footprint_wet.png",
+      "sha256": "ebd0a7581f2ed1052c1ebe974198928c632baf444d2604d3af2e3ca842005268"
+    },
+    {
+      "path": "assets/3d/ded_corridor/textures/photo_wall_night.jpg",
+      "sha256": "b1acb44ce13920d1fc20fa1f9642bcf8d546449f9f2e051449c5931862a1f6a4"
+    },
+    {
+      "path": "assets/3d/ded_corridor/textures/photo_wall_placeholder.jpg",
+      "sha256": "6713ff48f16d8abd848920ad50b371e719f72452890725ea7b090f1e1260aecf"
+    },
+    {
+      "path": "assets/3d/ded_corridor/textures/puddle.png",
+      "sha256": "a2f9c95dece9082ff3a33775e9f45617f3390cb0c72ca65cf492734310f72855"
+    },
+    {
+      "path": "assets/3d/ded_corridor/textures/runner_albedo.jpg",
+      "sha256": "74cf850a987843bdcae8293349a57555e0312e4834b046d710a239ab9177b281"
+    },
+    {
+      "path": "assets/3d/ded_corridor/textures/worn_ring.png",
+      "sha256": "5d40e5b5afcc18f74d2c4f3aef2a8a86309f3216b11ff5be5d56a3c2a5e9c799"
+    },
+    {
+      "path": "assets/3d/inspection/README.md",
+      "sha256": "87c934daad58c7211796943fa68f443340568ec11d95ecdd2521cf9157199721"
+    },
+    {
+      "path": "assets/3d/inspection/document-manifest.json",
+      "sha256": "63be265354bb6588886bd7a1efc8b3596aa568a346b8a234a974a96fd0b2d597"
+    },
+    {
+      "path": "assets/3d/inspection/generated/bottle-label-v1.png",
+      "sha256": "cef135c332aec2c48636de211fd5b3dbfaa2bf80798660523b11fdedbafdc614"
+    },
+    {
+      "path": "assets/3d/inspection/generated/cabinet-clue-v1.glb",
+      "sha256": "5f5ac455a4ef9fe64864ef1858bd27af78b5cb7326f3e3e8f91813bdb646f4eb"
+    },
+    {
+      "path": "assets/3d/inspection/generated/cabinet-clue-v1.json",
+      "sha256": "095148e7b63dd9d9507e6eec178a4dc7b994d9d92ca9e6429a444ca43dbff5c2"
+    },
+    {
+      "path": "assets/3d/inspection/generated/doorframe-review-v1.glb",
+      "sha256": "4d5887a5fb079eeb0b89fbbaa872cf51e33ba8aa527fcaad99f7274e1b68dfd3"
+    },
+    {
+      "path": "assets/3d/inspection/generated/doorframe-review-v1.json",
+      "sha256": "fd13fa12f12932d78ead76b538d0d5697505221c0731123fe79191d1cbdddd79"
+    },
+    {
+      "path": "assets/3d/inspection/generated/garden-cloth-v1.glb",
+      "sha256": "1033de9c759fedd47ad71d6a4937c62a9ec466fce0da60b4e965ff4b9d356c99"
+    },
+    {
+      "path": "assets/3d/inspection/generated/garden-cloth-v1.json",
+      "sha256": "827aa367c6bd7019f7b06a53cb1e36c39302352e2b983c560390830e119e4980"
+    },
+    {
+      "path": "assets/3d/inspection/generated/garden-print-review-v1.glb",
+      "sha256": "2269b9880adeed43331f852ffed92693974b2282b08f678371b15b6f38157518"
+    },
+    {
+      "path": "assets/3d/inspection/generated/garden-print-review-v1.json",
+      "sha256": "1e3ff491d1cccdf333ca90953b22bb97c78d46c29e4067f022065edf1c0ff33c"
+    },
+    {
+      "path": "assets/3d/inspection/generated/garden-vent-review-v1.glb",
+      "sha256": "84d5b91d2cbe8dd6abaf078eca32368be1567e232eb02a3e674b591bc3940ab0"
+    },
+    {
+      "path": "assets/3d/inspection/generated/garden-vent-review-v1.json",
+      "sha256": "29a07f42d3f018a9f4ddf330c7258a8b78dc730910b447375c450079689a1cbe"
+    },
+    {
+      "path": "assets/3d/inspection/generated/latch-review-base-v1.glb",
+      "sha256": "ae08068791cfed1b52ed957be51dcd2ad46a5c4478040caf26c2d28beabbecd9"
+    },
+    {
+      "path": "assets/3d/inspection/generated/latch-review-base-v1.json",
+      "sha256": "09cb6bb80fd1094c5ddfe7f40f5e85d2af331a366e00c070f2d266932363c4e8"
+    },
+    {
+      "path": "assets/3d/inspection/generated/shoes-v1.glb",
+      "sha256": "f5d797bd9c6e9152880f942d3bdb97d6890068dd6f0e586ab8b0acbd0e62ea4a"
+    },
+    {
+      "path": "assets/3d/inspection/generated/sweater-v1.glb",
+      "sha256": "42b4843005021827afe6f6db3c122809f2cac2ecd6829b70f67f6e575f7343e6"
+    },
+    {
+      "path": "assets/3d/inspection/generated/tray-crystals-v1.glb",
+      "sha256": "e19534e351ef676f79ccdbea68b6462af35284a6dfb78847d35d6f929409a037"
+    },
+    {
+      "path": "assets/3d/inspection/generated/tray-crystals-v1.json",
+      "sha256": "afbf65fd09c1154cbdf55f48fe0aa093363a85913484985bda60b98a6a09cf82"
+    },
+    {
+      "path": "assets/3d/inspection/native-manifest.json",
+      "sha256": "7994d6a371f9cf592763921ef579b31cdede62c068e676e0617fd3df0a122b22"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_bottle_label.py",
+      "sha256": "1a0877d0fd3239ec41068b3422c430e068c30b8f5e010e91ef5dc053f84cc08a"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_cabinet_clue.py",
+      "sha256": "3c26dfff162dec546732116228921ecff0a17e986341c60892bd8a335168ec0a"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_documents.py",
+      "sha256": "dce76c05bfda1d76bfc6f8024ca2db6dc31afbbb4fa87d4aebe57e273e4a066a"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_frame_latch_reviews.py",
+      "sha256": "dff5470f52b50f6345697e29b86113e2b5ffb24f1b4883b7be4eb006f76daf6f"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_garden_cloth.py",
+      "sha256": "3b91859a2ced89e6a1daefdefe59fe16833766bc7acfd4b190a8682ad7e4e46d"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_garden_reviews.py",
+      "sha256": "f3e2bef1a1fb7353fd98ea39b85759aacbfbbe96cc689e3101775564c1163c3e"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_shoes.py",
+      "sha256": "0fe181951fb8de6cd085520fda270c86c68137065674252f66a67438b417a62f"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_sweater.py",
+      "sha256": "9acf456532b0366e5a54ab7cf73ed3097aa0637da081952cba0e6482bc8f3a86"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/build_tray_crystals.py",
+      "sha256": "3ca27950d8257c2b6d15cfd9c74df3b7964a3b840fe83d367eb6d073402c0ff4"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/handwriting.py",
+      "sha256": "0e43ca76dc0fdac2cbc4f0eb4f08704f8308c5a7f9372856c37b53e508800fdd"
+    },
+    {
+      "path": "assets/3d/inspection/scripts/inspect_cabinet.py",
+      "sha256": "7cd979781b50bc1143d6cc64cd4b5339ebacb8394466879a31d928aa40360842"
+    },
+    {
+      "path": "assets/audio/music/midi/corridor_ending.mid",
+      "sha256": "dd4bf6e5fe3f9d03d157a208d7816e95b84b60143db31175ab1e7944e9a605dc"
+    },
+    {
+      "path": "assets/audio/music/midi/corridor_record.mid",
+      "sha256": "4d6569799e6d0b4582599f585e2a6b3a0be70caedab28c4a00c0c9de60e66ecd"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_ending.ogg",
+      "sha256": "8f2fc96040b1a5bd163291c87d8cd42d04e4d9ee69c089594a411d4829e5b650"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_ending_78.ogg",
+      "sha256": "cb2b5cfc8dc744d726f3b9604809ba5e76e6f335cae520d405494bd29536d5cf"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_reactive.ogg",
+      "sha256": "0a9a0e33e22c3a663bc8cbeffd7f3d4974ad579ae26626fa61723dcde1da2fc2"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_record.ogg",
+      "sha256": "7cd219fdc5ecd5eb4f63691382285ee611fb64b58eec224127bfd63d692c532b"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_record_78.ogg",
+      "sha256": "fcb25f6276a04582f0b39bfffcf8f69d5040e94084f40f5cbd149bd96668e961"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_steps_banjo.ogg",
+      "sha256": "776455f952a2fc822b049d51dbb14c71989973c2bac6bf6143525a01d32c8b41"
+    },
+    {
+      "path": "assets/audio/music/preview/corridor_steps_piano.ogg",
+      "sha256": "1dea62322ad1bc162bb95d4396072451eb5be0acd47b107299477e3deb9c4aa9"
+    },
+    {
+      "path": "assets/audio/music/scripts/compose_corridor.py",
+      "sha256": "074182ec993c9050fbfdd81a261752035787ee0c9301cb0c9c776056328da544"
+    },
+    {
+      "path": "assets/audio/music/scripts/corridor_reactive.py",
+      "sha256": "6155bc8d5bf6e54e66f75626d0b2e712c96616adfa42df489177bb2c8702406f"
+    },
+    {
+      "path": "assets/audio/music/scripts/corridor_steps.py",
+      "sha256": "3ada9833fc349cc7d85fc6c6c89e7734b868d1df94f9ec6e70124f99d562de0b"
+    },
+    {
+      "path": "docs/13-3C与输入映射.md",
+      "sha256": "49d1e32bca38c98567df5c9e4cf5be26266c496afa571ea9dce17483f4588fa2"
+    },
+    {
+      "path": "docs/任务/派发/T-043-回廊关卡效果图与平面图.pdf",
+      "sha256": "963d4728a1949145688534c924e6301e5c7f6a492f7631eee80dd361a5749bff"
+    },
+    {
+      "path": "docs/审计/2026-10-22-PR35/manifest.json",
+      "sha256": "771477d7cd89b3e6309c145dc21aca75bb505ec573187924dbd49735abc85f44"
+    },
+    {
+      "path": "docs/审计/2026-10-22-PR35/接入拆解.md",
+      "sha256": "8a3b4f8f551a25239c77ca59c0833e6514a2078fac142a4660f3edbb4820fc88"
+    },
+    {
+      "path": "docs/视频/展示视频脚本.md",
+      "sha256": "dd0876c6864fe734cabaec7a542f4d63073de3b7f5bf3173e0c3090ff7d2693f"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/README.md",
+      "sha256": "7768e2d5413800799cf624ac80a7d09ab5df1e01dc4986c08464a8513f20d82a"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/controls.png",
+      "sha256": "731f8f804db952ad5e7e740ad500cfb4e34e21e30e3802d5ecba74360442f272"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/document-resources.log",
+      "sha256": "f9e74a70ff8c57af2c0fd5f3d7d092fd3bc8ec09dd14d0c344353184d0e036de"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/gamepad.log",
+      "sha256": "924d74599f0bee4824b8e45b00b5e824200f953c9c3616319aed8b8ffffc165f"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/inspector-regression.log",
+      "sha256": "e8e99296c9e364da60dfb1639193377d4a89734949b8b15d4310ea13b41504fb"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/settings.png",
+      "sha256": "eb7b01d568ae9c2a0df914c41823c2c22fdde044678a30150c9768f0f74d7696"
+    },
+    {
+      "path": "docs/验证/2026-10-20-手柄适配/targeting-regression.log",
+      "sha256": "3354e2058862dde544827405434648c76f50f0c12e49eaff07168d1a35d320ff"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/E键提示执行路由.log",
+      "sha256": "b7afddf7fb21a3888715423beac77abf113807af788d98b5adaf6b2995e09f70"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_draw_boxes现场检视.png",
+      "sha256": "6e45ab609e5c02118007096525e5998b13610bada3a30fde9623b17c983ba238"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_draw_family现场检视.png",
+      "sha256": "a94486741a127b089486297fd0968fe04d48516378d7cf023b54d55aebad9e87"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_draw_path现场检视.png",
+      "sha256": "b2578b1a01ac4264fe9932b6167ca28da0897507186af9364ba67108af7dc041"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_draw_train现场检视.png",
+      "sha256": "d79ce0c2cf848dbe74a82b725cd083780119360a6597c65bfab6231a8031a13f"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_draw_wall现场检视.png",
+      "sha256": "e4ad68fc935301f39733552b5cf10247aeff1bcb6d4a791fd9acfaec987f2cef"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_gh_latch现场检视.png",
+      "sha256": "6cc63162e77e7ceca3bfbbf6b5e759d6224512e6a614fccdafb790b4c7687b42"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_gh_photos现场检视.png",
+      "sha256": "a09946b78d9ab1fcc1c7a09d16299b5ffa87bb8d3f8cc1fa7df2f8d67b32c5fb"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_se_cards现场检视.png",
+      "sha256": "2c508d6530b6b01efeefacb60c7fa6a298f8341d1cc5122f9db5df7833052cf0"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_se_gloves现场检视.png",
+      "sha256": "8d4991ec98ff82bb637c87629e012a25cd348be36c59beee1a4f5152a16ea672"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/hs_se_photo现场检视.png",
+      "sha256": "804eb7e9dc4576876ae79461e2f85cc74c13134ad76b07076af60e0600c55a1c"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/五源字迹实物专项.log",
+      "sha256": "f1f6aa258fe166e40a5997a7068e8c2d83b29afcb0ef56adfd6114e224303557"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/五源字迹放大.png",
+      "sha256": "418dcc6fe9d3c87f712c663a2dadce6fc17fa000751dc696d2a762713b09d865"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/五源字迹现场.png",
+      "sha256": "c8d9dbd3bb78dc854ff1ca7fbfc130ebb2b0fd58b2e01bf21ae7c4aea7bae9e4"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/五源字迹笔记本.png",
+      "sha256": "7e4cf61659184ff3cae411086273d5ed466d6d0d94e133d587b464b2747c64f6"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/五源字迹笔记本放大.png",
+      "sha256": "d7f895c1285aa62598d6de55c1a756c8dd6dd48370b6b9d39e18fbfd21e14c49"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/信件正面.png",
+      "sha256": "ec3603be2e26c5c027794dd011e2ca95713c69161a62c8b9e4f873e3c3ace34d"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/信件背面.png",
+      "sha256": "ad0594c5d56dbf6809037a8d098150b354044c4408819524181eff54f9aabd82"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/停显盘实物特写.log",
+      "sha256": "77ec21019c0cbf2536ab7360b403ceb7f841d8b2ccbe60dafba7705566066969"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/停显盘实物特写.png",
+      "sha256": "8f17b8a75631b30c4bdbfdcf57be03a74be04e0b235e199d8bb2e7c7720e35c0"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/内容检查.log",
+      "sha256": "309dcb0ebb3ef57970f778ad7543cfaee9f0e7e2ab35a72a683e6ab9511ac244"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/判定-修正后.log",
+      "sha256": "82d8710a8b9b392d380efede19b22850029f871007fdb0961be29ec336d8acf6"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/判定改动内容检查.log",
+      "sha256": "309dcb0ebb3ef57970f778ad7543cfaee9f0e7e2ab35a72a683e6ab9511ac244"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/判定改动通关-保护.log",
+      "sha256": "0bb6ca345e08818f65bc3cf1755e1276957f2ea1cc7e69a7df46fd5d4ad3feff"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/判定改动通关-取代.log",
+      "sha256": "caa6d7d6b365298d528deb28bc3677e6b90a1d031b08ef23dbed24128f9be6c5"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/判定测试.log",
+      "sha256": "4bcc2c37cf48df41b4ca2d6723ca897218d23950e13fec490107050837e30ebb"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/剪报检视.png",
+      "sha256": "6541a399ea928ad8db07f74995713523e22e9a8867f84573f077d835d129dfd8"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/动态照片检视.log",
+      "sha256": "7087e7371d3740081ad7c241857a1c7c103bb99a0a2967c2b3762944fbe32396"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/原家具实物拆分.log",
+      "sha256": "a1b1b64d232476d50530d32269b8947d3877f704aff122ee368d79c528c3c49e"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/合影小样正面-待替换.png",
+      "sha256": "7c8c644fa557c0130ebbb34345b558c1cca581539a85fdc24cc7da126d0942da"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/合影小样背面.png",
+      "sha256": "3d8fa0a44cb6bc8ae35a207182b262017dec1538fa06d0f1ab88735bd2585bbf"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/同分抢选-修正前.log",
+      "sha256": "760ffa2363b21ed64716c94bae9f4a2506e01d260c403ab7b439e31803bd57fd"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/回廊E专项.log",
+      "sha256": "bb070bc1fd5044f49f2861e54eb7df5aaf7e52a3dddacc1644f7124683c445c8"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/回廊出口E.png",
+      "sha256": "dd33733a2c7d43cef098b2bd21046b1d8927a893ad2da6b0ecf596ea99a0b1d9"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/回廊暗房门E.png",
+      "sha256": "38ac6fc3ede0ff3cf1f51ebe939e61d2d1e34d8bb60a8948599c6e9334810a66"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/回廊第四椅E.png",
+      "sha256": "04de24650741d39f11b4b4ac2877328f827e1bcc0f0fb744920d6427cc15dd43"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/固定复查共用检视回归.log",
+      "sha256": "bf1957a6846befc189bdfaea9be4adefe46cc3b126367d6887b24c2a9c64e3ba"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/固定现场特写.png",
+      "sha256": "d5c2fcffbd9bf83cc0ce52fc9a70e0b90d024d43cfc9b604633873e6faa79a41"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/固定痕迹笔记本复查.log",
+      "sha256": "1034796129b49702e3738a53f714d98ff7dcf7b3c97216c4bf4f926d4f5d1311"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/大地图检查.log",
+      "sha256": "f1a06304f0f8419b839bdbe9b9c79dc761f9b7d762a2dc5f0c0acf6c05f4de06"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/字迹复查性能-复测.log",
+      "sha256": "d38d859b04d545474f38a9161d15ee5d4254e43473091595dc1ec15ba63ee66c"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/安布罗斯笔记实物笔迹.png",
+      "sha256": "516fe501229759e6ef06673164a2272f6fd800452169e4190f850e336ef153af"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/实尺修正-共用检视回归.log",
+      "sha256": "bf1957a6846befc189bdfaea9be4adefe46cc3b126367d6887b24c2a9c64e3ba"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/实尺修正-衣物回归.log",
+      "sha256": "a1b1b64d232476d50530d32269b8947d3877f704aff122ee368d79c528c3c49e"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/实际E键检视.log",
+      "sha256": "8b6ffdec2f58f66ce093147d892e9c541d349ca2bba0253ded0d49f1b9688823"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/家用账簿检视.png",
+      "sha256": "b8008fbaf49a1bcfee80bd8ec85a143e6d9d3306c4e93a97ee044c164927217c"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/密集候选判定.json",
+      "sha256": "fc35bfd525bedc18b35cf26a1b6f78c32aea153317f8dac483bdf659b2210018"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/密集候选判定.log",
+      "sha256": "df5f846fa43d405d69161b7ae1cc338a3e169806726403b4393a7cf674fe143f"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/密集判定审查.html",
+      "sha256": "91c2bbe1f4cd3ab0bbdf3ba8ae3e2969beab38da7298d9f0855681a82adbecc5"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/少年毛衣检视.png",
+      "sha256": "3bec8298ed5cd3968549757b97ff7db45d407ac1e89babaf987f37b8bdd1f27f"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/当前回廊判定回归.log",
+      "sha256": "5d405640c61b61f669fc47d6ca33c361e708e93cedc17ec40248192ce17bb51a"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/当前衣柜判定回归.log",
+      "sha256": "f575c85d3ad58f42f63d365dcd15d2ae1f63bcc6fb89076a363be5809f3451f1"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/性能采样-存在并行干扰.log",
+      "sha256": "0e6470f65db472e86c293e9d2a44b7243e53940034102a910f536006249b91f7"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/房间切换释放对照.log",
+      "sha256": "7d1a28400140aed425c742e5249fdd69a9f13b162a0e75886911eeba82d60a71"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/手写字形分离检查.log",
+      "sha256": "93d492595d9aec9f6301068ca71109084ee3ab44a94f974ba95cbb510ab35624"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/扩展场景性能.log",
+      "sha256": "91c4d6f28037b7a7b51145fdab1fa5d978194f611c973d5ef2c37faa516db1f5"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/授权补定-内容检查.log",
+      "sha256": "309dcb0ebb3ef57970f778ad7543cfaee9f0e7e2ab35a72a683e6ab9511ac244"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/授权补定-纸面检视.log",
+      "sha256": "ef170efeed7ddebd9ef8b034d8893d8838e9ed826e8b45b52567b3451b9a02d2"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/授权补定-药柜检视.log",
+      "sha256": "3f1a1663d0e4fc91e86025f721d027a4c09129b703c9cbe2add897334b4a7756"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/授权补定-通关保护.log",
+      "sha256": "bfb009715e01c653d5825e6960c05eee2a0f1a52c2aa46deb405f363bc67bafe"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/授权补定-通关取代.log",
+      "sha256": "44b273db14b23ee58a983d47286eda9a1f774999a08b6c0a40c7c457c19444fa"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/摊字接入-共用检视回归.log",
+      "sha256": "b94f2ee55f67173df7b9ec692943607336a6d2f60d504224b32d6b6627407ea0"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/摊字接入-内容检查.log",
+      "sha256": "309dcb0ebb3ef57970f778ad7543cfaee9f0e7e2ab35a72a683e6ab9511ac244"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/摊字接入-大地图.log",
+      "sha256": "f1a06304f0f8419b839bdbe9b9c79dc761f9b7d762a2dc5f0c0acf6c05f4de06"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/摊字接入-客房行走.log",
+      "sha256": "daf4a48e725702c2dde132bc542ce00d9d05fff5cad7b405cf4ff7ad7fe76281"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/摊字接入-通关保护.log",
+      "sha256": "43af641529c43159e9e20bf4c87bebcb84a7e611738ba3ca2f7e1534c12c5ed9"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/摊字接入-通关取代.log",
+      "sha256": "a848e0cc4019bcbe1b905d972a0ef84a8ca5500d011643e14014b98e888a809b"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/新物件性能-并行干扰.log",
+      "sha256": "520780c239e2e06c28f28bc8837a3856d0be2da1de167b09d97a41b378e92ce0"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/新物件性能-独立采样.log",
+      "sha256": "676b81b011ab4e6ee0848ddb4137fa001c295824f82deee6ef4be6d57e4b9c39"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/暗房特写性能-独立采样.log",
+      "sha256": "068e52299b5563abfd5068a0b5d27d1df6a991b4ea001a523db1fc09a95c9694"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/暗房行走.log",
+      "sha256": "01d534ddf549dc4b5c5aba13017b3c580f4e6177e219b1aeda6eff0510700fb9"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/档案室手写08.png",
+      "sha256": "68b813ac8d9c58367ffa5902441ef64bd7f7058c387c8bebbd48ceda04b05960"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/档案室照片检视.log",
+      "sha256": "4786f7b7f6b0831c2de2d949f37dd9b207724ac11dd4471f90c23fe407f61159"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/档案室行走.log",
+      "sha256": "f1d17c0bade310509f26b647613b96b23a9c2d5b0c6933afd0c5ca1c692b1808"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/检视-年度照片回归.log",
+      "sha256": "bf1957a6846befc189bdfaea9be4adefe46cc3b126367d6887b24c2a9c64e3ba"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/检视审查.html",
+      "sha256": "ce404cb8501522d6ea227508a2f061f610dcc38bc154ad7ec06963861b9290be"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/检视性能-独立采样.log",
+      "sha256": "8d12e6cd4e164da49d4d8ddaca16d28afc1b78999df72dccddb2b22758614006"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/检视运行测试.log",
+      "sha256": "91cc8e5cea619a0cff530bee1936df27883119429bcb39cb8603321e5c43af5d"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/温室行走.log",
+      "sha256": "d5252fd3e1032d33000ebc7a8756ad3fab1b87f089467becb0ef09cbe3bb3189"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/物品资源清单.md",
+      "sha256": "141f29d68ffb83d6ee1ce2700f8799485459961b7e32f022bb92acf812add092"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/独立物件复测.log",
+      "sha256": "a1b1b64d232476d50530d32269b8947d3877f704aff122ee368d79c528c3c49e"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/皮鞋实尺-修正前.log",
+      "sha256": "844889632ad6e6a069496c234ec4ba748bfb3e264991f7b724f57dd7bee72533"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/皮鞋实尺-修正后.log",
+      "sha256": "1135d80935ba6a91589089fb12d8805380cff3031d1a0b030022e38a0f7a14b9"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/皮鞋正面检视.png",
+      "sha256": "37bbf876ba4d981d5baf7aa43d28295c8d03c2539997a62b013347a177f60646"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/皮鞋鞋底检视.png",
+      "sha256": "b26df6ed7300b4002d95f3a22627e5e81d4c006495a410550886b8ce29e0b487"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/真实记事本检视.png",
+      "sha256": "3d229cf14ea27067cd6bf4601ac539001aa0b4dabb38d4e0da1a86b37f2456c9"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/移动门扇遮挡路由.log",
+      "sha256": "9ddf6077707471594332f93dba81481a46aa1fd5b667e3fff70e9d958e3095ad"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/笔记本皮鞋印.png",
+      "sha256": "b8dda775bc7c04e7717d32e0b514746f65e95e2df5a572d4b510dfefe6987dd3"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/笔记本盘底结晶.png",
+      "sha256": "926d918f8d4d0a6bb2dd230a90089bd9f36627b32936c137b714f625871c698c"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/笔记本药柜灰圈.png",
+      "sha256": "5e250c9dc99f574d266ce51c4710aee96760f5958a80a6c16230c7de83fe69ce"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/笔记本遮光布.png",
+      "sha256": "76299a9ae76f7a3740ccf316c98aa3ab6517a8783ed6cd7a237326706427c91a"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/笔记本门框刻痕.png",
+      "sha256": "cc655d9eb0d2f04b45edd0292f6028411180bb8e26b55d802c22d651fd74039a"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/笔记本门闩线头.png",
+      "sha256": "69089799155b733396bf12f3ee960a144fb3bdceea1db7ad45590ac6e65958c9"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/签收单实物笔迹.png",
+      "sha256": "a20fe8baa32a37c68a13e2a43239aa6f101798f1da542e96f9770b49402058bd"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/细节照明性能.log",
+      "sha256": "28963a3e4eafd69938b0a94eb89d7f91e10253766e41257c59f086cb86c8b821"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/花园固定痕迹E.log",
+      "sha256": "40a8715023fe540e5dd0d7570ce01107fe6f9103a7ea00978127f1643e34db5b"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/花园行走.log",
+      "sha256": "6f3b4394c09326f5699823ac03b41fad1c758f6dd2cf3ede44df0426e167404f"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/花园遮光布现场.png",
+      "sha256": "03dd2ca70712af4ded360c04d213f8544e9d1911e59cf6f7488db85227ab5eaa"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/花园鞋印现场.png",
+      "sha256": "5d1256a3a3da9792ce47df4884e4b0050c58580155f638e17ffdf20640b2e73b"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/药柜实物特写.log",
+      "sha256": "3f1a1663d0e4fc91e86025f721d027a4c09129b703c9cbe2add897334b4a7756"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/药柜实物特写.png",
+      "sha256": "92d1e145c0d80d362b2956d7ca1a0ae3f7d6379429a27cf7edee3c3d3eac4b1a"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/薄墙穿透-修正前.log",
+      "sha256": "1e42028d1bafc759533697702c14eee9da937382d49c0dddda8f759677769f84"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/衣柜开闭验证.log",
+      "sha256": "f575c85d3ad58f42f63d365dcd15d2ae1f63bcc6fb89076a363be5809f3451f1"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/衣柜房行走.log",
+      "sha256": "3b60b6ccc0a86ebceea0f0d4eaccff5dc16ff5151c2afc5a58fd61dbcb29d425"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/衣物-年度照片回归.log",
+      "sha256": "e266849f8d9fa2060f276648abf7e6764b22edecba7ada3fed06eb474090c754"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/账簿实物笔迹.png",
+      "sha256": "65e70b9496ee0e8d7b98fcd3d011e55d37e772df8d4a0db7709bcc9cc527e1e5"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/车票检视.png",
+      "sha256": "932584a96ad84f79875b9ec3e723e698cfcba48949b1ae2172dc105c57722474"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/进度与验收.md",
+      "sha256": "5e183b17c56ade1a73f5a3f853244e332c16232c34d4648ad5f23e207be64545"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/逐对象判定.json",
+      "sha256": "652d1282612ab2605c67c05a6d70671d51de101ae95331d5ab8d2cb035e05760"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/逐对象判定.log",
+      "sha256": "d151362037320f038149e9d2803018bfe4b9dcc99ac0ee1e8d3976389f81d836"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/通关-保护.log",
+      "sha256": "8fd2a86f9f467c6831ad2ccd96d572e20160c54c37fa55e8cc7f7ef56d20a6ab"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/通关-取代.log",
+      "sha256": "c3919cbd740e54ca689b41843324ac77a174c35d4b545fe06b17b4ee887624b1"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框刻痕现场.png",
+      "sha256": "0b37abd9d31e37a8c46d139af870e35bae69b6f1f701f96e54e3345bbf1644d6"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩内容检查.log",
+      "sha256": "309dcb0ebb3ef57970f778ad7543cfaee9f0e7e2ab35a72a683e6ab9511ac244"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩大地图.log",
+      "sha256": "f1a06304f0f8419b839bdbe9b9c79dc761f9b7d762a2dc5f0c0acf6c05f4de06"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩实际E与几何.log",
+      "sha256": "8e4fedc7d9fa9401680d6d9cb77a60efb84051ed9a845736affb47705c630b63"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩性能-并行干扰.log",
+      "sha256": "ab2b2943cdd0d4665c397d57a0dcf0abc5cbdb1fad426b82c6e41d73b9744987"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩性能-采样上下文.txt",
+      "sha256": "8081f0d69e94adeaff611f1a6274a8471c69ab4256bec6477ff8d4a7b9281f7b"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩档案室行走.log",
+      "sha256": "f1d17c0bade310509f26b647613b96b23a9c2d5b0c6933afd0c5ca1c692b1808"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩通关-保护.log",
+      "sha256": "274b12c687d00ac5e23bff8645bf0cb347ad24b33a2603a70547d5dfa6b2f269"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门框门闩通关-取代.log",
+      "sha256": "b71e4184a94ba1abd712a19eef6b47dca1df2e0fcf58f76a09443cd1d1b55d68"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/门闩线头现场.png",
+      "sha256": "cd5405e9e2b90e73c92deea2e4e1c8d1aadf6b0c33c30aad17eebcc603a7a90a"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/降灵卡片实物笔迹.png",
+      "sha256": "6adbeffffb897a4d2456d3403f2f0c312501049deaf7b1bbfe1ead94c09d533e"
+    },
+    {
+      "path": "docs/验证/2026-10-20-物品检视/降灵卡片检视.png",
+      "sha256": "320da9a24f36869644f6028b39ca633069998745b1ffa3263e39de4442a2ce41"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/index.html",
+      "sha256": "c3a3e26a5c77cac7f91029890600862d938dea66fbaa548bfd4f1dc9dc29e1eb"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/交互与重置.log",
+      "sha256": "bb070bc1fd5044f49f2861e54eb7df5aaf7e52a3dddacc1644f7124683c445c8"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/内容检查.log",
+      "sha256": "309dcb0ebb3ef57970f778ad7543cfaee9f0e7e2ab35a72a683e6ab9511ac244"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/剧情-保护.log",
+      "sha256": "130a4c33d6870d2b92e9b8b85d98e38f8e13b7f76da381866dbd4e4df1f1e598"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/剧情-取代.log",
+      "sha256": "d6b9d0b88108271f81c342fad6c9dc4f37a36c49bb21afaaf74926ce4da30a69"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈1-尽头门.png",
+      "sha256": "e73c4d54d7983ab44b3b5494b475c453d941bb32672264255190a5e789739701"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈2-尽头门.png",
+      "sha256": "2f6a1345b557d1fcc40274d76f8e4cee9627b9de1bd62cc55c2e78f312dd510d"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈2-暗房敲门.png",
+      "sha256": "077812ff27be89d5b5d52d727b82ef45a88e7f95ceb2ed097b5eb86e8389efed"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈3-尽头门.png",
+      "sha256": "8af3bcc3ffe443ed9f082dfc9e0dcd9cd1edef11bb0678d189474e53ee88e255"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈4-尽头门.png",
+      "sha256": "5fd76d028bebc09d110b71a6d2ccecd13304f7436e85b9c590d60da5397a30ae"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈4-暗房无回应.png",
+      "sha256": "515b12c617654fd71d06e9c10021502051a12d71eef9d5156bab1600fcc117d7"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈5-第四椅.png",
+      "sha256": "0afd07f685cab8e4788ac1d71eca6384710199b2acff25ebc84bd2186234c61c"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/圈6-伸手.png",
+      "sha256": "591b9de609136114fc9abf21051c8bb73a341b8b3ac7f54d2b87891a4e11317a"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线1-推门.png",
+      "sha256": "1ff7c03f57c33c1c1b73ebbbb30cabc6acecd090dee0396a659577fd323d81ec"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线1-笔记本.png",
+      "sha256": "d886c10f36962526b1c737096d19a246ba5ca44c807799ad480565c2318c148f"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线1-观察.png",
+      "sha256": "1683ececa9753bee77082618b9d4f1dde6ebebcc42ab9c16b535240f2098346d"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线2-推门.png",
+      "sha256": "1efd755a11793302a8793d80ecb6efe4a4469e0c068cf952873b21851211a0a4"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线2-笔记本.png",
+      "sha256": "a3718d14858d94a6b04ff74bd77c52da77313f4cd3f881c515501eaf463d9a71"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线2-观察.png",
+      "sha256": "3dd21ff17a55fb66a4ee21a24feb449a680ee2a128e4025591534e296520ab8a"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线3-推门.png",
+      "sha256": "2a37e5ecfd96f7f3839c0333782ee202139ee4487baadee28fca31ab2390f73b"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线3-笔记本.png",
+      "sha256": "4546d5d3221ff24001ebf926d5ad64b254a756eaaa0ab62eb9634f96e2a60058"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线3-观察.png",
+      "sha256": "a5e7f3fa0a4bc272fdf819fdcdf44153040626079a244f0b67438617f7ae89cb"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线可选.log",
+      "sha256": "0e5eef8aa0cd02378a5cd4823b80e52642287facaa4e7f11f39059e1d3fe477b"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/支线可选判定.json",
+      "sha256": "81a4797bdf2a83181f49e2c076f46179773dc92e6c30e5bd99ce244b841f2679"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/无界面判定.json",
+      "sha256": "a2066df4b20fe8a1218bc1e8421020833be7b06c121e51301df15613481ed285"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/玩法-实机.log",
+      "sha256": "868ab5899cb231d29b483be54017a9130787c48bb4e9711365fdeff30452f8ef"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/玩法-无界面.log",
+      "sha256": "ef85a3f3796fae9f12174a6f1ca7d2dce6d0268b8a6b7c5505797599eca5988d"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/玩法判定.json",
+      "sha256": "a2066df4b20fe8a1218bc1e8421020833be7b06c121e51301df15613481ed285"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/退出警告-基线.log",
+      "sha256": "7d1a28400140aed425c742e5249fdd69a9f13b162a0e75886911eeba82d60a71"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/验收清单.json",
+      "sha256": "01115d474d5385608c8505f3d2fab60f5c22495fd587e6da2a996ef75a592d0f"
+    },
+    {
+      "path": "docs/验证/2026-10-21-回廊接入/验收说明.md",
+      "sha256": "6e43f0047ce1e37b424eea2ab87c67ce1ed64d5dbdd809fe8a95203bc1195234"
+    },
+    {
+      "path": "docs/验证/2026-10-22-PR34拆解/接入拆解.md",
+      "sha256": "ff69ab95b8b8c25d81d095d539517f2308347056c657e4d2c61a7de9d1d69f6e"
+    },
+    {
+      "path": "docs/验证/2026-10-22-PR34拆解/文件拆取清单.json",
+      "sha256": "6488d8c91e64bf8203c59272060ffccee2eee2244e18f6f65f5586cfa9a8b37e"
+    },
+    {
+      "path": "docs/验证/2026-10-22-PR34第四章比对.md",
+      "sha256": "efdae1957595dcaba3524e1106126f82cdfb6a77bb5bfae78af46f652f1c7648"
+    },
+    {
+      "path": "docs/验证/2026-10-22-对话字幕-demo/README.md",
+      "sha256": "6ed5c26bd40f90e9f93042cfff3ebe8813af181d3a9c522666a69563fa817119"
+    },
+    {
+      "path": "docs/验证/2026-10-22-对话字幕-demo/cutscene.png",
+      "sha256": "00cd41ff20c57964e0c02b01c4dfb7d1e8fa172718caa29fb63b37eba1bdfa12"
+    },
+    {
+      "path": "docs/验证/2026-10-22-对话字幕-demo/npc.png",
+      "sha256": "4ae1405146e254ff10f2775ebb78c0e545fd5b53d8f106cfd9b0248e981da99f"
+    },
+    {
+      "path": "docs/验证/2026-10-22-对话字幕-demo/plain.png",
+      "sha256": "3ad4bae8a9733e75d461e1d591113f5f85d629b10f748bad6ff0461f4dde62a0"
+    },
+    {
+      "path": "docs/验证/2026-10-22-对话字幕-demo/smoke.log",
+      "sha256": "643e419430832cbeed8be2ff0427a5e9d62f78d7932d78dca54036320fcf3a08"
+    },
+    {
+      "path": "godot/art/footage/night_photo.jpg",
+      "sha256": "22d950c073bd115c8f673a9077d9ed0698a721d89ccd055707530d8d66370f84"
+    },
+    {
+      "path": "godot/art/footage/night_photo.jpg.import",
+      "sha256": "3925332a0b47b4881d797f74edd33c15ec11e4ca94f57e47cc9369004c854e5f"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor.glb",
+      "sha256": "c626ec63a2757176e05e1a4704da13528a0635204e59fe7ebd4ab6e260d9d60a"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor.glb.import",
+      "sha256": "1b4a2d148a654cc5f3e3935087a09596d8db3a317b12c8b39191b6c23fe6ec77"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_floorboards_albedo.jpg",
+      "sha256": "3fe92951b2321d19f5092d6a0348dba2bcf205e250d9e9bb8d33c9742b534874"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_floorboards_albedo.jpg.import",
+      "sha256": "1361e476f8256f21f72a63ffac25d736a5523d73fcecd105cbbf8c5c5fb50eb2"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_floorboards_normal.jpg",
+      "sha256": "3ba581ad4ab56372e46ce6d20838260f6e2639ec7d2eaa02aa67290d16025072"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_floorboards_normal.jpg.import",
+      "sha256": "318f0f04b22d50705b9ffc81644882dbb49b3cac0c096a6ac86ecb87f90caec6"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_flower_hydrangea.png",
+      "sha256": "d499f56724ec05bc371f79b7ecf5f4389c0b114093d0697daf05b7de6e44fcd8"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_flower_hydrangea.png.import",
+      "sha256": "662b9eb51497bb51f90281451afe3b47a5bdebc4d5329d466f169807b3073038"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_footprint_wet.png",
+      "sha256": "ebd0a7581f2ed1052c1ebe974198928c632baf444d2604d3af2e3ca842005268"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_footprint_wet.png.import",
+      "sha256": "2351a724a876e890945395989eb45ecc8648d955575a47ac38e2a3c84d5eed63"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_knit_normal.jpg",
+      "sha256": "c367ca9a3b72548bf3e4159e166445865315192939d81b2e8b395257e542b010"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_knit_normal.jpg.import",
+      "sha256": "b0a478ee6975888d83fef84708202de2a8dd549ee06b1977c0fad66e8c48d993"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_leaf_broad.png",
+      "sha256": "670cfac3f85a5381b12ccb0ccbaf3622ebda772c20a9273d4a02204b5630a86a"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_leaf_broad.png.import",
+      "sha256": "bfb507d9ab255d60720303c257068c213b689edeccb867e3da9d697731760e8b"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_leaf_fern.png",
+      "sha256": "8406340322e1b7910a3714e683b03bcb54376c978c2973de166af95747b5cf8b"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_leaf_fern.png.import",
+      "sha256": "625c7645878a2b61defdeef6d0ed87c8aa530874ae33feb10d3d91ad8f2c7c97"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_leaf_ivy.png",
+      "sha256": "45c52f2cebe500e770142f7adb278e7dda25ad79fe4116b73fc378e4257e73b9"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_leaf_ivy.png.import",
+      "sha256": "ab58d715375bed06941987a550ccb58dca28eda5e31bf31f416165f6d877727f"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_mahogany_albedo.jpg",
+      "sha256": "68ed2a3f550bacde63dea0ceea7e00f200a7481cc60ef9263d7272d50902a85c"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_mahogany_albedo.jpg.import",
+      "sha256": "d023f6292377a8d157191b31cf98e180794e2c21728ee49df4bb2a3ba31752c6"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_mahogany_normal.jpg",
+      "sha256": "41eb47d614a5bc9b6867c391d0271ba8e66e2884effd0cbddd03593db540c08d"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_mahogany_normal.jpg.import",
+      "sha256": "ea3457a38b4283b8925e33129dc8d6cd89aed459ee4334ab4628de6f62880aea"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_photo_1926.jpg",
+      "sha256": "5ea2f2a00ca340f82fbe42ed6849bc290456c12d2fa9d1732fbbdb8c0d2b4292"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_photo_1926.jpg.import",
+      "sha256": "89021e5ef9c7f34e8397cddbcbce9ab3e4e74998b362f79744c631d67b9a2959"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_photo_wall_night.jpg",
+      "sha256": "b1acb44ce13920d1fc20fa1f9642bcf8d546449f9f2e051449c5931862a1f6a4"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_photo_wall_night.jpg.import",
+      "sha256": "5906057ba78abdc3da91b2e51e22737a632361c58e2675cc46576d96b3c025ca"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_plaster_albedo.jpg",
+      "sha256": "e4db167a9cd70aa026dada7e46b589a2b26cb3d97ce17c0a32359fe7d66fb23c"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_plaster_albedo.jpg.import",
+      "sha256": "2fdc1f55346c8d381bda9a3f75093137cb016fb59090beea03d97ffd82d419f0"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_plaster_normal.jpg",
+      "sha256": "fb9252805bd2a28920475fc59905235233e4f58ecfca89e8f5307430853a0880"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_plaster_normal.jpg.import",
+      "sha256": "24a16ab81339540f3488251190652382817202a50eec241a82f5e1f6b6737ba8"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_puddle.png",
+      "sha256": "a2f9c95dece9082ff3a33775e9f45617f3390cb0c72ca65cf492734310f72855"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_puddle.png.import",
+      "sha256": "209078d51f394f72aea8c24f2d3e3eb24e4c127774a83a2940c745a984c6a077"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_runner_albedo.jpg",
+      "sha256": "74cf850a987843bdcae8293349a57555e0312e4834b046d710a239ab9177b281"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_runner_albedo.jpg.import",
+      "sha256": "b077450f618692a8c64ca43ea0a68c12511fa50819591a5bb64dd694180b1176"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_slate_albedo.jpg",
+      "sha256": "108e061b2cfd2207d35fe1a30b2892ba2d0866a432d49163e622920433bbae66"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_slate_albedo.jpg.import",
+      "sha256": "9a511c4683065e20229eab27a94ac7e859723ea45f1b6c5b0e00f07cbb2008ec"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_soil_albedo.jpg",
+      "sha256": "09ae02947c9e4ad4b173fa29e9430877fc07921ae6a58c062d55a65da8f872dd"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_soil_albedo.jpg.import",
+      "sha256": "f8d189ee50a824013d22ac77142c98799b18602dfe3b432b28b034257cb01516"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_soil_normal.jpg",
+      "sha256": "5114a39a831c198271cf06b1ba231646b06899e505dd56a768785c80056cc6a8"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_soil_normal.jpg.import",
+      "sha256": "b82e2daf3ea33c6f67282b9daa4b8515155e8a7fa31422cc1d6e296dcec5748c"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_stone_dressed_albedo.jpg",
+      "sha256": "909d08108785a7eecd990dff743aeb93d1ebc3ee65d5dc5123ffd1499554f341"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_stone_dressed_albedo.jpg.import",
+      "sha256": "d66111d116b0908497217b2bbd4af6b66bdf6513e190862cea50306ec765c6ad"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_stone_dressed_normal.jpg",
+      "sha256": "1736b2c7f054d23e5b7858b157fa16ad2b4185194f5c24acff5b40c40f0bdf38"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_stone_dressed_normal.jpg.import",
+      "sha256": "ca89688c696830688ff217bdfd6f024c191ee511caa60ddcd2c3ff797a556083"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_walktest.tscn",
+      "sha256": "9851adeae406f9a7caced8c318a5130a070b4ceb9137d1f5d3d01605dd332007"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_worn_ring.png",
+      "sha256": "5d40e5b5afcc18f74d2c4f3aef2a8a86309f3216b11ff5be5d56a3c2a5e9c799"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/ded_corridor_worn_ring.png.import",
+      "sha256": "820ab29b8a33312191ec6ab7e5c27eb869acc522ce303a5eb609019941de09e8"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/walktest_capture.gd",
+      "sha256": "ff416eeb92dbee242c7b0407a039691319b0cf9c2ac0a0d1008f3a0acd716d5f"
+    },
+    {
+      "path": "godot/art/levels/ded_corridor/walktest_capture.gd.uid",
+      "sha256": "39c0e8661327f0984374691b6167dc42f045394810135c7856ce0d989b0bad00"
+    },
+    {
+      "path": "godot/art/props/inspection/cabinet_clue.glb",
+      "sha256": "5f5ac455a4ef9fe64864ef1858bd27af78b5cb7326f3e3e8f91813bdb646f4eb"
+    },
+    {
+      "path": "godot/art/props/inspection/cabinet_clue.glb.import",
+      "sha256": "428c7e75ca3e54ef0de5c3da828f7077ae5a58223722599005efbc53c8237cbc"
+    },
+    {
+      "path": "godot/art/props/inspection/cabinet_clue_bottle-label-v1.png",
+      "sha256": "cef135c332aec2c48636de211fd5b3dbfaa2bf80798660523b11fdedbafdc614"
+    },
+    {
+      "path": "godot/art/props/inspection/cabinet_clue_bottle-label-v1.png.import",
+      "sha256": "a816c7b15edf3bb2c284e5612ea9b765d39252f206763e46a2c4d1267e8f81f6"
+    },
+    {
+      "path": "godot/art/props/inspection/cabinet_clue_mahogany_normal.jpg",
+      "sha256": "41eb47d614a5bc9b6867c391d0271ba8e66e2884effd0cbddd03593db540c08d"
+    },
+    {
+      "path": "godot/art/props/inspection/cabinet_clue_mahogany_normal.jpg.import",
+      "sha256": "94e95bd5915042e5174e4812ced68febacf481d2bf258e7faf93549c7d1a91ba"
+    },
+    {
+      "path": "godot/art/props/inspection/doorframe_review.glb",
+      "sha256": "4d5887a5fb079eeb0b89fbbaa872cf51e33ba8aa527fcaad99f7274e1b68dfd3"
+    },
+    {
+      "path": "godot/art/props/inspection/doorframe_review.glb.import",
+      "sha256": "dcc9dcfc14993e60f6e4aafa37623a4486f14213a135ab77923fc192c1e467a5"
+    },
+    {
+      "path": "godot/art/props/inspection/doorframe_review_plaster_albedo.jpg",
+      "sha256": "e4db167a9cd70aa026dada7e46b589a2b26cb3d97ce17c0a32359fe7d66fb23c"
+    },
+    {
+      "path": "godot/art/props/inspection/doorframe_review_plaster_albedo.jpg.import",
+      "sha256": "72e616516227775dfc73117af13c7828e1f3a1f1017a7ceca7ef751ebf2aecda"
+    },
+    {
+      "path": "godot/art/props/inspection/doorframe_review_plaster_normal.jpg",
+      "sha256": "fb9252805bd2a28920475fc59905235233e4f58ecfca89e8f5307430853a0880"
+    },
+    {
+      "path": "godot/art/props/inspection/doorframe_review_plaster_normal.jpg.import",
+      "sha256": "dc3a3cf5eeaa82021120453bf82dff7327883ca5fd5c159381bd0ac1670c9692"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_amb_notes.tscn",
+      "sha256": "0e00214569e515380a663737f4f0ddaa14ce24ac91f56d2caf418fd29acb5ba2"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_amb_notes_0_back.png",
+      "sha256": "496dbdd1962413da6a4fa7df286e64194639e077b58b63c2aa36e07efe066ba2"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_amb_notes_0_back.png.import",
+      "sha256": "c95aa4f5838a849f452c9d1437a9f254d33e19e48f530b3d44f7c70400611754"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_amb_notes_0_front.png",
+      "sha256": "95bef797e04af68680fa4b3d63ee2bd17561bd49290348ce3316b7f493ffa1d1"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_amb_notes_0_front.png.import",
+      "sha256": "6876e43f037642a3679c8b0588b94e6193075216e7922c12fa565b156860799b"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_carbon.tscn",
+      "sha256": "6684aa7f307824854326ea851e5cce9736dece25c7a4012a9c4fa5fc348e6242"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_carbon_0_back.png",
+      "sha256": "2f384bf33f6b5f6ed9b1a32e02ea4b48d18d0ec32723b32ad250c668925bd8b2"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_carbon_0_back.png.import",
+      "sha256": "94ab26aadba496c4f42773dccf886247ba0419c149e31635089bae91a4909d7f"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_carbon_0_front.png",
+      "sha256": "76de6207d9d6ce73555bf41dae05b4bb8360c4a5aac02e290a4f77e12aaca239"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_carbon_0_front.png.import",
+      "sha256": "ceae0b4c196c84c846150d10dd018fb45a0911a373a7dadef4931d9bcde00f41"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_clipping.tscn",
+      "sha256": "685a73211090d431d2b5f7dfbd64ed4f7d73a8413f024a925f48a0dd3e5ffa04"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_clipping_0_back.png",
+      "sha256": "2bf714e41819610eb8e88bfe983f82e136d2a6a2a902da02cc31704143421312"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_clipping_0_back.png.import",
+      "sha256": "0d63a293500b76f4413f531bf3ba81182c37d17b824d197ce9b968184a039316"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_clipping_0_front.png",
+      "sha256": "953b1969736feca39fef46118a59062f648f979c86733ada260b445683cfd054"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_clipping_0_front.png.import",
+      "sha256": "a0a078afe5b059fe98ac6418aa6ec29fdd269f16507fd494f81a6ef79f451f95"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_con_ledger.tscn",
+      "sha256": "ba49be9f7d54623ec70bfc0694dfd60debebe2a735d71f0b3e68e97aa5a38e47"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_con_ledger_0_back.png",
+      "sha256": "2c82e5d9e349e28a6cf4c402b20c4dab758f59035a1519b2a85659cfa0da313f"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_con_ledger_0_back.png.import",
+      "sha256": "9efec4286918eb52a27bfb665ee7960fc85b72b32722c16da892f7bf24c524ee"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_con_ledger_0_front.png",
+      "sha256": "9add5161ab023ccf74f192d7883579a38228a8a68097998fa2c9209644e0accf"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_con_ledger_0_front.png.import",
+      "sha256": "8fea023c5e1dbfe301db372858dbe683183922521f4189cdf3c2f87035faa04a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_boxes.tscn",
+      "sha256": "dc31a8c9fced6716569fbf8f9f4575b926d0f1ca95a3c21fd78440954a1454b8"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_boxes_0_back.png",
+      "sha256": "dbb5106a0601a33170403ffacf106cdee4895c7a0d2adb778f25f0de27907659"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_boxes_0_back.png.import",
+      "sha256": "65a12d1df09510b5ff2997c17f3af0d6a3d65a248fe66e4cad610dd5b044a9e3"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_boxes_0_front.png",
+      "sha256": "4debd86a6f5fea23be31ef8dda7edb3e77394069b8d718cd9299776497746c79"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_boxes_0_front.png.import",
+      "sha256": "194e32c946e25a0a7e38f5c19edbdf6d35e4d6ffbb4bdaa109761249df0d759f"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_cloth.tscn",
+      "sha256": "2b136d159fdae712b9875ebc9dc8099e228acfbcd7b3d62de31f0bb50fef54b1"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_cloth_0_back.png",
+      "sha256": "51691a8520858d2c73418ec6e6ccc7df3c6116faf71c5a0867458baafe4ee217"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_cloth_0_back.png.import",
+      "sha256": "84efd9e6af27416c315aae78e9f5455faa618a7c70293f95257f562c8730924d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_cloth_0_front.png",
+      "sha256": "06d18c2fbeb25880c2b236c1acd36d350dcfb4e946204e6c8477bed72f2f35b8"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_cloth_0_front.png.import",
+      "sha256": "0cb68a9e927d0c0d2f0c6c301cff876f1299ac561536df6ef70f1b8ac6318641"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_path.tscn",
+      "sha256": "372063074e56fe28ba4c21956df5fa67e9dca8102907bb2758a36f808ab44228"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_path_0_back.png",
+      "sha256": "63b8e19228758c4f3615022d450e177451506a0d7f3915f4325ce7ee8e63d799"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_path_0_back.png.import",
+      "sha256": "77cc075d7ac2487e4877d8c5c0a1f5d01129ea7525062811a9aafeee39f41e17"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_path_0_front.png",
+      "sha256": "fe57c09f3668d8d6a214f660c520d23372a23ddda71ab4e42739aacfa7181eb2"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_path_0_front.png.import",
+      "sha256": "213d4aa9ff9be68d268e5a9494c4d37ca7112781e61d7e64f5d055385fb97cff"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_train.tscn",
+      "sha256": "4e3f5fca58b10d9184b7a334b802aa707c0feb46269d70120175da7f1d7de6fa"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_train_0_back.png",
+      "sha256": "22a2843ccd361cc4ed03a687d90757e4d9412b43aacd8229154d9699e2853b06"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_train_0_back.png.import",
+      "sha256": "d4a3f3219815e1ec49d9190f18a2b9d488347fa62aff54ea5d49c02896afc3c6"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_train_0_front.png",
+      "sha256": "381ea06ac4ddaa5092a5464915a358da0137b2116e6b904f8fdf93a3a3cf9f53"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_draw_train_0_front.png.import",
+      "sha256": "4305ffb2fefeb1eb007a475d7c1125cb23a09455022d6cd8c1adf54540c4f00b"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_iris_portrait.tscn",
+      "sha256": "b16b12c466b18aa9decb3750c51b292addec9ec05e817e85a62de8028217f79b"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_iris_portrait_0_back.png",
+      "sha256": "08d39d157bb864a48f7406b937f1767ab8df469d884e8a77a9b80b7c9b7d90f2"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_iris_portrait_0_back.png.import",
+      "sha256": "3eb1647162227165094ff0f4f10f94bd60480cc2137478d27960d41e2b25149d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_iris_portrait_0_front.png",
+      "sha256": "660bf3b8eb43088131878950d2144fd56f26c92fc9d9cc29aa9bfb5d886ee65a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_iris_portrait_0_front.png.import",
+      "sha256": "a66b652acc50f9ed9bb049f38bc7c495db8d9832fa5e8ccfd12f26c2053a577c"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last.tscn",
+      "sha256": "9db5b0ede50b46248a67f7207d006c4687fc50eabc2c94f95a8736b27793ed38"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_0_back.png",
+      "sha256": "160e7a95fb62134083127a630af084491c9c35109b57034a87a79a010e9182fe"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_0_back.png.import",
+      "sha256": "1c6ae27c8cd587456f3954ee6cb8b844f6878e7855bcb577607d1650a0958484"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_0_front.png",
+      "sha256": "6b8e2aa093b0cd713af9ed2d9cb5deaff721d3322115fb6759e31663401bf4f9"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_0_front.png.import",
+      "sha256": "a55abec5c636b3860308e508676ee9b497c6772d442bb7dc64f9790998ccb41a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_1_back.png",
+      "sha256": "160e7a95fb62134083127a630af084491c9c35109b57034a87a79a010e9182fe"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_1_back.png.import",
+      "sha256": "e7bd59a7db43745832b1cfeec984eee0ae795d6fb8593f8a554240f9f7a27bee"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_1_front.png",
+      "sha256": "3647015e4ef960a3b77846d365caf562429a22335e81efdf6fffc437a2aa0962"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_last_1_front.png.import",
+      "sha256": "0c79e10382139d943d1e8d926d71c1a4e54223b729c141aa959e702a7c774f48"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names.tscn",
+      "sha256": "123e2fb09f0b567877f8a2872df4dd12f7250ad0d302560769f0aea0a14162a8"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_0_back.png",
+      "sha256": "36450e29775fec80d4a400d8e11bd2ea60bf861003b9d2767ff60f0e470ba233"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_0_back.png.import",
+      "sha256": "962d9f3a44290a1e8da4a03a230307f510730f925298d52ce1409bf24167143a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_0_front.png",
+      "sha256": "135f239df9f415e5a3736d5a4e1be45323a113ec671e6deaee7188f74de40e24"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_0_front.png.import",
+      "sha256": "7e3dbfd7f7842ee11d4ef42c65f3c94c928aeabcca24aeebf6d7790a331419a1"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_1_back.png",
+      "sha256": "247b36436fad1327a90c0912226aee1002b446c2f67835bf07b422e561902f8d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_1_back.png.import",
+      "sha256": "eaf6dbe65930dc0657cfda973bf36533d3c62a64ecb238d640dda1b697ab9d17"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_1_front.png",
+      "sha256": "fdc8b73010b87614161f776d702fcbd9343d6ea64b1ffa8272ce5494bdd0a498"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_1_front.png.import",
+      "sha256": "ea946a1045637face353b7ebfd1278c5db552285d58806d60cf69c5189f01dac"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_2_back.png",
+      "sha256": "abf9edca141620bb9c3b00139722378a43b4df0495ff9427193cc9e404a6913f"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_2_back.png.import",
+      "sha256": "cc98935e2787ff8cf6a1985ad293ce4d1abd9fce3d3529bf2b5faafa8e15b813"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_2_front.png",
+      "sha256": "589cc2e2b41cee9191986972ff7e79ee20c0d6f337631e9372c7b779609e7b75"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ledger_names_2_front.png.import",
+      "sha256": "520af6a6740f9379af42b74fd86896ba78384d06f1fa28606a8412daf2507d8d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p1.tscn",
+      "sha256": "064c7d4e2e7256ee2d965749fa7a5632cce3dca6d61a013460aa2c09d365fb8c"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p1_0_back.png",
+      "sha256": "f78be66c1af6ad4fd06c789b9593e8048bc6450f8d778919de55061d6e0ab19a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p1_0_back.png.import",
+      "sha256": "9943d2972e834660860e1a9a4b9ff4b4074db7f66ec11f3b2e603ab60d8f6fc9"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p1_0_front.png",
+      "sha256": "1f8c474f5bfea210506aec717838d09c2301377fd768def526ffbbff9e2fd581"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p1_0_front.png.import",
+      "sha256": "c1165a2f03cea655ccd549acc515f791dec63da7406a8a6f2346337eb7884712"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p2.tscn",
+      "sha256": "6a3684de3ea7e2bc9e5eac7c09fec8c6724044cff54ca56fe37308e3f47fb88e"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p2_0_back.png",
+      "sha256": "313c47817a4b2cd4d93f0aed66feb1f4a2ee734021185fa7e3a04b3d65e49dc6"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p2_0_back.png.import",
+      "sha256": "0f46a18f0571f33da282519b5d23a67b187cb9049bec04fa3e168902d0630e56"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p2_0_front.png",
+      "sha256": "6a09f99b41833128025070f40f27d821aa76bbc846bb047c68f40b7f2c88c1cf"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_letter_p2_0_front.png.import",
+      "sha256": "d7889e74069be36aef3a4bb7989bcaf2d9536a1042d3956ccbd2eeb3b846e201"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_manual_page.tscn",
+      "sha256": "5551a98d5853b5560a047dbe69ef94bb13a014537a524bae0aa9393a4f94db91"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_manual_page_0_back.png",
+      "sha256": "6fbaffc00dec32a4fdb16b8cefed3e099703c5021cf140512e6683054c3c24f9"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_manual_page_0_back.png.import",
+      "sha256": "6a7043ba900a947e8eb26850fb30947e13231c5bf115a583c83a63974279d780"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_manual_page_0_front.png",
+      "sha256": "d5655772db512fd4c493a4d45ca3cfc5860db169a77b1772833003260d55a29d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_manual_page_0_front.png.import",
+      "sha256": "a4884bb00778c14fab20daeca0c6b7c0369bea19560b0f7ff07a4a1b92d5cca0"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_night_photo.tscn",
+      "sha256": "c4f2d1353ee954a361d6ab2f6a787aaeed8dec0c15541f3786b65e39b49227de"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_night_photo_0_back.png",
+      "sha256": "fee322fb5074780d273be8296b9ba893a5bed2c58833fcf5c00cc4c73e22214d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_night_photo_0_back.png.import",
+      "sha256": "ac0dda9f793cce665af337b6c7291fedf9a50e269329cb7746f98db7a2f1ca77"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_night_photo_0_front.png",
+      "sha256": "6d2ac647f6ffa0882fdea7b2f7d1b38284dfe1265083fca5a9d16463c0fa2afa"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_night_photo_0_front.png.import",
+      "sha256": "89beb7b0d2f6337f7c5cdeeea829fd16ffdc334f92259ca7d163b4e7309264dd"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_photo_back.tscn",
+      "sha256": "4c9a81ef69370236174f6aeaf41ce1d6e5ba47de3c4a21fa4abec705a6e5f9a9"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_photo_back_0_back.png",
+      "sha256": "3d9f39564420004fe81ed611d228da8bf69c6cd14babd1f789a8931410af5f9a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_photo_back_0_back.png.import",
+      "sha256": "8dec1a6525612cd99bad8ab358f89ac5db9f9e49341ee9daa4fc53c6eab987bd"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_photo_back_0_front.png",
+      "sha256": "b1d862f904970cf19568bb41ba2c360a16ddf58a3f16be75a572be3fd057c70f"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_photo_back_0_front.png.import",
+      "sha256": "c3815ca4186db616ed7a9d45cbb15c643ce3b54dc873576a6c71539c42ed4705"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_receipt.tscn",
+      "sha256": "5383f3791e3b2ddf5773112bc822cd9156f763011544f37aafc1d30ba6d5c472"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_receipt_0_back.png",
+      "sha256": "49234fb6cec8155c2bd2e761d157475e53f8ad6cc7234f34ff48aae4945a1ea4"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_receipt_0_back.png.import",
+      "sha256": "728a210ddd0e4ca515c51c9f1495ad47686fce430630a4d9e520ca35dbdde6c3"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_receipt_0_front.png",
+      "sha256": "f08612adcfd2b0dfe35c3698ed3d181aedbddbf769d9f8e26c3057b10ec2cdee"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_receipt_0_front.png.import",
+      "sha256": "23ed84fe15b338bf9f1f1bb0eb55abb3369768100dc7bdf91cc1dfa8267bdb7a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_record_c0.tscn",
+      "sha256": "64d3f07c35836e11f4258b80eb581ce6b09192714e7f546e5916ab9962123f59"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_record_c0_0_back.png",
+      "sha256": "9a2ec0bc25cd35cbd1223f80d2e20dee5f191e4cba78299c45ee105636060497"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_record_c0_0_back.png.import",
+      "sha256": "902240c3c334ccb94bb4fa4401840fa9353b02f2ec8e2b76f55e2658d73a27dd"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_record_c0_0_front.png",
+      "sha256": "c9ad21f7b5a0ac30fdf39893ea5171231c38b2ac79b58efd1875fb0e97f4b37d"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_record_c0_0_front.png.import",
+      "sha256": "d9e43f096c7da2efa2534c437b4bf1af7bc5f2efb089333e320e3fe24b014f0b"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards.tscn",
+      "sha256": "f021473d0ebac2b3ad25e206b557687e4228705b34e4b4444536388d9c007ddf"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_0_back.png",
+      "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_0_back.png.import",
+      "sha256": "10b25661ee223be4628773d021d4512e97dc0faedf83ec19fda83fdabf8ec809"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_0_front.png",
+      "sha256": "40c2703034d42d38e7c781afec340067ba2c0a88851eebe24ea00ec39c9894d8"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_0_front.png.import",
+      "sha256": "238cfb390ba406566a118c58004781349527b73fb57eb51ef4bb6c62edc2c855"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_1_back.png",
+      "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_1_back.png.import",
+      "sha256": "ec16800b373bcfdc4d8afa58162dd3ca59b29715be3a527457362162b9939414"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_1_front.png",
+      "sha256": "80ae809130b51857011b53630da1598b7315077fc2c92c8e1fab5b2eaae53440"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_1_front.png.import",
+      "sha256": "b9a6008df46d3829763fa654e62e338ce05f04604b17971dc991d827243edba5"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_2_back.png",
+      "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_2_back.png.import",
+      "sha256": "61753e073340619be77579b175e24e8eb0634a478c0ed7686ab2efa02d2d912e"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_2_front.png",
+      "sha256": "33532aeda1107d8dc758a95cccb1dc633edafb076beeb82da231fd7de607cd0b"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_2_front.png.import",
+      "sha256": "dfba4466911d774c17a5aeddf2683e571ec5d6aba665b3eac769e0b4062659c4"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_3_back.png",
+      "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_3_back.png.import",
+      "sha256": "6b0957b2cfcebc41a11a1bacbc1f5878eef1eb6d95394d1ea77d8f4bd42e2e2c"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_3_front.png",
+      "sha256": "9d3675d4cc54f02d855731f8a6f28c36f7b28f9565275997395d4736049ea566"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_seance_cards_3_front.png.import",
+      "sha256": "cc05c7aaa7b75f336ebf6bab987770c37563232cf9e1932ca9e8418b72458ecc"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_shoes.glb",
+      "sha256": "f5d797bd9c6e9152880f942d3bdb97d6890068dd6f0e586ab8b0acbd0e62ea4a"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_shoes.glb.import",
+      "sha256": "fd8267d33cd10846cc2721d328e874913830825eab0ae4972a1cff2e774cee86"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_shoes_mud_albedo.jpg",
+      "sha256": "05e2c2c4c2ab7b32248ce84f28ce88fa82fb11a68a2f738236c3252b6791ed56"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_shoes_mud_albedo.jpg.import",
+      "sha256": "a06a77fe1c334d96f1a82c51a1b0ab53bdc2e213b2b054c8d4ed53489e103d74"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_shoes_mud_normal.jpg",
+      "sha256": "68fdee7eb9022591bbcd2b44a0d86884e3ea7f7ee620b32389efefaae0cfcbec"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_shoes_mud_normal.jpg.import",
+      "sha256": "6a5f9dd82073f4e19c81c26a37554cf5d284e09d3419b23e2a4fdc5752985a14"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_sweater.glb",
+      "sha256": "42b4843005021827afe6f6db3c122809f2cac2ecd6829b70f67f6e575f7343e6"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_sweater.glb.import",
+      "sha256": "90273fc904d22e9a6d3458341bda277a932cfb7bc2a667f6fa18ddcb1665bffe"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_sweater_knit_normal.jpg",
+      "sha256": "c367ca9a3b72548bf3e4159e166445865315192939d81b2e8b395257e542b010"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_sweater_knit_normal.jpg.import",
+      "sha256": "2cd33701bb92169acc4ba4f13143834b7f5544bb4389829450a73132ef5fd594"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ticket.tscn",
+      "sha256": "9376d66cbf48c00b77aa6039d9e53b6b0883af3672458911a1d662dffa452031"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ticket_0_back.png",
+      "sha256": "1984b5ba949431fa50d0c837afbb8be83f27df23dba0d5eb58e3456dabf9c239"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ticket_0_back.png.import",
+      "sha256": "01583347ade0f50134e67d4dd10a3f4bfe39afc693b43978ff6f7112c50510a2"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ticket_0_front.png",
+      "sha256": "7ad6a59b931b88e8408d089793a5d058596340beb15471abe29ff645b52fdff0"
+    },
+    {
+      "path": "godot/art/props/inspection/ev_ticket_0_front.png.import",
+      "sha256": "3eddfd93cf5560283a043b908ff9171bea2b2e670dd32428f04a59280d30c30c"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_cloth.glb",
+      "sha256": "1033de9c759fedd47ad71d6a4937c62a9ec466fce0da60b4e965ff4b9d356c99"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_cloth.glb.import",
+      "sha256": "f513f83e42a2684b26ab80901d43a0f81259833d3892c248e34a1f264712e1f0"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_cloth_knit_normal.jpg",
+      "sha256": "c367ca9a3b72548bf3e4159e166445865315192939d81b2e8b395257e542b010"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_cloth_knit_normal.jpg.import",
+      "sha256": "06caa36f93c90db90b4bb67a1ef885c01e44dcb5158466c7b442aa2a439b6dfe"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review.glb",
+      "sha256": "2269b9880adeed43331f852ffed92693974b2282b08f678371b15b6f38157518"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review.glb.import",
+      "sha256": "d2bb7b08280e9e3dee6ff69a6a0c97af5e684c84b4f5990c50926ed7c5ed9302"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_gravel_albedo.jpg",
+      "sha256": "b2cf9e1001855193f26cd23cfdd092f169022702b5f81b1ef33cef8ce9e16f98"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_gravel_albedo.jpg.import",
+      "sha256": "f848b3080b9fa3674644ac3c53283fd3b0142e54a4ea5b7ea7866bbc4280c965"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_gravel_normal.jpg",
+      "sha256": "8f51b8723091b349c07d8bae0a7ec9174094922e2e2b03f9e60e4a5a49a15925"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_gravel_normal.jpg.import",
+      "sha256": "8e8b5b919a62289faa421e8485850c256903030b671c6758a10ab06ac6ce4c19"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_mud_albedo.jpg",
+      "sha256": "05e2c2c4c2ab7b32248ce84f28ce88fa82fb11a68a2f738236c3252b6791ed56"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_mud_albedo.jpg.import",
+      "sha256": "09f116e9069597f0ddfa3965fb3119400df7435abce85fcece6ff962a1696325"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_mud_normal.jpg",
+      "sha256": "68fdee7eb9022591bbcd2b44a0d86884e3ea7f7ee620b32389efefaae0cfcbec"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_print_review_mud_normal.jpg.import",
+      "sha256": "2fdb54df0dc89d7dca01c85124da6dbd379acebfa034e01b57e28a71feea17fd"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review.glb",
+      "sha256": "84d5b91d2cbe8dd6abaf078eca32368be1567e232eb02a3e674b591bc3940ab0"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review.glb.import",
+      "sha256": "5f76ac01b8ba151745c13cf0fe7fb7de7ea57f7feb68f9a4d87db8fd692d616c"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_knit_normal.jpg",
+      "sha256": "c367ca9a3b72548bf3e4159e166445865315192939d81b2e8b395257e542b010"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_knit_normal.jpg.import",
+      "sha256": "40e49ca562f11d5442406810c2ec2506ec5b201f04da433c39fbc4a299c69830"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_ashlar_albedo.jpg",
+      "sha256": "82f95dd0e68f17966fd9b3e7c61da48b4fb08238ab27a3a57680d44de40e41ce"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_ashlar_albedo.jpg.import",
+      "sha256": "0c5389224c750aa051ed3e8e33bb34c62894709dc7091f56ed5ed3786146e072"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_ashlar_normal.jpg",
+      "sha256": "d91cc714619f8e0c934398ff28b1e78ca8fac924b6219a6044fd609cbdcb8354"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_ashlar_normal.jpg.import",
+      "sha256": "72b70a7b992c24e573aa1481f0b8ff53e1629d0ea27057c98a4b1fa2272d15b5"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_dressed_albedo.jpg",
+      "sha256": "909d08108785a7eecd990dff743aeb93d1ebc3ee65d5dc5123ffd1499554f341"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_dressed_albedo.jpg.import",
+      "sha256": "b41b3bb95e17f2ab75c96de06607bdc534a91a0607ddc8c87e267f8e657974fd"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_dressed_normal.jpg",
+      "sha256": "1736b2c7f054d23e5b7858b157fa16ad2b4185194f5c24acff5b40c40f0bdf38"
+    },
+    {
+      "path": "godot/art/props/inspection/garden_vent_review_stone_dressed_normal.jpg.import",
+      "sha256": "09ddce68168bd4f4d2728c49d3317fe8eaa75d84a5c93e07a51edc25e5d50533"
+    },
+    {
+      "path": "godot/art/props/inspection/handwriting_spread.tscn",
+      "sha256": "3a8de6100cda4f686e08c47bd3622d17510e47d68d1e501f8adbf85c9d85f7cf"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review.tscn",
+      "sha256": "121094ed8b81cf3a585f89f5d2472d5673124fd7c76a4faefb6ed1e42affd051"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base.glb",
+      "sha256": "ae08068791cfed1b52ed957be51dcd2ad46a5c4478040caf26c2d28beabbecd9"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base.glb.import",
+      "sha256": "9ca3682000742231a23fbc04668c61d2968cb2f63c34f086be954bc84cd5c00c"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_mahogany_normal.jpg",
+      "sha256": "41eb47d614a5bc9b6867c391d0271ba8e66e2884effd0cbddd03593db540c08d"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_mahogany_normal.jpg.import",
+      "sha256": "55fbb65b10db80e49c03eb7ffc882a975be915618517f067a5fb695466cda92d"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_plaster_normal.jpg",
+      "sha256": "fb9252805bd2a28920475fc59905235233e4f58ecfca89e8f5307430853a0880"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_plaster_normal.jpg.import",
+      "sha256": "ff6e72825c0d422c925c24a18b7586439869bb8e966c48eece7fe1821d8a4443"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_stone_ashlar_albedo.jpg",
+      "sha256": "82f95dd0e68f17966fd9b3e7c61da48b4fb08238ab27a3a57680d44de40e41ce"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_stone_ashlar_albedo.jpg.import",
+      "sha256": "ea24af3c059695e18563a654f1e72864bd9aac0e873c37a186c17166866813b3"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_stone_ashlar_normal.jpg",
+      "sha256": "d91cc714619f8e0c934398ff28b1e78ca8fac924b6219a6044fd609cbdcb8354"
+    },
+    {
+      "path": "godot/art/props/inspection/latch_review_base_stone_ashlar_normal.jpg.import",
+      "sha256": "c0f2e040d960e90d92900abce015ea5110f012530adb0240b4198abf199b3ba2"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_grey_notebook.tscn",
+      "sha256": "c9264e9d7c3b603bb52a4e3ff153f10c86874ac2acaf049f2956648617b66649"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_grey_notebook_0_back.png",
+      "sha256": "c08fc31a9495237e159f4c5e292838ed34ca2ecdbeea0e45e8d850f7fbe4a076"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_grey_notebook_0_back.png.import",
+      "sha256": "0cc43c9dbb9e6d1825a328a68b52542bf6a1c83d1de1ed97ac52425067065a3a"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_grey_notebook_0_front.png",
+      "sha256": "db514ad775e235c686ede0d0fd4c3906defafcac1a118050db1223fc3b030ff7"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_grey_notebook_0_front.png.import",
+      "sha256": "36c84421b345f87a4de254cf1cf8ab3d1465ed385b0886f3497522347ef0c65d"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_photo_1926.tscn",
+      "sha256": "ff1db729a8836d2ea19469d8e6b2b50e200d4a0ab979aed6f250e74b04193cc8"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_photo_1926_0_back.png",
+      "sha256": "d6d32f9f8a83514ed72487cd97043dd47a6a7db74cc3b32198434d9f0a8c8c98"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_photo_1926_0_back.png.import",
+      "sha256": "7986cc43090db3bc437cfe65d7e0f2f70e3b980efa76289500729d93a237b07c"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_photo_1926_0_front.png",
+      "sha256": "b1d862f904970cf19568bb41ba2c360a16ddf58a3f16be75a572be3fd057c70f"
+    },
+    {
+      "path": "godot/art/props/inspection/prop_photo_1926_0_front.png.import",
+      "sha256": "65b92f17f93a4e09d23b281f8e8efb245f61b466ab9961976a5c0bba19619ad3"
+    },
+    {
+      "path": "godot/art/props/inspection/tray_crystals.glb",
+      "sha256": "e19534e351ef676f79ccdbea68b6462af35284a6dfb78847d35d6f929409a037"
+    },
+    {
+      "path": "godot/art/props/inspection/tray_crystals.glb.import",
+      "sha256": "82cc97e6eb139ab68bd56fd779a14588d61521fd21cd7853c39768c8bffc381a"
+    },
+    {
+      "path": "godot/art/props/inspection/tray_crystals_mahogany_normal.jpg",
+      "sha256": "41eb47d614a5bc9b6867c391d0271ba8e66e2884effd0cbddd03593db540c08d"
+    },
+    {
+      "path": "godot/art/props/inspection/tray_crystals_mahogany_normal.jpg.import",
+      "sha256": "488e2ac9f69f1d67b2d009bb6fc0b3d38c55f5c7f9524b3ce13f20f49050fb30"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed1.ogg",
+      "sha256": "b8bea7dce79720bc27b06750d0adbdea9e5925aedfa3d62a79acc2f809774ae9"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed1.ogg.import",
+      "sha256": "08a484ce3280c921548db0341b0c1d58e7e8a933ce609dff88e8b7d9c8f64bbf"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed1_rev.ogg",
+      "sha256": "80053087a79dbbb85f87ff29d814e6c48e9daf3978eebd35f00c543f676a67bc"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed1_rev.ogg.import",
+      "sha256": "c10f7e4af48f278af31774ddcef289f60d3299cbd3f4cdc062122a7959915e15"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed2.ogg",
+      "sha256": "5c1a1ceaaab2d03b4b9ae30dd2049245203a2fe2a95af9fbecb418c898604bcb"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed2.ogg.import",
+      "sha256": "23cc2f83688a0e0e54f82a6263dfbbd2675fbdb03cff0b494db76e220fc8a1ea"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed2_rev.ogg",
+      "sha256": "f3e158a5521281797417208151cbfe045989a0ded5d4b20359e82a5d4c1a8f76"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed2_rev.ogg.import",
+      "sha256": "1f97122ae3d30b2c88caaa830075e9aef9838f763ce2999973e09fad87729a87"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed3.ogg",
+      "sha256": "49fb4590b4adaa1cd60615559d67ec3cea8f65b992b00df918b4194806cbf1d0"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed3.ogg.import",
+      "sha256": "6efd89b9922cdb4449090868ad2cbf07afeebe21388e7bacb54f659e7d2cd150"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed3_rev.ogg",
+      "sha256": "354abcf60bf5f01ae5e616cc92fbcfa5662b90a3e4e4078234985c28706ea90f"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed3_rev.ogg.import",
+      "sha256": "75349054e95fcdc7311af91c62daa3f58264120a6500cca117fdf8905e09028c"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed4.ogg",
+      "sha256": "10e46d2aac7d066f2a5c3528215f7ff38ddb91fe28c19c034657d7cd21282dd2"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed4.ogg.import",
+      "sha256": "40d1e3143aedc227de79fe44a72623ab30a1ea03a26969475d1d0de62d4dfc79"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed4_rev.ogg",
+      "sha256": "1dc0ae077ee9911ef65d8d9a3059419710a575785272bec0651f28162a5fb097"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed4_rev.ogg.import",
+      "sha256": "ce5fed0c902c61f671a05b93707ef80e3e4d61d0b1b7cf609534dbc19675c224"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed5.ogg",
+      "sha256": "0c5f7e85e337c1ba55e6e214231892b4e9a409d49a95a74372feb3ab31cea045"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed5.ogg.import",
+      "sha256": "2136416462fc9758597674bbc6ac4e91afbd181f04fc7873d44e02282947b92f"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed5_rev.ogg",
+      "sha256": "e10458363174c2f75402a1bf52d1e4928b5aa4af9693c6eafb65f2963e7dd7a0"
+    },
+    {
+      "path": "godot/audio/music/corridor_bed5_rev.ogg.import",
+      "sha256": "c3691caed47141003d5dcc421d106a73c0d2041d508693ed8212508e89776a48"
+    },
+    {
+      "path": "godot/audio/music/corridor_ending.ogg",
+      "sha256": "8829116c002bcfa4a4d1785a62b14390b8d0931acce516572d5d99cacb998742"
+    },
+    {
+      "path": "godot/audio/music/corridor_ending.ogg.import",
+      "sha256": "7fd64b80ee5301c1e470637a8bd05fc446b0da71f855b5d57f84dcae4a442dae"
+    },
+    {
+      "path": "godot/audio/music/steps/answer.ogg",
+      "sha256": "fb31d6aabfe6c2f7b2c6342b8cd35b48984b54256cf089346b0e83f8602903fc"
+    },
+    {
+      "path": "godot/audio/music/steps/answer.ogg.import",
+      "sha256": "13ea134f805a392e456ac81e32c8d66956a216f3ba589f210be3ae02e71b35b7"
+    },
+    {
+      "path": "godot/audio/music/steps/answer_rev.ogg",
+      "sha256": "24a42efa7b04dc18fc9e0bbfb90180ff44a6d331bbb5a3220c28eef92c73e391"
+    },
+    {
+      "path": "godot/audio/music/steps/answer_rev.ogg.import",
+      "sha256": "a51e95f60e847818306283b31858350a7001813255fdb8baef972968dc9c8400"
+    },
+    {
+      "path": "godot/audio/music/steps/answer_up.ogg",
+      "sha256": "07055519fada98ac3204ab9c3c221dd640e147ff6ea805bf4d12fa68ee919908"
+    },
+    {
+      "path": "godot/audio/music/steps/answer_up.ogg.import",
+      "sha256": "feb41991871828ec8689536dec3abb6716158c7faabb92236fe0b12a9ae1aa5b"
+    },
+    {
+      "path": "godot/audio/music/steps/answer_up_rev.ogg",
+      "sha256": "13b087c35490e4cc7c46fa1fb32e1c23cd7084f45de30150debabbb0de37737c"
+    },
+    {
+      "path": "godot/audio/music/steps/answer_up_rev.ogg.import",
+      "sha256": "4eb09291436370378705d8fb524ee0698b0842fc175a5da169c06ec4a54a1647"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_l.ogg",
+      "sha256": "10182423e85fe1cf3276ec199ca10234253419f893be4079b93adfd12bf4e10e"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_l.ogg.import",
+      "sha256": "ae7fc1a6343ee6925af37efdebe308f987bf3fa089a00195d096a1fa1070ddca"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_l_rev.ogg",
+      "sha256": "0ce0ec0fc9b81170fbe64eb6d8651549ea0e3d63b76647e5289f722a6eeb9009"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_l_rev.ogg.import",
+      "sha256": "904bb70cd9cbcac49b7d584a10efbc14aac8e2202171a35ff284c35fdcb89166"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_r.ogg",
+      "sha256": "fc3830c572a662a7e1b560c94ca13e341d23228e54d81108ac15e537cae4a02e"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_r.ogg.import",
+      "sha256": "6a87856891ef9b801fd9a05a62e968aa4cc88761069512d831e3851d8a45c6a2"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_r_rev.ogg",
+      "sha256": "bd54b6d0e3fed41812e1702433115c8372758f56791b1d9145b7e7db82e8b821"
+    },
+    {
+      "path": "godot/audio/music/steps/drum_r_rev.ogg.import",
+      "sha256": "f813e47d35fe8bc5bfac5795ad8256a3c4ff1df44abd36a9377844074d62eb65"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth.ogg",
+      "sha256": "3e5b82b2f74ccc1910f5e96687bece05493ef40cb37d4d0919d67e05ca8e917c"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth.ogg.import",
+      "sha256": "96a494514ffa70c4ceee8d1a82ab6cb34fad14ce1e5480f35b3e635ca593f24b"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth_rev.ogg",
+      "sha256": "231f04548d717216a9b37a6844fb5bcf0c5cee62f06606d6c7528a1f8a1bcf39"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth_rev.ogg.import",
+      "sha256": "cba7aa591ae025753b90d975ac58bda41ec484244cc077fc61dc55d3fcca188e"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth_up.ogg",
+      "sha256": "6200aef2eb95a8aebe070871e1ba65ed22e88ae8e6bc9afb1aa54c0bdb96f773"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth_up.ogg.import",
+      "sha256": "f4422d7bdfd150dbe8eca6d544831ea1a03dd446784e65f7bc2f0118f753495a"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth_up_rev.ogg",
+      "sha256": "7489ba424f9dccf6e6f5528f8619c6944f67749dc2c5dbf5254a6c62dafe55ca"
+    },
+    {
+      "path": "godot/audio/music/steps/fifth_up_rev.ogg.import",
+      "sha256": "57714de65b38bd56a9422505ac45a16bf7ee907f061676d830187091f25f8b01"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal.ogg",
+      "sha256": "96fae67c7d6740d1e0ef55f9fd1b201dbc29bfebb4d78ae1b4b45cb5b43a15d9"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal.ogg.import",
+      "sha256": "f72c7e2d72a99eb43ce304206293590ae0612c4b911399edf917923558702b59"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal_rev.ogg",
+      "sha256": "3a3569cfe852099ae9489219b0a29fe744b4c9f9233888cef390c813610e3789"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal_rev.ogg.import",
+      "sha256": "e7a43c500f76a8795bf47bb089f439f56f275feda4106b8e9d9318a4b11bb46e"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal_up.ogg",
+      "sha256": "7577bf8afdd31ba7df8c9b0c3ec87234e55508d13dac35dec3ed5ffa6cf1cc20"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal_up.ogg.import",
+      "sha256": "0b7307656cc1cb3d73d693b7939198f75f443980701f9a621bca16952b929f2a"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal_up_rev.ogg",
+      "sha256": "332c47c4810445995de22bebf7c234ee1e378a639b71e353fdef6fa277b87308"
+    },
+    {
+      "path": "godot/audio/music/steps/quartal_up_rev.ogg.import",
+      "sha256": "64e99889f83c844a80366ccfc41b7add2262a3262b12c1923de22c6ac02c90d0"
+    },
+    {
+      "path": "godot/audio/music/steps/root.ogg",
+      "sha256": "68a279c6c2e0cd6c7c08bf433e3e84dcf697785fb409f8aee8e2678adb7244fc"
+    },
+    {
+      "path": "godot/audio/music/steps/root.ogg.import",
+      "sha256": "870d9436fb9c4aa994fe91bb82813a546c275b81c247892e2ba312357e160e53"
+    },
+    {
+      "path": "godot/audio/music/steps/root_rev.ogg",
+      "sha256": "84241dd0bd8cc7742dbb90f54fe97f6eb1a18458974c38262fcaa8d8ed47e3df"
+    },
+    {
+      "path": "godot/audio/music/steps/root_rev.ogg.import",
+      "sha256": "14c85102dff7f7afcb38e8888f3fbfd4fe285f4a8b49ce1ff9356c2c6cce0e06"
+    },
+    {
+      "path": "godot/audio/music/steps/root_up.ogg",
+      "sha256": "39864cf3f68212f7bf5b9f4f896aea03d9031a8a3fc71c14161f5ea7c3cddbea"
+    },
+    {
+      "path": "godot/audio/music/steps/root_up.ogg.import",
+      "sha256": "4bff65476be1b3a8e271e39c91e37c6e5e0f7dd8bb037220d8e1d881c7c1ccd9"
+    },
+    {
+      "path": "godot/audio/music/steps/root_up_rev.ogg",
+      "sha256": "d5e790af58d3887a93edabae52b7fb46413eef67791b5de23633ddaa7096d1e2"
+    },
+    {
+      "path": "godot/audio/music/steps/root_up_rev.ogg.import",
+      "sha256": "7355b6c45806a31fbc18b6e586a7e8d21f094198856c0eee7263a419cb56b0b4"
+    },
+    {
+      "path": "godot/content/visual/inspection_labels.csv",
+      "sha256": "965af4f63e6ad8352efc7dc546c6d1e0a60164fab9ba102be13599479565d0d4"
+    },
+    {
+      "path": "godot/content/visual/inspection_labels.csv.import",
+      "sha256": "c7d129df259feb5addb132a77ded322a6d94840a35e6112510cf7ff731f474bb"
+    },
+    {
+      "path": "godot/content/visual/inspection_pages.csv",
+      "sha256": "04c3e4b32b9adc3f003db748428d87c28e76f034d087a65963ae0611abc870ed"
+    },
+    {
+      "path": "godot/content/visual/inspection_pages.csv.import",
+      "sha256": "c7d129df259feb5addb132a77ded322a6d94840a35e6112510cf7ff731f474bb"
+    },
+    {
+      "path": "godot/content/visual/inspections.csv",
+      "sha256": "506147216d9f4bf881a5a852a9a42b376acffddd97a03509d9c34a88a0fd1762"
+    },
+    {
+      "path": "godot/content/visual/inspections.csv.import",
+      "sha256": "c7d129df259feb5addb132a77ded322a6d94840a35e6112510cf7ff731f474bb"
+    },
+    {
+      "path": "godot/core/controls.gd",
+      "sha256": "2b5b31ec5d7636a00e88f2eece9297dbd0dd6811ed768776a32faf46c74f0779"
+    },
+    {
+      "path": "godot/core/controls.gd.uid",
+      "sha256": "94cf004e6b5dc9892415e4da18925d4b7446aaca1453c8b0a230c3d850cdf6a1"
+    },
+    {
+      "path": "godot/levels/ded_corridor.tscn",
+      "sha256": "ed529c6d054c23e04675d406bfdee4af2da4e32bd4311035dbd2f1e0fef68f4a"
+    },
+    {
+      "path": "godot/shaders/inspect_background.gdshader",
+      "sha256": "361d6f2a22d20ef8f44c586cf41ed234cf54d6479c29d09086a3d279e4bcd68f"
+    },
+    {
+      "path": "godot/shaders/inspect_background.gdshader.uid",
+      "sha256": "959fbb86c19da56d312445f1e61a600f07a210bb4b9cb647de16feb414c45e15"
+    },
+    {
+      "path": "godot/tools/_tmp_c0.gd",
+      "sha256": "3a1e3198eedb702fdce2a12437962c95c234ce3a4ad3030f4824109baa812791"
+    },
+    {
+      "path": "godot/tools/_tmp_c0.gd.uid",
+      "sha256": "e1e13c023f48d9aa58bcda9500ed2ee40cd11127b50a556762aedfddd2f47ef4"
+    },
+    {
+      "path": "godot/tools/_tmp_shut.gd",
+      "sha256": "f4ba3dee683082475008885b66c3c9e253b5d2487fa1178fd66790547835e893"
+    },
+    {
+      "path": "godot/tools/_tmp_shut.gd.uid",
+      "sha256": "db7122cd7d4d67c073c9c501bea4a8b005beaf93b9a47c24154e308f5a9732de"
+    },
+    {
+      "path": "godot/tools/_tmp_walk.gd",
+      "sha256": "08bf22cc5d3b007c62d1d8832d1238fe01dbb4f07922bcc9c94a5bfeb91fb9e4"
+    },
+    {
+      "path": "godot/tools/_tmp_walk.gd.uid",
+      "sha256": "871e78d762308e1c97b816079f42f3df957b1bcddae0fce3cebab22178d4ca65"
+    },
+    {
+      "path": "godot/tools/audit_dense_interaction.gd",
+      "sha256": "013262ac0dfbe332f95d164516b9555e7ca487466d8888a52a7f0ccc5cfae833"
+    },
+    {
+      "path": "godot/tools/audit_dense_interaction.gd.uid",
+      "sha256": "a455d73c66c6842f70dda412b1682825dbef4f10262af9c35fcf66a229787de9"
+    },
+    {
+      "path": "godot/tools/audit_interaction_objects.gd",
+      "sha256": "c3fcc7fa09e0bb140c39946ec9667b0a72a19bdeb0fa315933cb9bc18994fc54"
+    },
+    {
+      "path": "godot/tools/audit_interaction_objects.gd.uid",
+      "sha256": "378ea103051f671e946312288e0c79f50af5146861d1a543b51cb7e1ffedd8be"
+    },
+    {
+      "path": "godot/tools/demo_dialogue.gd",
+      "sha256": "2a808424da123064d271adb68c6247f2627a68ea2d1d75d18aa586fad583159f"
+    },
+    {
+      "path": "godot/tools/demo_dialogue.gd.uid",
+      "sha256": "f0c443cb44ca90a79001707622f0d2a4c45479a3b941d93348991e939d742f28"
+    },
+    {
+      "path": "godot/tools/diagnose_inspection_view.gd",
+      "sha256": "b0d1c77a014926c2284e74321809459bfacf19df740b339a52c387ef42b9aa98"
+    },
+    {
+      "path": "godot/tools/diagnose_inspection_view.gd.uid",
+      "sha256": "238a1466acb3750c94f95dfb1a95e99e1b4b99f4c1eaab961b19ac8e739f5029"
+    },
+    {
+      "path": "godot/tools/measure_shoe_scale.gd",
+      "sha256": "c1c1e4fd8a5c01656e7b0c0d389f824f365f44b99f6fb8963f2184e5df95421a"
+    },
+    {
+      "path": "godot/tools/measure_shoe_scale.gd.uid",
+      "sha256": "89ea46c63fd574c44c6bcbc70fb720c853100791a8410e0c595d6c07e53bb355"
+    },
+    {
+      "path": "godot/tools/probe_inspection_performance.gd",
+      "sha256": "7f959f7121199ee2bc3153b4a96caa990e0d049258f754285709c1a5824583b0"
+    },
+    {
+      "path": "godot/tools/probe_inspection_performance.gd.uid",
+      "sha256": "5c9e1becf933c4e4c7901c3da16fb7e9c30ab10b272ffc4962859beffbe7ad89"
+    },
+    {
+      "path": "godot/tools/probe_scene_teardown.gd",
+      "sha256": "e075f16d3e559dd52311826640e51d110d7eca6c5ddd954b8c9c2e8ed3a3d9bf"
+    },
+    {
+      "path": "godot/tools/probe_scene_teardown.gd.uid",
+      "sha256": "dfc51181523b5a3c2ad712bc8cd951430ebe45023785102d633776ad384b59b7"
+    },
+    {
+      "path": "godot/tools/showcase/driver.gd",
+      "sha256": "32f3fe03abdb765f528e19df7c0fa8669b92cf8437d69f867d975b0f06dce91e"
+    },
+    {
+      "path": "godot/tools/showcase/driver.gd.uid",
+      "sha256": "2d5b1856bcb91f7c0fb5e5bbb91aa86fa0d1349880c80b44463acd23d84cf20b"
+    },
+    {
+      "path": "godot/tools/showcase/preview.sh",
+      "sha256": "40a50685f8d038e55adfa8906e605d1ab295c941aae4c5438df95d0c1fc36190"
+    },
+    {
+      "path": "godot/tools/showcase/render.sh",
+      "sha256": "d23bb51ecab18d042516f52d3bae0ff93d43d132ec687a04e154fd515b523dfa"
+    },
+    {
+      "path": "godot/tools/showcase/rig.gd",
+      "sha256": "b863ed74e32dfba142abcb6aa4e116e5c6ae725f7ffcbeab0c7b04a5ed6a337e"
+    },
+    {
+      "path": "godot/tools/showcase/rig.gd.uid",
+      "sha256": "2198c9be23cc1e926b1f8ad74c21dec228b78bdb7f153cf00594fb557d1efc5d"
+    },
+    {
+      "path": "godot/tools/showcase/shots.csv",
+      "sha256": "7b8878199ff76d9a85c4ca58de21a1ece7258eede1225be2660f8fd9b7ab6658"
+    },
+    {
+      "path": "godot/tools/showcase/shots.csv.import",
+      "sha256": "c7d129df259feb5addb132a77ded322a6d94840a35e6112510cf7ff731f474bb"
+    },
+    {
+      "path": "godot/tools/showcase/showcase.gd",
+      "sha256": "c51aa4ae9cd5e148bb4e562d45fb4dbf254647b724cc4d7f567496287edbe01a"
+    },
+    {
+      "path": "godot/tools/showcase/showcase.gd.uid",
+      "sha256": "bdd19bb3df59f4f0ac544c678d80200a41eba27f26941722dae74a563cdf392d"
+    },
+    {
+      "path": "godot/tools/test_archive_photo_inspection.gd",
+      "sha256": "ecec18fbd0db9d25c762906e6f3efb0aa74f8d41aa5adb7f905ca46628cfda15"
+    },
+    {
+      "path": "godot/tools/test_archive_photo_inspection.gd.uid",
+      "sha256": "c5c88ebb4130153e1ab444af8aaa798d2a3146009178f0529ee2992749465e84"
+    },
+    {
+      "path": "godot/tools/test_cabinet_inspection.gd",
+      "sha256": "ca35f41966b016a6d071f020c9b6b63d12bd3e6191529e9b5d52f2470e6d8117"
+    },
+    {
+      "path": "godot/tools/test_cabinet_inspection.gd.uid",
+      "sha256": "2f873d0797a984a7f878270fcfac38a0561430dcd1d140ddf5b2fc3010a6ac27"
+    },
+    {
+      "path": "godot/tools/test_container_interaction.gd",
+      "sha256": "a1f8533472fce287134477569505a60b951dc2df6ef7fbc35242a51638a09ccb"
+    },
+    {
+      "path": "godot/tools/test_container_interaction.gd.uid",
+      "sha256": "ed3acb3e25993ab92a7b5deacc5518111753dc392b191cc3f4abe78d6f0aa30e"
+    },
+    {
+      "path": "godot/tools/test_corridor_gameplay.gd",
+      "sha256": "0ac687ec6b04b1186dbccee68a4a71c2c933eb321325ce00417d9f59cba0a04f"
+    },
+    {
+      "path": "godot/tools/test_corridor_gameplay.gd.uid",
+      "sha256": "170d61e47f243d1fe149ab4a38f0ab1f263b1c6924cac259d6d6328a1fbfa7be"
+    },
+    {
+      "path": "godot/tools/test_corridor_interaction.gd",
+      "sha256": "3252725fd16ce0b1eb6c558402838c33b2c84a8ec26c048e294d0d2769f62cd6"
+    },
+    {
+      "path": "godot/tools/test_corridor_interaction.gd.uid",
+      "sha256": "d44353c52dff931c5e9e7a0e356d60e28eee68b6e23c3d4fd62a59bc61f08654"
+    },
+    {
+      "path": "godot/tools/test_fixed_notebook.gd",
+      "sha256": "22974e747e890016e29065b40e00dc4cdb553d48ea9d964aa691e79b63df3a80"
+    },
+    {
+      "path": "godot/tools/test_fixed_notebook.gd.uid",
+      "sha256": "94d14111ae849ee6734f87c93063f68b8fb22869930fd715f641b6218f9fcd0f"
+    },
+    {
+      "path": "godot/tools/test_frame_latch_inspection.gd",
+      "sha256": "a4b15333206d1d4407b96d558c6728c695c4e47eae40e4bba8691a9d8a844fec"
+    },
+    {
+      "path": "godot/tools/test_frame_latch_inspection.gd.uid",
+      "sha256": "66ea59c7f2438e0b6a446347289efdfa1491ac6c7cfeb120d7f161a08e2756e2"
+    },
+    {
+      "path": "godot/tools/test_gamepad.gd",
+      "sha256": "e5f5b525da8b1538bcc2c65cf4ec86c6eeed0c19bc51edf70662469f169883c1"
+    },
+    {
+      "path": "godot/tools/test_gamepad.gd.uid",
+      "sha256": "44c354030beb9c5fc929fc39c7b872517be1d96003bfb10c53e28863fd942377"
+    },
+    {
+      "path": "godot/tools/test_garden_inspection.gd",
+      "sha256": "6f02a0994a8903d2425a6e0218fc1178e72d4a48b5b887f13de5e3c8b9e4b7d8"
+    },
+    {
+      "path": "godot/tools/test_garden_inspection.gd.uid",
+      "sha256": "0ed640398acc7e6f6ca865bd32ec9a836eb1c88f02fa78b153f35d3896a39817"
+    },
+    {
+      "path": "godot/tools/test_handwriting_inspection.gd",
+      "sha256": "b86c5519a193cbd9ae2d2c151423ea767959a3325ed44d64d8adb0382dcd0574"
+    },
+    {
+      "path": "godot/tools/test_handwriting_inspection.gd.uid",
+      "sha256": "a22b32b11901ec257ac9ab77ae5875b04782c2ddf0aefbb552595d4cbd541344"
+    },
+    {
+      "path": "godot/tools/test_handwriting_spread.gd",
+      "sha256": "a6ede485e952bab4f0c5bac2832260ec5d5bdcee475c19a68ffcec97c1dec9c2"
+    },
+    {
+      "path": "godot/tools/test_handwriting_spread.gd.uid",
+      "sha256": "13ec99d5147063ea965103f912e350d4e2438b7d1e42082b950a6e09dd6e96a1"
+    },
+    {
+      "path": "godot/tools/test_inspection_world.gd",
+      "sha256": "6a1a617fca64b343698c286711982d6736b1fbbacfce1cc932a81203ca230804"
+    },
+    {
+      "path": "godot/tools/test_inspection_world.gd.uid",
+      "sha256": "6ce34dc237796a5891e7a55b317332979582496eecc7ec8f17719b7aab131e32"
+    },
+    {
+      "path": "godot/tools/test_interaction_routing.gd",
+      "sha256": "44f28ae33e1079a7e391cf413748c34d879f46a8918c41efeed0e63eafa7aaac"
+    },
+    {
+      "path": "godot/tools/test_interaction_routing.gd.uid",
+      "sha256": "72810aa13eb4f772ef608f94f57fabfb553edf8f6768662cab16fea0888aa381"
+    },
+    {
+      "path": "godot/tools/test_interaction_targeting.gd",
+      "sha256": "ab9f6b1e5e84b660f99887ec0d4feb422db75284896fe99de63aa0d05bb4b197"
+    },
+    {
+      "path": "godot/tools/test_interaction_targeting.gd.uid",
+      "sha256": "2d329dbc5a6cff2a93d5eb19ce996e7fd7cce50689bc3b6dab4d2dd887e20c62"
+    },
+    {
+      "path": "godot/tools/test_item_inspector.gd",
+      "sha256": "bd903724240979ec164040236cc45fcd1882161b08a4cbb549c014b1da30b30c"
+    },
+    {
+      "path": "godot/tools/test_item_inspector.gd.uid",
+      "sha256": "152cdf14ad7cdfbf4ee67b4027b9f03b03541cc5d79de13bca51d45c712d665e"
+    },
+    {
+      "path": "godot/tools/test_moving_door_targeting.gd",
+      "sha256": "5218a323173c7b4879af0a00215b8230b231f2123e77cb9b80792ec1a75e071a"
+    },
+    {
+      "path": "godot/tools/test_moving_door_targeting.gd.uid",
+      "sha256": "a7d0fad644888da53ccb8d027466a86c26e4465f697f734702464599d22bbc79"
+    },
+    {
+      "path": "godot/tools/test_native_inspection_parts.gd",
+      "sha256": "34fd7be77be3b456ff8621294e1885ef9db2b11d79669eb0916f666271a26c75"
+    },
+    {
+      "path": "godot/tools/test_native_inspection_parts.gd.uid",
+      "sha256": "fc2d876a8937020c20d1c81dce362a409883c34a7b0781991434ec5b79aa278e"
+    },
+    {
+      "path": "godot/tools/test_photo_inspection.gd",
+      "sha256": "7aea70fe5f7b14478521c0134792e111ba292fe8c4d9aac671bcb7859e7f9c09"
+    },
+    {
+      "path": "godot/tools/test_photo_inspection.gd.uid",
+      "sha256": "cfa8346ed5e56f7c0eeb02984bbfac6c85463f0a592e9a0a7a38ea62b164a812"
+    },
+    {
+      "path": "godot/tools/test_shoe_footprint_scale.gd",
+      "sha256": "00cdfa0e9e7b0622cb95b408885cd1fb4c5d5d8b9df3249190d2e747a51c85fd"
+    },
+    {
+      "path": "godot/tools/test_shoe_footprint_scale.gd.uid",
+      "sha256": "c89de04fdfdc0ef81130369c942c851ab336bee8cbf3397d3a1ac52483ad8212"
+    },
+    {
+      "path": "godot/tools/test_tray_inspection.gd",
+      "sha256": "147baf3b08e9ea0dad362402f2efb9e28dd405f3dbc70b7fff09429ad0efbcb6"
+    },
+    {
+      "path": "godot/tools/test_tray_inspection.gd.uid",
+      "sha256": "842fdd4aad378f59b7ebd6919a0bf87b9bf944fa58907810a4799f19b08cc3cd"
+    },
+    {
+      "path": "godot/tools/watch_gamepad.gd",
+      "sha256": "9b856e624b490bfac799424b0ddb59f6f9e750fd7d5f24fe0673463f1724f5d0"
+    },
+    {
+      "path": "godot/tools/watch_gamepad.gd.uid",
+      "sha256": "89a7c78c066238d556791386c825acc9af37c3d83bc306f657852d1a5716080f"
+    },
+    {
+      "path": "godot/ui/inspection_catalog.gd",
+      "sha256": "d2080cb51bd47a6567496f966e68658134e9909e73afc8ffdef85a643f14d8e9"
+    },
+    {
+      "path": "godot/ui/inspection_catalog.gd.uid",
+      "sha256": "c0ea7c7c18ea01ed6d77834df87bddd41a95b8e79e1c1c50bdfe9cb1023d1d40"
+    },
+    {
+      "path": "godot/ui/item_inspector.gd",
+      "sha256": "2e3dead2ed4c0bbab51b23e8ae3130615305f0024e0ec5cf19e07e03bb01cac6"
+    },
+    {
+      "path": "godot/ui/item_inspector.gd.uid",
+      "sha256": "b4393480cba0b460812789e868517e3098463d1e38f66a3df6cdfc0116df1d4e"
+    },
+    {
+      "path": "godot/world/inspection_document.gd",
+      "sha256": "3b66d87a55c07107689dd5dcea98d3cb54597ea9e8a2760a3c12cff8d4e8b758"
+    },
+    {
+      "path": "godot/world/inspection_document.gd.uid",
+      "sha256": "eeeb76687aa0467fb881777718bd7a91a02b6e8af69ec1bb4d082df193a25f64"
+    },
+    {
+      "path": "godot/world/inspection_fiber.gd",
+      "sha256": "1e9335b69740990aaa1959c7b85ce78741b1b6d92a2e6bd8223d27cc7f1dd297"
+    },
+    {
+      "path": "godot/world/inspection_fiber.gd.uid",
+      "sha256": "01ee9274c9159cd369732168defae8bb677755665db3774c44be0291cf9a6176"
+    },
+    {
+      "path": "godot/world/inspection_mesh.gd",
+      "sha256": "619637dc51578daec301c7500bb1fc7032be4775bdd55a2fe7e5b76f9e4e6b24"
+    },
+    {
+      "path": "godot/world/inspection_mesh.gd.uid",
+      "sha256": "643957258c99789ff7e11e54f02ef811b0f738e403580bbff0ddc92735eb4944"
+    },
+    {
+      "path": "godot/world/interaction_targeting.gd.uid",
+      "sha256": "59695e0b5eb4cceb88c53bfc9ee6cefe9eb15c50f8a3c07d98d82279755437d2"
+    },
+    {
+      "path": "tools/build_inspection_review.py",
+      "sha256": "f182c7dd15e9362a3d1f71479eeb0d1f290b6a9ecbe97cd1cfd1fa80e8f87b5e"
+    },
+    {
+      "path": "tools/diagnostics/README.md",
+      "sha256": "b8da6eb561469868ef232638ead0cc6cba46b275d8d7595d7606acdd7ff5fbe4"
+    },
+    {
+      "path": "tools/diagnostics/controller_watch.py",
+      "sha256": "fb6eb897af659e20b9ef84aead3cfda665fde79e6289a612060506f08dea4825"
+    },
+    {
+      "path": "tools/video/edit.py",
+      "sha256": "02d866aefaa2cd9483aa98c1ccd8128bc91c4a1c09dbc763a4d15332f8d48df6"
+    },
+    {
+      "path": "assets/3d/ded_corridor/scripts/layout.py",
+      "sha256": "3d4a36617eec823f8b0a3df1f484f6a75413d4b2b1071b95918fbbacc49b9d64"
+    },
+    {
+      "path": "assets/3d/manor/scripts/22_garden_vent.py",
+      "sha256": "965b7c3c67249eb316b04e9e313ba2b4e31e58fc2208a8d3a5bd8525715b6a84"
+    },
+    {
+      "path": "assets/audio/music/README.md",
+      "sha256": "996eed2bd81a76c8371efc97a8bfbbf368038c0bb725b417f1e9e807042b5462"
+    },
+    {
+      "path": "assets/登记表.csv",
+      "sha256": "d6b55e122fa9b103651b1430892206ce83ec60bcb7854c4a044e84b1e1cc7d58"
+    },
+    {
+      "path": "docs/01-玩法设计.md",
+      "sha256": "4f9ff68a2d9797accc34908b161a4fbafe5f0969bc3433d4adb4a47b1373c95f"
+    },
+    {
+      "path": "docs/02-剧情设计.md",
+      "sha256": "9489acefe2723a87022f97a0c6f8b454e1ee757456f24772e4c62d7cbe09eb51"
+    },
+    {
+      "path": "docs/04-美术与声音风格.md",
+      "sha256": "13701c2dd0062eea25a2ea8a1b4c1b8b35d82bebc7c2906e39aee7d771989625"
+    },
+    {
+      "path": "docs/06-技术方案.md",
+      "sha256": "643587113d9d52b7c47538acd3483b95c556ab05ffca8cb67f825301e6612f44"
+    },
+    {
+      "path": "docs/08-决策与更新记录.md",
+      "sha256": "d3ba9de59f70fc0e85ca2f792a29accd08993039886889d8058edf2173af84c5"
+    },
+    {
+      "path": "docs/任务/README.md",
+      "sha256": "fcccd0d5a297acacd33ba8f3521d60cb6c7f29aad96dabbaadf93d9b8ae17afa"
+    },
+    {
+      "path": "docs/任务/T-043-回廊关卡效果图与平面图.md",
+      "sha256": "f75b091693ef5b160dbbe0b2d6eb0930c6f4e599b0fa3eb9856a621fb85e6a7f"
+    },
+    {
+      "path": "docs/关卡/ded_corridor.md",
+      "sha256": "53b7befef7e5173043d8dc65a1661e61c76e706f5a45ff9e48998faf2c33b89a"
+    },
+    {
+      "path": "docs/关卡/manor.md",
+      "sha256": "74c0f983eab7896146e485683cde7181c4f8cfe02cb538798d9328a2b444ab01"
+    },
+    {
+      "path": "godot/content/space/room_states.csv",
+      "sha256": "48a02c469aad74a63bcc66f5b141e33b0cade241fe1521016ef013cb87d8ec4b"
+    },
+    {
+      "path": "godot/content/visual/ui.csv",
+      "sha256": "6db013cea1228d69efeb56bf77cb57c914cd7d384d61210686de514589884ead"
+    },
+    {
+      "path": "godot/core/settings.gd",
+      "sha256": "5c1fa022aebb6fb48fbadcd98bbf387cddf218ca6d947b5fc0f9123860a73e15"
+    },
+    {
+      "path": "godot/levels/archive.tscn",
+      "sha256": "5721bd8ed1243485700ae54bb13be1c5b5bb4fd105ae1b16353a9fb28e318843"
+    },
+    {
+      "path": "godot/levels/con_room.tscn",
+      "sha256": "c12df46d267a04414f2f85e0b1563e729958625ddcad43200cd3c621cd22d6a5"
+    },
+    {
+      "path": "godot/levels/darkroom.tscn",
+      "sha256": "27a8e523e23facac393bcd4bae9879ff0c1ac6b765a6a0b3381e21fddd75e4b3"
+    },
+    {
+      "path": "godot/levels/ded_corridor.gd",
+      "sha256": "399a9733dc3c7c3cbf7208e16ab84eb5a44e41c29740e69c07cdcaa2d53a05a1"
+    },
+    {
+      "path": "godot/levels/garden.tscn",
+      "sha256": "885d5282720e34dd24e9bc48c8e3cd628414eaafe0e6a90f3301e0826a5454b1"
+    },
+    {
+      "path": "godot/levels/greenhouse.tscn",
+      "sha256": "e1a838c9a9d871b5b7d81943e58608a80c8a54603cd3c314146e4cd003d62ddd"
+    },
+    {
+      "path": "godot/levels/guest_room.tscn",
+      "sha256": "f99aac1b16615b1a69889269dc3f5fed84582d8f8884e2085e40a9e5bcbebad9"
+    },
+    {
+      "path": "godot/main.gd",
+      "sha256": "b7b4e3c5b26f3f58a9c0f13db792bb9115b736450f2cd58c1ac2d55168add0a9"
+    },
+    {
+      "path": "godot/project.godot",
+      "sha256": "df4b49e7d0331bc06fa9491d1af72f8a79a6ca8de8a02e44187eaf9d0552d87b"
+    },
+    {
+      "path": "godot/tools/validate_content.gd",
+      "sha256": "fd6776ce9b3ca72c42a290289f6256e6360d70d3f96fc27e2a7d63b528b41c9a"
+    },
+    {
+      "path": "godot/ui/evidence_board.gd",
+      "sha256": "7050f4d86712220b011899109a30702c4d9bd41ef715b9a2972860f83edcd7ea"
+    },
+    {
+      "path": "godot/ui/footage_player.gd",
+      "sha256": "02689a2e94a09189f97a6ccfb07a1f2c4cbd34d87125d62eff48cf4382f65baa"
+    },
+    {
+      "path": "godot/ui/hud_keys.gd",
+      "sha256": "0774875f6bb9d5b5570a0c78ba4c7b6a9dc9697997142686ac3b00e6d5cf50b4"
+    },
+    {
+      "path": "godot/ui/menus.gd",
+      "sha256": "359dcfc4a91be301e51a6161fa3f3778eac3b1c89f59ec6bf9a18a1ae3474143"
+    },
+    {
+      "path": "godot/world/interaction_targeting.gd",
+      "sha256": "2657b05e9d251e710b545cf823b4d10593fc1640df4d73c64058c07f84bced23"
+    },
+    {
+      "path": "godot/world/player.gd",
+      "sha256": "70bd23c39287c2fdd7b5da724c2419c2445c0d8eba5ec7693ce132cc8b2937cc"
+    },
+    {
+      "path": "godot/world/scene_host.gd",
+      "sha256": "3dcb3952436635e70f370ebf124b2f3ac54e9a8ca0061f302546b7824f03fd23"
+    }
+  ]
+}
