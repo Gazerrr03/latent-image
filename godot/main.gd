@@ -27,7 +27,8 @@ func _ready() -> void:
 	add_child(ui)
 	Director.ui = ui
 	Director.world = host
-	add_child(DebugPanel.new())
+	if not OS.get_cmdline_user_args().has("--trial-table"):
+		add_child(DebugPanel.new())
 	if OS.get_cmdline_user_args().has("--chapter3-trial") or OS.get_cmdline_user_args().has("--chapter3-house-trial") or OS.get_cmdline_user_args().has("--chapter3-drawings-trial"):
 		var trial := preload("res://tools/chapter3_trial.gd").new()
 		trial.name = "Chapter3Trial"
@@ -56,6 +57,15 @@ func _ready() -> void:
 	var cap := _arg("--capture=")
 	if cap != "":
 		_capture(cap)
+		return
+	if OS.get_cmdline_user_args().has("--trial-table"):
+		DisplayServer.window_set_title("PR33 第二章餐桌 · 独立试玩 · 不写存档")
+		GameState.persist = false
+		GameState.reset()
+		if OS.get_cmdline_user_args().has("--chapter"):
+			Director.start("C2-00")
+		else:
+			_trial_table()
 		return
 	# 标题页：有存档时“继续调查”（ui/menus.gd）
 	if not GameState.load_save():
@@ -220,3 +230,72 @@ func _capture(shot_id: String) -> void:
 	get_viewport().get_texture().get_image().save_png(out)
 	print("截图已保存：", out)
 	get_tree().quit()
+
+
+## PR33 人工试玩入口，不读取或写入玩家存档。
+func _trial_table() -> void:
+	Director.running = true
+	GameState.shot = "C2-02a"
+	GameState.add_evidence("ev_extra_plate")
+	GameState.quests_done.append("c2_constance")
+	var old_skip: bool = Director.skip_text
+	Director.skip_text = true
+	var smoke := OS.get_cmdline_user_args().has("--trial-smoke")
+	if smoke:
+		_trial_table_smoke()
+	await Director._play(ContentDB.shots["C2-02a"])
+	Director.skip_text = old_skip
+	if Director._interrupted():
+		_trial_interrupted()
+		return
+	if smoke:
+		var host = Director.world
+		var ok: bool = host._sublevel == null and host.room.visible and host.player.interaction_owner == null and host.player.active and Director.ui.visible and not GameState.persist and not GameState.evidence.has("ev_table_diagram")
+		print("PR33_EXIT_RESTORE ", ok)
+		get_tree().quit(0 if ok else 1)
+		return
+	await Director._explore("c2")
+	if Director._interrupted():
+		_trial_interrupted()
+		return
+	Director.running = false
+	Director.start("C2-05")
+
+
+## 只检查资源、椅子隔离与控制交接；不代替人工解谜验收。
+func _trial_table_smoke() -> void:
+	await get_tree().create_timer(2.0).timeout
+	var host = Director.world
+	var lvl = host._sublevel
+	var chairs: Array = []
+	var normal_chairs: Array = []
+	if is_instance_valid(lvl):
+		for n in host._walk(lvl.get_node("结构/1924临时端椅")):
+			if n is MeshInstance3D:
+				chairs.append(str(n.name))
+	for n in host._walk(host.room):
+		if str(n.name).begins_with("餐厅·餐椅7") or str(n.name).begins_with("餐厅·餐椅8"):
+			normal_chairs.append(str(n.name))
+	var ok: bool = is_instance_valid(lvl) and chairs.size() == 2 and normal_chairs.is_empty() and host.player.interaction_owner == lvl and not host.room.visible and Director.ui.visible
+	if DisplayServer.get_name() != "headless":
+		ok = ok and lvl.player == host.player and host.player.cam.current
+		await RenderingServer.frame_post_draw
+		get_viewport().get_texture().get_image().save_png("/tmp/pr33-trial-entry.png")
+	print("PR33_ENTRY ", ok, " temporary_chairs=", chairs, " regular_chairs=", normal_chairs)
+	if not ok:
+		get_tree().quit(1)
+		return
+	lvl._show_chat("餐桌提示：复用现行阅读界面。")
+	await get_tree().process_frame
+	Director.ui.cancel()
+	await get_tree().process_frame
+	print("PR33_SHARED_UI ", not lvl.chat_open)
+	lvl._finish()
+
+
+func _trial_interrupted() -> void:
+	var target: String = Director._jump_to
+	Director._jump_to = ""
+	Director.running = false
+	if target != "END":
+		Director.start(target)

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>1924 年餐桌记忆演出效果图</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#0a0705}
+  body{width:1600px;height:900px;font-family:"Microsoft YaHei","Noto Sans SC",sans-serif}
+  .scene{width:1600px;height:900px;position:relative;overflow:hidden;background:#0b0705}
+  .scene img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:sepia(.58) saturate(.55) brightness(.3) contrast(1.1) blur(1.4px)}
+  .scene:after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 50% 48%,rgba(103,45,25,.14),transparent 45%),
+      linear-gradient(180deg,rgba(6,4,3,.46),rgba(6,4,3,.12) 45%,rgba(6,4,3,.84));
+  }
+  .grain{
+    position:absolute;inset:0;opacity:.18;pointer-events:none;
+    background-image:repeating-linear-gradient(0deg,rgba(255,235,200,.08) 0 1px,transparent 1px 4px);
+    mix-blend-mode:screen
+  }
+  .top{
+    position:absolute;z-index:5;left:44px;top:36px;right:44px;display:flex;justify-content:space-between;align-items:flex-start
+  }
+  .chapter{font-size:11px;letter-spacing:.18em;color:#d5ad77;font-weight:700;margin-bottom:7px}
+  h1{font-family:"KaiTi","STKaiti","SimSun",serif;font-size:34px;line-height:1.15;color:#f3e1c3;margin:0;letter-spacing:.05em;text-shadow:0 2px 8px #000}
+  .sub{margin-top:8px;color:#c8ae89;font-size:14px;letter-spacing:.05em}
+  .stamp{
+    color:#d6b47f;border:1px solid rgba(214,180,127,.55);padding:8px 12px;font-size:10px;
+    letter-spacing:.14em;text-align:right;line-height:1.55;background:rgba(15,9,6,.4)
+  }
+  .table{
+    position:absolute;z-index:5;left:270px;right:270px;top:560px;height:210px;
+    background:linear-gradient(180deg,rgba(93,56,31,.96),rgba(45,26,15,.98));
+    border:1px solid rgba(227,191,135,.3);
+    clip-path:polygon(16% 0,84% 0,100% 100%,0 100%);
+    box-shadow:0 30px 70px rgba(0,0,0,.65),inset 0 0 60px rgba(0,0,0,.42)
+  }
+  .table:before{
+    content:"";position:absolute;left:26%;right:26%;top:0;bottom:0;
+    background:linear-gradient(180deg,rgba(228,201,157,.16),rgba(228,201,157,.05));
+    clip-path:polygon(12% 0,88% 0,100% 100%,0 100%);
+    border-left:1px solid rgba(232,198,146,.18);border-right:1px solid rgba(232,198,146,.18)
+  }
+  .figure{
+    position:absolute;z-index:4;top:350px;width:92px;height:230px;opacity:.98;
+    filter:drop-shadow(0 0 10px rgba(220,159,91,.28));border:1px solid rgba(220,170,105,.18);
+    border-radius:48% 48% 22% 22%;
+  }
+  .figure:before{
+    content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+    width:58px;height:66px;border-radius:48% 48% 34% 34%;background:#070504;
+    box-shadow:0 0 22px rgba(0,0,0,.55)
+  }
+  .figure:after{
+    content:"";position:absolute;left:50%;top:66px;transform:translateX(-50%);
+    width:86px;height:140px;border-radius:48% 48% 24% 24%;background:#070504;
+    clip-path:polygon(22% 0,78% 0,96% 100%,4% 100%)
+  }
+  .figure.a{left:22%}.figure.b{left:37%}.figure.c{left:52%}.figure.d{left:67%}.figure.e{left:81%;transform:scale(.82);transform-origin:bottom center}
+  .figure.e:before{box-shadow:0 0 26px rgba(194,94,52,.16)}
+  .figure.e:after{background:#100806}
+  .candle{
+    position:absolute;z-index:7;top:605px;width:5px;height:44px;background:#d7b87e;
+    box-shadow:0 0 16px rgba(231,164,92,.45)
+  }
+  .candle:before{content:"";position:absolute;left:50%;top:-17px;transform:translateX(-50%);width:13px;height:19px;border-radius:50% 50% 40% 40%;background:#e2a45e;filter:blur(1px)}
+  .candle.c1{left:34%}.candle.c2{right:34%}
+  .placecard{
+    position:absolute;z-index:8;right:26%;top:695px;width:58px;height:36px;
+    background:#eadbc1;border:1px solid #8c5a43;transform:rotate(4deg);
+    display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;
+    color:#8a3f32;font-size:18px;font-weight:700;box-shadow:0 4px 10px rgba(0,0,0,.35)
+  }
+  .glow{
+    position:absolute;z-index:3;left:18%;right:18%;top:315px;height:300px;
+    background:radial-gradient(ellipse at 50% 55%,rgba(205,126,66,.20),rgba(69,33,18,.08) 55%,transparent 75%);
+    filter:blur(12px)
+  }
+  .seatplate{
+    position:absolute;z-index:6;width:54px;height:34px;border-radius:50%;
+    background:rgba(231,208,168,.58);border:1px solid rgba(241,202,139,.5);
+    box-shadow:0 4px 9px rgba(0,0,0,.28);transform:rotate(-4deg)
+  }
+  .seatplate.a{left:24%;top:610px}.seatplate.b{left:39%;top:610px}.seatplate.c{left:54%;top:610px}
+  .seatplate.d{left:69%;top:610px}.seatplate.e{right:25%;top:700px;width:62px;height:40px}
+  .card{
+    position:absolute;z-index:6;left:44px;bottom:38px;width:535px;background:rgba(241,226,199,.9);
+    border-left:4px solid #8a3f32;padding:14px 18px;color:#36271c;box-shadow:0 12px 28px rgba(0,0,0,.35)
+  }
+  .card .lab{font-family:"Georgia",serif;font-size:11px;letter-spacing:.15em;color:#8a3f32;margin-bottom:5px}
+  .card .line{font-family:"KaiTi","STKaiti","SimSun",serif;font-size:20px;line-height:1.55}
+  .card .small{font-size:11.5px;color:#705b44;line-height:1.55;margin-top:7px}
+  .caption{
+    position:absolute;z-index:6;right:44px;bottom:48px;color:#d8c3a2;text-align:right;
+    font-size:13px;line-height:1.7;text-shadow:0 2px 5px #000
+  }
+  .caption b{color:#e4be83;font-family:"KaiTi","STKaiti","SimSun",serif;font-size:18px}
+  .vignette{position:absolute;inset:0;box-shadow:inset 0 0 160px 50px rgba(0,0,0,.75);pointer-events:none}
+</style>
+</head>
+<body>
+<div class="scene">
+  <img class="bg" src="../../../assets/2d/T-029-餐厅/dining_table_close-v3.png" alt="餐桌">
+  <div class="grain"></div>
+  <div class="top">
+    <div>
+      <div class="chapter">DED_TABLE · MEMORY SCENE · AFTER CORRECT PLACEMENT</div>
+      <h1>1924 年的餐桌，短暂地回来</h1>
+      <div class="sub">摆对五套之后 · 格雷的推演 · “演绎”滤镜 · 不是鬼魂，不是时间旅行</div>
+    </div>
+    <div class="stamp">CHAPTER 02<br>DINING ROOM<br>1924 / 10</div>
+  </div>
+
+  <div class="glow"></div>
+  <div class="table"></div>
+  <div class="figure a"></div>
+  <div class="figure b"></div>
+  <div class="figure c"></div>
+  <div class="figure d"></div>
+  <div class="figure e"></div>
+  <div class="seatplate a"></div><div class="seatplate b"></div><div class="seatplate c"></div><div class="seatplate d"></div><div class="seatplate e"></div>
+  <div class="candle c1"></div>
+  <div class="candle c2"></div>
+  <div class="placecard">L.</div>
+
+  <div class="card">
+    <div class="lab">GREY'S INFERENCE</div>
+    <div class="line">1924 年，这张桌子上有五个人。<br>南边那个位置，是卢西恩的。</div>
+    <div class="small">画面里不出现清晰五官。茶倒进锡杯，时钟走一下；康斯坦斯知道自己在给谁摆，现在的她不知道。</div>
+  </div>
+
+  <div class="caption">
+    <b>南端 · L.</b><br>
+    修补旧盘 · 缺角锡杯 · 绣 L. 的餐巾<br>
+    摆对后：得到 1924 年餐桌图线索
+  </div>
+  <div class="vignette"></div>
+</div>
+</body>
+</html>

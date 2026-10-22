@@ -34,6 +34,9 @@ var _switch: Node = null
 var _shut: Node = null    # 打不开、但推了有一句话的门（正门、序章里闩着的暗房门）
 var _target: Node = null
 var _pitch := 0.0
+## 独立关卡接管交互，行走和转头仍沿用当前玩家。
+var interaction_owner: Node = null
+var _capture_until := 0
 
 
 func _ready() -> void:
@@ -82,7 +85,12 @@ func activate() -> void:
 	cam.current = true
 	set_physics_process(true)
 	if not Director.autoplay:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		capture_mouse()
+
+
+func capture_mouse() -> void:
+	_capture_until = Time.get_ticks_msec() + 300
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func deactivate() -> void:
@@ -99,13 +107,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not active or frozen:
 		return
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Time.get_ticks_msec() < _capture_until:
+			return
 		# 灵敏度与 Y 轴反转来自设置（core/settings.gd）；Esc 由界面层打开暂停页
 		var k := SENS * Settings.mouse_scale()
 		rotate_y(-event.relative.x * k)
 		_pitch = clampf(_pitch - event.relative.y * k * (-1.0 if Settings.invert_y else 1.0), -1.3, 1.3)
 		cam.rotation.x = _pitch
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		capture_mouse()
+	elif is_instance_valid(interaction_owner):
+		return
 	elif conversing:
 		return
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
@@ -163,7 +175,8 @@ func _physics_process(dt: float) -> void:
 		steps += 1
 		if not silent_steps:
 			Director.world.play_sound(Director.world.footstep_sound())
-	_update_hover()
+	if not is_instance_valid(interaction_owner):
+		_update_hover()
 
 
 ## 走一帧（tools/probe_walk.gd 也直接调用它，用来体检关卡碰撞）

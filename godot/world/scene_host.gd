@@ -1938,3 +1938,100 @@ func _refresh_cellar_entrance() -> void:
 	if not is_instance_valid(hatch): return
 	var pot := hatch.get_node_or_null("遮盖花盆")
 	if pot: pot.visible = not GameState.cellar.get("entrance_open", false)
+
+
+## 试验关卡只借用玩家；退出后恢复原房间、摄像机、输入和界面。
+var _sublevel: Node = null
+
+func enter_level(id: String) -> bool:
+	if is_instance_valid(_sublevel):
+		return false
+	var path := ContentDB.level_path(id)
+	if not ResourceLoader.exists(path):
+		push_error("没有小关卡：" + path)
+		return false
+	var packed := load(path) as PackedScene
+	if packed == null:
+		return false
+	var lvl := packed.instantiate()
+	if not lvl.has_signal("finished"):
+		lvl.free()
+		return false
+	_sublevel = lvl
+	var previous_room := room
+	var room_visible := room.visible if room else false
+	var muted := {}
+	if room:
+		room.visible = false
+		for n in _walk(room):
+			if n is CollisionObject3D:
+				muted[n] = [n.collision_layer, n.collision_mask]
+				n.collision_layer = 0
+				n.collision_mask = 0
+	var ui = Director.ui
+	var ui_visible: bool = ui.visible
+	var ui_mode: int = ui.process_mode
+	var fx_visible: bool = ui.fx.visible
+	var objective_before: String = ui.objective_label.text
+	var hud_before: bool = ui._hud_on
+	ui.set_hud(true)
+	var old_camera := get_viewport().get_camera_3d()
+	var pose: Transform3D = player.global_transform
+	var cam_pose: Transform3D = player.cam.transform
+	var pitch: float = player._pitch
+	var camera_environment: Environment = player.cam.environment
+	var fov: float = player.cam.fov
+	var near: float = player.cam.near
+	var was_active: bool = player.active
+	var was_frozen: bool = player.frozen
+	var was_conversing: bool = player.conversing
+	var needed_spawn: bool = player.needs_spawn
+	var mouse_mode := Input.mouse_mode
+	var previous_owner: Node = player.interaction_owner
+	var hotspots := active_hotspots.duplicate()
+	player.interaction_owner = lvl
+	player.conversing = false
+	shot_cam.current = false
+	add_child(lvl)
+	await lvl.finished
+	var completed: bool = lvl.get("solved") == true and not lvl.cancelled
+	# 关卡的 _finish 已收回玩家手中物件和图纸，之后才能释放它。
+	lvl.queue_free()
+	_sublevel = null
+	for n in muted:
+		if is_instance_valid(n):
+			n.collision_layer = muted[n][0]
+			n.collision_mask = muted[n][1]
+	if is_instance_valid(previous_room):
+		previous_room.visible = room_visible
+	ui.set_objective(objective_before)
+	ui.set_hud(hud_before)
+	ui.set_hint("")
+	ui.visible = ui_visible
+	ui.process_mode = ui_mode
+	ui.fx.visible = fx_visible
+	player.global_transform = pose
+	player.cam.transform = cam_pose
+	player._pitch = pitch
+	player.cam.environment = camera_environment
+	player.cam.fov = fov
+	player.cam.near = near
+	player.needs_spawn = needed_spawn
+	player.velocity = Vector3.ZERO
+	player.interaction_owner = previous_owner
+	player.conversing = was_conversing
+	if was_active:
+		player.activate()
+	else:
+		player.deactivate()
+	player.frozen = was_frozen
+	if is_instance_valid(old_camera):
+		old_camera.current = true
+	Input.mouse_mode = mouse_mode
+	highlight_hotspots(hotspots)
+	return completed
+
+
+func cancel_level() -> void:
+	if is_instance_valid(_sublevel):
+		_sublevel.cancel_level()
