@@ -54,14 +54,14 @@ C2-07,C2,*,guest_room,,walk,clock_tick;paper_slide@1,"深夜，门缝下无声�
 C3-01,C3,*,guest_room,,walk,birds_morning,昨夜塞进门缝的那张画静静摊在桌上，粗粝的红色蜡笔痕迹泛着冷光。,,wake();music(explore);leak(1);collect(ev_drawing_red);objective(小女孩：画画的人想告诉我什么？);explore(c3),C3-06,醒来（docs/01 第 4 节），然后自由探索（任务 c3）
 C3-02,C3,*,child_room,child_mid,,music_box,,,"music(关闭,1);say(c3_iris);collect(ev_rhyme)",,
 C3-03,C3,*,child_room,child_mid,,music_box,她不肯开口回答。我翻开记事本，将收集到的字迹与旧物一件件递到她眼前。,,inquire(c3_show_iris),,问话改成“递线索”：她用画、儿歌和布条回答
-C3-04,C3,*,child_room,child_wall,walk,music_box,,,"objective(墙上的画：她看见了什么？);inspect(hs_draw_path,hs_draw_wall,hs_draw_family,hs_draw_boxes,hs_draw_train)",,L0、L1 开始渗出：方盒子与数字、重复的火车、同一张脸
+C3-04,C3,*,child_room,child_wall,camera,music_box,,,"objective(墙上的画：她看见了什么？);inspect(hs_draw_path,hs_draw_wall,hs_draw_family,hs_draw_boxes,hs_draw_train)",,L0、L1 开始渗出：方盒子与数字、重复的火车、同一张脸
 C3-05,C3,*,child_room,child_mid,,music_box,我转身离去时，她在门口含糊地哼了半句：“园丁叔叔有玻璃房子的钥匙……”,,collect(ev_iris_key),,钩子 → 第 4 章园丁
 C3-06,C3,*,guest_room,,walk,pin,,,objective(书桌：画里的那个人，是从哪里进的暗房？);station(hs_desk_board);music(think);link(d3),,客房第一站：玩家走到书桌前按 E，坐下来连线（docs/01 第 4 节）
 C3-07,C3,*,guest_room,,walk,typewriter,,,objective(打字机：把今天的事记下来。);station(hs_typewriter);music(关闭);objective();annotate(c3),,客房第二站：打字机
 C3-08,C3,*,guest_room,,walk,clock_tick,我睡下了。,,objective(床：睡下。);station(hs_bed);objective();sleep();recap(r3);diary(diary4),,客房第三站：躺下、合眼，结束这一天
 C4-01,C4,*,guest_room,,walk,birds_morning;cutlery@0.5,早餐时，康斯坦斯低声喃喃：“安布罗斯生前……本来打算下个月辞退吉迪恩。”,,wake();music(explore);leak(1);objective(园丁：药是他买的，温室的钥匙也在他手上。);explore(c4),C4-05,醒来（docs/01 第 4 节），然后自由探索（任务 c4）
 C4-02,C4,*,greenhouse,green_mid,,paper_slap,吉迪恩把药房签收单重重拍在木案上。“药是我按单子买回来的。买的是什么，交回来的就是什么。我绝没有买错！”,,"collect(ev_receipt);inquire(c4_ask_gideon);say(c4_gideon);collect(ev_once_a_year,ev_vent_always_open,ev_thursday_latch,ev_boots)",,园丁讲主人生前的习惯
-C4-03,C4,*,greenhouse,green_mid,walk,,,,"objective(温室：通往暗房的那扇侧门，和他留下的照片。);inspect(hs_gh_latch,hs_gh_photos)",,
+C4-03,C4,*,greenhouse,green_mid,camera,,,,"objective(温室：通往暗房的那扇侧门，和他留下的照片。);inspect(hs_gh_latch,hs_gh_photos)",,
 C4-04,C4,*,garden,,walk,wind,,,"objective(暗房外墙下：那个“一定开着”的通风口，外面是什么样子？);inspect(hs_vent_louver,hs_vent_print)",,
 C4-05,C4,*,guest_room,,walk,pin,,,objective(书桌：机关是什么时候布下的？那一夜谁不在？);station(hs_desk_board);music(think);link(d4),,客房第一站：玩家走到书桌前按 E，坐下来连线（docs/01 第 4 节）
 C4-06,C4,*,guest_room,,walk,clock_tick;door_knock,"傍晚，吉迪恩替拉坦特夫人带来一句话：
@@ -70,7 +70,7 @@ C4-07,C4,*,guest_room,,walk,typewriter,,,objective(打字机：把今天的事�
 C4-08,C4,*,guest_room,,walk,clock_tick,我睡下了。,,objective(床：睡下。);station(hs_bed);objective();sleep();recap(r4);diary(diary5),,客房第三站：躺下、合眼，结束这一天
 C5-01,C5,*,guest_room,,walk,birds_morning,阴冷的大雾笼罩着庄园。离上一个星期四，正好过去了一整周。,,wake();music(explore);leak(2);objective(灵媒：上星期四夜里，她听见了什么？);explore(c5),C5-13,醒来（docs/01 第 4 节），然后自由探索（任务 c5）
 C5-02,C5,*,seance,seance_mid,,clock_tick,,,say(c5_latente);collect(ev_latente_footsteps),,
-C5-03,C5,*,seance,seance_mid,walk,clock_tick,,,"objective(她随身带的东西。);inspect(hs_se_cards,hs_se_photo,hs_se_gloves)",,
+C5-03,C5,*,seance,seance_mid,camera,clock_tick,,,"objective(她随身带的东西。);inspect(hs_se_cards,hs_se_photo,hs_se_gloves)",,
 C5-13,C5,*,guest_room,,walk,door_knock,天彻底黑透。吉迪恩在门外低沉地说：“夫人请您去客厅。蜡烛已经点上了。”,,objective(客厅：降灵会。);explore(c5b),C5-14,傍晚：去客厅（任务 c5b，触发 C5-04—C5-07）
 C5-04,C5,*,seance,seance_mid,,cloth_rustle;candle,"客厅里厚重的窗帘拉得严严实实。拉坦特夫人点燃了圆桌上的白蜡烛。
 她把长曝光的夜拍照片推到圆桌正中：“照片拍不清的，声音还留着。我能让它出声。你替我执笔。”
