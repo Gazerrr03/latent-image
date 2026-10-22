@@ -1,0 +1,24 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS hs_notebook当前提示是实际目标
+PASS hs_notebookE只发出已提示的目标
+PASS hs_notebook按住E的回声不重复执行
+PASS hs_notebook同帧隐藏后E不执行旧目标
+PASS hs_notebook同帧重现仅刷新提示
+PASS hs_notebook确认新提示后才执行
+PASS 瞄向邻物同帧按E只刷新不误执行
+PASS 下一次E执行新提示的打字机
+PASS hs_amb_notes当前提示是实际目标
+PASS hs_amb_notesE只发出已提示的目标
+PASS hs_amb_notes按住E的回声不重复执行
+PASS hs_amb_notes同帧隐藏后E不执行旧目标
+PASS hs_amb_notes同帧重现仅刷新提示
+PASS hs_amb_notes确认新提示后才执行
+PASS hs_con_ledger当前提示是实际目标
+PASS hs_con_ledgerE只发出已提示的目标
+PASS hs_con_ledger按住E的回声不重复执行
+PASS hs_con_ledger同帧隐藏后E不执行旧目标
+PASS hs_con_ledger同帧重现仅刷新提示
+PASS hs_con_ledger确认新提示后才执行
+PASS 路由检查没有伪造证据或已检视记录
+INTERACTION_ROUTING failures=0

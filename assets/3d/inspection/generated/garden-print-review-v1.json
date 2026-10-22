@@ -1,0 +1,56 @@
+{
+  "sources": [
+    {
+      "source": "godot/art/levels/manor/manor.gltf",
+      "sha256": "7c948090fcc6c8f89fb75b129383e1f502655457689dfda00b1babc3541ab517",
+      "binary_sha256": "a29a54657182f2c1d1dac0e426f2cb5385326eefca0cf9cfd9a17b703cb2b09f",
+      "meshes": [
+        {
+          "name": "地形-col",
+          "source_faces": 60896,
+          "clipped_faces": 41
+        }
+      ]
+    },
+    {
+      "source": "godot/art/levels/manor/room_garden__泥地鞋印.gltf",
+      "sha256": "449e500c69156cf004b35b68b6d864d6f0fc0a5b19903bbff10b5a38f609edca",
+      "binary_sha256": "36968bc4da3145e24df3aaa47a5e561d969e10d2e4e399feeb1e59e2f8ee0028",
+      "meshes": [
+        {
+          "name": "花园·泥地鞋印",
+          "source_faces": 1936,
+          "clipped_faces": 1596
+        }
+      ]
+    },
+    {
+      "source": "godot/art/levels/manor/room_garden.gltf",
+      "sha256": "a948a71c0b004c1bc490f3266587a5cd56a258d208a47983045fe839a202a755",
+      "binary_sha256": "a311f6ea43f477940a6fe25e937d55b83826d3ac6666371e3f76c00759db768c",
+      "meshes": [
+        {
+          "name": "花园·泥地细节",
+          "source_faces": 1662,
+          "clipped_faces": 84
+        }
+      ]
+    }
+  ],
+  "clip_box_blender": [
+    [
+      16.65,
+      11.43,
+      3.4
+    ],
+    [
+      17.8,
+      13.03,
+      4.0
+    ]
+  ],
+  "native_positions_preserved": true,
+  "note": "Boundary faces are clipped from native geometry, not replaced by invented walls or terrain.",
+  "asset_sha256": "2269b9880adeed43331f852ffed92693974b2282b08f678371b15b6f38157518",
+  "game_path": "godot/art/props/inspection/garden_print_review.glb"
+}

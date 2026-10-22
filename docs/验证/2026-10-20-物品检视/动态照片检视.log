@@ -1,0 +1,28 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 小样回接原模型与状态层
+PASS 原位背面向上且现代印字跟随本局
+PASS 现场E提示小样
+PASS E拿起真实小样且默认仍观察背面
+PASS 背面操作提示为阅读
+PASS 拿起后原位印字随背面一起隐藏
+PASS 预览实物背面印字不是固定模板
+PASS 背面清晰阅读与物理印字相同
+PASS 翻面展示真实照片正面
+PASS 正面操作提示为描述
+PASS 复位回到默认背面
+PASS 放下原位印字恢复并只收入一次
+PASS 异地笔记本动态编号 1
+PASS 异地笔记本动态编号 2
+PASS 异地笔记本动态编号 3
+PASS 异地笔记本动态编号 4
+PASS 异地笔记本动态编号 5
+PASS 异地笔记本动态编号 6
+PASS 异地笔记本动态编号 7
+PASS 异地笔记本动态编号 8
+PASS 异地笔记本动态编号 9
+PASS 异地笔记本动态编号 10
+PASS 异地笔记本动态编号 11
+PASS 异地笔记本动态编号 12
+PHOTO_INSPECTION failures=0

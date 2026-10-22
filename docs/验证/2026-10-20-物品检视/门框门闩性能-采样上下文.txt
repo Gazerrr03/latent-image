@@ -1,0 +1,4 @@
+This sample is not independent performance acceptance.
+During the probe, ps showed editor PID59117 and its embedded game PID59190, 1600x900.
+Our own probe PID59701,1280x720. Other-game processes were left untouched.
+Raw frame measurements remain in the paired log; the scope label predates the frame-latch argument, mode IDs identify actual four states.

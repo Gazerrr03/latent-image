@@ -1,0 +1,29 @@
+object,page,style,width,height,front,back,source,front_image,back_image,dynamic_back,surface_front,surface_back,handwriting
+ev_letter_p1,0,letter,.21,.29,亲爱的格雷：\n\n好久不见。十月十六日星期六，来奥瑞尔庄园住几天吧，晚上九点到。我就不派车去车站接你了，那段路你一向喜欢走。\n\n我有一样东西，必须给你看。\n\n——安布罗斯　十月十三日,,story/evidence.csv,,,,,,
+ev_letter_p2,0,letter,.21,.29,另：星期四晚上先来一趟。从温室那边进来，直接到暗房。别让家里任何人知道。这张照片，我想让你第一个看。,,story/evidence.csv,,,,,,
+ev_record_c0,0,typed,.21,.29,十月十六日。\n\n九点，我到达奥瑞尔庄园。\n十点，园丁撞开暗房的门。\n安布罗斯·塔尔博特死了。,,story/evidence.csv,,,,,,
+ev_amb_notes,0,journal,.15,.22,星期六，格雷来。\n\n最后一张冲出来，他们就都会想起来。,,story/evidence.csv,,,,"Saturday, Grey comes.\n\nWhen the last print is ready,\nthey will all remember.",,detached_t
+ev_carbon,0,carbon,.21,.29,亲爱的格雷：\n\n好久不见。十月十六日星期六，来奥瑞尔庄园住几天吧，晚上九点到。我就不派车去车站接你了，那段路你一向喜欢走。\n\n我有一样东西，必须给你看。\n\n——安布罗斯　十月十三日,,story/evidence.csv,,,,,,
+ev_ledger_names,0,ledger,.20,.27,1920\n\n彭罗斯先生,1921\n\n,story/evidence.csv,,,,,,
+ev_ledger_names,1,ledger,.20,.27,1922\n\n索尔特太太,1923\n\n,story/evidence.csv,,,,,,
+ev_ledger_names,2,ledger,.20,.27,1924\n\n卢西恩,1925\n\n,story/evidence.csv,,,,,,
+ev_con_ledger,0,ledger,.18,.25,1920 年 5 月\n\n彭罗斯先生　薪水,1921 年 3 月\n\n,story/evidence.csv,,,,Accounts\n\nMay 1920\nMr Penrose — wages,March 1921,detached_t
+ev_clipping,0,newspaper,.18,.24,威尔特郡时报\n1925 年 · 趣闻栏\n\n奥瑞尔庄园的“第五张脸”\n\n照相馆称底片无损。塔尔博特一家称，照片上的人从未在府上住过。,,story/evidence.csv,,,,,,
+ev_manual_page,0,manual,.15,.21,长时间曝光\n\n如果一个人在镜头前走动，底片上会留下好几个半透明的人影。,,story/evidence.csv,,,,,,
+ev_seance_cards,0,card,.11,.16,彭罗斯,,story/evidence.csv,,,,Penrose,,detached_t
+ev_seance_cards,1,card,.11,.16,索尔特,,story/evidence.csv,,,,Salter,,detached_t
+ev_seance_cards,2,card,.11,.16,卢西恩,,story/evidence.csv,,,,Lucien,,detached_t
+ev_seance_cards,3,card,.11,.16,,,story/evidence.csv,,,,,,
+ev_ticket,0,ticket,.14,.075,十月十四日　星期四\n\n伦敦　→　威尔特郡,,story/evidence.csv,,,,,,
+ev_ledger_last,0,torn,.19,.26,十月十三日\n\n叠印做出来了，只有一张脸。……我会先给格雷看。他最不愿意想起来。,,story/evidence.csv,,,,,,
+ev_ledger_last,1,torn,.19,.26,十月十五日\n\n星期四夜里他来了。我给他看了。……他会忘的，和他们一样。,,story/evidence.csv,,,,,,
+ev_draw_path,0,drawing,0.32,0.24,一座玻璃房子，里面一条虚线，通到一扇小门。,,story/hotspots.csv:hs_draw_path; assets/2d/inspection/prompts/iris_path-v1.txt,assets/2d/inspection/generated/iris_path-v1.png,,,,,
+ev_draw_boxes,0,drawing,0.32,0.24,一排方盒子，每个盒子里站着一个小人。盒子上写着她不认识的数字。,,story/hotspots.csv:hs_draw_boxes; assets/2d/inspection/prompts/iris_boxes-v1.txt,assets/2d/inspection/generated/iris_boxes-v1.png,,,,,
+ev_draw_train,0,drawing,0.32,0.24,一列火车。窗外的树，一棵一棵，画得一模一样。和我来的路上看见的一样。,,story/hotspots.csv:hs_draw_train; assets/2d/inspection/prompts/iris_train-v1.txt,assets/2d/inspection/generated/iris_train-v1.png,,,,,
+ev_iris_portrait,0,drawing,0.32,0.24,全家福：爸爸、妈妈、吉迪恩、夫人，还有她自己。所有人手拉手，连成一个身体。每个人都长着同一张脸。,,story/hotspots.csv:hs_draw_family; assets/2d/inspection/prompts/iris_family-v1.txt,assets/2d/inspection/generated/iris_family-v1.png,,,,,
+ev_draw_cloth,0,drawing,0.32,0.24,暗房的外墙，通风口上堵着一块黑布，旁边一只没有身体的手。,,story/hotspots.csv:hs_draw_wall; assets/2d/inspection/prompts/iris_vent-v1.txt,assets/2d/inspection/generated/iris_vent-v1.png,,,,,
+ev_night_photo,0,photo,0.10,0.15,一个模糊的人影走向暗房的侧门，看不见脸。,星期四，十一点四十分。,story/evidence.csv:ev_night_photo; assets/2d/T-043-回廊/prompts/night_photo-v1.txt,assets/2d/T-043-回廊/drafts/night_photo-v1.png,,,,,
+ev_photo_back,0,photo,.10,.07,1926 年合影的小样。面纱女人站在队伍边上，主位空着。,#{容器号} / 12  SYNC,story/hotspots.csv:hs_se_photo; docs/02:第3章演绎合影; existing photo_1926 candidate,godot/art/levels/manor/textures/photo_1926.jpg,,1,,,
+prop_photo_1926,0,photo,.26,.19,1926 年的庄园合影。戴面纱的女人站在队伍边上，主位空着。,08,docs/02-剧情设计.md；用户授权年度序号08,godot/art/levels/manor/textures/photo_1926.jpg,,,,,
+ev_receipt,0,receipt,.18,.25,药房签收单\n\n显影液　2 瓶\n停显液　1 瓶\n定影液　1 瓶\n专用调色液　1 瓶\n\n签收人：吉迪恩·沃登,,story/evidence.csv; docs/02; 2026-10-21 user authorized item/count details,,,,Receipt\n\nDeveloper — 2 bottles\nStop bath — 1 bottle\nFixer — 1 bottle\nToning solution — 1 bottle\n\nGideon Warden,,detached_t
+prop_grey_notebook,0,journal,.15,.22,我收到的每一条线索都记在这里，随时可以翻开来看。,,story/hotspots.csv:hs_notebook; literal English translation,,,,Every clue I receive goes into this notebook.\n\nI can return to it at any time.,,detached_t

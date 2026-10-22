@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+INSPECTION_PERF_META {"gpu":"Apple M4 (Apple9)","scope":"three investigation rooms","viewport":"(1280, 720)","vsync":1}
+INSPECTION_PERF {"fps":59.9862991292789,"mode":"walk","p95_ms":17.669,"p99_ms":18.175,"room":"child_room","samples":300}
+INSPECTION_PERF {"fps":60.0268106459244,"mode":"inspection","p95_ms":18.003,"p99_ms":18.639,"room":"child_room","samples":301}
+INSPECTION_PERF {"fps":59.9979000734974,"mode":"walk","p95_ms":18.232,"p99_ms":20.32,"room":"greenhouse","samples":300}
+INSPECTION_PERF {"fps":76.5919578444263,"mode":"inspection","p95_ms":17.319,"p99_ms":18.934,"room":"greenhouse","samples":383}
+INSPECTION_PERF {"fps":59.7963813621855,"mode":"latch_detail_light","p95_ms":18.058,"p99_ms":20.223,"room":"greenhouse","samples":300}
+INSPECTION_PERF {"fps":59.8057151537515,"mode":"walk","p95_ms":18.611,"p99_ms":19.304,"room":"seance","samples":300}
+INSPECTION_PERF {"fps":60.0075198792354,"mode":"inspection","p95_ms":17.727,"p99_ms":18.628,"room":"seance","samples":301}
+INSPECTION_PERF below_45=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

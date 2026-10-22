@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+INSPECTION_PERF_META {"gpu":"Apple M4 (Apple9)","scope":"native shoes, sweater, cloth and five-source handwriting","viewport":"(1280, 720)","vsync":1}
+INSPECTION_PERF {"fps":60.0072447284832,"mode":"hs_shoes","p95_ms":17.998,"p99_ms":18.939,"room":"guest_room","samples":301}
+INSPECTION_PERF {"fps":59.7895487868721,"mode":"hs_con_sweater","p95_ms":17.924,"p99_ms":18.496,"room":"con_room","samples":299}
+INSPECTION_PERF {"fps":60.0118867398253,"mode":"hs_vent_louver","p95_ms":17.759,"p99_ms":18.378,"room":"garden","samples":301}
+INSPECTION_PERF {"fps":60.000354819374,"mode":"hs_handwriting","p95_ms":18.27,"p99_ms":18.983,"room":"guest_room","samples":301}
+INSPECTION_PERF {"fps":56.7578402762428,"mode":"handwriting_notebook","p95_ms":17.634,"p99_ms":33.129,"room":"guest_room","samples":284}
+INSPECTION_PERF below_45=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

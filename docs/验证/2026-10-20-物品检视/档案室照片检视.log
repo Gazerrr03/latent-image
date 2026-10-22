@@ -1,0 +1,16 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 书桌中只拆出原照片并接入双面实物
+PASS 放在书桌上仍是背面朝上
+PASS 自然站位提示目标是档案室照片
+PASS 真实E拿起照片且默认背面
+PASS 照片离桌而其余底片簿放大镜仍在
+PASS 阅读实物编号08且不跟随容器03
+PASS 翻至合影正面
+PASS 复位回手写编号一侧
+PASS 放回原位且不增加虚构证据
+PASS 跨房间复查保持同一实物及固定编号
+ARCHIVE_PHOTO failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

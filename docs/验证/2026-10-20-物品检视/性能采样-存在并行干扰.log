@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PERF_META {"gpu":"Apple M4 (Apple9)","viewport":"(1600.0, 900.0)","vsync":1,"window":"(1280, 720)"}
+PERF_RESULT {"draw_calls":1693.0,"fps":30.4334268787028,"gpu_ms":0.0,"mode":"baseline","p95_ms":65.49,"p99_ms":85.159,"primitives":3435956.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":1201.0,"fps":80.1201226875314,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.632,"p99_ms":20.092,"primitives":2593925.0,"room":"guest_room"}
+PERF_RESULT {"draw_calls":2739.0,"fps":60.0054990486446,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.719,"p99_ms":18.767,"primitives":5625826.0,"room":"hall"}
+PERF_RESULT {"draw_calls":2286.0,"fps":59.9939481104844,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.514,"p99_ms":18.163,"primitives":4267188.0,"room":"hall"}
+PERF_RESULT {"draw_calls":1610.0,"fps":60.0076700032262,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.667,"p99_ms":18.496,"primitives":4032425.0,"room":"dining"}
+PERF_RESULT {"draw_calls":1588.0,"fps":55.3130578343298,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.644,"p99_ms":35.159,"primitives":4007075.0,"room":"dining"}
+PERF_RESULT {"draw_calls":2017.0,"fps":55.3890626311826,"gpu_ms":0.0,"mode":"baseline","p95_ms":25.534,"p99_ms":32.253,"primitives":4077803.0,"room":"seance"}
+PERF_RESULT {"draw_calls":1645.0,"fps":59.9972926221704,"gpu_ms":0.0,"mode":"no_filter","p95_ms":17.693,"p99_ms":18.539,"primitives":3337689.0,"room":"seance"}
+PERF_RESULT {"draw_calls":84.0,"fps":59.8768781692644,"gpu_ms":0.0,"mode":"baseline","p95_ms":17.965,"p99_ms":18.792,"primitives":793944.0,"room":"garden"}
+PERF_RESULT {"draw_calls":82.0,"fps":60.0038147955436,"gpu_ms":0.0,"mode":"no_filter","p95_ms":18.222,"p99_ms":18.622,"primitives":793762.0,"room":"garden"}
+PERF_RESULT {"draw_calls":368.0,"fps":59.9998125005859,"gpu_ms":0.0,"mode":"baseline","p95_ms":18.145,"p99_ms":18.606,"primitives":1009690.0,"room":"darkroom"}
+PERF_RESULT {"draw_calls":367.0,"fps":59.9929208353414,"gpu_ms":0.0,"mode":"no_filter","p95_ms":18.076,"p99_ms":18.913,"primitives":1009688.0,"room":"darkroom"}
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
