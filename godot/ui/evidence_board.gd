@@ -93,7 +93,8 @@ func cancel() -> void:
 		close()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+## 在 GUI 焦点导航前接收 Tab，卡片有焦点时也能合上。
+func _input(event: InputEvent) -> void:
 	if not visible:
 		return
 	var esc: bool = event.is_action_pressed("ui_cancel")
@@ -156,7 +157,14 @@ func _rebuild() -> void:
 		card.set_meta("base_scale", k)
 		card.scale = Vector2(k, k)
 		card.rotation_degrees = float(hash(id + "r") % 7) - 3.0
-		card.gui_input.connect(func(ev): _on_card_input(id, ev))
+		card.focus_mode = Control.FOCUS_ALL
+		card.gui_input.connect(func(ev):
+			if _exam.visible: return
+			if ev.is_action_pressed("ui_accept"):
+				card.accept_event()
+				if browsing: examine(id)
+				else: _on_card(id)
+			else: _on_card_input(id, ev))
 		add_child(card)
 		cards[id] = card
 	move_child(_strings, get_child_count() - 1)

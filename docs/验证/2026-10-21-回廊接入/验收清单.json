@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-22",
+  "base": "7cf7ee9",
+  "branch": "codex/chapter5-corridor-blender",
+  "engine": "Godot 4.7.2",
+  "renderer": "Metal Forward+ / Apple M4",
+  "viewport": [
+    1280,
+    720
+  ],
+  "fresh_import": true,
+  "full_gameplay": {
+    "checks": 159,
+    "failures": 0,
+    "entry": "C5-04 → C5-05 → C5-06",
+    "exit": "C5-14，醒来后实际移动",
+    "autoplay": false
+  },
+  "optional_route": {
+    "checks": 81,
+    "failures": 0
+  },
+  "targeting_and_rules": {
+    "checks": 50,
+    "failures": 0
+  },
+  "screenshots": [
+    "圈1-尽头门.png",
+    "圈2-尽头门.png",
+    "圈2-暗房敲门.png",
+    "圈3-尽头门.png",
+    "圈4-尽头门.png",
+    "圈4-暗房无回应.png",
+    "圈5-第四椅.png",
+    "圈6-伸手.png",
+    "支线1-推门.png",
+    "支线1-笔记本.png",
+    "支线1-观察.png",
+    "支线2-推门.png",
+    "支线2-笔记本.png",
+    "支线2-观察.png",
+    "支线3-推门.png",
+    "支线3-笔记本.png",
+    "支线3-观察.png"
+  ],
+  "sources": {
+    "godot/levels/ded_corridor.gd": "00ba4953df48742d659fdd255e067d8e174fc9a3eab0b413e5cfa7a5187c2c90",
+    "godot/levels/ded_corridor.tscn": "ed529c6d054c23e04675d406bfdee4af2da4e32bd4311035dbd2f1e0fef68f4a",
+    "godot/art/levels/ded_corridor/ded_corridor.glb": "c626ec63a2757176e05e1a4704da13528a0635204e59fe7ebd4ab6e260d9d60a",
+    "godot/tools/test_corridor_gameplay.gd": "c9fcd936034633b5af6fa0b0d7aea84659eb7ab8084dd466e651dc5f3103c7fa",
+    "godot/tools/test_corridor_interaction.gd": "9d2162c362e7ee9a4eeb79722a9ad69ee691fddf98aba9b93cc965986c24db6a"
+  }
+}
