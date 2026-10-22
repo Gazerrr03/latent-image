@@ -1,0 +1,33 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS hs_cellar_book 室内站位可选中
+PASS hs_cellar_book 阅读F不误举镜
+PASS hs_cellar_notes 室内站位可选中
+PASS hs_cellar_notes 阅读F不误举镜
+PASS hs_cellar_relics 室内站位可选中
+PASS hs_cellar_relics 阅读F不误举镜
+PASS hs_cellar_portraits 室内站位可选中
+PASS hs_cellar_portraits 阅读F不误举镜
+PASS hs_cellar_camera 室内站位可选中
+PASS hs_cellar_camera 阅读F不误举镜
+PASS 正常E拿到相机
+PASS F举镜
+PASS 滚轮对焦并瞄准1920
+PASS 举镜时Esc打开暂停
+PASS 暂停时取景器隐藏
+PASS 暂停不响应摄影操作
+PASS 正常左键首曝
+PASS 首曝后显影盘是实际交互目标
+PASS 显影盘可选中
+PASS E第一次显影且不打开无关检视
+PASS 放下相机后R可拨杆
+PASS 错误年份二曝不推进
+PASS 同年份二曝
+PASS E二次显影并交接梯子目标
+PASS 带举镜状态走向出口
+PASS hs_cellar_ladder 室内站位可选中
+PASS hs_cellar_ladder 阅读F不误举镜
+PASS 返回庄园且FOV恢复
+PASS 离场清理手持相机与取景器
+CH4_INPUT failures=0

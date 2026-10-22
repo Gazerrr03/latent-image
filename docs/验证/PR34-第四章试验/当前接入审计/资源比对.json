@@ -1,0 +1,1220 @@
+[
+  {
+    "source": "assets/3d/gh_cellar/README.md",
+    "destination": "assets/3d/gh_cellar/README.md",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/references/ref_01.jpg",
+    "destination": "assets/3d/gh_cellar/references/ref_01.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/references/ref_02.jpg",
+    "destination": "assets/3d/gh_cellar/references/ref_02.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/references/ref_03.jpg",
+    "destination": "assets/3d/gh_cellar/references/ref_03.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/references/ref_04.jpg",
+    "destination": "assets/3d/gh_cellar/references/ref_04.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/references/ref_05.jpg",
+    "destination": "assets/3d/gh_cellar/references/ref_05.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/contact_sheet.jpg",
+    "destination": "assets/3d/gh_cellar/review/contact_sheet.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/bench_detail.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/bench_detail.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/center.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/center.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/east_ladder.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/east_ladder.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/hero_wide.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/hero_wide.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/plan_annotated.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/plan_annotated.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/portraits.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/portraits.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/review/final/table_hero.jpg",
+    "destination": "assets/3d/gh_cellar/review/final/table_hero.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/build_architecture.py",
+    "destination": "assets/3d/gh_cellar/scripts/build_architecture.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/build_props.py",
+    "destination": "assets/3d/gh_cellar/scripts/build_props.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/build_scene.py",
+    "destination": "assets/3d/gh_cellar/scripts/build_scene.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/export_gh_cellar.py",
+    "destination": "assets/3d/gh_cellar/scripts/export_gh_cellar.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/finalize_blend.py",
+    "destination": "assets/3d/gh_cellar/scripts/finalize_blend.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/make_alt_portraits.py",
+    "destination": "assets/3d/gh_cellar/scripts/make_alt_portraits.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/make_cellar_frames.py",
+    "destination": "assets/3d/gh_cellar/scripts/make_cellar_frames.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/make_cellar_ghosts.py",
+    "destination": "assets/3d/gh_cellar/scripts/make_cellar_ghosts.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/make_cellar_ui.py",
+    "destination": "assets/3d/gh_cellar/scripts/make_cellar_ui.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/make_textures.py",
+    "destination": "assets/3d/gh_cellar/scripts/make_textures.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/make_wood.py",
+    "destination": "assets/3d/gh_cellar/scripts/make_wood.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/postprocess.py",
+    "destination": "assets/3d/gh_cellar/scripts/postprocess.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/render_final.py",
+    "destination": "assets/3d/gh_cellar/scripts/render_final.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/scripts/scene_lib.py",
+    "destination": "assets/3d/gh_cellar/scripts/scene_lib.py",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/_portrait_grid.jpg",
+    "destination": "assets/3d/gh_cellar/textures/_portrait_grid.jpg",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_1926.png",
+    "destination": "assets/3d/gh_cellar/textures/label_1926.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_camera.png",
+    "destination": "assets/3d/gh_cellar/textures/label_camera.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_chemicals.png",
+    "destination": "assets/3d/gh_cellar/textures/label_chemicals.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_darkroom.png",
+    "destination": "assets/3d/gh_cellar/textures/label_darkroom.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_film.png",
+    "destination": "assets/3d/gh_cellar/textures/label_film.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_fragile.png",
+    "destination": "assets/3d/gh_cellar/textures/label_fragile.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_london.png",
+    "destination": "assets/3d/gh_cellar/textures/label_london.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/label_plates.png",
+    "destination": "assets/3d/gh_cellar/textures/label_plates.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_01.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_01.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_02.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_02.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_03.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_03.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_04.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_04.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_05.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_05.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_06.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_06.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_07.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_07.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_08.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_08.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_09.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_09.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_10.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_10.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_11.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_11.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_12.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_12.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_01.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_01.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_02.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_02.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_03.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_03.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_04.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_04.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_05.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_05.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_06.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_06.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_07.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_07.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_08.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_08.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_09.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_09.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_10.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_10.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_11.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_11.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/portrait_alt_12.png",
+    "destination": "assets/3d/gh_cellar/textures/portrait_alt_12.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "assets/3d/gh_cellar/textures/wood_grain.png",
+    "destination": "assets/3d/gh_cellar/textures/wood_grain.png",
+    "exists": false,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/cellar_layout.json",
+    "destination": "godot/art/levels/gh_cellar/cellar_layout.json",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar.glb",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar.glb",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar.glb.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar.glb.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_1926.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_1926.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_1926.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_1926.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_camera.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_camera.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_camera.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_camera.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_chemicals.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_chemicals.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_chemicals.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_chemicals.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_darkroom.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_darkroom.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_darkroom.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_darkroom.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_film.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_film.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_film.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_film.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_fragile.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_fragile.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_fragile.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_fragile.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_london.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_london.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_london.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_london.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_plates.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_plates.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_plates.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_label_plates.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_01.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_01.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_01.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_01.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_02.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_02.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_02.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_02.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_03.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_03.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_03.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_03.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_04.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_04.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_04.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_04.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_05.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_05.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_05.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_05.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_06.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_06.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_06.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_06.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_07.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_07.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_07.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_07.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_08.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_08.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_08.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_08.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_09.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_09.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_09.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_09.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_11.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_11.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_11.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_11.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_12.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_12.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_12.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_portrait_alt_12.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_wood_grain.png",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_wood_grain.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_wood_grain.png.import",
+    "destination": "godot/art/levels/gh_cellar/gh_cellar_wood_grain.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1919_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1920_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1921_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1922_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1923_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1924_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1925_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_empty.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_empty.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_empty.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_empty.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_blur.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_lens_blur.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_blur.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_lens_blur.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_sharp.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_lens_sharp.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_sharp.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_lens_sharp.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_normal.png",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_normal.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_normal.png.import",
+    "destination": "godot/art/levels/gh_cellar/textures/frames/1926_normal.png.import",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/footprint.png",
+    "destination": "godot/art/levels/gh_cellar/ui/footprint.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/footprint.png.import",
+    "destination": "godot/art/levels/gh_cellar/ui/footprint.png.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/key_ghost.png",
+    "destination": "godot/art/levels/gh_cellar/ui/key_ghost.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/key_ghost.png.import",
+    "destination": "godot/art/levels/gh_cellar/ui/key_ghost.png.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/notebook_bg.png",
+    "destination": "godot/art/levels/gh_cellar/ui/notebook_bg.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/notebook_bg.png.import",
+    "destination": "godot/art/levels/gh_cellar/ui/notebook_bg.png.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/owner_reflection.png",
+    "destination": "godot/art/levels/gh_cellar/ui/owner_reflection.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/owner_reflection.png.import",
+    "destination": "godot/art/levels/gh_cellar/ui/owner_reflection.png.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/silhouette.png",
+    "destination": "godot/art/levels/gh_cellar/ui/silhouette.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/silhouette.png.import",
+    "destination": "godot/art/levels/gh_cellar/ui/silhouette.png.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/viewfinder.png",
+    "destination": "godot/art/levels/gh_cellar/ui/viewfinder.png",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/art/ui/viewfinder.png.import",
+    "destination": "godot/art/levels/gh_cellar/ui/viewfinder.png.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/bolt_slide.ogg",
+    "destination": "godot/audio/sfx/bolt_slide.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/bolt_slide.ogg.import",
+    "destination": "godot/audio/sfx/bolt_slide.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/camera_case.ogg",
+    "destination": "godot/audio/sfx/camera_case.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/camera_case.ogg.import",
+    "destination": "godot/audio/sfx/camera_case.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/cloth_rustle.ogg",
+    "destination": "godot/audio/sfx/cloth_rustle.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/cloth_rustle.ogg.import",
+    "destination": "godot/audio/sfx/cloth_rustle.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/door_knock.ogg",
+    "destination": "godot/audio/sfx/door_knock.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/door_knock.ogg.import",
+    "destination": "godot/audio/sfx/door_knock.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/drawer.ogg",
+    "destination": "godot/audio/sfx/drawer.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/drawer.ogg.import",
+    "destination": "godot/audio/sfx/drawer.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/liquid.ogg",
+    "destination": "godot/audio/sfx/liquid.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/liquid.ogg.import",
+    "destination": "godot/audio/sfx/liquid.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/page_turn.ogg",
+    "destination": "godot/audio/sfx/page_turn.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/page_turn.ogg.import",
+    "destination": "godot/audio/sfx/page_turn.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/red_hum.ogg",
+    "destination": "godot/audio/sfx/red_hum.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/red_hum.ogg.import",
+    "destination": "godot/audio/sfx/red_hum.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/room_hum.ogg",
+    "destination": "godot/audio/sfx/room_hum.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/room_hum.ogg.import",
+    "destination": "godot/audio/sfx/room_hum.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/shutter_old.ogg",
+    "destination": "godot/audio/sfx/shutter_old.ogg",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/audio/shutter_old.ogg.import",
+    "destination": "godot/audio/sfx/shutter_old.ogg.import",
+    "exists": true,
+    "same_bytes": false
+  },
+  {
+    "source": "prototypes/gh_cellar/shaders/frame_view.gdshader",
+    "destination": "godot/shaders/frame_view.gdshader",
+    "exists": true,
+    "same_bytes": true
+  },
+  {
+    "source": "prototypes/gh_cellar/ui/focus_ring.gd",
+    "destination": "godot/ui/focus_ring.gd",
+    "exists": true,
+    "same_bytes": true
+  }
+]

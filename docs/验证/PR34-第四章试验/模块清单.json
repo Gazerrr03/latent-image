@@ -1,0 +1,133 @@
+{
+  "branch": "codex/chapter4-pr34-trial",
+  "baseline_commit": "60fdbce1797b28c47ec4bd2190dbb914fcd22ac5",
+  "active_checkpoint": "A6-ready-for-human-test",
+  "process": "用户授权连续完成A2-A6；完成实现和程序检查后统一交人工试玩",
+  "modules": [
+    {
+      "id": "M00",
+      "title": "当前本地基线",
+      "depends_on": [],
+      "status": "baseline-saved",
+      "scope": "从 C4-01 开始，记录当前问话、检视、D4 与收尾体验；作为对照",
+      "human_result": "pending"
+    },
+    {
+      "id": "M01",
+      "title": "地下室密室最小可体验原型",
+      "depends_on": [
+        "M00"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "产品业务语义闭环：温室活板门实体入口（hs_gh_trapdoor）+ 地下暗房场景（gh_cellar）+ 核心手记/笔记/旧物检视 + 顺木梯返回温室",
+      "human_result": "pending"
+    },
+    {
+      "id": "M01-CAM",
+      "title": "完整相机与调查链",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "记录本、实体装片、历史观察、钥匙、1926原片与完整阅读后返回；允许提前离开保留进度",
+      "human_result": "pending"
+    },
+    {
+      "id": "M02",
+      "title": "记录本与今年笔记",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "复用本地检视；补历年失踪、主人动机和星期四安排",
+      "human_result": "pending"
+    },
+    {
+      "id": "M03",
+      "title": "旧剪报与旧物",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "剪报判词、旧物与历年名字对应，镜中旧影只支持既有失踪者信息",
+      "human_result": "pending"
+    },
+    {
+      "id": "M04",
+      "title": "温室入口与返回",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "园丁松口、花盆活板门、进入返回；处理现有任务前置与结束条件混用",
+      "human_result": "pending"
+    },
+    {
+      "id": "M05",
+      "title": "章节完成与收尾",
+      "depends_on": [
+        "M02",
+        "M03",
+        "M04"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "定义调查完成、保存恢复、回客房、r4 和第五章衔接；不替换 D4",
+      "human_result": "pending"
+    },
+    {
+      "id": "X01",
+      "title": "举镜观察与对焦",
+      "depends_on": [
+        "M01"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "仅评估观察价值；不默认获得收人能力",
+      "human_result": "pending"
+    },
+    {
+      "id": "X02",
+      "title": "二次曝光历史观察",
+      "depends_on": [
+        "X01"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "对照旧记录；不改变当前人物与历史",
+      "human_result": "pending"
+    },
+    {
+      "id": "X03",
+      "title": "记录本页码与钥匙",
+      "depends_on": [
+        "M02"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "评估往返与门槛价值，不采用第二页提示词",
+      "human_result": "pending"
+    },
+    {
+      "id": "X04",
+      "title": "1926原片双操作",
+      "depends_on": [
+        "X02",
+        "X03"
+      ],
+      "status": "implemented-not-human-accepted",
+      "scope": "放回或装片观察，两条路径汇合第四章，不生成结局",
+      "human_result": "pending"
+    }
+  ],
+  "current_plan": "现行剧情与PR玩法接入计划.md",
+  "policy": "现行剧情、PR玩法；实现不等于人工验收；本轮完成至A6，A7未执行",
+  "a0_commit": "312d638d4cf157570ba9a91b46d64a4c61abee85",
+  "a1": {
+    "status": "ready-for-human-test",
+    "human_result": "pending",
+    "report": "A1/README.md",
+    "next": "superseded by user authorization to complete through A6"
+  },
+  "a2_a6": {
+    "status": "ready-for-human-test",
+    "human_result": "pending",
+    "report": "A2-A6/README.md"
+  }
+}

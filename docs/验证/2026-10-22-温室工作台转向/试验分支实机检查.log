@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PHOTO hotspot=(20.85, 4.539, -8.48) visible=true
+PHOTO guide target=(20.85, 4.531, -8.48)
+NAV feet=(21.4, 3.624289, -9.0) start=64 target=(20.85, 4.531, -8.48) goal=434 floor_goal=64
+NAV show actual=false floor=true
+NAV feet=(21.6985, 3.656278, -7.6315) start=53 target=(20.85, 4.531, -8.48) goal=434 floor_goal=64
+NAV show actual=false floor=true
+NAV feet=(20.5, 3.629604, -10.0) start=64 target=(20.85, 4.531, -8.48) goal=434 floor_goal=64
+NAV show actual=false floor=true
+AIM hover=hs_gh_photos camera=(21.4, 5.23, -9.1)
+SIGHT blocker=/root/Main/@Node3D@2/庄园大地图/greenhouse/结构/温室/温室·盆栽工作台/StaticBody3D hit=(20.85034, 4.539423, -8.480379)
+RAY (20.85, 4.539755, -8.48) collider=/root/Main/@Node3D@2/庄园大地图/greenhouse/结构/温室/温室·盆栽工作台/StaticBody3D
+DOCUMENT /root/Main/@Node3D@2/庄园大地图/greenhouse/接口/hs_gh_photos/夜拍照片 at=(20.85, 4.539, -8.48) rotation=(-90.0, -12.0, 0.0) visible=true
+VIEW yaw=138.423934936523 pitch=-39.8193550350249
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)
