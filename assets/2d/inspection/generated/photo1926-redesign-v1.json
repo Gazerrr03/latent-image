@@ -1,0 +1,13 @@
+{
+  "status": "integrated_runtime_verified_pending_user_visual_acceptance",
+  "source": "/Users/qizhi_dong/.codex/generated_images/01a1591d-cd13-7960-b1f8-3a15a948ebd3/exec-720be4cc-99a3-46f6-9b57-97eb4acfe7e4.png",
+  "project_copy": "assets/2d/inspection/generated/photo1926-redesign-v1.png",
+  "prompt": "assets/2d/inspection/prompts/photo1926-redesign-v1.txt",
+  "sha256": "736a4fadbc3f0537fa1c7610f0bc6909b5c73a175d107c7118d993df77dd6d33",
+  "native_size": [
+    1536,
+    1024
+  ],
+  "tool": "built-in image_gen generation",
+  "design": "New rear three-quarter composition. Four people, empty main position, distinct veiled woman. User authorized redesign. Prior refused edits have no outputs."
+}

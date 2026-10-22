@@ -1,0 +1,20 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 使用项目原环境循环音轨
+PASS hs_notebook检视冻结角色但不暂停场景
+PASS hs_notebook保留同一环境播放器且未暂停
+PASS hs_notebook环境音播放位置继续前进
+PASS hs_notebook环境音增益和总线静音状态不被改写
+PASS hs_notebook文字阅读期间环境音继续
+PASS hs_notebook退出恢复行动且保留环境声
+PASS hs_drawer检视冻结角色但不暂停场景
+PASS hs_drawer保留同一环境播放器且未暂停
+PASS hs_drawer环境音播放位置继续前进
+PASS hs_drawer环境音增益和总线静音状态不被改写
+PASS hs_drawer文字阅读期间环境音继续
+PASS hs_drawer退出恢复行动且保留环境声
+INSPECTION_AMBIENT failures=0
+WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

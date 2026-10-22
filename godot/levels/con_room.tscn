@@ -80,11 +80,12 @@ near = 0.03
 [node name="hs_con_ledger" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92, 4.395, -10.65)
 metadata/size = Vector3(0.3, 0.08, 0.3)
+metadata/interaction_reach = 2.65
 
 [node name="hs_con_ringbox" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92, 4.395, -10.35)
 metadata/size = Vector3(0.12, 0.1, 0.12)
 
 [node name="hs_con_sweater" type="Marker3D" parent="接口"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26, 3.795, -7.55)
-metadata/size = Vector3(0.6, 0.3, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92, 3.82, -7.28)
+metadata/size = Vector3(0.08, 0.32, 0.44)

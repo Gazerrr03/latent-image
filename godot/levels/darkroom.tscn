@@ -115,20 +115,32 @@ fov = 35.1
 near = 0.03
 
 [node name="hs_tray" type="Marker3D" parent="接口"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.72, 4.545, -10.76)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.14, 4.545, -10.76)
 metadata/size = Vector3(0.4, 0.12, 0.32)
+metadata/inspection_focus = Vector3(0, -0.023, 0)
+metadata/inspect_fov = 25.0
+metadata/inspect_light = true
 
 [node name="hs_bottles" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.62, 5.065, -9.75)
 metadata/size = Vector3(0.35, 1.0, 1.0)
+metadata/interaction_normal = Vector3(1, 0, 0)
+metadata/interaction_min_dot = 0.35
+metadata/inspection_focus = Vector3(0.025, -0.21, -0.02)
+metadata/inspect_fov = 18.0
+metadata/inspect_light = true
 
 [node name="hs_vent_inside" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.15, 4.115, -11.04)
 metadata/size = Vector3(0.5, 0.5, 0.15)
 
 [node name="hs_camera" type="Marker3D" parent="接口"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2, 4.965, -10)
-metadata/size = Vector3(0.35, 0.4, 0.45)
+position = Vector3(18.1502, 4.96, -9.97125)
+rotation_degrees = Vector3(0, -60, 0)
+metadata/size = Vector3(0.28, 0.37, 0.515)
+metadata/inspect_fov = 32.0
+metadata/inspect_light = true
+metadata/inspect_light_energy = 0.8
 
 [node name="hs_clock_dark" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.95, 5.615, -11.06)

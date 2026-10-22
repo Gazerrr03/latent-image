@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 少年毛衣为真实便携网格
+PASS 毛衣没有连衣柜一起复制
+PASS 衣柜原位保留其余四种材料
+PASS 真实开柜后提示毛衣
+NATIVE_INPUT before {"active":true,"busy":false,"frozen":false,"jump":"","menus":false,"pending":["hs_con_sweater"]}
+NATIVE_INPUT after {"frozen":true,"inspected":["hs_con_sweater"],"inspector":true,"jump":"","menus":false}
+PASS 毛衣从原件方向浮出
+PASS 拿起只隐藏毛衣且衣柜仍在
+PASS 放下恢复毛衣
+PASS 真实E路径收集毛衣一次
+PASS 跨房间笔记本读取同一毛衣几何
+PASS 皮鞋为独立实物而非整个衣柜
+PASS 衣柜保留大衣和帽盒
+PASS 真实站位提示皮鞋
+PASS 皮鞋从原件方向浮出
+PASS 真实E拿起皮鞋且原衣柜仍在
+PASS 鞋底有独立真实干泥材质与几何
+PASS 放下皮鞋恢复且只记录一次
+PASS 异地笔记本皮鞋几何一致
+NATIVE_PARTS failures=0

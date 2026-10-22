@@ -612,7 +612,9 @@ func target_label(id: String) -> String:
 		return "交谈：" + id.trim_prefix("talk:").get_slice("@", 0)
 	if id.begins_with("door:"):
 		return "推门：" + id.trim_prefix("door:").get_slice("（", 0).get_slice("·", 1)
-	return "检查：" + String(ContentDB.hotspots.get(id, {}).get("label", id))
+	var h: Dictionary = ContentDB.hotspots.get(id, {})
+	var verb: String = h.get("verb", "")
+	return (verb if verb != "" else "检查") + "：" + String(h.get("label", id))
 
 
 ## 灰盒（过渡用）：还没有关卡场景的房间，按房间登记表（尺寸）与房间布局表搭出来。
@@ -886,6 +888,9 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_mode
 	a.collision_layer = 1 << (HOTSPOT_LAYER - 1)
 	a.collision_mask = 0
 	a.set_meta("hotspot_id", id)
+	for key in ["interaction_normal", "interaction_min_dot", "interaction_reach", "inspection_focus", "inspect_fov", "inspect_light"]:
+		if parent.has_meta(key):
+			a.set_meta(key, parent.get_meta(key))
 	var cs := CollisionShape3D.new()
 	var sh := BoxShape3D.new()
 	sh.size = size
@@ -915,6 +920,8 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_mode
 
 ## 关卡场景：空间、灯光、构图全部以场景为准，这里只按名字认出需要接上剧情的节点
 func _adopt_level(r: Node, rid := "") -> void:
+	var declared_hotspot := RegEx.new()
+	declared_hotspot.compile("\\bhs_[a-z0-9_]+\\b")
 	# 先换小物件模型，再记下房间表面（渗漏变白用），最后接上出生点、机位、热区、人物
 	for n in _walk(r):
 		if n is Node3D and String(n.name).begins_with("prop_"):
@@ -926,10 +933,25 @@ func _adopt_level(r: Node, rid := "") -> void:
 	_unshadow_lamp_housings(r)
 	for n in _walk(r):
 		if n is MeshInstance3D and _is_door(String(n.name)):
+			# 衣柜右门已按合页单独建模，但导入资源未生成碰撞。
+			# 碰撞直接来自真实门板，既能按 E 开门，也会挡住柜内物品。
+			if String(n.name).ends_with("衣柜右门"):
+				var has_body: bool = n.get_children().any(func(child): return child is StaticBody3D)
+				if not has_body:
+					var body := StaticBody3D.new()
+					body.name = "门板碰撞"
+					var collision := CollisionShape3D.new()
+					collision.shape = n.mesh.create_trimesh_shape()
+					body.add_child(collision)
+					n.add_child(body)
 			for c in n.get_children():
 				if c is StaticBody3D:
 					c.set_meta("door", true)
 					doors[c] = {"leaf": n}
+					if String(n.name).ends_with("衣柜右门"):
+						doors[c]["closed"] = n.rotation.y
+						doors[c]["container"] = true
+						n.set_meta("closed_yaw", n.rotation.y)
 					# 能开的门在某几镜里也可以闩着（暗房温室侧门：序章当晚从里面闩上，T1）：门的说法表这一镜有话就推不开
 					if ContentDB.door_lines.has(String(n.name)):
 						c.set_meta("door_line", String(n.name))
@@ -976,9 +998,84 @@ func _adopt_level(r: Node, rid := "") -> void:
 				named[rid + "/" + who] = n
 				# 大地图里同一个人可能在几个房间都有站位：平时都不出现，由镜头所在的房间或当天的任务决定谁在哪里
 				_chr_nodes.append({"room": rid, "who": who, "node": n, "default": n.visible})
+	# 原模型已明确标注编号时，直接绑定真实网格；不重建空间或猜测摆放位置。
+	# 多编号组合家具仍以关卡里的独立 Marker 为准，不能用整件家具替代两条线索。
+	for n in _walk(r):
+		if not n is MeshInstance3D:
+			continue
+		var matches := declared_hotspot.search_all(String(n.name))
+		if matches.size() != 1:
+			continue
+		var id: String = matches[0].get_string()
+		if hotspot_nodes.has(id) or not ContentDB.hotspots.has(id):
+			continue
+		if rid != "" and ContentDB.hotspots[id].get("scene", "") != rid:
+			continue
+		_hotspot_on(n, id)
 	# 回廊这种自己搭空间、自带热区的关卡：挂在 r 下面、带 hotspot_id 的 Area3D 也要能选
-		_bind_meta_hotspots(r)
+	_bind_meta_hotspots(r)
+	_bind_inspection_assets(r, rid)
+	if hotspot_nodes.has("hs_con_sweater"):
+		for body in doors:
+			if doors[body].get("container", false):
+				hotspot_nodes["hs_con_sweater"].set_meta("container_leaf", doors[body]["leaf"])
 	_bind_outlines(r)
+
+
+## 只在现有物件上接内容、原画位材质与热区；不生成或移动房间布局。
+func _bind_inspection_assets(r: Node, rid: String) -> void:
+	var nodes := {}
+	for n in _walk(r):
+		if n is MeshInstance3D:
+			nodes[String(n.name)] = n
+	for row in ContentDB.load_table("res://content/visual/inspections.csv"):
+		var id: String = row.get("hotspot", "")
+		var h: Dictionary = ContentDB.hotspots.get(id, {})
+		if rid != "" and h.get("scene", "") != rid:
+			continue
+		var source: MeshInstance3D = nodes.get(row.get("mesh", ""))
+		if not is_instance_valid(source):
+			continue
+		if row.get("replacement_asset", "") != "":
+			preload("res://world/inspection_mesh.gd").replace(source, row["replacement_asset"])
+		if row.get("part_material", "") != "":
+			source = preload("res://world/inspection_mesh.gd").part(source, row["part_material"], "" if row.get("world_document", "") == "1" else row.get("asset", ""), row.get("asset_fit", "") == "native")
+			if not is_instance_valid(source):
+				continue
+		# 部分原模型只有渲染网格。实体道具仍须挡住视线，不能选中它背后的线索。
+		# 独立交互遮挡层不改变行走碰撞，形状来自该道具的真实三角面。
+		if row.get("occlusion", "") == "solid" and not source.has_node("交互遮挡"):
+			var occluder := StaticBody3D.new()
+			occluder.name = "交互遮挡"
+			occluder.collision_layer = 4
+			occluder.collision_mask = 0
+			occluder.set_meta("inspection_surface_for", id)
+			var shape := CollisionShape3D.new()
+			shape.shape = source.mesh.create_trimesh_shape()
+			occluder.add_child(shape)
+			source.add_child(occluder)
+		if not hotspot_nodes.has(id):
+			_hotspot_on(source, id)
+		if row.get("world_document", "") == "1" and not source.has_meta("inspection_document"):
+			var document: Node3D = load(row["asset"]).instantiate()
+			document.position = source.mesh.get_aabb().get_center()
+			var angles: PackedStringArray = row.get("world_rotation", "0,0,0").split(",")
+			document.rotation_degrees = Vector3(float(angles[0]), float(angles[1]), float(angles[2]))
+			source.add_child(document)
+			# 原薄片仅保留已有热区与状态层；真实双面纸张接在同一个原位。
+			source.layers = 0
+			source.set_meta("inspection_document", document)
+		var image: String = row.get("image", "")
+		if image != "" and ResourceLoader.exists(image):
+			for i in source.mesh.get_surface_count():
+				var original := source.get_active_material(i)
+				if original is StandardMaterial3D and original.resource_name.contains(row.get("material", "")):
+					var material: StandardMaterial3D = original.duplicate()
+					material.albedo_texture = load(image)
+					source.set_surface_override_material(i, material)
+		var layer: String = row.get("layer", "")
+		if layer != "":
+			named[(rid + "/" if rid != "" else "") + "层·" + layer] = source
 
 
 ## 关卡里手工放的 Area3D（名字 hs_、set_meta("hotspot_id")）：直接当热区用，不做描边
@@ -1081,6 +1178,13 @@ func door_line_label(body: Node) -> String:
 	return "推门：" + String(body.get_meta("door_line", "")).get_slice("（", 0).get_slice("·", 1)
 
 
+func door_label(body: Node) -> String:
+	var container: bool = doors.get(body, {}).get("container", false)
+	var name_text := String(doors.get(body, {}).get("leaf", body).name)
+	var label := name_text.get_slice("·", 1) if name_text.contains("·") else name_text
+	return ("关门：" if door_is_open(body) else "开门：") + ("衣柜" if container else label)
+
+
 ## 开门往离开玩家的一侧推开（推不开就换一边、开小一点）；关门转回关着的朝向
 func toggle_door(body: Node, from: Vector3) -> void:
 	if not doors.has(body):
@@ -1111,7 +1215,7 @@ func toggle_door(body: Node, from: Vector3) -> void:
 ## 门扇宽度（本地 +x 方向，从合页量起）与把手高度
 func _leaf_span(leaf: MeshInstance3D) -> Vector2:
 	var a := leaf.mesh.get_aabb()
-	return Vector2(a.end.x, a.position.y + a.size.y * 0.45)
+	return Vector2(maxf(absf(a.position.x), absf(a.end.x)), a.position.y + a.size.y * 0.45)
 
 
 ## 关着的门：门扇末端再往外一点就碰到门洞的墙。从当前朝向起左右逐步转，找最近的那个朝向
@@ -1143,7 +1247,9 @@ func _swing_free(leaf: MeshInstance3D, body: Node, yaw: float) -> bool:
 ## 门扇在世界里的朝向（本地 +x 绕父节点的竖轴转到 yaw）
 func _leaf_dir(leaf: Node3D, yaw: float) -> Vector3:
 	var parent_basis: Basis = leaf.get_parent().global_basis if leaf.get_parent() is Node3D else Basis()
-	return (parent_basis * Basis(Vector3.UP, yaw) * Vector3.RIGHT).normalized()
+	var box: AABB = leaf.mesh.get_aabb() if leaf is MeshInstance3D else AABB()
+	var side := Vector3.LEFT if absf(box.position.x) > absf(box.end.x) else Vector3.RIGHT
+	return (parent_basis * Basis(Vector3.UP, yaw) * side).normalized()
 
 
 func _ray_hits(a: Vector3, b: Vector3, body: Node) -> bool:
@@ -1226,7 +1332,7 @@ func _walk(n: Node) -> Array:
 ## 第 5 章：进入回廊（降灵会之后）。回廊自己是空间，走完发 done 给 Director。
 func start_corridor() -> void:
 	if corridor == null:
-		corridor = preload("res://levels/ded_corridor.gd").new()
+		corridor = preload("res://levels/ded_corridor.tscn").instantiate()
 		corridor.name = "回廊"
 		# 回廊是独立空间，挪到远离庄园的一张空地上，免得和大地图叠在一起
 		corridor.position = Vector3(500, 0, 500)
@@ -1242,6 +1348,7 @@ func start_corridor() -> void:
 	active_hotspots = []
 	hotspot_nodes.clear()
 	_bind_meta_hotspots(corridor)
+	Director.ui.set_cinematic(false)
 	corridor.start(player)
 	exploring = false
 

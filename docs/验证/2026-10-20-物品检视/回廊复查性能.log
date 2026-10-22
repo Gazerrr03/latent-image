@@ -1,0 +1,8 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+CORRIDOR_REVIEW_PERF_META {"gpu":"Apple M4 (Apple9)","logical_viewport":"(1600.0, 900.0)","vsync":1,"window":"(1280, 720)"}
+INSPECTION_PERF {"fps":60.0350955994075,"mode":"ev_corridor_hook_notebook","p95_ms":18.555,"p99_ms":18.908,"room":"guest_room","samples":301}
+INSPECTION_PERF {"fps":59.9838661335476,"mode":"ev_corridor_circle_notebook","p95_ms":18.573,"p99_ms":18.853,"room":"guest_room","samples":301}
+INSPECTION_PERF {"fps":60.0034168058606,"mode":"ev_corridor_window_notebook","p95_ms":18.41,"p99_ms":18.775,"room":"guest_room","samples":301}
+CORRIDOR_REVIEW_PERF below_45=0

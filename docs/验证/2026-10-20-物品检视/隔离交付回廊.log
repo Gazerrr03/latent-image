@@ -1,0 +1,56 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 第一层只有出口可操作
+PASS hs_doorway站位有地面且角色放得下
+PASS hs_doorway正常站位提示一致
+PASS hs_doorway提示动词对应实际动作
+PASS 真实E推门进入下一层
+PASS hs_darkroom_door站位有地面且角色放得下
+PASS hs_darkroom_door正常站位提示一致
+PASS hs_darkroom_door提示动词对应实际动作
+PASS 第二层真实E触发敲门且保持可行走
+PASS 重复E不重复推进层级
+PASS 第三层不泄漏暗房门热区
+PASS hs_darkroom_door站位有地面且角色放得下
+PASS hs_darkroom_door正常站位提示一致
+PASS hs_darkroom_door提示动词对应实际动作
+PASS 第四层E保持本层且显示无回应
+PASS 第五层声音未齐时第四椅不可选
+CORRIDOR_SOURCE 1 found=true layer=4 pos=(0.200012, -0.002875, -6.0)
+CORRIDOR_SOURCE 2 found=true layer=4 pos=(0.200012, 0.0415, -3.600006)
+CORRIDOR_SOURCE 3 found=true layer=4 pos=(0.200012, 0.0415, -1.200012)
+PASS 靠近三处声源后第四椅出现
+PASS hs_chair4站位有地面且角色放得下
+PASS hs_chair4正常站位提示一致
+PASS hs_chair4提示动词对应实际动作
+PASS 第四椅真实E进入照片圈并保持可行走
+PASS 第六层无旧热区且没有便携收集
+PASS hs_darkroom_door站位有地面且角色放得下
+PASS hs_darkroom_door正常站位提示一致
+PASS hs_darkroom_door提示动词对应实际动作
+PASS 铃响回头触发跳针且冻结期间不重复触发
+PASS 跳针只回本圈并恢复输入
+PASS 跳针后没有遗留重置协程
+PASS 第三圈真实E回答触发规矩失败
+PASS 回答后重置本圈且可以继续玩
+PASS 遮挡反例确实在交互距离内
+PASS 房间隔墙阻止选中真实目标
+PASS 圈1门1墙补片显隐与实体同步
+PASS 圈1门2墙补片显隐与实体同步
+PASS 圈1门3墙补片显隐与实体同步
+PASS 圈2门1墙补片显隐与实体同步
+PASS 圈2门2墙补片显隐与实体同步
+PASS 圈2门3墙补片显隐与实体同步
+PASS 圈3门1墙补片显隐与实体同步
+PASS 圈3门2墙补片显隐与实体同步
+PASS 圈3门3墙补片显隐与实体同步
+PASS 圈4门1墙补片显隐与实体同步
+PASS 圈4门2墙补片显隐与实体同步
+PASS 圈4门3墙补片显隐与实体同步
+PASS 圈5门1墙补片显隐与实体同步
+PASS 圈5门2墙补片显隐与实体同步
+PASS 圈5门3墙补片显隐与实体同步
+PASS 圈6门1墙补片显隐与实体同步
+PASS 圈6门2墙补片显隐与实体同步
+PASS 圈6门3墙补片显隐与实体同步
+CORRIDOR_INTERACTION failures=0

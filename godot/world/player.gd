@@ -3,10 +3,11 @@ extends CharacterBody3D
 ## 步幅计数沿用 three.js 原型的做法，之后用于“脚步声循环”等渗漏表现。
 
 const SPEED := 1.4
+const SPRINT_SPEED := 2.5
 const STRIDE := 0.72
 const EYE := 1.6
 const SENS := 0.0025
-const REACH := 2.2
+const Targeting := preload("res://world/interaction_targeting.gd")
 ## 能直接迈上去的台阶高度（主楼梯踢面 18 cm）。胶囊体圆底爬不上竖直的踢面，
 ## 所以胶囊抬高这么多，脚下用一根向下的分离射线站在地上：射线扫到更高的台面，身体就被托上去
 const STEP_UP := 0.32
@@ -14,9 +15,11 @@ const STEP_UP := 0.32
 const EYE_EASE := 10.0
 
 var cam := Camera3D.new()
-var ray := RayCast3D.new()
 var active := false
 var frozen := false
+## 交谈只限制移动，仍允许鼠标与右摇杆转头。
+var conversing := false
+var sprinting := false
 var needs_spawn := true
 var steps := 0
 ## 回廊里没有自己的脚步声（第 5 章）
@@ -29,6 +32,7 @@ var _hover := ""
 var _door: Node = null
 var _switch: Node = null
 var _shut: Node = null    # 打不开、但推了有一句话的门（正门、序章里闩着的暗房门）
+var _target: Node = null
 var _pitch := 0.0
 
 
@@ -55,28 +59,12 @@ func _ready() -> void:
 	cam.near = 0.05
 	add_child(cam)
 	floor_snap_length = STEP_UP
-	ray.target_position = Vector3(0, 0, -REACH)
-	ray.collide_with_areas = true
-	ray.collision_mask = 1 | 2
-	cam.add_child(ray)
 	visible = false
 	set_physics_process(false)
 
 
 static func _ensure_input() -> void:
-	var keys := {
-		"move_forward": [KEY_W, KEY_UP], "move_back": [KEY_S, KEY_DOWN],
-		"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT],
-		"interact": [KEY_E],
-	}
-	for action in keys:
-		if InputMap.has_action(action):
-			continue
-		InputMap.add_action(action)
-		for k in keys[action]:
-			var ev := InputEventKey.new()
-			ev.physical_keycode = k
-			InputMap.action_add_event(action, ev)
+	preload("res://core/controls.gd").ensure_actions()
 
 
 func place(pos: Vector3, yaw_deg: float) -> void:
@@ -101,6 +89,7 @@ func deactivate() -> void:
 	if not active:
 		return
 	active = false
+	sprinting = false
 	set_physics_process(false)
 	Director.ui.set_hint("")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -117,11 +106,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		cam.rotation.x = _pitch
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	elif conversing:
+		return
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		if event is InputEventKey and event.echo:
+			return
+		# 按下时再核对：若目标刚移走或被遮住，只刷新提示，不执行旧对象。
+		var shown := _target
+		_update_hover()
+		if shown != _target:
+			return
 		if _hover != "" and Director.world.corridor_interact(_hover):
 			return
 		if _hover != "":
-			Director.inspected.emit(_hover)
+			if not Director.world.active_hotspots.has(_hover) and GameState.inspected.has(_hover):
+				Director.reinspect(_hover)
+			else:
+				Director.inspected.emit(_hover)
 		elif _door:
 			Director.world.toggle_door(_door, global_position)
 			_door = null
@@ -138,15 +139,26 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(dt: float) -> void:
 	if frozen:
 		return
+	var look := Controls.look_vector() * deg_to_rad(110.0) * Settings.pad_scale() * dt
+	rotate_y(-look.x)
+	_pitch = clampf(_pitch - look.y * (-1.0 if Settings.invert_y else 1.0), -1.3, 1.3)
+	cam.rotation.x = _pitch
+	if conversing:
+		velocity = Vector3.ZERO
+		sprinting = false
+		return
 	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var dir := (transform.basis * Vector3(input.x, 0, input.y)).normalized()
+	var is_moving := input.length_squared() > 0.01
+	sprinting = is_moving and Input.is_action_pressed("sprint")
+	var dir := (transform.basis * Vector3(input.x, 0, input.y))
 	var before := global_position
-	walk(dir, dt)
-	_stride += Vector2(global_position.x - before.x, global_position.z - before.z).length()
+	var spd := SPRINT_SPEED if sprinting else SPEED
+	walk(dir, dt, spd)
 	var moved := Vector3(global_position.x - before.x, 0, global_position.z - before.z)
-	_stride = moved.length()
+	_stride += moved.length()
 	forward = moved.dot(-global_transform.basis.z) > 0.0
-	if _stride >= STRIDE:
+	var stride_limit := STRIDE * 1.1 if sprinting else STRIDE
+	if _stride >= stride_limit:
 		_stride = 0.0
 		steps += 1
 		if not silent_steps:
@@ -155,9 +167,9 @@ func _physics_process(dt: float) -> void:
 
 
 ## 走一帧（tools/probe_walk.gd 也直接调用它，用来体检关卡碰撞）
-func walk(dir: Vector3, dt: float) -> void:
-	velocity.x = dir.x * SPEED
-	velocity.z = dir.z * SPEED
+func walk(dir: Vector3, dt: float, speed: float = SPEED) -> void:
+	velocity.x = dir.x * speed
+	velocity.z = dir.z * speed
 	velocity.y = 0.0 if is_on_floor() else velocity.y - 9.8 * dt
 	var y0 := global_position.y
 	move_and_slide()
@@ -172,20 +184,42 @@ func _update_hover() -> void:
 	var door: Node = null
 	var sw: Node = null
 	var shut: Node = null
-	if ray.is_colliding():
-		var c := ray.get_collider()
-		if c and c.has_meta("hotspot_id") and Director.world.active_hotspots.has(c.get_meta("hotspot_id")):
-			id = c.get_meta("hotspot_id")
-		elif c and c.has_meta("door"):
+	var candidates: Array = []
+	var available: Array = Director.world.active_hotspots.duplicate()
+	# 已亲眼检查过的物件仍可回看；不会因此提前开放未来章节的线索。
+	for key in GameState.inspected:
+		if not available.has(key):
+			available.append(key)
+	for key in available:
+		var target: Node = Director.world.hotspot_nodes.get(key)
+		if is_instance_valid(target) and not candidates.has(target):
+			candidates.append(target)
+	for target in Director.world.doors:
+		if is_instance_valid(target) and not candidates.has(target):
+			candidates.append(target)
+	for target in get_tree().get_nodes_in_group("light_switch"):
+		if not candidates.has(target):
+			candidates.append(target)
+	for target in get_tree().get_nodes_in_group("door_line"):
+		if not candidates.has(target) and Director.world.door_line(target) != "":
+			candidates.append(target)
+	# 切换场景（如从主卧回大地图）后，上一帧的目标可能已被释放，不能传给带类型的参数
+	if not is_instance_valid(_target):
+		_target = null
+	_target = Targeting.pick(cam, candidates, _target, [get_rid()])
+	if is_instance_valid(_target):
+		if _target.has_meta("hotspot_id") and available.has(_target.get_meta("hotspot_id")):
+			id = _target.get_meta("hotspot_id")
+		elif _target.has_meta("door"):
 			# 能开的门这一镜闩着（门的说法表有话）：推不开，只说那句话；已经开着的照常能关
-			if Director.world.door_line(c) != "" and not Director.world.door_is_open(c):
-				shut = c
+			if Director.world.door_line(_target) != "" and not Director.world.door_is_open(_target):
+				shut = _target
 			else:
-				door = c
-		elif c and c.has_meta("switch"):
-			sw = c
-		elif c and c.has_meta("door_line") and Director.world.door_line(c) != "":
-			shut = c
+				door = _target
+		elif _target.has_meta("switch"):
+			sw = _target
+		elif _target.has_meta("door_line"):
+			shut = _target
 	# 回廊的提示是会变的（回答选项出现 / 消失），所以不能只看“目标没变就返回”
 	if id == _hover and door == _door and sw == _switch and shut == _shut and not Director.world.corridor_running():
 		return
@@ -201,7 +235,7 @@ func _update_hover() -> void:
 	elif Director.world.corridor_hint() != "":
 		Director.ui.set_hint(Director.world.corridor_hint())
 	elif door:
-		Director.ui.set_hint("E　关门" if Director.world.door_is_open(door) else "E　开门")
+		Director.ui.set_hint("E　" + Director.world.door_label(door))
 	elif sw:
 		Director.ui.set_hint("E　" + Director.world.switch_label(sw))
 	elif shut:

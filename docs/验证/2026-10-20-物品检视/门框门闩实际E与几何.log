@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS hs_doorframe复查保留真实痕迹网格
+PASS hs_doorframe原痕迹三角面坐标全部保留
+FRAME_LATCH_GEOMETRY hs_doorframe verified=22
+PASS hs_doorframe自然站位提示一致
+PASS hs_doorframe真实E打开原位固定特写
+PASS hs_doorframe细节照明开启
+PASS hs_doorframe退出恢复原相机和行动且只记一次
+PASS hs_gh_latch复查保留真实痕迹网格
+PASS hs_gh_latch原痕迹三角面坐标全部保留
+FRAME_LATCH_GEOMETRY hs_gh_latch verified=12
+PASS 现场与复查线头所有真实三角面相同
+PASS hs_gh_latch自然站位提示一致
+PASS hs_gh_latch真实E打开原位固定特写
+PASS hs_gh_latch细节照明开启
+PASS hs_gh_latch退出恢复原相机和行动且只记一次
+FRAME_LATCH failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

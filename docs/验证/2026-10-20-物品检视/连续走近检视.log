@@ -1,0 +1,69 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+WALK_PLAN shapes=97 polygons=167
+WALK_OBJECT {"feet":"(2.4, 3.5995, -3.3)","id":"hs_notebook","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":13}
+WALK_OBJECT {"feet":"(2.4, 3.5995, -3.3)","id":"hs_typewriter","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":21}
+WALK_OBJECT {"feet":"(2.068858, 3.5995, -2.776848)","id":"hs_desk_board","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":48,"walked_m":1.09666848182678,"waypoints":27}
+WALK_OBJECT {"feet":"(2.068858, 3.5995, -2.776848)","id":"hs_bed","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":31}
+PHYSICAL_GRID no_viewing_route visited=10299 nearest_center_m=2.19769191741943 feet=(4.493858, 3.601, -3.076848)
+DOOR_CYCLE_TRY 客房·房门 selected=StaticBody3D:<StaticBody3D#240333623751> center=(4.426414, 4.7075, -3.43348)
+WALK_PLAN shapes=96 polygons=155
+CLOSED_DOOR_APPROACH {"minimum_y":3.59950041770935,"reached":true,"reason":"","ticks":32,"walked_m":0.723331436514854,"waypoints":45}
+WALK_PLAN shapes=97 polygons=153
+WALK_OBJECT {"feet":"(4.143324, 3.5995, -3.637982)","id":"hs_mirror_guest","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":168,"walked_m":3.87332420237362,"waypoints":65}
+WALK_OBJECT {"feet":"(2.187301, 3.5995, -2.825577)","id":"hs_handwriting","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":163,"walked_m":3.77998385764658,"waypoints":33}
+WALK_OBJECT {"feet":"(1.676089, 3.5995, -2.840511)","id":"hs_drawer","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":23,"walked_m":0.513328827917576,"waypoints":3}
+WALK_OBJECT {"feet":"(1.676089, 3.5995, -2.840511)","id":"hs_coat","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":3}
+WALK_OBJECT {"feet":"(1.676089, 3.5995, -2.840511)","id":"hs_shoes","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":3}
+WALK_OBJECT {"feet":"(1.699358, 3.5995, -2.842246)","id":"hs_fireplace","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":2,"walked_m":0.0233332086354494,"waypoints":17}
+WALK_OBJECT {"feet":"(1.699358, 3.5995, -2.842246)","id":"hs_waistcoat","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":7}
+WALK_OBJECT {"feet":"(1.699358, 3.5995, -2.842246)","id":"hs_typewriter_test","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"guest_room","ticks":0,"walked_m":0.0,"waypoints":15}
+WALK_PLAN shapes=97 polygons=62
+WALK_OBJECT {"feet":"(16.75, 3.600625, -8.6)","id":"hs_tray","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"darkroom","ticks":0,"walked_m":0.0,"waypoints":19}
+WALK_OBJECT {"feet":"(16.75, 3.600625, -8.6)","id":"hs_bottles","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"darkroom","ticks":0,"walked_m":0.0,"waypoints":3}
+WALK_OBJECT {"feet":"(16.65562, 3.600625, -8.864399)","id":"hs_vent_inside","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"darkroom","ticks":33,"walked_m":0.746656851842999,"waypoints":13}
+WALK_OBJECT {"feet":"(16.65562, 3.600625, -8.864399)","id":"hs_camera","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"darkroom","ticks":0,"walked_m":0.0,"waypoints":17}
+WALK_OBJECT {"feet":"(16.65562, 3.600625, -8.864399)","id":"hs_clock_dark","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"darkroom","ticks":0,"walked_m":0.0,"waypoints":17}
+WALK_OBJECT {"feet":"(16.65562, 3.600625, -8.864399)","id":"hs_bell","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"darkroom","ticks":0,"walked_m":0.0,"waypoints":5}
+WALK_PLAN shapes=97 polygons=184
+WALK_OBJECT {"feet":"(9.289584, 3.600625, -3.441055)","id":"hs_photos","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"archive","ticks":58,"walked_m":1.32998568750918,"waypoints":43}
+WALK_OBJECT {"feet":"(9.289584, 3.600625, -3.441055)","id":"hs_ledger","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"archive","ticks":0,"walked_m":0.0,"waypoints":59}
+WALK_PLAN shapes=98 polygons=190
+WALK_OBJECT {"feet":"(11.37422, 3.600625, -6.4651)","id":"hs_doorframe","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"archive","ticks":253,"walked_m":5.85661776177585,"waypoints":73}
+WALK_OBJECT {"feet":"(9.489324, 3.600625, -4.059508)","id":"hs_clipping","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"archive","ticks":211,"walked_m":4.89995574578643,"waypoints":119}
+WALK_OBJECT {"feet":"(9.489324, 3.600625, -4.059508)","id":"hs_manual","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"archive","ticks":0,"walked_m":0.0,"waypoints":61}
+WALK_OBJECT {"feet":"(9.602191, 3.600625, -3.752963)","id":"hs_photo_back","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"archive","ticks":15,"walked_m":0.326663486659527,"waypoints":51}
+WALK_PLAN shapes=34 polygons=89
+WALK_OBJECT {"feet":"(5.613322, 3.600625, -8.086501)","id":"hs_con_ledger","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"con_room","ticks":47,"walked_m":1.07331984862685,"waypoints":21}
+WALK_PLAN shapes=35 polygons=92
+WALK_OBJECT {"feet":"(5.613322, 3.600625, -8.086501)","id":"hs_con_sweater","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"con_room","ticks":0,"walked_m":0.0,"waypoints":15}
+PHYSICAL_GRID found visited=27 steps=6
+WALK_OBJECT {"feet":"(5.513977, 3.600625, -8.109046)","id":"hs_con_ringbox","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"con_room","ticks":6,"walked_m":0.116665227338672,"waypoints":6}
+WALK_PLAN shapes=99 polygons=41
+WALK_OBJECT {"feet":"(2.75, 3.600625, -7.4)","id":"hs_draw_path","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"child_room","ticks":0,"walked_m":0.0,"waypoints":11}
+WALK_OBJECT {"feet":"(2.75, 3.600625, -7.4)","id":"hs_draw_wall","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"child_room","ticks":0,"walked_m":0.0,"waypoints":5}
+WALK_OBJECT {"feet":"(2.75, 3.600625, -7.4)","id":"hs_draw_family","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"child_room","ticks":0,"walked_m":0.0,"waypoints":5}
+WALK_OBJECT {"feet":"(2.75, 3.600625, -7.4)","id":"hs_draw_boxes","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"child_room","ticks":0,"walked_m":0.0,"waypoints":11}
+WALK_OBJECT {"feet":"(2.75, 3.600625, -7.4)","id":"hs_draw_train","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"child_room","ticks":0,"walked_m":0.0,"waypoints":11}
+WALK_PLAN shapes=98 polygons=12
+WALK_OBJECT {"feet":"(16.95986, 3.6, -13.72608)","id":"hs_vent_print","minimum_y":3.59999990463257,"ok":true,"opened":true,"reached":true,"reason":"","room":"garden","ticks":29,"walked_m":0.653314661234617,"waypoints":11}
+WALK_OBJECT {"feet":"(16.95986, 3.6, -13.72608)","id":"hs_vent_louver","minimum_y":3.59999990463257,"ok":true,"opened":true,"reached":true,"reason":"","room":"garden","ticks":0,"walked_m":0.0,"waypoints":5}
+WALK_PLAN shapes=99 polygons=81
+WALK_PLAN shapes=100 polygons=92
+WALK_OBJECT {"feet":"(18.82787, 3.600531, -9.794497)","id":"hs_gh_latch","minimum_y":3.60053133964539,"ok":true,"opened":true,"reached":true,"reason":"","room":"greenhouse","ticks":237,"walked_m":5.49601181037724,"waypoints":45}
+WALK_OBJECT {"feet":"(22.00943, 3.629462, -8.779872)","id":"hs_gh_photos","minimum_y":3.60053133964539,"ok":true,"opened":true,"reached":true,"reason":"","room":"greenhouse","ticks":190,"walked_m":4.42123029008508,"waypoints":35}
+WALK_PLAN shapes=100 polygons=67
+WALK_PLAN shapes=101 polygons=67
+WALK_OBJECT {"feet":"(3.757455, 0.000625, -3.323113)","id":"hs_se_cards","minimum_y":0.000625000335276127,"ok":true,"opened":true,"reached":true,"reason":"","room":"seance","ticks":165,"walked_m":3.80328576080501,"waypoints":21}
+WALK_OBJECT {"feet":"(3.736382, 0.000625, -3.313097)","id":"hs_se_photo","minimum_y":0.000625000335276127,"ok":true,"opened":true,"reached":true,"reason":"","room":"seance","ticks":2,"walked_m":0.0233329143375158,"waypoints":21}
+WALK_OBJECT {"feet":"(2.977067, 0.000625, -3.437073)","id":"hs_se_gloves","minimum_y":0.000625000335276127,"ok":true,"opened":true,"reached":true,"reason":"","room":"seance","ticks":40,"walked_m":0.909984143450856,"waypoints":25}
+WALK_PLAN shapes=40 polygons=142
+WALK_OBJECT {"feet":"(14.65, 3.600625, -4.3)","id":"hs_amb_notes","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"amb_room","ticks":0,"walked_m":0.0,"waypoints":13}
+WALK_OBJECT {"feet":"(15.31387, 3.600625, -3.194183)","id":"hs_amb_carbon","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"amb_room","ticks":71,"walked_m":1.63330548815429,"waypoints":55}
+WALK_OBJECT {"feet":"(15.31387, 3.600625, -3.194183)","id":"hs_amb_clippings","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"amb_room","ticks":0,"walked_m":0.0,"waypoints":31}
+WALK_OBJECT {"feet":"(16.44398, 3.600625, -3.003628)","id":"hs_amb_photo","minimum_y":3.60062503814697,"ok":true,"opened":true,"reached":true,"reason":"","room":"amb_room","ticks":62,"walked_m":1.42330827564001,"waypoints":21}
+WALK_PLAN shapes=10 polygons=22
+WALK_OBJECT {"feet":"(-0.06007, 0.0, 5.328568)","id":"hs_wh_train","minimum_y":0.0,"ok":true,"opened":true,"reached":true,"reason":"","room":"white_hall","ticks":5,"walked_m":0.0933322608470917,"waypoints":3}
+WALK_OBJECT {"feet":"(-0.095719, 0.0, 2.71144)","id":"hs_wh_darkroom","minimum_y":0.0,"ok":true,"opened":true,"reached":true,"reason":"","room":"white_hall","ticks":178,"walked_m":4.12992417998612,"waypoints":33}
+WALK_OBJECT {"feet":"(-0.193498, 0.0, 0.458972)","id":"hs_wh_desk","minimum_y":0.0,"ok":true,"opened":true,"reached":true,"reason":"","room":"white_hall","ticks":208,"walked_m":4.82990424707532,"waypoints":21}
+WALK_TO_HOTSPOTS objects=46 failures=0

@@ -1,0 +1,416 @@
+[
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_notebook",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_typewriter",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_desk_board",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_bed",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_mirror_guest",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_handwriting",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_drawer",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_coat",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_shoes",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_fireplace",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_waistcoat",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_typewriter_test",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "guest_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_tray",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "darkroom"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_bottles",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "darkroom"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_vent_inside",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "darkroom"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_camera",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "darkroom"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_clock_dark",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "darkroom"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_bell",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "darkroom"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_vent_print",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "garden"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_vent_louver",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "garden"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_photos",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "archive"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_ledger",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "archive"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_doorframe",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "archive"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_clipping",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "archive"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_manual",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "archive"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_photo_back",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "archive"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_amb_notes",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "amb_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_amb_carbon",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "amb_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_amb_clippings",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "amb_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_amb_photo",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "amb_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_con_ledger",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "con_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_con_sweater",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "con_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_con_ringbox",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "con_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_draw_path",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "child_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_draw_wall",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "child_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_draw_family",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "child_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_draw_boxes",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "child_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_draw_train",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "child_room"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_gh_latch",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "greenhouse"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_gh_photos",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "greenhouse"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_se_cards",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "seance"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_se_photo",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "seance"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_se_gloves",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "seance"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_wh_train",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "white_hall"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_wh_darkroom",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "white_hall"
+	},
+	{
+		"evidence_once": true,
+		"form": true,
+		"id": "hs_wh_desk",
+		"opened": true,
+		"reopened": true,
+		"restored": true,
+		"room": "white_hall"
+	}
+]

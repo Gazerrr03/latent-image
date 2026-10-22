@@ -1,0 +1,14 @@
+{
+  "status": "generation_blocked_no_output",
+  "tool": "built-in image_gen edit",
+  "request_id": "22253cd0-1bba-4428-a6c1-a1ba52850de0",
+  "prompt": "assets/2d/inspection/prompts/photo1926-v1.txt",
+  "references": [
+    "godot/art/levels/manor/textures/photo_1926.jpg",
+    "assets/2d/T-024-人物三视图/iris/iris_三视图.png"
+  ],
+  "moderation_stage": "output",
+  "category": "sexual",
+  "user_requested_retry": true,
+  "limits": "No output; no fallback or evasion. Existing artwork remains unfinished."
+}

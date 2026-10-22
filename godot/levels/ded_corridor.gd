@@ -3,16 +3,16 @@ extends Node3D
 ## 玩法“你就是唱针”：留声机的声音只在玩家走动时才响，停下就停，往回走就倒放；
 ## 走过尽头的门回到起点，进入下一层。设计见 docs/关卡/ded_corridor.md。
 ##
-## 空间在代码里搭（用户还没在编辑器里搭正式场景）。以后换成 levels/ded_corridor.tscn，
-## 只要节点名保持不变：spawn / door_end / path_0..path_2 / layer_<n>。
-## 每层的内容在 content/story/corridor.csv，代码不写死。
+## Blender 模型由 ded_corridor.tscn 实例化；本脚本只负责状态、声音与交互。
+## 显隐与实体碰撞同步切换，避免隐藏墙补片继续堵住房门。
 
 const SEG_A := 8.0          # 第一段：从起点沿 -z
 const SEG_B := 6.0          # 左转后沿 -x（最长；每圈按表里的 seg_b 截短，唱片越放越靠里）
 const PATH_LEN := SEG_A + SEG_B
-const LANE := 2.2
+const LANE := 1.6
 const STEP := 0.7
 const SPEED := 1.4
+const DOORS := [6.0, 3.6, 1.2]   # 左墙三扇门的中心离起点的距离（第一段）
 
 ## 这一圈第二段的长度与路径总长（表 corridor.csv 的 seg_b 列）
 var _seg_b := SEG_B
@@ -29,6 +29,7 @@ var _man_prev := 0.0
 var _man_acc := 0.0
 var _man_arrived := false
 var _merged := false
+var _chase_d := 0.0          # 上一帧走到哪里（判断是不是在往前走）
 
 var rows: Array = []
 var layer := 0
@@ -37,6 +38,25 @@ var player: Node3D
 
 var _audio_fwd: AudioStreamPlayer
 var _audio_rev: AudioStreamPlayer
+## 响应式音乐（10-20）分三层：
+##   底色 BGM（低音提琴、镲片、弱音小号）：按时间一直在放，每圈一段 16 秒循环（表 music 列）；
+##     往回走时倒放，停下时压低、不停
+##   脚步层（鼓 + 钢琴）：沿走廊每走过一步（0.7 m）一下，对齐到底色的下一个十六分音符；
+##     左脚落地鼓、右脚鼓边（表 drums 列），钢琴按八步的格子叠上去（表 steps 列）；往回走用倒放音样
+##   唱片人声：每圈的剧情人声与字幕，仍跟着唱针（_audio_fwd / _audio_rev）
+const GRID := 0.125               # 120 BPM 的十六分音符
+var _bed_fwd: AudioStreamPlayer
+var _bed_rev: AudioStreamPlayer
+var _bed_back := false
+var _bed_gain := 0.0
+var _ending: AudioStreamPlayer     # 最后一圈：小号吹《潜影》动机的开头，在第四个音之前断掉
+var _drum: AudioStreamPlayer
+var _steps: AudioStreamPlayer      # 钢琴
+var _step_pat := PackedStringArray()
+var _drums_on := false
+var steps_played := 0      # 自查用：这一局弹了多少下
+var _step_cell := 0
+var _gains := {}
 var _scratch: AudioStreamPlayer
 var _amb: AudioStreamPlayer
 var _bell: AudioStreamPlayer
@@ -57,6 +77,23 @@ var _chairs: Array = []
 var _prints: Array = []
 var _fade: ColorRect
 var _finished := false
+var _model: Node3D
+var _nodes := {}
+var _door_yaws := {}
+var _room_seen := {}
+var _room_entered := false
+var _room_left := false
+var _in_photo := false
+var _touching := false
+var _resetting := false
+var _figure_start := Vector3.ZERO
+var _photo_spawn := Vector3(30, 0.04, 0.8)
+const ROOM_NOTES := ["ev_corridor_hook", "ev_corridor_circle", "ev_corridor_window"]
+var _room_observations := [
+	"空着的那个挂钩还在晃。下面一摊水。",
+	"有人在这里绕着圈走，走了很久。",
+	"从上面看，那条走廊没有出口。",
+]
 var _sitting := false
 ## 屏幕上固定的提示（玩家脚本每帧读它）
 var current_hint := ""
@@ -68,7 +105,7 @@ signal done
 
 func _ready() -> void:
 	_build_env()
-	_build_hall()
+	_bind_model()
 	_build_audio()
 	_build_fx()
 	rows = ContentDB.corridor
@@ -103,143 +140,78 @@ func environment() -> Environment:
 	return _env_res
 
 
-func _mat(c: Color) -> StandardMaterial3D:
-	var m := StandardMaterial3D.new()
-	m.albedo_color = c
-	m.roughness = 0.95
-	return m
+## 导入器会去掉 -col 后缀；名字统一在这里索引，玩法不依赖导入后的深层路径。
+func _bind_model() -> void:
+	_model = get_node("模型")
+	for n in _model.find_children("*", "", true, false):
+		_nodes[String(n.name)] = n
+		if n is CollisionObject3D:
+			n.set_meta("solid_layer", n.collision_layer)
+	for i in range(1, 4):
+		_door_yaws[i] = _part("door_%d" % i).rotation.y
+		var doorway := _hotspot(self, "hs_corridor_door_%d" % i, Vector3(-0.72, 1.05, -DOORS[i-1]), Vector3(0.12, 1.9, 0.80))
+		doorway.set_meta("hotspot_id", String(doorway.name))
+	var end := _part("segB_end")
+	var exit_target := _hotspot(end, "hs_doorway", Vector3(0.13, 1.05, 0), Vector3(0.12, 1.9, 0.80))
+	exit_target.set_meta("hotspot_id", "hs_doorway")
+	exit_target.set_meta("interaction_normal", Vector3.RIGHT)
+	var dark := _hotspot(self, "hs_darkroom_door", Vector3(0, 1.05, -8.76), Vector3(0.85, 1.9, 0.12))
+	dark.set_meta("hotspot_id", "hs_darkroom_door")
+	dark.set_meta("interaction_normal", Vector3.BACK)
+	var chair := _hotspot(end, "hs_chair4", Vector3(0.46, 0.65, 0), Vector3(0.40, 1.05, 0.50))
+	chair.set_meta("hotspot_id", "hs_chair4")
+	var targets := [Vector3(-4.02, 1.62, -6.025), Vector3(-2.6, 0.06, -3.4), Vector3(0, 2.42, 0.57)]
+	for i in range(3):
+		var target := _hotspot(self, "hs_room_%d" % (i+1), targets[i], Vector3(0.25, 0.25, 0.3) if i != 1 else Vector3(0.8, 0.06, 0.8))
+		target.set_meta("hotspot_id", String(target.name))
+	var touch := _hotspot(self, "hs_corridor_figure", Vector3.ZERO, Vector3(0.5, 1.5, 0.4))
+	touch.set_meta("hotspot_id", "hs_corridor_figure")
+	for i in range(1, 5):
+		_chairs.append(_part("prop_chair_%d" % i))
+	for i in range(1, 13):
+		_prints.append(_part("prop_print_%02d" % i))
+	_figure_start = _part("gh_figure").position
+	_build_lights()
 
 
-func _box(n: String, pos: Vector3, size: Vector3, m: Material, collide := true) -> Node3D:
-	var mi := MeshInstance3D.new()
-	mi.name = n
-	var bm := BoxMesh.new()
-	bm.size = size
-	mi.mesh = bm
-	mi.material_override = m
-	mi.position = pos
-	add_child(mi)
-	if collide:
-		var body := StaticBody3D.new()
-		var cs := CollisionShape3D.new()
-		var bs := BoxShape3D.new()
-		bs.size = size
-		cs.shape = bs
-		body.add_child(cs)
-		mi.add_child(body)
-	return mi
+func _part(id: String) -> Node3D:
+	return _nodes.get(id)
 
 
-func _build_hall() -> void:
-	var floor_m := _mat(Color("#241b16"))
-	var wall_m := _mat(Color("#2b2622"))
-	var ceil_m := _mat(Color("#121010"))
-	# 地面 / 天花
-	_box("地面A", Vector3(0, -0.05, -SEG_A / 2), Vector3(LANE, 0.1, SEG_A + 1.2), floor_m)
-	_box("地面B", Vector3(-SEG_B / 2, -0.05, -SEG_A), Vector3(SEG_B + 0.2, 0.1, LANE), floor_m)
-	_box("天花A", Vector3(0, 2.6, -SEG_A / 2), Vector3(LANE, 0.1, SEG_A + 1.2), ceil_m, false)
-	_box("天花B", Vector3(-SEG_B / 2, 2.6, -SEG_A), Vector3(SEG_B + 0.2, 0.1, LANE), ceil_m, false)
-	# 墙（把路封成一条）
-	_box("墙A左", Vector3(-LANE / 2 - 0.05, 1.3, -SEG_A / 2), Vector3(0.1, 2.6, SEG_A + 1.2), wall_m)
-	_box("墙A右", Vector3(LANE / 2 + 0.05, 1.3, -SEG_A / 2), Vector3(0.1, 2.6, SEG_A + 1.2), wall_m)
-	_box("墙B后", Vector3(-SEG_B / 2, 1.3, -SEG_A - LANE / 2 - 0.05), Vector3(SEG_B + 0.2, 2.6, 0.1), wall_m)
-	_box("墙B前", Vector3(-SEG_B / 2, 1.3, -SEG_A + LANE / 2 + 0.05), Vector3(SEG_B + 0.2, 2.6, 0.1), wall_m)
-	_box("墙起点", Vector3(0, 1.3, 0.6), Vector3(LANE, 2.6, 0.1), wall_m)
-	# 地毯
-	_box("地毯A", Vector3(0, 0.004, -SEG_A / 2), Vector3(1.1, 0.008, SEG_A), _mat(Color("#3a2622")), false)
-	_box("地毯B", Vector3(-SEG_B / 2, 0.004, -SEG_A), Vector3(SEG_B, 0.008, 1.1), _mat(Color("#3a2622")), false)
-	# 护墙板竖条：给走廊一点可读的透视
-	var trim := _mat(Color("#171310"))
+## 只切换这组节点的物理层，不修改共享的 GLB 碰撞资源。
+func _show_part(node: Node3D, show: bool) -> void:
+	node.visible = show
+	var solids: Array = node.find_children("*", "CollisionObject3D", true, false)
+	if node is CollisionObject3D:
+		solids.append(node)
+	for solid in solids:
+		solid.collision_layer = int(solid.get_meta("solid_layer", 1)) if show else 0
+
+
+func _build_lights() -> void:
 	for i in range(1, 6):
-		for side in [-1.0, 1.0]:
-			_box("板A%d_%d" % [i, int(side)], Vector3(side * (LANE / 2 - 0.02), 0.9, -i * 1.45), Vector3(0.05, 1.8, 0.04), trim, false)
-	for i in range(1, 5):
-		for side in [-1.0, 1.0]:
-			_box("板B%d_%d" % [i, int(side)], Vector3(-i * 1.45, 0.9, -SEG_A + side * (LANE / 2 - 0.02)), Vector3(0.04, 1.8, 0.05), trim, false)
-	# 尽头：端墙 + 门洞 + 一扇关着的门，走过它就进入下一层。整组是 segB_end，每圈沿 -x 挪到第二段的尽头
-	var end := Node3D.new()
-	end.name = "segB_end"
-	end.position = Vector3(-SEG_B, 0, -SEG_A)
-	add_child(end)
-	var endwall := _box_child(end, "端墙", Vector3(-0.12, 1.3, 0), Vector3(0.1, 2.6, LANE), wall_m)
-	var ew_body := StaticBody3D.new()
-	var ew_cs := CollisionShape3D.new()
-	var ew_bs := BoxShape3D.new()
-	ew_bs.size = Vector3(0.1, 2.6, LANE)
-	ew_cs.shape = ew_bs
-	ew_body.add_child(ew_cs)
-	endwall.add_child(ew_body)
-	_box_child(end, "门框B", Vector3(-0.02, 1.05, 0), Vector3(0.1, 2.1, 1.05), _mat(Color("#1e1712")))
-	var leaf := _box_child(end, "end_leaf", Vector3(0.05, 1.03, 0), Vector3(0.06, 2.06, 0.95), _mat(Color("#3a2a1d")))
-	leaf.set_meta("corridor_gate", true)
-	# 门缝下的一道暖光，每一层都是“出口”的提示
-	var glow := OmniLight3D.new()
-	glow.name = "门缝光"
-	glow.position = Vector3(0.35, 0.12, 0)
-	glow.light_color = Color("#d8a868")
-	glow.light_energy = 1.4
-	glow.omni_range = 3.4
-	end.add_child(glow)
-	# 走廊的灯
-	for i in range(1, 5):
-		var l := OmniLight3D.new()
-		l.name = "壁灯%d" % i
-		l.position = Vector3(LANE / 2 - 0.25, 2.15, -i * 1.9)
-		l.light_color = Color("#ffcf92")
-		l.light_energy = 0.0
-		l.omni_range = 6.0
-		l.shadow_enabled = true
-		add_child(l)
-	for i in range(1, 5):
-		var l := OmniLight3D.new()
-		l.name = "壁灯B%d" % i
-		l.position = Vector3(-i * 1.9, 2.15, -SEG_A + LANE / 2 - 0.25)
-		l.light_color = Color("#ffcf92")
-		l.light_energy = 0.0
-		l.omni_range = 6.0
-		add_child(l)
-	# 转角：暗房的门（第 2 层门缝红光，第 4 层熄灭）
-	var turn := Node3D.new()
-	turn.name = "转角"
-	turn.position = Vector3(-LANE / 2 + 0.02, 0, -SEG_A + 0.9)
-	turn.rotation.y = PI / 2
-	add_child(turn)
-	_box_pair(turn, "暗房门框", Vector3(0, 1.05, 0), Vector3(0.1, 2.1, 1.15), _mat(Color("#20170f")))
-	var red := OmniLight3D.new()
-	red.name = "门缝红光"
-	red.position = Vector3(0.3, 0.3, 0)
-	red.light_color = Color("#c0200e")
-	red.light_energy = 0.0
-	red.omni_range = 2.6
-	turn.add_child(red)
-	var hs := _hotspot(turn, "hs_darkroom_door", Vector3(0.35, 1.1, 0), Vector3(0.9, 2.0, 1.3))
-	hs.set_meta("hotspot_id", "hs_darkroom_door")
-	# 历年合影：一排相框（玻璃不反光）
-	var photos := Node3D.new()
-	photos.name = "合影墙"
-	add_child(photos)
-	for i in range(6):
-		var z := -1.6 - i * 1.15
-		_box_child(photos, "相框%d" % i, Vector3(-LANE / 2 + 0.03, 1.5, z), Vector3(0.04, 0.5, 0.38), _mat(Color("#241a12")))
-		_box_child(photos, "相纸%d" % i, Vector3(-LANE / 2 + 0.055, 1.5, z), Vector3(0.02, 0.4, 0.28), _mat(Color("#4a4238")))
-	photos.visible = false
-	_prints_layer(photos)
+		_light("壁灯%d" % i, Vector3(0.60, 2.15, -[0.5, 2.4, 4.3, 6.2, 8.1][i-1]), 1.6)
+	for i in range(1, 4):
+		_light("壁灯B%d" % i, Vector3([-1.45, -3.35, -5.25][i-1], 2.15, -8.60), 1.6)
+	for i in range(1, 4):
+		_light("房间灯%d" % i, Vector3(-2.6, 2.35, -[5.8, 3.4, 1.2][i-1]) if i < 3 else Vector3(-1.5, 2.35, -1.2), 1.5)
+	_light("楼梯平台灯", Vector3(-0.9, 2.5, 1.38), 1.2)
+	_light("门缝红光", Vector3(0, 0.22, -8.62), 0.0, Color("#e52b13"))
+	_light("照片烛光", Vector3(0.55, 0.5, 0), 0.8, Color("#ffbf72"), _part("segB_end"))
+	_light("温室月光", Vector3(30, 2.8, -1.7), 1.3, Color("#8b9dbb"))
+	_light("温室门光", Vector3(28.9, 1.9, -3.35), 1.8)
 
 
-func _box_pair(parent: Node3D, n: String, pos: Vector3, size: Vector3, m: Material) -> void:
-	_box_child(parent, n, pos, size, m)
-
-
-func _box_child(parent: Node3D, n: String, pos: Vector3, size: Vector3, m: Material) -> Node3D:
-	var mi := MeshInstance3D.new()
-	mi.name = n
-	var bm := BoxMesh.new()
-	bm.size = size
-	mi.mesh = bm
-	mi.material_override = m
-	mi.position = pos
-	parent.add_child(mi)
-	return mi
+func _light(id: String, pos: Vector3, energy: float, color := Color("#ffcf92"), parent: Node3D = self) -> void:
+	var light := OmniLight3D.new()
+	light.name = id
+	light.position = pos
+	light.light_color = color
+	light.light_energy = energy
+	light.omni_range = 4.0
+	# 灯罩网格不应把点光源封在里面；模型本身保留遮挡。
+	light.shadow_enabled = false
+	parent.add_child(light)
 
 
 func _hotspot(parent: Node3D, n: String, pos: Vector3, size: Vector3) -> Area3D:
@@ -255,19 +227,6 @@ func _hotspot(parent: Node3D, n: String, pos: Vector3, size: Vector3) -> Area3D:
 	return a
 
 
-## 第 4 层的湿脚印：沿中线，一次只亮出前面几个
-func _prints_layer(parent: Node3D) -> void:
-	var m := _mat(Color("#0e0b0a"))
-	var n := int(PATH_LEN / STEP)
-	for i in n:
-		var p := _at(float(i) * STEP)
-		var side := 0.09 if i % 2 == 0 else -0.09
-		var off := Vector3(side, 0, 0) if p.x > -SEG_A * 0 else Vector3(0, 0, side)
-		var f := _box_child(parent, "脚印%d" % i, Vector3(p.x, 0.012, p.z) + off, Vector3(0.1, 0.006, 0.27), m)
-		f.visible = false
-		_prints.append(f)
-
-
 # ───────────── 声音 ─────────────
 
 func _build_audio() -> void:
@@ -279,6 +238,13 @@ func _build_audio() -> void:
 	_amb = _player("底噪", -14.0, "room_hum")
 	if _amb.stream:
 		_amb.stream.loop = true
+	_bed_fwd = _player("底色正", MUSIC_DB)
+	_bed_rev = _player("底色反", MUSIC_DB)
+	_ending = _player("唱片尾", MUSIC_DB)
+	_steps = _player("钢琴", STEPS_DB)
+	_steps.max_polyphony = 4
+	_drum = _player("鼓", DRUM_DB)
+	_drum.max_polyphony = 4
 	# 那个人：一个会动的定位声源，一步一响；倒着走用倒放的步声
 	_man = AudioStreamPlayer3D.new()
 	_man.name = "那个人"
@@ -314,6 +280,98 @@ func _player(n: String, db: float, id := "") -> AudioStreamPlayer:
 	return a
 
 
+## 换这一圈的底色：从头正放，循环
+func _set_music(id: String) -> void:
+	_bed_fwd.stop()
+	_bed_rev.stop()
+	_bed_fwd.stream = null
+	_bed_rev.stream = null
+	_bed_back = false
+	if id == "" or id == "ending":
+		return
+	_bed_fwd.stream = _loop_stream("res://audio/music/corridor_%s.ogg" % id)
+	_bed_rev.stream = _loop_stream("res://audio/music/corridor_%s_rev.ogg" % id)
+	if _bed_fwd.stream:
+		_bed_fwd.play()
+
+
+func _loop_stream(path: String) -> AudioStream:
+	if not ResourceLoader.exists(path):
+		return null
+	var st: AudioStream = load(path)
+	if "loop" in st:
+		st.loop = true
+	return st
+
+
+## 底色：按时间走。往回走时换到倒放那一条（从镜像位置接上），停下时压低、不停
+func _bed() -> void:
+	if _bed_fwd.stream == null or _bed_rev.stream == null:
+		return
+	var back := _speed < -0.12 and not _sitting
+	if back != _bed_back:
+		var len := _bed_fwd.stream.get_length()
+		var from: AudioStreamPlayer = _bed_rev if _bed_back else _bed_fwd
+		var to: AudioStreamPlayer = _bed_fwd if _bed_back else _bed_rev
+		var p := len - from.get_playback_position() if from.playing else 0.0
+		from.stop()
+		to.play(fposmod(p, len))
+		_bed_back = back
+	var moving := absf(_speed) >= 0.12
+	_bed_gain = move_toward(_bed_gain, 1.0 if moving else 0.56, get_process_delta_time() / 0.25)
+	var db := MUSIC_DB + linear_to_db(maxf(_bed_gain, 0.0001))
+	_bed_fwd.volume_db = db
+	_bed_rev.volume_db = db
+
+
+## 离底色的下一个十六分音符还有多久（底色正放、倒放都对得上：循环长是十六分音符的整数倍）
+func _grid_delay() -> float:
+	var pl: AudioStreamPlayer = _bed_rev if _bed_back else _bed_fwd
+	if not pl.playing:
+		return 0.0
+	var t := pl.get_playback_position() + AudioServer.get_time_since_last_mix()
+	var d := GRID - fposmod(t, GRID)
+	return 0.0 if d > GRID - 0.012 else d
+
+
+## 脚步层：每越过一个 0.7 m 的格子响一下（鼓左右交替 + 钢琴按格子），等到下一个十六分音符再出声；
+## 往回越过就放倒放（短促地“吸”回去）
+func _step_layer(dd: float) -> void:
+	var cell := int(floor(_dist / STEP))
+	if cell == _step_cell:
+		return
+	var back := cell < _step_cell
+	var k := _step_cell if back else cell
+	_step_cell = cell
+	if _sitting or absf(dd) > 1.0:
+		return
+	var names: Array = []
+	if _drums_on:
+		names.append(["drum_l" if k % 2 == 0 else "drum_r", _drum])
+	if not _step_pat.is_empty():
+		var p := String(_step_pat[posmod(k, _step_pat.size())]).strip_edges()
+		if p != "":
+			names.append([p, _steps])
+	if names.is_empty():
+		return
+	steps_played += 1
+	_fire_step(names, back)
+
+
+func _fire_step(names: Array, back: bool) -> void:
+	var d := _grid_delay()
+	if d > 0.0:
+		await get_tree().create_timer(d).timeout
+	if not running:
+		return
+	for pair in names:
+		var path := "res://audio/music/steps/%s%s.ogg" % [pair[0], "_rev" if back else ""]
+		if ResourceLoader.exists(path):
+			var pl: AudioStreamPlayer = pair[1]
+			pl.stream = load(path)
+			pl.play()
+
+
 func _set_track(fwd: String, rev: String) -> void:
 	_audio_fwd.stop()
 	_audio_rev.stop()
@@ -329,6 +387,7 @@ func start(p: Node3D) -> void:
 	player = p
 	running = true
 	_finished = false
+	_room_seen.clear()
 	layer = 0
 	player.silent_steps = true
 	Director.world.highlight_hotspots([])
@@ -340,6 +399,7 @@ func _enter(i: int) -> void:
 	layer = i
 	_layer_t = 0.0
 	_dist = 0.0
+	_prev_dist = 0.0
 	_speed = 0.0
 	_bell_t = 0.0
 	_bell_done = false
@@ -347,6 +407,11 @@ func _enter(i: int) -> void:
 	_knocked = false
 	_answered = false
 	_sitting = false
+	_in_photo = false
+	_touching = false
+	_resetting = false
+	_room_entered = false
+	_room_left = false
 	_last_pos = Vector2(global_position.x, global_position.z)
 	var r := _row()
 	_set_seg_b(float(r.get("seg_b", "")) if String(r.get("seg_b", "")).is_valid_float() else SEG_B)
@@ -354,12 +419,17 @@ func _enter(i: int) -> void:
 	_gap_base = float(g) if g.is_valid_float() else -1.0
 	_gap = _gap_base
 	_man_prev = _gap
+	_chase_d = 0.0
 	_man_acc = 0.0
 	_man_arrived = false
 	_merged = false
 	_place()
 	_set_lights()
 	_set_track(String(r.get("track", "")), String(r.get("track", "")))
+	_set_music(String(r.get("music", "")))
+	_step_pat = String(r.get("steps", "")).split(",", true) if String(r.get("steps", "")) != "" else PackedStringArray()
+	_drums_on = String(r.get("drums", "")) == "是"
+	_step_cell = 0
 	_parse_beats(String(r.get("beats", "")))
 	_stage_layer(i, r)
 	if _amb.stream and not _amb.playing:
@@ -385,13 +455,11 @@ func _parse_beats(spec: String) -> void:
 func _set_seg_b(seg: float) -> void:
 	_seg_b = clampf(seg, 1.5, SEG_B)
 	_path_len = SEG_A + _seg_b
-	var end := get_node_or_null("segB_end")
+	var end := _part("segB_end")
 	if end:
 		end.position = Vector3(-_seg_b, 0, -SEG_A)
-	var rug := get_node_or_null("地毯B") as Node3D
-	if rug:
-		rug.scale.x = _seg_b / SEG_B
-		rug.position.x = -_seg_b / 2
+	for k in range(1, 5):
+		_show_part(_part("segB_sec_%d" % k), k <= _seg_b - 2)
 	for i in range(1, 5):
 		var l := get_node_or_null("壁灯B%d" % i) as Node3D
 		if l:
@@ -403,7 +471,7 @@ func _row() -> Dictionary:
 
 
 func _place() -> void:
-	player.place(global_position + Vector3(0, 0, -0.15), 0.0)
+	player.place(global_position + Vector3(0, 0.03, -0.15), 0.0)
 	player.needs_spawn = false
 	player.frozen = false
 
@@ -411,10 +479,10 @@ func _place() -> void:
 func _set_lights() -> void:
 	var e := [2.6, 3.2, 2.0, 2.4, 1.4, 1.1]
 	var k: float = e[int(clampf(layer, 0, 5))]
-	for i in range(1, 5):
+	for i in range(1, 6):
 		var l := get_node_or_null("壁灯%d" % i)
 		if l:
-			l.light_energy = k
+			l.light_energy = k * 0.55 if not (layer == 3 and i == 3) else 0.0
 	for i in range(1, 5):
 		var l := get_node_or_null("壁灯B%d" % i)
 		if l:
@@ -423,133 +491,145 @@ func _set_lights() -> void:
 
 ## 每层多出 / 换掉的东西
 func _stage_layer(i: int, _r: Dictionary) -> void:
-	var photos := get_node_or_null("合影墙")
-	if photos:
-		photos.visible = i >= 2
-	var red := get_node_or_null("转角/门缝红光")
-	if red:
-		red.light_energy = 1.7 if i == 1 else 0.0
-	# 脚印：第 4 层
+	for n in range(1, 4):
+		var forgotten := i > n
+		_show_part(_part("doorway_%d" % n), not forgotten)
+		_show_part(_part("wall_%d" % n), forgotten)
+		_part("door_%d" % n).rotation.y = _door_yaws[n] - deg_to_rad(12.0 if i == n else 0.0)
+		get_node("房间灯%d" % n).visible = i == n
+	get_node("楼梯平台灯").visible = i == 3
+	get_node("门缝红光").light_energy = 1.7 if i == 1 else 0.0
+	_show_part(_part("glow_darkroom"), i == 1)
+	_show_part(_part("door_end"), i != 5)
+	_show_part(_part("photo_wall"), i == 5)
 	for f in _prints:
 		f.visible = false
-	# 椅子：第 5 层
 	for c in _chairs:
 		c.visible = false
-	# 第 5 层：把三处声源与椅子摆出来
+	for source in _sources:
+		source.player.stop()
 	if i == 4:
 		_build_chairs()
-		if Director.world.has_method("_bind_meta_hotspots"):
-			Director.world._bind_meta_hotspots(self)
-		for s in _sources:
-			s["found"] = false
-			if s["player"].stream:
-				s["player"].play()
-	# 第 6 层：坐在第四把椅子上
-	if i == 5:
-		_build_chairs()
-		for c in _chairs:
-			c.visible = true
-		_sitting = true
-		player.frozen = true
-		player.place(global_position + Vector3(-SEG_B + 0.75, 0, -SEG_A + 0.05), 90.0)
+		for source in _sources:
+			source.found = false
+			if source.player.stream:
+				source.player.play()
+	_part("gh_figure").position = _figure_start
+	_part("gh_figure").visible = i == 5
+	_sync_interaction_targets()
 
 
 func _build_chairs() -> void:
-	if not _chairs.is_empty():
-		for c in _chairs:
-			c.visible = layer >= 4
+	if not _sources.is_empty():
 		return
-	var spots := [
-		Vector3(LANE / 2 - 0.62, 0, -2.6),
-		Vector3(-LANE / 2 + 0.62, 0, -5.4),
-		Vector3(-2.2, 0, -SEG_A + LANE / 2 - 0.55),
-		Vector3(-SEG_B + 1.0, 0, -SEG_A),
-	]
-	for i in spots.size():
-		var c := Node3D.new()
-		c.name = "椅子%d" % (i + 1)
-		c.position = spots[i]
-		add_child(c)
-		var m := _mat(Color("#1f1510"))
-		_box_child(c, "座", Vector3(0, 0.44, 0), Vector3(0.44, 0.05, 0.42), m)
-		_box_child(c, "靠背", Vector3(0, 0.74, 0.2), Vector3(0.44, 0.58, 0.05), m)
-		for k in 4:
-			_box_child(c, "腿%d" % k, Vector3(0.17 if k % 2 == 0 else -0.17, 0.22, 0.17 if k < 2 else -0.17), Vector3(0.04, 0.44, 0.04), m)
-		c.visible = false
-		_chairs.append(c)
-	var old := get_node_or_null("hs_chair4")
-	if old:
-		old.queue_free()
-	var a := _hotspot(self, "hs_chair4", Vector3(-SEG_B + 1.0, 0.6, -SEG_A), Vector3(1.2, 1.4, 1.2))
-	a.set_meta("hotspot_id", "hs_chair4")
-	a.set_meta("corridor_new", true)
-	# 三处声源
-	var src := [
-		Vector3(LANE / 2 - 0.62, 1.2, -2.6),
-		Vector3(-LANE / 2 + 0.62, 1.2, -5.4),
-		Vector3(-2.2, 1.2, -SEG_A + LANE / 2 - 0.55),
-	]
-	_sources.clear()
-	for i in src.size():
+	for i in range(3):
+		var pos := Vector3(-1.4, 1.2, -DOORS[i])
 		var sp := AudioStreamPlayer3D.new()
-		sp.name = "声源%d" % (i + 1)
-		sp.position = src[i]
+		sp.position = pos
 		sp.unit_size = 2.4
 		sp.max_distance = 12.0
 		sp.volume_db = -2.0
-		var f := "res://audio/voice/corridor_s%d.ogg" % (i + 1)
-		if ResourceLoader.exists(f):
-			sp.stream = load(f)
+		var path := "res://audio/voice/corridor_s%d.ogg" % (i+1)
+		if ResourceLoader.exists(path):
+			sp.stream = load(path)
 		add_child(sp)
-		_sources.append({"pos": src[i], "player": sp, "found": false, "id": i + 1, "chair": spots[i]})
+		_sources.append({"pos": pos, "player": sp, "found": false, "id": i+1, "chair": _chairs[i].position})
+
+
+func _update_room() -> void:
+	if layer not in [1, 2, 3]:
+		return
+	var p := player.global_position - global_position
+	if p.x < -1.15:
+		_room_entered = true
+	elif _room_entered and p.x > -0.4 and p.z < -0.6 and p.z > -7.2 and p.y < 0.4 and not _room_left:
+		_room_left = true
+		_part("door_%d" % layer).rotation.y = _door_yaws[layer]
+		_sync_interaction_targets()
+
+
+func _update_photo() -> void:
+	if layer != 5 or _touching:
+		return
+	if not _in_photo:
+		if _dist >= _path_len - 1.0:
+			_in_photo = true
+			player.place(global_position + _photo_spawn, 0)
+			Director.ui.toast("脚下变成了湿泥地。脚步声从照片里面传来。")
+	else:
+		var p := player.global_position - global_position
+		# 人影与玩家同步，靠近侧门后停住，留下可以伸手的距离。
+		var progress := clampf(_photo_spawn.z - p.z, 0.0, 1.15)
+		_part("gh_figure").position = _figure_start + Vector3(0, 0, -progress)
+		get_node("hs_corridor_figure").position = _part("gh_figure").position + Vector3(0, 0.9, 0.15)
+		_sync_interaction_targets()
 
 
 # ───────────── 每帧 ─────────────
 
 func _process(dt: float) -> void:
-	if not running or player == null:
+	if not running or player == null or _resetting:
 		return
 	_layer_t += dt
 	var pos: Vector2 = Vector2(player.global_position.x, player.global_position.z)
 	_dist = _project(player.global_position - global_position)
-	var v := (pos - _last_pos).length() / maxf(dt, 0.0001)
+	# 唱针的速度 = 沿走廊前进了多少（带正负）。侧着走、原地转身都不算；推门回到起点那一下也不算
+	var dd := _dist - _prev_dist
+	var v := 0.0 if absf(dd) > 1.0 else dd / maxf(dt, 0.0001)
 	_prev_dist = _dist
 	_last_pos = pos
 	_speed = lerpf(_speed, clampf(v, -2.5, 2.5), 0.18)
+	_step_layer(dd)
+	_bed()
 	_needle()
+	_chase(dt)
 	_subtitles()
+	_update_room()
+	_update_photo()
 	_rules(dt)
 
 
 var _prev_dist := 0.0
+const NEEDLE_DB := -2.0   # 人声
+const MUSIC_DB := -7.0    # 底色 BGM
+const STEPS_DB := -12.0   # 脚步层的钢琴
+const DRUM_DB := -9.0     # 脚步层的鼓
 
 
 func _project(p: Vector3) -> float:  # p 是相对本节点的本地坐标
 	var za := clampf(-p.z, 0.0, SEG_A)
-	if za < SEG_A - 0.001:
+	if p.z > -7.2 or p.x > -0.2:
 		return za
-	return SEG_A + clampf(-p.x, 0.0, SEG_B)
+	return SEG_A + clampf(-p.x, 0.0, _seg_b)
 
 
 func _at(d: float) -> Vector3:
-	var k := clampf(d, 0.0, PATH_LEN)
+	var k := clampf(d, 0.0, _path_len)
 	if k <= SEG_A:
 		return Vector3(0, 0, -k)
 	return Vector3(-(k - SEG_A), 0, -SEG_A)
 
 
-## 唱针：声音的位置跟着玩家在走廊里的位置；停就停，退就倒放
+## 唱针：声音的位置跟着玩家在走廊里的位置；停就停，退就倒放。人声和唱片（BGM）两对都这样放
 func _needle() -> void:
-	var ratio := clampf(_dist / PATH_LEN, 0.0, 1.0)
+	_needle_pair(_audio_fwd, _audio_rev, NEEDLE_DB)
+
+
+func _needle_pair(a_fwd: AudioStreamPlayer, a_rev: AudioStreamPlayer, db: float) -> void:
+	var ratio := clampf(_dist / _path_len, 0.0, 1.0)
 	var going_forward: bool = _speed > 0.0
-	if player.has_method("get") and player.forward == false:
-		going_forward = false
-	var fwd: AudioStreamPlayer = _audio_fwd if going_forward else _audio_rev
-	var other: AudioStreamPlayer = _audio_rev if going_forward else _audio_fwd
+	var fwd: AudioStreamPlayer = a_fwd if going_forward else a_rev
+	var other: AudioStreamPlayer = a_rev if going_forward else a_fwd
 	if fwd.stream == null:
 		return
 	var len := fwd.stream.get_length()
-	if absf(_speed) < 0.12 or _sitting:
+	# 停下时不硬切（会“啪”一声）：60 毫秒左右淡掉再停
+	var moving := absf(_speed) >= 0.12 and not _sitting
+	var g: float = _gains.get(a_fwd.name, 0.0)
+	g = move_toward(g, 1.0 if moving else 0.0, get_process_delta_time() / 0.06)
+	_gains[a_fwd.name] = g
+	fwd.volume_db = db + linear_to_db(maxf(g, 0.0001))
+	if not moving and g <= 0.0:
 		fwd.stop()
 		other.stop()
 		return
@@ -560,7 +640,61 @@ func _needle() -> void:
 	var t := ratio * len if going_forward else (1.0 - ratio) * len
 	if absf(fwd.get_playback_position() - t) > 0.08:
 		fwd.seek(t)
-	fwd.pitch_scale = clampf(1.0 + (_speed - SPEED) * 0.18, 0.72, 1.5)
+	# 正常步速走完一圈正好放完一条录音：第二段越短，放得越快（越往里，节奏越急）
+	var base := len / _path_len * SPEED
+	fwd.pitch_scale = clampf(base * (1.0 + (absf(_speed) - SPEED) * 0.18), 0.6, 1.8)
+
+
+## 沿路径 d 米处的位置；超过尽头时沿 -x 继续延伸（那个人穿过尽头的门以后）
+func _at_ext(d: float) -> Vector3:
+	if d <= SEG_A:
+		return Vector3(0, 0, -maxf(d, 0.0))
+	return Vector3(-(d - SEG_A), 0, -SEG_A)
+
+
+## 追逐：唱片里那个人的脚步在玩家前方 _gap 米处。玩家走他就走，停他就停，倒走他就倒着走回来。
+## 第 1 圈他远远地穿过尽头的门；第 2 圈停在暗房门前；第 4 圈走得合拍，他就越来越近，最后和玩家的步子合上
+func _chase(dt: float) -> void:
+	if _gap < 0.0 or _man == null or _sitting:
+		return
+	var moving_on := _dist > _chase_d + 0.0005
+	_chase_d = _dist
+	if layer == 3 and not _merged:
+		var p := player.global_position - global_position
+		var lateral: float = absf(p.x) if _dist < SEG_A - 0.6 else absf(p.z + SEG_A)
+		var in_step: bool = absf(_speed - SPEED) <= SPEED * 0.15 and lateral <= 0.25 and moving_on
+		if in_step:
+			_gap = maxf(0.0, _gap - dt * 0.3)
+		elif absf(_speed) > 0.12:
+			_gap = minf(_gap_base, _gap + dt * 0.12)
+		if _gap <= 0.15:
+			_merged = true
+			_man.stop()
+			Director.ui.toast("前面的脚步声，和我的步子合上了。")
+			return
+	if _merged:
+		return
+	var cap := _path_len + 0.8           # 穿过尽头的门
+	if layer == 1:
+		cap = SEG_A - 0.6                # 案发夜：停在转角的暗房门前
+	var m := minf(_dist + _gap, cap)
+	if m >= cap and not _man_arrived:
+		_man_arrived = true
+		if layer == 0 and _door_far.stream:
+			_door_far.position = _at_ext(_path_len)
+			_door_far.play()
+	var delta := m - _man_prev
+	_man_prev = m
+	_man.position = _at_ext(m) + Vector3(0, 0.05, 0)
+	if m >= cap:
+		return
+	_man_acc += absf(delta)
+	if _man_acc >= STEP:
+		_man_acc -= STEP
+		_man.stream = _step_fwd if delta >= 0.0 else _step_rev
+		if _man.stream:
+			_man.pitch_scale = clampf(0.92 + absf(_speed - SPEED) * 0.2 * signf(_speed - SPEED), 0.75, 1.3)
+			_man.play()
 
 
 ## 字幕跟着唱针走：念到的句子才出现，字一个一个浮出来；往回走，字一个一个退回去
@@ -570,7 +704,7 @@ func _subtitles() -> void:
 	if _beats.is_empty() or _sitting:
 		sub_label.text = ""
 		return
-	var ratio := clampf(_dist / PATH_LEN, 0.0, 1.0)
+	var ratio := clampf(_dist / _path_len, 0.0, 1.0)
 	var idx := -1
 	for i in _beats.size():
 		if ratio >= float(_beats[i][0]):
@@ -590,19 +724,20 @@ func _subtitles() -> void:
 func _rules(dt: float) -> void:
 	match layer:
 		1:  # 案发夜：铃响不能回头
-			if _dist / PATH_LEN > 0.45 and not _bell_done and _bell_t <= 0.0:
+			if _knocked and not _bell_done and _bell_t <= 0.0:
 				_bell_t = 4.0
 				if _bell.stream:
 					_bell.play()
 			if _bell_t > 0.0:
 				_bell_t -= dt
 				# 走廊方向是 -z，转到背后就是 yaw 偏离 0 超过 100 度
-				if absf(angle_difference(player.rotation.y, 0.0)) > deg_to_rad(100.0):
+				var facing := PI / 2 if player.global_position.x - global_position.x < -0.2 else 0.0
+				if absf(angle_difference(player.rotation.y, facing)) > deg_to_rad(100.0):
 					_bust("铃响的时候，不要回头。")
 				if _bell_t <= 0.0:
 					_bell_done = true
 		2:  # 序章门厅：那句话从身后响起，回答就重来
-			if _dist / PATH_LEN > 0.35 and not _answered and _layer_t > 2.0:
+			if _dist / _path_len > 0.35 and not _answered and _layer_t > 2.0:
 				current_hint = "E　我手里只有信的第一页。"
 		3:  # 星期四夜：脚印；到暗房门口有一段沉默，听完才走得过去
 			_stage_prints()
@@ -629,13 +764,9 @@ func _rules(dt: float) -> void:
 						if _knock.stream:
 							_knock.play()
 						Director.ui.toast("椅背是温的。")
-	# 走到尽头：进入下一层（第 5 层要先找齐三把）
-	if _dist >= PATH_LEN - 0.35 and _silence_t <= 0.0 and not _sitting:
-		if layer == 4 and _sources.filter(func(s): return s["found"]).size() < 3:
-			if _dist > PATH_LEN - 0.3:
-				player.place(global_position + _at(PATH_LEN - 0.45), 0.0)
-			return
-		_next()
+	if layer == 4:
+		_sync_interaction_targets()
+	# 换圈只由尽头门的真实 E 入口触发，接近墙面不能跳过交互。
 
 
 func _stage_prints() -> void:
@@ -646,14 +777,16 @@ func _stage_prints() -> void:
 
 
 func _bust(reason: String) -> void:
-	if _bell_t < 0.0:
+	if _resetting:
 		return
-	_bell_t = -1.0
+	_resetting = true
+	player.frozen = true
 	if _scratch.stream:
 		_scratch.play()
 	Director.ui.toast(reason)
 	await get_tree().create_timer(0.7).timeout
-	_enter(layer)
+	if running:
+		_enter(layer)
 
 
 func _next() -> void:
@@ -673,10 +806,14 @@ func _finish() -> void:
 		s["player"].stop()
 	_audio_fwd.stop()
 	_audio_rev.stop()
+	_bed_fwd.stop()
+	_bed_rev.stop()
 	if _amb.stream:
 		_amb.stop()
 	Director.ui.set_hint("")
 	player.silent_steps = false
+	# 伸手演出由回廊冻结玩家，结束时必须归还移动控制。
+	player.frozen = false
 	Director.world.highlight_hotspots([])
 	done.emit()
 
@@ -685,6 +822,30 @@ func _finish() -> void:
 func interact(id: String) -> bool:
 	if not running:
 		return false
+	if id.begins_with("hs_corridor_door_"):
+		var n := int(id.get_slice("_", 3))
+		if n == layer and not _room_left:
+			_part("door_%d" % n).rotation.y = _door_yaws[n] - deg_to_rad(95)
+			Director.ui.toast("门开了。脚步声像是拐了进去。")
+		return true
+	if id.begins_with("hs_room_"):
+		var n := int(id.get_slice("_", 2))
+		if n == layer:
+			if not _room_seen.has(n):
+				_room_seen[n] = true
+				GameState.record("observation", _room_observations[n-1])
+				GameState.add_evidence(ROOM_NOTES[n-1])
+				Director.ui.notebook_ping()
+				GameState.changed.emit()
+			Director.ui.toast(_room_observations[n-1])
+		return true
+	if id == "hs_corridor_figure" and layer == 5 and _in_photo:
+		_touch_figure()
+		return true
+	if id == "hs_doorway" and layer < 4:
+		if _silence_t <= 0.0:
+			_next()
+		return true
 	if id == "hs_darkroom_door":
 		if layer == 1 and not _knocked:
 			_knocked = true
@@ -699,33 +860,77 @@ func interact(id: String) -> bool:
 		if _sources.filter(func(s): return s["found"]).size() < 3:
 			Director.ui.toast("还有声音没有找到。")
 			return true
-		_enter(5)
-		await get_tree().create_timer(5.0).timeout
-		if not running:
-			return true
-		Director.ui.show_text("有人在看着我们。稳定率已经很低了。")
-		await get_tree().create_timer(1.2).timeout
-		_finish()
+		_sit_fourth()
 		return true
 	return false
 
 
+## 第四把椅子把玩家送到唱片中心；第六圈继续可走，走近照片进入小路。
+func _sit_fourth() -> void:
+	_enter(5)
+	Director.ui.toast("留声机还在转。尽头的门变成了一张照片。")
+
+
+func _touch_figure() -> void:
+	if _touching:
+		return
+	_touching = true
+	player.frozen = true
+	var at := _part("gh_figure").position
+	_part("gh_figure").visible = false
+	get_node("hs_corridor_figure").visible = false
+	Director.world.active_hotspots = []
+	player.place(global_position + at, 90.0)
+	var e := "res://audio/music/corridor_ending.ogg"
+	if ResourceLoader.exists(e):
+		_ending.stream = load(e)
+		_ending.play()
+	await get_tree().create_timer(0.6).timeout
+	if not running:
+		return
+	_fade.color = Color.WHITE
+	_fade.modulate.a = 1.0
+	var flash := create_tween()
+	flash.tween_property(_fade, "modulate:a", 0.0, 1.2)
+	await Director.ui.show_text("有人在看着我们。稳定率已经很低了。")
+	if running:
+		_finish()
+
+
+## 所有入口统一按当前圈同步，隐藏物体不留下可选热区。
+func _sync_interaction_targets() -> void:
+	var enabled := []
+	if layer in [1, 3]:
+		enabled.append("hs_darkroom_door")
+	if layer < 4:
+		enabled.append("hs_doorway")
+	if layer in [1, 2, 3]:
+		if not _room_left:
+			enabled.append("hs_corridor_door_%d" % layer)
+		enabled.append("hs_room_%d" % layer)
+	var ready_chair := layer == 4 and _sources.size() == 3 and _sources.all(func(source): return source.found)
+	if ready_chair:
+		enabled.append("hs_chair4")
+	_chairs[3].visible = ready_chair
+	if layer == 5 and _in_photo and not _touching:
+		enabled.append("hs_corridor_figure")
+	for n in find_children("hs_*", "Area3D", true, false):
+		n.visible = enabled.has(String(n.name))
+	Director.world.active_hotspots = enabled
+
+
 ## 第 3 层：玩家选了“回答”。规矩是不要回答
 func answer() -> void:
-	if layer != 2 or _answered:
+	if layer != 2 or _answered or _resetting:
 		return
 	_answered = true
 	current_hint = ""
-	if _scratch.stream:
-		_scratch.play()
-	Director.ui.toast("有人问你话，不要回答。")
-	await get_tree().create_timer(0.7).timeout
-	_enter(2)
+	_bust("有人问你话，不要回答。")
 
 
 ## 玩家按 E 时如果屏幕上有“回答”，就是回答了（第 3 层的陷阱）
 func answering() -> bool:
-	return layer == 2 and _dist / PATH_LEN > 0.35
+	return layer == 2 and _dist / _path_len > 0.35
 
 
 func _build_fx() -> void:

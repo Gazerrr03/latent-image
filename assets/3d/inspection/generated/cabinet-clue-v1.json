@@ -1,0 +1,24 @@
+{
+  "source": "godot/art/levels/manor/room_darkroom.gltf",
+  "source_sha256": "7acf4feff6bb690173b9312af31dafbbbc5efb4e54041b88d9afab4e0ad92d27",
+  "source_binary_sha256": "e8d39b3f9548f9aec24bc65d38ecb9a0d299b2669e3c909121671a51f8318ece",
+  "preserved_faces_sha256": "c7a15f7a9195682e3fc81d70c1a163e29b39efb4b42db7c558f9ec8b60f20744",
+  "preserved_faces": 6616,
+  "removed_bottle_faces": 148,
+  "old_base": [
+    -0.004221867769956589,
+    0.005427956581115723,
+    1.1979999542236328
+  ],
+  "new_base": [
+    0.040778134018182755,
+    -0.04957204312086105,
+    1.1979999542236328
+  ],
+  "radius": 0.027875982224941254,
+  "label_text": "调色液\n最后一张用\n无色透明",
+  "expected_liquid_colour": "无色透明",
+  "asset_sha256": "5f5ac455a4ef9fe64864ef1858bd27af78b5cb7326f3e3e8f91813bdb646f4eb",
+  "label_sha256": "cef135c332aec2c48636de211fd5b3dbfaa2bf80798660523b11fdedbafdc614",
+  "label_source": "godot/content/visual/inspection_labels.csv"
+}

@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 戒指盒使用可拿起的原生几何
+PASS 仅盒体与白缎内衬两材质分离
+PASS 戒指盒全部顶点与原模型逐面一致
+PASS 账簿发刷香水等其余几何原样保留
+PASS 原物件坐标和尺寸不变
+PASS 实际站位E提示是戒指盒
+PASS 真实E浮出且只隐藏戒指盒
+PASS 原物件支持拖动旋转与滚轮放大
+PASS 戒指盒文字阅读可打开
+PASS 阅读退出保留观察角度与缩放
+PASS 复位恢复默认观察状态
+PASS 退出恢复原位物件并只记录一次
+PASS 同一戒指盒可重复拿起
+PASS 重复检视不虚构证据或重复记录
+PASS 异地复查取同一真实两材质几何
+RINGBOX_INSPECTION failures=0

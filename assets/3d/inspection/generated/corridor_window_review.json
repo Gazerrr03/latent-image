@@ -1,0 +1,110 @@
+{
+  "source": "godot/art/levels/ded_corridor/ded_corridor.glb",
+  "source_sha256": "c1da3e2c47f187a2e212c194ed4bf5c385f64e6688ceb88a9c9ae7f3070e4e8a",
+  "clip_box_godot": [
+    [
+      -1.9,
+      0,
+      -9.5
+    ],
+    [
+      1.05,
+      3.25,
+      1.1
+    ]
+  ],
+  "meshes": [
+    {
+      "name": "darkroom_door-col",
+      "source_faces": 632,
+      "clipped_faces": 632
+    },
+    {
+      "name": "room_3·吊灯_前室",
+      "source_faces": 316,
+      "clipped_faces": 316
+    },
+    {
+      "name": "room_3·墙面、地面",
+      "source_faces": 288,
+      "clipped_faces": 228
+    },
+    {
+      "name": "room_3·扶手",
+      "source_faces": 248,
+      "clipped_faces": 60
+    },
+    {
+      "name": "room_3·斜梁",
+      "source_faces": 56,
+      "clipped_faces": 26
+    },
+    {
+      "name": "room_3·楼梯踏步-col",
+      "source_faces": 728,
+      "clipped_faces": 334
+    },
+    {
+      "name": "room_3·第二跑上方墙面",
+      "source_faces": 8,
+      "clipped_faces": 3
+    },
+    {
+      "name": "回廊·内窗（起点背墙）",
+      "source_faces": 216,
+      "clipped_faces": 216
+    },
+    {
+      "name": "回廊·地毯（第一段）",
+      "source_faces": 1730,
+      "clipped_faces": 1730
+    },
+    {
+      "name": "回廊·墙体-col",
+      "source_faces": 192,
+      "clipped_faces": 164
+    },
+    {
+      "name": "回廊·墙面、地面与线脚",
+      "source_faces": 548,
+      "clipped_faces": 512
+    },
+    {
+      "name": "回廊·壁灯_东1",
+      "source_faces": 584,
+      "clipped_faces": 584
+    },
+    {
+      "name": "回廊·壁灯_东2",
+      "source_faces": 584,
+      "clipped_faces": 584
+    },
+    {
+      "name": "回廊·壁灯_东3",
+      "source_faces": 584,
+      "clipped_faces": 584
+    },
+    {
+      "name": "回廊·壁灯_东4",
+      "source_faces": 584,
+      "clipped_faces": 584
+    },
+    {
+      "name": "回廊·壁灯_东5",
+      "source_faces": 584,
+      "clipped_faces": 584
+    },
+    {
+      "name": "回廊·暗房门牌",
+      "source_faces": 56,
+      "clipped_faces": 56
+    },
+    {
+      "name": "回廊·暗房门门套",
+      "source_faces": 108,
+      "clipped_faces": 108
+    }
+  ],
+  "asset_sha256": "52b04bacc24709228c0753977c325a837c397dd7ef277f359e659cbff0b60f27",
+  "status": "pending_runtime_review"
+}

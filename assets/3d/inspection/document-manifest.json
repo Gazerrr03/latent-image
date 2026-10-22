@@ -1,0 +1,622 @@
+[
+  {
+    "path": "godot/art/props/inspection/ev_letter_p1_0_front.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "1f8c474f5bfea210506aec717838d09c2301377fd768def526ffbbff9e2fd581",
+    "source": "story/evidence.csv",
+    "text": "亲爱的格雷：\\n\\n好久不见。十月十六日星期六，来奥瑞尔庄园住几天吧，晚上九点到。我就不派车去车站接你了，那段路你一向喜欢走。\\n\\n我有一样东西，必须给你看。\\n\\n——安布罗斯　十月十三日"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_letter_p1_0_back.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "f78be66c1af6ad4fd06c789b9593e8048bc6450f8d778919de55061d6e0ab19a",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_letter_p2_0_front.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "6a09f99b41833128025070f40f27d821aa76bbc846bb047c68f40b7f2c88c1cf",
+    "source": "story/evidence.csv",
+    "text": "另：星期四晚上先来一趟。从温室那边进来，直接到暗房。别让家里任何人知道。这张照片，我想让你第一个看。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_letter_p2_0_back.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "313c47817a4b2cd4d93f0aed66feb1f4a2ee734021185fa7e3a04b3d65e49dc6",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_record_c0_0_front.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "c9ad21f7b5a0ac30fdf39893ea5171231c38b2ac79b58efd1875fb0e97f4b37d",
+    "source": "story/evidence.csv",
+    "text": "十月十六日。\\n\\n九点，我到达奥瑞尔庄园。\\n十点，园丁撞开暗房的门。\\n安布罗斯·塔尔博特死了。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_record_c0_0_back.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "9a2ec0bc25cd35cbd1223f80d2e20dee5f191e4cba78299c45ee105636060497",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_carbon_0_front.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "76de6207d9d6ce73555bf41dae05b4bb8360c4a5aac02e290a4f77e12aaca239",
+    "source": "story/evidence.csv",
+    "text": "亲爱的格雷：\\n\\n好久不见。十月十六日星期六，来奥瑞尔庄园住几天吧，晚上九点到。我就不派车去车站接你了，那段路你一向喜欢走。\\n\\n我有一样东西，必须给你看。\\n\\n——安布罗斯　十月十三日"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_carbon_0_back.png",
+    "size": [
+      1200,
+      1657
+    ],
+    "sha256": "2f384bf33f6b5f6ed9b1a32e02ea4b48d18d0ec32723b32ad250c668925bd8b2",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_names_0_front.png",
+    "size": [
+      1200,
+      1620
+    ],
+    "sha256": "135f239df9f415e5a3736d5a4e1be45323a113ec671e6deaee7188f74de40e24",
+    "source": "story/evidence.csv",
+    "text": "1920\\n\\n彭罗斯先生"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_names_0_back.png",
+    "size": [
+      1200,
+      1620
+    ],
+    "sha256": "36450e29775fec80d4a400d8e11bd2ea60bf861003b9d2767ff60f0e470ba233",
+    "source": "story/evidence.csv",
+    "text": "1921\\n\\n"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_names_1_front.png",
+    "size": [
+      1200,
+      1620
+    ],
+    "sha256": "fdc8b73010b87614161f776d702fcbd9343d6ea64b1ffa8272ce5494bdd0a498",
+    "source": "story/evidence.csv",
+    "text": "1922\\n\\n索尔特太太"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_names_1_back.png",
+    "size": [
+      1200,
+      1620
+    ],
+    "sha256": "247b36436fad1327a90c0912226aee1002b446c2f67835bf07b422e561902f8d",
+    "source": "story/evidence.csv",
+    "text": "1923\\n\\n"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_names_2_front.png",
+    "size": [
+      1200,
+      1620
+    ],
+    "sha256": "589cc2e2b41cee9191986972ff7e79ee20c0d6f337631e9372c7b779609e7b75",
+    "source": "story/evidence.csv",
+    "text": "1924\\n\\n卢西恩"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_names_2_back.png",
+    "size": [
+      1200,
+      1620
+    ],
+    "sha256": "abf9edca141620bb9c3b00139722378a43b4df0495ff9427193cc9e404a6913f",
+    "source": "story/evidence.csv",
+    "text": "1925\\n\\n"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_clipping_0_front.png",
+    "size": [
+      1200,
+      1600
+    ],
+    "sha256": "953b1969736feca39fef46118a59062f648f979c86733ada260b445683cfd054",
+    "source": "story/evidence.csv",
+    "text": "威尔特郡时报\\n1925 年 · 趣闻栏\\n\\n奥瑞尔庄园的“第五张脸”\\n\\n照相馆称底片无损。塔尔博特一家称，照片上的人从未在府上住过。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_clipping_0_back.png",
+    "size": [
+      1200,
+      1600
+    ],
+    "sha256": "2bf714e41819610eb8e88bfe983f82e136d2a6a2a902da02cc31704143421312",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_manual_page_0_front.png",
+    "size": [
+      1200,
+      1680
+    ],
+    "sha256": "d5655772db512fd4c493a4d45ca3cfc5860db169a77b1772833003260d55a29d",
+    "source": "story/evidence.csv",
+    "text": "长时间曝光\\n\\n如果一个人在镜头前走动，底片上会留下好几个半透明的人影。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_manual_page_0_back.png",
+    "size": [
+      1200,
+      1680
+    ],
+    "sha256": "6fbaffc00dec32a4fdb16b8cefed3e099703c5021cf140512e6683054c3c24f9",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ticket_0_front.png",
+    "size": [
+      1200,
+      643
+    ],
+    "sha256": "7ad6a59b931b88e8408d089793a5d058596340beb15471abe29ff645b52fdff0",
+    "source": "story/evidence.csv",
+    "text": "十月十四日　星期四\\n\\n伦敦　→　威尔特郡"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ticket_0_back.png",
+    "size": [
+      1200,
+      643
+    ],
+    "sha256": "1984b5ba949431fa50d0c837afbb8be83f27df23dba0d5eb58e3456dabf9c239",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_last_0_front.png",
+    "size": [
+      1200,
+      1642
+    ],
+    "sha256": "6b8e2aa093b0cd713af9ed2d9cb5deaff721d3322115fb6759e31663401bf4f9",
+    "source": "story/evidence.csv",
+    "text": "十月十三日\\n\\n叠印做出来了，只有一张脸。……我会先给格雷看。他最不愿意想起来。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_last_0_back.png",
+    "size": [
+      1200,
+      1642
+    ],
+    "sha256": "160e7a95fb62134083127a630af084491c9c35109b57034a87a79a010e9182fe",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_last_1_front.png",
+    "size": [
+      1200,
+      1642
+    ],
+    "sha256": "3647015e4ef960a3b77846d365caf562429a22335e81efdf6fffc437a2aa0962",
+    "source": "story/evidence.csv",
+    "text": "十月十五日\\n\\n星期四夜里他来了。我给他看了。……他会忘的，和他们一样。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_ledger_last_1_back.png",
+    "size": [
+      1200,
+      1642
+    ],
+    "sha256": "160e7a95fb62134083127a630af084491c9c35109b57034a87a79a010e9182fe",
+    "source": "story/evidence.csv",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_path_0_front.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "fe57c09f3668d8d6a214f660c520d23372a23ddda71ab4e42739aacfa7181eb2",
+    "source": "story/hotspots.csv:hs_draw_path; assets/2d/inspection/prompts/iris_path-v1.txt",
+    "text": "一座玻璃房子，里面一条虚线，通到一扇小门。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_path_0_back.png",
+    "size": [
+      1200,
+      900
+    ],
+    "sha256": "63b8e19228758c4f3615022d450e177451506a0d7f3915f4325ce7ee8e63d799",
+    "source": "story/hotspots.csv:hs_draw_path; assets/2d/inspection/prompts/iris_path-v1.txt",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_boxes_0_front.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "4debd86a6f5fea23be31ef8dda7edb3e77394069b8d718cd9299776497746c79",
+    "source": "story/hotspots.csv:hs_draw_boxes; assets/2d/inspection/prompts/iris_boxes-v1.txt",
+    "text": "一排方盒子，每个盒子里站着一个小人。盒子上写着她不认识的数字。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_boxes_0_back.png",
+    "size": [
+      1200,
+      900
+    ],
+    "sha256": "dbb5106a0601a33170403ffacf106cdee4895c7a0d2adb778f25f0de27907659",
+    "source": "story/hotspots.csv:hs_draw_boxes; assets/2d/inspection/prompts/iris_boxes-v1.txt",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_train_0_front.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "381ea06ac4ddaa5092a5464915a358da0137b2116e6b904f8fdf93a3a3cf9f53",
+    "source": "story/hotspots.csv:hs_draw_train; assets/2d/inspection/prompts/iris_train-v1.txt",
+    "text": "一列火车。窗外的树，一棵一棵，画得一模一样。和我来的路上看见的一样。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_train_0_back.png",
+    "size": [
+      1200,
+      900
+    ],
+    "sha256": "22a2843ccd361cc4ed03a687d90757e4d9412b43aacd8229154d9699e2853b06",
+    "source": "story/hotspots.csv:hs_draw_train; assets/2d/inspection/prompts/iris_train-v1.txt",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_iris_portrait_0_front.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "660bf3b8eb43088131878950d2144fd56f26c92fc9d9cc29aa9bfb5d886ee65a",
+    "source": "story/hotspots.csv:hs_draw_family; assets/2d/inspection/prompts/iris_family-v1.txt",
+    "text": "全家福：爸爸、妈妈、吉迪恩、夫人，还有她自己。所有人手拉手，连成一个身体。每个人都长着同一张脸。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_iris_portrait_0_back.png",
+    "size": [
+      1200,
+      900
+    ],
+    "sha256": "08d39d157bb864a48f7406b937f1767ab8df469d884e8a77a9b80b7c9b7d90f2",
+    "source": "story/hotspots.csv:hs_draw_family; assets/2d/inspection/prompts/iris_family-v1.txt",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_cloth_0_front.png",
+    "size": [
+      1448,
+      1086
+    ],
+    "sha256": "06d18c2fbeb25880c2b236c1acd36d350dcfb4e946204e6c8477bed72f2f35b8",
+    "source": "story/hotspots.csv:hs_draw_wall; assets/2d/inspection/prompts/iris_vent-v1.txt",
+    "text": "暗房的外墙，通风口上堵着一块黑布，旁边一只没有身体的手。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_draw_cloth_0_back.png",
+    "size": [
+      1200,
+      900
+    ],
+    "sha256": "51691a8520858d2c73418ec6e6ccc7df3c6116faf71c5a0867458baafe4ee217",
+    "source": "story/hotspots.csv:hs_draw_wall; assets/2d/inspection/prompts/iris_vent-v1.txt",
+    "text": ""
+  },
+  {
+    "path": "godot/art/props/inspection/ev_night_photo_0_front.png",
+    "size": [
+      1024,
+      1536
+    ],
+    "sha256": "6d2ac647f6ffa0882fdea7b2f7d1b38284dfe1265083fca5a9d16463c0fa2afa",
+    "source": "story/evidence.csv:ev_night_photo; assets/2d/T-043-回廊/prompts/night_photo-v1.txt",
+    "text": "一个模糊的人影走向暗房的侧门，看不见脸。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_night_photo_0_back.png",
+    "size": [
+      1200,
+      1800
+    ],
+    "sha256": "fee322fb5074780d273be8296b9ba893a5bed2c58833fcf5c00cc4c73e22214d",
+    "source": "story/evidence.csv:ev_night_photo; assets/2d/T-043-回廊/prompts/night_photo-v1.txt",
+    "text": "星期四，十一点四十分。"
+  },
+  {
+    "path": "godot/art/props/inspection/ev_amb_notes_0_front.png",
+    "size": [
+      1200,
+      1760
+    ],
+    "sha256": "95bef797e04af68680fa4b3d63ee2bd17561bd49290348ce3316b7f493ffa1d1",
+    "source": "story/evidence.csv",
+    "text": "星期六，格雷来。\\n\\n最后一张冲出来，他们就都会想起来。",
+    "surface_text": "Saturday, Grey comes.\\n\\nWhen the last print is ready,\\nthey will all remember.",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_amb_notes_0_back.png",
+    "size": [
+      1200,
+      1760
+    ],
+    "sha256": "496dbdd1962413da6a4fa7df286e64194639e077b58b63c2aa36e07efe066ba2",
+    "source": "story/evidence.csv",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_con_ledger_0_front.png",
+    "size": [
+      1200,
+      1667
+    ],
+    "sha256": "9add5161ab023ccf74f192d7883579a38228a8a68097998fa2c9209644e0accf",
+    "source": "story/evidence.csv",
+    "text": "1920 年 5 月\\n\\n彭罗斯先生　薪水",
+    "surface_text": "Accounts\\n\\nMay 1920\\nMr Penrose — wages",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_con_ledger_0_back.png",
+    "size": [
+      1200,
+      1667
+    ],
+    "sha256": "2c82e5d9e349e28a6cf4c402b20c4dab758f59035a1519b2a85659cfa0da313f",
+    "source": "story/evidence.csv",
+    "text": "1921 年 3 月\\n\\n",
+    "surface_text": "March 1921",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_0_front.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "40c2703034d42d38e7c781afec340067ba2c0a88851eebe24ea00ec39c9894d8",
+    "source": "story/evidence.csv",
+    "text": "彭罗斯",
+    "surface_text": "Penrose",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_0_back.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70",
+    "source": "story/evidence.csv",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_1_front.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "80ae809130b51857011b53630da1598b7315077fc2c92c8e1fab5b2eaae53440",
+    "source": "story/evidence.csv",
+    "text": "索尔特",
+    "surface_text": "Salter",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_1_back.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70",
+    "source": "story/evidence.csv",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_2_front.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "33532aeda1107d8dc758a95cccb1dc633edafb076beeb82da231fd7de607cd0b",
+    "source": "story/evidence.csv",
+    "text": "卢西恩",
+    "surface_text": "Lucien",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_2_back.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70",
+    "source": "story/evidence.csv",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_3_front.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "9d3675d4cc54f02d855731f8a6f28c36f7b28f9565275997395d4736049ea566",
+    "source": "story/evidence.csv",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_seance_cards_3_back.png",
+    "size": [
+      1200,
+      1745
+    ],
+    "sha256": "10169b1ed2a4f278e6d2920a70ae841d42872f52c4360a579a2ffb860aa16d70",
+    "source": "story/evidence.csv",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_receipt_0_front.png",
+    "size": [
+      1200,
+      1667
+    ],
+    "sha256": "f08612adcfd2b0dfe35c3698ed3d181aedbddbf769d9f8e26c3057b10ec2cdee",
+    "source": "story/evidence.csv; docs/02; 2026-10-21 user authorized item/count details",
+    "text": "药房签收单\\n\\n显影液　2 瓶\\n停显液　1 瓶\\n定影液　1 瓶\\n专用调色液　1 瓶\\n\\n签收人：吉迪恩·沃登",
+    "surface_text": "Receipt\\n\\nDeveloper — 2 bottles\\nStop bath — 1 bottle\\nFixer — 1 bottle\\nToning solution — 1 bottle\\n\\nGideon Warden",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_receipt_0_back.png",
+    "size": [
+      1200,
+      1667
+    ],
+    "sha256": "49234fb6cec8155c2bd2e761d157475e53f8ad6cc7234f34ff48aae4945a1ea4",
+    "source": "story/evidence.csv; docs/02; 2026-10-21 user authorized item/count details",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/prop_grey_notebook_0_front.png",
+    "size": [
+      1200,
+      1760
+    ],
+    "sha256": "db514ad775e235c686ede0d0fd4c3906defafcac1a118050db1223fc3b030ff7",
+    "source": "story/hotspots.csv:hs_notebook; literal English translation",
+    "text": "我收到的每一条线索都记在这里，随时可以翻开来看。",
+    "surface_text": "Every clue I receive goes into this notebook.\\n\\nI can return to it at any time.",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/prop_grey_notebook_0_back.png",
+    "size": [
+      1200,
+      1760
+    ],
+    "sha256": "c08fc31a9495237e159f4c5e292838ed34ca2ecdbeea0e45e8d850f7fbe4a076",
+    "source": "story/hotspots.csv:hs_notebook; literal English translation",
+    "text": "",
+    "surface_text": "",
+    "handwriting": "detached_t",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_photo_back_0_front.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "sha256": "fbaded7ada160012f3456166f28f21229487fa16db35f0938570e065ab40c87b",
+    "source": "story/hotspots.csv:hs_se_photo; docs/02:第3章演绎合影; existing photo_1926 candidate",
+    "text": "1926 年合影的小样。面纱女人站在队伍边上，主位空着。",
+    "surface_text": "1926 年合影的小样。面纱女人站在队伍边上，主位空着。",
+    "handwriting": "",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_photo_back_0_back.png",
+    "size": [
+      1200,
+      840
+    ],
+    "sha256": "3d9f39564420004fe81ed611d228da8bf69c6cd14babd1f789a8931410af5f9a",
+    "source": "story/hotspots.csv:hs_se_photo; docs/02:第3章演绎合影; existing photo_1926 candidate",
+    "text": "#{容器号} / 12  SYNC",
+    "surface_text": "#{容器号} / 12  SYNC",
+    "handwriting": "",
+    "dynamic": true
+  },
+  {
+    "path": "godot/art/props/inspection/prop_photo_1926_0_front.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "sha256": "fbaded7ada160012f3456166f28f21229487fa16db35f0938570e065ab40c87b",
+    "source": "docs/02-剧情设计.md；用户授权年度序号08",
+    "text": "1926 年的庄园合影。戴面纱的女人站在队伍边上，主位空着。",
+    "surface_text": "1926 年的庄园合影。戴面纱的女人站在队伍边上，主位空着。",
+    "handwriting": "",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/prop_photo_1926_0_back.png",
+    "size": [
+      1200,
+      877
+    ],
+    "sha256": "d6d32f9f8a83514ed72487cd97043dd47a6a7db74cc3b32198434d9f0a8c8c98",
+    "source": "docs/02-剧情设计.md；用户授权年度序号08",
+    "text": "08",
+    "surface_text": "08",
+    "handwriting": "",
+    "dynamic": false
+  }
+]

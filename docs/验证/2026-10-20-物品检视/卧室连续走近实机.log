@@ -1,0 +1,10 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+WALK_PLAN shapes=34 polygons=89
+WALK_OBJECT {"feet":"(5.613314, 3.5995, -8.086505)","id":"hs_con_ledger","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"con_room","ticks":47,"walked_m":1.07333317585289,"waypoints":21}
+WALK_PLAN shapes=35 polygons=92
+WALK_OBJECT {"feet":"(5.613314, 3.5995, -8.086505)","id":"hs_con_sweater","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"con_room","ticks":0,"walked_m":0.0,"waypoints":15}
+PHYSICAL_GRID found visited=27 steps=6
+WALK_OBJECT {"feet":"(5.513968, 3.5995, -8.109051)","id":"hs_con_ringbox","minimum_y":3.59950041770935,"ok":true,"opened":true,"reached":true,"reason":"","room":"con_room","ticks":6,"walked_m":0.116667687892914,"waypoints":6}
+WALK_TO_HOTSPOTS objects=3 failures=0

@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS hs_camera实际E提示命中
+PASS hs_camera实际E打开检视并冻结移动
+PASS hs_camera保持登记的实物或现场形态
+PASS hs_cameraF阅读具体内容
+PASS hs_cameraEsc先返回观察
+PASS hs_camera退出恢复且完成单项调查
+PASS hs_camera任务结束后E仍可重复检视
+PASS hs_camera重复检视不重复记录
+PASS hs_gh_latch实际E提示命中
+PASS hs_gh_latch实际E打开检视并冻结移动
+PASS hs_gh_latch保持登记的实物或现场形态
+PASS hs_gh_latchF阅读具体内容
+PASS hs_gh_latchEsc先返回观察
+PASS hs_gh_latch退出恢复且完成单项调查
+PASS hs_gh_latch任务结束后E仍可重复检视
+PASS hs_gh_latch重复检视不重复记录
+PASS 覆盖所有普通热点
+ALL_HOTSPOT_INPUTS objects=2 failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

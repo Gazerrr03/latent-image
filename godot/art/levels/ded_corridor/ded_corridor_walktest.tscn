@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://art/levels/ded_corridor/ded_corridor.glb" id="1"]
+
+[node name="ded_corridor_walktest" type="Node3D"]
+
+[node name="模型" parent="." instance=ExtResource("1")]
+
+[node name="spawn" type="Marker3D" parent="."]

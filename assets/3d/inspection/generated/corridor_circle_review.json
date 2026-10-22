@@ -1,0 +1,30 @@
+{
+  "source": "godot/art/levels/ded_corridor/ded_corridor.glb",
+  "source_sha256": "c1da3e2c47f187a2e212c194ed4bf5c385f64e6688ceb88a9c9ae7f3070e4e8a",
+  "clip_box_godot": [
+    [
+      -3.65,
+      0,
+      -4.45
+    ],
+    [
+      -1.55,
+      0.22,
+      -2.35
+    ]
+  ],
+  "meshes": [
+    {
+      "name": "room_2·墙面、地面与线脚",
+      "source_faces": 268,
+      "clipped_faces": 2
+    },
+    {
+      "name": "room_2·磨亮的圆圈",
+      "source_faces": 2,
+      "clipped_faces": 2
+    }
+  ],
+  "asset_sha256": "a95589fcaf21f1d70dc03d911f50edbdb74516ffdb17ef6237f606f0472b2174",
+  "status": "pending_runtime_review"
+}
