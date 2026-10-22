@@ -23,7 +23,7 @@
 | `gh_cellar` | 温室下的地下室 | 当下 | 4 | P0 | [gh_cellar](gh_cellar.md) | 待建（10-19 新增；入口是温室花盆下的活板门，庄园模型只加活板门） |
 | `white_hall` | 白色的走廊 | 白盒 | 7 | P0 | 待写（需求见《02》第 9.7 节） | 灰盒（第三版新增） |
 | `epilogue` | 尾声·白色的房间 | 外面 | 尾声 | P0 | 待写 | 灰盒（房间 id `monitor_room`） |
-| `ded_locked` | 密室 | 演绎 | 1 | P0 | 待写 | — |
+| `ded_locked` | 密室 | 演绎 | 1 | P0 | [ded_locked](ded_locked.md) | 待写（10-22 提案：复用暗房 `darkroom.tscn`，不新建房间；两个门闩热点待加） |
 | `ded_photo` | 合影 | 演绎 | 2 | P0 | 待写 | — |
 | `ded_corridor` | 回廊（降灵会） | 演绎 | 5 | P0 | [ded_corridor](ded_corridor.md) | 代码搭的第一版可玩；10-20 第二版设计定稿（追逐 + 支线 + 走进照片），按需求文档第 10 节落地，模型改为独立的 `ded_corridor.blend` |
 | `ded_thursday` | 星期四夜里 | 演绎 | 6 | P0 | 待写 | — |
