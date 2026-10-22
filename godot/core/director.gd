@@ -279,13 +279,13 @@ func _corridor() -> void:
 	if autoplay:
 		# 无界面回归：不真的走，直接按表把每层该收的线索收掉
 		for r in ContentDB.corridor:
-			_collect(String(r.get("collect", "")))
+			if String(r.get("collect", "")) != "": _collect(String(r.get("collect", "")))
 		return
 	world.start_corridor()
 	await corridor_done
 	# 走完：把每层该收的线索收进证据板
 	for r in ContentDB.corridor:
-		_collect(String(r.get("collect", "")))
+		if String(r.get("collect", "")) != "": _collect(String(r.get("collect", "")))
 	GameState.record("corridor", "回廊")
 
 

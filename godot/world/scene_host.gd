@@ -612,7 +612,9 @@ func target_label(id: String) -> String:
 		return "交谈：" + id.trim_prefix("talk:").get_slice("@", 0)
 	if id.begins_with("door:"):
 		return "推门：" + id.trim_prefix("door:").get_slice("（", 0).get_slice("·", 1)
-	return "检查：" + String(ContentDB.hotspots.get(id, {}).get("label", id))
+	var h: Dictionary = ContentDB.hotspots.get(id, {})
+	var verb: String = h.get("verb", "")
+	return (verb if verb != "" else "检查") + "：" + String(h.get("label", id))
 
 
 ## 灰盒（过渡用）：还没有关卡场景的房间，按房间登记表（尺寸）与房间布局表搭出来。
@@ -1226,7 +1228,7 @@ func _walk(n: Node) -> Array:
 ## 第 5 章：进入回廊（降灵会之后）。回廊自己是空间，走完发 done 给 Director。
 func start_corridor() -> void:
 	if corridor == null:
-		corridor = preload("res://levels/ded_corridor.gd").new()
+		corridor = preload("res://levels/ded_corridor.tscn").instantiate()
 		corridor.name = "回廊"
 		# 回廊是独立空间，挪到远离庄园的一张空地上，免得和大地图叠在一起
 		corridor.position = Vector3(500, 0, 500)
@@ -1242,6 +1244,7 @@ func start_corridor() -> void:
 	active_hotspots = []
 	hotspot_nodes.clear()
 	_bind_meta_hotspots(corridor)
+	Director.ui.set_cinematic(false)
 	corridor.start(player)
 	exploring = false
 

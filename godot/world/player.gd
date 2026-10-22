@@ -7,6 +7,7 @@ const STRIDE := 0.72
 const EYE := 1.6
 const SENS := 0.0025
 const REACH := 2.2
+const Targeting := preload("res://world/interaction_targeting.gd")
 ## 能直接迈上去的台阶高度（主楼梯踢面 18 cm）。胶囊体圆底爬不上竖直的踢面，
 ## 所以胶囊抬高这么多，脚下用一根向下的分离射线站在地上：射线扫到更高的台面，身体就被托上去
 const STEP_UP := 0.32
@@ -25,6 +26,7 @@ var silent_steps := false
 var forward := true
 var _stride := 0.0
 var _hover := ""
+var _corridor_target: Node = null
 ## 准星对着的门（门扇的碰撞体）
 var _door: Node = null
 var _switch: Node = null
@@ -118,6 +120,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseButton and event.pressed and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	elif event.is_action_pressed("interact") or (event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT):
+		if event is InputEventKey and event.echo:
+			return
+		if Director.world.corridor_running():
+			var shown := _corridor_target
+			_update_hover()
+			if shown != _corridor_target:
+				return
 		if _hover != "" and Director.world.corridor_interact(_hover):
 			return
 		if _hover != "":
@@ -172,8 +181,19 @@ func _update_hover() -> void:
 	var door: Node = null
 	var sw: Node = null
 	var shut: Node = null
-	if ray.is_colliding():
-		var c := ray.get_collider()
+	var c: Node = null
+	if Director.world.corridor_running():
+		var candidates: Array = []
+		for key in Director.world.active_hotspots:
+			var target: Node = Director.world.hotspot_nodes.get(key)
+			if is_instance_valid(target): candidates.append(target)
+		if not is_instance_valid(_corridor_target): _corridor_target = null
+		_corridor_target = Targeting.pick(cam, candidates, _corridor_target, [get_rid()])
+		c = _corridor_target
+	else:
+		_corridor_target = null
+		if ray.is_colliding(): c = ray.get_collider()
+	if c != null:
 		if c and c.has_meta("hotspot_id") and Director.world.active_hotspots.has(c.get_meta("hotspot_id")):
 			id = c.get_meta("hotspot_id")
 		elif c and c.has_meta("door"):
