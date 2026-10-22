@@ -1456,7 +1456,7 @@ var guide: Node3D
 
 ## 把任务的触发（talk:/enter:/door:/hs_）换成地面上的一个点，画出通往最近那个的路；没有可指的返回 false
 func show_guide(ids: Array) -> bool:
-	if current_id != MAP_ID or player == null or not player.active:
+	if current_id not in [MAP_ID, "gh_cellar"] or player == null or not player.active:
 		return false
 	if guide == null:
 		guide = Guide.new()

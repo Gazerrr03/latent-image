@@ -121,6 +121,7 @@ func run() -> void:
 	await interact("hs_cellar_camera", Vector3(0.36, 0.03, 0.65))
 	var cellar: Node = host.room
 	check("Q下一步指向1920肖像", director.guide_targets() == ["hs_cellar_portraits"])
+	check("地下室Q实际生成路径", await host.show_guide(director.guide_targets()))
 	check("E拿到相机", cellar.has_camera)
 	var previous_fov: float = host.player.cam.fov
 	key(KEY_F)
