@@ -1,0 +1,89 @@
+{
+  "ev_sweater": {
+    "asset": "godot/art/props/inspection/ev_sweater.glb",
+    "sha256": "42b4843005021827afe6f6db3c122809f2cac2ecd6829b70f67f6e575f7343e6",
+    "builder": "assets/3d/inspection/scripts/build_sweater.py",
+    "tool": "Blender 5.2.1",
+    "source_slot": "manor_室内_深色毛衣",
+    "source_scene": "godot/art/levels/manor/room_con_room.gltf",
+    "native_dimensions_m": [
+      0.375,
+      0.08561819326132536,
+      0.28999999165534973
+    ],
+    "status": "integrated_pending_user_review",
+    "native_bounds_m": {
+      "min": [
+        -0.1875,
+        0.0009999992325901985,
+        -0.14499999582767487
+      ],
+      "max": [
+        0.1875,
+        0.08661819249391556,
+        0.14499999582767487
+      ]
+    },
+    "world_slot_dimensions_m": [
+      0.38,
+      0.08,
+      0.3
+    ],
+    "source": "assets/3d/inspection/generated/sweater-v1.glb"
+  },
+  "ev_shoes": {
+    "asset": "godot/art/props/inspection/ev_shoes.glb",
+    "source": "assets/3d/inspection/generated/shoes-v1.glb",
+    "sha256": "f5d797bd9c6e9152880f942d3bdb97d6890068dd6f0e586ab8b0acbd0e62ea4a",
+    "builder": "assets/3d/inspection/scripts/build_shoes.py",
+    "tool": "Blender 5.2.1",
+    "source_scene": "godot/art/levels/manor/room_guest_room.gltf",
+    "source_slot": "manor_室内_黑皮鞋",
+    "sole_contour_reference": "assets/3d/manor/scripts/22_garden_vent.py",
+    "sole_contour_reference_sha256": "d6c7077d3258e796ebbdc7834cc492ec0edeee3c07031a707c971fba080889b4",
+    "native_bounds_m": {
+      "min": [
+        -0.1305915117263794,
+        -0.003127975622192025,
+        -0.172017902135849
+      ],
+      "max": [
+        0.1305915117263794,
+        0.10036574304103851,
+        0.172017902135849
+      ]
+    },
+    "native_dimensions_m": [
+      0.2611830234527588,
+      0.10349371866323054,
+      0.344035804271698
+    ],
+    "status": "integrated_pending_user_review",
+    "limits": "Actual mesh width profiles and forefoot/heel spacing checked; bevel and 1-degree alignment tolerances documented. Final material/visual and full-game performance acceptance remain open.",
+    "placement_policy": "asset_fit=native; keep legacy horizontal center and supporting bottom plane",
+    "legacy_slot_dimensions_m": [
+      0.282328,
+      0.09,
+      0.270774
+    ],
+    "world_dimensions_m": [
+      0.261183,
+      0.103494,
+      0.344036
+    ],
+    "scale_verification": {
+      "tool": "godot/tools/test_shoe_footprint_scale.gd",
+      "source": "actual loaded shoe and garden footprint mesh surfaces",
+      "forefoot_width_rms_m": 0.00072844,
+      "forefoot_width_max_m": 0.00115049,
+      "heel_width_rms_m": 0.00038307,
+      "heel_width_max_m": 0.00056363,
+      "forefoot_heel_gap_difference_max_m": 0.00059875,
+      "checks": 10,
+      "status": "passed",
+      "footprint_scene": "godot/art/levels/manor/room_garden__泥地鞋印.gltf",
+      "footprint_scene_sha256": "449e500c69156cf004b35b68b6d864d6f0fc0a5b19903bbff10b5a38f609edca",
+      "footprint_binary_sha256": "36968bc4da3145e24df3aaa47a5e561d969e10d2e4e399feeb1e59e2f8ee0028"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS hs_vent_print自然站位提示一致
+PASS hs_vent_print原位实物存在并按章节显示
+PASS hs_vent_print真实E保留原件及现场关系
+PASS hs_vent_print退出恢复相机与输入
+PASS hs_vent_print只记一次并可重复入口
+PASS hs_vent_louver自然站位提示一致
+PASS hs_vent_louver原位实物存在并按章节显示
+PASS 遮光布补厚度和压边但保留原范围
+PASS hs_vent_louver真实E保留原件及现场关系
+PASS hs_vent_louver退出恢复相机与输入
+PASS hs_vent_louver只记一次并可重复入口
+PASS 现场收集两条原有证据
+GARDEN_INSPECTION failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

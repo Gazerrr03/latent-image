@@ -28,11 +28,20 @@ func _ready() -> void:
 	Director.ui = ui
 	Director.world = host
 	add_child(DebugPanel.new())
+	if OS.get_cmdline_user_args().has("--chapter3-trial") or OS.get_cmdline_user_args().has("--chapter3-house-trial") or OS.get_cmdline_user_args().has("--chapter3-drawings-trial"):
+		var trial := preload("res://tools/chapter3_trial.gd").new()
+		trial.name = "Chapter3Trial"
+		add_child(trial)
+		trial.begin(OS.get_cmdline_user_args().has("--chapter3-house-trial"))
+		return
 	if not Director.autoplay and _arg("--capture=") == "":
 		Director.finished.connect(_on_finished)
 
 	if Director.autoplay or _arg("--capture=") != "":
 		GameState.persist = false
+	if _arg("--showcase=") != "":
+		await preload("res://tools/showcase/showcase.gd").run(self, _arg("--showcase="))
+		return
 	if _arg("--corridor=") != "":
 		_corridor_capture(int(_arg("--corridor=")))
 		return
@@ -117,7 +126,20 @@ func _corridor_capture(which: int) -> void:
 			var k := minf(d, t * 1.4)
 			var p: Vector3 = c._at(k)
 			Director.world.player.place(c.global_position + p, 0.0 if k < 8.0 else 90.0)
+	if _arg("--back=") != "":
+		# 再往回走 N 米（验证倒放：底色换到倒放那一条，脚步放倒放音样）
+		var d0: float = c._dist
+		var b := float(_arg("--back="))
+		var t := 0.0
+		while t < b / 1.1:
+			await get_tree().process_frame
+			t += get_process_delta_time()
+			var k := maxf(d0 - b, d0 - t * 1.1)
+			Director.world.player.place(c.global_position + c._at(k), 0.0 if k < 8.0 else 90.0)
+		print("回廊：往回走时 底色倒放=%s · 倒放那一条在放=%s" % [c._bed_back, c._bed_rev.playing])
 	await get_tree().create_timer(float(_arg("--wait=")) if _arg("--wait=") != "" else 3.0).timeout
+	# 回廊自查：这一圈第二段多长、那个人在哪里（追逐）
+	print("回廊：第 %d 圈 · 第二段 %.1f m · 走到 %.2f m · 那个人在前方 %.2f m（%s）· 脚步响了 %d 下 · 底色 %s" % [c.layer + 1, c._seg_b, c._dist, c._gap, "合上了" if c._merged else ("没有他" if c._gap < 0.0 else "追着"), c.steps_played, c._bed_fwd.stream.resource_path.get_file() if c._bed_fwd.stream else "无"])
 	var vp := get_viewport()
 	var img := vp.get_texture().get_image()
 	img.save_png(_arg("--out=") if _arg("--out=") != "" else "/tmp/corridor.png")

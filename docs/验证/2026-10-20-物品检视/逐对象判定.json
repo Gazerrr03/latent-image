@@ -1,0 +1,2576 @@
+[
+	{
+		"distance": 1.45623648166656,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 142.0,
+				"outside_px": 6,
+				"picked": "hs_notebook",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 138.0,
+				"outside_px": 6,
+				"picked": "hs_notebook",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 88.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 106.0,
+				"outside_px": 6,
+				"picked": "hs_notebook",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			1.64852809906006,
+			3.62999987602234,
+			-2.13147187232971
+		],
+		"id": "hs_notebook",
+		"name": "记事本",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.40720474720001,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 222.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 194.0,
+				"outside_px": 6,
+				"picked": "hs_desk_board",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 168.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter_test",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 202.0,
+				"outside_px": 6,
+				"picked": "hs_notebook",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			1.20000004768372,
+			3.62999987602234,
+			-2.32076930999756
+		],
+		"id": "hs_typewriter",
+		"name": "打字机",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46192514896393,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter_test",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_drawer",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 74.0,
+				"outside_px": 6,
+				"picked": "hs_handwriting",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 86.0,
+				"outside_px": 6,
+				"picked": "hs_desk_board",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			0.850000023841858,
+			3.62999987602234,
+			-2.41999983787537
+		],
+		"id": "hs_desk_board",
+		"name": "桌面",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.57169485092163,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 394.0,
+				"outside_px": 6,
+				"picked": "hs_bed",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 536.0,
+				"outside_px": 6,
+				"picked": "hs_bed",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 318.0,
+				"outside_px": 6,
+				"picked": "hs_bed",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.27547824382782,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.127487421035767
+					}
+				],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 456.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			4.30000019073486,
+			3.62999987602234,
+			-2.48923063278198
+		],
+		"id": "hs_bed",
+		"name": "床",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.26973402500153,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 242.0,
+				"outside_px": 6,
+				"picked": "hs_mirror_guest",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 152.0,
+				"outside_px": 6,
+				"picked": "hs_mirror_guest",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"direction": "(0.0, -1.0)",
+				"status": "offscreen_edge"
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 586.0,
+				"outside_px": 6,
+				"picked": "hs_mirror_guest",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			5.95000028610229,
+			3.62999987602234,
+			-4.78923034667969
+		],
+		"id": "hs_mirror_guest",
+		"name": "镜子",
+		"room": "guest_room",
+		"samples": 2,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46192514896393,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 148.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 138.0,
+				"outside_px": 6,
+				"picked": "hs_handwriting",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 82.0,
+				"outside_px": 6,
+				"picked": "hs_handwriting",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 98.0,
+				"outside_px": 6,
+				"picked": "hs_desk_board",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			1.37999999523163,
+			3.62999987602234,
+			-2.82076930999756
+		],
+		"id": "hs_handwriting",
+		"name": "摊开的字",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.54616451263428,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 106.0,
+				"outside_px": 6,
+				"picked": "hs_desk_board",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 86.0,
+				"outside_px": 6,
+				"picked": "hs_waistcoat",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": false,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 102.0,
+				"outside_px": 6,
+				"picked": "hs_handwriting",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 106.0,
+				"outside_px": 6,
+				"picked": "hs_waistcoat",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			1.55999994277954,
+			3.62999987602234,
+			-2.84076976776123
+		],
+		"id": "hs_drawer",
+		"name": "抽屉",
+		"room": "guest_room",
+		"samples": 2,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.30584263801575,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 234.0,
+				"outside_px": 6,
+				"picked": "hs_coat",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.13169467449188,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.48661994934082
+					}
+				],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 234.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 436.0,
+				"outside_px": 6,
+				"picked": "hs_coat",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 412.0,
+				"outside_px": 6,
+				"picked": "hs_coat",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.25,
+			3.62999987602234,
+			-3.24999976158142
+		],
+		"id": "hs_coat",
+		"name": "大衣",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.87062156200409,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 118.0,
+				"outside_px": 6,
+				"picked": "hs_shoes",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.7382709980011,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.890161633491516
+					}
+				],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 118.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 100.0,
+				"outside_px": 6,
+				"picked": "hs_coat",
+				"status": "competing",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 106.0,
+				"outside_px": 6,
+				"picked": "hs_shoes",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.22000002861023,
+			3.62999987602234,
+			-3.20000004768372
+		],
+		"id": "hs_shoes",
+		"name": "皮鞋",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.85532343387604,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 208.0,
+				"outside_px": 6,
+				"picked": "hs_fireplace",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 250.0,
+				"outside_px": 6,
+				"picked": "hs_fireplace",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 184.0,
+				"outside_px": 6,
+				"picked": "hs_fireplace",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 180.0,
+				"outside_px": 6,
+				"picked": "hs_fireplace",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			1.85911107063293,
+			3.62999987602234,
+			-0.839417099952698
+		],
+		"id": "hs_fireplace",
+		"name": "壁炉",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.42310392856598,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 210.0,
+				"outside_px": 6,
+				"picked": "hs_waistcoat",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 210.0,
+				"outside_px": 6,
+				"picked": "hs_waistcoat",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 198.0,
+				"outside_px": 6,
+				"picked": "hs_waistcoat",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 200.0,
+				"outside_px": 6,
+				"picked": "hs_waistcoat",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			1.54999995231628,
+			3.62999987602234,
+			-2.25999999046326
+		],
+		"id": "hs_waistcoat",
+		"name": "背心",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.32212889194489,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 140.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 130.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 96.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter_test",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 110.0,
+				"outside_px": 6,
+				"picked": "hs_typewriter",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			1.22000002861023,
+			3.62999987602234,
+			-2.32076930999756
+		],
+		"id": "hs_typewriter_test",
+		"name": "色带",
+		"room": "guest_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.38174688816071,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 166.0,
+				"outside_px": 6,
+				"picked": "hs_tray",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 166.0,
+				"outside_px": 6,
+				"picked": "hs_tray",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 92.0,
+				"outside_px": 6,
+				"picked": "hs_tray",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 108.0,
+				"outside_px": 6,
+				"picked": "hs_tray",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			16.1399993896484,
+			3.62999987602234,
+			-9.5600004196167
+		],
+		"id": "hs_tray",
+		"name": "急停液盘",
+		"room": "darkroom",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.21129024028778,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 486.0,
+				"outside_px": 6,
+				"picked": "hs_bottles",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 270.0,
+				"outside_px": 6,
+				"picked": "hs_bottles",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 588.0,
+				"outside_px": 6,
+				"picked": "hs_bottles",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 608.0,
+				"outside_px": 6,
+				"picked": "hs_bottles",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			16.2199993133545,
+			3.62999987602234,
+			-8.71076965332031
+		],
+		"id": "hs_bottles",
+		"name": "药柜",
+		"room": "darkroom",
+		"samples": 2,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.63805532455444,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 170.0,
+				"outside_px": 6,
+				"picked": "hs_vent_inside",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 170.0,
+				"outside_px": 6,
+				"picked": "hs_vent_inside",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 162.0,
+				"outside_px": 6,
+				"picked": "hs_vent_inside",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 140.0,
+				"outside_px": 6,
+				"picked": "hs_vent_inside",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			17.1499996185303,
+			3.62999987602234,
+			-9.84000015258789
+		],
+		"id": "hs_vent_inside",
+		"name": "通风口",
+		"room": "darkroom",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.22891187667847,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 184.0,
+				"outside_px": 6,
+				"picked": "hs_camera",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 184.0,
+				"outside_px": 6,
+				"picked": "hs_camera",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 182.0,
+				"outside_px": 6,
+				"picked": "hs_camera",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 242.0,
+				"outside_px": 6,
+				"picked": "hs_camera",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			18.2000007629395,
+			3.62999987602234,
+			-8.80000019073486
+		],
+		"id": "hs_camera",
+		"name": "相机",
+		"room": "darkroom",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.26024782657623,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 172.0,
+				"outside_px": 6,
+				"picked": "hs_clock_dark",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 172.0,
+				"outside_px": 6,
+				"picked": "hs_clock_dark",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 170.0,
+				"outside_px": 6,
+				"picked": "hs_clock_dark",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 174.0,
+				"outside_px": 6,
+				"picked": "hs_clock_dark",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			16.2605819702148,
+			3.62999987602234,
+			-9.90088939666748
+		],
+		"id": "hs_clock_dark",
+		"name": "钟",
+		"room": "darkroom",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.24860966205597,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "@StaticBody3D@305",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 118.0,
+				"outside_px": 6,
+				"picked": "hs_bell",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 102.0,
+				"outside_px": 6,
+				"picked": "hs_bell",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 116.0,
+				"outside_px": 6,
+				"picked": "hs_bell",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			16.8000011444092,
+			3.62999987602234,
+			-8.7592306137085
+		],
+		"id": "hs_bell",
+		"name": "计时铃",
+		"room": "darkroom",
+		"samples": 6,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.98403632640839,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 180.0,
+				"outside_px": 6,
+				"picked": "hs_vent_louver",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 164.0,
+				"outside_px": 6,
+				"picked": "hs_vent_print",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 126.0,
+				"outside_px": 6,
+				"picked": "hs_vent_print",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 140.0,
+				"outside_px": 6,
+				"picked": "hs_vent_print",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			18.3091106414795,
+			3.62999987602234,
+			-12.060583114624
+		],
+		"id": "hs_vent_print",
+		"name": "泥地",
+		"room": "garden",
+		"samples": 2,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.64830231666565,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.30760228633881,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.0219603776931763
+					}
+				],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 196.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 142.0,
+				"outside_px": 6,
+				"picked": "hs_vent_louver",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.57704544067383,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.0481718778610229
+					}
+				],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 252.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 244.0,
+				"outside_px": 6,
+				"picked": "hs_vent_print",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			18.18922996521,
+			3.62999987602234,
+			-12.0500001907349
+		],
+		"id": "hs_vent_louver",
+		"name": "百叶",
+		"room": "garden",
+		"samples": 2,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.20549774169922,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 426.0,
+				"outside_px": 6,
+				"picked": "hs_photos",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 318.0,
+				"outside_px": 6,
+				"picked": "hs_photos",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"direction": "(0.0, -1.0)",
+				"status": "offscreen_edge"
+			},
+			{
+				"direction": "(0.0, 1.0)",
+				"status": "offscreen_edge"
+			}
+		],
+		"feet": [
+			7.98923015594482,
+			3.62999987602234,
+			-2.09999990463257
+		],
+		"id": "hs_photos",
+		"name": "历年合影",
+		"room": "archive",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.45453894138336,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 210.0,
+				"outside_px": 6,
+				"picked": "hs_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 232.0,
+				"outside_px": 6,
+				"picked": "hs_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 142.0,
+				"outside_px": 6,
+				"picked": "hs_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			10.4485282897949,
+			3.62999987602234,
+			-0.751471877098083
+		],
+		"id": "hs_ledger",
+		"name": "底片簿",
+		"room": "archive",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.32635772228241,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 50.0,
+				"outside_px": 6,
+				"picked": "hs_doorframe",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 50.0,
+				"outside_px": 6,
+				"picked": "hs_doorframe",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 248.0,
+				"outside_px": 6,
+				"picked": "hs_doorframe",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 222.0,
+				"outside_px": 6,
+				"picked": "hs_doorframe",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			13.4099998474121,
+			3.62999987602234,
+			-6.55000019073486
+		],
+		"id": "hs_doorframe",
+		"name": "门框",
+		"room": "archive",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46021389961243,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_clipping",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_clipping",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 62.0,
+				"outside_px": 6,
+				"picked": "hs_clipping",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 70.0,
+				"outside_px": 6,
+				"picked": "hs_clipping",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			10.1899995803833,
+			3.62999987602234,
+			-0.639999985694885
+		],
+		"id": "hs_clipping",
+		"name": "剪报",
+		"room": "archive",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.45453906059265,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 94.0,
+				"outside_px": 6,
+				"picked": "hs_manual",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 94.0,
+				"outside_px": 6,
+				"picked": "hs_manual",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 56.0,
+				"outside_px": 6,
+				"picked": "hs_manual",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 62.0,
+				"outside_px": 6,
+				"picked": "hs_manual",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			9.05000019073486,
+			3.62999987602234,
+			-0.629999995231628
+		],
+		"id": "hs_manual",
+		"name": "摄影手册",
+		"room": "archive",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46021366119385,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 138.0,
+				"outside_px": 6,
+				"picked": "hs_photo_back",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 142.0,
+				"outside_px": 6,
+				"picked": "hs_clipping",
+				"status": "competing",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 80.0,
+				"outside_px": 6,
+				"picked": "hs_ledger",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 96.0,
+				"outside_px": 6,
+				"picked": "hs_photo_back",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			10.9985275268555,
+			3.62999987602234,
+			-0.631471872329712
+		],
+		"id": "hs_photo_back",
+		"name": "1926 年合影的背面",
+		"room": "archive",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.53052270412445,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 106.0,
+				"outside_px": 6,
+				"picked": "hs_amb_notes",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 98.0,
+				"outside_px": 6,
+				"picked": "hs_amb_notes",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 82.0,
+				"outside_px": 6,
+				"picked": "hs_amb_notes",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 94.0,
+				"outside_px": 6,
+				"picked": "hs_amb_notes",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			14.0191106796265,
+			3.62999987602234,
+			-3.80058288574219
+		],
+		"id": "hs_amb_notes",
+		"name": "笔记本",
+		"room": "amb_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46766018867493,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 130.0,
+				"outside_px": 6,
+				"picked": "hs_amb_carbon",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 130.0,
+				"outside_px": 6,
+				"picked": "hs_amb_carbon",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 74.0,
+				"outside_px": 6,
+				"picked": "hs_amb_carbon",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 86.0,
+				"outside_px": 6,
+				"picked": "hs_amb_carbon",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			16.7000007629395,
+			3.62999987602234,
+			-0.860000014305115
+		],
+		"id": "hs_amb_carbon",
+		"name": "复写纸",
+		"room": "amb_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.55248987674713,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 158.0,
+				"outside_px": 6,
+				"picked": "hs_amb_clippings",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 154.0,
+				"outside_px": 6,
+				"picked": "hs_amb_clippings",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 104.0,
+				"outside_px": 6,
+				"picked": "hs_amb_clippings",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 124.0,
+				"outside_px": 6,
+				"picked": "hs_amb_clippings",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			14.2685279846191,
+			3.62999987602234,
+			-3.84852814674377
+		],
+		"id": "hs_amb_clippings",
+		"name": "剪报与小样",
+		"room": "amb_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.20175898075104,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 318.0,
+				"outside_px": 6,
+				"picked": "hs_amb_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 214.0,
+				"outside_px": 6,
+				"picked": "hs_amb_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 252.0,
+				"outside_px": 6,
+				"picked": "hs_amb_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 250.0,
+				"outside_px": 6,
+				"picked": "hs_amb_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			18.0214729309082,
+			3.62999987602234,
+			-4.04852819442749
+		],
+		"id": "hs_amb_photo",
+		"name": "1926 年合影",
+		"room": "amb_room",
+		"samples": 8,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46192502975464,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 114.0,
+				"outside_px": 6,
+				"picked": "hs_con_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 114.0,
+				"outside_px": 6,
+				"picked": "hs_con_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 80.0,
+				"outside_px": 6,
+				"picked": "hs_con_ledger",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 92.0,
+				"outside_px": 6,
+				"picked": "hs_con_ringbox",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			4.92000007629395,
+			3.62999987602234,
+			-9.44999980926514
+		],
+		"id": "hs_con_ledger",
+		"name": "账簿",
+		"room": "con_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"container_opened": true,
+		"distance": 1.85151290893555,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 128.0,
+				"outside_px": 6,
+				"picked": "hs_con_sweater",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_con_sweater",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 84.0,
+				"outside_px": 6,
+				"picked": "hs_con_sweater",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 76.0,
+				"outside_px": 6,
+				"picked": "hs_con_sweater",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			5.88076972961426,
+			3.62999987602234,
+			-7.88000011444092
+		],
+		"id": "hs_con_sweater",
+		"name": "衣柜底层",
+		"room": "con_room",
+		"samples": 4,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.46192502975464,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 46.0,
+				"outside_px": 6,
+				"picked": "hs_con_ringbox",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 46.0,
+				"outside_px": 6,
+				"picked": "hs_con_ringbox",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 54.0,
+				"outside_px": 6,
+				"picked": "hs_con_ledger",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 56.0,
+				"outside_px": 6,
+				"picked": "hs_con_ringbox",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			4.92000007629395,
+			3.62999987602234,
+			-9.15000057220459
+		],
+		"id": "hs_con_ringbox",
+		"name": "戒指盒",
+		"room": "con_room",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.7408401966095,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 68.0,
+				"outside_px": 6,
+				"picked": "hs_draw_wall",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 54.0,
+				"outside_px": 6,
+				"picked": "hs_draw_path",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 138.0,
+				"outside_px": 6,
+				"picked": "hs_draw_path",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 122.0,
+				"outside_px": 6,
+				"picked": "hs_draw_wall",
+				"status": "competing",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.21377754211426,
+			3.62999987602234,
+			-7.346848487854
+		],
+		"id": "hs_draw_path",
+		"name": "玻璃房子",
+		"room": "child_room",
+		"samples": 8,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.69432127475739,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.45406210422516,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.0232805013656616
+					}
+				],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 78.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 60.0,
+				"outside_px": 6,
+				"picked": "hs_draw_path",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 154.0,
+				"outside_px": 6,
+				"picked": "hs_draw_wall",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 134.0,
+				"outside_px": 6,
+				"picked": "hs_draw_family",
+				"status": "competing",
+				"sticky_kept": false
+			}
+		],
+		"feet": [
+			2.71377754211426,
+			3.62999987602234,
+			-7.346848487854
+		],
+		"id": "hs_draw_wall",
+		"name": "暗房的外墙",
+		"room": "child_room",
+		"samples": 10,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.65218794345856,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 1.42474555969238,
+						"obstruction": "StaticBody3D",
+						"obstruction_before_surface_m": 0.0273903608322144
+					}
+				],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 80.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 60.0,
+				"outside_px": 6,
+				"picked": "hs_draw_train",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 132.0,
+				"outside_px": 6,
+				"picked": "hs_draw_family",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 142.0,
+				"outside_px": 6,
+				"picked": "hs_draw_family",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.72377753257751,
+			3.62999987602234,
+			-7.346848487854
+		],
+		"id": "hs_draw_family",
+		"name": "全家福",
+		"room": "child_room",
+		"samples": 10,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.33064842224121,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 90.0,
+				"outside_px": 6,
+				"picked": "StaticBody3D",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 66.0,
+				"outside_px": 6,
+				"picked": "hs_draw_boxes",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 186.0,
+				"outside_px": 6,
+				"picked": "hs_draw_boxes",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 164.0,
+				"outside_px": 6,
+				"picked": "hs_draw_boxes",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			3.10911107063293,
+			3.62999987602234,
+			-7.23038005828857
+		],
+		"id": "hs_draw_boxes",
+		"name": "方盒子",
+		"room": "child_room",
+		"samples": 6,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.65006804466248,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 68.0,
+				"outside_px": 6,
+				"picked": "hs_draw_family",
+				"status": "competing",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 54.0,
+				"outside_px": 6,
+				"picked": "hs_draw_train",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 110.0,
+				"outside_px": 6,
+				"picked": "hs_draw_train",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 112.0,
+				"outside_px": 6,
+				"picked": "hs_draw_train",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.25377750396729,
+			3.62999987602234,
+			-7.346848487854
+		],
+		"id": "hs_draw_train",
+		"name": "火车",
+		"room": "child_room",
+		"samples": 8,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.23044061660767,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 12.0,
+				"outside_px": 6,
+				"picked": "hs_gh_latch",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 12.0,
+				"outside_px": 6,
+				"picked": "hs_gh_latch",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 34.0,
+				"outside_px": 6,
+				"picked": "hs_gh_latch",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 34.0,
+				"outside_px": 6,
+				"picked": "hs_gh_latch",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			17.8097705841064,
+			3.62999987602234,
+			-9.59499931335449
+		],
+		"id": "hs_gh_latch",
+		"name": "侧门门闩",
+		"room": "greenhouse",
+		"samples": 9,
+		"side_door_opened": true,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.39942800998688,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 108.0,
+				"outside_px": 6,
+				"picked": "hs_gh_photos",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 106.0,
+				"outside_px": 6,
+				"picked": "hs_gh_photos",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 70.0,
+				"outside_px": 6,
+				"picked": "hs_gh_photos",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 80.0,
+				"outside_px": 6,
+				"picked": "hs_gh_photos",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			21.6985282897949,
+			3.65899991989136,
+			-7.63147163391113
+		],
+		"id": "hs_gh_photos",
+		"name": "夜拍照片",
+		"room": "greenhouse",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.66197323799133,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 58.0,
+				"outside_px": 6,
+				"picked": "hs_se_cards",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 62.0,
+				"outside_px": 6,
+				"picked": "hs_se_cards",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 54.0,
+				"outside_px": 6,
+				"picked": "hs_se_gloves",
+				"status": "competing",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 56.0,
+				"outside_px": 6,
+				"picked": "hs_se_cards",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.61058282852173,
+			0.0299999993294477,
+			-2.8065173625946
+		],
+		"id": "hs_se_cards",
+		"name": "降灵卡片",
+		"room": "seance",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.663738489151,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 48.0,
+				"outside_px": 6,
+				"picked": "hs_se_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 52.0,
+				"outside_px": 6,
+				"picked": "hs_se_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 54.0,
+				"outside_px": 6,
+				"picked": "hs_se_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 56.0,
+				"outside_px": 6,
+				"picked": "hs_se_photo",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.77058291435242,
+			0.029999939724803,
+			-2.63911104202271
+		],
+		"id": "hs_se_photo",
+		"name": "合影小样",
+		"room": "seance",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.66069388389587,
+		"edge_checks": [
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 84.0,
+				"outside_px": 6,
+				"picked": "hs_se_gloves",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 90.0,
+				"outside_px": 6,
+				"picked": "hs_se_gloves",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 76.0,
+				"outside_px": 6,
+				"picked": "hs_se_gloves",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 80.0,
+				"outside_px": 6,
+				"picked": "hs_se_cards",
+				"status": "competing",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			2.72483444213867,
+			0.0299999993294477,
+			-2.41923046112061
+		],
+		"id": "hs_se_gloves",
+		"name": "蕾丝手套",
+		"room": "seance",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.35532283782959,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 0.964919328689575,
+						"obstruction": "门·第一间",
+						"obstruction_before_surface_m": 0.0435484647750854
+					}
+				],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 270.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 150.0,
+				"outside_px": 6,
+				"picked": "hs_wh_train",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 302.0,
+				"outside_px": 6,
+				"picked": "hs_wh_train",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 424.0,
+				"outside_px": 6,
+				"picked": "hs_wh_train",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			-0.98941707611084,
+			0.0300000105053186,
+			4.15911102294922
+		],
+		"id": "hs_wh_train",
+		"name": "第一间",
+		"room": "white_hall",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.35532283782959,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 0.96491938829422,
+						"obstruction": "门·第二间",
+						"obstruction_before_surface_m": 0.0435481667518616
+					}
+				],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 270.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 150.0,
+				"outside_px": 6,
+				"picked": "hs_wh_darkroom",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 302.0,
+				"outside_px": 6,
+				"picked": "hs_wh_darkroom",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 424.0,
+				"outside_px": 6,
+				"picked": "hs_wh_darkroom",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			0.98941707611084,
+			0.0300000105053186,
+			-0.659111022949219
+		],
+		"id": "hs_wh_darkroom",
+		"name": "第二间",
+		"room": "white_hall",
+		"samples": 1,
+		"status": "selectable"
+	},
+	{
+		"distance": 1.35532283782959,
+		"edge_checks": [
+			{
+				"alone_selected": false,
+				"diagnostics": [
+					{
+						"distance": 0.964919447898865,
+						"obstruction": "门·第三间",
+						"obstruction_before_surface_m": 0.0435484051704407
+					}
+				],
+				"direction": "(-1.0, 0.0)",
+				"edge_px": 270.0,
+				"outside_px": 6,
+				"picked": "",
+				"status": "not_selected",
+				"sticky_kept": false
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(1.0, 0.0)",
+				"edge_px": 150.0,
+				"outside_px": 6,
+				"picked": "hs_wh_desk",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, -1.0)",
+				"edge_px": 302.0,
+				"outside_px": 6,
+				"picked": "hs_wh_desk",
+				"status": "tolerated",
+				"sticky_kept": true
+			},
+			{
+				"alone_selected": true,
+				"diagnostics": [],
+				"direction": "(0.0, 1.0)",
+				"edge_px": 424.0,
+				"outside_px": 6,
+				"picked": "hs_wh_desk",
+				"status": "tolerated",
+				"sticky_kept": true
+			}
+		],
+		"feet": [
+			-0.98941707611084,
+			0.0300000105053186,
+			-0.840888977050781
+		],
+		"id": "hs_wh_desk",
+		"name": "第三间",
+		"room": "white_hall",
+		"samples": 1,
+		"status": "selectable"
+	}
+]

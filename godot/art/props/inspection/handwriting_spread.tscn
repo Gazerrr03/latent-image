@@ -1,0 +1,30 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://art/props/inspection/ev_con_ledger.tscn" id="ledger"]
+[ext_resource type="PackedScene" path="res://art/props/inspection/ev_receipt.tscn" id="receipt"]
+[ext_resource type="PackedScene" path="res://art/props/inspection/ev_seance_cards.tscn" id="card"]
+[ext_resource type="PackedScene" path="res://art/props/inspection/ev_amb_notes.tscn" id="ambrose"]
+[ext_resource type="PackedScene" path="res://art/props/inspection/prop_grey_notebook.tscn" id="grey"]
+
+[node name="HandwritingSpread" type="Node3D"]
+
+[node name="ledger" parent="." instance=ExtResource("ledger")]
+position = Vector3(-0.13, 0.115, 0.006)
+metadata/source_object = "ev_con_ledger"
+
+[node name="receipt" parent="." instance=ExtResource("receipt")]
+position = Vector3(0.09, 0.08, 0.001)
+metadata/source_object = "ev_receipt"
+
+[node name="card" parent="." instance=ExtResource("card")]
+position = Vector3(0.2, -0.1, 0.003)
+metadata/source_object = "ev_seance_cards"
+initial_page = 1
+
+[node name="ambrose" parent="." instance=ExtResource("ambrose")]
+position = Vector3(-0.13, -0.13, 0.007)
+metadata/source_object = "ev_amb_notes"
+
+[node name="grey" parent="." instance=ExtResource("grey")]
+position = Vector3(0.055, -0.13, 0.009)
+metadata/source_object = "prop_grey_notebook"

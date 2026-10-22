@@ -12,6 +12,7 @@ const STEPS := 10
 var master := 10
 var music := 10
 var sfx := 10
+var pad_sens := 5
 var sens := 5
 var invert_y := false
 ## 文字速度：false = 逐字，true = 直接显示
@@ -38,6 +39,7 @@ func load_cfg() -> void:
 	master = int(c.get_value("audio", "master", master))
 	music = int(c.get_value("audio", "music", music))
 	sfx = int(c.get_value("audio", "sfx", sfx))
+	pad_sens = clampi(int(c.get_value("input", "pad_sens", pad_sens)), 1, 10)
 	sens = int(c.get_value("input", "sens", sens))
 	invert_y = bool(c.get_value("input", "invert_y", invert_y))
 	text_instant = bool(c.get_value("text", "instant", text_instant))
@@ -50,6 +52,7 @@ func save_cfg() -> void:
 	c.set_value("audio", "master", master)
 	c.set_value("audio", "music", music)
 	c.set_value("audio", "sfx", sfx)
+	c.set_value("input", "pad_sens", pad_sens)
 	c.set_value("input", "sens", sens)
 	c.set_value("input", "invert_y", invert_y)
 	c.set_value("text", "instant", text_instant)
@@ -61,7 +64,7 @@ func save_cfg() -> void:
 ## 改一项：限定范围、立刻生效、写盘
 func set_value(key: String, v) -> void:
 	if typeof(get(key)) == TYPE_INT:
-		v = clampi(int(v), 1 if key in ["sens", "brightness"] else 0, STEPS)
+		v = clampi(int(v), 1 if key in ["sens", "pad_sens", "brightness"] else 0, STEPS)
 	set(key, v)
 	apply()
 	save_cfg()
@@ -78,6 +81,11 @@ func apply() -> void:
 		if DisplayServer.window_get_mode() != want:
 			DisplayServer.window_set_mode(want)
 	changed.emit()
+
+
+## 手柄转动的倍数：0.2—2.0
+func pad_scale() -> float:
+	return pad_sens / 5.0
 
 
 ## 鼠标转动的倍数：0.2—2.0

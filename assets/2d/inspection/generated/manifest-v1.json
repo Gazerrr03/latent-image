@@ -1,0 +1,77 @@
+[
+  {
+    "id": "iris_path",
+    "evidence": "ev_draw_path",
+    "original": "/Users/qizhi_dong/.codex/generated_images/01a1591d-cd13-7960-b1f8-3a15a948ebd3/exec-56886d0d-d0a2-44f9-8668-abb0f5d1a75f.png",
+    "copy": "assets/2d/inspection/generated/iris_path-v1.png",
+    "game_path": "godot/art/props/inspection/ev_draw_path_0_front.png",
+    "prompt": "assets/2d/inspection/prompts/iris_path-v1.txt",
+    "tool": "built-in image_gen",
+    "status": "integrated_candidate",
+    "sha256": "fe57c09f3668d8d6a214f660c520d23372a23ddda71ab4e42739aacfa7181eb2",
+    "native_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "iris_boxes",
+    "evidence": "ev_draw_boxes",
+    "original": "/Users/qizhi_dong/.codex/generated_images/01a1591d-cd13-7960-b1f8-3a15a948ebd3/exec-a65bf84a-82db-40c0-8e53-8bfce99a95ca.png",
+    "copy": "assets/2d/inspection/generated/iris_boxes-v1.png",
+    "game_path": "godot/art/props/inspection/ev_draw_boxes_0_front.png",
+    "prompt": "assets/2d/inspection/prompts/iris_boxes-v1.txt",
+    "tool": "built-in image_gen",
+    "status": "integrated_candidate",
+    "sha256": "4debd86a6f5fea23be31ef8dda7edb3e77394069b8d718cd9299776497746c79",
+    "native_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "iris_train",
+    "evidence": "ev_draw_train",
+    "original": "/Users/qizhi_dong/.codex/generated_images/01a1591d-cd13-7960-b1f8-3a15a948ebd3/exec-a7c8c2da-7996-4d01-8961-c66b2899caf0.png",
+    "copy": "assets/2d/inspection/generated/iris_train-v1.png",
+    "game_path": "godot/art/props/inspection/ev_draw_train_0_front.png",
+    "prompt": "assets/2d/inspection/prompts/iris_train-v1.txt",
+    "tool": "built-in image_gen",
+    "status": "integrated_candidate",
+    "sha256": "381ea06ac4ddaa5092a5464915a358da0137b2116e6b904f8fdf93a3a3cf9f53",
+    "native_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "iris_family",
+    "evidence": "ev_iris_portrait",
+    "original": "/Users/qizhi_dong/.codex/generated_images/01a1591d-cd13-7960-b1f8-3a15a948ebd3/exec-e4881c73-8c87-47de-ac9d-bef2b2710080.png",
+    "copy": "assets/2d/inspection/generated/iris_family-v1.png",
+    "game_path": "godot/art/props/inspection/ev_iris_portrait_0_front.png",
+    "prompt": "assets/2d/inspection/prompts/iris_family-v1.txt",
+    "tool": "built-in image_gen",
+    "status": "integrated_candidate",
+    "sha256": "660bf3b8eb43088131878950d2144fd56f26c92fc9d9cc29aa9bfb5d886ee65a",
+    "native_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "iris_vent",
+    "evidence": "ev_draw_cloth",
+    "original": "/Users/qizhi_dong/.codex/generated_images/01a1591d-cd13-7960-b1f8-3a15a948ebd3/exec-d6048d58-69b2-4398-a003-aadc6a7e3c24.png",
+    "copy": "assets/2d/inspection/generated/iris_vent-v1.png",
+    "game_path": "godot/art/props/inspection/ev_draw_cloth_0_front.png",
+    "prompt": "assets/2d/inspection/prompts/iris_vent-v1.txt",
+    "tool": "built-in image_gen",
+    "status": "integrated_candidate",
+    "sha256": "06d18c2fbeb25880c2b236c1acd36d350dcfb4e946204e6c8477bed72f2f35b8",
+    "native_size": [
+      1448,
+      1086
+    ]
+  }
+]

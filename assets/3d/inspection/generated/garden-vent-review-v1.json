@@ -1,0 +1,66 @@
+{
+  "sources": [
+    {
+      "source": "godot/art/levels/manor/manor.gltf",
+      "sha256": "7c948090fcc6c8f89fb75b129383e1f502655457689dfda00b1babc3541ab517",
+      "binary_sha256": "a29a54657182f2c1d1dac0e426f2cb5385326eefca0cf9cfd9a17b703cb2b09f",
+      "meshes": [
+        {
+          "name": "立面_细石",
+          "source_faces": 10680,
+          "clipped_faces": 20
+        },
+        {
+          "name": "主体结构-col",
+          "source_faces": 4900,
+          "clipped_faces": 24
+        },
+        {
+          "name": "门窗_iron",
+          "source_faces": 2728,
+          "clipped_faces": 104
+        }
+      ]
+    },
+    {
+      "source": "godot/art/props/inspection/garden_cloth.glb",
+      "sha256": "1033de9c759fedd47ad71d6a4937c62a9ec466fce0da60b4e965ff4b9d356c99",
+      "binary_sha256": null,
+      "meshes": [
+        {
+          "name": "花园·遮光布（堵着通风口）",
+          "source_faces": 26336,
+          "clipped_faces": 26336
+        }
+      ]
+    },
+    {
+      "source": "godot/art/levels/manor/room_garden__泥地鞋印.gltf",
+      "sha256": "449e500c69156cf004b35b68b6d864d6f0fc0a5b19903bbff10b5a38f609edca",
+      "binary_sha256": "36968bc4da3145e24df3aaa47a5e561d969e10d2e4e399feeb1e59e2f8ee0028",
+      "meshes": [
+        {
+          "name": "花园·棉绒与擦痕",
+          "source_faces": 456,
+          "clipped_faces": 456
+        }
+      ]
+    }
+  ],
+  "clip_box_blender": [
+    [
+      16.65,
+      11.3,
+      3.57
+    ],
+    [
+      17.65,
+      11.65,
+      4.62
+    ]
+  ],
+  "native_positions_preserved": true,
+  "note": "Boundary faces are clipped from native geometry, not replaced by invented walls or terrain.",
+  "asset_sha256": "84d5b91d2cbe8dd6abaf078eca32368be1567e232eb02a3e674b591bc3940ab0",
+  "game_path": "godot/art/props/inspection/garden_vent_review.glb"
+}

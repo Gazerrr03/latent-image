@@ -1,0 +1,68 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 调查由 E 键现场操作：C3-04
+PASS 新线索画在第三章之前不出现
+PASS 目标提示与对象一致：hs_draw_path
+PASS E 进入目标检视：hs_draw_path
+PASS 实物资源不是观察卡片：hs_draw_path
+PASS 检视期间现场描边已隐藏：hs_draw_path
+PASS 关闭后恢复行走并记录线索：hs_draw_path
+PASS 目标提示与对象一致：hs_draw_wall
+PASS E 进入目标检视：hs_draw_wall
+PASS 实物资源不是观察卡片：hs_draw_wall
+PASS 检视期间现场描边已隐藏：hs_draw_wall
+PASS 关闭后恢复行走并记录线索：hs_draw_wall
+PASS 目标提示与对象一致：hs_draw_family
+PASS E 进入目标检视：hs_draw_family
+PASS 实物资源不是观察卡片：hs_draw_family
+PASS 检视期间现场描边已隐藏：hs_draw_family
+PASS 关闭后恢复行走并记录线索：hs_draw_family
+PASS 目标提示与对象一致：hs_draw_boxes
+PASS E 进入目标检视：hs_draw_boxes
+PASS 实物资源不是观察卡片：hs_draw_boxes
+PASS 检视期间现场描边已隐藏：hs_draw_boxes
+PASS 关闭后恢复行走并记录线索：hs_draw_boxes
+PASS 目标提示与对象一致：hs_draw_train
+PASS E 进入目标检视：hs_draw_train
+PASS 实物资源不是观察卡片：hs_draw_train
+PASS 检视期间现场描边已隐藏：hs_draw_train
+PASS 关闭后恢复行走并记录线索：hs_draw_train
+PASS 整组调查完成：C3-04
+PASS 任务结束后 E 可再次检视：C3-04
+PASS 重复检视不增加证据：C3-04
+PASS 调查由 E 键现场操作：C4-03
+PASS 目标提示与对象一致：hs_gh_latch
+PASS E 进入目标检视：hs_gh_latch
+PASS 检视期间现场描边已隐藏：hs_gh_latch
+PASS 门闩内侧细节用局部照明且保持真实站位
+PASS 关闭后恢复行走并记录线索：hs_gh_latch
+PASS 目标提示与对象一致：hs_gh_photos
+PASS E 进入目标检视：hs_gh_photos
+PASS 实物资源不是观察卡片：hs_gh_photos
+PASS 检视期间现场描边已隐藏：hs_gh_photos
+PASS 关闭后恢复行走并记录线索：hs_gh_photos
+PASS 整组调查完成：C4-03
+PASS 任务结束后 E 可再次检视：C4-03
+PASS 重复检视不增加证据：C4-03
+PASS 调查由 E 键现场操作：C5-03
+PASS 目标提示与对象一致：hs_se_cards
+PASS E 进入目标检视：hs_se_cards
+PASS 实物资源不是观察卡片：hs_se_cards
+PASS 检视期间现场描边已隐藏：hs_se_cards
+PASS 关闭后恢复行走并记录线索：hs_se_cards
+PASS 目标提示与对象一致：hs_se_photo
+PASS E 进入目标检视：hs_se_photo
+PASS 检视期间现场描边已隐藏：hs_se_photo
+PASS 关闭后恢复行走并记录线索：hs_se_photo
+PASS 目标提示与对象一致：hs_se_gloves
+PASS E 进入目标检视：hs_se_gloves
+PASS 手套使用原场景网格
+PASS 检视期间现场描边已隐藏：hs_se_gloves
+PASS 关闭后恢复行走并记录线索：hs_se_gloves
+PASS 整组调查完成：C5-03
+PASS 任务结束后 E 可再次检视：C5-03
+PASS 重复检视不增加证据：C5-03
+WORLD_INSPECTION failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

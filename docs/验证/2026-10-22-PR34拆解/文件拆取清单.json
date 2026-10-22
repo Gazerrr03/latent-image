@@ -1,0 +1,2555 @@
+{
+  "pr": 34,
+  "head": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+  "base": "7cf7ee98155be7f9031364965583d40f6aab4ea0",
+  "status": "proposal-only",
+  "files": [
+    {
+      "source": "assets/3d/gh_cellar/README.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 4907,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/references/ref_01.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 352953,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/references/ref_02.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 428956,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/references/ref_03.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 366286,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/references/ref_04.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 454857,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/references/ref_05.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 557296,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/contact_sheet.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 337010,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/bench_detail.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 630865,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/center.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 622551,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/east_ladder.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 635299,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/hero_wide.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 598644,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/plan_annotated.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 789238,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/portraits.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 599878,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/review/final/table_hero.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 637863,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/build_architecture.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 21316,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/build_props.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 55817,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/build_scene.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 11762,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/export_gh_cellar.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 12499,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/finalize_blend.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 937,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/make_alt_portraits.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1857,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/make_cellar_frames.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 5842,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/make_cellar_ghosts.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 2403,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/make_cellar_ui.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 3394,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/make_textures.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 9834,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/make_wood.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1843,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/postprocess.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 9518,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/render_final.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 3613,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/scripts/scene_lib.py",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 32686,
+      "group": "A 建模与生产脚本",
+      "proposal": "保留并适配路径",
+      "destination_proposal": "assets/3d/gh_cellar/scripts/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/_portrait_grid.jpg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 295112,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_1926.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 184615,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_camera.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 10279,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_chemicals.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 235343,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_darkroom.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 271137,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_film.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 270982,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_fragile.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 275629,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_london.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 276480,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/label_plates.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 274653,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_01.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 389940,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_02.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 390987,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_03.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 390249,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_04.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 390531,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_05.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 389372,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_06.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 390877,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_07.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 389516,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_08.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 391217,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_09.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 389892,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_10.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 390451,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_11.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 389470,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_12.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 390874,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_01.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 326315,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_02.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 331762,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_03.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 344030,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_04.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 334185,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_05.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 339660,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_06.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 350682,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_07.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 322429,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_08.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 330924,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_09.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 339780,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_10.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 334121,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_11.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 336729,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/portrait_alt_12.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 350602,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "assets/3d/gh_cellar/textures/wood_grain.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 315301,
+      "group": "B 源贴图与参考",
+      "proposal": "保留来源并逐项审查",
+      "destination_proposal": "assets/3d/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "docs/08-决策与更新记录.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 100397,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "docs/关卡/gh_cellar.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 4075,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/README.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1295,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/.editorconfig",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 33,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/.gitattributes",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 80,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/.gitignore",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 46,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/README.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 8014,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/fonts/simhei.ttf",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 9745792,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/fonts/simhei.ttf.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 752,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/cellar_layout.json",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 7482,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar.glb",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 39966008,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar.glb.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1163,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_1926.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 184689,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_1926.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1100,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_camera.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 10279,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_camera.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1105,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_chemicals.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 235182,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_chemicals.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_darkroom.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 270715,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_darkroom.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1112,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_film.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 271309,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_film.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1099,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_fragile.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 275438,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_fragile.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1109,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_london.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 275746,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_london.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1105,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_plates.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 275211,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_label_plates.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1106,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_01.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 326315,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_01.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_02.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 331762,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_02.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_03.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 344030,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_03.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_04.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 334185,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_04.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_05.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 339660,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_05.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1114,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_06.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 350682,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_06.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1114,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_07.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 322429,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_07.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_08.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 330924,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_08.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_09.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 339780,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_09.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_11.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 336729,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_11.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_12.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 350602,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_portrait_alt_12.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1115,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_wood_grain.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 315301,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/gh_cellar_wood_grain.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1051,
+      "group": "D 场景模型与布局",
+      "proposal": "候选；模型与布局成对适配",
+      "destination_proposal": "godot/art/levels/gh_cellar/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 518582,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 971,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 244289,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 982,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517794,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 985,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517794,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1919_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 514534,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 971,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 160113,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 983,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 526159,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 518241,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1920_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517620,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 971,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 244748,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 982,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517127,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517127,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1921_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 514550,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 971,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 159582,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 983,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 525685,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517736,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1922_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517973,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 970,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 244425,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 983,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 518107,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 518107,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1923_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 514637,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 970,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 157488,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 982,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 521352,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517692,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1924_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 516783,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 971,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 243834,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 982,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517766,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517766,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1925_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 974,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_empty.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 515147,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_empty.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 971,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_blur.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 159041,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_blur.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 982,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_sharp.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 522815,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_lens_sharp.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 986,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_normal.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 517789,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/levels/gh_cellar/textures/frames/1926_normal.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 973,
+      "group": "E 年份合影表现",
+      "proposal": "候选；核对内容后按需移植",
+      "destination_proposal": "godot/art/levels/gh_cellar/textures/frames/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/footprint.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 16273,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/footprint.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 938,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/key_ghost.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 10168,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/key_ghost.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 938,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/notebook_bg.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1020172,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/notebook_bg.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 944,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/owner_reflection.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 28918,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/owner_reflection.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 959,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/silhouette.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 34796,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/silhouette.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 941,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/viewfinder.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 32764,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/art/ui/viewfinder.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 941,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/bolt_slide.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 39628,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/bolt_slide.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/bolt_slide.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 392,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/bolt_slide.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/camera_case.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 46459,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/camera_case.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/camera_case.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 395,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/camera_case.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/cloth_rustle.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 41709,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/cloth_rustle.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/cloth_rustle.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 398,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/cloth_rustle.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/door_knock.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 46838,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/door_knock.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/door_knock.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 392,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/door_knock.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/drawer.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 28276,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/drawer.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/drawer.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 379,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/drawer.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/liquid.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 55375,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/liquid.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/liquid.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 380,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/liquid.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/page_turn.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 32192,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/page_turn.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/page_turn.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 389,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/page_turn.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/red_hum.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 30194,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/red_hum.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/red_hum.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 383,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/red_hum.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/room_hum.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 59150,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/room_hum.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/room_hum.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 386,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/room_hum.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/shutter_old.ogg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 19069,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/shutter_old.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/audio/shutter_old.ogg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 394,
+      "group": "G 音频",
+      "proposal": "音频本体与本地SHA-256完全相同，复用本地文件；不复制import文件",
+      "destination_proposal": "现有 godot/audio/sfx/shutter_old.ogg",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/data/cellar_anchors.json",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1209,
+      "group": "H 内容与玩法状态",
+      "proposal": "取线索结构；重写内容；相机规则暂缓",
+      "destination_proposal": "godot/content/story/ 与 content/visual/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/data/cellar_content.json",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 5317,
+      "group": "H 内容与玩法状态",
+      "proposal": "取线索结构；重写内容；相机规则暂缓",
+      "destination_proposal": "godot/content/story/ 与 content/visual/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/docs/gh_cellar.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 5666,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/docs/interaction_objects.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 15545,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/docs/player_experience.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 17646,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/docs/player_interaction.md",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 12799,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/garden.tscn",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 2917,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/icon.svg",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 995,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/icon.svg.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1012,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/levels/gh_cellar.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 27959,
+      "group": "I 关卡装配",
+      "proposal": "按功能拆取；重建主工程场景",
+      "destination_proposal": "godot/levels/gh_cellar.tscn 与必要的局部脚本",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/levels/gh_cellar.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "I 关卡装配",
+      "proposal": "按功能拆取；重建主工程场景",
+      "destination_proposal": "godot/levels/gh_cellar.tscn 与必要的局部脚本",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/levels/gh_cellar.tscn",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1738,
+      "group": "I 关卡装配",
+      "proposal": "按功能拆取；重建主工程场景",
+      "destination_proposal": "godot/levels/gh_cellar.tscn 与必要的局部脚本",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/player/cellar_player.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 7836,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/player/cellar_player.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/player/cellar_player.tscn",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 591,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/project.godot",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 743,
+      "group": "L 工程配置字体与说明",
+      "proposal": "逐项处理；配置与字体不默认移植",
+      "destination_proposal": "来源归档及现有文档局部更新",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/01_entry.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 697229,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/01_entry.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 945,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/02_table.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 814930,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/02_table.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 945,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/03_sink.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 596143,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/03_sink.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 942,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/04_north_wall.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 353834,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/04_north_wall.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 960,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/10_eye_1920.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 454883,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/10_eye_1920.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 954,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/11_camera_1920.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 399121,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/11_camera_1920.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 963,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/12_empty_1920.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 468524,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/12_empty_1920.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 960,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/15_owner_1926.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 395912,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/15_owner_1926.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 959,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/17_player_camera.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 407242,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/17_player_camera.png.import",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 968,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/20_table_tag_notebook.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 756283,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/21_notebook_page4.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1004628,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/22_notebook_key.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1002907,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/23_key_on_notebook.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 697423,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/24_plate_1926.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 508376,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/25_ending_keep.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 24815,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/review/gh_cellar/26_ending_shoot.png",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 27919,
+      "group": "C 渲染与原型截图",
+      "proposal": "作为交付证据归档",
+      "destination_proposal": "assets/production/PR34-gh_cellar/review/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/shaders/frame_view.gdshader",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1121,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/shaders/frame_view.gdshader.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "F UI图像与材质效果",
+      "proposal": "可拆取表现；规则暂缓",
+      "destination_proposal": "godot/art/levels/gh_cellar/ 或 godot/shaders/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/systems/cellar_state.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 10339,
+      "group": "H 内容与玩法状态",
+      "proposal": "取线索结构；重写内容；相机规则暂缓",
+      "destination_proposal": "godot/content/story/ 与 content/visual/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/systems/cellar_state.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "H 内容与玩法状态",
+      "proposal": "取线索结构；重写内容；相机规则暂缓",
+      "destination_proposal": "godot/content/story/ 与 content/visual/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/collision_result.txt",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1478,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/flow_result.txt",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1940,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/fps_result.txt",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 564,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/import_result.txt",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1116,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/scene_flow_result.txt",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 3178,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/scene_shoot_result.txt",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 862,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_collision.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 2293,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_collision.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_flow.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 3028,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_flow.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_fps.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 844,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_fps.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_import.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 2251,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_import.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 19,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_scene_flow.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 6602,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_scene_flow.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tests/test_scene_shoot.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 2126,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tools/capture_interaction.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 2216,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tools/capture_player.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1081,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tools/capture_player.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 19,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tools/capture_room.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1525,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tools/capture_room.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/tools/capture_shoot.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 1413,
+      "group": "K 测试与截图工具",
+      "proposal": "迁移有用断言；改写主工程验证",
+      "destination_proposal": "godot/tools/ 与 docs/验证/",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/ui/cellar_ui.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 17743,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/ui/cellar_ui.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 20,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/ui/cellar_ui.tscn",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 174,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/ui/focus_ring.gd",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 829,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    },
+    {
+      "source": "prototypes/gh_cellar/ui/focus_ring.gd.uid",
+      "source_ref": "0f688ba0551762acde2e32a2d54523cf5ad28d7b",
+      "bytes": 19,
+      "group": "J 原型玩家与UI代码",
+      "proposal": "参考；不替换主工程控制与检视",
+      "destination_proposal": "现有 godot/world/player.gd 与 godot/ui/item_inspector.gd",
+      "accepted": false
+    }
+  ]
+}

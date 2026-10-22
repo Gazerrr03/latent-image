@@ -1,0 +1,23 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS ev_receipt打开真实可翻面纸张
+PASS ev_receipt英文实物与中文阅读分离
+PASS 签收单中文列出用户授权的四项品名瓶数
+PASS ev_receipt关闭阅读仍保留实物
+PASS ev_receipt返回笔记本
+PASS ev_con_ledger打开真实可翻面纸张
+PASS ev_con_ledger英文实物与中文阅读分离
+PASS ev_con_ledger关闭阅读仍保留实物
+PASS ev_con_ledger返回笔记本
+PASS ev_seance_cards打开真实可翻面纸张
+PASS 第二张卡片真实换页
+PASS ev_seance_cards英文实物与中文阅读分离
+PASS ev_seance_cards关闭阅读仍保留实物
+PASS ev_seance_cards返回笔记本
+PASS ev_amb_notes打开真实可翻面纸张
+PASS ev_amb_notes英文实物与中文阅读分离
+PASS ev_amb_notes关闭阅读仍保留实物
+PASS ev_amb_notes返回笔记本
+PASS 复查不重复收集或触发现场
+HANDWRITING failures=0

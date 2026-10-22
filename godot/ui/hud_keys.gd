@@ -59,6 +59,11 @@ func _card(which: String, key: String, caption: String) -> void:
 	_dim[which] = false
 
 
+func set_gamepad(on: bool) -> void:
+	_cards["notebook"].get_child(1).text = "Y / △" if on else "Tab"
+	_cards["guide"].get_child(1).text = "X / □" if on else "Q"
+
+
 func set_dim(which: String, on: bool) -> void:
 	if _dim.get(which) == on:
 		return

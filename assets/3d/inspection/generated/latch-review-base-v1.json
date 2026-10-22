@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "source": "godot/art/levels/manor/manor.gltf",
+      "sha256": "7c948090fcc6c8f89fb75b129383e1f502655457689dfda00b1babc3541ab517",
+      "binary_sha256": "a29a54657182f2c1d1dac0e426f2cb5385326eefca0cf9cfd9a17b703cb2b09f",
+      "meshes": [
+        {
+          "name": "主体结构-col",
+          "source_faces": 4900,
+          "clipped_faces": 3
+        }
+      ]
+    },
+    {
+      "source": "godot/art/levels/manor/room_darkroom.gltf",
+      "sha256": "7acf4feff6bb690173b9312af31dafbbbc5efb4e54041b88d9afab4e0ad92d27",
+      "binary_sha256": "e8d39b3f9548f9aec24bc65d38ecb9a0d299b2669e3c909121671a51f8318ece",
+      "meshes": [
+        {
+          "name": "暗房·墙面与线脚",
+          "source_faces": 2232,
+          "clipped_faces": 21
+        },
+        {
+          "name": "暗房·侧门插销扣",
+          "source_faces": 12,
+          "clipped_faces": 12
+        },
+        {
+          "name": "暗房·温室侧门",
+          "source_faces": 380,
+          "clipped_faces": 78
+        }
+      ]
+    }
+  ],
+  "clip_box_blender_z_up": [
+    [
+      18.76,
+      9.9,
+      4.8
+    ],
+    [
+      19.02,
+      10.34,
+      5.12
+    ]
+  ],
+  "asset_sha256": "ae08068791cfed1b52ed957be51dcd2ad46a5c4478040caf26c2d28beabbecd9",
+  "game_asset": "latch_review_base.glb",
+  "status": "integrated_pending_runtime_review",
+  "verification": {
+    "onsite_test": "godot/tools/test_frame_latch_inspection.gd",
+    "notebook_test": "godot/tools/test_fixed_notebook.gd",
+    "source_triangle_coverage": "all 22 height-mark triangles / all 12 catch triangles; shared fiber world coordinates checked",
+    "status": "runtime_checks_passed_visual_acceptance_pending"
+  },
+  "shared_fiber": {
+    "source": "godot/world/inspection_fiber.gd",
+    "sha256": "1e9335b69740990aaa1959c7b85ce78741b1b6d92a2e6bd8223d27cc7f1dd297",
+    "same_scene_and_notebook_geometry": true
+  }
+}
