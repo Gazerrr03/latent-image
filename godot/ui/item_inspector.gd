@@ -371,6 +371,9 @@ func _refresh() -> void:
 		else:
 			_hint.text = "滚轮查看细节　·　R 复位　·　F 观察记录　·　Esc 返回现场"
 	_stage.modulate.a = 0.18 if reading else 1.0
+	var on_read: Callable = _data.get("on_page_read", Callable())
+	if reading and not _notes_mode and on_read.is_valid():
+		on_read.call(page)
 
 
 func toggle_reading() -> void:

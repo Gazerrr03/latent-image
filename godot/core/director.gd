@@ -39,6 +39,7 @@ var conversation := ""
 var _inspect_pending: Array = []
 ## 这一组“回客房”已经出现过（只在第一次出现时响一声）
 var _end_announced := {}
+var _task_succeeded := true
 
 
 func _ready() -> void:
@@ -48,6 +49,8 @@ func _ready() -> void:
 
 func start(from_shot := "") -> void:
 	var first: String = from_shot
+	if GameState.active_quest != "" and GameState.explore_shot != "" and from_shot == GameState.shot:
+		first = GameState.explore_shot
 	if first == "" and ContentDB.shot_order.size() > 0:
 		first = ContentDB.shot_order[0]["shot_id"]
 	_run(first)
@@ -113,6 +116,12 @@ func _run(first: String) -> void:
 
 func _play(row: Dictionary) -> void:
 	shot_started.emit(row)
+	# 存档停在探索内的子任务：恢复该任务，不重复章首起床和已播过的文字。
+	if GameState.active_quest != "" and GameState.explore_shot == row.get("shot_id", ""):
+		for action in Actions.parse(row.get("actions", "")):
+			if action.name == "explore":
+				await _explore(action.args[0])
+				return
 	var scene_id: String = row.get("scene", "")
 	if scene_id == "train" and not _train_present:
 		_before_train_fx = ui.fx.get_override()
@@ -228,6 +237,14 @@ func _do(name: String, args: Array, mode: String) -> void:
 			# 第 6 章：玩家亲手冲洗底片（docs/02 第 9 节）
 			await ui.develop(args[0] if args.size() > 0 else "")
 			GameState.record("develop", args[0] if args.size() > 0 else "")
+		"cellar_gameplay":
+			if autoplay:
+				if world.room and world.room.has_method("autoplay_cellar"):
+					world.room.autoplay_cellar()
+					_task_succeeded = GameState.cellar.get("complete", false)
+			else:
+				if world.room and world.room.has_method("await_cellar_cleared"):
+					_task_succeeded = await world.room.await_cellar_cleared()
 		"goto":
 			world.show_scene(args[0])
 		"fx":
@@ -379,6 +396,7 @@ func _explore(group: String) -> void:
 		push_warning("任务表里没有这一组：" + group)
 		return
 	_explore_group = group
+	var anchor: String = GameState.shot
 	var present: Array = []
 	for q in qs:
 		var t: String = q.get("trigger", "")
@@ -389,7 +407,12 @@ func _explore(group: String) -> void:
 		if open.is_empty():
 			break
 		var pick: Dictionary = {}
-		if autoplay:
+		if GameState.active_quest != "":
+			for q in open:
+				if q.id == GameState.active_quest: pick = q
+		if not pick.is_empty():
+			pass
+		elif autoplay:
 			for q in open:
 				if q.get("require", "") == "":
 					pick = q
@@ -417,7 +440,9 @@ func _explore(group: String) -> void:
 				continue
 		world.end_explore()
 		ui.set_checklist([])
-		GameState.quests_done.append(pick["id"])
+		_task_succeeded = true
+		GameState.active_quest = pick["id"]
+		GameState.explore_shot = anchor
 		GameState.save()
 		if pick.get("shot", "") != "":
 			var trigger: String = pick.get("trigger", "")
@@ -432,7 +457,13 @@ func _explore(group: String) -> void:
 			if _interrupted():
 				_explore_group = ""
 				return
-		if pick.get("require", "") != "":
+		if _task_succeeded:
+			GameState.quests_done.append(pick["id"])
+		GameState.active_quest = ""
+		GameState.explore_shot = ""
+		GameState.shot = anchor
+		GameState.save()
+		if _task_succeeded and quest_ends(pick):
 			break
 	_explore_group = ""
 	world.end_explore()
@@ -441,12 +472,15 @@ func _explore(group: String) -> void:
 
 ## require 列：a|b|2:c,d,e（a、b 都完成，且 c、d、e 里至少两个）；
 ## “全部” = 这一组里能拿到线索的任务都做完了（这一章的线索收齐，docs/01 第 4 节）
+static func quest_ends(q: Dictionary) -> bool:
+	return q.get("require", "") != "" and q.get("ends", "") != "no"
+
 static func quest_ready(q: Dictionary) -> bool:
 	for part in String(q.get("require", "")).split("|", false):
 		var p := part.strip_edges()
 		if p == "全部":
 			for o in ContentDB.quests.get(q.get("group", ""), []):
-				if o["id"] != q["id"] and o.get("require", "") == "" and not quest_evidence(o).is_empty() \
+				if o["id"] != q["id"] and not quest_ends(o) and not quest_evidence(o).is_empty() \
 						and not GameState.quests_done.has(o["id"]):
 					return false
 			continue
@@ -475,7 +509,7 @@ func _explore_checklist(qs: Array) -> void:
 		if done or quest_ready(q):
 			items.append({"text": fill(q.get("hint", "")), "done": done})
 			# 收尾任务（回客房）第一次出现：打字机“叮”一声，告诉玩家这一天可以结束了
-			if not done and q.get("require", "") != "" and not _end_announced.has(q["id"]):
+			if not done and quest_ends(q) and not _end_announced.has(q["id"]):
 				_end_announced[q["id"]] = true
 				if not all.is_empty():
 					world.play_sound("typewriter_return")
@@ -495,6 +529,8 @@ static func quest_evidence(q: Dictionary) -> Array:
 		for a in Actions.parse(row.get("actions", "")):
 			if a["name"] == "collect":
 				out.append_array(a["args"])
+			elif a["name"] == "cellar_gameplay":
+				out.append_array(["ev_cellar_book", "ev_cellar_notes", "ev_cellar_clip", "ev_cellar_relics"])
 			elif a["name"] == "inspect":
 				for h in a["args"]:
 					var e: String = ContentDB.hotspots.get(h, {}).get("evidence", "")
@@ -510,7 +546,7 @@ static func quest_evidence(q: Dictionary) -> Array:
 static func group_evidence(group: String) -> Array:
 	var out: Array = []
 	for q in ContentDB.quests.get(group, []):
-		if q.get("require", "") != "":
+		if quest_ends(q):
 			continue  # 收尾任务自己的镜头（如降灵会）不算在“收齐”里
 		for e in quest_evidence(q):
 			if not out.has(e):
@@ -557,6 +593,9 @@ func guide_targets() -> Array:
 	var out: Array = []
 	if world == null or world.room_locked() != "":
 		return out
+	if is_instance_valid(world.room) and world.room.has_method("guide_targets"):
+		var local_targets: Array = world.room.guide_targets()
+		if not local_targets.is_empty(): return local_targets
 	if not _inspect_pending.is_empty():
 		for id in _inspect_pending:
 			out.append(id)

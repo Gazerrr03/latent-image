@@ -1,0 +1,243 @@
+[gd_scene load_steps=18 format=3]
+
+[ext_resource type="Script" path="res://levels/gh_cellar.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://art/levels/gh_cellar/gh_cellar.glb" id="2_model"]
+
+[sub_resource type="Environment" id="env_cellar"]
+background_mode = 1
+background_color = Color(0.008, 0.009, 0.012, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.48, 0.40, 1)
+ambient_light_energy = 1.15
+tonemap_mode = 4
+tonemap_exposure = 1.25
+ssao_enabled = true
+ssao_radius = 0.8
+ssao_intensity = 1.6
+ssil_enabled = true
+glow_enabled = true
+glow_intensity = 0.38
+glow_bloom = 0.05
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.018
+volumetric_fog_albedo = Color(0.85, 0.82, 0.78, 1)
+volumetric_fog_anisotropy = 0.35
+volumetric_fog_length = 12.0
+adjustment_enabled = true
+adjustment_brightness = 1.10
+adjustment_contrast = 1.03
+adjustment_saturation = 0.95
+
+[sub_resource type="BoxShape3D" id="shape_floor"]
+size = Vector3(10.4, 0.2, 8.4)
+
+[sub_resource type="BoxShape3D" id="shape_wall_ns"]
+size = Vector3(10.4, 2.8, 0.26)
+
+[sub_resource type="BoxShape3D" id="shape_wall_ew"]
+size = Vector3(0.26, 2.8, 8.4)
+
+[sub_resource type="BoxShape3D" id="shape_table"]
+size = Vector3(3.55, 0.82, 1.3)
+
+[sub_resource type="BoxShape3D" id="shape_sink"]
+size = Vector3(0.82, 0.9, 2.8)
+
+[sub_resource type="BoxShape3D" id="shape_crates_front"]
+size = Vector3(1.25, 0.9, 0.95)
+
+[sub_resource type="BoxShape3D" id="shape_crates_back"]
+size = Vector3(1.2, 1.0, 1.1)
+
+[sub_resource type="BoxShape3D" id="shape_crates_east"]
+size = Vector3(0.6, 0.5, 0.55)
+
+[sub_resource type="BoxShape3D" id="shape_chair"]
+size = Vector3(0.75, 1.0, 0.75)
+
+[sub_resource type="BoxShape3D" id="shape_ladder_col"]
+size = Vector3(0.5, 2.6, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="mat_holder"]
+albedo_color = Color(0.16, 0.09, 0.045, 1)
+
+[sub_resource type="StandardMaterial3D" id="mat_plate"]
+albedo_color = Color(0.16, 0.23, 0.21, 1)
+metallic = 0.35
+roughness = 0.18
+
+[sub_resource type="StandardMaterial3D" id="mat_clip"]
+albedo_color = Color(0.65, 0.58, 0.42, 1)
+
+[node name="gh_cellar" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="model" parent="." instance=ExtResource("2_model")]
+
+[node name="collision" type="StaticBody3D" parent="."]
+
+[node name="floor" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("shape_floor")
+
+[node name="wall_n" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -4)
+shape = SubResource("shape_wall_ns")
+
+[node name="wall_s" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 4)
+shape = SubResource("shape_wall_ns")
+
+[node name="wall_w" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.3, 0)
+shape = SubResource("shape_wall_ew")
+
+[node name="wall_e" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.3, 0)
+shape = SubResource("shape_wall_ew")
+
+[node name="table" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.41, -0.72)
+shape = SubResource("shape_table")
+
+[node name="sink" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48, 0.45, -1.915)
+shape = SubResource("shape_sink")
+
+[node name="crates_front" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0.45, 3.4)
+shape = SubResource("shape_crates_front")
+
+[node name="crates_back" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0.5, -2.6)
+shape = SubResource("shape_crates_back")
+
+[node name="crates_east" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55, 0.25, -1.85)
+shape = SubResource("shape_crates_east")
+
+[node name="chair" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, 1.85)
+shape = SubResource("shape_chair")
+
+[node name="ladder_col" type="CollisionShape3D" parent="collision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 1.3, 1.8)
+shape = SubResource("shape_ladder_col")
+
+[node name="lamp_oil" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18, 1.095, -0.62)
+light_color = Color(1, 0.604, 0.29, 1)
+light_energy = 3.5
+omni_range = 7.0
+shadow_enabled = true
+
+[node name="light_skylight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.1, -0.65)
+light_color = Color(0.62, 0.737, 1, 1)
+light_energy = 6.0
+spot_range = 10.0
+spot_angle = 45.0
+shadow_enabled = true
+
+[node name="light_hatch" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.98, 2.56, 1.35)
+light_color = Color(0.62, 0.737, 1, 1)
+light_energy = 4.0
+spot_range = 8.0
+spot_angle = 50.0
+shadow_enabled = true
+
+[node name="lamp_red" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.68, 1.18, -0.37)
+light_color = Color(1, 0.1, 0.05, 1)
+light_energy = 1.2
+omni_range = 1.8
+shadow_enabled = false
+
+[node name="fill_center" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0.4)
+light_color = Color(1, 0.824, 0.627, 1)
+light_energy = 1.5
+omni_range = 12.0
+shadow_enabled = false
+
+[node name="fill_sink" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 1.75, 1.3)
+light_color = Color(1, 0.784, 0.565, 1)
+light_energy = 1.2
+omni_range = 7.0
+shadow_enabled = false
+
+[node name="fill_east" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1.9, 0.2)
+light_color = Color(0.788, 0.839, 1, 1)
+light_energy = 1.0
+omni_range = 8.0
+shadow_enabled = false
+
+[node name="接口" type="Node3D" parent="."]
+
+[node name="spawn" type="Marker3D" parent="接口"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 3.2, 0.05, 1.35)
+
+[node name="cam_cellar_wide" type="Camera3D" parent="接口"]
+transform = Transform3D(-0.422618, 0.147746, -0.894178, 0, 0.986663, 0.162776, 0.906308, 0.068792, -0.416979, 3.5, 1.8, 1.2)
+environment = SubResource("env_cellar")
+fov = 50.0
+near = 0.03
+
+[node name="hs_cellar_camera" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36, 1.15, -0.64)
+metadata/size = Vector3(0.7, 0.5, 0.6)
+
+[node name="hs_cellar_tray" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.0, -0.9)
+metadata/size = Vector3(0.6, 0.4, 0.6)
+
+[node name="hs_cellar_portraits" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, -3.92)
+metadata/size = Vector3(5.5, 1.0, 0.5)
+
+[node name="hs_cellar_book" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.82, 0.88, -0.12)
+metadata/size = Vector3(0.45, 0.1, 0.22)
+
+[node name="hs_cellar_notes" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.95, -0.6)
+metadata/size = Vector3(0.4, 0.2, 0.35)
+
+[node name="hs_cellar_relics" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 1.0, -1.9)
+metadata/size = Vector3(0.6, 1.0, 0.8)
+
+[node name="hs_cellar_ladder" type="Marker3D" parent="接口"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.85, 1.1, 1.5)
+metadata/size = Vector3(0.8, 2.2, 0.8)
+
+[node name="hs_cellar_holder" type="Marker3D" parent="接口"]
+position = Vector3(0.82, 1.08, -0.46)
+metadata/size = Vector3(0.35, 0.22, 0.25)
+
+[node name="hs_cellar_cabinet" type="Marker3D" parent="接口"]
+position = Vector3(-4.55, 0.85, 2.95)
+metadata/size = Vector3(0.6, 1, 0.65)
+
+[node name="hs_cellar_plate" type="Marker3D" parent="接口"]
+position = Vector3(-4.15, 1.02, 2.85)
+metadata/size = Vector3(0.28, 0.1, 0.25)
+
+[node name="hs_cellar_clip" type="Marker3D" parent="接口"]
+position = Vector3(-0.9, 0.96, -0.35)
+metadata/size = Vector3(0.35, 0.1, 0.25)
+
+[node name="原片" type="CSGBox3D" parent="接口/hs_cellar_holder"]
+material = SubResource("mat_holder")
+size = Vector3(0.23, 0.04, 0.18)
+
+[node name="原片" type="CSGBox3D" parent="接口/hs_cellar_plate"]
+material = SubResource("mat_plate")
+size = Vector3(0.18, 0.012, 0.23)
+
+[node name="原片" type="CSGBox3D" parent="接口/hs_cellar_clip"]
+material = SubResource("mat_clip")
+size = Vector3(0.30, 0.008, 0.22)

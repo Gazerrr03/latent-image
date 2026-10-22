@@ -5,7 +5,7 @@ const ACTIONS := [
 	"wait", "leak", "objective", "collect", "inspect",
 	"annotate", "inquire", "link", "say", "telling", "develop",
 	"goto", "fx", "footage", "osd", "reveal", "conceal", "recap", "diary", "anim",
-	"music", "explore", "corridor", "station", "wake", "sleep",
+	"music", "explore", "corridor", "station", "wake", "sleep", "cellar_gameplay",
 ]
 
 

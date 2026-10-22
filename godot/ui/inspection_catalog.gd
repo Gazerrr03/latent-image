@@ -59,6 +59,7 @@ static func hotspot(id: String, host: Node, notebook := false) -> Dictionary:
 		data["rotation"] = _vector(entry.get("notebook_rotation", "0,0,0"))
 		data["read_label"] = "观察记录"
 	_document(data, entry.get("object", h.get("evidence", "")))
+	if id == "hs_cellar_book": _cellar_book(data)
 	return data
 
 
@@ -86,6 +87,15 @@ static func evidence(id: String, host: Node, where: String, derived: String) -> 
 	_document(data, id)
 	if data["mode"] == "record":
 		data["pages"] = [notes]
+	if id == "ev_cellar_book": _cellar_book(data)
+	if id in ["ev_cellar_notes", "ev_cellar_clip", "ev_cellar_relics"]:
+		data["on_page_read"] = func(_index):
+			var state = preload("res://levels/cellar_state.gd").new()
+			state.restore(GameState.cellar)
+			state.read_document(id.trim_prefix("ev_cellar_"))
+			GameState.cellar = state.snapshot()
+			GameState.save()
+			if is_instance_valid(host.room) and host.room.has_method("refresh_from_saved"): host.room.refresh_from_saved()
 	return data
 
 
@@ -129,3 +139,25 @@ static func _visual(source: MeshInstance3D, transform: Transform3D) -> Dictionar
 	for i in source.mesh.get_surface_count():
 		materials.append(source.get_surface_override_material(i))
 	return {"mesh": source.mesh, "transform": transform, "material": source.material_override, "materials": materials}
+
+
+## 主人的记录本使用同一检视/笔记本入口；翻到并阅读才记为已读。
+static func _cellar_book(data: Dictionary) -> void:
+	var state = preload("res://levels/cellar_state.gd").new()
+	state.restore(GameState.cellar)
+	var ids: Array = state.page_ids()
+	var texts := {}
+	for row in ContentDB.load_table("res://content/story/cellar.csv"):
+		texts[row.id] = row.title + "\n\n" + row.text
+	data["notes"] = ""
+	data["pages"] = ids.map(func(id): return texts.get(id, id))
+	data["on_page_read"] = func(index):
+		var current = preload("res://levels/cellar_state.gd").new()
+		current.restore(GameState.cellar)
+		if index < 0 or index >= ids.size() or current.data.pages_read.has(ids[index]): return
+		var result: String = current.read_page(ids[index])
+		GameState.cellar = current.snapshot()
+		GameState.save()
+		if Director.world and is_instance_valid(Director.world.room) and Director.world.room.has_method("refresh_from_saved"):
+			Director.world.room.refresh_from_saved()
+		if result == "key_taken": Director.ui.toast(texts.get("key", ""))

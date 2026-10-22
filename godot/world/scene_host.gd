@@ -66,6 +66,7 @@ func _ready() -> void:
 
 ## 换章时天气可能变了（入夜、下雨、起雾）：重新套一遍天光
 func _on_state_changed() -> void:
+	_refresh_cellar_entrance()
 	if not Look.preset_changed():
 		return
 	if current_id == MAP_ID:
@@ -101,6 +102,7 @@ func show_scene(id: String) -> void:
 		if current_id != MAP_ID:
 			_enter_map()
 		focus_room(id)
+		_refresh_cellar_entrance()
 		return
 	if id == current_id:
 		return
@@ -1454,7 +1456,7 @@ var guide: Node3D
 
 ## 把任务的触发（talk:/enter:/door:/hs_）换成地面上的一个点，画出通往最近那个的路；没有可指的返回 false
 func show_guide(ids: Array) -> bool:
-	if current_id != MAP_ID or player == null or not player.active:
+	if current_id not in [MAP_ID, "gh_cellar"] or player == null or not player.active:
 		return false
 	if guide == null:
 		guide = Guide.new()
@@ -1929,3 +1931,10 @@ func stop_loops() -> void:
 		if is_instance_valid(p):
 			p.queue_free()
 	_loops.clear()
+
+
+func _refresh_cellar_entrance() -> void:
+	var hatch: Node3D = hotspot_nodes.get("hs_gh_trapdoor")
+	if not is_instance_valid(hatch): return
+	var pot := hatch.get_node_or_null("遮盖花盆")
+	if pot: pot.visible = not GameState.cellar.get("entrance_open", false)
