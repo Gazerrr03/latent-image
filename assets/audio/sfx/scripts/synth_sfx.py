@@ -307,6 +307,12 @@ def typewriter():
     return reverb(grains(d, 0, key, times=times), 0.6, 0.15)
 
 
+@sfx("typewriter_key", "打字机单键击打声", "器物", vol=-12)
+def typewriter_key():
+    x = impact(0.07, [(1800, 0.015, 1.0), (3200, 0.01, 0.6), (4700, 0.008, 0.3), (220, 0.02, 0.5)], 0.7, 0.002, seed=1)
+    return reverb(x, 0.3, 0.1)
+
+
 @sfx("typewriter_return", "打字机回车（叮一声，滑回去）", "器物", vol=-6)
 def typewriter_return():
     x = silence(1.6)

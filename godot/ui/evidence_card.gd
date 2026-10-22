@@ -82,7 +82,7 @@ func _build_text(e: Dictionary) -> void:
 	var body := Label.new()
 	for l in [title, body]:
 		l.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		l.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
+		l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		l.add_theme_color_override("font_color", INK)
 		box.add_child(l)
 	title.text = name_text

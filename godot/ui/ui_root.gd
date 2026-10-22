@@ -22,6 +22,7 @@ var _bars_tween: Tween
 var _text_epoch := 0
 var bubble: PanelContainer
 var bubble_text: RichTextLabel
+var bubble_caret: Label
 var bubble_more: Label
 var _speaker_node: Node3D
 var _speaker_height := 1.75
@@ -29,12 +30,16 @@ var _reading_label: RichTextLabel
 var _reading_more: Label
 var _waiting := false
 var _typing: Tween
+var _typing_active := false
+var _typewriter_players: Array[AudioStreamPlayer] = []
+var _typewriter_idx := 0
 var _prev_mouse := Input.MOUSE_MODE_VISIBLE
 
 var bar_top: ColorRect
 var bar_bottom: ColorRect
 var text_panel: PanelContainer
 var text_label: RichTextLabel
+var text_caret: Label
 var more_label: Label
 var choice_panel: PanelContainer
 var choice_box: VBoxContainer
@@ -109,6 +114,8 @@ func _ready() -> void:
 	text_panel.add_child(v)
 	text_label = _subtitle_label(24)
 	v.add_child(text_label)
+	text_caret = _caret_label()
+	text_label.add_child(text_caret)
 	more_label = _continue_label()
 	v.add_child(more_label)
 	text_panel.hide()
@@ -127,10 +134,24 @@ func _ready() -> void:
 	bubble.add_child(speech_box)
 	bubble_text = _subtitle_label(24)
 	speech_box.add_child(bubble_text)
+	bubble_caret = _caret_label()
+	bubble_text.add_child(bubble_caret)
 	bubble_more = _continue_label()
 	speech_box.add_child(bubble_more)
 	root.add_child(bubble)
 	bubble.hide()
+
+	var key_sfx: AudioStream = null
+	var key_path := "res://audio/sfx/typewriter_key.ogg"
+	if ResourceLoader.exists(key_path):
+		key_sfx = load(key_path)
+	for i in 2:
+		var p := AudioStreamPlayer.new()
+		p.bus = "SFX"
+		p.stream = key_sfx
+		p.volume_db = -16.0
+		root.add_child(p)
+		_typewriter_players.append(p)
 
 	choice_panel = _paper_panel()
 	choice_panel.set_anchors_preset(Control.PRESET_CENTER)
@@ -218,8 +239,30 @@ func _subtitle_label(size: int) -> RichTextLabel:
 	label.add_theme_color_override("default_color", Color("#f4efdf"))
 	label.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
 	label.add_theme_constant_override("outline_size", 3)
-	label.add_theme_constant_override("line_separation", 0)
+	label.add_theme_constant_override("line_separation", 4)
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	return label
+
+
+func _caret_label() -> Label:
+	var l := Label.new()
+	l.text = "▌"
+	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	l.add_theme_font_size_override("font_size", 18)
+	l.add_theme_color_override("font_color", Color("#e8dcc0"))
+	l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
+	l.add_theme_constant_override("outline_size", 2)
+	l.hide()
+	return l
+
+
+func _play_typewriter_click() -> void:
+	if _typewriter_players.is_empty():
+		return
+	var p: AudioStreamPlayer = _typewriter_players[_typewriter_idx]
+	_typewriter_idx = (_typewriter_idx + 1) % _typewriter_players.size()
+	p.pitch_scale = randf_range(0.92, 1.08)
+	p.play()
 
 
 func _continue_label() -> Label:
@@ -539,32 +582,131 @@ func inspect_evidence(id: String, where: String, derived: String) -> void:
 	await inspector.closed
 
 
-## 用实际字体宽度分页，最多两行，优先在后半段的标点处分段。
+const CLOSE_PUNCT := "。！？；，、：”’）》］｝』〕〉…,.!?;:)]}\"'"
+const OPEN_PUNCT := "“‘（《［｛『〔〈([{"
+
+
+func _measure_text(text: String, font_size: int) -> float:
+	return font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+
+
+## 测算文本是否能在单页内排下（最多 2 行，每行不超宽，无孤字）
+func _can_fit_in_page(text: String, width: float, font_size: int) -> Dictionary:
+	text = text.strip_edges()
+	if text.is_empty():
+		return {"ok": true, "lines": []}
+	if _measure_text(text, font_size) <= width:
+		return {"ok": true, "lines": [text]}
+	var lines := _try_split_2_lines(text, width, font_size)
+	if lines.size() == 2:
+		return {"ok": true, "lines": lines}
+	return {"ok": false, "lines": []}
+
+
+## 尝试将文本拆成对称美观的两行，满足避头尾、行尾避孤字（第二行至少4字）
+func _try_split_2_lines(text: String, width: float, font_size: int) -> Array[String]:
+	var n := text.length()
+	var best_split := -1
+	var best_score := -999999.0
+	
+	for i in range(4, n - 3):
+		if text.substr(i - 1, 1) in OPEN_PUNCT:
+			continue
+		if text.substr(i, 1) in CLOSE_PUNCT:
+			continue
+		var line1 := text.left(i).strip_edges()
+		var line2 := text.substr(i).strip_edges()
+		var w1 := _measure_text(line1, font_size)
+		var w2 := _measure_text(line2, font_size)
+		if w1 > width or w2 > width:
+			continue
+		var score := -absf(w1 - w2) * 0.5
+		var prev_ch := text.substr(i - 1, 1)
+		if prev_ch in "。！？":
+			score += 400.0
+		elif prev_ch in "；":
+			score += 300.0
+		elif prev_ch in "，、：":
+			score += 250.0
+		elif prev_ch in "）”":
+			score += 200.0
+		elif prev_ch in "——……":
+			score += 150.0
+		if line2.length() >= 6:
+			score += 50.0
+		if score > best_score:
+			best_score = score
+			best_split = i
+			
+	if best_split > 0:
+		return [text.left(best_split).strip_edges(), text.substr(best_split).strip_edges()]
+	return []
+
+
+## 核心排版：长句分页，每页最多 2 行，避免单字/少字孤页与孤行，断句贴合标点与语言节奏
 func subtitle_pages(text: String, width: float, font_size: int) -> Array[String]:
 	var pages: Array[String] = []
-	var rest := text.strip_edges()
-	while not rest.is_empty():
-		var line := 1
-		var used := 0.0
-		var limit := 0
-		var punctuation := 0
-		for i in rest.length():
-			var ch := rest.substr(i, 1)
-			var advance := font.get_string_size(ch, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
-			if ch == "\n" or used + advance > width:
-				line += 1
-				used = 0.0
-			if line > 2:
+	var raw_paras := text.split("\n")
+	for raw_p in raw_paras:
+		var rest := raw_p.strip_edges()
+		if rest.is_empty():
+			continue
+		while not rest.is_empty():
+			var check := _can_fit_in_page(rest, width, font_size)
+			if check["ok"]:
+				pages.append("\n".join(check["lines"]))
 				break
-			used += advance if ch != "\n" else 0.0
-			limit = i + 1
-			if ch in "。！？；，、.!?;":
-				punctuation = limit
-		limit = maxi(limit, 1)
-		if limit < rest.length() and punctuation > limit / 2:
-			limit = punctuation
-		pages.append(rest.left(limit).strip_edges())
-		rest = rest.substr(limit).strip_edges()
+				
+			var n := rest.length()
+			var chosen_cut := -1
+			var chosen_lines: Array[String] = []
+			
+			for cut in range(n - 1, 3, -1):
+				var remainder_len := n - cut
+				if remainder_len > 0 and remainder_len <= 3:
+					continue
+				if cut < n and rest.substr(cut, 1) in CLOSE_PUNCT:
+					continue
+				var sub := rest.left(cut).strip_edges()
+				var sub_check := _can_fit_in_page(sub, width, font_size)
+				if sub_check["ok"]:
+					var prev_ch := sub.substr(sub.length() - 1, 1)
+					if prev_ch in "。！？；，、”’）":
+						chosen_cut = cut
+						chosen_lines = sub_check["lines"]
+						break
+					elif chosen_cut == -1:
+						chosen_cut = cut
+						chosen_lines = sub_check["lines"]
+						
+			if chosen_cut <= 0:
+				chosen_cut = maxi(4, int(n / 2))
+				var sub := rest.left(chosen_cut).strip_edges()
+				chosen_lines = [sub]
+				
+			pages.append("\n".join(chosen_lines))
+			rest = rest.substr(chosen_cut).strip_edges()
+			
+			# 避免尾页只剩下少字孤页
+			if not rest.is_empty() and rest.length() <= 4:
+				var last_p: String = pages.pop_back().replace("\n", "")
+				var combined := last_p + rest
+				var mid := int(combined.length() / 2)
+				var best_mid := mid
+				for i in range(maxi(4, mid - 10), mini(combined.length() - 4, mid + 10)):
+					if combined.substr(i, 1) in CLOSE_PUNCT:
+						continue
+					if combined.substr(i - 1, 1) in "。！？；，、”’）":
+						best_mid = i
+						break
+				var p1 := combined.left(best_mid).strip_edges()
+				var p2 := combined.substr(best_mid).strip_edges()
+				var c1 := _can_fit_in_page(p1, width, font_size)
+				var c2 := _can_fit_in_page(p2, width, font_size)
+				pages.append("\n".join(c1.get("lines", [p1])))
+				pages.append("\n".join(c2.get("lines", [p2])))
+				rest = ""
+				
 	return pages
 
 
@@ -610,36 +752,97 @@ func _read_subtitle(text: String, speech: bool) -> void:
 		_release_mouse()
 	_reading_label = bubble_text if speech else text_label
 	_reading_more = bubble_more if speech else more_label
+	var caret: Label = bubble_caret if speech else text_caret
 	var panel: PanelContainer = bubble if speech else text_panel
 	var width := minf(480, get_viewport().get_visible_rect().size.x * 0.6) if speech else minf(960, get_viewport().get_visible_rect().size.x * 0.76)
 	_reading_label.custom_minimum_size.x = width
 	panel.size = Vector2.ZERO
 	var pages := subtitle_pages(text, width - 12, 24)
 	for i in pages.size():
-		_reading_label.text = pages[i]
+		var page_str: String = pages[i]
+		_reading_label.text = page_str
 		_reading_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_reading_label.visible_ratio = 0.0
 		_reading_more.text = ("A / ×" if Controls.gamepad else "空格 / 点击") + " 继续" + ("  %d/%d" % [i + 1, pages.size()] if pages.size() > 1 else "")
 		_reading_more.modulate.a = 0.0
 		panel.show()
+		
 		if Settings.text_instant:
-			_reading_label.visible_ratio = 1.0
+			_reading_label.visible_characters = -1
+			caret.hide()
 			_reading_more.modulate.a = 1.0
-			_typing = null
+			_typing_active = false
 		else:
-			_typing = create_tween()
-			_typing.tween_property(_reading_label, "visible_ratio", 1.0, clampf(pages[i].length() * 0.03, 0.3, 2.5))
-			_typing.tween_property(_reading_more, "modulate:a", 1.0, 0.2)
+			_typing_active = true
+			_waiting = true
+			await _type_stream(page_str, _reading_label, caret, width - 12, 24, epoch)
+			if epoch != _text_epoch:
+				break
+			_reading_more.modulate.a = 1.0
+			
 		_waiting = true
 		var result: int = await _resolved
 		_waiting = false
-		if _typing:
-			_typing.kill()
+		caret.hide()
 		if result < 0 or epoch != _text_epoch:
 			break
+	caret.hide()
 	panel.hide()
 	if not in_conversation:
 		_restore_mouse()
+
+
+func _type_stream(page_str: String, label: RichTextLabel, caret: Label, width: float, font_size: int, epoch: int) -> void:
+	var total_chars := page_str.length()
+	label.visible_characters = 0
+	caret.show()
+	var lines := page_str.split("\n")
+	var l0 := lines[0].length()
+	var line_sep := 4
+	var line_h := font.get_height(font_size) + line_sep
+	
+	for k in range(1, total_chars + 1):
+		if not _typing_active or epoch != _text_epoch:
+			break
+		label.visible_characters = k
+		
+		# 光标位置计算
+		var line_idx := 0
+		var pref := ""
+		var line_str := lines[0]
+		if lines.size() == 1 or k <= l0:
+			line_idx = 0
+			line_str = lines[0]
+			pref = line_str.left(k)
+		else:
+			line_idx = 1
+			line_str = lines[1]
+			pref = line_str.left(maxi(0, k - l0 - 1))
+			
+		var line_w := _measure_text(line_str, font_size)
+		var pref_w := _measure_text(pref, font_size)
+		var start_x := (width - line_w) / 2.0 if label.horizontal_alignment == HORIZONTAL_ALIGNMENT_CENTER else 0.0
+		caret.position = Vector2(start_x + pref_w, line_idx * line_h + 2)
+		
+		# 击键音效与律动停顿
+		var ch := page_str.substr(k - 1, 1)
+		if ch != " " and ch != "\n":
+			_play_typewriter_click()
+			
+		var delay := 0.034 + randf_range(-0.005, 0.008)
+		if ch in "。！？":
+			delay += 0.18
+		elif ch in "；，、：":
+			delay += 0.08
+		elif ch in "——……":
+			delay += 0.10
+		elif ch == "\n":
+			delay += 0.08
+			
+		await get_tree().create_timer(delay).timeout
+		
+	label.visible_characters = -1
+	caret.hide()
+	_typing_active = false
 
 
 ## 返回所选序号；被 cancel() 打断时返回 -1
@@ -675,6 +878,11 @@ func choose(title: String, options: Array) -> int:
 
 func cancel() -> void:
 	_text_epoch += 1
+	_typing_active = false
+	if text_caret:
+		text_caret.hide()
+	if bubble_caret:
+		bubble_caret.hide()
 	_speaker_node = null
 	bubble.hide()
 	if inspector.active:
@@ -1035,6 +1243,17 @@ func _input(event: InputEvent) -> void:
 	if not (click or key):
 		return
 	get_viewport().set_input_as_handled()
+	if _typing_active:
+		_typing_active = false
+		if _reading_label:
+			_reading_label.visible_characters = -1
+		if text_caret:
+			text_caret.hide()
+		if bubble_caret:
+			bubble_caret.hide()
+		if _reading_more:
+			_reading_more.modulate.a = 1.0
+		return
 	if _typing and _typing.is_running():
 		_typing.kill()
 		_reading_label.visible_ratio = 1.0
@@ -1056,6 +1275,8 @@ func _restore_mouse() -> void:
 
 ## 图标只在自由行走时出现；回想没有可指的路（客房收尾、不在探索）时变灰。目标每半秒问一次
 func _update_keys(dt: float) -> void:
+	if not is_instance_valid(Director):
+		return
 	var pl: Node = Director.world.player if Director.world else null
 	var show: bool = _hud_on and not _cinematic and Director.conversation == "" and pl != null and pl.active and not pl.frozen and not text_panel.visible and not menus.visible and not board.visible \
 		and not interlude_layer.visible and not (footage and footage.active) and not Director.autoplay

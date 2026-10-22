@@ -43,6 +43,7 @@ var _bars: Array = []
 var _labels := {}
 var _subtitle := PanelContainer.new()
 var _subtitle_text := Label.new()
+var _stream_active := false
 var _ts_base := 0
 var _ts_has := false
 var _t0 := 0.0
@@ -190,14 +191,17 @@ func _build_subtitle(root: Control) -> void:
 	_subtitle.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_subtitle.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0, 0, 0, 0.92)
+	sb.bg_color = Color.TRANSPARENT
 	sb.content_margin_left = 14
 	sb.content_margin_right = 14
 	sb.content_margin_top = 4
 	sb.content_margin_bottom = 4
 	_subtitle.add_theme_stylebox_override("panel", sb)
 	_subtitle_text.add_theme_color_override("font_color", Color.WHITE)
-	_subtitle_text.add_theme_font_size_override("font_size", 20)
+	_subtitle_text.add_theme_font_size_override("font_size", 24)
+	_subtitle_text.add_theme_color_override("font_outline_color", Color.BLACK)
+	_subtitle_text.add_theme_constant_override("outline_size", 3)
+	_subtitle_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_subtitle_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_subtitle.add_child(_subtitle_text)
 	root.add_child(_subtitle)
@@ -236,6 +240,29 @@ func subtitle(text: String) -> void:
 		return
 	_subtitle_text.text = text
 	_subtitle.visible = true
+	if Settings.text_instant:
+		_subtitle_text.visible_characters = -1
+	else:
+		_stream_active = true
+		_subtitle_text.visible_characters = 0
+		var n := text.length()
+		for k in range(1, n + 1):
+			if not _stream_active or not _subtitle.visible:
+				break
+			_subtitle_text.visible_characters = k
+			var ch := text.substr(k - 1, 1)
+			if Director.ui:
+				Director.ui._play_typewriter_click()
+			var delay := 0.034
+			if ch in "。！？":
+				delay += 0.16
+			elif ch in "；，、：":
+				delay += 0.08
+			elif ch in "——……":
+				delay += 0.10
+			await get_tree().create_timer(delay).timeout
+		_subtitle_text.visible_characters = -1
+		_stream_active = false
 	await _advance
 	_subtitle.visible = false
 
@@ -282,6 +309,9 @@ func finish_handoff() -> void:
 
 func cancel() -> void:
 	playing = false
+	_stream_active = false
+	_subtitle_text.visible_characters = -1
+	_subtitle.visible = false
 	_advance.emit()
 
 
@@ -413,6 +443,13 @@ func _layout_archive() -> void:
 func _process(dt: float) -> void:
 	if not active:
 		return
+	var vp := get_viewport().get_visible_rect().size
+	var width := minf(960, vp.x * 0.76)
+	_subtitle.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_subtitle_text.custom_minimum_size.x = width
+	_subtitle.size.x = width + 28
+	var bar_height: float = Director.ui.bar_bottom.size.y if Director.ui else 0.0
+	_subtitle.position = Vector2((vp.x - _subtitle.size.x) / 2, vp.y - (bar_height + _subtitle.size.y) / 2 if bar_height > _subtitle.size.y + 12 else vp.y - _subtitle.size.y - 34)
 	if _archive.visible:
 		_layout_archive()
 	_garble_t += dt
@@ -477,11 +514,16 @@ func _apply_fx(name: String) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	Controls.note_event(event)
 	if not (_subtitle.visible or playing):
 		return
 	var click: bool = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
 	if click or event.is_action_pressed("ui_accept"):
 		get_viewport().set_input_as_handled()
+		if _stream_active:
+			_stream_active = false
+			_subtitle_text.visible_characters = -1
+			return
 		_advance.emit()
 
 

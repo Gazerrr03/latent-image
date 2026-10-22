@@ -22,6 +22,27 @@ const SHAFT_ROOMS := ["guest_room", "dining", "seance"]
 const SHAFT_TILT := 38.0
 const SHAFT_SHADER := "res://shaders/light_shaft.gdshader"
 
+## 预设黑夜的镜头：序章到达庄园至就寝、各章节回客房后的推演/打字/就寝分镜
+const NIGHT_SHOTS := {
+	# 序章到达庄园至就寝
+	"C0-04": true, "C0-05": true, "C0-06": true, "C0-07": true, "C0-08": true, "C0-09": true,
+	"C0-10": true, "C0-11": true, "C0-12": true, "C0-13": true, "C0-14": true, "C0-15": true,
+	"C0-16": true, "C0-17": true,
+	# 第 1 章回客房
+	"C1-07": true, "C1-08": true, "C1-09": true,
+	# 第 2 章回客房
+	"C2-05": true, "C2-06": true, "C2-07": true,
+	# 第 3 章回客房
+	"C3-06": true, "C3-07": true, "C3-08": true,
+	# 第 4 章回客房
+	"C4-05": true, "C4-06": true, "C4-07": true, "C4-08": true,
+	# 第 5 章夜幕降临、降灵会与回客房
+	"C5-13": true, "C5-04": true, "C5-05": true, "C5-06": true, "C5-07": true, "C5-14": true,
+	"C5-08": true, "C5-09": true, "C5-10": true, "C5-11": true, "C5-12": true,
+	# 第 6 章回客房
+	"C6-08": true, "C6-09": true, "C6-10": true,
+}
+
 static var _shaft_mat: ShaderMaterial
 static var _glow_mats := {}
 static var _rows: Array = []
@@ -37,10 +58,29 @@ static func reload() -> void:
 	_preset = ""
 
 
-## 当前章的天气 → 预设那一行
+## 是否处于黑夜模式（序章到达后、各章节收齐线索回客房时，以及客房推演/打字/就寝分镜）
+static func is_night() -> bool:
+	var sid := GameState.shot if is_instance_valid(GameState) else ""
+	if NIGHT_SHOTS.has(sid):
+		return true
+	if sid != "" and is_instance_valid(ContentDB) and ContentDB.shots.has(sid):
+		var row: Dictionary = ContentDB.shots[sid]
+		var acts: String = row.get("actions", "")
+		if acts.contains("station(") or acts.contains("link(") or acts.contains("annotate("):
+			return true
+	if is_instance_valid(Director) and Director.has_method("is_return_quest_ready") and Director.is_return_quest_ready():
+		return true
+	return false
+
+
+## 当前画面天光预设（黑夜模式或按日记天气的预设）
 static func current() -> Dictionary:
 	if _rows.is_empty():
 		reload()
+	if is_night():
+		for row in _rows:
+			if String(row.get("preset", "")) == "夜":
+				return row
 	var w := weather()
 	for row in _rows:
 		var m := String(row.get("match", ""))
