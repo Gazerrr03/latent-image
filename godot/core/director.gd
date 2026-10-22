@@ -290,6 +290,9 @@ func _corridor() -> void:
 
 
 func _collect(id: String) -> void:
+	# 空的 collect 是"这层没有线索"（corridor.csv 第 1、6 层），不是表里缺条目，不要报错
+	if id == "":
+		return
 	if not ContentDB.evidence.has(id):
 		push_warning("证据表中没有：" + id)
 		return
