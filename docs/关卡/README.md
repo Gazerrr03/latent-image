@@ -32,7 +32,7 @@
 | `ded_longexposure` | 长曝光 | 演绎 | 5 | P2（10-18 由回廊取代） | 待写 | — |
 | `ded_greenhouse` | 温室小路 | 演绎 | 6 | P1 | 待写 | — |
 | `ded_carriage` | 车厢 | 演绎 | 1 | P2 | 待写（复用 `train`） | — |
-| `ded_cabinet` | 药柜 | 演绎 | 1 | P2 | 待写 | — |
+| `ded_cabinet` | 药柜 | 演绎 | 1 | P2 | [ded_cabinet](ded_cabinet.md) | 待写（10-21 提案：复用暗房 `darkroom.tscn`，不新建场景） |
 | `ded_negatives` | 底片走廊 | 演绎 | 2 | P2 | 待写 | — |
 | `ded_marks` | 刻痕 | 演绎 | 2 | P2 | 待写 | — |
 | `ded_portrait` | 全家福 | 演绎 | 3 | P2 | 待写 | — |
