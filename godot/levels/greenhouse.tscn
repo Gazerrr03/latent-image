@@ -86,6 +86,7 @@ metadata/size = Vector3(0.18, 0.08, 0.22)
 
 [node name="夜拍照片" parent="接口/hs_gh_photos" instance=ExtResource("4_photo")]
 rotation_degrees = Vector3(-90, 0, -12)
+<<<<<<< HEAD
 
 [node name="hs_gh_trapdoor" type="Marker3D" parent="接口"]
 position = Vector3(22.2, 3.631, -8.6)
@@ -105,3 +106,5 @@ position = Vector3(0, 0.30, 0)
 radius = 0.42
 height = 0.55
 sides = 16
+=======
+>>>>>>> codex/snapshot-source-20261022-1

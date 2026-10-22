@@ -13,8 +13,12 @@ static func ensure_actions() -> void:
 	var keys := {"move_forward": [KEY_W, KEY_UP], "move_back": [KEY_S, KEY_DOWN],
 		"move_left": [KEY_A, KEY_LEFT], "move_right": [KEY_D, KEY_RIGHT],
 		"interact": [KEY_E], "notebook": [KEY_TAB], "recall": [KEY_Q], "pause": [KEY_ESCAPE],
+<<<<<<< HEAD
 		"sprint": [KEY_SHIFT], "cellar_raise": [KEY_F], "cellar_arm": [KEY_R],
 		"cellar_shutter": [], "cellar_focus_up": [], "cellar_focus_down": []}
+=======
+		"sprint": [KEY_SHIFT]}
+>>>>>>> codex/snapshot-source-20261022-1
 	for action in keys:
 		if not InputMap.has_action(action): InputMap.add_action(action, 0.2)
 		for code in keys[action]:
@@ -25,9 +29,13 @@ static func ensure_actions() -> void:
 		"ui_cancel": JOY_BUTTON_B, "notebook": JOY_BUTTON_Y, "recall": JOY_BUTTON_X,
 		"pause": JOY_BUTTON_START, "inspect_flip": JOY_BUTTON_RIGHT_STICK, "inspect_read": JOY_BUTTON_A, "inspect_reset": JOY_BUTTON_X,
 		"page_prev": JOY_BUTTON_LEFT_SHOULDER, "page_next": JOY_BUTTON_RIGHT_SHOULDER,
+<<<<<<< HEAD
 		"sprint": JOY_BUTTON_RIGHT_SHOULDER, "cellar_raise": JOY_BUTTON_LEFT_STICK,
 		"cellar_arm": JOY_BUTTON_DPAD_UP, "cellar_shutter": JOY_BUTTON_RIGHT_STICK,
 		"cellar_focus_up": JOY_BUTTON_DPAD_RIGHT, "cellar_focus_down": JOY_BUTTON_DPAD_LEFT}
+=======
+		"sprint": JOY_BUTTON_RIGHT_SHOULDER}
+>>>>>>> codex/snapshot-source-20261022-1
 	for action in buttons:
 		if not InputMap.has_action(action): InputMap.add_action(action, 0.2)
 		var ev := InputEventJoypadButton.new()

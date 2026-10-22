@@ -21,10 +21,13 @@ func run() -> void:
 	ui = director.ui
 	host = director.world
 	ui.menus.hide()
+<<<<<<< HEAD
 	if OS.get_cmdline_user_args().has("--corridor-reviews"):
 		var below: int = await corridor_reviews()
 		quit(0 if below == 0 else 1)
 		return
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 	if OS.get_cmdline_user_args().has("--new-assets"):
 		var below: int = await new_assets()
 		quit(0 if below == 0 else 1)
@@ -156,10 +159,13 @@ func new_assets() -> int:
 	var cases := [["guest_room","C0-11","hs_shoes"],["con_room","C2-04","hs_con_sweater"],["garden","C4-06","hs_vent_louver"],["guest_room","C5-08","hs_handwriting"]]
 	if OS.get_cmdline_user_args().has("--handwriting-only"):
 		cases = [["guest_room","C5-08","hs_handwriting"]]
+<<<<<<< HEAD
 	if OS.get_cmdline_user_args().has("--final-photo"):
 		cases = [["seance","C5-03","hs_se_photo"]]
 	if OS.get_cmdline_user_args().has("--ringbox"):
 		cases = [["con_room","C2-04","hs_con_ringbox"]]
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 	if OS.get_cmdline_user_args().has("--frame-latch"):
 		cases = [["archive","C2-05","hs_doorframe"],["greenhouse","C4-03","hs_gh_latch"]]
 	for item in cases:
@@ -170,9 +176,12 @@ func new_assets() -> int:
 		host.player.place(Vector3(feet[0],feet[1],feet[2]),0)
 		host.player.cam.look_at(host.hotspot_nodes[id].global_position)
 		ui.inspect_hotspot(id)
+<<<<<<< HEAD
 		if OS.get_cmdline_user_args().has("--final-photo"):
 			await create_timer(.3).timeout
 			ui.inspector.flip()
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 		if not await sample(room,id):bad+=1
 		ui.inspector.close(true)
 		if id in ["hs_handwriting","hs_doorframe","hs_gh_latch"]:
@@ -183,6 +192,7 @@ func new_assets() -> int:
 			ui.inspector.close(true);ui.board.close()
 	print("INSPECTION_PERF below_45=",bad)
 	return bad
+<<<<<<< HEAD
 
 
 func corridor_reviews() -> int:
@@ -198,3 +208,5 @@ func corridor_reviews() -> int:
 	ui.board.close()
 	print("CORRIDOR_REVIEW_PERF below_45=",bad)
 	return bad
+=======
+>>>>>>> codex/snapshot-source-20261022-1

@@ -77,6 +77,7 @@ func exit_layer(n: int):
 	key(); await settle()
 	check("第%d圈按E才换到下一圈"%(n+1),corridor.layer==n+1)
 func side_room(n: int):
+<<<<<<< HEAD
 	if n==3:
 		await go(Vector3(0,0,-7.35), "第四圈先到暗房门前")
 		await create_timer(5.2).timeout
@@ -85,6 +86,8 @@ func side_room(n: int):
 	await go(Vector3(-2,0,-8), "支线%d前先走第二段"%n)
 	await go(Vector3(0,0,-8), "支线%d前从主路折返"%n)
 	check("圈%d主路折返不算进入支线"%(n+1),not corridor._room_entered and not corridor._room_left and host.active_hotspots.has("hs_corridor_door_%d"%n))
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 	var z: float=-corridor.DOORS[n-1]
 	await go(Vector3(0,0,z),"支线%d门前"%n)
 	await aim("hs_corridor_door_%d"%n,"支线%d-推门"%n)
@@ -203,6 +206,7 @@ func run():
 		accept_text();await create_timer(.05).timeout
 		if state.shot=="C5-07":break
 	check("回廊正常结束回到C5-07",state.shot=="C5-07" and not corridor.running)
+<<<<<<< HEAD
 	check("C5-07没有残留回廊字幕",corridor.sub_label.text.is_empty() and not corridor.sub_label.is_visible_in_tree())
 	for i in 360:
 		if state.shot=="C5-14" and director._explore_group=="c5c":break
@@ -216,6 +220,8 @@ func run():
 	for i in 30:await physics_frame
 	Input.action_release("move_forward")
 	check("醒来后W键确实移动",host.player.global_position.distance_to(return_pos)>.1)
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 	check("四条回廊证据全部收入",["ev_knock_twice","ev_seance_voice","ev_sync_steps","ev_fourth_chair"].all(func(id):return state.evidence.has(id)))
 	check("三间支线观察都有记录",state.journal.filter(func(e):return e.kind=="observation").size()==(0 if skip_rooms else 3))
 	print("CORRIDOR_GAMEPLAY checks=",checks," failures=",failures)

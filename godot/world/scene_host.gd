@@ -890,7 +890,11 @@ func _hotspot(parent: Node3D, id: String, pos: Vector3, size: Vector3, from_mode
 	a.collision_layer = 1 << (HOTSPOT_LAYER - 1)
 	a.collision_mask = 0
 	a.set_meta("hotspot_id", id)
+<<<<<<< HEAD
 	for key in ["interaction_normal", "interaction_min_dot", "interaction_reach", "inspection_focus", "inspect_fov", "inspect_light"]:
+=======
+	for key in ["interaction_normal", "interaction_min_dot", "inspection_focus", "inspect_fov", "inspect_light"]:
+>>>>>>> codex/snapshot-source-20261022-1
 		if parent.has_meta(key):
 			a.set_meta(key, parent.get_meta(key))
 	var cs := CollisionShape3D.new()

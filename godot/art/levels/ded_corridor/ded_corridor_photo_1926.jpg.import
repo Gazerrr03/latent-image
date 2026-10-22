@@ -9,7 +9,11 @@ metadata={
 "vram_texture": true
 }
 generator_parameters={
+<<<<<<< HEAD
 "md5": "7f7326e04ab021e8db1f37bee235d83e"
+=======
+"md5": "4fe3f3db2eb51aece66281c6ae8c9078"
+>>>>>>> codex/snapshot-source-20261022-1
 }
 
 [deps]

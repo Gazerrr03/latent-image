@@ -23,7 +23,11 @@ ev_draw_train,0,drawing,0.32,0.24,一列火车。窗外的树，一棵一棵，�
 ev_iris_portrait,0,drawing,0.32,0.24,全家福：爸爸、妈妈、吉迪恩、夫人，还有她自己。所有人手拉手，连成一个身体。每个人都长着同一张脸。,,story/hotspots.csv:hs_draw_family; assets/2d/inspection/prompts/iris_family-v1.txt,assets/2d/inspection/generated/iris_family-v1.png,,,,,
 ev_draw_cloth,0,drawing,0.32,0.24,暗房的外墙，通风口上堵着一块黑布，旁边一只没有身体的手。,,story/hotspots.csv:hs_draw_wall; assets/2d/inspection/prompts/iris_vent-v1.txt,assets/2d/inspection/generated/iris_vent-v1.png,,,,,
 ev_night_photo,0,photo,0.10,0.15,一个模糊的人影走向暗房的侧门，看不见脸。,星期四，十一点四十分。,story/evidence.csv:ev_night_photo; assets/2d/T-043-回廊/prompts/night_photo-v1.txt,assets/2d/T-043-回廊/drafts/night_photo-v1.png,,,,,
+<<<<<<< HEAD
 ev_photo_back,0,photo,.10,.07,1926 年合影的小样。面纱女人站在队伍边上，主位空着。,#{容器号} / 12  SYNC,story/hotspots.csv:hs_se_photo; docs/02:第3章演绎合影; user-authorized rear-view photo redesign,godot/art/levels/manor/textures/photo_1926.jpg,,1,,,
+=======
+ev_photo_back,0,photo,.10,.07,1926 年合影的小样。面纱女人站在队伍边上，主位空着。,#{容器号} / 12  SYNC,story/hotspots.csv:hs_se_photo; docs/02:第3章演绎合影; existing photo_1926 candidate,godot/art/levels/manor/textures/photo_1926.jpg,,1,,,
+>>>>>>> codex/snapshot-source-20261022-1
 prop_photo_1926,0,photo,.26,.19,1926 年的庄园合影。戴面纱的女人站在队伍边上，主位空着。,08,docs/02-剧情设计.md；用户授权年度序号08,godot/art/levels/manor/textures/photo_1926.jpg,,,,,
 ev_receipt,0,receipt,.18,.25,药房签收单\n\n显影液　2 瓶\n停显液　1 瓶\n定影液　1 瓶\n专用调色液　1 瓶\n\n签收人：吉迪恩·沃登,,story/evidence.csv; docs/02; 2026-10-21 user authorized item/count details,,,,Receipt\n\nDeveloper — 2 bottles\nStop bath — 1 bottle\nFixer — 1 bottle\nToning solution — 1 bottle\n\nGideon Warden,,detached_t
 prop_grey_notebook,0,journal,.15,.22,我收到的每一条线索都记在这里，随时可以翻开来看。,,story/hotspots.csv:hs_notebook; literal English translation,,,,Every clue I receive goes into this notebook.\n\nI can return to it at any time.,,detached_t

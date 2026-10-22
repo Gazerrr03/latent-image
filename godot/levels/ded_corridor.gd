@@ -430,7 +430,10 @@ func _enter(i: int) -> void:
 	_step_pat = String(r.get("steps", "")).split(",", true) if String(r.get("steps", "")) != "" else PackedStringArray()
 	_drums_on = String(r.get("drums", "")) == "是"
 	_step_cell = 0
+<<<<<<< HEAD
 	sub_label.show()
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 	_parse_beats(String(r.get("beats", "")))
 	_stage_layer(i, r)
 	if _amb.stream and not _amb.playing:
@@ -541,8 +544,12 @@ func _update_room() -> void:
 	if layer not in [1, 2, 3]:
 		return
 	var p := player.global_position - global_position
+<<<<<<< HEAD
 	# 只在穿过本圈支线门洞时记为进房；第二段主走廊也在 x < -1.15。
 	if p.x < -1.15 and absf(p.z + DOORS[layer - 1]) < 0.5 and p.y < 0.4:
+=======
+	if p.x < -1.15:
+>>>>>>> codex/snapshot-source-20261022-1
 		_room_entered = true
 	elif _room_entered and p.x > -0.4 and p.z < -0.6 and p.z > -7.2 and p.y < 0.4 and not _room_left:
 		_room_left = true

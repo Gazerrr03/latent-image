@@ -26,7 +26,10 @@ static func pick(camera: Camera3D, candidates: Array, previous: Node = null, exc
 		var container_leaf: Node3D = body.get_meta("container_leaf") if body.has_meta("container_leaf") else null
 		if is_instance_valid(container_leaf) and absf(angle_difference(container_leaf.rotation.y, container_leaf.get_meta("closed_yaw", container_leaf.rotation.y))) < 0.6:
 			continue
+<<<<<<< HEAD
 		var reach := clampf(float(body.get_meta("interaction_reach", REACH)), REACH, 2.7)
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 		for child in body.get_children():
 			if not child is CollisionShape3D or child.disabled or child.shape == null:
 				continue

@@ -455,9 +455,14 @@ func _scan_level(id: String) -> Dictionary:
 	for row in DB.load_table(VISUAL + "inspections.csv"):
 		if row.get("mesh", "") != "" and d["names"].has(row["mesh"]):
 			d["hs"][row["hotspot"]] = true
+<<<<<<< HEAD
 			for material_name in row.get("part_material", "").split("|", false):
 				if not material_name in part_materials.get(row["mesh"], []):
 					err("物品检视表", row["hotspot"], "原网格中不存在该物件材质面：" + material_name)
+=======
+			if row.get("part_material", "") != "" and not row["part_material"] in part_materials.get(row["mesh"], []):
+				err("物品检视表", row["hotspot"], "原网格中不存在该物件材质面：" + row["part_material"])
+>>>>>>> codex/snapshot-source-20261022-1
 			if row.get("layer", "") != "":
 				d["names"]["层·" + row["layer"]] = true
 	root.free()

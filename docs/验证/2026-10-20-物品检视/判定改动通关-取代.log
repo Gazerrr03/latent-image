@@ -328,9 +328,15 @@ Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 定睛看去，显影盘赫然是一块泛着冷光的屏幕。
 ▶ EP-02
   │ 视野急速后拉。并排排列着十二块相同的冷光屏幕。每一块屏幕里，都定格着一个站在镜前的格雷：有的尚在暗房，有的困在客房，有的刚从颠簸的列车步入雨中。
+<<<<<<< HEAD
 其中一块屏幕右下角亮着幽微的荧光编号：12 / 12。
 ▶ EP-03
   │ 人格重建 · 容器 12 / 12
+=======
+其中一块屏幕右下角亮着幽微的荧光编号：08 / 12。
+▶ EP-03
+  │ 人格重建 · 容器 08 / 12
+>>>>>>> codex/snapshot-source-20261022-1
 保留人格：解释者（格雷）
 记录者人格：已终止
 本轮：记录者的底片已冲洗。解释者已看见。
@@ -341,9 +347,14 @@ Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 “这一次，他自己冲洗了那张底片。”
 
 ── AUTOPLAY 结束 ──
+<<<<<<< HEAD
 最后镜号 EP-04 ｜ 推论 ["d1", "d2", "d3", "d4", "d5", "d6"] ｜ 未成立 [] ｜ 讲法 取代 ｜ 容器 12 ｜ 证据 52 件
 结果：通过
 WARNING: 384 ObjectDB instances were leaked at exit (run with `--verbose` for details).
    at: cleanup (core/object/object.cpp:2536)
 ERROR: 86 resources still in use at exit (run with --verbose for details).
    at: clear (core/io/resource.cpp:822)
+=======
+最后镜号 EP-04 ｜ 推论 ["d1", "d2", "d3", "d4", "d5", "d6"] ｜ 未成立 [] ｜ 讲法 取代 ｜ 容器 08 ｜ 证据 52 件
+结果：通过
+>>>>>>> codex/snapshot-source-20261022-1

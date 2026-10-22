@@ -12,7 +12,11 @@ static func part(source: MeshInstance3D, material_name: String, asset := "", nat
 	for index in source.mesh.get_surface_count():
 		var material := source.get_active_material(index)
 		var original := source.mesh.surface_get_material(index)
+<<<<<<< HEAD
 		var matches := original != null and original.resource_name in material_name.split("|", false)
+=======
+		var matches := original != null and original.resource_name == material_name
+>>>>>>> codex/snapshot-source-20261022-1
 		var output := selected if matches else remainder
 		output.add_surface_from_arrays(source.mesh.surface_get_primitive_type(index), source.mesh.surface_get_arrays(index))
 		output.surface_set_material(output.get_surface_count() - 1, material)

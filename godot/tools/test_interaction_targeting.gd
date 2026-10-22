@@ -43,6 +43,7 @@ func run() -> void:
 	check("明显移开立即失效", Targeting.pick(camera, [paper], paper), null)
 	paper.position = Vector3(0, 0, -2.6)
 	check("超距立即失效", Targeting.pick(camera, [paper], paper), null)
+<<<<<<< HEAD
 	paper.set_meta("interaction_reach", 2.65)
 	check("指定物件允许略远的可见表面", Targeting.pick(camera, [paper]), paper)
 	paper.position.z = -2.75
@@ -50,6 +51,8 @@ func run() -> void:
 	paper.set_meta("interaction_reach", 99.0)
 	check("配置距离有上限", Targeting.pick(camera, [paper], paper), null)
 	paper.remove_meta("interaction_reach")
+=======
+>>>>>>> codex/snapshot-source-20261022-1
 	paper.position = Vector3(0, 0, 1)
 	check("镜头后方不可选", Targeting.pick(camera, [paper]), null)
 	paper.position = Vector3(0, 0, -1.5)

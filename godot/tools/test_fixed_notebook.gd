@@ -22,7 +22,11 @@ func run():
 	var state=root.get_node("GameState");state.reset()
 	var director=root.get_node("Director");var host=director.world;var ui=director.ui;var viewer=ui.inspector
 	ui.menus.hide();ui.set_cinematic(false);ui.eyelids_set(1.0)
+<<<<<<< HEAD
 	var assets={"ev_tray_crystal":"tray_crystals.glb","ev_bottle_moved":"cabinet_clue.glb","ev_vent_cloth":"garden_vent_review.glb","ev_vent_print":"garden_print_review.glb","ev_doorframe_l":"doorframe_review.glb","ev_latch_thread":"latch_review.tscn","ev_corridor_hook":"corridor_hook_review.glb","ev_corridor_circle":"corridor_circle_review.glb","ev_corridor_window":"corridor_window_review.glb"}
+=======
+	var assets={"ev_tray_crystal":"tray_crystals.glb","ev_bottle_moved":"cabinet_clue.glb","ev_vent_cloth":"garden_vent_review.glb","ev_vent_print":"garden_print_review.glb","ev_doorframe_l":"doorframe_review.glb","ev_latch_thread":"latch_review.tscn"}
+>>>>>>> codex/snapshot-source-20261022-1
 	for id in assets:state.add_evidence(id)
 	host.show_scene("guest_room");host.set_mode("walk","")
 	var before=host.player.cam.global_transform

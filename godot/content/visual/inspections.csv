@@ -24,14 +24,22 @@ hs_ledger,portable,,,独立纸张；原文正反面见 inspection_pages.csv,ev_l
 hs_doorframe,fixed,二楼·储物间门框上的身高刻痕（L_）,,原储物间门框八道高度刻痕与L；笔记本保留真实门套与墙面,,,"0,0,0",,,,,,,,,,res://art/props/inspection/doorframe_review.glb,"13.405,4.675,-7.76",.78,"0,0,0",
 hs_clipping,portable,,,独立纸张；原文正反面见 inspection_pages.csv,ev_clipping,res://art/props/inspection/ev_clipping.tscn,"0,0,0",,,,,,,,,,,,,,
 hs_manual,portable,,,独立纸张；原文正反面见 inspection_pages.csv,ev_manual_page,res://art/props/inspection/ev_manual_page.tscn,"0,0,0",,,,,,,,,,,,,,
+<<<<<<< HEAD
 hs_photo_back,portable,照片档案室·书桌上的底片簿、放大镜、合影与手册,,原位双面合影；背面手写08为年度序号；正面采用用户授权重新设计的四人侧后方合影,prop_photo_1926,res://art/props/inspection/prop_photo_1926.tscn,"0,0,0",,,,,manor_室内_照片背面,1,1,"90,0,14",,,,,,
+=======
+hs_photo_back,portable,照片档案室·书桌上的底片簿、放大镜、合影与手册,,原书桌合影单独拆面；背面手写08是年度序号；正面合影仍待最终美术替换,prop_photo_1926,res://art/props/inspection/prop_photo_1926.tscn,"0,0,0",,,,,manor_室内_照片背面,1,1,"90,0,14",,,,,,
+>>>>>>> codex/snapshot-source-20261022-1
 hs_amb_notes,portable,,,独立纸张；原文正反面见 inspection_pages.csv,ev_amb_notes,res://art/props/inspection/ev_amb_notes.tscn,"0,0,0",,,,,,,,,,,,,,
 hs_amb_carbon,portable,,,独立纸张；原文正反面见 inspection_pages.csv,ev_carbon,res://art/props/inspection/ev_carbon.tscn,"0,0,0",,,,,,,,,,,,,,
 hs_amb_clippings,fixed,,,现场检视；便携物品拆分资源与原文页待核对,,,"0,0,0",,,,,,,,,,,,,,
 hs_amb_photo,fixed,,,现场检视；便携物品拆分资源与原文页待核对,,,"0,0,0",,,,,,,,,,,,,,
 hs_con_ledger,portable,,,独立纸张；原文正反面见 inspection_pages.csv,ev_con_ledger,res://art/props/inspection/ev_con_ledger.tscn,"0,0,0",,,,,,,,,,,,,,
 hs_con_sweater,portable,女主人的卧室·衣柜（底层叠着毛衣 hs_con_sweater）,,原材质面原位拆分；独立毛衣含圆领、折袖、罗纹与接缝；按原物件包围盒回接,,res://art/props/inspection/ev_sweater.glb,"35,0,0",,,,,manor_室内_深色毛衣,,,,,,,,,
+<<<<<<< HEAD
 hs_con_ringbox,portable,女主人的卧室·梳妆台上的账簿与空戒指盒（hs_con_ledger、hs_con_ringbox）,,原丝绒盒与白缎内衬两材质原位拆分；原几何、梳妆台其他物件与实体碰撞不变,,,"25,0,0",,,,,manor_室内_藏青丝绒|manor_室内_白缎,,,,,,,,,
+=======
+hs_con_ringbox,fixed,,,现场检视；便携物品拆分资源与原文页待核对,,,"0,0,0",,,,,,,,,,,,,,
+>>>>>>> codex/snapshot-source-20261022-1
 hs_draw_path,portable,艾瑞斯的房间·画（背景·乱线一）,,原画位原尺寸；五张线索画的图像与正反面独立资源,ev_draw_path,res://art/props/inspection/ev_draw_path.tscn,"0,0,0",res://art/props/inspection/ev_draw_path_0_front.png,iris_scribble_1,线索画·玻璃房子,,,,,,,,,,,
 hs_draw_wall,portable,艾瑞斯的房间·画·黑布,,原画位原尺寸；五张线索画的图像与正反面独立资源,ev_draw_cloth,res://art/props/inspection/ev_draw_cloth.tscn,"0,0,0",res://art/props/inspection/ev_draw_cloth_0_front.png,iris_black_cloth,,,,,,,,,,,,
 hs_draw_family,portable,艾瑞斯的房间·画·全家福,,原画位原尺寸；五张线索画的图像与正反面独立资源,ev_iris_portrait,res://art/props/inspection/ev_iris_portrait.tscn,"0,0,0",res://art/props/inspection/ev_iris_portrait_0_front.png,iris_family,,,,,,,,,,,,
@@ -51,6 +59,7 @@ hs_chair4,fixed,,,现场检视；便携物品拆分资源与原文页待核对,,
 hs_corridor_door_1,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
 hs_corridor_door_2,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
 hs_corridor_door_3,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
+<<<<<<< HEAD
 hs_room_1,fixed,,,现场保留回廊原位观察；笔记本裁切原关卡网格复查，保持真实空间关系,,,,,,,,,,,,,res://art/props/inspection/corridor_hook_review.glb,"-3.9,.98,-6.02",2.25,"25,-75,0",
 hs_room_2,fixed,,,现场保留回廊原位观察；笔记本裁切原关卡网格复查，保持真实空间关系,,,,,,,,,,,,,res://art/props/inspection/corridor_circle_review.glb,"-2.6,.02,-3.4",2.25,"65,0,0",
 hs_room_3,fixed,,,现场保留回廊原位观察；笔记本裁切原关卡网格复查，保持真实空间关系,,,,,,,,,,,,,res://art/props/inspection/corridor_window_review.glb,"0,2.42,.57",1.15,"0,0,0",
@@ -67,3 +76,9 @@ hs_cellar_clip,fixed,Newspaper bundle 0,,,,,,,,,,,,,,,,,,,
 hs_cellar_holder,fixed,Film holder 0,,,,,,,,,,,,,,,,,,,
 hs_cellar_cabinet,fixed,Film cabinet,,,,,,,,,,,,,,,,,,,
 hs_cellar_plate,fixed,Table glass plate 0,,,,,,,,,,,,,,,,,,,
+=======
+hs_room_1,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
+hs_room_2,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
+hs_room_3,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
+hs_corridor_figure,fixed,,,回廊玩法入口；由关卡处理E，不打开物品检视器,,,,,,,,,,,,,,,,,
+>>>>>>> codex/snapshot-source-20261022-1
