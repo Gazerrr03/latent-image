@@ -108,6 +108,7 @@
 		{
 			"mesh":10,
 			"name":"\u6e29\u5ba4\u00b7\u76c6\u683d\u5de5\u4f5c\u53f0-col",
+			"rotation":[0,1,0,0],
 			"translation":[
 				20.350000381469727,
 				3.63100004196167,

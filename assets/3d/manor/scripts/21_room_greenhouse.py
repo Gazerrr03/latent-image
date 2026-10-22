@@ -191,7 +191,7 @@ for k in range(5):
     if k < 4: potted(20.08 + k * 0.32, 13.07, FS + 0.762, 0.07, 0.13, 'herb', 0.8)
 for k in range(4): fern_clump(19.95 + k * 0.4, 12.95, FS, 0.42, n=9)
 # 西南角：盆栽工作台（靠南矮墙），台上一盆白花；木箱靠在工作台东头
-build(potting_bench(), '温室·盆栽工作台-col', SP, (20.35, 8.28, FS), 0)
+build(potting_bench(), '温室·盆栽工作台-col', SP, (20.35, 8.28, FS), 180)
 potted(20.62, 8.45, FS + 0.9, 0.09, 0.17, 'white')                                  # 台面上空着的那块（小铲与叉子后面）
 build(crate(2), '温室·木箱', SP, (21.55, 8.9, FS), 0)
 pp = Prop()
