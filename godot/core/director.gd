@@ -513,6 +513,8 @@ func is_return_quest_ready() -> bool:
 
 
 func _explore_checklist(qs: Array) -> void:
+	# 任务完成不一定发出 changed；返程提示出现时立即刷新，避免等跨门才入夜。
+	world._on_state_changed()
 	var items: Array = []
 	# 线索计数：这一组任务能拿到的线索，已经收进笔记本的有几条
 	var all: Array = group_evidence(qs[0].get("group", "")) if not qs.is_empty() else []
