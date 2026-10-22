@@ -1,8 +1,6 @@
 Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
 
-内容检查：未通过（2 个错误，10 个提醒）
-  错误  [预设表] n7_telling：出现禁用词“容器”
-  错误  [预设表] n7_telling：出现禁用词“人格”
+内容检查：通过（0 个错误，10 个提醒）
   提醒  [关卡场景] hall：这个房间放了 3 个人物；同一画面里只应有一个人
   提醒  [房间布局表] hall：这个房间已有关卡场景 levels/hall.tscn，布局表里的 7 行不再生效
   提醒  [房间布局表] darkroom：这个房间已有关卡场景 levels/darkroom.tscn，布局表里的 21 行不再生效

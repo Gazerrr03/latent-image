@@ -1,0 +1,30 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+==================================================
+== 验证：字幕排版优化（避孤行/孤字）与打字机流式输出 ==
+==================================================
+
+[测试 1] 游戏全量文本排版查验（lines, shots, hotspots）...
+全量排版查验完成：待测文本 127 条
+  孤页数: 0
+  孤行数: 0
+  避头尾违规: 0
+PASS 全量文本排版查验完美通过（0 孤页、0 孤行、0 避头尾违规）
+
+[测试 2] 打字机流式输出与 UI 交互查验...
+  吐字中状态：_typing_active=true, visible_characters=2, caret_visible=true, caret_pos=(54.0, 2.0)
+PASS 打字机流式进行中：字数步进推进，击锤光标实时跟进
+  按键跳过后状态：_typing_active=false, visible_characters=-1, caret_visible=false
+PASS 跳过机制生效：立即显现整页文本，光标自然收起，等待翻页
+
+[测试 3] 档案播放器（FootagePlayer）打字机流式查验...
+  档案字幕流式状态：_stream_active=true, visible_characters=4
+PASS 档案字幕打字机流式生效
+
+==================================================
+== 测试总结：全部用例执行完成，总失败数: 0 ==
+==================================================
+WARNING: 10 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

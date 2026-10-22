@@ -104,8 +104,9 @@ C6-09,C6,*,guest_room,,walk,typewriter,,,objective(打字机：把今天的事�
 C6-10,C6,*,guest_room,typewriter_close,,,"窗外的疾雨渐渐平息，唯有死寂在客房中漫延。这一夜，我无法合眼。死者已经长眠，而活下来的那个人，必须在拂晓开庭前写下交代。",,objective();wait(2),,留在打字机前未眠，直接衔接黎明前C7-01
 C7-01,C7,*,guest_room,typewriter_close,,-storm_window;heartbeat_low,"黎明未至，铅灰色的微光刺穿浓云。我独坐在便携打字机前，指尖悬在冰冷的金属键帽上。面对这叠泛黄的信纸，我必须敲下最后的自白。",,leak(4),,
 C7-02,C7,*,guest_room,typewriter_close,,typewriter,,,telling(n7_telling),,
-C7-03,C7,*,guest_room,mirror,,-heartbeat_low;-storm_window;-red_hum,"我缓缓起身，走向客房那面泛黄的水银穿衣镜。镜面上经年累月的氧化暗斑与厚重包浆仿佛被无形的力量瞬间剥离退散，底层的水银如退潮般恢复了冷冽与澄澈——镜中不再是艾瑞斯画里那团模糊焦黑的无面阴影，水银镜底，终于第一次清晰映出了一张轮廓冷峻的面庞。左手虎口一道一模一样的新月旧疤。那一双直视真理的双眼，正死死注视着我。",,"music(关闭,0);reveal(镜中的格雷);wait(2)",,
-C7-04,C7,*,guest_room,mirror,,shutter_lock,已定影。,,reveal(镜中的格雷);wait(1.5),,
+C7-03,C7,*,guest_room,mirror,,-heartbeat_low;-storm_window;-red_hum,我缓缓起身，走向客房那面泛黄的水银穿衣镜。,,"music(关闭,0);reveal(镜中的格雷);wait(2)",,
+C7-04,C7,*,guest_room,mirror,,shutter_lock,"镜面上经年累月的氧化暗斑与厚重包浆仿佛被无形的力量瞬间剥离退散，底层的水银如退潮般恢复了冷冽与澄澈——镜中不再是艾瑞斯画里那团模糊焦黑的无面阴影，水银镜底，终于第一次清晰映出了一张轮廓冷峻的面庞。左手虎口一道一模一样的新月旧疤。那一双直视真理的双眼，正死死注视着我。
+已定影。",,reveal(镜中的格雷);wait(1.5),,
 C7-05,C7,*,white_hall,white_mid,,room_tone_white,"镜面背后的房间并非客房。四壁是未上过色、毫无温度的惨白灰模。
 门外是一条笔直而空旷的白色走廊。两侧排列着一间又一间客房，分毫不差，宛如无穷的镜像。",,,,白盒关卡（揭示 L1，灰盒）
 C7-06,C7,*,white_hall,,walk,room_tone_white,,,"objective(走廊：每一间客房里都有什么？);inspect(hs_wh_train,hs_wh_darkroom,hs_wh_desk)",,
