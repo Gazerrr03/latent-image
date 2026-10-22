@@ -156,7 +156,7 @@ func _capture(shot_id: String) -> void:
 		Director.ui.footage.play_clip(_arg("--play="))
 	if _arg("--at=") != "":
 		# 截图自查：自由探索时把玩家放到某处、朝某个方向看（--at=x,y,z,朝向度[,俯仰度]）
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(float(_arg("--at-after=")) if _arg("--at-after=") != "" else 1.5).timeout
 		var f := _arg("--at=").split(",")
 		var pl: Node = Director.world.player
 		pl.place(Vector3(float(f[0]), float(f[1]), float(f[2])), float(f[3]) if f.size() > 3 else 0.0)
@@ -169,6 +169,14 @@ func _capture(shot_id: String) -> void:
 		for b in get_tree().get_nodes_in_group("light_switch"):
 			if String(b.get_meta("switch_name", "")) == _arg("--switch="):
 				Director.world.toggle_switch(b)
+	if _arg("--press=") != "":
+		# 截图自查：对着某个目标按了 E（客房的一站 hs_bed、任务目标 talk:…），之后再等 --wait 秒
+		await get_tree().create_timer(float(_arg("--press-after=")) if _arg("--press-after=") != "" else 1.5).timeout
+		Director.inspected.emit(_arg("--press="))
+	if OS.get_cmdline_user_args().has("--recall"):
+		# 截图自查：按一下 Q（回想），地面浮现指引
+		await get_tree().create_timer(float(_arg("--recall-after=")) if _arg("--recall-after=") != "" else 1.0).timeout
+		Director.ui.recall()
 	await get_tree().create_timer(float(_arg("--wait=")) if _arg("--wait=") != "" else 2.5).timeout
 	if OS.get_cmdline_user_args().has("--clean"):
 		# 不显示界面与滤镜，用来截取素材

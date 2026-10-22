@@ -26,6 +26,7 @@ var scenes := {}
 ## 房间布局表（过渡用，只给还没有关卡场景的房间搭灰盒）：room -> 行数组
 var layout := {}
 var room_states := {}          # 房间状态表：房间 → [层、类型、起止镜号]
+var door_lines := {}           # 门的说法：门扇名 → [起止镜号、这句话]（推打不开的门时侦探说的话）
 ## 人物表，按表格顺序
 var characters: Array = []
 ## 音效表：id -> 行
@@ -58,6 +59,7 @@ func reload() -> void:
 	scenes = index_by(load_table(SPACE + "rooms.csv"), "id")
 	layout = group_by(load_table(SPACE + "layout.csv"), "room")
 	room_states = group_by(load_table(SPACE + "room_states.csv"), "room")
+	door_lines = group_by(load_table(STORY + "doors.csv"), "door")
 	characters = load_table(STORY + "characters.csv")
 	sounds = index_by(load_table(AUDIO + "sounds.csv"), "id")
 	music = index_by(load_table(AUDIO + "music.csv"), "id")
@@ -77,6 +79,16 @@ func room_layers(room: String, shot_id: String) -> Array:
 		if (a == "" or _shot_index(a) <= idx) and (b == "" or idx < _shot_index(b)) and not out.has(r["layer"]):
 			out.append(r["layer"])
 	return out
+
+
+## 推这扇打不开的门时侦探说的话（门的说法表 doors.csv）；这一镜没有就是空的
+func door_line(door: String, shot_id: String) -> String:
+	var idx := _shot_index(shot_id)
+	for r in door_lines.get(door, []):
+		var a: String = r.get("from", ""); var b: String = r.get("until", "")
+		if (a == "" or _shot_index(a) <= idx) and (b == "" or idx < _shot_index(b)):
+			return String(r.get("text", ""))
+	return ""
 
 
 func _shot_index(shot_id: String) -> int:

@@ -87,6 +87,8 @@ mat('linen', '室内_亚麻', (0.80, 0.77, 0.70), 'linen_albedo', rough=0.9, two
 mat('knit', '室内_芥末黄针织', (0.56, 0.38, 0.11), 'knit_albedo', 'knit_normal', 0.8, 0.95, two_sided=True)
 mat('damask', '室内_提花窗帘', (0.62, 0.55, 0.42), 'damask_albedo', rough=0.85, two_sided=True)
 mat('rug', '室内_波斯地毯', (0.3, 0.12, 0.1), 'rug_persian', rough=0.95, decal=True)
+mat('rug_corridor', '室内_走廊长地毯', (0.3, 0.12, 0.1), 'rug_corridor', rough=0.95, decal=True)
+mat('rug_corridor_2f', '室内_走廊长地毯', (0.3, 0.12, 0.1), 'rug_corridor', rough=0.95, decal=True)
 mat('rug_edge', '室内_地毯边', (0.30, 0.10, 0.08), rough=0.95)
 mat('paint1', '室内_油画一', (0.3, 0.3, 0.2), 'painting_1', rough=0.4, decal=True, two_sided=True)
 mat('paint2', '室内_油画二', (0.3, 0.3, 0.2), 'painting_2', rough=0.4, decal=True, two_sided=True)

@@ -36,6 +36,8 @@ $G --path godot --resolution 1280x720 -- --capture=C2-05 --wait=4 --out=/tmp/x.p
 # 可加 --at=x,y,z,朝向[,俯仰]：自由探索时把玩家放到某处再截图（看描边、交谈提示）
 # 4. 大地图体检（改了关卡场景、任务表后跑）：从客房能不能走到每个房间和这一组的每个任务目标（退出码 0 = 都走得到）
 $G --headless --path godot -- --probe-map --group=c1
+# 4b. 跨门体检（改了天光、房间环境、灯光后跑，会弹出窗口）：每道门两边的画面设置一样不一样（退出码 0 = 都不跳）
+$G --path godot --resolution 1280x720 --script res://tools/probe_doorway.gd -- --capture=C0-11 --wait=1000
 # 5. 关卡碰撞体检（改了关卡场景或模型后跑）：用玩家本身从出生点向各方向走，看会不会掉下去
 $G --headless --path godot --script res://tools/probe_walk.gd -- --level=hall --dirs=8
 ```

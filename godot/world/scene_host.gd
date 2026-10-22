@@ -251,6 +251,7 @@ func _enter_map() -> void:
 			_room_box[rid] = _room_box[rid].merge(AABB(sp[0] - Vector3(1.5, 0, 1.5), Vector3(3, 2.5, 3)))
 	_add_practicals()
 	_add_shafts()
+	_add_room_probes()
 	# 自查：每个房间的出生点要落在这个房间的范围里，否则“走进房间”的任务永远触发不了
 	for rid in _room_spawn:
 		if rid != MAP_ID and room_at(_room_spawn[rid][0]) != rid:
@@ -309,6 +310,71 @@ func _add_practicals() -> void:
 		if not _room_lights.has(rid):
 			_room_lights[rid] = []
 		_room_lights[rid].append(l)
+
+
+## 灯的影子按离镜头的远近淡出（8 米起、4 米淡完），不再按“在不在这个房间”开关：跨门时影子不会突然出现、消失
+static func _fade_lamp_shadows(l: Light3D) -> void:
+	l.distance_fade_enabled = true
+	l.distance_fade_begin = 40.0
+	l.distance_fade_shadow = 8.0
+	l.distance_fade_length = 4.0
+
+
+## 房间的局部补光（docs/06 第 9 节）：引擎的环境光是全局的、墙挡不住，以前每个房间换一套环境来调明暗，跨门就跳。
+## 实测（10-20）：只用共用环境，客房、门厅、餐厅、客厅的亮度和原来差不到几个百分点（屋里亮不亮主要看灯），
+## 只有原来特意压暗的房间（房间机位环境的环境光 ÷ 共用值 0.5 小于 0.35，目前只有暗房 0.1）会变亮。
+## 所以只给这种房间按自己的范围自动放一个 ReflectionProbe 压暗环境光；盒子比房间大一圈（过渡带落在墙里和门口），
+## 门口 0.6 米内和外面平滑过渡。
+## 房间环境开了体积雾的（暗房），换成只在这个房间里的 FogVolume。只在载入时拍一次，换天光时补拍。
+const OUTDOOR_LOOK := ["garden", "greenhouse"]
+var _probes: Array = []
+
+func _add_room_probes() -> void:
+	_probes.clear()
+	var base := 0.5
+	for rid in _room_box:
+		if rid == MAP_ID or OUTDOOR_LOOK.has(rid):
+			continue
+		var e: Environment = _room_env.get(rid)
+		var factor: float = (e.ambient_light_energy / base) if e else 1.0
+		if factor >= 0.35:
+			continue
+		var box: AABB = _room_box[rid].grow(0.6)
+		var p := ReflectionProbe.new()
+		p.name = "局部补光·" + rid
+		p.size = box.size
+		p.interior = true
+		p.box_projection = true
+		p.blend_distance = 0.6
+		p.update_mode = ReflectionProbe.UPDATE_ONCE
+		p.ambient_mode = ReflectionProbe.AMBIENT_COLOR
+		p.set_meta("factor", factor)
+		if e and e.ambient_light_source == Environment.AMBIENT_SOURCE_COLOR:
+			p.set_meta("tint", e.ambient_light_color)   # 房间环境自己写了环境光颜色的（暗房），沿用这个颜色
+		room.add_child(p)
+		p.global_position = box.get_center()
+		_probes.append(p)
+		if e and e.volumetric_fog_enabled:
+			var fog := FogVolume.new()
+			fog.name = "局部雾·" + rid
+			fog.size = _room_box[rid].size - Vector3(0.2, 0.2, 0.2)
+			var fm := FogMaterial.new()
+			fm.density = e.volumetric_fog_density
+			fm.albedo = e.volumetric_fog_albedo
+			fm.edge_fade = 0.3
+			fog.material = fm
+			room.add_child(fog)
+			fog.global_position = box.get_center()
+	_update_room_probes()
+
+
+func _update_room_probes() -> void:
+	for p in _probes:
+		if not is_instance_valid(p):
+			continue
+		var amb: Array = Look.probe_ambient(float(p.get_meta("factor")))
+		p.ambient_color = p.get_meta("tint", amb[0])
+		p.ambient_color_energy = amb[1]
 
 
 ## 假光柱（docs/06 第 9 节）：Look.SHAFT_ROOMS 里每扇窗前拉一束斜向屋里、向下的光，几乎不耗性能，
@@ -372,6 +438,12 @@ func _collect_room(rid: String, lv: Node, own: Node = null) -> void:
 			_room_env[rid] = n.environment
 		elif n is Light3D:
 			n.set_meta("shadow_default", n.shadow_enabled)
+			if n is DirectionalLight3D:
+				n.set_meta("basis_default", n.global_basis)
+				if rid != MAP_ID and not has_meta("room_sun_basis"):
+					set_meta("room_sun_basis", n.global_basis)   # 房间里的太阳都朝同一个方向，按房间布的窗光
+			else:
+				_fade_lamp_shadows(n)
 			if not _room_lights.has(rid):
 				_room_lights[rid] = []
 			_room_lights[rid].append(n)
@@ -403,26 +475,34 @@ func focus_room(rid: String) -> void:
 	_sync_switch_hums()
 
 
-## 一个房间的样子：这个房间的方向光（太阳、月光）与环境，只有这个房间的灯投影（灯多了阴影图集不够分）
+## 画面的样子。大地图里全庄园只有一套：一个共用环境、一个太阳（庄园外景的那盏，夜里用月光的方向，白天用房间里太阳的方向）、
+## 所有灯都投影（离远了影子自己淡掉，见 _fade_lamp_shadows）；房间之间的明暗差别交给房间里的局部补光（_add_room_probes），
+## 所以走过门口只有渐变，不会整屏跳。不在大地图里（火车、灰盒）时仍按那个房间的环境。
 func _apply_look(rid: String) -> void:
-	var look := rid if _room_lights.has(rid) or _room_env.has(rid) else MAP_ID
-	var has_sun := false
-	for r in _room_lights:
-		for l in _room_lights[r]:
-			if l is DirectionalLight3D and r == look:
-				has_sun = true
 	Look.preset_changed()
+	if current_id != MAP_ID:
+		var look := rid if _room_lights.has(rid) or _room_env.has(rid) else MAP_ID
+		for r in _room_lights:
+			for l in _room_lights[r]:
+				if is_instance_valid(l) and not Look.owns(_room_env.get(r)):
+					Look.light(l)
+		_env.environment = Look.env(_room_env.get(look, _room_env.get(MAP_ID)))
+		apply_leak(GameState.leak_level)
+		return
 	for r in _room_lights:
 		for l in _room_lights[r]:
 			if not is_instance_valid(l):
 				continue
-			if not Look.owns(_room_env.get(r)):
-				Look.light(l)
+			Look.light(l)
 			if l is DirectionalLight3D:
-				l.visible = r == look or (not has_sun and r == MAP_ID)
+				l.visible = r == MAP_ID
+				if r == MAP_ID:
+					var night := String(Look.current().get("preset", "")) == "夜"
+					l.global_basis = l.get_meta("basis_default") if night or not has_meta("room_sun_basis") else get_meta("room_sun_basis")
 			else:
-				l.shadow_enabled = l.get_meta("shadow_default", false) and r == look
-	_env.environment = Look.env(_room_env.get(look, _room_env.get(MAP_ID)))
+				l.shadow_enabled = l.get_meta("shadow_default", false)
+	_env.environment = Look.shared_env()
+	_update_room_probes()
 	apply_leak(GameState.leak_level)
 
 
@@ -453,6 +533,7 @@ func room_at(p: Vector3) -> String:
 
 func _process(_dt: float) -> void:
 	var walking: bool = player != null and player.active
+	_keep_inside()
 	if walking != _switch_lit:
 		_switch_lit = walking
 		paint_switches()
@@ -849,6 +930,16 @@ func _adopt_level(r: Node, rid := "") -> void:
 				if c is StaticBody3D:
 					c.set_meta("door", true)
 					doors[c] = {"leaf": n}
+					# 能开的门在某几镜里也可以闩着（暗房温室侧门：序章当晚从里面闩上，T1）：门的说法表这一镜有话就推不开
+					if ContentDB.door_lines.has(String(n.name)):
+						c.set_meta("door_line", String(n.name))
+						c.add_to_group("door_line")
+		elif n is MeshInstance3D and ContentDB.door_lines.has(String(n.name)):
+			# 打不开、但推了有一句话的门（门的说法表 doors.csv）：正门、序章里闩着的暗房门
+			for c in n.get_children():
+				if c is StaticBody3D:
+					c.set_meta("door_line", String(n.name))
+					c.add_to_group("door_line")
 	for n in _walk(r):
 		if not n is Node3D or n == r:
 			continue
@@ -979,6 +1070,15 @@ func door_is_open(body: Node) -> bool:
 	if not d.has("closed"):
 		d["closed"] = _find_closed(leaf, body)
 	return absf(angle_difference(leaf.rotation.y, d["closed"])) > 0.2
+
+
+## 推打不开的门：这一镜有话说就返回那句话，没有就是空的（准星不提示）
+func door_line(body: Node) -> String:
+	return ContentDB.door_line(String(body.get_meta("door_line", "")), GameState.shot) if is_instance_valid(body) and body.is_visible_in_tree() else ""
+
+
+func door_line_label(body: Node) -> String:
+	return "推门：" + String(body.get_meta("door_line", "")).get_slice("（", 0).get_slice("·", 1)
 
 
 ## 开门往离开玩家的一侧推开（推不开就换一边、开小一点）；关门转回关着的朝向
@@ -1181,11 +1281,21 @@ func set_mode(mode: String, cam: String) -> void:
 		# 大地图里：自由探索时玩家从哪里来就站在哪里；按镜头走的行走镜头，玩家不在这个房间就送到房间的出生点
 		var respawn: bool = player.needs_spawn or not player.active
 		if current_id == MAP_ID and not player.needs_spawn:
-			respawn = not exploring and room_at(player.global_position) != _focus
+			respawn = not exploring and _locked == "" and room_at(player.global_position) != _focus
 		if respawn:
 			player.place(spawn[0], spawn[1])
+		# 从剧情机位回到玩家眼里：镜头平滑地回到玩家的视线，而不是一刀切回去（10-20）
+		if not player.active and shot_cam.current and not respawn and not Director.autoplay \
+				and shot_cam.global_position.distance_to(player.cam.global_position) < GLIDE_RANGE:
+			_glide(shot_cam.global_transform, player.cam.global_transform, shot_cam.fov, player.cam.fov, 0.8)
+			_camera_tween.tween_callback(player.activate)
+			_cam_key = ""
+			return
 		player.activate()
 		return
+	# 从玩家眼里进剧情机位（交谈、坐到桌前）：从玩家的视线滑过去
+	var from_eye: bool = player.active and not Director.autoplay
+	var eye: Transform3D = player.cam.global_transform
 	player.deactivate()
 	shot_cam.current = true
 	shot_cam.environment = null
@@ -1200,9 +1310,12 @@ func set_mode(mode: String, cam: String) -> void:
 	var m: Array = markers[key]
 	var target := Transform3D(Basis(), m[0]).looking_at(m[1])
 	var fov: float = m[2] if m.size() > 2 else 45.0
-	shot_cam.environment = Look.env(m[3]) if m.size() > 3 and m[3] else null
+	# 大地图里剧情机位也用共用环境（不切环境，镜头前后不跳）；火车这类单独的关卡仍用机位自己的环境
+	shot_cam.environment = null if current_id == MAP_ID else (Look.env(m[3]) if m.size() > 3 and m[3] else null)
 	shot_cam.near = m[4] if m.size() > 4 else 0.05
-	if _cam_key != "" and _cam_key != key and not Director.autoplay:
+	if from_eye and eye.origin.distance_to(target.origin) < GLIDE_RANGE:
+		_glide(eye, target, player.cam.fov, fov, 1.0)
+	elif _cam_key != "" and _cam_key != key and not Director.autoplay:
 		_camera_tween = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 		_camera_tween.tween_property(shot_cam, "global_transform", target, 1.2)
 		_camera_tween.tween_property(shot_cam, "fov", fov, 1.2)
@@ -1211,6 +1324,262 @@ func set_mode(mode: String, cam: String) -> void:
 		shot_cam.fov = fov
 	_focus_dof(target)
 	_cam_key = key
+
+
+## 玩家眼睛与剧情机位之间平滑过渡的最远距离：再远（换了房间）就直接切
+const GLIDE_RANGE := 9.0
+
+func _glide(from: Transform3D, to: Transform3D, fov_from: float, fov_to: float, sec: float) -> void:
+	shot_cam.current = true
+	shot_cam.global_transform = from
+	shot_cam.fov = fov_from
+	_camera_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_camera_tween.set_parallel()
+	_camera_tween.tween_property(shot_cam, "global_transform", to, sec)
+	_camera_tween.tween_property(shot_cam, "fov", fov_to, sec)
+	_camera_tween.set_parallel(false)
+
+
+# ───────────── 回想：地面指引（docs/01 第 4 节） ─────────────
+
+const Guide := preload("res://world/guide.gd")
+var guide: Node3D
+
+## 把任务的触发（talk:/enter:/door:/hs_）换成地面上的一个点，画出通往最近那个的路；没有可指的返回 false
+func show_guide(ids: Array) -> bool:
+	if current_id != MAP_ID or player == null or not player.active:
+		return false
+	if guide == null:
+		guide = Guide.new()
+		guide.name = "回想"
+		guide.host = self
+		add_child(guide)
+	var pts: Array = []
+	for id in ids:
+		var p = target_position(String(id))
+		if p != null:
+			pts.append(p)
+	return await guide.show_path(pts)
+
+
+func target_position(id: String) -> Variant:
+	if id.begins_with("talk:"):
+		var n: Node3D = named.get(id.get_slice("@", 1) + "/chr_" + id.trim_prefix("talk:").get_slice("@", 0))
+		return n.global_position if n else null
+	if id.begins_with("door:"):
+		var d: Node3D = named.get(id.trim_prefix("door:"))
+		return d.global_position if d else null
+	if id.begins_with("enter:"):
+		var sp: Array = _room_spawn.get(id.trim_prefix("enter:"), [])
+		return sp[0] if not sp.is_empty() else null
+	var h: Node3D = hotspot_nodes.get(id)
+	if h and is_instance_valid(h) and h.is_inside_tree():
+		var g := h.global_position
+		var q := PhysicsRayQueryParameters3D.create(g, g + Vector3.DOWN * 3.0, 1)
+		var hit := get_world_3d().direct_space_state.intersect_ray(q)
+		return hit["position"] if not hit.is_empty() else g
+	return null
+
+
+# ───────────── 客房：收尾、躺下、醒来（docs/01 第 4 节） ─────────────
+
+## 回客房收尾时锁住这个房间：走出房间范围就被送回来，侦探说一句话
+var _locked := ""
+var _last_inside := Vector3.ZERO
+var _lock_said := 0.0
+## 床的朝向（床头在哪一头、从哪一边上下床），第一次用到时按床的模型算出来
+var _bed := {}
+
+func lock_room(rid: String) -> void:
+	if _locked != rid and player:
+		_last_inside = player.global_position
+	_locked = rid
+
+
+func unlock_room() -> void:
+	_locked = ""
+
+
+func room_locked() -> String:
+	return _locked
+
+
+func _keep_inside() -> void:
+	if _locked == "" or not player or not player.active or player.frozen:
+		return
+	if room_at(player.global_position) == _locked:
+		_last_inside = player.global_position
+		return
+	player.global_position = _last_inside
+	player.velocity = Vector3.ZERO
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _lock_said > 4.0:
+		_lock_said = now
+		Director.ui.toast("今天就到这里。该把今天的东西理一理了。")
+
+
+## 床：像人一样躺下去（10-20，用户：原来的动作不符合人体）——
+## 走到床边、面朝床 → 转过身背对床 → 坐到床沿（视线降到坐高）→ 侧身仰躺，头落在床头的枕头上，看见天花板
+func lie_down() -> void:
+	var f := _bed_frame()
+	if f.is_empty() or player == null:
+		return
+	var eye: Transform3D = player.cam.global_transform
+	player.deactivate()
+	_cam_free(eye)
+	await _cam_path([
+		[_bed_pose(f, "face_bed"), 1.1],
+		[_bed_pose(f, "stand_out"), 0.7],
+		[_bed_pose(f, "sit"), 0.9],
+		[_bed_pose(f, "lean"), 0.8],
+		[_bed_pose(f, "lie"), 1.1],
+	])
+
+
+## 醒来：眼睑闭着，仰躺在枕头上睁眼 → 撑起上身、把腿放下床，坐在床沿 → 站起来，交给玩家
+func wake_up() -> void:
+	show_scene("guest_room")
+	var f := _bed_frame()
+	if f.is_empty() or player == null:
+		Director.ui.eyelids_set(1.0)
+		return
+	player.deactivate()
+	var stand: Transform3D = _bed_pose(f, "stand_out")
+	var fwd: Vector3 = -stand.basis.z
+	player.place(stand.origin - Vector3.UP * player.EYE, rad_to_deg(atan2(-fwd.x, -fwd.z)))
+	focus_room("guest_room")
+	Director.ui.eyelids_set(0.0)
+	_cam_free(_bed_pose(f, "lie"))
+	await Director.ui.eyelids_open()
+	await _cam_path([
+		[_bed_pose(f, "lean"), 1.2],
+		[_bed_pose(f, "sit"), 1.0],
+		[_bed_pose(f, "sit_look"), 0.6],
+		[player.cam.global_transform, 1.1],
+	])
+	_cam_key = ""
+	player.activate()
+
+
+func _cam_free(from: Transform3D) -> void:
+	if _camera_tween:
+		_camera_tween.kill()
+	shot_cam.current = true
+	shot_cam.environment = null
+	shot_cam.near = 0.05
+	shot_cam.attributes = null
+	shot_cam.global_transform = from
+	shot_cam.fov = player.cam.fov
+	_cam_key = ""
+
+
+## 一段接一段地移动镜头：位置直线过去、朝向平滑转过去（四元数插值，不会绕着视线打滚）
+func _cam_path(steps: Array) -> void:
+	var prev := shot_cam.global_transform
+	_camera_tween = create_tween()
+	for st in steps:
+		var a := prev
+		var b: Transform3D = st[0]
+		_camera_tween.tween_method(func(k: float): shot_cam.global_transform = a.interpolate_with(b, k), 0.0, 1.0, st[1]) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		prev = b
+	await _camera_tween.finished
+
+
+## 床的框架：中心、床面高度、床头方向（沿床长）、上下床的那一边、半长、半宽、地面高度。
+## 床的模型是“客房·床”开头的节点；模型原点在床头（Blender 里床头靠墙），所以原点在中心的哪一头，哪一头就是床头。
+## 上下床的那一边：两边各往外打一条射线，空出来的那一边
+func _bed_frame() -> Dictionary:
+	if not _bed.is_empty():
+		return _bed
+	var hs: Node3D = hotspot_nodes.get("hs_bed")
+	if hs == null:
+		return {}
+	var model: Node3D = null
+	for k in named:
+		var n = named[k]
+		if String(k).begins_with("客房·床") and not String(k).begins_with("客房·床头") and n is Node3D and is_instance_valid(n):
+			model = n
+			break
+	var box := AABB(hs.global_position - Vector3(1.0, 0.3, 0.45), Vector3(2.0, 0.6, 0.9))
+	var origin := hs.global_position
+	if model:
+		var first := true
+		for m in _walk(model):
+			if m is MeshInstance3D:
+				var bb: AABB = m.global_transform * m.get_aabb()
+				box = bb if first else box.merge(bb)
+				first = false
+		origin = model.global_position
+	var c := box.get_center()
+	var along_x: bool = box.size.x >= box.size.z
+	var axis := Vector3.RIGHT if along_x else Vector3.BACK
+	var head := axis if (origin - c).dot(axis) >= 0.0 else -axis
+	var side := Vector3.BACK if along_x else Vector3.RIGHT
+	var half_len: float = (box.size.x if along_x else box.size.z) * 0.5
+	var half_wid: float = (box.size.z if along_x else box.size.x) * 0.5
+	var top := _bed_top(Vector3(c.x, box.end.y, c.z) + head * half_len * 0.2)
+	var floor_y: float = player.global_position.y if player else box.position.y
+	# 哪一边空着：从床面往两边各量 1.2 米
+	var space := get_world_3d().direct_space_state
+	var room_on := {}
+	for sgn in [1.0, -1.0]:
+		var from: Vector3 = Vector3(c.x, floor_y + 0.9, c.z) + side * sgn * (half_wid + 0.05)
+		var q := PhysicsRayQueryParameters3D.create(from, from + side * sgn * 1.2, 1)
+		if player:
+			q.exclude = [player.get_rid()]
+		var hit := space.intersect_ray(q)
+		room_on[sgn] = from.distance_to(hit["position"]) if not hit.is_empty() else 1.2
+	var out := side if room_on[1.0] >= room_on[-1.0] else -side
+	# 地面：床边往下打一条射线（醒来时玩家还不在客房，不能用玩家的高度）
+	var down := PhysicsRayQueryParameters3D.create(Vector3(c.x, top, c.z) + out * (half_wid + 0.4), Vector3(c.x, top - 3.0, c.z) + out * (half_wid + 0.4), 1)
+	if player:
+		down.exclude = [player.get_rid()]
+	var fh := space.intersect_ray(down)
+	if not fh.is_empty():
+		floor_y = fh["position"].y
+	_bed = {"c": Vector3(c.x, top, c.z), "head": head, "out": out, "len": half_len, "wid": half_wid, "floor": floor_y}
+	return _bed
+
+
+## 床边的几个姿势（镜头 = 眼睛）。坐高：床面上 0.72 米；躺下：头在枕头上，眼睛离床面 0.2 米
+func _bed_pose(f: Dictionary, which: String) -> Transform3D:
+	var c: Vector3 = f["c"]
+	var head: Vector3 = f["head"]
+	var out: Vector3 = f["out"]
+	var edge: Vector3 = c + out * f["wid"] + head * f["len"] * 0.25   # 坐的地方：床沿，偏床头一点
+	var eye_y: float = f["floor"] + player.EYE
+	match which:
+		"face_bed":
+			var p: Vector3 = Vector3(edge.x, eye_y, edge.z) + out * 0.5
+			return Transform3D(Basis.looking_at(-out - Vector3.UP * 0.45, Vector3.UP), p)
+		"stand_out":
+			var p: Vector3 = Vector3(edge.x, eye_y, edge.z) + out * 0.45
+			return Transform3D(Basis.looking_at(out - Vector3.UP * 0.1, Vector3.UP), p)
+		"sit":
+			var p: Vector3 = edge - out * 0.12 + Vector3.UP * 0.72
+			return Transform3D(Basis.looking_at(out - Vector3.UP * 0.3, Vector3.UP), p)
+		"sit_look":
+			var p: Vector3 = edge - out * 0.05 + Vector3.UP * 0.74
+			return Transform3D(Basis.looking_at(out - Vector3.UP * 0.05, Vector3.UP), p)
+		"lean":
+			# 先往后仰、撑在手肘上（仍朝着屋里，视线抬向天花板）；转到枕头上是下一步
+			var p: Vector3 = edge - out * 0.35 + Vector3.UP * 0.4
+			return Transform3D(Basis.looking_at((Vector3.UP + out * 0.5).normalized(), Vector3.UP), p)
+		"lie":
+			# 仰躺：头在枕头上（离床头 0.32 米），视线朝上、略朝脚那头；画面的上方是床头
+			var p: Vector3 = c + head * (f["len"] - 0.32) + Vector3.UP * 0.2
+			return Transform3D(Basis.looking_at((Vector3.UP - head * 0.3).normalized(), head), p)
+	return Transform3D()
+
+
+## 床面的高度：从床的热区上方往下打一条射线
+func _bed_top(p: Vector3) -> float:
+	var q := PhysicsRayQueryParameters3D.create(p + Vector3.UP * 1.2, p + Vector3.DOWN * 1.5, 1)
+	if player:
+		q.exclude = [player.get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(q)
+	return hit["position"].y if not hit.is_empty() else p.y + 0.1
 
 
 ## 剧情机位的景深：只给近景（镜头中线 2 米内碰到东西，如显影盘、桌面）加，焦点后面轻轻虚掉；

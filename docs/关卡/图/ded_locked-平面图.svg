@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="900" viewBox="0 0 1080 900" font-family="Microsoft YaHei, Noto Sans SC, sans-serif">
+  <rect width="1080" height="900" fill="#f7f4ee"/>
+
+  <text x="60" y="56" font-size="30" fill="#2b2b2b">暗房 · 平面与三处出口　<tspan font-size="20" fill="#6b6b6b">ded_locked（3.5 × 3.5 m，北在上）</tspan></text>
+  <text x="60" y="86" font-size="15" fill="#7a7a7a">①②③ 是玩家要逐一查死的出口：正门（屋内一侧劈裂）、侧门（闩在暗房一侧）、通风口（开口 0.30 × 0.20 m）。</text>
+
+  <!-- 指北 -->
+  <g transform="translate(880, 130)">
+    <path d="M0,-34 L12,10 L0,0 L-12,10 Z" fill="#4a3626"/>
+    <text x="0" y="30" font-size="14" text-anchor="middle" fill="#4a3626">北</text>
+  </g>
+
+  <!-- 房间 -->
+  <rect x="230" y="150" width="525" height="525" fill="#efe7d8" stroke="#2b2b2b" stroke-width="8"/>
+
+  <!-- 西墙药柜 -->
+  <rect x="230" y="250" width="52" height="300" fill="#8a6b4f" stroke="#4a3626" stroke-width="2"/>
+  <text x="256" y="410" font-size="12" text-anchor="middle" fill="#f0e5d6" transform="rotate(-90 256 410)">药柜（高柜 · 玻璃门）</text>
+
+  <!-- 北墙工作台：左段显影台 -->
+  <rect x="282" y="150" width="178" height="90" fill="#6f5a45" stroke="#4a3626" stroke-width="2"/>
+  <text x="371" y="203" font-size="13" text-anchor="middle" fill="#f0e5d6">显影台（三只盘）</text>
+  <!-- 北墙工作台：右段 -->
+  <rect x="510" y="150" width="245" height="90" fill="#6f5a45" stroke="#4a3626" stroke-width="2"/>
+  <text x="632" y="203" font-size="13" text-anchor="middle" fill="#f0e5d6">工作台（量杯 / 药瓶）</text>
+
+  <!-- 通风口（北墙中段，双线表示百叶） -->
+  <rect x="455" y="146" width="55" height="12" fill="#c9b08a" stroke="#4a3626" stroke-width="2"/>
+  <line x1="455" y1="152" x2="510" y2="152" stroke="#4a3626" stroke-width="2"/>
+  <text x="482" y="136" font-size="12" text-anchor="middle" fill="#4a3626">通风口 · 离地 1.8 m</text>
+
+  <!-- 侧门（东墙偏北） -->
+  <line x1="755" y1="200" x2="755" y2="327" stroke="#f7f4ee" stroke-width="10"/>
+  <path d="M755,327 L830,300" stroke="#2b2b2b" stroke-width="3" fill="none"/>
+  <text x="800" y="345" font-size="12" text-anchor="middle" fill="#4a3626">侧门（通温室）</text>
+
+  <!-- 正门（南墙偏西，撞坏） -->
+  <line x1="300" y1="675" x2="435" y2="675" stroke="#f7f4ee" stroke-width="10"/>
+  <path d="M300,675 L330,745" stroke="#2b2b2b" stroke-width="3" fill="none"/>
+  <path d="M435,675 L415,742" stroke="#2b2b2b" stroke-width="3" fill="none"/>
+  <text x="367" y="775" font-size="12" text-anchor="middle" fill="#4a3626">正门（走廊 · 已撞开）</text>
+
+  <!-- 相机（东墙北侧） -->
+  <circle cx="722" cy="196" r="16" fill="#c9b08a" stroke="#4a3626" stroke-width="2"/>
+  <text x="722" y="238" font-size="11" text-anchor="middle" fill="#4a3626">相机</text>
+
+  <!-- 门边开关 -->
+  <rect x="270" y="620" width="14" height="14" fill="#c9b08a" stroke="#4a3626" stroke-width="2"/>
+  <text x="262" y="606" font-size="11" text-anchor="middle" fill="#4a3626">红灯开关</text>
+
+  <!-- 计时铃 -->
+  <circle cx="462" cy="648" r="7" fill="none" stroke="#4a3626" stroke-width="2"/>
+  <text x="462" y="632" font-size="11" text-anchor="middle" fill="#4a3626">计时铃</text>
+
+  <!-- 显影台前的位置 -->
+  <ellipse cx="371" cy="300" rx="30" ry="20" fill="none" stroke="#a0522d" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="371" y="336" font-size="11" text-anchor="middle" fill="#a0522d">显影台前站过人的位置</text>
+
+  <!-- 三处出口编号 -->
+  <g>
+    <circle cx="367" cy="705" r="15" fill="#b03a2e"/>
+    <text x="367" y="710" font-size="15" text-anchor="middle" fill="#fff">1</text>
+    <circle cx="800" cy="200" r="15" fill="#b03a2e"/>
+    <text x="800" y="205" font-size="15" text-anchor="middle" fill="#fff">2</text>
+    <circle cx="482" cy="118" r="15" fill="#b03a2e"/>
+    <text x="482" y="123" font-size="15" text-anchor="middle" fill="#fff">3</text>
+  </g>
+
+  <!-- 尺寸 -->
+  <line x1="230" y1="860" x2="755" y2="860" stroke="#4a3626" stroke-width="1.5"/>
+  <line x1="230" y1="852" x2="230" y2="868" stroke="#4a3626" stroke-width="1.5"/>
+  <line x1="755" y1="852" x2="755" y2="868" stroke="#4a3626" stroke-width="1.5"/>
+  <text x="492" y="852" font-size="13" text-anchor="middle" fill="#4a3626">3.5 m</text>
+
+  <!-- 图例 -->
+  <g transform="translate(60, 830)">
+    <circle cx="10" cy="-4" r="10" fill="#b03a2e"/>
+    <text x="30" y="0" font-size="13" fill="#2b2b2b">出口（按 1 → 2 → 3 查死）</text>
+    <ellipse cx="270" cy="-4" rx="14" ry="9" fill="none" stroke="#a0522d" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="296" y="0" font-size="13" fill="#2b2b2b">收束时镜头落点</text>
+    <text x="470" y="0" font-size="13" fill="#7a6a4f">家具只画轮廓，细节见模型</text>
+  </g>
+</svg>

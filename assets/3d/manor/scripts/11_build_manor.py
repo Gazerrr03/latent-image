@@ -791,6 +791,7 @@ if not GH_BY_ROOM:                                                              
     Gi.tube([(PUMP[0], PUMP[1] + 0.05, gz + 0.95), (PUMP[0], PUMP[1] + 0.22, gz + 0.95), (PUMP[0], PUMP[1] + 0.28, gz + 0.86)], 0.025, seg=8)
 make(Gs, '温室_石', C['温室']); make(Gi, '温室_铸铁', C['温室']); make(Gg, '温室_玻璃', C['温室']); make(Gw, '温室_木', C['温室'])
 exec(open(OUT + '/scripts/gh_closure.py', encoding='utf-8').read()); greenhouse_closure(C['温室'])     # 与主楼交接处补框、补玻璃、补墙（10-16）
+exec(open(OUT + '/scripts/door_split.py', encoding='utf-8').read()); split_doors()                      # 二楼后门、温室北门能开，正门单独一个物体（10-20）
 
 # ═══════════ 9. 地形：一张连续网格（同一网格上分材质），按图纸分区 ═══════════
 def zW(n): return 0.0 if n <= 0 else 3.6 if n >= D else 3.6 * n / D

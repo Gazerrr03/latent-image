@@ -33,7 +33,7 @@ val_instant,直接显示,
 val_fullscreen,全屏,
 val_windowed,窗口,
 controls_head,操作说明,
-controls,W A S D／方向键｜走动\n鼠标｜环顾\nE／左键｜检查 · 推门 · 交谈\nTab｜翻开证据板\n空格／回车／左键｜读下一句\nEsc｜暂停,每行“按键｜做什么”
+controls,W A S D／方向键｜走动\n鼠标｜环顾\nE／左键｜检查 · 推门 · 交谈\nTab｜翻开笔记本（线索）\nQ｜回想：地面浮现该去哪里的路\n空格／回车／左键｜读下一句\nEsc｜暂停,每行“按键｜做什么”
 key_hint,E,准星提示前面的按键
 sound_select,paper_rustle,菜单确认一项时的声音（音效表 id）
 sound_pause,ui_board_open,打开暂停页时的声音（音效表 id）

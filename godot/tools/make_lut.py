@@ -1,7 +1,7 @@
 """庄园的调色查找表（art/look/grade_lut.png，32×32×32，横排 32 片），供 world/look.gd 套在画面环境上。
 
 用法：python3 godot/tools/make_lut.py [--neutral]
-- 只做滤镜做不到的分区调色：暗部偏冷（灰蓝）、亮部偏暖，轻微 S 形对比，黑位略抬（不死黑）。
+- 只做滤镜做不到的分区调色：暗部偏冷（灰蓝）、亮部偏暖（只推接近灰的颜色），轻微 S 形对比，黑位略抬（不死黑）。
 - 整体饱和度仍由滤镜表（content/visual/fx.csv）的去色负责，这里只轻轻收一点。
 - --neutral 输出不改颜色的表（对比用）。参数在下面，改完重新运行即可。
 """
@@ -27,7 +27,11 @@ if "--neutral" not in sys.argv:
     c = c + (s - c) * CONTRAST
     lum = (c @ np.array([0.2126, 0.7152, 0.0722]))[..., None]
     c = lum + (c - lum) * SATURATION
-    c = c + SHADOW_TINT * (1 - lum) ** 2 + HIGHLIGHT_TINT * lum ** 2
+    # 冷暖只推接近灰的颜色；本来就饱和的颜色（暗房的红光、红地毯）不推，免得暗红被推成灰褐
+    mx = c.max(axis=-1, keepdims=True)
+    sat = (mx - c.min(axis=-1, keepdims=True)) / np.maximum(mx, 1e-4)
+    w = 1 - np.clip((sat - 0.15) / 0.45, 0, 1)
+    c = c + (SHADOW_TINT * (1 - lum) ** 2 + HIGHLIGHT_TINT * lum ** 2) * w
     c = BLACK_LIFT + c * (1 - BLACK_LIFT)
 c = np.clip(c, 0, 1)
 img = np.zeros((N, N * N, 3), dtype=np.uint8)

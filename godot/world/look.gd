@@ -1,8 +1,8 @@
 extends RefCounted
 ## 庄园的“天光”：天空、日光 / 月光、远处的雾、室内灯的强弱，所有房间共用一套（视觉基准与做法见 docs/06 第 9 节）。
 ## 预设来自 content/visual/look.csv：按当前章日记里的“天气”一行找第一条 match 命中的预设（入夜 → 夜，雾 → 雾……）。
-## 每个房间仍保留自己机位环境里的环境光强度、SSAO 等设置，只换天空、雾与色调；
-## 机位环境的 metadata/own_look = true 时（暗房、火车）原样使用，不套天光。
+## 大地图里全庄园只用一个画面环境（shared_env），进出房间不换环境；原来特意压暗的房间（暗房）靠
+## scene_host 自动放的局部补光压暗（10-20）。单独加载的关卡（火车）机位环境带 metadata/own_look = true 时原样使用。
 
 const LOOK_TABLE := "res://content/visual/look.csv"
 const PANORAMA := "res://art/look/stuttgart_hillside_2k.hdr"
@@ -103,9 +103,10 @@ static func env(base: Environment) -> Environment:
 	e.fog_aerial_perspective = 0.85
 	e.fog_sky_affect = 0.0
 	e.fog_light_color = fog_color()
-	# 晴天才开体积雾：太阳从窗口斜照进来，空气里看得见光柱（开销较大，只给晴天）
+	# 体积雾一直开着（约 0.5 ms）：全屋的密度按天光表 vol_fog（只有晴天大于 0），
+	# 房间里的局部雾（暗房的 FogVolume）也要靠它才画得出来
 	var vol := _f(row, "vol_fog", 0.0)
-	e.volumetric_fog_enabled = vol > 0.0
+	e.volumetric_fog_enabled = true
 	e.volumetric_fog_density = vol
 	e.volumetric_fog_albedo = Color(0.9, 0.88, 0.84)
 	e.volumetric_fog_anisotropy = 0.6
@@ -116,6 +117,22 @@ static func env(base: Environment) -> Environment:
 	e.set_meta("look", true)
 	_derived[key] = e
 	return e
+
+
+## 全庄园共用的那一个画面环境（大地图里不再按房间换环境，进出房间不跳）
+static func shared_env() -> Environment:
+	return env(null)
+
+
+## 房间局部补光（ReflectionProbe 的环境光）：颜色取天空色调，亮度 = 共用环境光 × 房间系数。
+## AMBIENT_CALIBRATION 让系数 1 的房间和共用环境一样亮（tools 截图对过）
+const AMBIENT_CALIBRATION := 1.0
+
+static func probe_ambient(factor: float) -> Array:
+	var row := current()
+	var tint := Color.from_string(String(row.get("sky_tint", "#c9cdd1")), Color.GRAY)
+	var energy := _template().ambient_light_energy * _f(row, "ambient", 1.0) * _f(row, "sky_energy", 0.75) * factor * AMBIENT_CALIBRATION
+	return [tint, energy]
 
 
 static func fog_color() -> Color:

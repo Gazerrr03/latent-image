@@ -12,6 +12,7 @@ const EvidenceBoard := preload("res://ui/evidence_board.gd")
 const MediaFx := preload("res://ui/media_fx.gd")
 const Menus := preload("res://ui/menus.gd")
 const H := preload("res://ui/hud_text.gd")
+const HudKeys := preload("res://ui/hud_keys.gd")
 
 var font: SystemFont
 var _waiting := false
@@ -60,6 +61,12 @@ var diary_date: Label
 var diary_weather: Label
 var diary_title: Label
 var diary_notes: VBoxContainer
+## 左下角的笔记本、回想两枚图标
+var keys: HBoxContainer
+var _keys_poll := 0.0
+## 眼睑（睡下、醒来）：在 3D 画面之上、所有界面之下
+var lids: ColorRect
+var _lid_tween: Tween
 
 
 func _ready() -> void:
@@ -151,6 +158,26 @@ func _ready() -> void:
 	day_label.add_theme_color_override("font_color", Color("#cfc3a6"))
 	day_label.add_theme_constant_override("shadow_offset_x", 1)
 	day_label.add_theme_constant_override("shadow_offset_y", 1)
+
+	keys = HudKeys.new()
+	keys.set_anchors_preset(Control.PRESET_BOTTOM_LEFT)
+	keys.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	keys.offset_left = 26
+	keys.offset_bottom = -22
+	keys.pressed.connect(_on_key_icon)
+	root.add_child(keys)
+	keys.hide()
+	var lid_layer := CanvasLayer.new()
+	lid_layer.layer = 5
+	add_child(lid_layer)
+	lids = ColorRect.new()
+	lids.set_anchors_preset(Control.PRESET_FULL_RECT)
+	lids.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var sm := ShaderMaterial.new()
+	sm.shader = load("res://shaders/eyelids.gdshader")
+	lids.material = sm
+	lid_layer.add_child(lids)
+	eyelids_set(1.0)
 
 	_build_interlude(root)
 	menus = Menus.new()
@@ -272,8 +299,9 @@ func _on_event(id: String) -> void:
 
 
 ## 日期角标在影像档案、黑场、冲洗、证据板、菜单上面不出现；房间名在菜单上面不出现
-func _process(_dt: float) -> void:
-	room_label.visible = _hud_on and not menus.visible
+func _process(dt: float) -> void:
+	_update_keys(dt)
+	room_label.visible = _hud_on and not menus.visible and not text_panel.visible
 	day_label.visible = _hud_on and day_label.text != "" and not (footage and footage.active) \
 		and not interlude_layer.visible and not develop_layer.visible and not board.visible and not menus.visible
 
@@ -699,7 +727,7 @@ func set_checklist(items: Array) -> void:
 		c.queue_free()
 	for it in items:
 		var l := Label.new()
-		l.text = ("✓  " if it["done"] else "·  ") + String(it["text"])
+		l.text = String(it["text"]) if it.get("head", false) else ("✓  " if it["done"] else "·  ") + String(it["text"])
 		l.add_theme_font_size_override("font_size", 17)
 		l.add_theme_color_override("font_color", Color("#8f8778") if it["done"] else Color("#efe3c6"))
 		l.add_theme_color_override("font_shadow_color", Color.BLACK)
@@ -747,6 +775,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	var tab: bool = event.physical_keycode == KEY_TAB
 	var esc: bool = event.is_action_pressed("ui_cancel")
+	if event.physical_keycode == KEY_Q and not _busy():
+		var pl: Node = Director.world.player if Director.world else null
+		if pl and pl.active and not pl.frozen:
+			get_viewport().set_input_as_handled()
+			recall()
+		return
 	if not (tab or esc) or _busy():
 		return
 	if esc:
@@ -766,6 +800,7 @@ func _busy() -> bool:
 
 ## 翻开证据板浏览（Tab，或暂停页的“证据板”）；合上以后回到原来的样子
 func browse_board(restore_mouse := true) -> void:
+	keys.ping("notebook")
 	_release_mouse()
 	objective_label.visible = false
 	Director.world.set_frozen(true)
@@ -800,3 +835,90 @@ func _release_mouse() -> void:
 
 func _restore_mouse() -> void:
 	Input.mouse_mode = _prev_mouse
+
+
+# ───────────── 笔记本、回想、眼睑（docs/01 第 4 节，10-20） ─────────────
+
+## 图标只在自由行走时出现；回想没有可指的路（客房收尾、不在探索）时变灰。目标每半秒问一次
+func _update_keys(dt: float) -> void:
+	var pl: Node = Director.world.player if Director.world else null
+	var show: bool = _hud_on and pl != null and pl.active and not pl.frozen and not text_panel.visible and not menus.visible and not board.visible \
+		and not interlude_layer.visible and not (footage and footage.active) and not Director.autoplay
+	keys.visible = show
+	if not show:
+		return
+	_keys_poll -= dt
+	if _keys_poll <= 0.0:
+		_keys_poll = 0.5
+		keys.set_dim("guide", Director.guide_targets().is_empty())
+
+
+func _on_key_icon(which: String) -> void:
+	if _busy():
+		return
+	if which == "notebook":
+		browse_board()
+	else:
+		recall()
+
+
+## Q：回想。地面上浮现通往下一条还没拿到的线索（收齐后是客房）的一段路
+func recall() -> void:
+	keys.ping("guide")
+	if Director.world.room_locked() != "":
+		toast("今天就到这里。")
+		return
+	var targets: Array = Director.guide_targets()
+	if targets.is_empty():
+		toast("现在没有要去的地方。")
+		return
+	var ok: bool = await Director.world.show_guide(targets)
+	if not ok:
+		toast("想不起来该往哪里走。")
+
+
+func notebook_ping() -> void:
+	if keys:
+		keys.ping("notebook")
+
+
+func eyelids_set(v: float) -> void:
+	if _lid_tween:
+		_lid_tween.kill()
+	(lids.material as ShaderMaterial).set_shader_parameter("open", v)
+	lids.visible = v < 0.999
+
+
+func _lid_value() -> float:
+	return float((lids.material as ShaderMaterial).get_shader_parameter("open"))
+
+
+## 眼睑慢慢合到 v（0 = 全闭）
+func eyelids_to(v: float, sec: float) -> void:
+	if Director.autoplay:
+		return
+	if _lid_tween:
+		_lid_tween.kill()
+	lids.visible = true
+	_lid_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_lid_tween.tween_method(func(x): (lids.material as ShaderMaterial).set_shader_parameter("open", x), _lid_value(), v, sec)
+	await _lid_tween.finished
+	lids.visible = v < 0.999
+
+
+## 合眼：沉下去、挣一下、再沉下去
+func eyelids_close() -> void:
+	await eyelids_to(0.12, 1.0)
+	await eyelids_to(0.32, 0.5)
+	await eyelids_to(0.0, 1.4)
+	await wait_seconds(0.6)
+
+
+## 睁眼：先睁开一条缝，眨一下，再睁开
+func eyelids_open() -> void:
+	eyelids_set(0.0)
+	await wait_seconds(0.5)
+	await eyelids_to(0.35, 0.9)
+	await eyelids_to(0.12, 0.25)
+	await eyelids_to(0.7, 0.7)
+	await eyelids_to(1.0, 0.6)
