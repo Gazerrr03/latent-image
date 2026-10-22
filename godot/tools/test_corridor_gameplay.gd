@@ -195,6 +195,17 @@ func run():
 		accept_text();await create_timer(.05).timeout
 		if state.shot=="C5-07":break
 	check("回廊正常结束回到C5-07",state.shot=="C5-07" and not corridor.running)
+	for i in 360:
+		if state.shot=="C5-14" and director._explore_group=="c5c":break
+		if ui._waiting and i%12==0:accept_text()
+		await process_frame
+	print("RETURN_STATE shot=",state.shot," active=",host.player.active," frozen=",host.player.frozen," pos=",host.player.global_position," room=",host.room_at(host.player.global_position))
+	check("醒来读完后恢复庄园行走",state.shot=="C5-14" and host.player.active and not host.player.frozen and host.room_at(host.player.global_position)=="seance")
+	var return_pos: Vector3=host.player.global_position
+	Input.action_press("move_forward")
+	for i in 30:await physics_frame
+	Input.action_release("move_forward")
+	check("醒来后W键确实移动",host.player.global_position.distance_to(return_pos)>.1)
 	check("四条回廊证据全部收入",["ev_knock_twice","ev_seance_voice","ev_sync_steps","ev_fourth_chair"].all(func(id):return state.evidence.has(id)))
 	check("三间支线观察都有记录",state.journal.filter(func(e):return e.kind=="observation").size()==(0 if skip_rooms else 3))
 	print("CORRIDOR_GAMEPLAY checks=",checks," failures=",failures)

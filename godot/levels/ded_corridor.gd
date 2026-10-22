@@ -812,6 +812,8 @@ func _finish() -> void:
 		_amb.stop()
 	Director.ui.set_hint("")
 	player.silent_steps = false
+	# 伸手演出由回廊冻结玩家，结束时必须归还移动控制。
+	player.frozen = false
 	Director.world.highlight_hotspots([])
 	done.emit()
 
