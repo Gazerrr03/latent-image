@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-21",
+  "engine": "Godot 4.7.2",
+  "renderer": "Metal Forward+ / Apple M4",
+  "viewport": [
+    1280,
+    720
+  ],
+  "full_gameplay": {
+    "checks": 142,
+    "failures": 0,
+    "entry": "C5-04 → C5-05 → C5-06",
+    "exit": "C5-07",
+    "autoplay": false
+  },
+  "optional_route": {
+    "checks": 77,
+    "failures": 0
+  },
+  "targeting_and_rules": {
+    "checks": 50,
+    "failures": 0
+  },
+  "screenshots": [
+    {
+      "file": "圈1-尽头门.png",
+      "bytes": 1174330
+    },
+    {
+      "file": "圈2-尽头门.png",
+      "bytes": 1196875
+    },
+    {
+      "file": "圈2-暗房敲门.png",
+      "bytes": 1182311
+    },
+    {
+      "file": "圈3-尽头门.png",
+      "bytes": 1177578
+    },
+    {
+      "file": "圈4-尽头门.png",
+      "bytes": 1208431
+    },
+    {
+      "file": "圈4-暗房无回应.png",
+      "bytes": 1164577
+    },
+    {
+      "file": "圈5-第四椅.png",
+      "bytes": 1290055
+    },
+    {
+      "file": "圈6-伸手.png",
+      "bytes": 1347200
+    },
+    {
+      "file": "支线1-推门.png",
+      "bytes": 1258496
+    },
+    {
+      "file": "支线1-笔记本.png",
+      "bytes": 119403
+    },
+    {
+      "file": "支线1-观察.png",
+      "bytes": 1176504
+    },
+    {
+      "file": "支线2-推门.png",
+      "bytes": 1190373
+    },
+    {
+      "file": "支线2-笔记本.png",
+      "bytes": 123397
+    },
+    {
+      "file": "支线2-观察.png",
+      "bytes": 1268939
+    },
+    {
+      "file": "支线3-推门.png",
+      "bytes": 1213714
+    },
+    {
+      "file": "支线3-笔记本.png",
+      "bytes": 126812
+    },
+    {
+      "file": "支线3-观察.png",
+      "bytes": 1156669
+    }
+  ],
+  "sources": {
+    "godot/levels/ded_corridor.tscn": "ed529c6d054c23e04675d406bfdee4af2da4e32bd4311035dbd2f1e0fef68f4a",
+    "godot/levels/ded_corridor.gd": "399a9733dc3c7c3cbf7208e16ab84eb5a44e41c29740e69c07cdcaa2d53a05a1",
+    "godot/art/levels/ded_corridor/ded_corridor.glb": "c626ec63a2757176e05e1a4704da13528a0635204e59fe7ebd4ab6e260d9d60a",
+    "godot/tools/test_corridor_gameplay.gd": "0ac687ec6b04b1186dbccee68a4a71c2c933eb321325ce00417d9f59cba0a04f",
+    "godot/tools/test_corridor_interaction.gd": "3252725fd16ce0b1eb6c558402838c33b2c84a8ec26c048e294d0d2769f62cd6"
+  }
+}

@@ -1,0 +1,40 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+Connected physical controllers: []
+PASS 标题菜单方向键获得焦点
+PASS 左摇杆死区不移动
+PASS 半推保留模拟力度
+PASS 角色按摇杆力度慢走
+PASS 右摇杆转动镜头
+PASS Menu 暂停并冻结角色
+PASS 暂停时镜头不动
+PASS B 返回探索
+PASS 方向键选项后 A 确认
+PASS Y 打开笔记本
+PASS B 合上笔记本
+PASS 证据板卡片获得焦点
+PASS A 检视卡片且保留笔记本
+PASS B 退出记录检视且不误关笔记本
+PASS 真实信纸资源可用手柄检视
+PASS 真实信纸放下恢复探索
+PASS A 阅读且不会穿透关闭
+PASS RB 翻页
+PASS B 返回物品
+PASS RT 放大物品
+PASS 右摇杆旋转检视物
+PASS 按下右摇杆翻面
+PASS Y 查看观察记录
+PASS X 复位
+2026-10-20 08:20:24.573 godot[77995:7523243] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+PASS B 放下恢复探索
+PASS 动作注册可重复且不丢键鼠
+PASS 重复注册没有多重绑定
+PASS 手柄说明完整位于画面内
+PASS 设置新增灵敏度后完整位于画面内
+GAMEPAD failures=0
+WARNING: 7 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
+WARNING: 18 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

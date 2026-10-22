@@ -1,0 +1,985 @@
+{
+  "pr_url": "https://github.com/Gazerrr03/latent-image/pull/35",
+  "pr_head": "8e8c19172e335fafe8e15e14b7b233bc709b631a",
+  "pr_base": "7cf7ee98155be7f9031364965583d40f6aab4ea0",
+  "local_head": "fb358a10776ebe89c1735d5e7dd3af14695e02b4",
+  "baseline": "current working files including uncommitted and untracked files",
+  "verification": "static inspection only; no Godot import, playtest, or performance acceptance",
+  "counts": {
+    "D-production-tools": 8,
+    "E-review-images": 3,
+    "F-level-document": 1,
+    "C-underbed-painting": 2,
+    "A-runtime-assets": 72,
+    "I-unrelated-or-overlap": 3,
+    "G-story-test-row": 1,
+    "B-level-scene-and-script": 3,
+    "H-diagnostic-tools": 6
+  },
+  "files": [
+    {
+      "path": "assets/3d/ded_house/scripts/02_plan_drawing.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 6133,
+      "pr_sha256": "9774b98f7b4ccf64e657a54ad001e83b1245a4cea6b952a5a06a1557b49a0344",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/03_compare.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 1797,
+      "pr_sha256": "c29d408089599dbcbf3e0e1d7851c50578c366fa6d4b1c13ded119e60b65d293",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/06_export_glb.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 3219,
+      "pr_sha256": "6061db0f5737128683726b598058778a09775bceeb4890fbbcf42c460f4b5d9e",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/07_walk_check.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 2400,
+      "pr_sha256": "6b313027cd7d6a6fa4f258729f376f8c19308016ce72631647d1026c66e790d3",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/08_make_level.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 5698,
+      "pr_sha256": "4336ffcea6691989fac2769fdab3d06afbb5c1dbcd9e2b8d014b88611b92c8de",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/09_check_geometry.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 5275,
+      "pr_sha256": "3a1b22ed047eda23d6dc1d8523282959d5ab8cf48599aa26210c248772dc3dc4",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/14_save_archive.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 1746,
+      "pr_sha256": "dde7d27fecd0e69d71d4b0cc8eaa30d224648eeab71ce53ecc94b5447a7b667e",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house/scripts/23_layout_audit.py",
+      "change": "A",
+      "group": "D-production-tools",
+      "pr_bytes": 3881,
+      "pr_sha256": "2601e42d1725fbfdd81f8813335c76f7a46696e36a4dfc7ff0ec5a8522b9e3e5",
+      "local_exists": false
+    },
+    {
+      "path": "assets/3d/ded_house_hero.png",
+      "change": "A",
+      "group": "E-review-images",
+      "pr_bytes": 513529,
+      "pr_sha256": "29f9aafa966a75e1d89bfa44a1091fca5f5a0aa34ed6051e8d3e5afcf306b49e",
+      "local_exists": false,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "path": "assets/3d/ded_house_ingame.png",
+      "change": "A",
+      "group": "E-review-images",
+      "pr_bytes": 925134,
+      "pr_sha256": "0236651d004ebb953b45ad9d03db57cb101ebf692f96cb9355d1a25232029bb7",
+      "local_exists": false,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "path": "assets/3d/ded_house_maze.png",
+      "change": "A",
+      "group": "E-review-images",
+      "pr_bytes": 13489,
+      "pr_sha256": "79d72e084b78ac843e485adb8eceda37972d6c64b3c4d6c3063be0ff40b50ceb",
+      "local_exists": false,
+      "dimensions": [
+        1280,
+        720
+      ]
+    },
+    {
+      "path": "docs/关卡/ded_house.md",
+      "change": "A",
+      "group": "F-level-document",
+      "pr_bytes": 6328,
+      "pr_sha256": "931a3019f77643b115653cf01eac927248bbaf7a0aec4bf5d13c70d58a05aa2b",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/child_room/painting_underbed.png",
+      "change": "A",
+      "group": "C-underbed-painting",
+      "pr_bytes": 164176,
+      "pr_sha256": "19f73ebe53154fb19469b52b7a1e6ad5a304b01263b437a6aed8274a8016d06f",
+      "local_exists": false,
+      "dimensions": [
+        1600,
+        1200
+      ]
+    },
+    {
+      "path": "godot/art/levels/child_room/painting_underbed.png.import",
+      "change": "A",
+      "group": "C-underbed-painting",
+      "pr_bytes": 976,
+      "pr_sha256": "f0eb838793c039b9d30374fae9fd807d3ca3455c7891c25fb96049e4afacbc62",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house.glb",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 41014508,
+      "pr_sha256": "372a3e326230af7746cd8f707568a9ba17e5abb680bf4a3d55d1d7cfc80d3c54",
+      "local_exists": false,
+      "gltf": {
+        "mesh_count": 33,
+        "material_count": 36,
+        "embedded_images": 26,
+        "external_uris": []
+      }
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house.glb.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1162,
+      "pr_sha256": "18704267a776b908a9065b107ceab09176fb9c3272b508173fb83dec4ad3ae50",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Bark_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 295014,
+      "pr_sha256": "cd13a353ce5aada75812a96fb9e70997a2e9668cc55ef650ed19644278bfc406",
+      "local_exists": false,
+      "dimensions": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Bark_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1097,
+      "pr_sha256": "662425b5d4d60739a24b0c566ffa9a7a2294679df9debdc65b1997a24b30fcc9",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_BoundaryStone_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 525978,
+      "pr_sha256": "81b9da12602a5c54bd907025e15dbdc513d56721ba90d67738c55c025339f854",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_BoundaryStone_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1123,
+      "pr_sha256": "dee26333d9a07b927f8ab5d956779a146f49eb0caa022baf3f215374247390ef",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Brick_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1120958,
+      "pr_sha256": "ab23bca4d2ad0f352bd949f1734d2ad51f32ef66df4a71401d4f25c6381c3907",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Brick_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1100,
+      "pr_sha256": "315ef8f745ebeda9bd09ed11aa365c510a2da7f402549b8985f603bc94c4a88e",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Cobble_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 867599,
+      "pr_sha256": "75a9c32ef68a9be71570186a170979fcc0366150e31ab7631cec57a810ca5b9c",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Cobble_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1103,
+      "pr_sha256": "8be1b1cf78c34c155517f0debb6935530eaf8889d2832a8bb098a787f7c44592",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Crow_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 99834,
+      "pr_sha256": "b5af0075cde0d30763eb1e599bc09745d6bdfd643da6db5a74539f73e7e294e7",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Crow_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1097,
+      "pr_sha256": "9d92bfef68d9be0ad29c271561e2a0e9293d5957781f22a9a4dc81306c2d0682",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_DarkGlass_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 19895,
+      "pr_sha256": "6314681f67e33b718b1cef112656ede7156155c73a3b1c0edcc88477308ccb89",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_DarkGlass_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1112,
+      "pr_sha256": "e7d8d453bfb31186fe2da37597addd046bb60846ffa35e065ea40f6cba20ed6c",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_DeadGrass_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 108642,
+      "pr_sha256": "d89510ddadcf4a4d8373a8b8f37b04bfe85f0111f3294988bbcd15ff9bdcb26f",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_DeadGrass_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1112,
+      "pr_sha256": "c13b9a09dd7aa3afac339c9775b4fddcc8ef471db1b9fcbb26fc90ea4646a7b1",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_FigureCloth_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 50971,
+      "pr_sha256": "dfa2e7725cb6714d5439e7b75d7fb6e5e6eb389f44a513a3e85a008fcf7c37b7",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_FigureCloth_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1117,
+      "pr_sha256": "8b1cb5b8c1e903e43ccda9b73d86e172aa0121bd6b2fa7bcc1777da45c042e53",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_FloorStone_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1196498,
+      "pr_sha256": "43b2d58b4532f202c9fcc258584670c1128c814db09f2842765418bc624d8eb5",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_FloorStone_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1114,
+      "pr_sha256": "ab63287df8eb42fb33c7bcb465749f2202fd420244f81730b96b272b445f0717",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_FlowerCore_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 25248,
+      "pr_sha256": "77ffac7b9962bb39b8896fafad31bce95873af6c2fd5752a03550dee40cfe000",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_FlowerCore_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1115,
+      "pr_sha256": "7b38be44b998fee9165ab78b3ac5e00be5af323cb6ff1b4cf5f7adeb1de9406e",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Ground_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 3279487,
+      "pr_sha256": "3b9a413808a09cbbb0770eea1074191192fc3400c28062a2950db95a05439bdb",
+      "local_exists": false,
+      "dimensions": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Ground_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1102,
+      "pr_sha256": "8e4aef03618558c9374d2315dbf79078709e2baf5c61478a7a1cffe3cbb77140",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Iron_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 20651,
+      "pr_sha256": "0e35b47303b5ce7ec92873b5c65f2ae4a1e5494600602e118c280182f0d3407c",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Iron_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1097,
+      "pr_sha256": "129dc4b0c2961654e58c4ba18d09986db24b5858c0279348ff83589b37590726",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_PathEarth_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 152836,
+      "pr_sha256": "3b70c80b46900ee29bb8358486e1631696c19d775f42457e8eca6930d66b663f",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_PathEarth_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1112,
+      "pr_sha256": "2282eeaf84a30b473a50cef63bab4d2791fc7b7e7718b0fb2dd8ed127cd643fe",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Petal_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 56801,
+      "pr_sha256": "4d1790c943491b62c8753a11aae31ec320ad0b750fe256603521d3529de534c9",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Petal_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1100,
+      "pr_sha256": "5ab6f4e783679581b078ae7d2235b7cbcc0abf1f52b785230743d7f066600b43",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Plinth_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1316024,
+      "pr_sha256": "709df4cf6fe85852a750a9b5df86c8eb3e0b955d351287c5e6369d73d58afa46",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Plinth_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1102,
+      "pr_sha256": "62e7e9711b18e0478ee4a7cab8f2b47312067da7cad7b2fcfb0edee3de326780",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_RedGlass_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 23045,
+      "pr_sha256": "f0d25d542323db4f4c8eb47ba98d2f02537717e3971d1f8ab6341a86aaf7aa57",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_RedGlass_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1109,
+      "pr_sha256": "79bfedde247059cbc3ed31691e51b93e603cea502519b4b9c64de67a5996995b",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_RedSlit_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 17798,
+      "pr_sha256": "9f177a10e3af3b9264cef7ade9eb3ef5808ed2d9f06e10263ef3d99c19b51ab8",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_RedSlit_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1106,
+      "pr_sha256": "6a7a5f1e6afbe916a84fc11cf55776fc91714425c905e4cf302b33588b07c3cc",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_RoofSlate_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1398843,
+      "pr_sha256": "47a457971f71c395a9da4fad16494104d4d8869ec5ae5a40b60a042484ebd613",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_RoofSlate_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1111,
+      "pr_sha256": "584d1afb60502bc0360e452d01da431943d93e18374db6af3feaf6a2c2a93d06",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Stem_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 33852,
+      "pr_sha256": "23a06771821e85dcd1a4ba15fb287e3a7fbd181205b42d3d5af32cb19837ae60",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Stem_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1097,
+      "pr_sha256": "41cd2a6b0570060c47ed26f5abfcdc198b4867ccbc4aabdfaf41cf66db36b882",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_StoneExterior_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1794299,
+      "pr_sha256": "c7058dc4f6a2fa85079084480c1ceabd636073a817e6f840cb6fdbd565058516",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_StoneExterior_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1124,
+      "pr_sha256": "aa706cb1f2604e9d9a1566fb2171c762dd184f5bb46c115e90a06caada30201d",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_StoneInterior_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1103428,
+      "pr_sha256": "ce9ec81861743157db26b7fe267882482a3d787611fe5d53f5f6806300a18307",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_StoneInterior_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1124,
+      "pr_sha256": "faafccaf6a5df0fd3040b58d070592bc6d488fabdbc6ac7ed9902da2ca250e55",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Wax0_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 45132,
+      "pr_sha256": "bd1fff661bd04caf74d0102f19facfa66072d9c0e738561b56784d00d74f8b9a",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Wax0_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1097,
+      "pr_sha256": "bbeaeb5901c62e3f99daba2deeb73c875e916fa960180e2d58758a88769a8b7d",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Wax1_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 44763,
+      "pr_sha256": "68f03e4e0864592f7860cda7556df530adcf7de9748a01f6dae80f150ebc6f4b",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Wax1_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1097,
+      "pr_sha256": "4fdd2f37a681f22568e3c3b96090e406c9c23f479c7544d3937890dc03de33a7",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Wax2_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 45117,
+      "pr_sha256": "54b6587897da82d1b7de114f4283cabd106a002c19210f7f9b420b5f4aba4c37",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_Wax2_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1096,
+      "pr_sha256": "655814394e6ef54bf9429cdf2824b4271eec1ceb2915ced71b952861f92b4090",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_WetDrip_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 109995,
+      "pr_sha256": "8b9ef06a0eb0a6730ecf585a61194a19bf4df2ce169ab5ef7db3ceb554619a87",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_WetDrip_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1106,
+      "pr_sha256": "b670c38ac46c810d18b2ddd066a7099f97115bf8eee8dacd96b85547c3b00afc",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_WoodDark_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 103790,
+      "pr_sha256": "6371755a8b4e37d70394b0effd09fb3931821a9ecfc8016faedc5c1c7c5bb753",
+      "local_exists": false,
+      "dimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/ded_house_WoodDark_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1109,
+      "pr_sha256": "da9109176ca30cb273b7f85f8d8dad3aa213f065a350727e45ad2f99b1c8f89b",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors.glb",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1311072,
+      "pr_sha256": "64fa8d6d324e1295bcc1db2939009850568748650ecf9617c047cf253e621bbb",
+      "local_exists": false,
+      "gltf": {
+        "mesh_count": 10,
+        "material_count": 9,
+        "embedded_images": 8,
+        "external_uris": []
+      }
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors.glb.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1151,
+      "pr_sha256": "827d023585f3870e3e7b375fb82bc2be4e3f9a0b106fec72406df198066017d5",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 215147,
+      "pr_sha256": "b8f9996381d8bdc560982a2c1815f6e75db625f7b76bc98e8020399b547b369a",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1051,
+      "pr_sha256": "347932ede2da5ef3206fc44ec9caae061517efcf5e9a0f39bcb7a3e37267db7f",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口·框右_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 121307,
+      "pr_sha256": "f1fcb2cdc3ea2e510445eb058f5565ed5e606844031940aa9b45a36f9af4520a",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口·框右_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1075,
+      "pr_sha256": "69882b24aa95cd26b0112027a4695d3711dd0a7859ca038533ebb784b16d8f12",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口·框左_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 121326,
+      "pr_sha256": "5cb6e9faf1bacb25055a0db03d76404a568aa3d3030eed347cd1c807e3edce7e",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口·框左_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1075,
+      "pr_sha256": "e51d04bba90f9c342862d2772a1f00a16cc26311b353f1e78674f2662853a466",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口·门楣_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 181168,
+      "pr_sha256": "5a1dcab9924cd798a6a1b2f937afcc23d4489fd2c9c615c03b6f33087f396be0",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门入口·门楣_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1075,
+      "pr_sha256": "25d512fa44233d555f28154a1bef3ce03ccc7217458699458b4763ce9bf1ebff",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 215147,
+      "pr_sha256": "b8f9996381d8bdc560982a2c1815f6e75db625f7b76bc98e8020399b547b369a",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1051,
+      "pr_sha256": "d48567e69af9528f7fae8db961ddbaea5500eb7f98ba1c83a8ac78d85c67089c",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口·框右_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 121223,
+      "pr_sha256": "78bb3d59a50d7da6e8d097de293fd522a16a9971abb2935a80e94fbe629d6e57",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口·框右_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1075,
+      "pr_sha256": "8dc6a024391736a0c7f6c43cbdfa96285a8bc0bec96da99b06e3cfb2d9da1e24",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口·框左_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 121284,
+      "pr_sha256": "9752fca6b2e6b7933d7ab809c42e505318507bb99082d5b6556d012b619a0e75",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口·框左_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1075,
+      "pr_sha256": "e8010a4a1a24b54b219c4174a7dcaf2051f47db08650a2d92d43b319b4d2db2b",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口·门楣_bake.png",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 182395,
+      "pr_sha256": "598dc3fdddd18bfc0fdfe14a6c81b9df034e7cc789c495e730d02c7cbf54efd5",
+      "local_exists": false,
+      "dimensions": [
+        512,
+        512
+      ]
+    },
+    {
+      "path": "godot/art/levels/ded_house/doors_门出口·门楣_bake.png.import",
+      "change": "A",
+      "group": "A-runtime-assets",
+      "pr_bytes": 1075,
+      "pr_sha256": "091090efdb88f070aa58e176624929df18f21f03133614f21f8aadf3c58a3cf4",
+      "local_exists": false
+    },
+    {
+      "path": "godot/art/levels/manor/textures/floorboards_normal.jpg.import",
+      "change": "M",
+      "group": "I-unrelated-or-overlap",
+      "pr_bytes": 984,
+      "pr_sha256": "15ab580094be1ae0f2c5c3b1107dbc13c255501e14ad00c892746723050bfc3a",
+      "local_exists": true,
+      "local_sha256": "ff53a68710bb9d0aa282f44723deaf8199ab201095e2e3323f998604a9245a3e",
+      "identical_to_local": false
+    },
+    {
+      "path": "godot/art/levels/manor/textures/knit_normal.jpg.import",
+      "change": "M",
+      "group": "I-unrelated-or-overlap",
+      "pr_bytes": 1058,
+      "pr_sha256": "ad73bd4d594c751af173627f69bbf94d389a886527b0c4168393a3eede425d49",
+      "local_exists": true,
+      "local_sha256": "7b879b917d114d1c7920843e51be176364356205153eea053fed8a86f5e2ffce",
+      "identical_to_local": false
+    },
+    {
+      "path": "godot/content/story/shots.csv",
+      "change": "M",
+      "group": "G-story-test-row",
+      "pr_bytes": 19626,
+      "pr_sha256": "0ce66bed44c533ed44e52d44a181f698c57789e4010451358931dbe9dc3e203b",
+      "local_exists": true,
+      "local_sha256": "bfb5ffd89fa4fdb63cce597a39962a345c2f4803d441079f5262a9e041d24f99",
+      "identical_to_local": false
+    },
+    {
+      "path": "godot/levels/ded_house.gd",
+      "change": "A",
+      "group": "B-level-scene-and-script",
+      "pr_bytes": 970,
+      "pr_sha256": "0088c94052607634af530ee775ad48ca24122258c8e38440b34f3b80fc3663b7",
+      "local_exists": false
+    },
+    {
+      "path": "godot/levels/ded_house.gd.uid",
+      "change": "A",
+      "group": "B-level-scene-and-script",
+      "pr_bytes": 19,
+      "pr_sha256": "7008c4fb16241d3ab7e2779f7b4d461a21dd717c3b0643d97b4157b681a6177b",
+      "local_exists": false
+    },
+    {
+      "path": "godot/levels/ded_house.tscn",
+      "change": "A",
+      "group": "B-level-scene-and-script",
+      "pr_bytes": 15375,
+      "pr_sha256": "360137170413e8f64d4cabf081ac26143e7e3706ef95a2704be4704175b7a3ab",
+      "local_exists": false
+    },
+    {
+      "path": "godot/tools/doorcheck.gd",
+      "change": "A",
+      "group": "H-diagnostic-tools",
+      "pr_bytes": 929,
+      "pr_sha256": "dbb37e7c12d07ea8c853e21d3b05f78614f0ae8cdfa4ee843169c6613e1d0b2c",
+      "local_exists": false
+    },
+    {
+      "path": "godot/tools/doorcheck.gd.uid",
+      "change": "A",
+      "group": "H-diagnostic-tools",
+      "pr_bytes": 19,
+      "pr_sha256": "8d1e3ae1417aa8738871201c3031c54e4e9b2f5d529b5df28d3d118430a59c3d",
+      "local_exists": false
+    },
+    {
+      "path": "godot/tools/doorpos.gd",
+      "change": "A",
+      "group": "H-diagnostic-tools",
+      "pr_bytes": 371,
+      "pr_sha256": "2ba6332907edfc813d9da0f180af0d8d01ac1627cf0f5d1d607a56a5ac8aedcc",
+      "local_exists": false
+    },
+    {
+      "path": "godot/tools/doorpos.gd.uid",
+      "change": "A",
+      "group": "H-diagnostic-tools",
+      "pr_bytes": 19,
+      "pr_sha256": "2b9c257903df96ba237df56eee8e5ff991358c210592e592fc6194e40ecc3f09",
+      "local_exists": false
+    },
+    {
+      "path": "godot/tools/probe_shot.gd",
+      "change": "A",
+      "group": "H-diagnostic-tools",
+      "pr_bytes": 1559,
+      "pr_sha256": "1945bdd0eb2d7d52639788cc1527e310dce3add1422674a51131c1383cfcbe08",
+      "local_exists": false
+    },
+    {
+      "path": "godot/tools/probe_shot.gd.uid",
+      "change": "A",
+      "group": "H-diagnostic-tools",
+      "pr_bytes": 20,
+      "pr_sha256": "7ab9fef25773fca438d363ecf3774e8ee1f7482520c2f8bda08891d559b75b42",
+      "local_exists": false
+    },
+    {
+      "path": "godot/world/interaction_targeting.gd.uid",
+      "change": "A",
+      "group": "I-unrelated-or-overlap",
+      "pr_bytes": 20,
+      "pr_sha256": "59695e0b5eb4cceb88c53bfc9ee6cefe9eb15c50f8a3c07d98d82279755437d2",
+      "local_exists": true,
+      "local_sha256": "59695e0b5eb4cceb88c53bfc9ee6cefe9eb15c50f8a3c07d98d82279755437d2",
+      "identical_to_local": true
+    }
+  ]
+}
