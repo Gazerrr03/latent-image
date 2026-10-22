@@ -1,0 +1,45 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS hs_cellar_camera 站位可选中
+PASS Q下一步指向1920肖像
+PASS E拿到相机
+PASS 正常输入首曝
+PASS hs_cellar_tray 站位可选中
+PASS 显影不直接可二曝
+PASS Q引导返回记录本
+PASS hs_cellar_book 站位可选中
+PASS 翻页阅读解锁装回
+PASS hs_cellar_holder 站位可选中
+PASS E实体片夹装回
+PASS R拨杆
+PASS hs_cellar_tray 站位可选中
+PASS 1920完成后仍未调查完成
+PASS hs_cellar_ladder 站位可选中
+PASS 提前离开不完成地下室任务
+PASS 重入恢复1920与相机
+PASS hs_cellar_cabinet 站位可选中
+PASS 举镜发现钥匙但未拿到
+PASS hs_cellar_book 站位可选中
+PASS 读夹层拿到钥匙
+PASS hs_cellar_cabinet 站位可选中
+PASS 柜子开锁
+PASS E观察1926
+PASS hs_cellar_plate 站位可选中
+PASS E拿实体1926底片
+PASS hs_cellar_cabinet 站位可选中
+PASS 1926放回路径
+PASS hs_cellar_notes 室内站位可选中
+PASS hs_cellar_notes 阅读F不误举镜
+PASS hs_cellar_clip 室内站位可选中
+PASS hs_cellar_clip 阅读F不误举镜
+PASS hs_cellar_relics 室内站位可选中
+PASS hs_cellar_relics 阅读F不误举镜
+PASS 核心资料阅读后完成
+PASS hs_cellar_ladder 站位可选中
+PASS 返回恢复FOV
+PASS 独立地下室已卸载
+CH4_INPUT failures=0
+WARNING: 8 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 4 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

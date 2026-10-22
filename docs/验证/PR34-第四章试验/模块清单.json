@@ -1,8 +1,8 @@
 {
   "branch": "codex/chapter4-pr34-trial",
   "baseline_commit": "60fdbce1797b28c47ec4bd2190dbb914fcd22ac5",
-  "active_checkpoint": "A1-ready-for-human-test",
-  "process": "逐个模块实现 -> 基础启动检查 -> 用户人工试玩 -> 用户决定接纳或调整 -> 下一模块",
+  "active_checkpoint": "A6-ready-for-human-test",
+  "process": "用户授权连续完成A2-A6；完成实现和程序检查后统一交人工试玩",
   "modules": [
     {
       "id": "M00",
@@ -24,12 +24,12 @@
     },
     {
       "id": "M01-CAM",
-      "title": "大画幅相机玩法模块（强任务链：4线索前置 -> 拾取相机 -> F键指示胶囊 -> 收人玩法 -> 爬梯解锁离开）",
+      "title": "完整相机与调查链",
       "depends_on": [
         "M01"
       ],
       "status": "implemented-not-human-accepted",
-      "scope": "前置4项环境线索（记录本、笔记、旧物、北墙肖像）-> 提示拿起相机（hs_cellar_camera）-> 屏幕底侧常驻按[F]举起/放下指示胶囊 -> 举镜对焦透镜双重视角 -> 快门、水槽显影、[R]上膛二次快门收人 -> 通关后解锁木梯（hs_cellar_ladder）返回温室",
+      "scope": "记录本、实体装片、历史观察、钥匙、1926原片与完整阅读后返回；允许提前离开保留进度",
       "human_result": "pending"
     },
     {
@@ -38,7 +38,7 @@
       "depends_on": [
         "M01"
       ],
-      "status": "partially-implemented",
+      "status": "implemented-not-human-accepted",
       "scope": "复用本地检视；补历年失踪、主人动机和星期四安排",
       "human_result": "pending"
     },
@@ -48,8 +48,8 @@
       "depends_on": [
         "M01"
       ],
-      "status": "partially-implemented",
-      "scope": "补判词与旧物对应；不引入人形虚影或相机收人",
+      "status": "implemented-not-human-accepted",
+      "scope": "剪报判词、旧物与历年名字对应，镜中旧影只支持既有失踪者信息",
       "human_result": "pending"
     },
     {
@@ -58,7 +58,7 @@
       "depends_on": [
         "M01"
       ],
-      "status": "partially-implemented",
+      "status": "implemented-not-human-accepted",
       "scope": "园丁松口、花盆活板门、进入返回；处理现有任务前置与结束条件混用",
       "human_result": "pending"
     },
@@ -70,7 +70,7 @@
         "M03",
         "M04"
       ],
-      "status": "partially-implemented",
+      "status": "implemented-not-human-accepted",
       "scope": "定义调查完成、保存恢复、回客房、r4 和第五章衔接；不替换 D4",
       "human_result": "pending"
     },
@@ -86,12 +86,12 @@
     },
     {
       "id": "X02",
-      "title": "二次曝光收人",
+      "title": "二次曝光历史观察",
       "depends_on": [
         "X01"
       ],
       "status": "implemented-not-human-accepted",
-      "scope": "改变怪谈因果，需明确故事规则",
+      "scope": "对照旧记录；不改变当前人物与历史",
       "human_result": "pending"
     },
     {
@@ -100,29 +100,34 @@
       "depends_on": [
         "M02"
       ],
-      "status": "planned-per-pr-with-story-adaptation",
+      "status": "implemented-not-human-accepted",
       "scope": "评估往返与门槛价值，不采用第二页提示词",
       "human_result": "pending"
     },
     {
       "id": "X04",
-      "title": "1926底片双结局",
+      "title": "1926原片双操作",
       "depends_on": [
         "X02",
         "X03"
       ],
-      "status": "planned-per-pr-with-story-adaptation",
-      "scope": "与主线死因、主人出现、第四至第五章交接冲突，单独提案",
+      "status": "implemented-not-human-accepted",
+      "scope": "放回或装片观察，两条路径汇合第四章，不生成结局",
       "human_result": "pending"
     }
   ],
   "current_plan": "现行剧情与PR玩法接入计划.md",
-  "policy": "剧情遵循现行《02》；玩法遵循PR34；实现存在不等于人工验收；本轮仅A0/A1",
+  "policy": "现行剧情、PR玩法；实现不等于人工验收；本轮完成至A6，A7未执行",
   "a0_commit": "312d638d4cf157570ba9a91b46d64a4c61abee85",
   "a1": {
     "status": "ready-for-human-test",
     "human_result": "pending",
     "report": "A1/README.md",
-    "next": "A2 requires human feedback"
+    "next": "superseded by user authorization to complete through A6"
+  },
+  "a2_a6": {
+    "status": "ready-for-human-test",
+    "human_result": "pending",
+    "report": "A2-A6/README.md"
   }
 }
