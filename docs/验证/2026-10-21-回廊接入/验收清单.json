@@ -10,14 +10,14 @@
   ],
   "fresh_import": true,
   "full_gameplay": {
-    "checks": 142,
+    "checks": 159,
     "failures": 0,
     "entry": "C5-04 → C5-05 → C5-06",
-    "exit": "C5-07",
+    "exit": "C5-14，醒来后实际移动",
     "autoplay": false
   },
   "optional_route": {
-    "checks": 77,
+    "checks": 81,
     "failures": 0
   },
   "targeting_and_rules": {
@@ -44,10 +44,10 @@
     "支线3-观察.png"
   ],
   "sources": {
-    "godot/levels/ded_corridor.gd": "399a9733dc3c7c3cbf7208e16ab84eb5a44e41c29740e69c07cdcaa2d53a05a1",
+    "godot/levels/ded_corridor.gd": "00ba4953df48742d659fdd255e067d8e174fc9a3eab0b413e5cfa7a5187c2c90",
     "godot/levels/ded_corridor.tscn": "ed529c6d054c23e04675d406bfdee4af2da4e32bd4311035dbd2f1e0fef68f4a",
     "godot/art/levels/ded_corridor/ded_corridor.glb": "c626ec63a2757176e05e1a4704da13528a0635204e59fe7ebd4ab6e260d9d60a",
-    "godot/tools/test_corridor_gameplay.gd": "5e183ea01bbac32132f012baf72c5385a11946f507e9cb0c7b63634f1c983cf5",
+    "godot/tools/test_corridor_gameplay.gd": "c9fcd936034633b5af6fa0b0d7aea84659eb7ab8084dd466e651dc5f3103c7fa",
     "godot/tools/test_corridor_interaction.gd": "9d2162c362e7ee9a4eeb79722a9ad69ee691fddf98aba9b93cc965986c24db6a"
   }
 }

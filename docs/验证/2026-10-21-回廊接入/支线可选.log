@@ -97,11 +97,18 @@ PASS 圈6-伸手准星边缘可操作 -0.02
 PASS 圈6-伸手准星边缘可操作 0.02
 PASS 真实E伸手人影消失玩家站在照片位置
 PASS 回廊正常结束回到C5-07
+PASS C5-07没有残留回廊字幕
+RETURN_STATE shot=C5-14 active=true frozen=false pos=(6.1, 0.000625, -2.35) room=seance
+PASS 醒来读完后恢复庄园行走
+PASS C5-14没有残留回廊字幕
+PASS 醒来后W键确实移动
 PASS 四条回廊证据全部收入
 PASS 三间支线观察都有记录
-CORRIDOR_GAMEPLAY checks=77 failures=0
+CORRIDOR_GAMEPLAY checks=81 failures=0
 WARNING: 1 RID of type "CanvasItem" was leaked.
    at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
-WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+WARNING: 100 ObjectDB instances were leaked at exit (run with `--verbose` for details).
    at: cleanup (core/object/object.cpp:2536)
+ERROR: 26 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)
 ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

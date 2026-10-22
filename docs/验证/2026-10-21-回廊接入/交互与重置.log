@@ -56,8 +56,8 @@ PASS 圈6门3墙补片显隐与实体同步
 CORRIDOR_INTERACTION failures=0
 WARNING: 1 RID of type "CanvasItem" was leaked.
    at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
-WARNING: 164 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+WARNING: 34 ObjectDB instances were leaked at exit (run with `--verbose` for details).
    at: cleanup (core/object/object.cpp:2536)
-ERROR: 38 resources still in use at exit (run with --verbose for details).
+ERROR: 14 resources still in use at exit (run with --verbose for details).
    at: clear (core/io/resource.cpp:822)
 ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

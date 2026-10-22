@@ -77,6 +77,14 @@ func exit_layer(n: int):
 	key(); await settle()
 	check("第%d圈按E才换到下一圈"%(n+1),corridor.layer==n+1)
 func side_room(n: int):
+	if n==3:
+		await go(Vector3(0,0,-7.35), "第四圈先到暗房门前")
+		await create_timer(5.2).timeout
+	# 先探索主路再折返，不应被误判成已经离开支线。
+	await go(Vector3(0,0,-8), "支线%d前先走到主路转角"%n)
+	await go(Vector3(-2,0,-8), "支线%d前先走第二段"%n)
+	await go(Vector3(0,0,-8), "支线%d前从主路折返"%n)
+	check("圈%d主路折返不算进入支线"%(n+1),not corridor._room_entered and not corridor._room_left and host.active_hotspots.has("hs_corridor_door_%d"%n))
 	var z: float=-corridor.DOORS[n-1]
 	await go(Vector3(0,0,z),"支线%d门前"%n)
 	await aim("hs_corridor_door_%d"%n,"支线%d-推门"%n)
@@ -195,12 +203,14 @@ func run():
 		accept_text();await create_timer(.05).timeout
 		if state.shot=="C5-07":break
 	check("回廊正常结束回到C5-07",state.shot=="C5-07" and not corridor.running)
+	check("C5-07没有残留回廊字幕",corridor.sub_label.text.is_empty() and not corridor.sub_label.is_visible_in_tree())
 	for i in 360:
 		if state.shot=="C5-14" and director._explore_group=="c5c":break
 		if ui._waiting and i%12==0:accept_text()
 		await process_frame
 	print("RETURN_STATE shot=",state.shot," active=",host.player.active," frozen=",host.player.frozen," pos=",host.player.global_position," room=",host.room_at(host.player.global_position))
 	check("醒来读完后恢复庄园行走",state.shot=="C5-14" and host.player.active and not host.player.frozen and host.room_at(host.player.global_position)=="seance")
+	check("C5-14没有残留回廊字幕",corridor.sub_label.text.is_empty() and not corridor.sub_label.is_visible_in_tree())
 	var return_pos: Vector3=host.player.global_position
 	Input.action_press("move_forward")
 	for i in 30:await physics_frame

@@ -251,7 +251,7 @@ Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
   │ 她说：“这一张还没有人。”
   ※ 收入笔记本：降灵卡片
   │ 她随身带着一张 1926 年合影的小样。背面印着一行很小的字，字体不像这个年代的东西：
-  │ #03 / 12  SYNC
+  │ #05 / 12  SYNC
   ※ 收入笔记本：合影背面的小字
   │ 黑色的蕾丝手套。左手那只，虎口的地方磨得发亮。
 ▶ C5-13
@@ -385,9 +385,9 @@ Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
   │ 显影盘是一块屏幕。
 ▶ EP-02
   │ 旁边并排着十二块同样的屏幕。每一块里，都有一个格雷站在镜子前：有的还在暗房，有的在客房，有的刚下火车。
-  │ 其中一块亮着编号：03 / 12。
+  │ 其中一块亮着编号：05 / 12。
 ▶ EP-03
-  │ 人格重建 · 容器 03 / 12
+  │ 人格重建 · 容器 05 / 12
   │ 保留人格：解释者（格雷）
   │ 记录者人格：已终止
   │ 本轮：记录者的底片已冲洗。解释者已看见。
@@ -398,7 +398,7 @@ Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
   │ “这一次，他自己冲洗了那张底片。”
 
 ── AUTOPLAY 结束 ──
-最后镜号 EP-04 ｜ 推论 ["d1", "d2", "d3", "d4", "d5", "d6"] ｜ 未成立 [] ｜ 讲法 保护 ｜ 容器 03 ｜ 证据 52 件
+最后镜号 EP-04 ｜ 推论 ["d1", "d2", "d3", "d4", "d5", "d6"] ｜ 未成立 [] ｜ 讲法 保护 ｜ 容器 05 ｜ 证据 52 件
 结果：通过
 WARNING: 1 RID of type "CanvasItem" was leaked.
    at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
