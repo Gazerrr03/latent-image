@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 场景真实热区存在
+PASS 真实记事本网格存在
+PASS 检视冻结角色、释放鼠标并隐藏准星
+PASS 便携检视使用真实网格且隐藏原件
+PASS 拖动能旋转实物
+PASS F 进入阅读
+PASS D 翻页并更新正文
+PASS Esc 从阅读返回且保留观察角度
+PASS R 复位
+PASS 退出恢复原件、角色、准星、鼠标与相机
+PASS 重复检视物件不会透明
+PASS 中断立即恢复
+PASS 现场特写不复制或拿走物品
+PASS 退出过渡中也可立即中断
+PASS 保留进入前已有的冻结状态
+PASS 场景入口已进入检视
+PASS 首次检视后收入证据
+PASS 不在当前任务列表的已见线索仍可检视
+PASS 重复检视不重复收集且恢复角色
+PASS 剧情中断立即恢复且不发放未完成线索
+INSPECTOR failures=0
+WARNING: 1 RID of type "CanvasItem" was leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2733)
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.

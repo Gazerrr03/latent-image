@@ -1,0 +1,8 @@
+{
+  "status": "generation_blocked_no_output",
+  "tool": "built-in image_gen edit",
+  "request_id": "87437d2d-6a3e-481e-9c4a-492f2e990189",
+  "prompt": "assets/2d/inspection/prompts/photo1926-v1.txt",
+  "current_source": "godot/art/levels/manor/textures/photo_1926.jpg",
+  "limits": "Existing artwork has a scaled adult standing in for Iris. Integration verifies the object and dynamic reverse only; front artwork is not accepted as final."
+}

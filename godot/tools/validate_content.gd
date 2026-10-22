@@ -55,6 +55,7 @@ func _init() -> void:
 	music = DB.index_by(DB.load_table(AUDIO + "music.csv"), "id")
 	quests = DB.group_by(DB.load_table(STORY + "quests.csv"), "group")
 	var props := DB.index_by(DB.load_table(VISUAL + "props.csv"), "id")
+	_check_inspection_assets(hotspots, evidence)
 	for rid in rooms:
 		var lv := _scan_level(rid)
 		if not lv.is_empty():
@@ -309,6 +310,104 @@ func _init() -> void:
 	_report(shots.size(), hotspots.size(), evidence.size(), chars.size(), rooms.size(), layout_rows.size(), sounds.size(), words.size())
 
 
+## 检视资源也纳入内容检查，不能只验证旧剧情表而漏掉物品正反面和分页。
+func _check_inspection_assets(hotspots: Dictionary, evidence: Dictionary) -> void:
+	var seen := {}
+	var inspected_objects := {}
+	var label_ids := {}
+	for label in DB.load_table(VISUAL + "inspection_labels.csv"):
+		var id: String = label.get("id", "")
+		if not hotspots.has(id) or label_ids.has(id):
+			err("物品标签表", id, "热区不存在或标签重复")
+		label_ids[id] = true
+		var expected: String = label.get("expected_liquid_colour", "")
+		if expected == "" or not label.get("text", "").contains(expected):
+			err("物品标签表", id, "实物标签必须显示登记的应有液色")
+		if label.get("source", "") == "":
+			err("物品标签表", id, "标签缺少内容依据")
+	for row in DB.load_table(VISUAL + "inspections.csv"):
+		var id: String = row.get("hotspot", "")
+		if seen.has(id) or not hotspots.has(id):
+			err("物品检视表", id, "热区重复或不存在")
+		seen[id] = true
+		if row.get("object", "") != "":
+			inspected_objects[row["object"]] = true
+		var replacement: String = row.get("replacement_asset", "")
+		if replacement != "" and (not ResourceLoader.exists(replacement) or not load(replacement) is PackedScene):
+			err("物品检视表", id, "局部替换资源不存在或无法加载：" + replacement)
+		if not row.get("mode", "") in ["portable", "fixed"]:
+			err("物品检视表", id, "mode 必须是 portable 或 fixed")
+		if row.get("asset_fit", "") not in ["", "native"]:
+			err("物品检视表", id, "asset_fit 必须为空或 native")
+		if row.get("occlusion", "") not in ["", "solid"]:
+			err("物品检视表", id, "occlusion 必须为空或 solid")
+		for flag in ["start_back", "world_document"]:
+			if row.get(flag, "") not in ["", "1"]:
+				err("物品检视表", id, flag + " 必须为空或 1")
+		if row.get("world_document", "") == "1" and (row.get("mesh", "") == "" or row.get("asset", "") == "" or row.get("world_rotation", "").split(",").size() != 3):
+			err("物品检视表", id, "原位文稿需要原网格、实物场景与三个旋转角")
+		var notebook_asset: String = row.get("notebook_asset", "")
+		if notebook_asset != "":
+			if not ResourceLoader.exists(notebook_asset) or not load(notebook_asset) is PackedScene:
+				err("物品检视表", id, "现场复查实物场景无法加载：" + notebook_asset)
+			else:
+				# 组合实物可以包含不单独收集的原文页，例如格雷自己的笔记。
+				# 只有场景确实引用的纸张才能成为合法对象，避免白名单放过孤立资源。
+				var assembly: Node = load(notebook_asset).instantiate()
+				var pending: Array[Node] = [assembly]
+				while not pending.is_empty():
+					var part: Node = pending.pop_back()
+					if part.get_script() == preload("res://world/inspection_document.gd"):
+						inspected_objects[part.object_id] = true
+					pending.append_array(part.get_children())
+				assembly.free()
+			if not row.get("notebook_span", "").is_valid_float() or float(row.get("notebook_span", "0")) <= 0:
+				err("物品检视表", id, "现场复查构图范围必须为正数")
+			for key in ["notebook_center", "notebook_rotation"]:
+				var parts: PackedStringArray = row.get(key, "").split(",")
+				if parts.size() != 3 or not Array(parts).all(func(value): return value.is_valid_float()):
+					err("物品检视表", id, key + " 必须是三个数字")
+		var asset: String = row.get("asset", "")
+		if asset != "" and (not ResourceLoader.exists(asset) or not load(asset) is PackedScene):
+			err("物品检视表", id, "独立实物场景不存在或无法加载：" + asset)
+		if row.get("mode", "") == "portable" and asset == "" and row.get("mesh", "") == "":
+			err("物品检视表", id, "便携物品没有实物场景或原网格")
+	for id in hotspots:
+		if not seen.has(id):
+			err("物品检视表", id, "缺少该物件的检视类型登记")
+	var documents := DB.group_by(DB.load_table(VISUAL + "inspection_pages.csv"), "object")
+	for id in documents:
+		if not evidence.has(id) and not inspected_objects.has(id):
+			err("物品原文页表", id, "原物件未对应证据或检视对象")
+		var rows: Array = documents[id]
+		var pages := {}
+		for row in rows:
+			if row.get("handwriting", "") not in ["", "detached_t"]:
+				err("物品原文页表", id, "handwriting 必须为空或 detached_t")
+			if row.get("handwriting", "") != "" and row.get("surface_front", "") == "":
+				err("物品原文页表", id, "笔迹物件须提供可核对的实物原文 surface_front")
+			if row.get("dynamic_back", "") not in ["", "1"]:
+				err("物品原文页表", id, "dynamic_back 必须为空或 1")
+			if row.get("dynamic_back", "") == "1" and (not row.get("back", "").contains("{容器号}") or row.get("back_image", "") != ""):
+				err("物品原文页表", id, "动态背面必须用容器号模板且不能混入静态背图")
+			var index: String = row.get("page", "")
+			if not index.is_valid_int() or pages.has(index) or int(index) < 0:
+				err("物品原文页表", id, "页码须从 0 开始、不重复")
+			pages[index] = true
+			if float(row.get("width", "0")) <= 0 or float(row.get("height", "0")) <= 0:
+				err("物品原文页表", id, "实物尺寸必须大于 0")
+			for side in ["front", "back"]:
+				var texture := "res://art/props/inspection/%s_%s_%s.png" % [id, index, side]
+				if not ResourceLoader.exists(texture):
+					err("物品原文页表", id, "缺少纸张纹理：" + texture)
+		for i in rows.size():
+			if not pages.has(str(i)):
+				err("物品原文页表", id, "页码不连续")
+		var asset := "res://art/props/inspection/%s.tscn" % id
+		if not ResourceLoader.exists(asset) or not load(asset) is PackedScene:
+			err("物品原文页表", id, "缺少对应实物场景：" + asset)
+
+
 ## 读关卡场景里按约定命名的节点；没有场景返回空字典
 func _scan_level(id: String) -> Dictionary:
 	var path := DB.level_path(id)
@@ -320,7 +419,10 @@ func _scan_level(id: String) -> Dictionary:
 		return {}
 	var root := ps.instantiate()
 	var d := {"cams": {}, "hs": {}, "chr": {}, "props": {}, "names": {}, "spawn": false}
+	var part_materials := {}
 	var stack: Array = [root]
+	var hotspot_pattern := RegEx.new()
+	hotspot_pattern.compile("\\bhs_[a-z0-9_]+\\b")
 	while not stack.is_empty():
 		var n: Node = stack.pop_back()
 		stack.append_array(n.get_children())
@@ -337,6 +439,22 @@ func _scan_level(id: String) -> Dictionary:
 			d["names"][nm.trim_prefix("chr_")] = true
 		elif nm.begins_with("prop_"):
 			d["props"][nm] = n.size if n is CSGBox3D else (n.mesh.get_aabb().size if n is MeshInstance3D and n.mesh else null)
+		if n is MeshInstance3D:
+			part_materials[nm] = []
+			for surface in n.mesh.get_surface_count():
+				var material: Material = n.mesh.surface_get_material(surface)
+				if material != null:
+					part_materials[nm].append(material.resource_name)
+			var matches := hotspot_pattern.search_all(nm)
+			if matches.size() == 1:
+				d["hs"][matches[0].get_string()] = true
+	for row in DB.load_table(VISUAL + "inspections.csv"):
+		if row.get("mesh", "") != "" and d["names"].has(row["mesh"]):
+			d["hs"][row["hotspot"]] = true
+			if row.get("part_material", "") != "" and not row["part_material"] in part_materials.get(row["mesh"], []):
+				err("物品检视表", row["hotspot"], "原网格中不存在该物件材质面：" + row["part_material"])
+			if row.get("layer", "") != "":
+				d["names"]["层·" + row["layer"]] = true
 	root.free()
 	return d
 

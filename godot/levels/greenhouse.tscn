@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/manor.gltf" id="1_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_greenhouse.gltf" id="2_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_darkroom.gltf" id="3_r"]
+[ext_resource type="PackedScene" path="res://art/props/inspection/ev_night_photo.tscn" id="4_photo"]
+[ext_resource type="Script" path="res://world/inspection_fiber.gd" id="5_fiber"]
 
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
 sky_top_color = Color(0.33, 0.42, 0.55, 1)
@@ -66,3 +68,21 @@ near = 0.03
 
 [node name="chr_吉迪恩·沃登" type="Node3D" parent="接口"]
 transform = Transform3D(0.87462, 0, -0.48481, 0, 1, 0, 0.48481, 0, 0.87462, 22.85, 3.631, -12.25)
+
+[node name="hs_gh_latch" type="Marker3D" parent="接口"]
+position = Vector3(18.849, 4.958, -10.195)
+metadata/size = Vector3(0.012, 0.075, 0.025)
+metadata/interaction_normal = Vector3(-1, 0, 0)
+metadata/inspect_fov = 18.0
+metadata/inspect_light = true
+
+[node name="呢子线头" type="Node3D" parent="接口/hs_gh_latch"]
+position = Vector3(0.003, 0.032, 0)
+script = ExtResource("5_fiber")
+
+[node name="hs_gh_photos" type="Marker3D" parent="接口"]
+position = Vector3(20.85, 4.539, -8.48)
+metadata/size = Vector3(0.18, 0.08, 0.22)
+
+[node name="夜拍照片" parent="接口/hs_gh_photos" instance=ExtResource("4_photo")]
+rotation_degrees = Vector3(-90, 0, -12)

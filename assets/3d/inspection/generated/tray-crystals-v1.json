@@ -1,0 +1,51 @@
+{
+  "source": "godot/art/levels/manor/room_darkroom.gltf",
+  "source_sha256": "7acf4feff6bb690173b9312af31dafbbbc5efb4e54041b88d9afab4e0ad92d27",
+  "source_binary_sha256": "e8d39b3f9548f9aec24bc65d38ecb9a0d299b2669e3c909121671a51f8318ece",
+  "preserved_triangles": 856,
+  "removed_liquid_triangles": 2,
+  "removed_local_blender_vertices": [
+    [
+      -0.17000000178813934,
+      -0.13500000536441803,
+      0.029999999329447746
+    ],
+    [
+      0.17000000178813934,
+      -0.13500000536441803,
+      0.029999999329447746
+    ],
+    [
+      0.17000000178813934,
+      0.13500000536441803,
+      0.029999999329447746
+    ],
+    [
+      -0.17000000178813934,
+      -0.13500000536441803,
+      0.029999999329447746
+    ],
+    [
+      0.17000000178813934,
+      0.13500000536441803,
+      0.029999999329447746
+    ],
+    [
+      -0.17000000178813934,
+      0.13500000536441803,
+      0.029999999329447746
+    ]
+  ],
+  "basin_local_center": [
+    0,
+    0,
+    0.006
+  ],
+  "crystal_height_m": [
+    0.00035,
+    0.0016
+  ],
+  "asset_sha256": "e19534e351ef676f79ccdbea68b6462af35284a6dfb78847d35d6f929409a037",
+  "story_source": "godot/content/story/hotspots.csv hs_tray",
+  "note": "No new chemical identity inferred; white residue only."
+}

@@ -268,6 +268,7 @@ func _page_settings(back: Callable) -> void:
 	_slider(v, "set_music", "music")
 	_slider(v, "set_sfx", "sfx")
 	_slider(v, "set_sens", "sens")
+	_slider(v, "set_pad_sens", "pad_sens")
 	_toggle(v, "set_invert", "invert_y", on_off)
 	_toggle(v, "set_text", "text_instant", func(b): return H.t("val_instant") if b else H.t("val_typed"))
 	_slider(v, "set_brightness", "brightness")
@@ -277,12 +278,14 @@ func _page_settings(back: Callable) -> void:
 	_focus_first(v)
 
 
-func _page_controls(back: Callable) -> void:
+func _page_controls(back: Callable, pad_mode := -1) -> void:
 	page = "controls"
 	_back = back
 	_title_block.hide()
 	var v := _new_card(H.t("controls_head"), Vector2.ZERO, 620, -0.6)
-	for line in H.t("controls").split("\n", false):
+	var pad: bool = Controls.gamepad if pad_mode < 0 else pad_mode == 1
+	var lines := H.t("controls_pad" if pad else "controls")
+	for line in lines.split("\n", false):
 		var row := HBoxContainer.new()
 		row.add_theme_constant_override("separation", 18)
 		var k := _label(line.get_slice("｜", 0), 20, INK)
@@ -291,6 +294,7 @@ func _page_controls(back: Callable) -> void:
 		row.add_child(_label(line.get_slice("｜", 1), 20, INK.lightened(0.15)))
 		v.add_child(row)
 		_rule(v)
+	_item(v, "查看键鼠操作" if pad else "查看手柄操作", func(): _page_controls(back, 0 if pad else 1))
 	_item(v, H.t("back"), func(): _back.call())
 	_focus_first(v)
 
@@ -521,10 +525,14 @@ func _close() -> void:
 # ───────────── 输入 ─────────────
 
 func _input(event: InputEvent) -> void:
-	if not visible or not (event is InputEventKey and event.pressed and not event.echo):
+	Controls.note_event(event)
+	if not visible or not event.is_pressed() or event.is_echo():
+		return
+	var back := event.is_action_pressed("ui_cancel") or event.is_action_pressed("pause")
+	if not (event is InputEventKey) and not back:
 		return
 	var f := get_viewport().gui_get_focus_owner()
-	match event.physical_keycode:
+	match KEY_ESCAPE if back else event.physical_keycode:
 		KEY_ESCAPE:
 			get_viewport().set_input_as_handled()
 			match page:

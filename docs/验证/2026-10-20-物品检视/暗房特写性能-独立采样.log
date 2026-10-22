@@ -1,0 +1,9 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+INSPECTION_PERF_META {"gpu":"Apple M4 (Apple9)","scope":"darkroom native residue and bottle","viewport":"(1280, 720)","vsync":1}
+INSPECTION_PERF {"fps":59.9693916225159,"mode":"hs_tray","p95_ms":17.447,"p99_ms":17.749,"room":"darkroom","samples":300}
+INSPECTION_PERF {"fps":60.0096493921282,"mode":"hs_bottles","p95_ms":17.357,"p99_ms":18.045,"room":"darkroom","samples":301}
+INSPECTION_PERF below_45=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

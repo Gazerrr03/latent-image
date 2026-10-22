@@ -190,14 +190,17 @@ func _build_subtitle(root: Control) -> void:
 	_subtitle.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	_subtitle.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var sb := StyleBoxFlat.new()
-	sb.bg_color = Color(0, 0, 0, 0.92)
+	sb.bg_color = Color.TRANSPARENT
 	sb.content_margin_left = 14
 	sb.content_margin_right = 14
 	sb.content_margin_top = 4
 	sb.content_margin_bottom = 4
 	_subtitle.add_theme_stylebox_override("panel", sb)
 	_subtitle_text.add_theme_color_override("font_color", Color.WHITE)
-	_subtitle_text.add_theme_font_size_override("font_size", 20)
+	_subtitle_text.add_theme_font_size_override("font_size", 24)
+	_subtitle_text.add_theme_color_override("font_outline_color", Color.BLACK)
+	_subtitle_text.add_theme_constant_override("outline_size", 3)
+	_subtitle_text.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_subtitle_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_subtitle.add_child(_subtitle_text)
 	root.add_child(_subtitle)
@@ -413,6 +416,13 @@ func _layout_archive() -> void:
 func _process(dt: float) -> void:
 	if not active:
 		return
+	var vp := get_viewport().get_visible_rect().size
+	var width := minf(960, vp.x * 0.76)
+	_subtitle.set_anchors_preset(Control.PRESET_TOP_LEFT)
+	_subtitle_text.custom_minimum_size.x = width
+	_subtitle.size.x = width + 28
+	var bar_height: float = Director.ui.bar_bottom.size.y if Director.ui else 0.0
+	_subtitle.position = Vector2((vp.x - _subtitle.size.x) / 2, vp.y - (bar_height + _subtitle.size.y) / 2 if bar_height > _subtitle.size.y + 12 else vp.y - _subtitle.size.y - 34)
 	if _archive.visible:
 		_layout_archive()
 	_garble_t += dt
@@ -477,6 +487,7 @@ func _apply_fx(name: String) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	Controls.note_event(event)
 	if not (_subtitle.visible or playing):
 		return
 	var click: bool = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT

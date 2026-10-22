@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_guest_room__夹层已打开.gltf" id="4_r"]
 [ext_resource type="PackedScene" path="res://art/levels/manor/room_hall.gltf" id="5_r"]
 
+[ext_resource type="PackedScene" path="res://art/props/inspection/handwriting_spread.tscn" id="6_handwriting"]
+
 [sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
 sky_top_color = Color(0.33, 0.42, 0.55, 1)
 sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
@@ -130,6 +132,10 @@ metadata/size = Vector3(0.3, 0.06, 0.3)
 [node name="hs_handwriting" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78, 4.395, -3.86)
 metadata/size = Vector3(0.3, 0.06, 0.3)
+metadata/inspect_fov = 28.0
+metadata/inspect_light = true
+metadata/inspect_light_energy = 0.35
+metadata/inspection_focus = Vector3(-0.08, -0.015, 0.03)
 
 [node name="hs_typewriter_test" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62, 4.675, -3.36)
@@ -165,4 +171,9 @@ metadata/size = Vector3(0.12, 1.6, 0.7)
 
 [node name="chr_镜中的格雷" type="Node3D" parent="接口"]
 transform = Transform3D(6.12323e-17, 0, -1, 0, 1, 0, 1, 0, 6.12323e-17, 6.42, 3.615, -3.75)
+visible = false
+
+[node name="层·笔迹比对" parent="结构" instance=ExtResource("6_handwriting")]
+position = Vector3(0.7, 4.38, -3.83)
+rotation_degrees = Vector3(-90, 90, 0)
 visible = false

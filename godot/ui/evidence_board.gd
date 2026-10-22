@@ -21,9 +21,6 @@ var cards := {}
 var browsing := false
 var _first := ""
 var _strings: Node2D
-var _exam: Control
-var _exam_card: Control
-var _exam_text: VBoxContainer
 
 
 func _ready() -> void:
@@ -52,7 +49,6 @@ func _ready() -> void:
 	_strings = Node2D.new()
 	_strings.z_index = 5
 	add_child(_strings)
-	_build_examine()
 	hide()
 
 
@@ -60,7 +56,7 @@ func _ready() -> void:
 func pick_pair(title: String) -> Array:
 	browsing = false
 	open(title)
-	hint_label.text = HINT_LINK
+	hint_label.text = "方向键选择　·　A / × 连线　·　X / □ 检视" if Controls.gamepad else HINT_LINK
 	var pair: Array = await _picked
 	return pair
 
@@ -69,19 +65,17 @@ func pick_pair(title: String) -> Array:
 func browse() -> void:
 	browsing = true
 	open("证据板")
-	hint_label.text = HINT_BROWSE if not GameState.evidence.is_empty() else "证据板上还什么都没有。"
+	hint_label.text = ("方向键选择　·　A / × 检视　·　B / ○ 合上" if Controls.gamepad else HINT_BROWSE) if not GameState.evidence.is_empty() else "证据板上还什么都没有。"
 	await closed
 
 
 func open(title: String) -> void:
 	title_label.text = title
-	_exam.hide()
-	_rebuild()
 	show()
+	_rebuild()
 
 
 func close() -> void:
-	_exam.hide()
 	hide()
 	browsing = false
 	closed.emit()
@@ -93,15 +87,13 @@ func cancel() -> void:
 		close()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not visible:
+## Tab 在 GUI 焦点导航前处理；否则卡片有焦点时会只切换焦点，无法合上笔记本。
+func _input(event: InputEvent) -> void:
+	if not visible or Director.ui.inspector.active:
 		return
 	var esc: bool = event.is_action_pressed("ui_cancel")
-	var tab: bool = event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_TAB
-	if _exam.visible and (esc or tab):
-		_exam.hide()
-		get_viewport().set_input_as_handled()
-	elif browsing and (esc or tab):
+	var tab: bool = event.is_action_pressed("notebook")
+	if browsing and (esc or tab):
 		close()
 		get_viewport().set_input_as_handled()
 
@@ -156,11 +148,25 @@ func _rebuild() -> void:
 		card.set_meta("base_scale", k)
 		card.scale = Vector2(k, k)
 		card.rotation_degrees = float(hash(id + "r") % 7) - 3.0
-		card.gui_input.connect(func(ev): _on_card_input(id, ev))
+		card.focus_mode = Control.FOCUS_ALL
+		card.focus_entered.connect(func(): card.queue_redraw())
+		card.focus_exited.connect(func(): card.queue_redraw())
+		card.draw.connect(func():
+			if card.has_focus(): card.draw_rect(Rect2(Vector2.ZERO, CARD_SIZE).grow(5), Color("#f3ead6"), false, 3.0))
+		card.gui_input.connect(func(ev):
+			if Director.ui.inspector.active: return
+			if ev.is_action_pressed("ui_accept"):
+				card.accept_event()
+				if browsing: examine(id)
+				else: _on_card(id)
+			elif ev.is_action_pressed("recall"):
+				card.accept_event()
+				examine(id)
+			else: _on_card_input(id, ev))
 		add_child(card)
 		cards[id] = card
+	if not cards.is_empty(): cards.values()[0].grab_focus()
 	move_child(_strings, get_child_count() - 1)
-	move_child(_exam, get_child_count() - 1)
 	for p in GameState.link_pairs:
 		if cards.has(p[0]) and cards.has(p[1]):
 			var l := _make_string(p[0], p[1])
@@ -221,100 +227,11 @@ func highlight(ids: Array) -> void:
 
 # ───────────── 检视：把一张卡片拿起来看 ─────────────
 
-func _build_examine() -> void:
-	_exam = Control.new()
-	_exam.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	_exam.mouse_filter = Control.MOUSE_FILTER_STOP
-	_exam.z_index = 10
-	var dim := ColorRect.new()
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	dim.color = Color(0.03, 0.02, 0.02, 0.82)
-	dim.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_exam.add_child(dim)
-	var paper := PanelContainer.new()
-	var sb := StyleBoxFlat.new()
-	sb.bg_color = PAPER
-	sb.set_content_margin_all(30)
-	sb.shadow_color = Color(0, 0, 0, 0.55)
-	sb.shadow_size = 14
-	paper.add_theme_stylebox_override("panel", sb)
-	paper.anchor_left = 0.5
-	paper.anchor_right = 0.9
-	# 纸的高度跟着字走，竖直居中
-	paper.anchor_top = 0.5
-	paper.anchor_bottom = 0.5
-	paper.grow_vertical = Control.GROW_DIRECTION_BOTH
-	paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_exam.add_child(paper)
-	_exam_text = VBoxContainer.new()
-	_exam_text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_exam_text.add_theme_constant_override("separation", 14)
-	paper.add_child(_exam_text)
-	var close_hint := Label.new()
-	close_hint.text = "点任意处放下"
-	close_hint.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
-	close_hint.position.y -= 46
-	close_hint.add_theme_color_override("font_color", Color("#b8ab92"))
-	close_hint.add_theme_font_size_override("font_size", 16)
-	_exam.add_child(close_hint)
-	_exam.gui_input.connect(func(ev):
-		if ev is InputEventMouseButton and ev.pressed and ev.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
-			_exam.hide())
-	add_child(_exam)
-	_exam.hide()
-
-
 ## 检视一张证据：左边是放大的卡片本身，右边是这条线索的全文、在哪里找到的、侦探想到的
 func examine(id: String) -> void:
-	var e: Dictionary = ContentDB.evidence.get(id, {})
-	if _exam_card:
-		_exam_card.queue_free()
-	_exam_card = Card.new()
-	_exam_card.setup(id, true)
-	var vp := get_viewport_rect().size
-	var k := minf(2.1, vp.x * 0.36 / CARD_SIZE.x)
-	_exam_card.pivot_offset = Vector2.ZERO
-	_exam_card.scale = Vector2(k, k)
-	_exam_card.rotation_degrees = -2.0
-	_exam_card.position = Vector2(vp.x * 0.27 - CARD_SIZE.x * k / 2, vp.y * 0.5 - CARD_SIZE.y * k / 2)
-	_exam.add_child(_exam_card)
-	for c in _exam_text.get_children():
-		c.queue_free()
-	_exam_line(e.get("name", id), 26, INK, Card.font("serif"))
-	var where := _found_where(id)
-	if where != "":
-		_exam_line(where, 15, INK.lightened(0.45), Card.font("serif"))
-	_exam_rule()
-	var detail: String = e.get("detail", "")
-	if detail == "":
-		detail = e.get("note", "")
-	_exam_line(Director.fill(detail), 19, INK, Card.font("type" if e.get("kind", "") == "文件" else "serif"))
-	var source := _derived_from(id)
-	if source != "":
-		_exam_line(source, 17, Color("#7a1f12"), Card.font("serif"))
-	var hint: String = e.get("hint", "")
-	if hint != "":
-		_exam_rule()
-		_exam_line("我想：" + hint, 19, Color("#24304a"), Card.font("hand"))
-	_exam.show()
-
-
-func _exam_line(text: String, size: int, color: Color, f: Font) -> void:
-	var l := Label.new()
-	l.text = text
-	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	l.add_theme_font_override("font", f)
-	l.add_theme_font_size_override("font_size", size)
-	l.add_theme_color_override("font_color", color)
-	_exam_text.add_child(l)
-
-
-func _exam_rule() -> void:
-	var r := ColorRect.new()
-	r.custom_minimum_size = Vector2(0, 1)
-	r.color = Color(0.4, 0.3, 0.2, 0.3)
-	_exam_text.add_child(r)
+	if Director.ui.inspector.active:
+		return
+	await Director.ui.inspect_evidence(id, _found_where(id), _derived_from(id))
 
 
 ## “第 2 章 · 花园·通风口外侧”：这条证据是在哪一章、哪个房间收进来的
