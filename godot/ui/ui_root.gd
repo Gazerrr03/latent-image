@@ -857,6 +857,12 @@ func choose(title: String, options: Array) -> int:
 	if Director.autoplay:
 		return 0
 	_release_mouse()
+	var longest_option := 0
+	for option in options:
+		longest_option = maxi(longest_option, str(option).length())
+	var side_margin := 0.12 if longest_option > 52 else 0.3
+	choice_panel.anchor_left = side_margin
+	choice_panel.anchor_right = 1.0 - side_margin
 	for c in choice_box.get_children():
 		choice_box.remove_child(c)
 		c.queue_free()
@@ -869,6 +875,8 @@ func choose(title: String, options: Array) -> int:
 		var b := Button.new()
 		_plain_button(b)
 		b.text = str(options[i])
+		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.add_theme_color_override("font_color", INK)
 		b.add_theme_color_override("font_hover_color", RED)
