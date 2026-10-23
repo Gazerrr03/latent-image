@@ -35,6 +35,7 @@ var has_camera: bool:
 	set(value): rules.data.has_camera = value
 var camera_raised := false
 var focus := 0.0
+var _aim_toast_timer := 0.0
 var plate_state: String:
 	get: return rules.data.plate
 	set(value): rules.data.plate = value
@@ -100,6 +101,10 @@ func _toast(msg: String) -> void:
 	var d := _dir()
 	if d and d.ui:
 		d.ui.toast(msg)
+	if camera_raised and is_instance_valid(aim_target_label):
+		_aim_toast_timer = 2.4
+		aim_target_label.text = msg
+		aim_target_label.modulate = Color(1.0, 0.45, 0.35)
 
 
 func _hint(msg: String) -> void:
@@ -185,17 +190,19 @@ func _sync() -> void:
 	if _key_prop: _key_prop.visible = rules.data.has_key
 	var plate := get_node_or_null("接口/hs_cellar_plate/原片")
 	if plate: plate.visible = rules.data.final_seen and not rules.data.final_taken
+	_update_camera_guide_hud()
 	var d := _dir()
 	if not _gameplay_active or not d or d.world.room != self: return
 	d.world.highlight_hotspots(rules.target_ids())
 	var step: String = _text("step_" + rules.next_step())
 	_set_objective(step)
+	var docs_done: bool = rules.data.book_opened and ["notes", "clip", "relics"].all(func(id): return rules.data.documents.has(id))
 	_set_checklist([
 		{"text": texts.get("milestone_camera", {}).get("text", ""), "done": has_camera},
 		{"text": texts.get("milestone_history", {}).get("text", ""), "done": rules.data.cleared.has("1920")},
 		{"text": texts.get("milestone_key", {}).get("text", ""), "done": rules.data.box_open},
 		{"text": texts.get("milestone_final", {}).get("text", ""), "done": rules.data.final_choice != ""},
-		{"text": texts.get("milestone_documents", {}).get("text", ""), "done": rules.data.complete}
+		{"text": texts.get("milestone_documents", {}).get("text", ""), "done": docs_done or rules.data.complete}
 	])
 
 func _finish(completed: bool) -> void:
@@ -222,7 +229,7 @@ func _build_archive_props() -> void:
 	brass.albedo_color = Color(0.65, 0.45, 0.16)
 	brass.metallic = 0.8
 	_key_prop.material_override = brass
-	_key_prop.position = Vector3(0.82, 0.973, -0.32)
+	_key_prop.position = Vector3(0.82, 0.824, -0.32)
 	add_child(_key_prop)
 
 func autoplay_cellar() -> void:
@@ -417,6 +424,47 @@ func _find_table_camera() -> void:
 		for mesh in model.find_children("Film cabinet*", "MeshInstance3D", true, false):
 			if mesh.name in ["Film cabinet door", "Film cabinet inset", "Film cabinet label", "Film cabinet latch", "Film cabinet padlock"]:
 				_cabinet_parts[mesh] = mesh.transform
+		_align_table_props(model)
+
+
+func _align_table_props(model: Node) -> void:
+	# 桌面表面高度 Y ≈ 0.824，木桌前端边缘在 Z ≈ -0.102，后端在 Z ≈ -1.338
+	# 1. 展开手记往北平移收回桌面上，贴合桌面高度
+	for mesh in model.find_children("Table open ledger*", "MeshInstance3D", true, false):
+		mesh.position.z -= 0.26
+		mesh.position.y = 0.824
+	# 2. 剪刀整体向北收进桌沿，贴合桌面高度
+	for mesh in model.find_children("Scissors*", "MeshInstance3D", true, false):
+		mesh.position.z -= 0.26
+		mesh.position.y = 0.824
+	# 3. 散落照片（Loose print* 与 backing*）原本在 Z = +0.12~+0.18 完全悬空，向北平移收回桌面
+	for mesh in model.find_children("Loose print*", "MeshInstance3D", true, false):
+		if mesh.position.z > -0.10:
+			mesh.position.z -= 0.45
+		mesh.position.y = 0.824
+	# 4. 放大镜收回桌面
+	for mesh in model.find_children("Magnifier*", "MeshInstance3D", true, false):
+		if mesh.position.z > -0.10:
+			mesh.position.z -= 0.25
+		mesh.position.y = 0.824
+	# 5. 钥匙串收回桌面
+	for mesh in model.find_children("Key ring*", "MeshInstance3D", true, false):
+		if mesh.position.z > -0.10:
+			mesh.position.z -= 0.25
+		mesh.position.y = 0.824
+	for mesh in model.find_children("Key shaft*", "MeshInstance3D", true, false):
+		if mesh.position.z > -0.10:
+			mesh.position.z -= 0.25
+		mesh.position.y = 0.824
+	# 6. 搪瓷杯与咖啡杯收回桌面
+	for mesh in model.find_children("*", "MeshInstance3D", true, false):
+		if "cup" in mesh.name.to_lower() and mesh.position.z > -0.10:
+			mesh.position.z -= 0.25
+	# 7. 散落纸片：超前桌沿（Z > -0.15）的碎纸平移收进桌面，并确保所有纸片落在木桌表面
+	for mesh in model.find_children("Paper scrap*", "MeshInstance3D", true, false):
+		if mesh.position.z > -0.15:
+			mesh.position.z -= 0.52
+		mesh.position.y = 0.824
 
 
 # ---------------------------------------------------------------------------
@@ -598,9 +646,36 @@ func _update_camera_guide_hud() -> void:
 		return
 	guide_pill_panel.visible = true
 	if not camera_raised:
-		guide_pill_label.text = "📷  按 [F] 举起大画幅相机取景"
+		guide_pill_label.text = "📷  按 [F] 举起大画幅相机取景（对准肖像点左键亦可举起）"
 	else:
-		guide_pill_label.text = "📷  按 [F] 放下相机  ·  [滚轮] 调焦  ·  [鼠标左键] 快门拍摄  ·  [R] 二次曝光拨杆"
+		match rules.data.plate:
+			"LOADED2":
+				guide_pill_label.text = "📷  按 [F] 放下相机  ·  [R] 二次曝光拨杆  ·  [触控板/滚轮/↑↓] 调焦  ·  [左键/空格] 快门拍摄"
+			"ARMED":
+				guide_pill_label.text = "📷  按 [F] 放下相机  ·  已拨杆就绪  ·  [触控板/滚轮/↑↓] 调焦  ·  [左键/空格] 二次曝光拍摄"
+			"EXPOSED", "EXPOSED2":
+				guide_pill_label.text = "📷  底片已曝光  ·  按 [F] 放下相机，前往显影盘显影"
+			"DEVELOPED":
+				guide_pill_label.text = "📷  底片已显影  ·  按 [F] 放下相机，回记录本与片夹重装"
+			_:
+				guide_pill_label.text = "📷  按 [F] 放下相机  ·  [触控板/滚轮/↑↓] 调焦  ·  [左键/空格] 快门拍摄"
+	_update_camera_hud_label()
+
+
+func _update_camera_hud_label() -> void:
+	if camera_hud_label == null:
+		return
+	match rules.data.plate:
+		"LOADED2":
+			camera_hud_label.text = "[举镜中] 触控板/滚轮/↑↓：调焦 · 左键/空格：快门 · R：二次曝光拨杆 · F：放下相机"
+		"ARMED":
+			camera_hud_label.text = "[举镜中] 拨杆已就位 · 触控板/滚轮/↑↓：调焦 · 左键/空格：二次曝光快门 · F：放下相机"
+		"EXPOSED", "EXPOSED2":
+			camera_hud_label.text = "[举镜中] 底片已曝光 · 请按 F 放下相机去显影盘显影"
+		"DEVELOPED":
+			camera_hud_label.text = "[举镜中] 底片已显影 · 请按 F 放下相机查看装片说明"
+		_:
+			camera_hud_label.text = "[举镜中] 触控板/滚轮/↑↓：调焦 · 左键/空格：快门 · F：放下相机"
 
 
 # ---------------------------------------------------------------------------
@@ -619,17 +694,22 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("cellar_arm") and has_camera and _gameplay_active:
 			_handle_arm_second_exposure()
 			get_viewport().set_input_as_handled()
-
 		elif event.is_action_pressed("cellar_shutter") and camera_raised:
 			_update_aim_detection()
 			_trigger_shutter()
 			get_viewport().set_input_as_handled()
-		elif event.is_action_pressed("cellar_focus_up") and camera_raised:
+		elif (event.is_action_pressed("cellar_focus_up") or (camera_raised and event is InputEventKey and event.keycode == KEY_UP)) and camera_raised:
 			_step_focus(0.08)
 			get_viewport().set_input_as_handled()
-		elif event.is_action_pressed("cellar_focus_down") and camera_raised:
+		elif (event.is_action_pressed("cellar_focus_down") or (camera_raised and event is InputEventKey and event.keycode == KEY_DOWN)) and camera_raised:
 			_step_focus(-0.08)
 			get_viewport().set_input_as_handled()
+	elif event is InputEventPanGesture and camera_raised:
+		_step_focus(-event.delta.y * 0.12)
+		get_viewport().set_input_as_handled()
+	elif event is InputEventMagnifyGesture and camera_raised:
+		_step_focus((event.factor - 1.0) * 0.8)
+		get_viewport().set_input_as_handled()
 	elif event is InputEventMouseButton and event.pressed:
 		if camera_raised:
 			_update_aim_detection()
@@ -643,6 +723,10 @@ func _input(event: InputEvent) -> void:
 				MOUSE_BUTTON_LEFT:
 					_trigger_shutter()
 					get_viewport().set_input_as_handled()
+		elif has_camera and event.button_index == MOUSE_BUTTON_LEFT:
+			if is_instance_valid(player) and player._hover == "hs_cellar_portraits":
+				_toggle_camera_raise()
+				get_viewport().set_input_as_handled()
 
 
 func _toggle_camera_raise() -> void:
@@ -668,7 +752,10 @@ func _toggle_camera_raise() -> void:
 	_update_camera_guide_hud()
 	_sync()
 	if camera_raised:
-		_hint("举镜中 · 滚轮调焦 · 左键快门 · F 放下")
+		if is_instance_valid(focus_ring):
+			focus_ring.set_focus(focus, true)
+		_update_aim_detection()
+		_hint("举镜中 · 触控板/滚轮/↑↓调焦 · 左键/空格快门 · F 放下")
 	else:
 		_hint("")
 
@@ -679,10 +766,13 @@ func _step_focus(delta: float) -> void:
 		focus_ring.set_focus(focus, true)
 	if current_aim_year > 0 and frame_mats.has(current_aim_year):
 		frame_mats[current_aim_year].set_shader_parameter("focus", focus)
+	_aim_toast_timer = 0.0
 	_update_aim_hud()
 
 
-func _process(_dt: float) -> void:
+func _process(dt: float) -> void:
+	if _aim_toast_timer > 0.0:
+		_aim_toast_timer -= dt
 	var d := _dir()
 	var shown: bool = camera_raised and d != null and not d.ui._busy() and is_instance_valid(player) and not player.frozen
 	if camera_overlay:
@@ -708,12 +798,12 @@ func _update_aim_detection() -> void:
 		if t > 0.0 and t < 8.0:
 			var hit_x: float = origin.x + fwd.x * t
 			var hit_y: float = origin.y + fwd.y * t
-			if absf(hit_y - 1.94) < 0.45:
+			if absf(hit_y - 1.94) < 0.75:
 				var coords := {
 					1919: -2.45, 1920: -1.82, 1921: -1.18, 1922: -0.55,
 					1923: 0.1, 1924: 0.74, 1925: 1.38, 1926: 2.02
 				}
-				var best_d := 0.32
+				var best_d := 0.38
 				for y in coords:
 					var dx: float = absf(hit_x - coords[y])
 					if dx < best_d:
@@ -729,6 +819,8 @@ func _update_aim_detection() -> void:
 
 func _update_aim_hud() -> void:
 	if not camera_raised or aim_target_label == null:
+		return
+	if _aim_toast_timer > 0.0:
 		return
 	if current_aim_year == 0:
 		aim_target_label.text = "对准北墙相框，或观察暗处虚影"
@@ -746,9 +838,10 @@ func _update_aim_hud() -> void:
 		aim_target_label.modulate = Color(0.8, 0.8, 0.8, 0.8)
 	else:
 		var name_str: String = info.get("name", "")
-		var status_str := "清晰 · 可按左键快门" if is_sharp else "模糊（滚轮调焦）"
+		var focus_pct: int = int(round(focus * 100))
+		var status_str := "清晰（%d%%）· 可按左键/空格快门" % focus_pct if is_sharp else "模糊（当前%d%%/需88%%·滑触控板/滚轮/按↑↓调焦）" % focus_pct
 		aim_target_label.text = "%s 发现旧影（%s） · %s" % [year_title, name_str, status_str]
-		aim_target_label.modulate = Color(1.0, 0.82, 0.3) if is_sharp else Color(1.0, 0.5, 0.4)
+		aim_target_label.modulate = Color(1.0, 0.82, 0.3) if is_sharp else Color(1.0, 0.55, 0.4)
 
 
 func _trigger_shutter() -> void:
@@ -756,11 +849,23 @@ func _trigger_shutter() -> void:
 	if result in ["first_shutter", "second_shutter", "final_first", "final_observed"]:
 		_play_sfx("shutter_old")
 		_play_flash()
+	else:
+		_play_sfx("click_clean")
+		if result == "focus":
+			var pct: int = int(round(focus * 100))
+			_toast("⚠️ 影像尚未调焦清晰（当前 %d%%，需 88%% 以上）！请滑动触控板/滚轮或按↑/↓调焦" % pct)
+			return
+		elif result == "aim":
+			_toast("⚠️ 请将中央取景十字对准北墙上的相框再按快门")
+			return
 	_apply(result)
 
 func _handle_arm_second_exposure() -> void:
 	var result: String = rules.arm()
-	if result == "armed": _play_sfx("bolt_slide")
+	if result == "armed":
+		_play_sfx("bolt_slide")
+	else:
+		_play_sfx("cloth_rustle")
 	_apply(result)
 
 
@@ -821,6 +926,8 @@ func _show_document(id: String, document: String) -> void:
 	d.ui.inspector.open(info, info.sources, target.global_position, [d.ui.objective_label, d.ui.checklist_box, d.ui.progress_label, d.ui.crosshair, d.ui.hint_box, d.ui.day_label, d.ui.room_label, d.ui.keys])
 	await d.ui.inspector.closed
 	if not is_inside_tree(): return
+	if document != "book":
+		rules.read_document(document)
 	if not GameState.inspected.has(id): GameState.inspected.append(id)
 	var evidence: String = ContentDB.hotspots.get(id, {}).get("evidence", "")
 	if evidence != "": d._collect(evidence)
