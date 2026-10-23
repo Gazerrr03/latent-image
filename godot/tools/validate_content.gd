@@ -543,15 +543,18 @@ func _check_action(id: String, a: Dictionary, mode: String, room: String, hotspo
 				err("镜头表", id, "台词组 %s 不在台词表里" % str(args))
 		"reveal", "conceal":
 			for x in args:
-				var found: bool = levels.has(room) and levels[room]["names"].has(x)
-				if levels.has(room) and not found:
-					err("镜头表", id, "%s 要显示 / 隐藏的“%s”在关卡场景 levels/%s.tscn 里没有同名节点" % [nm, x, room])
+				# 大地图支持用“房间/节点名”指定另一房间的人物。
+				var target_room: String = x.get_slice("/", 0) if x.contains("/") else room
+				var target_name: String = x.get_slice("/", 1) if x.contains("/") else x
+				var found: bool = levels.has(target_room) and levels[target_room]["names"].has(target_name)
+				if levels.has(target_room) and not found:
+					err("镜头表", id, "%s 要显示 / 隐藏的“%s”在关卡场景 levels/%s.tscn 里没有同名节点" % [nm, x, target_room])
 					continue
-				for row in layout.get(room, []):
-					if row.get("id", "") == x:
+				for row in layout.get(target_room, []):
+					if row.get("id", "") == target_name:
 						found = true
 				if not found:
-					err("镜头表", id, "%s 要显示 / 隐藏的“%s”不在房间布局表的 %s 里" % [nm, x, room])
+					err("镜头表", id, "%s 要显示 / 隐藏的“%s”不在房间布局表的 %s 里" % [nm, x, target_room])
 		"footage":
 			if args.is_empty() or not footage.has(args[0]):
 				err("镜头表", id, "影像片段“%s”不在影像片段表里" % str(args))

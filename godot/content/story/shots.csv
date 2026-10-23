@@ -16,8 +16,8 @@ C0-06,C0,*,hall,stair,,,,,reveal(安布罗斯·塔尔博特);say(c0_ambrose);col
 C0-07,C0,*,hall,hall_mid,,door_creak;bolt_slide@1.2,他转身走进暗房，厚木门合拢，门闩发出清脆而沉重的机括声。,,conceal(安布罗斯·塔尔博特);say(c0_constance);objective(在一楼走走：认识这家人。);explore(c0),C0-11,0B 第一次自由探索（任务表 c0）：园丁在温室、灵媒在客厅，两个都见过以后上楼回客房（C0-10）
 C0-08,C0,*,greenhouse,green_mid,,,,,say(c0_gideon),,园丁戴着工作手套
 C0-09,C0,*,seance,seance_mid,,,,,say(c0_latente),,灵媒的蕾丝手套
-C0-10,C0,*,hall,corridor_iris,camera,child_steps,"推开客房门前，走廊那一端艾瑞斯房间的门口，一个双眼蒙着布条的小女孩静静地立在那里，面朝着我的方向。转瞬间，她退回了门后。",,reveal(艾瑞斯·塔尔博特);wait(1.5);conceal(艾瑞斯·塔尔博特),,回客房前触发：摄像机朝向小女孩，展现小女孩在门前注视主角
-C0-11,C0,*,guest_room,,walk,luggage,,,"objective(客房：这几天我住在这里。书桌上有什么？);inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed)",,新手教程：安全屋的功能。镜子不点出
+C0-10,C0,*,hall,corridor_iris,camera,child_steps,"推开客房门前，走廊那一端艾瑞斯房间的门口，一个双眼蒙着布条的小女孩静静地立在那里，面朝着我的方向。转瞬间，她退回了门后。",,reveal(艾瑞斯·塔尔博特),,回客房前触发：摄像机朝向小女孩，展现小女孩在门前注视主角
+C0-11,C0,*,guest_room,,walk,luggage,,,"conceal(hall/chr_艾瑞斯·塔尔博特);objective(客房：这几天我住在这里。书桌上有什么？);inspect(hs_notebook,hs_typewriter,hs_desk_board,hs_bed)",,新手教程：安全屋的功能。镜子不点出
 C0-12,C0,*,guest_room,establish,,glass_break;body_thud@0.5,走廊尽头突然传来一声清脆刺耳的玻璃碎响。,,"music(关闭,0);objective()",,
 C0-13,C0,*,darkroom,door_push,,door_knock;door_bang@3.2;scream_constance@4.4;red_hum,"暗房的厚木门从内侧死死闩着。扣门三声，内里死寂无声。
 吉迪恩合身撞断了门闩。我第一个踏入这间泛着猩红光晕的狭室。
