@@ -27,6 +27,9 @@ func _ready() -> void:
 	add_child(ui)
 	Director.ui = ui
 	Director.world = host
+	var chapter3 := preload("res://levels/chapter3_flow.gd").new()
+	chapter3.name = "Chapter3Trial"
+	add_child(chapter3)
 	add_child(DebugPanel.new())
 	if not Director.autoplay and _arg("--capture=") == "":
 		Director.finished.connect(_on_finished)
