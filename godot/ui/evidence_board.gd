@@ -89,6 +89,9 @@ func cancel() -> void:
 
 ## Tab 在 GUI 焦点导航前处理；否则卡片有焦点时会只切换焦点，无法合上笔记本。
 func _input(event: InputEvent) -> void:
+	var cc = get_node_or_null("/root/CheatConsole")
+	if cc != null and cc.is_open():
+		return
 	if not visible or Director.ui.inspector.active:
 		return
 	var esc: bool = event.is_action_pressed("ui_cancel")

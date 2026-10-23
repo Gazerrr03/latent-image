@@ -34,6 +34,19 @@ const CHAPTER_MAP := {
 
 var _is_open := false
 var _prev_mouse_mode := Input.MOUSE_MODE_VISIBLE
+var _prev_player_frozen := false
+
+## 供外部 UI 系统快速查询作弊控制台是否正打开（用于全局覆盖交互拦截）
+static func is_console_open() -> bool:
+	var tree := Engine.get_main_loop() as SceneTree
+	if tree and tree.root and tree.root.has_node("CheatConsole"):
+		var node = tree.root.get_node("CheatConsole")
+		if node and node.has_method("is_open"):
+			return node.is_open()
+	return false
+
+func is_open() -> bool:
+	return _is_open
 
 var _panel: PanelContainer
 var _log_view: RichTextLabel
@@ -163,10 +176,16 @@ func toggle_console(force_state = null) -> void:
 	if _is_open:
 		_prev_mouse_mode = Input.mouse_mode
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		if _director and _director.world and _director.world.player:
+			_prev_player_frozen = _director.world.player.frozen
+			_director.world.player.frozen = true
 		_refresh_status()
 		_line_edit.grab_focus()
 		call_deferred("_clean_input_line")
 	else:
+		if _director and _director.world and _director.world.player:
+			if not _prev_player_frozen and not _is_menu_or_inspector_open():
+				_director.world.player.frozen = false
 		if _prev_mouse_mode == Input.MOUSE_MODE_CAPTURED and not _is_menu_or_inspector_open():
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		_line_edit.release_focus()

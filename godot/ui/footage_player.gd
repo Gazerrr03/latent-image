@@ -514,6 +514,9 @@ func _apply_fx(name: String) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	var cc = get_node_or_null("/root/CheatConsole")
+	if cc != null and cc.is_open():
+		return
 	Controls.note_event(event)
 	if not (_subtitle.visible or playing):
 		return

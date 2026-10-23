@@ -537,6 +537,9 @@ func _close() -> void:
 # ───────────── 输入 ─────────────
 
 func _input(event: InputEvent) -> void:
+	var cc = get_node_or_null("/root/CheatConsole")
+	if cc != null and cc.is_open():
+		return
 	Controls.note_event(event)
 	if not visible or not event.is_pressed() or event.is_echo():
 		return

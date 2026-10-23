@@ -1232,7 +1232,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	browse_board()
 
 
+func _cheat_console_open() -> bool:
+	var cc = get_node_or_null("/root/CheatConsole")
+	return cc != null and cc.is_open()
+
+
 func _busy() -> bool:
+	if _cheat_console_open():
+		return true
 	return Director.conversation != "" or inspector.active or board.visible or _waiting or choice_panel.visible or develop_layer.visible or interlude_layer.visible \
 		or Director.autoplay or menus.visible or (footage and footage.active)
 
@@ -1252,6 +1259,8 @@ func browse_board(restore_mouse := true) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if _cheat_console_open():
+		return
 	Controls.note_event(event)
 	if not _waiting:
 		return
