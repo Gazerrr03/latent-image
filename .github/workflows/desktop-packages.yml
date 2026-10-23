@@ -38,10 +38,9 @@ jobs:
 
           Invoke-WebRequest -Uri $godotUrl -OutFile $godotArchive
           Expand-Archive -LiteralPath $godotArchive -DestinationPath $godotDir
-          $godot = Get-ChildItem -Path $godotDir -File -Filter "Godot_v${version}-stable_win64*.exe" |
-            Where-Object { $_.Name -notmatch '_console\.exe$' } |
+          $godot = Get-ChildItem -Path $godotDir -File -Filter "Godot_v${version}-stable_win64_console.exe" |
             Select-Object -First 1 -ExpandProperty FullName
-          if (-not $godot) { throw 'The official Godot Windows editor executable was not found.' }
+          if (-not $godot) { throw 'The official Godot Windows console executable was not found.' }
 
           python godot/tools/fetch_export_template.py --platform windows-x86_64 --output-dir $templateDir
           python godot/tools/fetch_export_template.py --platform macos-universal --output-dir $templateDir
@@ -52,7 +51,7 @@ jobs:
           $macDir = Join-Path $exportRoot 'macos'
           New-Item -ItemType Directory -Force -Path $windowsDir, $macDir | Out-Null
           $importLog = Join-Path $env:RUNNER_TEMP 'godot-import.log'
-          & $godot --headless --editor --import --path $projectDir --quit --log-file $importLog
+          & $godot --headless --verbose --editor --import --path $projectDir --quit --log-file $importLog
           if ($LASTEXITCODE -ne 0) {
             if (Test-Path $importLog) { Get-Content -LiteralPath $importLog }
             throw "Godot resource import failed; see $importLog"
@@ -60,7 +59,7 @@ jobs:
 
           $windowsExe = Join-Path $windowsDir 'LatentImage.exe'
           $windowsLog = Join-Path $env:RUNNER_TEMP 'godot-export-windows.log'
-          & $godot --headless --path $projectDir --log-file $windowsLog --export-release 'Windows Desktop' $windowsExe
+          & $godot --headless --verbose --path $projectDir --log-file $windowsLog --export-release 'Windows Desktop' $windowsExe
           $exportExitCode = $LASTEXITCODE
           if ($exportExitCode -ne 0 -or -not (Test-Path $windowsExe)) {
             Write-Host "Windows export exit code: $exportExitCode"
@@ -84,7 +83,7 @@ jobs:
 
           $macZip = Join-Path $macDir 'LatentImage-Mac-raw.zip'
           $macLog = Join-Path $env:RUNNER_TEMP 'godot-export-macos.log'
-          & $godot --headless --path $projectDir --log-file $macLog --export-release 'macOS Universal' $macZip
+          & $godot --headless --verbose --path $projectDir --log-file $macLog --export-release 'macOS Universal' $macZip
           $exportExitCode = $LASTEXITCODE
           if ($exportExitCode -ne 0 -or -not (Test-Path $macZip)) {
             Write-Host "macOS export exit code: $exportExitCode"
@@ -93,6 +92,7 @@ jobs:
           }
 
       - name: Upload desktop packages and export logs
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: latentimage-desktop-packages
