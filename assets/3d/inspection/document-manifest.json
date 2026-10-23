@@ -610,5 +610,31 @@
     "surface_text": "",
     "handwriting": "detached_t",
     "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_table_diagram_0_front.png",
+    "size": [
+      2000,
+      1500
+    ],
+    "sha256": "269f77e9f5f584a7b93358f045a641818bd3e1c83a92ae70051db828be20b2d7",
+    "source": "PR33:650f3b24;godot/art/footage/ded_table_blueprint.png",
+    "text": "纸上画着五处座位和桌上公用物件的位置。",
+    "surface_text": "纸上画着五处座位和桌上公用物件的位置。",
+    "handwriting": "",
+    "dynamic": false
+  },
+  {
+    "path": "godot/art/props/inspection/ev_table_diagram_0_back.png",
+    "size": [
+      1200,
+      900
+    ],
+    "sha256": "4143535304bc09903fca588b1dbf6b76fb34948fb7a091c52633d2294db890ab",
+    "source": "PR33:650f3b24;godot/art/footage/ded_table_blueprint.png",
+    "text": "1924\\nL.",
+    "surface_text": "1924\\nL.",
+    "handwriting": "",
+    "dynamic": false
   }
 ]

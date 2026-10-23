@@ -1963,9 +1963,9 @@ func enter_level(id: String) -> bool:
 	var ui_visible: bool = ui.visible
 	var ui_mode: int = ui.process_mode
 	var fx_visible: bool = ui.fx.visible
-	ui.visible = false
-	ui.process_mode = Node.PROCESS_MODE_DISABLED
-	ui.fx.visible = false
+	var objective_before: String = ui.objective_label.text
+	var hud_before: bool = ui._hud_on
+	ui.set_hud(true)
 	var old_camera := get_viewport().get_camera_3d()
 	var pose: Transform3D = player.global_transform
 	var cam_pose: Transform3D = player.cam.transform
@@ -1985,7 +1985,7 @@ func enter_level(id: String) -> bool:
 	shot_cam.current = false
 	add_child(lvl)
 	await lvl.finished
-	var completed: bool = lvl.get("solved") == true
+	var completed: bool = lvl.get("solved") == true and not lvl.cancelled
 	# 关卡的 _finish 已收回玩家手中物件和图纸，之后才能释放它。
 	lvl.queue_free()
 	_sublevel = null
@@ -1995,6 +1995,9 @@ func enter_level(id: String) -> bool:
 			n.collision_mask = muted[n][1]
 	if is_instance_valid(previous_room):
 		previous_room.visible = room_visible
+	ui.set_objective(objective_before)
+	ui.set_hud(hud_before)
+	ui.set_hint("")
 	ui.visible = ui_visible
 	ui.process_mode = ui_mode
 	ui.fx.visible = fx_visible
@@ -2018,3 +2021,8 @@ func enter_level(id: String) -> bool:
 	Input.mouse_mode = mouse_mode
 	highlight_hotspots(hotspots)
 	return completed
+
+
+func cancel_level() -> void:
+	if is_instance_valid(_sublevel):
+		_sublevel.cancel_level()

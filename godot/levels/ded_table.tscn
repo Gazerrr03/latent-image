@@ -9,29 +9,6 @@
 
 [ext_resource type="PackedScene" path="res://art/levels/ded_table/chairs_1924.gltf" id="7_chairs"]
 
-[sub_resource type="ProceduralSkyMaterial" id="sky_mat"]
-sky_top_color = Color(0.33, 0.42, 0.55, 1)
-sky_horizon_color = Color(0.72, 0.7, 0.66, 1)
-ground_horizon_color = Color(0.5, 0.47, 0.4, 1)
-ground_bottom_color = Color(0.2, 0.18, 0.15, 1)
-
-[sub_resource type="Sky" id="sky"]
-sky_material = SubResource("sky_mat")
-
-[sub_resource type="Environment" id="env"]
-background_mode = 2
-background_color = Color(0.03, 0.03, 0.04, 1)
-sky = SubResource("sky")
-ambient_light_source = 3
-ambient_light_color = Color(0.55, 0.5, 0.45, 1)
-ambient_light_energy = 0.4
-tonemap_mode = 4
-ssao_enabled = true
-ssao_radius = 0.8
-ssil_enabled = true
-glow_enabled = true
-glow_intensity = 0.35
-
 [node name="ded_table" type="Node3D"]
 script = ExtResource("6_script")
 
@@ -79,19 +56,16 @@ transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 14.7, 0.015, -4.15)
 
 [node name="cam_dining_mid" type="Camera3D" parent="接口"]
 transform = Transform3D(-1, 0, -0, 0, 0.998945, 0.0459285, 0, 0.0459285, -0.998945, 15.75, 1.515, -4.65)
-environment = SubResource("env")
 fov = 64.7
 near = 0.03
 
 [node name="cam_table_close" type="Camera3D" parent="接口"]
 transform = Transform3D(-0.990393, -0.0367903, 0.133297, 0, 0.963958, 0.266054, -0.138281, 0.263498, -0.954697, 16.07, 1.565, -4.05)
-environment = SubResource("env")
 fov = 39.8
 near = 0.03
 
 [node name="cam_snug" type="Camera3D" parent="接口"]
 transform = Transform3D(1, 0, -0, -0, 0.99968, 0.0253083, 0, -0.0253083, 0.99968, 17, 1.465, -3.2)
-environment = SubResource("env")
 fov = 53.7
 near = 0.03
 
