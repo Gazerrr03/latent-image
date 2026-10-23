@@ -66,3 +66,4 @@
 *.pdf   binary
 *.zip   binary
 *.7z    binary
+godot/video/credits_ending.ogv filter=lfs diff=lfs merge=lfs -text

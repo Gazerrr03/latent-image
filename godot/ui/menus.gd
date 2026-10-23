@@ -150,9 +150,20 @@ func _page_title() -> void:
 	if _has_save():
 		_item(v, H.t("menu_continue"), _continue, H.day_line(GameState.shot, true))
 	_item(v, H.t("menu_new"), _new_game)
+	_item(v, "制作名单与致谢", _show_credits)
 	_item(v, H.t("menu_settings"), func(): _page_settings(_page_title))
 	_item(v, H.t("menu_quit"), func(): get_tree().quit())
 	_focus_first(v)
+
+
+func _show_credits() -> void:
+	_leave_title()
+	var credits_cls := preload("res://world/credits_sequence.gd")
+	var seq = credits_cls.new()
+	get_tree().root.add_child(seq)
+	seq.start_sequence()
+	await seq.finished
+	show_title()
 
 
 func _page_confirm() -> void:

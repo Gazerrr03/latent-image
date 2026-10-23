@@ -49,6 +49,10 @@ func _ready() -> void:
 		var code: int = await preload("res://tools/probe_map.gd").run(host, g if g != "" else "c1")
 		get_tree().quit(code)
 		return
+	if OS.get_cmdline_user_args().has("--credits") or _arg("--credits=") != "":
+		await play_credits()
+		get_tree().quit(0)
+		return
 	if Director.autoplay:
 		_autoplay()
 		return
@@ -62,13 +66,55 @@ func _ready() -> void:
 	ui.menus.show_title()
 
 
-## 走到结尾（尾声之后）：▸ 再读一遍
+## 走到结尾（尾声之后）：黑场后播放成片片尾
 func _on_finished() -> void:
-	var k: int = await Director.ui.choose("", ["再读一遍"])
+	await play_credits()
+	var k: int = await Director.ui.choose("", ["再读一遍", "返回标题"])
 	if k == 0:
 		GameState.reset()
 		GameState.delete_save()
 		Director.start()
+	else:
+		GameState.reset()
+		GameState.delete_save()
+		Director.world.stop_music(0.5)
+		Director.world.stop_loops()
+		Director.ui.menus.show_title()
+
+
+func play_credits() -> void:
+	Director.ui.cancel()
+	Director.world.stop_music(0.5)
+	Director.world.stop_loops()
+	var canvas := CanvasLayer.new()
+	canvas.layer = 30
+	add_child(canvas)
+	var player := VideoStreamPlayer.new()
+	player.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	player.expand = true
+	var stream := VideoStreamTheora.new()
+	stream.file = "res://video/credits_ending.ogv"
+	player.stream = stream
+	canvas.add_child(player)
+	var black := ColorRect.new()
+	black.color = Color(0, 0, 0, 0)
+	black.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	black.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	black.z_index = 1
+	canvas.add_child(black)
+	var blackout := create_tween()
+	blackout.tween_property(black, "color:a", 1.0, 0.9)
+	await blackout.finished
+	player.play()
+	await get_tree().create_timer(0.2).timeout
+	var reveal := create_tween()
+	reveal.tween_property(black, "color:a", 0.0, 0.9)
+	await reveal.finished
+	await player.finished
+	var close := create_tween()
+	close.tween_property(black, "color:a", 1.0, 1.0)
+	await close.finished
+	canvas.queue_free()
 
 
 ## 自动选第一个选项走完整条路径，检查是否到达终局
