@@ -50,11 +50,19 @@ jobs:
           $exePath = Join-Path $exportDir 'LatentImage.exe'
           $importLog = Join-Path $env:RUNNER_TEMP 'godot-import.log'
           & $godot --headless --editor --import --path (Join-Path $env:GITHUB_WORKSPACE 'godot') --quit --log-file $importLog
-          if ($LASTEXITCODE -ne 0) { throw "Godot resource import failed; see $importLog" }
+          if ($LASTEXITCODE -ne 0) {
+            if (Test-Path $importLog) { Get-Content -LiteralPath $importLog }
+            throw "Godot resource import failed; see $importLog"
+          }
 
           $exportLog = Join-Path $env:RUNNER_TEMP 'godot-export.log'
           & $godot --headless --path (Join-Path $env:GITHUB_WORKSPACE 'godot') --log-file $exportLog --export-release 'Windows Desktop' $exePath
-          if ($LASTEXITCODE -ne 0 -or -not (Test-Path $exePath)) { throw "Windows release export failed; see $exportLog" }
+          $exportExitCode = $LASTEXITCODE
+          if ($exportExitCode -ne 0 -or -not (Test-Path $exePath)) {
+            Write-Host "Godot export exit code: $exportExitCode"
+            if (Test-Path $exportLog) { Get-Content -LiteralPath $exportLog }
+            throw "Windows release export failed; see $exportLog"
+          }
 
           function Invoke-Playthrough([string]$name, [string]$expectedEnding, [string[]]$userArgs) {
             $logPath = Join-Path $env:RUNNER_TEMP "playthrough-$name.log"
