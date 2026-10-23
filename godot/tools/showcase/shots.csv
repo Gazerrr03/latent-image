@@ -1,0 +1,41 @@
+id,shot_id,leak,fx,switch,ui,clip,lead,press,grant,drive,pos_a,look_a,pos_b,look_b,fov_a,fov_b,seconds,ease,note
+S06,C2-00,0,,,,,,,,,9.6 -18.5 1.6,9.6 0 4.6,9.6 -9.0 1.9,9.6 0 3.6,62,55,7,1,庄园外景缓慢推近
+S07,C2-00,0,,,,,,,,,5 -40 12.5,10 -2 3,5 -26 6,10 -2 3.5,50,55,7,1,前鸟瞰下降
+S08,C2-00,0,,,,,,,,,22 19.5 5.3,20 9 4.4,25 22 5.8,20 9 4.4,70,60,7,1,后花园与温室：向后拉开
+S09,C2-00,0,,,,,,,,,cam:hall_mid,cam:hall_mid,cam:hall_mid 0 -2.5 0,cam:hall_mid 0 -2.5 0,60,60,6,1,门厅推向大门
+S10,C2-00,0,,,,,,,,,cam:establish,cam:establish,cam:establish -0.8 0.2 0,cam:establish -0.8 -1.2 0.2,55,50,6,1,客房全景微移
+S11,C1-07,0,,红灯,,,,,,,cam:wide,cam:wide,cam:wide -0.5 2.0 -0.2,cam:wide -0.5 2.0 -0.2,60,52,6,1,暗房推进
+S12,C2-00,0,,,,,,,,,cam:green_mid,cam:green_mid,cam:green_mid 0.6 0.5 0,cam:green_mid 0.6 0.5 0,62,56,6,1,温室
+S13,C2-00,0,,,,,,,,,cam:archive_mid,cam:archive_mid,cam:archive_mid 0 -1.5 0,cam:archive_mid 0 -1.5 0,60,60,6,1,档案室推进
+S14,C2-00,0,,,,,,,,,cam:seance_mid,cam:seance_mid,cam:seance_mid -1.5 0 0,cam:seance_mid -1.5 0 0,60,60,6,1,客厅推进
+S15,C2-00,0,,,,,,,,,cam:child_mid,cam:child_mid,cam:child_mid -0.3 0.3 0,cam:child_mid -0.3 0.3 0,60,55,6,1,孩子的房间
+S16,C1-07,0,,红灯,,,,,,,cam:tray,cam:tray,cam:tray 0 0.45 -0.25,cam:tray 0 0.45 -0.25,46,40,6,1,暗房红灯：显影盘缓推
+S17,C2-00,0,,,,,,,,,cam:typewriter_close,cam:typewriter_close,cam:typewriter_close 0.2 0.1 0,cam:typewriter_close 0.2 0.1 0,50,44,5,1,客房：打字机与记事本
+S18,C2-00,0,,,,,,,,,21.15 8.95 5.26,23.9 12.5 4.41,22.0 9.8 5.2,23.9 12.5 4.41,62,58,6,1,温室全景：横移
+S19,C2-00,0,,,,,,,,,cam:stair,cam:stair,cam:stair 0 -0.3 0.3,cam:stair 0 -0.3 0.3,60,55,6,1,门厅楼梯：缓升
+S01,C0-02,,,,,,,,,,cam:seat,cam:seat,cam:seat 0.15 0.1 0,cam:seat 0.15 0.1 0,60,54,6,1,火车窗外：同一棵树（镜头自带机位）
+S02,C0-06,0,,,,,,,,,cam:stair,cam:stair,cam:stair 0 -0.5 0.1,cam:stair 0 -0.5 0.1,60,56,5,1,序章夜里：楼梯上的主人
+S03,C0-07,0,,,,,,,,,cam:landing_darkroom,cam:landing_darkroom,cam:landing_darkroom 2.5 0.1 0,cam:landing_darkroom 2.5 0.1 0,60,50,5,1,二楼平台：暗房的门（序章夜里，门闩着）
+S04,C6-05,,,,"show,skip",,10,2 9.5,,,,,,,,,9,,亲手冲洗底片（镜头自带，保留界面）
+S20a,C2-00,0,,,,,,,,,cam:hall_mid,cam:hall_mid,cam:hall_mid 0 -1.5 0,cam:hall_mid 0 -1.5 0,60,56,5,1,同一处·L0 胶片
+S20b,C2-00,3,,,,,,,,,cam:hall_mid,cam:hall_mid,cam:hall_mid 0 -1.5 0,cam:hall_mid 0 -1.5 0,60,56,5,1,同一处·L3 录像带
+S20c,C2-00,4,,,,,,,,,cam:hall_mid,cam:hall_mid,cam:hall_mid 0 -1.5 0,cam:hall_mid 0 -1.5 0,60,56,5,1,同一处·L4 数字故障
+S21,corridor:1,2,,,,,60,,,,,,,,,,10,,回廊：第一圈往前走
+S22,C7-05,,,,,,,,,,,,,,,,6,,白色的走廊（镜头自带）
+S23,C7-07,,,,,,,,,,,,,,,,6,,走廊尽头的镜子（镜头自带）
+S24,EP-01,,,,,,,,,,,,,,,,6,,尾声：显影盘里的相纸
+S25,EP-02,,,,,,,,,,,,,,,,8,,尾声：十二块屏幕
+S26,C0-04,,,,,,,,,,9.6 -18.5 1.6,9.6 0 4.6,9.6 -9.0 1.9,9.6 0 3.6,62,55,7,1,夜里到达：大门推近
+S27,C2-01,0,,,,,,,,,cam:dining_mid,cam:dining_mid -0.4 0 0,cam:dining_mid 0 -1.0 0,cam:dining_mid -0.4 -1.0 0,58,54,6,1,餐厅：女主人
+S28,C5-02,2,,,,,,,,,cam:seance_mid,cam:seance_mid,cam:seance_mid -1.2 0 0,cam:seance_mid -1.2 0 0,58,54,6,1,客厅：灵媒
+S29,C3-02,1,,,,,,,,,cam:child_mid,cam:child_mid,cam:child_mid -0.3 0.3 0,cam:child_mid -0.3 0.3 0,60,56,6,1,孩子的房间
+S30,C4-02,1,,,,,,,,,cam:green_mid,cam:green_mid,cam:green_mid 0.6 0.5 0,cam:green_mid 0.6 0.5 0,62,56,6,1,温室：园丁
+S31,C2-00,,,,,片头_怪谈,10,,,,,,,,,,20,,影像片段：片头怪谈
+S32,C2-00,,,,,梦_r1,10,,,,,,,,,,24,,影像片段：第 1 章的梦
+G01,C1-05,,,红灯,show,,60,,,wait 1;walk hs_bottles 1.1;wait 0.5;e;wait 4;key Escape;wait 1;walk hs_tray 1.1;wait 0.5;e;wait 3.5;key Escape;wait 1,,,,,,,24,,暗房：走近药柜，按 E 检视
+G02,C1-02,,,,show,,60,,,wait 3;click 4 4,,,,,,,22,,餐厅：和女主人问话
+G03,C1-07,,,,show,,60,,ev_bottle_moved ev_never_wrong ev_amb_notes ev_tray_crystal,wait 1;walk hs_desk_board 1.0;wait 0.5;e;wait 3;card ev_bottle_moved;card ev_never_wrong;wait 5;click 2 4,,,,,,,32,,客房桌前：连线得出推论
+G04,C1-08,,,,show,,60,,,wait 1;walk hs_typewriter 1.0;wait 0.5;e;wait 5;pick 0;wait 3;pick 0;wait 3,,,,,,,13,,打字机：写下当天的记录
+G05,C1-09,,,,show,,60,,,wait 1;walk hs_bed 1.0;wait 0.5;e;wait 4;click 6 4,,,,,,,28,,睡下：梦与日记
+G06,C1-07,,,,show,,60,,ev_bottle_moved ev_never_wrong ev_amb_notes ev_tray_crystal ev_letter_p1 ev_vent_print,wait 1;key Tab;wait 3;examine ev_bottle_moved;wait 4;key Tab;wait 1,,,,,,,12,,证据板：翻开、拿起一张卡检视
+X12,C2-00,0,关闭,,,,,,,,cam:green_mid,cam:green_mid,cam:green_mid 0.6 0.5 0,cam:green_mid 0.6 0.5 0,62,56,1,1,温室
