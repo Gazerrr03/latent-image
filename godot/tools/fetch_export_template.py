@@ -20,8 +20,11 @@ USER_AGENT = "LatentImage-export-packaging/1.0"
 TAIL_SIZE = 65_536
 
 TARGETS = {
-    "macos-universal": "templates/macos.zip",
-    "windows-x86_64": "templates/windows_release_x86_64.exe",
+    "macos-universal": ("templates/macos.zip",),
+    "windows-x86_64": (
+        "templates/windows_debug_x86_64.exe",
+        "templates/windows_release_x86_64.exe",
+    ),
 }
 
 
@@ -65,7 +68,9 @@ def selected_entries() -> tuple[int, dict[str, tuple[int, int, int, int, int]]]:
     if len(central) != central_size:
         raise RuntimeError("The export template index is incomplete.")
 
-    wanted = {"templates/version.txt", *TARGETS.values()}
+    wanted = {"templates/version.txt"}
+    for files in TARGETS.values():
+        wanted.update(files)
     entries: dict[str, tuple[int, int, int, int, int]] = {}
     position = 0
     for _ in range(entry_count):
@@ -125,7 +130,7 @@ def main() -> None:
 
     archive_size, entries = selected_entries()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    names = ("templates/version.txt", TARGETS[args.platform])
+    names = ("templates/version.txt", *TARGETS[args.platform])
     for name in names:
         data = fetch_entry(name, entries[name], archive_size)
         output = args.output_dir / name.rsplit("/", 1)[-1]
