@@ -91,16 +91,147 @@ jobs:
             throw "macOS release export failed; see $macLog"
           }
 
-      - name: Upload desktop packages and export logs
+      - name: Upload Windows package
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: latentimage-desktop-packages
+          name: latentimage-windows-package
+          path: godot/export/windows/LatentImage-Windows.zip
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Upload macOS package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latentimage-macos-raw-package
+          path: godot/export/macos/LatentImage-Mac-raw.zip
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Upload export logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latentimage-export-logs
           path: |
-            godot/export/windows/LatentImage-Windows.zip
-            godot/export/macos/LatentImage-Mac-raw.zip
             ${{ runner.temp }}\godot-import.log
             ${{ runner.temp }}\godot-export-windows.log
             ${{ runner.temp }}\godot-export-macos.log
-          if-no-files-found: error
+          if-no-files-found: warn
+          retention-days: 7
+
+  test-macos:
+    name: Test macOS package on Apple Silicon
+    needs: package
+    if: needs.package.result == 'success'
+    runs-on: macos-latest
+    steps:
+      - name: Download raw macOS export
+        uses: actions/download-artifact@v4
+        with:
+          name: latentimage-macos-raw-package
+          path: ${{ runner.temp }}/macos-raw
+
+      - name: Package and play through both macOS routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          extract_dir="$RUNNER_TEMP/macos-raw-extracted"
+          package_dir="$RUNNER_TEMP/LatentImage-Mac"
+          verify_dir="$RUNNER_TEMP/macos-package-verify"
+          mac_zip="$RUNNER_TEMP/LatentImage-Mac.zip"
+          mkdir -p "$extract_dir" "$package_dir" "$verify_dir"
+          ditto -x -k "$RUNNER_TEMP/macos-raw/LatentImage-Mac-raw.zip" "$extract_dir"
+          app_path="$(find "$extract_dir" -maxdepth 2 -type d -name '*.app' -print -quit)"
+          if [[ -z "$app_path" ]]; then
+            echo 'The macOS archive did not contain an app bundle.'
+            find "$extract_dir" -maxdepth 3 -print
+            exit 1
+          fi
+          executable="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$app_path/Contents/Info.plist")"
+          app_binary="$app_path/Contents/MacOS/$executable"
+          if [[ ! -x "$app_binary" ]]; then
+            echo "The exported executable is missing or lacks its executable flag: $app_binary"
+            ls -l "$app_path/Contents/MacOS"
+            exit 1
+          fi
+          ditto "$app_path" "$package_dir/$(basename "$app_path")"
+          cat > "$package_dir/README.txt" <<'EOF'
+          潜影（Latent Image）macOS 版
+
+          运行方式：双击应用包启动。
+          键盘操作：W/A/S/D 移动，鼠标转动视角，E 或鼠标左键调查，Shift 疾跑，Tab 或 I 打开证据板，Esc 打开设置。
+          本应用为 Universal 2 构建，包含 Intel 与 Apple Silicon 架构。
+          本评审包使用 ad-hoc 签名，未经过 Apple Developer ID 公证；macOS 可能要求用户手动确认首次打开。
+          EOF
+          ditto -c -k --sequesterRsrc --keepParent "$package_dir" "$mac_zip"
+          ditto -x -k "$mac_zip" "$verify_dir"
+          packaged_app="$(find "$verify_dir" -type d -name '*.app' -print -quit)"
+          if [[ -z "$packaged_app" ]]; then
+            echo 'The final macOS package did not contain an app bundle.'
+            find "$verify_dir" -maxdepth 4 -print
+            exit 1
+          fi
+          packaged_executable="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$packaged_app/Contents/Info.plist")"
+          app_binary="$packaged_app/Contents/MacOS/$packaged_executable"
+          if [[ ! -x "$app_binary" ]]; then
+            echo "The final package lost the executable flag: $app_binary"
+            ls -l "$packaged_app/Contents/MacOS"
+            exit 1
+          fi
+
+          run_route() {
+            local route="$1"
+            local expected_ending="$2"
+            shift 2
+            local log="$RUNNER_TEMP/playthrough-$route.log"
+            local stdout_log="$RUNNER_TEMP/playthrough-$route.stdout.log"
+            set +e
+            "$app_binary" --headless --log-file "$log" -- --autoplay "$@" >"$stdout_log" 2>&1
+            local exit_code=$?
+            set -e
+            cat "$stdout_log" "$log"
+            if [[ "$exit_code" -ne 0 ]]; then
+              echo "$route route exited with $exit_code"
+              return 1
+            fi
+            if ! grep -Fq '结果：通过' "$stdout_log" "$log"; then
+              echo "$route route did not report a successful result"
+              return 1
+            fi
+            if ! grep -Fq '未成立 []' "$stdout_log" "$log"; then
+              echo "$route route left unresolved deductions"
+              return 1
+            fi
+            if ! grep -Fq "讲法 $expected_ending" "$stdout_log" "$log"; then
+              echo "$route route did not reach the expected ending: $expected_ending"
+              return 1
+            fi
+            echo "$route route passed: $expected_ending"
+          }
+
+          run_route protect '保护'
+          run_route replace '取代' --view=取代
+
+      - name: Upload final macOS package
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latentimage-macos-package
+          path: ${{ runner.temp }}/LatentImage-Mac.zip
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Upload macOS playthrough logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: latentimage-macos-playthrough-logs
+          path: |
+            ${{ runner.temp }}/playthrough-protect.log
+            ${{ runner.temp }}/playthrough-protect.stdout.log
+            ${{ runner.temp }}/playthrough-replace.log
+            ${{ runner.temp }}/playthrough-replace.stdout.log
+          if-no-files-found: warn
           retention-days: 7
