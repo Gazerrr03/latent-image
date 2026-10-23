@@ -90,6 +90,9 @@ func _layout() -> void:
 	_percent.text = "%d%%" % roundi(zoom * 100)
 
 func _input(event: InputEvent) -> void:
+	var cc = get_node_or_null("/root/CheatConsole")
+	if cc != null and cc.is_open():
+		return
 	if not _active: return
 	if event is InputEventKey and event.pressed and not event.echo:
 		match event.physical_keycode:

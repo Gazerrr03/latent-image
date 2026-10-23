@@ -78,6 +78,14 @@ func _ready() -> void:
 
 
 func _build_ui() -> void:
+	var blocker := Control.new()
+	blocker.set_anchors_preset(Control.PRESET_FULL_RECT)
+	blocker.mouse_filter = Control.MOUSE_FILTER_STOP
+	blocker.gui_input.connect(func(ev):
+		if ev is InputEventMouseButton and ev.pressed:
+			_line_edit.grab_focus())
+	add_child(blocker)
+
 	_panel = PanelContainer.new()
 	_panel.anchor_left = 0.0
 	_panel.anchor_top = 0.0
@@ -91,7 +99,7 @@ func _build_ui() -> void:
 	sb.border_color = Color(0.65, 0.55, 0.38, 0.7) # 暗金色边缘
 	sb.set_content_margin_all(10)
 	_panel.add_theme_stylebox_override("panel", sb)
-	add_child(_panel)
+	blocker.add_child(_panel)
 
 	var root_vbox := VBoxContainer.new()
 	root_vbox.add_theme_constant_override("separation", 6)

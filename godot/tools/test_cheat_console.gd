@@ -47,13 +47,16 @@ func _run_tests() -> void:
 		assert(gs.evidence.size() == db.evidence.size(), "giveall 应该发满所有证据")
 		print("✔ giveall 指令测试通过")
 
-	# 5. 验证控制台开关状态
+	# 5. 验证控制台开关状态及全局覆盖交互标志
 	assert(not console.visible, "初始应为不可见")
+	assert(not console.is_open(), "初始 is_open 应为 false")
 	console.toggle_console(true)
 	assert(console.visible, "打开后应为可见")
+	assert(console.is_open(), "打开后 is_open 应为 true")
 	console.toggle_console(false)
 	assert(not console.visible, "关闭后应为不可见")
-	print("✔ 控制台开关状态测试通过")
+	assert(not console.is_open(), "关闭后 is_open 应为 false")
+	print("✔ 控制台开关状态与全局覆盖标志测试通过")
 
 	# 6. 验证按键匹配
 	var key_event := InputEventKey.new()
