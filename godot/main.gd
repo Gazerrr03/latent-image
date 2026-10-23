@@ -31,6 +31,8 @@ func _ready() -> void:
 	chapter3.name = "Chapter3Trial"
 	add_child(chapter3)
 	add_child(DebugPanel.new())
+	if not has_node("/root/CheatConsole"):
+		add_child(preload("res://ui/cheat_console.gd").new())
 	if not Director.autoplay and _arg("--capture=") == "":
 		Director.finished.connect(_on_finished)
 
