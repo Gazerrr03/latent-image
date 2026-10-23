@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 原工作台物件接入盘底结晶资源
+TRAY_MATERIAL manor_室内_药液 (0.3811, 0.3133, 0.2209, 0.75) alpha=4
+PASS 白色结晶是盘底真实几何
+PASS 原盘沿、相纸、茶杯及其他实物三角面原位保留
+TRAY_GEOMETRY {"missing":0,"verified_triangles":856}
+PASS 自然站位提示中间急停液盘
+PASS 真实E打开保留现场关系的固定特写
+PASS 盘底结晶有局部照明与细节焦点
+PASS 退出恢复现场视角与行动并只收集一次
+TRAY_INSPECTION failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

@@ -1,0 +1,299 @@
+[
+  {
+    "scene": "layer1",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-077d82f4-84eb-4350-9018-a174c9847197.png",
+    "file": "corridor_layer1-v2.png",
+    "status": "candidate",
+    "sha256": "7c09e0719ff0ea3e38f4fb5300ec5a885114fcfa991ce92ad04e6dc0a6dbefc4",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_layer1-v2.txt",
+    "references": [
+      "底图/底图_layer1.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "初稿照片误画风景；r1 改为家庭合影，但各幅完全一致、横幅照片规格仍未满足。门把手存在重复；需逐点对照白模。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "darkroom",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-4fe081e7-b886-4195-9371-d558fdd7c77a.png",
+    "file": "corridor_darkroom-v2.png",
+    "status": "candidate",
+    "sha256": "b36f9b13086b99b9f19ad0f2e2210eb56e7d0fb827a3dcd6c2e5585d3da221e8",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_darkroom-v2.txt",
+    "references": [
+      "底图/底图_darkroom.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "r1 已压暗壁灯并换家庭照；门缝红光更突出，但灯罩仍偏亮，“红光最亮”待进一步修订与亮度复核。家庭照与其余图尚未统一。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "turn",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-a9872850-15ed-4b4b-a5b6-e74633dca251.png",
+    "file": "corridor_turn-v2.png",
+    "status": "candidate",
+    "sha256": "c0d865deab6092301da86717b7e100947eb6f0872d8facf8052377285250630f",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_turn-v2.txt",
+    "references": [
+      "底图/底图_turn.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "r1 改家庭照，却额外新增最前方相框，违反保留底图位置要求；仅保留修订供比较，不作为选定稿。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "segB",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-1cec5924-5420-4799-b819-46f66058c451.png",
+    "file": "corridor_segB-v2.png",
+    "status": "candidate",
+    "sha256": "f2c503c0c37cfd4f9334c8ac17d805e3f9ed4ebde31e2a20014bb4debe566797",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_segB-v2.txt",
+    "references": [
+      "底图/底图_segB.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "两侧相框、右墙三灯与门下暖光可见；照片人物排列与其他图不一致，门板及物件位置需叠图复核。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "cloakroom",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-34ceadae-b070-433c-9815-77c424e9a8e0.png",
+    "file": "corridor_cloakroom-v2.png",
+    "status": "candidate",
+    "sha256": "0322f558bff45f3514a7e7d1cbcdf4009196302ca377aa7ea4273cbac36b237e",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_cloakroom-v2.txt",
+    "references": [
+      "底图/底图_cloakroom.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "可数出四钩、三衣，第3钩空、下有水迹，左凳右门；吊灯暖光。关键叙事细节初检可见，非尺寸/机位验收。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "emptyroom",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-d9fef857-8030-4f60-b4ea-6c6c53c46654.png",
+    "file": "corridor_emptyroom-v2.png",
+    "status": "candidate",
+    "sha256": "f33303657a6576b5e0c384ef571f4f71462e3c69915d0625ad87f6ba12883461",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_emptyroom-v2.txt",
+    "references": [
+      "底图/底图_emptyroom.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "无家具，地板有磨亮圆圈，单吊灯；圆圈尺度与照度需人工确认。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "stair_window",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-a0ebfa1c-c1a7-4b8e-a5e4-49be44b0e28c.png",
+    "file": "corridor_stair_window-v2.png",
+    "status": "candidate",
+    "sha256": "f4d6645fd62c8b30e6eb4b083a13318156d5dc1ae8182a20b51ee9364351a48d",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_stair_window-v2.txt",
+    "references": [
+      "底图/底图_stair_window.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "r1 去掉左墙多余相框并改回圆几；右墙照片仍偏风景，壁灯数量与底图/任务卡需复核；远门被窗中梃遮挡。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "photo_wall",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-17fbc71f-5f59-4eb7-aaf3-df07e13fb131.png",
+    "file": "corridor_photo_wall-v2.png",
+    "status": "candidate",
+    "sha256": "16a6fb97408a8237b141271174fc95151ba55c16b969cb40ab0e247e11543e26",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_photo_wall-v2.txt",
+    "references": [
+      "底图/底图_photo_wall.jpg",
+      "../T-034-门厅/hall_landing_darkroom-v3.png",
+      "drafts/night_photo-v1.png"
+    ],
+    "semantic_review": "门高照片、四支蜡烛、框内左开门与黑影均可见；两侧仍偏亮，是否仅烛光与底图位置需复核。侧框还是风景内容。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "greenhouse_path",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-37d1516a-4c4c-487d-b88d-9f1f07ce3209.png",
+    "file": "corridor_greenhouse_path-v2.png",
+    "status": "candidate",
+    "sha256": "79a4f61ec6262c8df0c12d75a4d731e81cf314e2cdfad9093623267963fee0b1",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_greenhouse_path-v2.txt",
+    "references": [
+      "drafts/night_photo-v1.png",
+      "../T-034-门厅/hall_landing_darkroom-v3.png"
+    ],
+    "semantic_review": "左侧开门暖光、玻璃铁架、盆栽、湿石板和半透明背影可见；原参考为竖图，本图横向扩展了视野，非严格同画幅。温室整体亮度待审。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "layer1",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-96385366-f7c3-4d7b-ab64-3369ad02b848.png",
+    "file": "corridor_layer1-v2-r1.png",
+    "status": "candidate_revision",
+    "sha256": "1d7ef2ce4c84751d9727568d8e0559f0279e8170600ccc6de58f54aeca8a6c37",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_layer1-v2-r1.txt",
+    "references": [
+      "corridor_layer1-v2.png"
+    ],
+    "semantic_review": "初稿照片误画风景；r1 改为家庭合影，但各幅完全一致、横幅照片规格仍未满足。门把手存在重复；需逐点对照白模。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "darkroom",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-376e6cdc-11df-49a3-a2a1-2b9cefe49ef2.png",
+    "file": "corridor_darkroom-v2-r1.png",
+    "status": "candidate_revision",
+    "sha256": "e78acfed43039531e694845e4d3ed1d94c01c98007101bc8c363189a11414f7e",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_darkroom-v2-r1.txt",
+    "references": [
+      "corridor_darkroom-v2.png"
+    ],
+    "semantic_review": "r1 已压暗壁灯并换家庭照；门缝红光更突出，但灯罩仍偏亮，“红光最亮”待进一步修订与亮度复核。家庭照与其余图尚未统一。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "stair_window",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-96ed4e05-b221-46b6-9e3c-ae484e06361a.png",
+    "file": "corridor_stair_window-v2-r1.png",
+    "status": "candidate_revision",
+    "sha256": "67db70b90e1e3255bd57b96ed37b84335f27926be6027b6cb674fe8d006a02e0",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_stair_window-v2-r1.txt",
+    "references": [
+      "corridor_stair_window-v2.png",
+      "corridor_layer1-v2.png"
+    ],
+    "semantic_review": "r1 去掉左墙多余相框并改回圆几；右墙照片仍偏风景，壁灯数量与底图/任务卡需复核；远门被窗中梃遮挡。",
+    "acceptance": "not_accepted"
+  },
+  {
+    "scene": "turn",
+    "source": "/Users/qizhi_dong/.codex/generated_images/01a159aa-bae5-73a3-8639-e28f8ce64be6/exec-631b3d74-c994-42bf-bb91-91c04102ab6d.png",
+    "file": "corridor_turn-v2-r1.png",
+    "status": "candidate_revision",
+    "sha256": "d1b91624047c2b7d349a3f179934137568c189749df90e673a4f21767b55756d",
+    "native_dimensions": [
+      1672,
+      941
+    ],
+    "export_dimensions": [
+      1672,
+      941
+    ],
+    "upscaled": false,
+    "prompt": "prompts/corridor_turn-v2-r1.txt",
+    "references": [
+      "corridor_turn-v2.png"
+    ],
+    "semantic_review": "r1 改家庭照，却额外新增最前方相框，违反保留底图位置要求；仅保留修订供比较，不作为选定稿。",
+    "acceptance": "not_accepted"
+  }
+]

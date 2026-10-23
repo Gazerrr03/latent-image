@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 薄纸边缘偏离准星仍可选
+PASS 已选目标不会凭空保留
+PASS 明显移开立即失效
+PASS 超距立即失效
+PASS 镜头后方不可选
+PASS 隐藏物品不可选
+PASS 正对物品优先于旁边更近的物品
+PASS 邻近目标小幅偏差不抢选
+PASS 按表面距离而不是中心距离
+PASS 墙体遮挡立即取消已有目标
+PASS 容错范围不能绕过遮挡
+PASS 移开遮挡后可选
+PASS 关闭柜门阻止选中柜内物品
+PASS 门本身可操作
+PASS 开门后可选柜内物品
+PASS 单面线索正面可见
+PASS 单面线索背面立即失效
+PASS 渲染道具的交互遮挡层也挡住线索
+TARGETING failures=0

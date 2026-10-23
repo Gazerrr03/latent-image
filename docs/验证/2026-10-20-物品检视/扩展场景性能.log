@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+INSPECTION_PERF_META {"gpu":"Apple M4 (Apple9)","scope":"three investigation rooms","viewport":"(1280, 720)","vsync":1}
+INSPECTION_PERF {"fps":59.2164172632006,"mode":"walk","p95_ms":19.62,"p99_ms":22.717,"room":"child_room","samples":297}
+INSPECTION_PERF {"fps":121.799464082358,"mode":"inspection","p95_ms":16.914,"p99_ms":18.115,"room":"child_room","samples":609}
+INSPECTION_PERF {"fps":144.938806835754,"mode":"walk","p95_ms":8.115,"p99_ms":8.408,"room":"greenhouse","samples":725}
+INSPECTION_PERF {"fps":144.92524755731,"mode":"inspection","p95_ms":7.503,"p99_ms":7.699,"room":"greenhouse","samples":725}
+INSPECTION_PERF {"fps":144.933330667893,"mode":"walk","p95_ms":10.169,"p99_ms":10.879,"room":"seance","samples":725}
+INSPECTION_PERF {"fps":144.938256302815,"mode":"inspection","p95_ms":7.394,"p99_ms":7.688,"room":"seance","samples":725}
+INSPECTION_PERF below_45=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

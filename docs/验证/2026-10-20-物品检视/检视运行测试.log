@@ -1,0 +1,62 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 场景真实热区存在
+PASS 真实记事本网格存在
+PASS 检视冻结角色、释放鼠标并隐藏准星
+PASS 检视隐藏现场真实高亮描边
+PASS 便携检视使用真实网格且隐藏原件
+PASS 拖动能旋转实物
+PASS F 进入阅读
+PASS D 翻页并更新正文
+PASS Esc 从阅读返回且保留观察角度
+PASS R 复位
+PASS 滚轮可放大且缩放有固定上限
+PASS 真实阅读按钮不启动拖动
+PASS 阅读返回保留缩放
+PASS 退出恢复原件、角色、准星、鼠标与相机
+PASS 放下恢复原先描边材质
+PASS 重复检视物件不会透明
+PASS 中断立即恢复
+PASS 现场特写不复制或拿走物品
+PASS 退出过渡中也可立即中断
+PASS 保留进入前已有的冻结状态
+PASS 场景入口已进入检视
+PASS 首次检视后收入证据
+PASS 不在当前任务列表的已见线索仍可检视
+PASS 重复检视不重复收集且恢复角色
+PASS 剧情中断立即恢复且不发放未完成线索
+PASS 笔记本真实卡片打开实物信件
+PASS 信件正面纹理为该信原文
+PASS V 翻到真实背面
+PASS 阅读对应当前背面而不是泄露正面
+PASS Esc 从信件阅读回到同一背面
+PASS 退出实物后笔记本仍打开且角色仍冻结
+PASS 实际翻页同时更换纸面和阅读原文
+PASS 翻页途中纸面实际转动
+PASS 翻页中进入阅读恢复平面且保留观察姿态
+PASS 证词作为可读记录进入同一检视器
+PASS 证词 Esc 直接返回笔记本
+PASS 再按 Esc 合上笔记本并恢复行走
+PASS 文档全部纸面资源可用：ev_letter_p1
+PASS 文档全部纸面资源可用：ev_letter_p2
+PASS 文档全部纸面资源可用：ev_record_c0
+PASS 文档全部纸面资源可用：ev_amb_notes
+PASS 文档全部纸面资源可用：ev_carbon
+PASS 文档全部纸面资源可用：ev_ledger_names
+PASS 文档全部纸面资源可用：ev_con_ledger
+PASS 文档全部纸面资源可用：ev_clipping
+PASS 文档全部纸面资源可用：ev_manual_page
+PASS 文档全部纸面资源可用：ev_seance_cards
+PASS 文档全部纸面资源可用：ev_ticket
+PASS 文档全部纸面资源可用：ev_ledger_last
+PASS 文档全部纸面资源可用：ev_draw_path
+PASS 文档全部纸面资源可用：ev_draw_boxes
+PASS 文档全部纸面资源可用：ev_draw_train
+PASS 文档全部纸面资源可用：ev_iris_portrait
+PASS 文档全部纸面资源可用：ev_draw_cloth
+PASS 文档全部纸面资源可用：ev_night_photo
+PASS 文档全部纸面资源可用：ev_photo_back
+INSPECTOR failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

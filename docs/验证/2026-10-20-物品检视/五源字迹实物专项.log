@@ -1,0 +1,22 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 在原客房书桌接入五份实物
+PASS 早期探索不提前显示晚期比对
+PASS 第五章去客房之前仍未摊字
+PASS 摊字镜号才显示原位实物
+PASS 直接复用已检视过的四份纸张和自己的笔记
+PASS 五份纸张朝上平放在桌上
+PASS 降灵卡片展示真正含小写t的Salter页
+PASS 原可站立位置提示摊开的字
+PASS 真实E保留原位五源关系的特写
+PASS 现场可进一步放大笔迹
+PASS 观察记录仍是既有五源推论
+PASS 退出恢复相机与行走且只记录一次
+PASS 异地笔记本仍展示同一五份实物
+PASS 复查卡片保持含t的第二页
+PASS 复查可放大同组笔迹
+PASS 笔记本复查不重记或增发五份证据
+HANDWRITING_SPREAD failures=0
+WARNING: 7 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

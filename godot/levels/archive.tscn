@@ -95,6 +95,10 @@ metadata/size = Vector3(0.8, 0.08, 0.35)
 [node name="hs_doorframe" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.41, 4.665, -7.75)
 metadata/size = Vector3(0.12, 0.6, 0.12)
+metadata/inspect_fov = 28.0
+metadata/inspect_light = true
+metadata/inspect_light_energy = 0.8
+metadata/inspection_focus = Vector3(-0.005, 0.01, -0.0105)
 
 [node name="hs_clipping" type="Marker3D" parent="接口"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.19, 4.398, -1.84)

@@ -1,0 +1,18 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+SHOE_SCALE_GEOMETRY [P: (0.12532, 0.12, -0.054861), S: (0.282328, 0.09, 0.270774)] basis=(1.0, 1.0, 1.0) components=8 sizes=[[0.18707516789436, 114], [0.18705765902996, 114], [0.1283365637064, 56], [0.1283365637064, 56], [0.08664488047361, 84], [0.08664488047361, 84], [0.06343221664429, 240], [0.06343215703964, 240]]
+PASS 真实原位鞋底含两前掌两鞋跟足弓及内底
+PASS 真实现场保留原前掌和鞋跟残片
+SOLE_TRACE_MATCH {"diameter_m":0.187075167894363,"error":{"max_m":0.0503864288330078,"rms_m":0.0314339289666942},"part":0}
+FAIL 实物鞋底片段0与原鞋印实尺吻合
+SOLE_TRACE_MATCH {"diameter_m":0.187057659029961,"error":{"max_m":0.0501766204833984,"rms_m":0.03150341057433},"part":1}
+FAIL 实物鞋底片段1与原鞋印实尺吻合
+SOLE_TRACE_MATCH {"diameter_m":0.0866448804736137,"error":{"max_m":0.0161643028259277,"rms_m":0.00821742511546623},"part":4}
+FAIL 实物鞋底片段4与原鞋印实尺吻合
+SOLE_TRACE_MATCH {"diameter_m":0.0866448804736137,"error":{"max_m":0.0161981582641602,"rms_m":0.00821839512403084},"part":5}
+FAIL 实物鞋底片段5与原鞋印实尺吻合
+SHOE_FOOTPRINT_SCALE failures=4
+WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 2 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)

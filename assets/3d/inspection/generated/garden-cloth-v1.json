@@ -1,0 +1,19 @@
+{
+  "source": "godot/art/levels/manor/room_garden__遮光布.gltf",
+  "source_sha256": "88bebe018f07c4850b8e863c399f7880c528fe784c833e1a18eddb3823d0f061",
+  "source_binary_sha256": "adeaf7e122162d52e2d7fe4c69a12418d312ca25787dca33c4955ab36aa124f7",
+  "native_bounds_blender": [
+    [
+      16.860000610351562,
+      11.369308471679688,
+      3.885999917984009
+    ],
+    [
+      17.440000534057617,
+      11.541999816894531,
+      4.369999885559082
+    ]
+  ],
+  "asset_sha256": "1033de9c759fedd47ad71d6a4937c62a9ec466fce0da60b4e965ff4b9d356c99",
+  "note": "Only cloth surface is detailed; exact native overall bounds retained. No new story text."
+}

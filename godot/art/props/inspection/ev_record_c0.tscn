@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://world/inspection_document.gd" id="1"]
+
+[node name="ev_record_c0" type="Node3D"]
+script = ExtResource("1")
+object_id = "ev_record_c0"
+paper_size = Vector2(0.21, 0.29)
+binding = false

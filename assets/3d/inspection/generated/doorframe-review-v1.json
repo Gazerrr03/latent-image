@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "source": "godot/art/levels/manor/manor.gltf",
+      "sha256": "7c948090fcc6c8f89fb75b129383e1f502655457689dfda00b1babc3541ab517",
+      "binary_sha256": "a29a54657182f2c1d1dac0e426f2cb5385326eefca0cf9cfd9a17b703cb2b09f",
+      "meshes": [
+        {
+          "name": "主体结构-col",
+          "source_faces": 4900,
+          "clipped_faces": 3
+        }
+      ]
+    },
+    {
+      "source": "godot/art/levels/manor/room_hall.gltf",
+      "sha256": "c0033f8338831c3f3a85acb000a41f6dbb834b352f0fdfb4b0bb439aa2ecbd9c",
+      "binary_sha256": "11fbbd9a1e2054c15e2fc4e838e2695d60c365a04fca6ea27f187208c65c38be",
+      "meshes": [
+        {
+          "name": "门厅·锁着的门的贴脸板",
+          "source_faces": 216,
+          "clipped_faces": 4
+        },
+        {
+          "name": "二楼·储物间门框上的身高刻痕（L.）",
+          "source_faces": 22,
+          "clipped_faces": 22
+        },
+        {
+          "name": "门厅·墙面、地面与线脚",
+          "source_faces": 5330,
+          "clipped_faces": 38
+        },
+        {
+          "name": "二楼·储物间门（锁着）",
+          "source_faces": 828,
+          "clipped_faces": 96
+        }
+      ]
+    }
+  ],
+  "clip_box_blender_z_up": [
+    [
+      13.28,
+      7.68,
+      4.3
+    ],
+    [
+      13.62,
+      7.86,
+      5.02
+    ]
+  ],
+  "asset_sha256": "4d5887a5fb079eeb0b89fbbaa872cf51e33ba8aa527fcaad99f7274e1b68dfd3",
+  "game_asset": "doorframe_review.glb",
+  "status": "integrated_pending_runtime_review",
+  "verification": {
+    "onsite_test": "godot/tools/test_frame_latch_inspection.gd",
+    "notebook_test": "godot/tools/test_fixed_notebook.gd",
+    "source_triangle_coverage": "all 22 height-mark triangles / all 12 catch triangles; shared fiber world coordinates checked",
+    "status": "runtime_checks_passed_visual_acceptance_pending"
+  }
+}

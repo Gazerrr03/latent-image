@@ -1,0 +1,10 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 采用原侧门真实门板
+PASS 侧门未挡住旧站位时相机可选
+PASS 正常开门后门扇进入视线
+PASS 旧相机提示不能穿过新遮挡执行
+PASS 关闭侧门移开遮挡后相机重新可选
+PASS 新提示后E只操作相机
+ROOM_ENTRY_EVENTS ["enter:darkroom"]
+MOVING_DOOR failures=0
