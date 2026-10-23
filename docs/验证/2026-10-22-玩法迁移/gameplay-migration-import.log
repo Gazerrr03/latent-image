@@ -1,0 +1,235 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (20 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   4% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  19% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  23% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  38% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  61% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  76% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  90% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (71 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | ded_table_blueprint.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | painting_underbed.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | ded_house.glb[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | ded_house_Bark_bake.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | ded_house_BoundaryStone_bake.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | ded_house_Brick_bake.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | ded_house_Cobble_bake.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | ded_house_Crow_bake.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | ded_house_DarkGlass_bake.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | ded_house_DeadGrass_bake.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | ded_house_FigureCloth_bake.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | ded_house_FloorStone_bake.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | ded_house_FlowerCore_bake.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | ded_house_Ground_bake.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | ded_house_Iron_bake.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | ded_house_PathEarth_bake.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | ded_house_Petal_bake.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | ded_house_Plinth_bake.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | ded_house_RedGlass_bake.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | ded_house_RedSlit_bake.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | ded_house_RoofSlate_bake.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | ded_house_Stem_bake.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | ded_house_StoneExterior_bake.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | ded_house_StoneInterior_bake.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | ded_house_Wax0_bake.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | ded_house_Wax1_bake.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | ded_house_Wax2_bake.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | ded_house_WetDrip_bake.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | ded_house_WoodDark_bake.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | doors.glb[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | doors_门入口_bake.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | doors_门入口·框右_bake.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | doors_门入口·框左_bake.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | doors_门入口·门楣_bake.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | doors_门出口_bake.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | doors_门出口·框右_bake.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | doors_门出口·框左_bake.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | doors_门出口·门楣_bake.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | chairs_1924.gltf[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | ev_table_diagram_0_back.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | ev_table_diagram_0_front.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | table_bell.wav[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | tea_pour.wav[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | wordlists.csv[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | footsteps.csv[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | music.csv[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | sounds.csv[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | layout.csv[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | rooms.csv[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | room_states.csv[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | annotations.csv[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | cellar.csv[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | characters.csv[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | corridor.csv[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | doors.csv[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | evidence.csv[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | hotspots.csv[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | lines.csv[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | links.csv[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | quests.csv[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | shots.csv[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | footage.csv[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | fx.csv[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | inspections.csv[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | inspection_labels.csv[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | inspection_pages.csv[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | look.csv[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | props.csv[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | ui.csv[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | levels.csv[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | shots.csv[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (43 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Started Preparing scenes for reload (1 steps)[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Analyzing scene [empty][39m[0m
+[  50% ] [90m[1mpreload_reimporting_scene[22m | Preparation done.[39m[0m
+[92m[ DONE ][39m [1mpreload_reimporting_scene[22m
+[0m
+[   0% ] [90m[1mreimport[22m | ded_house_RoofSlate_bake.png[39m[0m
+[   2% ] [90m[1mreimport[22m | ded_house_Stem_bake.png[39m[0m
+[   4% ] [90m[1mreimport[22m | ded_house_StoneExterior_bake.png[39m[0m
+[   6% ] [90m[1mreimport[22m | ded_house_StoneInterior_bake.png[39m[0m
+[   9% ] [90m[1mreimport[22m | ded_house_Wax0_bake.png[39m[0m
+[  11% ] [90m[1mreimport[22m | ded_house_Wax1_bake.png[39m[0m
+[  13% ] [90m[1mreimport[22m | ded_house_Wax2_bake.png[39m[0m
+[  15% ] [90m[1mreimport[22m | ded_house_WetDrip_bake.png[39m[0m
+[  18% ] [90m[1mreimport[22m | ded_house_WoodDark_bake.png[39m[0m
+[  20% ] [90m[1mreimport[22m | doors_门入口_bake.png[39m[0m
+[  22% ] [90m[1mreimport[22m | doors_门入口·框右_bake.png[39m[0m
+[  25% ] [90m[1mreimport[22m | doors_门入口·框左_bake.png[39m[0m
+[  27% ] [90m[1mreimport[22m | doors_门入口·门楣_bake.png[39m[0m
+[  29% ] [90m[1mreimport[22m | doors_门出口_bake.png[39m[0m
+[  31% ] [90m[1mreimport[22m | doors_门出口·框右_bake.png[39m[0m
+[  34% ] [90m[1mreimport[22m | doors_门出口·框左_bake.png[39m[0m
+[  36% ] [90m[1mreimport[22m | doors_门出口·门楣_bake.png[39m[0m
+[  38% ] [90m[1mreimport[22m | ev_table_diagram_0_back.png[39m[0m
+[  40% ] [90m[1mreimport[22m | ev_table_diagram_0_front.png[39m[0m
+[  43% ] [90m[1mreimport[22m | ded_table_blueprint.png[39m[0m
+[  45% ] [90m[1mreimport[22m | painting_underbed.png[39m[0m
+[  47% ] [90m[1mreimport[22m | ded_house_Bark_bake.png[39m[0m
+[  50% ] [90m[1mreimport[22m | ded_house_BoundaryStone_bake.png[39m[0m
+[  52% ] [90m[1mreimport[22m | ded_house_Brick_bake.png[39m[0m
+[  54% ] [90m[1mreimport[22m | ded_house_Cobble_bake.png[39m[0m
+[  56% ] [90m[1mreimport[22m | ded_house_Crow_bake.png[39m[0m
+[  59% ] [90m[1mreimport[22m | ded_house_DarkGlass_bake.png[39m[0m
+[  61% ] [90m[1mreimport[22m | ded_house_DeadGrass_bake.png[39m[0m
+[  63% ] [90m[1mreimport[22m | ded_house_FigureCloth_bake.png[39m[0m
+[  65% ] [90m[1mreimport[22m | ded_house_FloorStone_bake.png[39m[0m
+[  68% ] [90m[1mreimport[22m | ded_house_FlowerCore_bake.png[39m[0m
+[  70% ] [90m[1mreimport[22m | ded_house_Ground_bake.png[39m[0m
+[  72% ] [90m[1mreimport[22m | ded_house_Iron_bake.png[39m[0m
+[  75% ] [90m[1mreimport[22m | ded_house_PathEarth_bake.png[39m[0m
+[  77% ] [90m[1mreimport[22m | ded_house_Petal_bake.png[39m[0m
+[  79% ] [90m[1mreimport[22m | ded_house_Plinth_bake.png[39m[0m
+[  81% ] [90m[1mreimport[22m | ded_house_RedGlass_bake.png[39m[0m
+[  84% ] [90m[1mreimport[22m | ded_house_RedSlit_bake.png[39m[0m
+[  86% ] [90m[1mreimport[22m | ded_house_RoofSlate_bake.png[39m[0m
+[  88% ] [90m[1mreimport[22m | ded_house_Stem_bake.png[39m[0m
+[  90% ] [90m[1mreimport[22m | doors.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  93% ] [90m[1mreimport[22m | ded_house.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  95% ] [90m[1mreimport[22m | chairs_1924.gltf[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  97% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (43 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | Reopening scenes...[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | Loading central editor layout...[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | Loading plugin window layout...[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | Editor layout ready.[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

@@ -1,0 +1,16 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS 抽屉闭合面板贴柜体且离地 78cm
+PASS 动画中重复按键不会反转 / 提前拿纸
+PASS 拉开 30cm 后可取图
+PASS 抽屉推回原位、纸张不能隔柜拾取
+PASS 玩家站在柜前能直接选中纸张
+PASS 拿图后持续打开、冻结走动
+PASS 等待后仍保留图纸
+PASS 滚轮输入实际放大
+PASS 可放大到 200%
+PASS 平移有边界，不会丢失整张图
+PASS 收起恢复玩家、可再次 Q 重看
+PASS 再次打开回到完整图
+PASS 看图中退出关卡也会关闭图纸并归还玩家
+TABLE_PLAN failures=0

@@ -1,0 +1,45 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple M4 (Apple9)
+
+PASS 第一章保留新增问询
+PASS 第五章保留主目录不眠衔接
+PASS 第二章任务包含餐桌
+PASS 餐桌接管操作
+PASS 完成餐桌取得图纸证据
+RESTORE actual=(15.75, 0.000625, -4.4) expected=(15.75, 0.015, -4.4)
+PASS 退出餐桌恢复位置和控制
+PASS 图纸证据存档往返保留
+PASS 取消餐桌不发放证据并归还控制
+CHAPTER3_TRIAL house ready: scene=ded_house doors=2 spawn=(2.2, 0.05, 21.6) persist=false
+PASS 小屋正常入口不重置章节或禁用存档
+RESTORE actual=(2.75, 3.600625, -7.4) expected=(2.75, 3.615, -7.4)
+PASS 穿过出口恢复调查位置和渗漏
+CHAPTER3_TRIAL house ready: scene=ded_house doors=2 spawn=(2.2, 0.05, 21.6) persist=false
+RESTORE actual=(2.75, 3.600625, -7.4) expected=(2.75, 3.615, -7.4)
+PASS 中断小屋可返回且不残留运行状态
+PASS 绘画集正常挂接
+CHAPTER3_DRAWINGS overview ready: fov=50.0 reviewed=0 house_locked=true
+PASS 绘画选择界面中断可清理
+CHAPTER3_DRAWINGS overview ready: fov=50.0 reviewed=0 house_locked=true
+PASS 开画墙运镜中中断也能清理
+CHAPTER3_DRAWINGS overview ready: fov=50.0 reviewed=0 house_locked=true
+PASS 未看完五幅画时小屋锁定
+PASS 绘画检视打开 hs_draw_path
+PASS 绘画真实收集证据 hs_draw_path
+PASS 五幅看完前不能进入小屋 hs_draw_path
+PASS 绘画检视打开 hs_draw_wall
+PASS 绘画真实收集证据 hs_draw_wall
+PASS 五幅看完前不能进入小屋 hs_draw_wall
+PASS 绘画检视打开 hs_draw_family
+PASS 绘画真实收集证据 hs_draw_family
+PASS 五幅看完前不能进入小屋 hs_draw_family
+PASS 绘画检视打开 hs_draw_boxes
+PASS 绘画真实收集证据 hs_draw_boxes
+PASS 五幅看完前不能进入小屋 hs_draw_boxes
+PASS 绘画检视打开 hs_draw_train
+PASS 绘画真实收集证据 hs_draw_train
+PASS 五幅看完前不能进入小屋 hs_draw_train
+CHAPTER3_TRIAL house ready: scene=ded_house doors=2 spawn=(2.2, 0.05, 21.6) persist=false
+PASS 绘画选择实际接入小屋
+PASS 小屋完成后整个绘画流程结束
+GAMEPLAY_MIGRATION failures=0

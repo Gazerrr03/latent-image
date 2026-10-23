@@ -1,0 +1,107 @@
+{
+  "gameplay-migration-map-c2": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-lifecycle": {
+    "pass_lines": 32,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": true,
+    "exit_code": 0
+  },
+  "gameplay-migration-ch4-camera": {
+    "pass_lines": 57,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-table-render": {
+    "pass_lines": 13,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-replace": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": true,
+    "exit_code": 0
+  },
+  "gameplay-migration-ending": {
+    "pass_lines": 12,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-house-walk": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-lifecycle-render": {
+    "pass_lines": 32,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-protect": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": true,
+    "exit_code": 0
+  },
+  "gameplay-migration-cellar-walk": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": true,
+    "exit_code": 0
+  },
+  "gameplay-migration-table": {
+    "pass_lines": 13,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-import": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  },
+  "gameplay-migration-ch4-input": {
+    "pass_lines": 39,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": true,
+    "exit_code": 0
+  },
+  "gameplay-migration-corridor": {
+    "pass_lines": 159,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": true,
+    "exit_code": 0
+  },
+  "gameplay-migration-content": {
+    "pass_lines": 0,
+    "fail_lines": 0,
+    "script_errors": false,
+    "exit_resource_warning": false,
+    "exit_code": 0
+  }
+}
