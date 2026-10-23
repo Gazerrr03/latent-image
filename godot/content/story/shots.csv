@@ -44,6 +44,7 @@ C1-09,C1,*,guest_room,,walk,door_knock,"晚上，康斯坦斯敲了敲门：“�
 C2-00,C2,*,guest_room,,walk,,,,wake();music(explore);objective(餐厅：早饭。);explore(c2),C2-05,醒来（docs/01 第 4 节），然后自由探索（任务 c2）
 C2-01,C2,*,dining,table_close,,cutlery,早饭时，长餐桌上多摆了一副银质餐具。康斯坦斯察觉到我的目光，手指猛地攥紧，迅速将餐具撤走：“摆错了。吉迪恩收拾时总是粗心。”,,collect(ev_extra_plate);objective(女主人：他在查什么？合影里多出来的是谁？),,玩家亲眼看到多摆的餐具；任务 c2_constance 触发
 C2-02,C2,*,dining,dining_mid,,,,,say(c2_constance);inquire(c2_ask_constance),,
+C2-02a,C2,*,dining,dining_mid,walk,,她出去了。餐边柜的抽屉没关严，里面压着一张折起来的旧纸。,,"level(ded_table,ev_table_diagram)",,演绎关卡 ded_table：复原 1924 年的餐桌；收起成功卡后收入 ev_table_diagram
 C2-03,C2,*,archive,,walk,,,,"objective(书房资料室：合影里多出来的那些人，在这里留下过什么？);inspect(hs_photos,hs_ledger,hs_clipping,hs_manual,hs_doorframe)",,
 C2-04,C2,*,con_room,,walk,,,,"objective(女主人的卧室：她记得什么，又说自己不记得什么？);inspect(hs_con_ledger,hs_con_sweater,hs_con_ringbox)",,新房间：女主人的卧室（灰盒）
 C2-05,C2,*,guest_room,,walk,pin,,,objective(书桌：哪些东西还记得那些被忘掉的人？);station(hs_desk_board);music(think);link(d2),,客房第一站：玩家走到书桌前按 E，坐下来连线（docs/01 第 4 节）
