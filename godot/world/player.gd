@@ -28,6 +28,7 @@ var silent_steps := false
 var forward := true
 var _stride := 0.0
 var _hover := ""
+var _corridor_target: Node = null
 ## 准星对着的门（门扇的碰撞体）
 var _door: Node = null
 var _switch: Node = null
