@@ -1,0 +1,22 @@
+name: Assemble source archive backup
+on:
+  push:
+    branches: [archive/assemble-archives-20261026]
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: Gazerrr03/latent-image
+      ARCHIVE_COMMIT: ${{ github.sha }}
+    steps:
+      - name: Reassemble and verify uploaded source backup
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api "repos/$GH_REPO/contents/.github/scripts/assemble_archives_cloud.py?ref=$ARCHIVE_COMMIT" --jq .content | base64 --decode > assemble.py
+          gh api "repos/$GH_REPO/contents/.github/archives-transfer-20261026.json?ref=$ARCHIVE_COMMIT" --jq .content | base64 --decode > DigitalMedia-archives-transfer-manifest.json
+          python3 -u assemble.py DigitalMedia-archives-transfer-manifest.json

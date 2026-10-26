@@ -1,0 +1,1600 @@
+{
+  "archive_name": "DigitalMedia-archives-20261026.zip",
+  "archive_size": 457285981,
+  "archive_sha256": "91eabc6c2c03573ea24734ea6a8f82d59d3fe134f747030cf47599f1d340d607",
+  "parts": [
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0001",
+      "size": 4194304,
+      "sha256": "11d86ff64f0b924473f2e03d57f23301d896c5ce0dfc06ab214739f8383bc4a8"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0002",
+      "size": 4194304,
+      "sha256": "6650c3f4ab89c4fb76537756b54455de939189f0c85b5f882b7252fdb4fc3c25"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0003",
+      "size": 4194304,
+      "sha256": "224d6719eb08bda95fc15c80d8bf8eca833694a1571a5a8299ae1968d79be011"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0004",
+      "size": 4194304,
+      "sha256": "dece74c92a71c73ab270e0fc813fe3ae9edd6c13e9a82e0c803b49d886197d3c"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0005",
+      "size": 4194304,
+      "sha256": "b66eef7acefb427ad31fd20493c06573771e95a0d111e2a26b787f7f82e4f691"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0006",
+      "size": 4194304,
+      "sha256": "0d54b7df6109fda04a0629622bc8a2c01edf6962783c48340429bf24ea345a10"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0007",
+      "size": 4194304,
+      "sha256": "cd2323e541fc12adbed0f03f22b89975ad7eaa9488bbd7190928014ad1c0ff34"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0008",
+      "size": 4194304,
+      "sha256": "995ccfcdbccf9cbd6c28dcc6e559235bb6a6aa086115a746ed1f20102707c212"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0009",
+      "size": 4194304,
+      "sha256": "7cabbf29437c14cbeaf757ff8354cd7096d0e3a2cd5fd62176bafd6afeb55d9b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0010",
+      "size": 4194304,
+      "sha256": "43adc430aea0d4f57bbe5b801de84ca52f77bac6044995e995cc1bd68adac889"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0011",
+      "size": 4194304,
+      "sha256": "52ac9dfa756fcd13906df8cf80dee501260881e1a213daa8b1fd983f968622b2"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0012",
+      "size": 4194304,
+      "sha256": "622854c5eda13f26faa191f7d26f90329ba868dc93c0b4f3d9063d73969b6244"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0013",
+      "size": 4194304,
+      "sha256": "62c6e4cd28f8e1ffde04cc6ce40acf554da9beff5e040b7bbc7e0faf0b5f5740"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0014",
+      "size": 4194304,
+      "sha256": "cec42427cc4ebc45024d949d4ba244383b3f91b5d08e77da1e07061790e4b8e6"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0015",
+      "size": 4194304,
+      "sha256": "819e791e68e07c35d15e9f6e4894900fed068872367f285d6cdcc280e2495687"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0016",
+      "size": 4194304,
+      "sha256": "a43224b22a22cc641c7a1053ba4fd0a7b387364e5c32e7e8704aa3167a33e8a5"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0017",
+      "size": 4194304,
+      "sha256": "df1c5798ceb84340079996f0597e53726718ffab34e2da5a83151f11f7c23598"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0018",
+      "size": 4194304,
+      "sha256": "3678da698a0d520f4a9e0c00c4c4048e48c795060945b202ea97553c9ff02430"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0019",
+      "size": 4194304,
+      "sha256": "69d72e91d26fdf8e70cd26e6c4bc596c6f07f0593cfed74b4057017cbfd753aa"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0020",
+      "size": 4194304,
+      "sha256": "eb3d147024b18eaace9098597f0bc9d5d6c566aad03817a93f4f25e8b65efc98"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0021",
+      "size": 4194304,
+      "sha256": "2c4e179f2b7f43aec2cf7b3c16fc7528921c9b1e5bbcd9bf907fb98552f7c39d"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0022",
+      "size": 4194304,
+      "sha256": "74a7a4c74d4eb34db690cfd2f9d09b020f420cc304b5867cb98cc84d7fc66c3d"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0023",
+      "size": 4194304,
+      "sha256": "6f38c67ee037aa0b93ab4b0fa93f40627260f7bd5cbecbbc54d6b855b8bfb48b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0024",
+      "size": 4194304,
+      "sha256": "849ea5ed4419afd17b1d9716362bbdf0eda7ae71838c45bc8faa98227c32e4d9"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0025",
+      "size": 4194304,
+      "sha256": "7304d7bfb7eced085e06322687e6227a2569a52aeb84677334d92d62530dbbd0"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0026",
+      "size": 4194304,
+      "sha256": "1a30deb2f3aa825d284056a377b550d8aee04eae0cc8e37bbb5a3a8ba2e84a74"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0027",
+      "size": 4194304,
+      "sha256": "dd221ce33ed22134c241db5726b9a72b59c1ee2c2fd426909c4c05863bc058f0"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0028",
+      "size": 4194304,
+      "sha256": "334feb100a6aa68f80ddd53c8f03a69cc9fd296cd375942a2b0fd6107eca0126"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0029",
+      "size": 4194304,
+      "sha256": "282c0effe051c9728755520a6618114d784e7057bb1ad69bd4948eea6ced96ff"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0030",
+      "size": 4194304,
+      "sha256": "2a888b12d93fb990b554fb04629b923e3a0a4a9b650f295e455702aadbe89e27"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0031",
+      "size": 4194304,
+      "sha256": "fc48c0981833b92f114049fc92568aa51b79aea35500da719558e5e0b307e626"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0032",
+      "size": 4194304,
+      "sha256": "ad8d7514834e4b0a3e1a5cbcccde4281907d5bff1e0e97ccdd5b0e5f0283cf3f"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0033",
+      "size": 4194304,
+      "sha256": "70ba3938d817d6a69553870e432550516caabc655f642ce5a5f4f5847ad99221"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0034",
+      "size": 4194304,
+      "sha256": "1a47a11b7727c2267a4d54b13fb65c359837ede7617eb1f3df3a6737f5207775"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0035",
+      "size": 4194304,
+      "sha256": "88f91c034750103f0fd366bfb52f4eb9a3cd3ca61c73effb4c889a6dbd8b1bd5"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0036",
+      "size": 4194304,
+      "sha256": "8e47184e825c110dd2303f8205dcc516de8604192d6c3eb9280617de936aad3a"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0037",
+      "size": 4194304,
+      "sha256": "0973d282b928faeb4036e3b3d01a684c065adf67c16c30ab979157ec0b985243"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0038",
+      "size": 4194304,
+      "sha256": "0353035f25428c69c95e3f9f6a297559b1618f2e4707996602c60b3b6054e370"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0039",
+      "size": 4194304,
+      "sha256": "2801fe6140062631b2fabdbe189d04f2ccdaa8a91e8e1b21835aa37f629db51f"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0040",
+      "size": 4194304,
+      "sha256": "130366a175df81ef9be33434929a8e35b56f07372a0af9221fa72ab590511abf"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0041",
+      "size": 4194304,
+      "sha256": "e43ad26f362870aa053c88241405dd95b2d245c898f5e50adb4b7888029e6d93"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0042",
+      "size": 4194304,
+      "sha256": "2114883187ae8bf38ac9b8b592a8a05c6e7b95966a0684034eff0de2b768ac79"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0043",
+      "size": 4194304,
+      "sha256": "51db08978532641019565d8f8b3f85152b2de633e096763e74abd23d728ac9fe"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0044",
+      "size": 4194304,
+      "sha256": "95f710c4da2af221c002a0b961d3171b26c457e052accf004b975182d8dea18a"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0045",
+      "size": 4194304,
+      "sha256": "d424147a55e4ba3f1e2bb9354dcbe5fb3d84613ef45312a202ffc8f4b0a89663"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0046",
+      "size": 4194304,
+      "sha256": "5187ba66794b56519c53a825a2fd4d70b9518848de6c790bede46b7217e8ee6d"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0047",
+      "size": 4194304,
+      "sha256": "93ba4a9d5ad247536c2b173fb869ccdb6be162683988fba8eef4b0ed917ea546"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0048",
+      "size": 4194304,
+      "sha256": "2ce607f12377c405072f74674a8e8ec91c8a3940a6c7714d013c312dc23b0bf8"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0049",
+      "size": 4194304,
+      "sha256": "aa53559dc3f1d52ebfc7e093bf37865a4004e03d707aff874982bed76883b731"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0050",
+      "size": 4194304,
+      "sha256": "cabe08ef04ed5c83d0edabe74ad8be4027c8623751bb4c6e27b074518455d1ba"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0051",
+      "size": 4194304,
+      "sha256": "d3c555d81c89c1678f17ad76fd872c3acbab9e92728fe0fea9cf48f91f92562b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0052",
+      "size": 4194304,
+      "sha256": "215b22648291e12279ffd6e1af1a8e5a7a1fb8af9048700a4d7dbe5f5cb4dcfa"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0053",
+      "size": 4194304,
+      "sha256": "8767762b11aed459c32687f921f1b793015aaa9ced1a708a94794c650dfd72fa"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0054",
+      "size": 4194304,
+      "sha256": "7cecbeb4c63f51d9755324e20a301ed72389bc68d4046e0ea9479d1cea6c02e6"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0055",
+      "size": 4194304,
+      "sha256": "6b314f74ce8c631a641ab7a4f688ad5a5e41b4a7c4ae0c305dd0d0cc2aaa5dcb"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0056",
+      "size": 4194304,
+      "sha256": "e64e13d75968f3e17ebe1affbc7971a642369bf6184b264c1d89a2dee8b9d96f"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0057",
+      "size": 4194304,
+      "sha256": "fae47f106a8679d8af30b1d2fcb1c2c6cf78847373c75c1bd7724be9c93025ca"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0058",
+      "size": 4194304,
+      "sha256": "5a68dc864db87918ead76d994b92a8f8d267191060fb5bba33cd4477fac6d917"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0059",
+      "size": 4194304,
+      "sha256": "5e889111b2c11d7de3efe76ee5b9bb6d63734adda049acbff8f442b6e2c16d33"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0060",
+      "size": 4194304,
+      "sha256": "33c2b049732e0e6472cd8548df56ad02b74d57853bcbd57d3a3f54d89dce19e7"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0061",
+      "size": 4194304,
+      "sha256": "1788e8b15108a6ea07e03e76b90c5cbebfc3aa4c718612972e4ae62d258dc975"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0062",
+      "size": 4194304,
+      "sha256": "e18393dfd0a1cb2533dc6144a0684ce6d42cfd7118a38f4a4cd76fc7c875b6fd"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0063",
+      "size": 4194304,
+      "sha256": "c02d81b382d74df58f62292993a8f75d3f0ad7737fb9fe66f0d3f2050b2c914d"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0064",
+      "size": 4194304,
+      "sha256": "858a9d327bbba30319d8d586a19d4495fd58cb11d91fe4bc49a8525350d9002e"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0065",
+      "size": 4194304,
+      "sha256": "d48506ac28c3c26a97b273dc4706ba2558114069957c197a34e1dc9a2174cb2b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0066",
+      "size": 4194304,
+      "sha256": "d43add94338fdc17e58976be1bc2be782be92a269c48a48cf74f7292a2a490d2"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0067",
+      "size": 4194304,
+      "sha256": "60504d2e1384578d506a7807d2cc15a04526349014fc20342fd2587b491aaa4e"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0068",
+      "size": 4194304,
+      "sha256": "d1c0250c37406c9bfbb4c47310c83c5b18ab46674c3963251288f930723df2fe"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0069",
+      "size": 4194304,
+      "sha256": "301f41e9ae88df2f2de9a7c3eaf2ecd0aff025b5e09b82d593ee24b3afdf7312"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0070",
+      "size": 4194304,
+      "sha256": "136fd2c5632438ad0488d7e4261a1b2dff3706f8d5927969fa5a0dd7fe5942e6"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0071",
+      "size": 4194304,
+      "sha256": "03888bc82d0f989038cc5d279a7076875dd4b99356a26330b044d5f7282aa83b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0072",
+      "size": 4194304,
+      "sha256": "0ee4c08ed96fbc984509078d6bca9eebf642e734d96c71a86b95edb1da70e122"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0073",
+      "size": 4194304,
+      "sha256": "b25bfe6333245be382697d28db68e2372a323b6a8c5b64370af2d2775a024002"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0074",
+      "size": 4194304,
+      "sha256": "8eecf1b8081d7a20f667d7b6e0298f710080f30140f830f72036d1ebfbfc2aa0"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0075",
+      "size": 4194304,
+      "sha256": "3044e8059fbd4bed283acfe948b6785cd2bffe38c78924826542673f1cf786d9"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0076",
+      "size": 4194304,
+      "sha256": "f65042f8bc6f8be781cc772794254a3049deb22dcd97a81b6459e3f8ec85da24"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0077",
+      "size": 4194304,
+      "sha256": "3d96d2d6221c3befbee64ef979d202321af5ea782faf5916698c75a66171c2ee"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0078",
+      "size": 4194304,
+      "sha256": "42c1d07f7b75bf97c050ac7e09e57cb06c1058c278f7104e34e01becd088d8ef"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0079",
+      "size": 4194304,
+      "sha256": "8c7dc72d90ef406014a69dd829eaacbc34445dde5d563110ba052acc39f47d85"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0080",
+      "size": 4194304,
+      "sha256": "985f7e85555f5abf9e7a641395e6f81e8bc8e0699596a471a5e5b6c2132b4e05"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0081",
+      "size": 4194304,
+      "sha256": "28a596a47fc198a316d089491da145336c803135f3b37d551d846b021b789882"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0082",
+      "size": 4194304,
+      "sha256": "1d3b856203526514b92e0d1dd6ef7bbce2b0b09d5fd1c28f015f0c0a719fe2c7"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0083",
+      "size": 4194304,
+      "sha256": "ea34d58abe4589cd5ed4c1813592b549462b817c5427f6b12575fbc6ed8886cd"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0084",
+      "size": 4194304,
+      "sha256": "d4249bc91ebae946d7bf20ab2b074f2ea06fc25a10c4226d382741ee136f4222"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0085",
+      "size": 4194304,
+      "sha256": "3004955baae7f6e3ae698514042919aecb8c1a051ac5d8fefc685fddcd3737b9"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0086",
+      "size": 4194304,
+      "sha256": "934e4fccaa7760a33bc9c4da8794dc07154d123c62756cad9579ba04a6b07a3c"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0087",
+      "size": 4194304,
+      "sha256": "0d260d3e99f1be37265fe98d23308f2af165ff0039cae78fa9fceff163dd47ed"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0088",
+      "size": 4194304,
+      "sha256": "7843d84e3bec5401e5fd309d009cc777da11e3cccc765b91f27ebd6df9c0a47b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0089",
+      "size": 4194304,
+      "sha256": "e26669978819a36ab1c1ed143914ae67cb74474bc1f588d6b26d3d69531a0663"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0090",
+      "size": 4194304,
+      "sha256": "3cbdc628b6c8576cafb37e76aff57227f9eb0d7c82fd77ec0f7acb23459307f2"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0091",
+      "size": 4194304,
+      "sha256": "f2f6ab2f11bfa9d87cbe111a5808a866ef84d9a1cc750c9907de44cdbc4e0585"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0092",
+      "size": 4194304,
+      "sha256": "e8874323c9e5f12c8b79309e07ebb649869385de8b6d274f32f79d3608254681"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0093",
+      "size": 4194304,
+      "sha256": "a312f0dfb42a7fe8795852396d129182510afee8722a04d92498078104de0fa5"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0094",
+      "size": 4194304,
+      "sha256": "dc9a0596d999091dcf0a417ff5a394447ad1c2ff6625c4efc33685c7dd78c3a8"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0095",
+      "size": 4194304,
+      "sha256": "2a00fc0f1531ef0c7e081fccf1abbdf29d0afd47652808e0022f9b8141efd8d3"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0096",
+      "size": 4194304,
+      "sha256": "6436ebc3ebc1fc9c9dcd5cd53294cdf8c48f04785de954b6f2f49e020fb0c9dd"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0097",
+      "size": 4194304,
+      "sha256": "58e5f83e5b488d60d0fdfac07da432913594affb0656c1cb099c85556a5e0025"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0098",
+      "size": 4194304,
+      "sha256": "9feccefe98f0b1390d33fd3f0d5ffdfa53c08f5b944d3f0b0b3ff3a26e8a6b04"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0099",
+      "size": 4194304,
+      "sha256": "3b0b6fbc9650ffbd568f83fb4caff98ec9764e225bd8a61c21a45bedabf25360"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0100",
+      "size": 4194304,
+      "sha256": "48d876010838b292e1ce3352c759d5624016d25a976f7133756236b6803d6fc3"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0101",
+      "size": 4194304,
+      "sha256": "bf51a25bffe7f4a0a7cfb3cf7cc4a2780bcf34ce1108ac298ab9b413eab4d11b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0102",
+      "size": 4194304,
+      "sha256": "c3ed9b8189282f6623ce545a6b0ba268b827b36c66f1be5e1ff8178ba49fec9f"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0103",
+      "size": 4194304,
+      "sha256": "d70fefe55e8bf66eb587c499895f1a92ae0bde48e133514c4502e3781359dfdd"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0104",
+      "size": 4194304,
+      "sha256": "33a0d44cd188d8b7a2dffec6e0072748cd034821b301ca78e87ccf50e57b8c3b"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0105",
+      "size": 4194304,
+      "sha256": "9a830dc62ada9dbfff66f10556c456e7f71dd89b678b6510e2ca6e78b1ea1b86"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0106",
+      "size": 4194304,
+      "sha256": "607146bf2a2208c18392236c7a2b560a27ef7692dc488fd206264cb190069115"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0107",
+      "size": 4194304,
+      "sha256": "c7e548787e10150b099d5c396464b14c18b6855cf97d3c9260c5f99d4ee07545"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0108",
+      "size": 4194304,
+      "sha256": "6bae2f8a541fbbeda9b87795571499a3cf559293a96b208d29b6514781b2c1f7"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0109",
+      "size": 4194304,
+      "sha256": "d87d49257ea345b96682a2ee775974727517b1d395f39e9017e0afae99dbbc29"
+    },
+    {
+      "name": "DigitalMedia-archives-20261026.zip.part0110",
+      "size": 106845,
+      "sha256": "53616660d45949562292d134293fc2d75b9248c21e9c3032ca3baa13ae10356e"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/changed-paths.json",
+      "size": 6244,
+      "sha256": "0bf34bc031f6947d996d817de793a385b25669ac89a4c64f8539bb65d013c08b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/content/story/cellar.csv",
+      "size": 7570,
+      "sha256": "b956ce9758a98e52f90bf45bc6103f171e03b3e8f3490770dc14780781f83e17"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/content/story/evidence.csv",
+      "size": 19169,
+      "sha256": "1ec7d7a0cf41aa7be874f25800506fe2b8791e7712f4e3dff2d6a0f9c5d5179c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/content/story/quests.csv",
+      "size": 4145,
+      "sha256": "a0697f5591df9b146be4c98d3b0e7f0a8a1e09c2c71c3499747dd9803378b47e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/content/story/shots.csv",
+      "size": 23172,
+      "sha256": "e58b3d03c59b0657831ee0b8877e1be2505aa88b1f4c96dc5e00e52154a25cbc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/content/visual/inspection_pages.csv",
+      "size": 5741,
+      "sha256": "45c9e6b380ba8530af6a8b3dbc284b5e4bd16cb8aef4354debc1cc00ddefdeed"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/core/actions.gd",
+      "size": 1839,
+      "sha256": "15c059a2a0e04512f7ccd49c49b3032f82a1bba2238f6b6deb21add45e95c4dc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/core/controls.gd",
+      "size": 3276,
+      "sha256": "68e3dbb4aba18bb513d0e73f758443d9f82c2c3d53958c4d45d3b42f7b05c81e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/core/director.gd",
+      "size": 31937,
+      "sha256": "9a6ef4209e766516791186768656f85ea4b3eeae8589fd2ed82cb5f2086edbf0"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/levels/gh_cellar.gd",
+      "size": 28970,
+      "sha256": "fec0d0d5f33ad33224ea440201de614b4018216a48cee8a307ef486bedb449fb"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/levels/gh_cellar.tscn",
+      "size": 8546,
+      "sha256": "b4b6f8b8dd549279456c182c04420b748875099a168a1a9e5eced6534dcfd877"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/main.gd",
+      "size": 9305,
+      "sha256": "b7b4e3c5b26f3f58a9c0f13db792bb9115b736450f2cd58c1ac2d55168add0a9"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/world/player.gd",
+      "size": 8747,
+      "sha256": "70bd23c39287c2fdd7b5da724c2419c2445c0d8eba5ec7693ce132cc8b2937cc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-gameplay-migration/godot/world/scene_host.gd",
+      "size": 77198,
+      "sha256": "e11ca3d194bcea3dd24bee4512339f4a2ec02a5a003f4f006dbebdc61a1a1334"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/README.md",
+      "size": 4215,
+      "sha256": "ccc87c46815d64e6117e3c7879a6eba5bbb88e8173b34d50a41cec5bbf10b864"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-025-人物模型/preview/build-report.json",
+      "size": 1998,
+      "sha256": "21f7dc2fe0acfc231017a8d979c8522322608a89c48a1fc58e5aabf08ae112e2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-025-人物模型/scripts/build_blocky.py",
+      "size": 52719,
+      "sha256": "5e68c1e9bbb6d1ec2bf6fc7e5b1915bfdaae89fd92c51ff77f49954be935b167"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-025-人物模型/scripts/build_portraits.py",
+      "size": 2417,
+      "sha256": "1902a4dec28980e0e1fd745fb2cad48a94659c2324e767bbc8a37fc59f13ae97"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-025-人物模型/制作状态.csv",
+      "size": 853,
+      "sha256": "aec762d1d1ee05c42b6213797dba439ff3629f1b991305a71cd40db6d5002514"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-025-人物模型/来源.md",
+      "size": 805,
+      "sha256": "36aed0e693720803479caf03cc69298efb1a04fdab5f004c773feb5636e643e1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-038-片头家庭电影/scripts/cut.py",
+      "size": 1038,
+      "sha256": "29325ee91fe229f22b94945549ebdeff9ace141239530bfd2d926ee8739db8b2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-038-片头家庭电影/scripts/post.py",
+      "size": 3841,
+      "sha256": "4a54a6a6ad7da34d94551dff0577509365b01c95da63833645b1486a1d20f69f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-038-片头家庭电影/scripts/reel1920.py",
+      "size": 15724,
+      "sha256": "252f4b52caf06119714ff3f95cf4d8f6eb0ea255ad3f581d1486a916ae1a9469"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-038-片头家庭电影/scripts/scribble.py",
+      "size": 2873,
+      "sha256": "1269ab5dcff315c57889300f8ac2808e414cd370424e078446587dad16e43502"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/T-038-片头家庭电影/scripts/scribblify.py",
+      "size": 4750,
+      "sha256": "c42dd00b73831c5a6875c751c10eb74be84ddb84a0b9c49c4c0bf278f65af58c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/README.md",
+      "size": 8537,
+      "sha256": "4449b5fffed1bc3d76cba0599831d0d59b54803027fd3041c6a06b5024573ff3"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/archive/版本记录.md",
+      "size": 945,
+      "sha256": "e4cbffc44176f10616ff291f841d27e39f4b2cc9cc42109e37daaf9a4e507e92"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/review/geometry_check.json",
+      "size": 761,
+      "sha256": "9d96e86a7b68118a4103bf91a104eb991767f981b7f1f94c06ef531f9ec06ba4"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/review/排布体检.json",
+      "size": 212,
+      "sha256": "100f6dd62c08e52a955c720bbe57997ae75ab5e8f6d6fc047e2382ea27569124"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/00_plan.py",
+      "size": 21030,
+      "sha256": "f6aa1989cdb5ca85c8110c9d2af87f784d76fa4cfa1e125ccace81e0ffa3a293"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/00b_textures.py",
+      "size": 7748,
+      "sha256": "feaa162a0ad4c00883c493c1fc8abfeb82e8eb6403107f8525bf5cea916b7a2e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/01_corridor.py",
+      "size": 9742,
+      "sha256": "904df67540374798cbb312235b4358cceae51239e0c6f1bf04d68bd7dcc92394"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/02_segB_end.py",
+      "size": 3969,
+      "sha256": "b96b9b6eab6572e21049db72fe074eb473113c61d1ad67a592883414cb3959b3"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/03_doors.py",
+      "size": 2234,
+      "sha256": "f8868a85e8c9cdd47cd3c90f60d398e1c981498483a16dd9593b17f9064e21e4"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/04_room_shell.py",
+      "size": 2567,
+      "sha256": "7efb4af143dc99f2a73552293c131c4ff0125a0f9b649429b65515dd6028604e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/05_room_cloak.py",
+      "size": 4323,
+      "sha256": "db14f9e0798630b8d648047c2f008a165f6df14d4b4b1c3e8b219b49c7efd805"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/06_room_empty.py",
+      "size": 1322,
+      "sha256": "322b8be5b064e3bbce04aee178441408b103164fc143f54d4ab0622b1cec45e2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/07_room_stair.py",
+      "size": 7545,
+      "sha256": "40ed6bad90d6126702ea1115a2b3dda818149e18dcb20045d3bf53d53db73b48"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/08_photo_wall.py",
+      "size": 3083,
+      "sha256": "ce91f66e9cdb1e2cb57c92afa44934fce9fc414bb2fddd17e12e582a0936743f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/09_greenhouse_path.py",
+      "size": 14886,
+      "sha256": "a86f5e48431d8abe9637736c7a74fadcf6b303d94b8cae38b8bdfa79cb60cf5a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/10_chairs_prints.py",
+      "size": 1845,
+      "sha256": "303537f8bc9e581a57f5c24dc1e4483db11c034886ae1609a0db39decdd4d069"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/20_review.py",
+      "size": 6985,
+      "sha256": "574ce3374ae704ba0fc03a37b8526fe460760c4caa4c488c4a3ffa1356e4d80e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/21_compare.py",
+      "size": 1394,
+      "sha256": "f7bb4dcd1a3bfe731dc2d6319f8870b83f09678fc421ba9098be8c4c495d2c25"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/22_check_geometry.py",
+      "size": 7337,
+      "sha256": "f3c206b12bbb9615d5396aa74ecae4b2321d57b8516d82b8278dd99b5cbe6ad9"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/23_layout_audit.py",
+      "size": 7320,
+      "sha256": "4686a2cde4c72736c1b73acb22c4139c49f8911f5540cd10c82c9d6ce3b8a6ec"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/24_save_archive.py",
+      "size": 1909,
+      "sha256": "1f68811e03dd1d259e4c70cabf082f047027bb5c285fc0e42ab637dc40ad9442"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/25_export_glb.py",
+      "size": 1355,
+      "sha256": "3641b484281cf38aac18b7db84b1b44b45cb3af523a24d53638f202dab071fe7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/_common.py",
+      "size": 19393,
+      "sha256": "02a6e90bfdae0ab5f5acea2e1145b031673567510c4289880bf5cc0ddb2fb497"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/build_all.py",
+      "size": 520,
+      "sha256": "be60afff7338caef91ef8e3a4cb9a397d7310ac6b07702e2c07af3793615d9d7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/layout.py",
+      "size": 5738,
+      "sha256": "3d4a36617eec823f8b0a3df1f484f6a75413d4b2b1071b95918fbbacc49b9d64"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/ded_corridor/scripts/run_all.py",
+      "size": 1067,
+      "sha256": "9291452739c2c6b672f28044893076323e2c8f371f35b544885213fd93373ddc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/README.md",
+      "size": 1574,
+      "sha256": "2100ae2c624d319b09f959dc46988faea42c9492ec1f8f13582033ddc4b32c5b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/document-manifest.json",
+      "size": 20066,
+      "sha256": "7c712878b981c5fb79b5bc6bae339d6dfe268f407477a8d6a1e264981d8163a1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/cabinet-clue-v1.json",
+      "size": 962,
+      "sha256": "095148e7b63dd9d9507e6eec178a4dc7b994d9d92ca9e6429a444ca43dbff5c2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/corridor_circle_review.json",
+      "size": 636,
+      "sha256": "747882cb228e5e52db9e572ea6311b678c36c1705d3f569d86c3e4b86b36e5f9"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/corridor_hook_review.json",
+      "size": 1142,
+      "sha256": "af32c8124dd336ee15901d2a6a910bcb1c22bc5d69102137f632a4d0845c208a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/corridor_window_review.json",
+      "size": 2326,
+      "sha256": "7e64706371ee5e46c371d1d0e0d450d8cf0453f91d532721d9157bfdd73ba7c2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/doorframe-review-v1.json",
+      "size": 1885,
+      "sha256": "fd13fa12f12932d78ead76b538d0d5697505221c0731123fe79191d1cbdddd79"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/garden-cloth-v1.json",
+      "size": 649,
+      "sha256": "827aa367c6bd7019f7b06a53cb1e36c39302352e2b983c560390830e119e4980"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/garden-print-review-v1.json",
+      "size": 1637,
+      "sha256": "1e3ff491d1cccdf333ca90953b22bb97c78d46c29e4067f022065edf1c0ff33c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/garden-vent-review-v1.json",
+      "size": 1844,
+      "sha256": "29a07f42d3f018a9f4ddf330c7258a8b78dc730910b447375c450079689a1cbe"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/latch-review-base-v1.json",
+      "size": 1909,
+      "sha256": "09cb6bb80fd1094c5ddfe7f40f5e85d2af331a366e00c070f2d266932363c4e8"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/generated/tray-crystals-v1.json",
+      "size": 1240,
+      "sha256": "afbf65fd09c1154cbdf55f48fe0aa093363a85913484985bda60b98a6a09cf82"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/native-manifest.json",
+      "size": 3081,
+      "sha256": "7994d6a371f9cf592763921ef579b31cdede62c068e676e0617fd3df0a122b22"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_bottle_label.py",
+      "size": 814,
+      "sha256": "1a0877d0fd3239ec41068b3422c430e068c30b8f5e010e91ef5dc053f84cc08a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_cabinet_clue.py",
+      "size": 6524,
+      "sha256": "3c26dfff162dec546732116228921ecff0a17e986341c60892bd8a335168ec0a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_corridor_reviews.py",
+      "size": 2796,
+      "sha256": "3c682ef4126291c4daef19e12d68e4435a6d340c02f44588753365ea10e97a23"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_documents.py",
+      "size": 8220,
+      "sha256": "dce76c05bfda1d76bfc6f8024ca2db6dc31afbbb4fa87d4aebe57e273e4a066a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_frame_latch_reviews.py",
+      "size": 3112,
+      "sha256": "dff5470f52b50f6345697e29b86113e2b5ffb24f1b4883b7be4eb006f76daf6f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_garden_cloth.py",
+      "size": 4601,
+      "sha256": "3b91859a2ced89e6a1daefdefe59fe16833766bc7acfd4b190a8682ad7e4e46d"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_garden_reviews.py",
+      "size": 3325,
+      "sha256": "f3e2bef1a1fb7353fd98ea39b85759aacbfbbe96cc689e3101775564c1163c3e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_shoes.py",
+      "size": 6867,
+      "sha256": "0fe181951fb8de6cd085520fda270c86c68137065674252f66a67438b417a62f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_sweater.py",
+      "size": 4466,
+      "sha256": "9acf456532b0366e5a54ab7cf73ed3097aa0637da081952cba0e6482bc8f3a86"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/build_tray_crystals.py",
+      "size": 3945,
+      "sha256": "3ca27950d8257c2b6d15cfd9c74df3b7964a3b840fe83d367eb6d073402c0ff4"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/handwriting.py",
+      "size": 1505,
+      "sha256": "0e43ca76dc0fdac2cbc4f0eb4f08704f8308c5a7f9372856c37b53e508800fdd"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/inspect_cabinet.py",
+      "size": 1827,
+      "sha256": "7cd979781b50bc1143d6cc64cd4b5339ebacb8394466879a31d928aa40360842"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/inspection/scripts/replace_photo_texture.py",
+      "size": 1590,
+      "sha256": "482486b65cb7b57b9002ac119f570e5a18a9fc536ce9c5102668228ddb2bfe2a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/README.md",
+      "size": 22224,
+      "sha256": "b983e29209dcf48fa8db41ff984ba3f85207f5d11395a24116ccf7ce85dd464f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/archive/版本记录.md",
+      "size": 4327,
+      "sha256": "6aaf668da202179f6be536c2dcc7ee6b5f20da64425cbcfc2b9ad8e2ed8576cf"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/build_report.json",
+      "size": 8300,
+      "sha256": "33b6b03df212879da8c8107bcdd63083b5310ceba8a0c6774e7bc8c720549e70"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/geometry_check.json",
+      "size": 1616,
+      "sha256": "a72c559bb1c69533ee1de6442dbb74e8db362cdc1b05d5f14ceef0a171e0ea35"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/主人的卧室/排布体检.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/女主人的卧室/排布体检.json",
+      "size": 475,
+      "sha256": "db4b774ff9ad9fe99cbafe649c7f7424183816fa697d8d175e96974d11ca865d"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/客厅/排布体检-平日+灵媒的随身物.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/客厅/排布体检-降灵会布置+窗帘拉上.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/客厅/排布体检.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/温室/排布体检.json",
+      "size": 2914,
+      "sha256": "d800a2c2b3d93c3de1acff8d042d057ec868a88a0ed5f90521b8c47244b4eafc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/照片档案室/排布体检.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/艾瑞斯的房间/排布体检.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/门厅/排布体检.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/review/rooms/餐厅/排布体检.json",
+      "size": 335,
+      "sha256": "68c8ea0525829471cd3ec692e2987db3485d5f28679b6d56c0c790c9869a7aac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/01_build_shell.py",
+      "size": 25429,
+      "sha256": "96d69336e15a087879218d783fa76e5a8c29dad43b371be8407ffeb5b5105587"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/02_render_review.py",
+      "size": 1959,
+      "sha256": "48522ae9c361294343b1cef5be5c3174c64dca76d7128c7ba756a803325f5efb"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/03_export_glb.py",
+      "size": 1388,
+      "sha256": "0febef7bd56b6378ce03d51cc6267dee3ad2ed1be50869b8e3430f3dfd10299f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/04_facade_landscape.py",
+      "size": 25107,
+      "sha256": "928ac12e6bfcf78ff318ea98faf6af3a05302859a15388ef42437454e3e9c967"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/05_compare_refs.py",
+      "size": 3820,
+      "sha256": "34c1d34a4eeed6328cffae664ed58934464697d024193c960706857285f8bf17"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/06_stitch_compare.py",
+      "size": 1028,
+      "sha256": "4f39071f1259915b4e60f22a5053d041b3b075b987d74f975056384dcfeda4ad"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/09_check_geometry.py",
+      "size": 7030,
+      "sha256": "52b33cdf0178616e0c482b1be7cb19ec51e6e43c0810daea3ff421b7c6016732"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/09b_overlap_detail.py",
+      "size": 1744,
+      "sha256": "22ea128e0334efb41ef838598427d798e9be54695cb9f6a7211cc837f70d1086"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/10_textures.py",
+      "size": 38702,
+      "sha256": "228663c889181caf24c543dea0e5574e8b18d7c58d332174234b6124c7c828e7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/11_build_manor.py",
+      "size": 72653,
+      "sha256": "6b3f234c9b0b9ef20febf49edf36908991e627761b280707cf52a678a89a50f5"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/12_vegetation.py",
+      "size": 25269,
+      "sha256": "fd2de5613de6563e1b7943135ed3ba7d367d8f32666e6d842ea943f935e03631"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/13_beauty.py",
+      "size": 10020,
+      "sha256": "66541af69af49bf5ba0ac56e66f6d7949bbb9dbb8cadca1bda01b0186fdee07e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/14_save_archive.py",
+      "size": 2267,
+      "sha256": "eb05af145f35d2f3f590196c5fd3f8a8c8d7c62140c20a86a5fd96c8b35ef6b5"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/16_room_guest.py",
+      "size": 38335,
+      "sha256": "9c0d3babb87b69c8bd880496aa8ce916fa21fda55b1f1670890121a31abc5ba7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/17_room_darkroom.py",
+      "size": 24087,
+      "sha256": "319b9c6dd136209fd26c613f03b17127a7b6e41b58e08256cfe6c86c1b76146a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/18_room_review.py",
+      "size": 14877,
+      "sha256": "efebd8b9ec3f3bba2fcdabff2c0977d7ad446c676a235f37c25b2645dd4d7f7c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/19_room_compare.py",
+      "size": 3524,
+      "sha256": "6682988678725e32adfafc6299e673987dbf554c5febde7f08ce4bf6fe68633b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/20_room_export.py",
+      "size": 2219,
+      "sha256": "326b6cb2768b1c2b388d8da5fde0163e599931671b1d37ffd0fa406f961b1e25"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/21_room_greenhouse.py",
+      "size": 21240,
+      "sha256": "f7125632f99d98c1e2e5b7fa418593be8b42140ba770268446ca326173874011"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/22_garden_vent.py",
+      "size": 9274,
+      "sha256": "965b7c3c67249eb316b04e9e313ba2b4e31e58fc2208a8d3a5bd8525715b6a84"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/23_layout_audit.py",
+      "size": 12032,
+      "sha256": "7a41dc2d68fc2726bfc9260ffbc67cfe4d03642e7bf45f38cfaea5818fd0ab92"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/24_room_hall.py",
+      "size": 27673,
+      "sha256": "f771fc4ddcc212e29b97bcd61fcb01ae17100e703ab37ac9f84e6fe171d3b18a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/25_room_dining.py",
+      "size": 18726,
+      "sha256": "1f5756958e2e8571ce117c6f5f53c56411f39868c554271bc498c712b3bd8a32"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/26_room_seance.py",
+      "size": 23599,
+      "sha256": "e724a6705376ca31f6df4e50d0c1d1827b4f853ec29f0777b2615deb4bd47185"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/27_room_archive.py",
+      "size": 15346,
+      "sha256": "ef4d827c1b978f00edf5202506f0c7cb1db376c86f7590f968da5a0e5206afc2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/28_room_child.py",
+      "size": 17457,
+      "sha256": "184199e59aa8aaea7208cfbd52a53150578cc3eff0bcb610a0da59b083435a6c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/29_rooms_group_a.py",
+      "size": 1140,
+      "sha256": "fde885e052f78c6627fad06be96051c66a67c42ac59964da8fb0c1f4c51cf0e2"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/30_patch_greenhouse_closure.py",
+      "size": 1428,
+      "sha256": "c8fd3e60d7a23cc68633b148cdd15a402ff06b69583094086d02ac5002ab028f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/31_room_amb.py",
+      "size": 12181,
+      "sha256": "bc4760227f037abe428e348c234d9e339f966df95bf252eb97f6c658b302b82e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/32_room_con.py",
+      "size": 9174,
+      "sha256": "d68a02d59ebaaa9b876a4513e6167334170073da40f298cdad3cbe36248c362f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/33_split_doors.py",
+      "size": 838,
+      "sha256": "20ead827ac50f7bfaf7724a53db3a0a5606a02e5c433f9eba5a07dc3ee952f29"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/34_dining_remove_chairs.py",
+      "size": 1078,
+      "sha256": "094dddb3026b10904d42dc8edfb6a883346d80912ab523d32892a9e05628d7a1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/door_split.py",
+      "size": 5015,
+      "sha256": "fc5eead0e22b2dd3889779e9c2a1f2a89d278706a6fa0209589a63980e1de473"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/generate_corridor_carpet.py",
+      "size": 6418,
+      "sha256": "b133c9db58fe68fb0d9bfdfd94dfe5d4e4db0b30bcc41ef50362de52e14df631"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/gh_closure.py",
+      "size": 2650,
+      "sha256": "e285858ed2dc6cde37e226d82748f61293c1531328570a886734061763171f2c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/room_bedroom_props.py",
+      "size": 11917,
+      "sha256": "51573f7f9d42330c8e96ad6c91002bc2dd5b1da8c9324edf6fdecf9da8001bbd"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/room_lib.py",
+      "size": 42899,
+      "sha256": "dbd9f646c9e6501cf13f9449c2609b056915a7f297025be6b02847156b409cfa"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/manor/scripts/room_props.py",
+      "size": 48757,
+      "sha256": "c0a56c37b14b5935f491bfeb9159ea2c3a041334ecfcedccb53cc25e7798827b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/README.md",
+      "size": 2827,
+      "sha256": "1338c5a7ec38df7f3667dbc37b510f29d20d36795c3f85acd6ad6ae019853b74"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/baked/bake-manifest.json",
+      "size": 482,
+      "sha256": "5a0d2c2fab01886346be678e89d99dbe4b24fd47365ee04d2821b2db33a994dc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/review/build-complete.json",
+      "size": 132,
+      "sha256": "df82edcce3bd1dee94fa9ee90092f6b19888fb111933437a3d6fa33e54223681"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/review/cameras.json",
+      "size": 919,
+      "sha256": "6834249494ebd9d77bad9a4261abfd2b6f77ef6068c49c8b63d54f38bd29f4a1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/review/glb-validation.json",
+      "size": 235,
+      "sha256": "58a6e51a2873358de9584ea48b9a41824059f2d164f1957b5feef8d3b6bd9e82"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/review/original-session.json",
+      "size": 177,
+      "sha256": "0293cdd246477d2ce69ec648a66cee6ebfe667c93b1eeddd94615a8143847701"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/00_protect_session.py",
+      "size": 414,
+      "sha256": "6fd6156527aa818ce90d876965a9aea5dc5301d719020a05d6c88883223420fa"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/01_build_train.py",
+      "size": 14343,
+      "sha256": "68d9d74ee2b9754cb2ff90056129e2505f3aff4e19e2f99132a451d50254f3e7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/02_render_review.py",
+      "size": 560,
+      "sha256": "0b9093fe8768156af530cded15a21b5ed9a649507efff55814540fd5e800cff1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/03_refine_export.py",
+      "size": 6307,
+      "sha256": "b7add341bca2ef7cf698a67d261741bd2b4cdb0dcf704a6be40fe7e2ac0e80aa"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/04_atmosphere.py",
+      "size": 7842,
+      "sha256": "1de2c6ffa6f62ba00a9c126f21c0a2564390426c3d7325376e392b47810b906e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/05_finish.py",
+      "size": 3465,
+      "sha256": "28e61c0611319cbfe01ce434258af87c30ae5f835e7047635f0a450f39b19984"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/06_bake_window_light.py",
+      "size": 5607,
+      "sha256": "32e8e89a3b62f9d2788b87d0b576e8c3cf121acd319c76c58cf1fd2586f4e2c5"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/authoring-context/assets/3d/train/scripts/07_fix_roof_lamp.py",
+      "size": 886,
+      "sha256": "24f71e60e499da9689b80c56a2a0a067a63c08f2985b1a07a81dc03a5fcf65fe"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/T-025-人物模型/source/characters.blend",
+      "size": 342351,
+      "sha256": "63580fb425ad680395171b45c95365b72bc5ae441ce8acc73aa69d3068d3aa49"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/T-025-人物模型/source/characters.blend1",
+      "size": 333170,
+      "sha256": "5632df7fa14dec203ea2099e100b82ba7cbd84ade486b1dba48175a14beaa18b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/ded_corridor/ded_corridor.blend",
+      "size": 1469339,
+      "sha256": "0e8f1128f5d211fcc45e4c1144400886770a91a423b27e4f514c801de85c1004"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/ded_corridor/ded_corridor.blend1",
+      "size": 1464027,
+      "sha256": "f6355f7540bb17aea0ea3a14191b983df4953036bc7ab335ee3d839c22f3f48b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/manor/manor.blend",
+      "size": 15013734,
+      "sha256": "b21f1301a9319a4b0e8327e8e9a618aeb593689c78776cf0beb9a293bf941a18"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/manor/manor.blend1",
+      "size": 15024614,
+      "sha256": "ade05b0f3e1931f4778693a1fd1ab7c3ad4f8e23ec0189c868495d9219d2a7d9"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/backups/pre-train-session.blend",
+      "size": 828296,
+      "sha256": "02a2242e951503a0846751704fd78ecd40abe518cb28809596d3132d50bae3ce"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/backups/train-before-atmosphere.blend",
+      "size": 2084375,
+      "sha256": "1cd45f82d379b4a7fb051bb094d90e9884f19de47c7c1726444dec4600a8406f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/backups/train-before-roof-fix.blend",
+      "size": 8848125,
+      "sha256": "a7fd5b694a6e0748d379399de48264a3ce7c5f1ed8a27d3c483ad5fb5213b489"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/baked/train-baked.blend",
+      "size": 23225340,
+      "sha256": "3bdc5e14fb49511b14126bc5474de7e8e8b1797e8ca81d99da7f03dfb2fd7618"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/baked/train-baked.blend1",
+      "size": 23084264,
+      "sha256": "cea8d41782abe7656d2f4b0ca3d57a866cff67d8cb9498499a9fe008fac06d86"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/baked/train-lighting-source.blend",
+      "size": 8848527,
+      "sha256": "b05550ae4a80775f0d0273e25ccc0f24c169b7bdc6014905c51780862f878111"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/baked/train-lighting-source.blend1",
+      "size": 8847843,
+      "sha256": "4761518bb1bbac6cf3980f5c0287d38dc86aa96c14dfe4813ee6d8c9467fbe5a"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/train.blend",
+      "size": 8848011,
+      "sha256": "5081e567472ac0f5439e665025118460d0013e0ab0ca1d5c2a09e00bfebd14bc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/originals/assets/3d/train/train.blend1",
+      "size": 8853328,
+      "sha256": "056a885983a6c74a8a4c520b5eb0d03ef00e8ce87e98052c4b596d6e0a395e47"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/T-025-人物模型/source/characters.blend",
+      "size": 338528,
+      "sha256": "fce26b12fe92019c2afc04048f1956658581ce25a4d6df19caaab2b8502068a1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/T-025-人物模型/source/characters.blend1.blend",
+      "size": 330779,
+      "sha256": "0dabf0d81e27a479ed1a92e9d5c34f5de123340e8efd5217f5bebdffaf511c9f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/ded_corridor/ded_corridor.blend",
+      "size": 15298498,
+      "sha256": "cf94f3005d4f78bf9989f1d958cb7a4ffb6005eea37b604c03b5f7741000b9f6"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/ded_corridor/ded_corridor.blend1.blend",
+      "size": 15292569,
+      "sha256": "4d8f283ffe1b8f3c1d8351be4b12aaf5df95ed924f30797da2c959127f05fba3"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/manor/manor.blend",
+      "size": 103144006,
+      "sha256": "fd9fa87097bf2a1791d0508a658d63697e34ce334e7d724a9562a2554e12a386"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/manor/manor.blend1.blend",
+      "size": 103386252,
+      "sha256": "8c4e72a70dbced791034441ee6d0bcac53f6f1eeff78a7c384afa9b3956146cd"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/backups/pre-train-session.blend",
+      "size": 819292,
+      "sha256": "3f149bdf876714855d61d5d397e0d85105d324dbe862f723b1a421d3acfce3fa"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/backups/train-before-atmosphere.blend",
+      "size": 2067713,
+      "sha256": "9f3138e0af480a6760ad0b2fd15c467d3121a5e03536985e14e04ca81a818abb"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/backups/train-before-roof-fix.blend",
+      "size": 8756168,
+      "sha256": "2eb4b8472b44563e4f2bb25cfc11b549266a5a062024875d80c2975eaa4eaafd"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/baked/train-baked.blend",
+      "size": 23192912,
+      "sha256": "429e16a133229dcbe3a191fd7b794da27b973478702b1951adc15a16acfa01ac"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/baked/train-baked.blend1.blend",
+      "size": 23050762,
+      "sha256": "30aa66ff24bb1047f162bc909101079455a5af6125da6b80fcaeac301a85cfbb"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/baked/train-lighting-source.blend",
+      "size": 8755643,
+      "sha256": "6702730da8e9a72fcd12ef0da967fd10b564bb15451480ad36ff2df107eb3982"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/baked/train-lighting-source.blend1.blend",
+      "size": 8755741,
+      "sha256": "a009f888e8740e6f74ca3578588721f73849c659ff07ec943981d09bdf768a32"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/train.blend",
+      "size": 8756644,
+      "sha256": "ef2927c71c341caa233981105e49a56b9273670edc00b420860f5c8a428e82bd"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender/portable/assets/3d/train/train.blend1.blend",
+      "size": 8756253,
+      "sha256": "3b81fcccbd2a481341047fdf9a9585329297746061638e969bafc6934a626852"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender-manifest.json",
+      "size": 7020,
+      "sha256": "2e45fdd6fda8c37f21869e5bef7be1ed750c1cdaf64f582e2481a77c16f480e5"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender-pack.log",
+      "size": 32207,
+      "sha256": "ce6d7e32489d673c94ca5864f594d31e56eca6aa79f96c030d5311db2df0b328"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/blender-validation.json",
+      "size": 28117,
+      "sha256": "89d14b3d04922efb6208f68a462f5f24123f76b9462225b35901d98611da5ff8"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/bundle-verify.log",
+      "size": 8052,
+      "sha256": "879930cb074f617d09713c59ec08a953ce02169f80e6d06efa4778b8a9b37545"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/cleanup-report.md",
+      "size": 1353,
+      "sha256": "6f67c6661dac11d2e021569b003e8ebad97e179d248eb81304eedb6babede6cf"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/cleanup-results.json",
+      "size": 2819,
+      "sha256": "e8da605ab167fabc215514785766bf72f2bf16ec8c7b316c8c23101234284bf4"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/pack_blender.py",
+      "size": 1367,
+      "sha256": "d138e8cc2404fb690000c85ec34c27367b7cd75f5c229e2850ec4a75a410df12"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/preserve_worktrees.py",
+      "size": 1970,
+      "sha256": "e7ddcf6ea4bd7dfdd16aa520a62b65b6c0a1b35184956128a8897ec1f7068838"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/remove_obsolete.py",
+      "size": 2094,
+      "sha256": "7bfcfac3c00bfa749743f862811ca4ca2cc2709c562d389ed47832f455f5f87c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/repository.bundle.sha256",
+      "size": 84,
+      "sha256": "41231b8b206495888d969714e986753bfb49601b80dd002fa24f9d03e48b7c9e"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/autoplay-protect.log",
+      "size": 23361,
+      "sha256": "70b65071bb22164af438a5c37be2ba58de8761e5cb13679527a2574b3e137a8c"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/autoplay-replace.log",
+      "size": 23316,
+      "sha256": "a49af51bd9d5ebd29bba17fe7e4ef945ef2713d4c08a040b057d5cd7fb029ccc"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/content-check.log",
+      "size": 2226,
+      "sha256": "cbedae5dd12cc404f0547b06c6ff291cfd10c74ac4b943c5ca7d4328c3c27833"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/drawings-flow-check.log",
+      "size": 1333,
+      "sha256": "679a2cb3a5b38fdef7a22e33c0f1d67038a0c6698873bc04f34fac61ae09827d"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/drawings-overview.png",
+      "size": 2131102,
+      "sha256": "b571c9f7aef9ef4fbd1f37dfc27e6521a46fc253f7fd46f280cd893a5b67bb0b"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/drawings-render-check.log",
+      "size": 957,
+      "sha256": "f2d9d24907791e4e1a46b19e6ed9c8dda73f6357cc1c5ba569506c8d46f52852"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/drawings-ui-check.log",
+      "size": 892,
+      "sha256": "7d6757f6e5734f25fee21dbcbf8c2f383202bb15f5dbd598f1c5ec966eee06e7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/house-painting-check.log",
+      "size": 1579,
+      "sha256": "1aab54bded6e66f3c1be399f70a9dfd70b9cb792e0ca3de50a12a10b0d8e9246"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/latest.log",
+      "size": 366,
+      "sha256": "e1714a207bd117bcaa4d1ba9342ac497cdee92f38208f53520512d33ae5be0e0"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/painting-import.log",
+      "size": 4128,
+      "sha256": "c93faf52f6379cabb36acd06a31f29567f4db36cd83cc6235aa40b5263a18f9f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/painting-underbed-reference.png",
+      "size": 164176,
+      "sha256": "19f73ebe53154fb19469b52b7a1e6ad5a304b01263b437a6aed8274a8016d06f"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/pr-original-ded_house.gd",
+      "size": 970,
+      "sha256": "0088c94052607634af530ee775ad48ca24122258c8e38440b34f3b80fc3663b7"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/pr-original-ded_house.tscn",
+      "size": 15375,
+      "sha256": "360137170413e8f64d4cabf081ac26143e7e3706ef95a2704be4704175b7a3ab"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/startup-chapter.log",
+      "size": 129,
+      "sha256": "005f7e695b14710b0e9119da3dc3e04a0a2a21d9bcb77e5b23a2671ca550d873"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/startup-drawings.log",
+      "size": 1343,
+      "sha256": "ca07216ae981049939b3fbb61fcd103eb10d8a8dea862222f42c77bc3ff7b686"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/output/chapter3-trial/startup-house.log",
+      "size": 163,
+      "sha256": "7afcdb781975f1525471de0051a8aada12c602fd1b25b32e19e0f9ceb3484c93"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter3-pr35-trial/检查报告.md",
+      "size": 5282,
+      "sha256": "575626c5bf9e82e9b46bdd3932662e62cf3e7f50db99239f0846a98be8b4f816"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter4-pr34-trial/检查报告.md",
+      "size": 5324,
+      "sha256": "d2fa4a18f77daa518bb2b91ceb61e3bbcd9d5f1e4c03a6be6adf4029f2dbc685"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__chapter5-corridor-blender/检查报告.md",
+      "size": 5261,
+      "sha256": "56cc9561407753118485917815b18cf21470b758097f64fe370c637a69367cb5"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/codex__pr33-ch2-table-trial/检查报告.md",
+      "size": 5291,
+      "sha256": "f1b4b08f7b7af9f976ba01b4e257a0917b5bca9a00444e5cf1269e024606130d"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-local-files/main/检查报告.md",
+      "size": 5261,
+      "sha256": "da9bf52fabb8302bd424479624ba44516a14f92a9950a2a177631cef5f69fea1"
+    },
+    {
+      "path": "DigitalMedia-archives/2026-10-22-worktree-cleanup/worktree-manifest.json",
+      "size": 6061,
+      "sha256": "3d4227a22dbe01fa15ce9e5e7e0e8fdc90041ffc3201e70225d5eab2587263b6"
+    }
+  ],
+  "git_refs": {
+    "refs/heads/archive/worktree-cleanup-20261022/claude__hungry-chaum-18e889": "58a5583f3cf96459b5ff9e060952b619f2a0f9f6",
+    "refs/heads/archive/worktree-cleanup-20261022/codex__chapter3-pr35-trial": "7af98f5619301ced16cb90700675fe145ec93e47",
+    "refs/heads/archive/worktree-cleanup-20261022/codex__chapter4-pr34-trial": "9d382599b50dcfd8bbf9d36afed52e90942305d8",
+    "refs/heads/archive/worktree-cleanup-20261022/codex__chapter5-corridor-blender": "2607901e2e1545bad081a5723dcb7d25e55163b3",
+    "refs/heads/archive/worktree-cleanup-20261022/codex__pr33-ch2-table-trial": "a103ffccb361c07699f1c275d737f54b6cf80229",
+    "refs/heads/archive/worktree-cleanup-20261022/main": "184f6ec52e73af3047470cb8ea21d4d6104509cb",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-0": "204df5786a2871a2f45a19485ccc32e7d23d07e2",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-1": "8a1a1ac18550c5fbd171dbdb73ded0794deb0620",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-2": "ed48391e2acd88c03745ac8ca20182b7697c9f0b",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-3": "eec00f29cb5e7bd97f150f58904d3185b5a43918",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-4": "bf11626d0dc5ce24ecdacbf9b9d5a291330074ba",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-5": "edaed1c02a12e47fc69f0a791f961e5e68c674f4",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-6": "e35073bb838ff2007edd1c34961bd14c24b194ac",
+    "refs/heads/archive/worktree-cleanup-20261022/snapshot-source-7": "895d9b25e81c2f7c9af80c3f2af594f0f831bac8"
+  }
+}
