@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://drpyl8lpblblp"
 path.s3tc="res://.godot/imported/ded_corridor_soil_normal.jpg-0368c526726e234564cc792c6c16479e.s3tc.ctex"
+path.etc2="res://.godot/imported/ded_corridor_soil_normal.jpg-0368c526726e234564cc792c6c16479e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/ded_corridor/ded_corridor_soil_normal.jpg"
-dest_files=["res://.godot/imported/ded_corridor_soil_normal.jpg-0368c526726e234564cc792c6c16479e.s3tc.ctex"]
+dest_files=["res://.godot/imported/ded_corridor_soil_normal.jpg-0368c526726e234564cc792c6c16479e.s3tc.ctex", "res://.godot/imported/ded_corridor_soil_normal.jpg-0368c526726e234564cc792c6c16479e.etc2.ctex"]
 
 [params]
 

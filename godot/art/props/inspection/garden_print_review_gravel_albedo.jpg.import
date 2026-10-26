@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjx2tgkefipjk"
 path.s3tc="res://.godot/imported/garden_print_review_gravel_albedo.jpg-6977470aa3b40b67b6793c3720be060d.s3tc.ctex"
+path.etc2="res://.godot/imported/garden_print_review_gravel_albedo.jpg-6977470aa3b40b67b6793c3720be060d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/props/inspection/garden_print_review_gravel_albedo.jpg"
-dest_files=["res://.godot/imported/garden_print_review_gravel_albedo.jpg-6977470aa3b40b67b6793c3720be060d.s3tc.ctex"]
+dest_files=["res://.godot/imported/garden_print_review_gravel_albedo.jpg-6977470aa3b40b67b6793c3720be060d.s3tc.ctex", "res://.godot/imported/garden_print_review_gravel_albedo.jpg-6977470aa3b40b67b6793c3720be060d.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://br4qq07w6mkwr"
 path.s3tc="res://.godot/imported/leaf_autumn.png-1dcc9720992ef962e6d2d20de015a7ce.s3tc.ctex"
+path.etc2="res://.godot/imported/leaf_autumn.png-1dcc9720992ef962e6d2d20de015a7ce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/leaf_autumn.png"
-dest_files=["res://.godot/imported/leaf_autumn.png-1dcc9720992ef962e6d2d20de015a7ce.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaf_autumn.png-1dcc9720992ef962e6d2d20de015a7ce.s3tc.ctex", "res://.godot/imported/leaf_autumn.png-1dcc9720992ef962e6d2d20de015a7ce.etc2.ctex"]
 
 [params]
 

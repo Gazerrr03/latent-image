@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4m053wc5xleg"
 path.s3tc="res://.godot/imported/iris_black_cloth.jpg-ecc048502250b6588a086e41709845e2.s3tc.ctex"
+path.etc2="res://.godot/imported/iris_black_cloth.jpg-ecc048502250b6588a086e41709845e2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/iris_black_cloth.jpg"
-dest_files=["res://.godot/imported/iris_black_cloth.jpg-ecc048502250b6588a086e41709845e2.s3tc.ctex"]
+dest_files=["res://.godot/imported/iris_black_cloth.jpg-ecc048502250b6588a086e41709845e2.s3tc.ctex", "res://.godot/imported/iris_black_cloth.jpg-ecc048502250b6588a086e41709845e2.etc2.ctex"]
 
 [params]
 

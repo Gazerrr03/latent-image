@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3ahatw6xlaob"
 path.s3tc="res://.godot/imported/plaster_grey_04_nor_gl_1k.jpg-9488b4a9b18fd211422c19d6b13b9c98.s3tc.ctex"
+path.etc2="res://.godot/imported/plaster_grey_04_nor_gl_1k.jpg-9488b4a9b18fd211422c19d6b13b9c98.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/look/materials/plaster_grey_04_nor_gl_1k.jpg"
-dest_files=["res://.godot/imported/plaster_grey_04_nor_gl_1k.jpg-9488b4a9b18fd211422c19d6b13b9c98.s3tc.ctex"]
+dest_files=["res://.godot/imported/plaster_grey_04_nor_gl_1k.jpg-9488b4a9b18fd211422c19d6b13b9c98.s3tc.ctex", "res://.godot/imported/plaster_grey_04_nor_gl_1k.jpg-9488b4a9b18fd211422c19d6b13b9c98.etc2.ctex"]
 
 [params]
 

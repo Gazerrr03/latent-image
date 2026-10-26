@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://lqu5mqh7xow6"
 path.s3tc="res://.godot/imported/clump_autumn.png-fc860b3c6c1b0587b162e21ca97d17ee.s3tc.ctex"
+path.etc2="res://.godot/imported/clump_autumn.png-fc860b3c6c1b0587b162e21ca97d17ee.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/clump_autumn.png"
-dest_files=["res://.godot/imported/clump_autumn.png-fc860b3c6c1b0587b162e21ca97d17ee.s3tc.ctex"]
+dest_files=["res://.godot/imported/clump_autumn.png-fc860b3c6c1b0587b162e21ca97d17ee.s3tc.ctex", "res://.godot/imported/clump_autumn.png-fc860b3c6c1b0587b162e21ca97d17ee.etc2.ctex"]
 
 [params]
 

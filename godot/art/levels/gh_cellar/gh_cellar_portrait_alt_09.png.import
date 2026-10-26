@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8ky4ldfiej8q"
 path.s3tc="res://.godot/imported/gh_cellar_portrait_alt_09.png-b52e3787f864c9d11f64cc2b516198aa.s3tc.ctex"
+path.etc2="res://.godot/imported/gh_cellar_portrait_alt_09.png-b52e3787f864c9d11f64cc2b516198aa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/gh_cellar/gh_cellar_portrait_alt_09.png"
-dest_files=["res://.godot/imported/gh_cellar_portrait_alt_09.png-b52e3787f864c9d11f64cc2b516198aa.s3tc.ctex"]
+dest_files=["res://.godot/imported/gh_cellar_portrait_alt_09.png-b52e3787f864c9d11f64cc2b516198aa.s3tc.ctex", "res://.godot/imported/gh_cellar_portrait_alt_09.png-b52e3787f864c9d11f64cc2b516198aa.etc2.ctex"]
 
 [params]
 

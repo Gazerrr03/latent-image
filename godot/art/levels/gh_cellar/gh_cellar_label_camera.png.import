@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hdjbi0e1koho"
 path.s3tc="res://.godot/imported/gh_cellar_label_camera.png-fdb2bd38dafd1dc31881c8bee2aa67a6.s3tc.ctex"
+path.etc2="res://.godot/imported/gh_cellar_label_camera.png-fdb2bd38dafd1dc31881c8bee2aa67a6.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/gh_cellar/gh_cellar_label_camera.png"
-dest_files=["res://.godot/imported/gh_cellar_label_camera.png-fdb2bd38dafd1dc31881c8bee2aa67a6.s3tc.ctex"]
+dest_files=["res://.godot/imported/gh_cellar_label_camera.png-fdb2bd38dafd1dc31881c8bee2aa67a6.s3tc.ctex", "res://.godot/imported/gh_cellar_label_camera.png-fdb2bd38dafd1dc31881c8bee2aa67a6.etc2.ctex"]
 
 [params]
 

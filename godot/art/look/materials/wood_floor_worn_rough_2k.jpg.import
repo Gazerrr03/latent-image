@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckav5aq4j2gre"
 path.s3tc="res://.godot/imported/wood_floor_worn_rough_2k.jpg-e0939ee3933864818c2caaf3d502fea2.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_floor_worn_rough_2k.jpg-e0939ee3933864818c2caaf3d502fea2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/look/materials/wood_floor_worn_rough_2k.jpg"
-dest_files=["res://.godot/imported/wood_floor_worn_rough_2k.jpg-e0939ee3933864818c2caaf3d502fea2.s3tc.ctex"]
+dest_files=["res://.godot/imported/wood_floor_worn_rough_2k.jpg-e0939ee3933864818c2caaf3d502fea2.s3tc.ctex", "res://.godot/imported/wood_floor_worn_rough_2k.jpg-e0939ee3933864818c2caaf3d502fea2.etc2.ctex"]
 
 [params]
 

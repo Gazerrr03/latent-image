@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://do7337vbnjvfx"
 path.s3tc="res://.godot/imported/bark_normal.jpg-a430dbb8769aeae6e989c2bf8f603e2f.s3tc.ctex"
+path.etc2="res://.godot/imported/bark_normal.jpg-a430dbb8769aeae6e989c2bf8f603e2f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/bark_normal.jpg"
-dest_files=["res://.godot/imported/bark_normal.jpg-a430dbb8769aeae6e989c2bf8f603e2f.s3tc.ctex"]
+dest_files=["res://.godot/imported/bark_normal.jpg-a430dbb8769aeae6e989c2bf8f603e2f.s3tc.ctex", "res://.godot/imported/bark_normal.jpg-a430dbb8769aeae6e989c2bf8f603e2f.etc2.ctex"]
 
 [params]
 

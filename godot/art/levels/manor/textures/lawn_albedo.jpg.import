@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw30dkjhn2aj7"
 path.s3tc="res://.godot/imported/lawn_albedo.jpg-39240caea1393faabb113283135a1113.s3tc.ctex"
+path.etc2="res://.godot/imported/lawn_albedo.jpg-39240caea1393faabb113283135a1113.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/lawn_albedo.jpg"
-dest_files=["res://.godot/imported/lawn_albedo.jpg-39240caea1393faabb113283135a1113.s3tc.ctex"]
+dest_files=["res://.godot/imported/lawn_albedo.jpg-39240caea1393faabb113283135a1113.s3tc.ctex", "res://.godot/imported/lawn_albedo.jpg-39240caea1393faabb113283135a1113.etc2.ctex"]
 
 [params]
 

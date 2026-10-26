@@ -39,3 +39,4 @@ G04,C1-08,,,,show,,60,,,wait 1;walk hs_typewriter 1.0;wait 0.5;e;wait 5;pick 0;w
 G05,C1-09,,,,show,,60,,,wait 1;walk hs_bed 1.0;wait 0.5;e;wait 4;click 6 4,,,,,,,28,,睡下：梦与日记
 G06,C1-07,,,,show,,60,,ev_bottle_moved ev_never_wrong ev_amb_notes ev_tray_crystal ev_letter_p1 ev_vent_print,wait 1;key Tab;wait 3;examine ev_bottle_moved;wait 4;key Tab;wait 1,,,,,,,12,,证据板：翻开、拿起一张卡检视
 X12,C2-00,0,关闭,,,,,,,,cam:green_mid,cam:green_mid,cam:green_mid 0.6 0.5 0,cam:green_mid 0.6 0.5 0,62,56,1,1,温室
+S33,room:gh_cellar,0,,,,,90,,,,3.35 -2.9 1.75,0 0.4 1.15,1.95 -1.55 1.6,-0.35 3.55 1.82,60,52,7,1,第4章地下室：梯口侧缓推至历年合影

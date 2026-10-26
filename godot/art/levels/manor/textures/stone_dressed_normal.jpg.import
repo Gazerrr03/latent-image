@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://r37uuvakf8dx"
 path.s3tc="res://.godot/imported/stone_dressed_normal.jpg-69933b608233aa2f8a55e5b3a161462e.s3tc.ctex"
+path.etc2="res://.godot/imported/stone_dressed_normal.jpg-69933b608233aa2f8a55e5b3a161462e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/stone_dressed_normal.jpg"
-dest_files=["res://.godot/imported/stone_dressed_normal.jpg-69933b608233aa2f8a55e5b3a161462e.s3tc.ctex"]
+dest_files=["res://.godot/imported/stone_dressed_normal.jpg-69933b608233aa2f8a55e5b3a161462e.s3tc.ctex", "res://.godot/imported/stone_dressed_normal.jpg-69933b608233aa2f8a55e5b3a161462e.etc2.ctex"]
 
 [params]
 

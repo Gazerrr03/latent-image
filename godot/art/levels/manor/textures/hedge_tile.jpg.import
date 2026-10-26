@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bg2s6hqhxqs7b"
 path.s3tc="res://.godot/imported/hedge_tile.jpg-d32722e6ab83b8d8c4c308335b29b31f.s3tc.ctex"
+path.etc2="res://.godot/imported/hedge_tile.jpg-d32722e6ab83b8d8c4c308335b29b31f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/hedge_tile.jpg"
-dest_files=["res://.godot/imported/hedge_tile.jpg-d32722e6ab83b8d8c4c308335b29b31f.s3tc.ctex"]
+dest_files=["res://.godot/imported/hedge_tile.jpg-d32722e6ab83b8d8c4c308335b29b31f.s3tc.ctex", "res://.godot/imported/hedge_tile.jpg-d32722e6ab83b8d8c4c308335b29b31f.etc2.ctex"]
 
 [params]
 

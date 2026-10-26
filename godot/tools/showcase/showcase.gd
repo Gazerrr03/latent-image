@@ -3,6 +3,7 @@ extends RefCounted
 ## 用法（逐帧录制，PNG 序列）：
 ##   godot --path godot --write-movie /tmp/showcase/S06/f.png --fixed-fps 30 --resolution 1920x1080 -- --showcase=S06
 ## 表：tools/showcase/shots.csv，坐标沿用设计坐标 (X, N, 标高)，同 tools/capture_level.gd。只动相机，不改任何关卡场景。
+## shot_id 也可写 room:<关卡 id>，直接加载独立关卡再按表里的自有机位运镜。
 
 const TABLE := "res://tools/showcase/shots.csv"
 
@@ -67,6 +68,14 @@ static func run(main: Node, id: String) -> void:
 		var c0: Node = Director.world.corridor
 		c0.running = true
 		c0._enter(clampf(corridor_layer - 1, 0, 5))
+	elif sid.begins_with("room:"):
+		var room_id := sid.trim_prefix("room:")
+		if not ResourceLoader.exists(ContentDB.level_path(room_id)):
+			push_error("展示镜头找不到关卡：" + room_id)
+			tree.quit(1)
+			return
+		Director.world.show_scene(room_id)
+		Director.world.set_mode("walk", "")
 	else:
 		Director.start(sid)
 	var lead := int(_f(r, "lead", "90"))

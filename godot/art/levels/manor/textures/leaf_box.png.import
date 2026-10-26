@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dule27dlnup8d"
 path.s3tc="res://.godot/imported/leaf_box.png-db495cf97b377fd04f1081867f34d793.s3tc.ctex"
+path.etc2="res://.godot/imported/leaf_box.png-db495cf97b377fd04f1081867f34d793.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/leaf_box.png"
-dest_files=["res://.godot/imported/leaf_box.png-db495cf97b377fd04f1081867f34d793.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaf_box.png-db495cf97b377fd04f1081867f34d793.s3tc.ctex", "res://.godot/imported/leaf_box.png-db495cf97b377fd04f1081867f34d793.etc2.ctex"]
 
 [params]
 

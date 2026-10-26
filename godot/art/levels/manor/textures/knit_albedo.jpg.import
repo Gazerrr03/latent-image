@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://sjbhvxk3eo10"
 path.s3tc="res://.godot/imported/knit_albedo.jpg-a336b454e9d4aae1ba1090c3c630a7b5.s3tc.ctex"
+path.etc2="res://.godot/imported/knit_albedo.jpg-a336b454e9d4aae1ba1090c3c630a7b5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/knit_albedo.jpg"
-dest_files=["res://.godot/imported/knit_albedo.jpg-a336b454e9d4aae1ba1090c3c630a7b5.s3tc.ctex"]
+dest_files=["res://.godot/imported/knit_albedo.jpg-a336b454e9d4aae1ba1090c3c630a7b5.s3tc.ctex", "res://.godot/imported/knit_albedo.jpg-a336b454e9d4aae1ba1090c3c630a7b5.etc2.ctex"]
 
 [params]
 

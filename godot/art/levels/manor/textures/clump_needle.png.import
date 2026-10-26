@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7acajyw7ny7"
 path.s3tc="res://.godot/imported/clump_needle.png-721352894cb1077a6b380ee127fe1a3e.s3tc.ctex"
+path.etc2="res://.godot/imported/clump_needle.png-721352894cb1077a6b380ee127fe1a3e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/clump_needle.png"
-dest_files=["res://.godot/imported/clump_needle.png-721352894cb1077a6b380ee127fe1a3e.s3tc.ctex"]
+dest_files=["res://.godot/imported/clump_needle.png-721352894cb1077a6b380ee127fe1a3e.s3tc.ctex", "res://.godot/imported/clump_needle.png-721352894cb1077a6b380ee127fe1a3e.etc2.ctex"]
 
 [params]
 

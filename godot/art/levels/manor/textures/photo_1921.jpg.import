@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://crwlprlwsi5n2"
 path.s3tc="res://.godot/imported/photo_1921.jpg-4bf14ce68a5e56e94bf45db960697ac7.s3tc.ctex"
+path.etc2="res://.godot/imported/photo_1921.jpg-4bf14ce68a5e56e94bf45db960697ac7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/photo_1921.jpg"
-dest_files=["res://.godot/imported/photo_1921.jpg-4bf14ce68a5e56e94bf45db960697ac7.s3tc.ctex"]
+dest_files=["res://.godot/imported/photo_1921.jpg-4bf14ce68a5e56e94bf45db960697ac7.s3tc.ctex", "res://.godot/imported/photo_1921.jpg-4bf14ce68a5e56e94bf45db960697ac7.etc2.ctex"]
 
 [params]
 

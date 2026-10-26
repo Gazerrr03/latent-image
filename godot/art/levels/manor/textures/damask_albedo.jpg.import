@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cujqrne3et6eh"
 path.s3tc="res://.godot/imported/damask_albedo.jpg-1836146f75160c8a52fcf53fa9ab144c.s3tc.ctex"
+path.etc2="res://.godot/imported/damask_albedo.jpg-1836146f75160c8a52fcf53fa9ab144c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/damask_albedo.jpg"
-dest_files=["res://.godot/imported/damask_albedo.jpg-1836146f75160c8a52fcf53fa9ab144c.s3tc.ctex"]
+dest_files=["res://.godot/imported/damask_albedo.jpg-1836146f75160c8a52fcf53fa9ab144c.s3tc.ctex", "res://.godot/imported/damask_albedo.jpg-1836146f75160c8a52fcf53fa9ab144c.etc2.ctex"]
 
 [params]
 

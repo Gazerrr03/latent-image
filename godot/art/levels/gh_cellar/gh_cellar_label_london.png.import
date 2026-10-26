@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://g755x4nx6vou"
 path.s3tc="res://.godot/imported/gh_cellar_label_london.png-1cbd7a00ce6eb398a2859c0008c830f2.s3tc.ctex"
+path.etc2="res://.godot/imported/gh_cellar_label_london.png-1cbd7a00ce6eb398a2859c0008c830f2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/gh_cellar/gh_cellar_label_london.png"
-dest_files=["res://.godot/imported/gh_cellar_label_london.png-1cbd7a00ce6eb398a2859c0008c830f2.s3tc.ctex"]
+dest_files=["res://.godot/imported/gh_cellar_label_london.png-1cbd7a00ce6eb398a2859c0008c830f2.s3tc.ctex", "res://.godot/imported/gh_cellar_label_london.png-1cbd7a00ce6eb398a2859c0008c830f2.etc2.ctex"]
 
 [params]
 

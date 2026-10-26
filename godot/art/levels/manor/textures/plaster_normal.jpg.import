@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://yf6x6cmjw783"
 path.s3tc="res://.godot/imported/plaster_normal.jpg-2020e0bd90d4725b03187f19fc4fc54d.s3tc.ctex"
+path.etc2="res://.godot/imported/plaster_normal.jpg-2020e0bd90d4725b03187f19fc4fc54d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/plaster_normal.jpg"
-dest_files=["res://.godot/imported/plaster_normal.jpg-2020e0bd90d4725b03187f19fc4fc54d.s3tc.ctex"]
+dest_files=["res://.godot/imported/plaster_normal.jpg-2020e0bd90d4725b03187f19fc4fc54d.s3tc.ctex", "res://.godot/imported/plaster_normal.jpg-2020e0bd90d4725b03187f19fc4fc54d.etc2.ctex"]
 
 [params]
 
