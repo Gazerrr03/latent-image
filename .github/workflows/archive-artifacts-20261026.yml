@@ -1,0 +1,29 @@
+name: Archive expiring desktop artifacts
+on:
+  push:
+    branches: [archive/remote-artifact-transfer-20261026]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: Gazerrr03/latent-image
+    steps:
+      - name: Preserve verified build artifacts in archive draft
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir preserve
+          cd preserve
+          for item in '12494756500 LatentImage-Windows-CI-artifact.zip' '12494099502 LatentImage-Mac-CI-artifact.zip' '12493724685 desktop-export-logs.zip' '12494791864 macos-playthrough-logs.zip'; do
+            read -r artifact_id filename <<< "$item"
+            gh api "repos/$GH_REPO/actions/artifacts/$artifact_id/zip" > "$filename"
+            unzip -tq "$filename"
+            sha256sum "$filename" >> desktop-SHA256SUMS.txt
+            gh release upload archive-2026-10-26 "$filename" --clobber
+          done
+          gh release upload archive-2026-10-26 desktop-SHA256SUMS.txt --clobber
