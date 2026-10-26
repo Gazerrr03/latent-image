@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv44sqfgwt55i"
 path.s3tc="res://.godot/imported/plaster_albedo.jpg-143dab790807f21d9e329d019aae96a2.s3tc.ctex"
+path.etc2="res://.godot/imported/plaster_albedo.jpg-143dab790807f21d9e329d019aae96a2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/plaster_albedo.jpg"
-dest_files=["res://.godot/imported/plaster_albedo.jpg-143dab790807f21d9e329d019aae96a2.s3tc.ctex"]
+dest_files=["res://.godot/imported/plaster_albedo.jpg-143dab790807f21d9e329d019aae96a2.s3tc.ctex", "res://.godot/imported/plaster_albedo.jpg-143dab790807f21d9e329d019aae96a2.etc2.ctex"]
 
 [params]
 

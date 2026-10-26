@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8wrdbg82jsya"
 path.s3tc="res://.godot/imported/train-baked_window-landscape.png-d183ce22b5e833a295fd71b99a5cf086.s3tc.ctex"
+path.etc2="res://.godot/imported/train-baked_window-landscape.png-d183ce22b5e833a295fd71b99a5cf086.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/train/train-baked_window-landscape.png"
-dest_files=["res://.godot/imported/train-baked_window-landscape.png-d183ce22b5e833a295fd71b99a5cf086.s3tc.ctex"]
+dest_files=["res://.godot/imported/train-baked_window-landscape.png-d183ce22b5e833a295fd71b99a5cf086.s3tc.ctex", "res://.godot/imported/train-baked_window-landscape.png-d183ce22b5e833a295fd71b99a5cf086.etc2.ctex"]
 
 [params]
 

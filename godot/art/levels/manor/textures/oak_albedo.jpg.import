@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://5uc65f75j02f"
 path.s3tc="res://.godot/imported/oak_albedo.jpg-53ee37ee7dc75c6b4a0313d29c2210d1.s3tc.ctex"
+path.etc2="res://.godot/imported/oak_albedo.jpg-53ee37ee7dc75c6b4a0313d29c2210d1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/oak_albedo.jpg"
-dest_files=["res://.godot/imported/oak_albedo.jpg-53ee37ee7dc75c6b4a0313d29c2210d1.s3tc.ctex"]
+dest_files=["res://.godot/imported/oak_albedo.jpg-53ee37ee7dc75c6b4a0313d29c2210d1.s3tc.ctex", "res://.godot/imported/oak_albedo.jpg-53ee37ee7dc75c6b4a0313d29c2210d1.etc2.ctex"]
 
 [params]
 

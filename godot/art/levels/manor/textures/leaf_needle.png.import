@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd8kr6bb6nvm4"
 path.s3tc="res://.godot/imported/leaf_needle.png-94802e4432a31575b8b58229a94fac9f.s3tc.ctex"
+path.etc2="res://.godot/imported/leaf_needle.png-94802e4432a31575b8b58229a94fac9f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/leaf_needle.png"
-dest_files=["res://.godot/imported/leaf_needle.png-94802e4432a31575b8b58229a94fac9f.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaf_needle.png-94802e4432a31575b8b58229a94fac9f.s3tc.ctex", "res://.godot/imported/leaf_needle.png-94802e4432a31575b8b58229a94fac9f.etc2.ctex"]
 
 [params]
 

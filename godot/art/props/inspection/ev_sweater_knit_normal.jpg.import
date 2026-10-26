@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dp3juo0bojx4s"
 path.s3tc="res://.godot/imported/ev_sweater_knit_normal.jpg-462af92301e241ddad3441b4811d4c9a.s3tc.ctex"
+path.etc2="res://.godot/imported/ev_sweater_knit_normal.jpg-462af92301e241ddad3441b4811d4c9a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/props/inspection/ev_sweater_knit_normal.jpg"
-dest_files=["res://.godot/imported/ev_sweater_knit_normal.jpg-462af92301e241ddad3441b4811d4c9a.s3tc.ctex"]
+dest_files=["res://.godot/imported/ev_sweater_knit_normal.jpg-462af92301e241ddad3441b4811d4c9a.s3tc.ctex", "res://.godot/imported/ev_sweater_knit_normal.jpg-462af92301e241ddad3441b4811d4c9a.etc2.ctex"]
 
 [params]
 

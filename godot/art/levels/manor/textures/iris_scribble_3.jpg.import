@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d333hactujy7a"
 path.s3tc="res://.godot/imported/iris_scribble_3.jpg-e4ff1175f8454376538a548dcf7db3c8.s3tc.ctex"
+path.etc2="res://.godot/imported/iris_scribble_3.jpg-e4ff1175f8454376538a548dcf7db3c8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/iris_scribble_3.jpg"
-dest_files=["res://.godot/imported/iris_scribble_3.jpg-e4ff1175f8454376538a548dcf7db3c8.s3tc.ctex"]
+dest_files=["res://.godot/imported/iris_scribble_3.jpg-e4ff1175f8454376538a548dcf7db3c8.s3tc.ctex", "res://.godot/imported/iris_scribble_3.jpg-e4ff1175f8454376538a548dcf7db3c8.etc2.ctex"]
 
 [params]
 

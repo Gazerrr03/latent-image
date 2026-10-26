@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckxe3bvspf4m6"
 path.s3tc="res://.godot/imported/plastered_wall_04_diff_2k.jpg-e9ef53b4ad0bc40298f7cc739d0aa823.s3tc.ctex"
+path.etc2="res://.godot/imported/plastered_wall_04_diff_2k.jpg-e9ef53b4ad0bc40298f7cc739d0aa823.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/look/materials/plastered_wall_04_diff_2k.jpg"
-dest_files=["res://.godot/imported/plastered_wall_04_diff_2k.jpg-e9ef53b4ad0bc40298f7cc739d0aa823.s3tc.ctex"]
+dest_files=["res://.godot/imported/plastered_wall_04_diff_2k.jpg-e9ef53b4ad0bc40298f7cc739d0aa823.s3tc.ctex", "res://.godot/imported/plastered_wall_04_diff_2k.jpg-e9ef53b4ad0bc40298f7cc739d0aa823.etc2.ctex"]
 
 [params]
 

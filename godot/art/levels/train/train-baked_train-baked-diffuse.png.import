@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://qq8omtrgm63f"
 path.s3tc="res://.godot/imported/train-baked_train-baked-diffuse.png-db39a7ec0b2708b7fccf00ca6685db23.s3tc.ctex"
+path.etc2="res://.godot/imported/train-baked_train-baked-diffuse.png-db39a7ec0b2708b7fccf00ca6685db23.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/train/train-baked_train-baked-diffuse.png"
-dest_files=["res://.godot/imported/train-baked_train-baked-diffuse.png-db39a7ec0b2708b7fccf00ca6685db23.s3tc.ctex"]
+dest_files=["res://.godot/imported/train-baked_train-baked-diffuse.png-db39a7ec0b2708b7fccf00ca6685db23.s3tc.ctex", "res://.godot/imported/train-baked_train-baked-diffuse.png-db39a7ec0b2708b7fccf00ca6685db23.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://do5nfyja45tbl"
 path.s3tc="res://.godot/imported/curtain_albedo.jpg-1a01a5812815402dcd04894abd5b13d8.s3tc.ctex"
+path.etc2="res://.godot/imported/curtain_albedo.jpg-1a01a5812815402dcd04894abd5b13d8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/curtain_albedo.jpg"
-dest_files=["res://.godot/imported/curtain_albedo.jpg-1a01a5812815402dcd04894abd5b13d8.s3tc.ctex"]
+dest_files=["res://.godot/imported/curtain_albedo.jpg-1a01a5812815402dcd04894abd5b13d8.s3tc.ctex", "res://.godot/imported/curtain_albedo.jpg-1a01a5812815402dcd04894abd5b13d8.etc2.ctex"]
 
 [params]
 

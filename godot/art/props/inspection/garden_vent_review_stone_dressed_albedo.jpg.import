@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4x5fb2ym4lh1"
 path.s3tc="res://.godot/imported/garden_vent_review_stone_dressed_albedo.jpg-42bee4281c96114c2ad756c66a38b60b.s3tc.ctex"
+path.etc2="res://.godot/imported/garden_vent_review_stone_dressed_albedo.jpg-42bee4281c96114c2ad756c66a38b60b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/props/inspection/garden_vent_review_stone_dressed_albedo.jpg"
-dest_files=["res://.godot/imported/garden_vent_review_stone_dressed_albedo.jpg-42bee4281c96114c2ad756c66a38b60b.s3tc.ctex"]
+dest_files=["res://.godot/imported/garden_vent_review_stone_dressed_albedo.jpg-42bee4281c96114c2ad756c66a38b60b.s3tc.ctex", "res://.godot/imported/garden_vent_review_stone_dressed_albedo.jpg-42bee4281c96114c2ad756c66a38b60b.etc2.ctex"]
 
 [params]
 

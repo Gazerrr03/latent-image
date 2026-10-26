@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://845kvwxjubgg"
 path.s3tc="res://.godot/imported/clump_box.png-1f7b42e102ac3121e68e09873d227a12.s3tc.ctex"
+path.etc2="res://.godot/imported/clump_box.png-1f7b42e102ac3121e68e09873d227a12.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/clump_box.png"
-dest_files=["res://.godot/imported/clump_box.png-1f7b42e102ac3121e68e09873d227a12.s3tc.ctex"]
+dest_files=["res://.godot/imported/clump_box.png-1f7b42e102ac3121e68e09873d227a12.s3tc.ctex", "res://.godot/imported/clump_box.png-1f7b42e102ac3121e68e09873d227a12.etc2.ctex"]
 
 [params]
 

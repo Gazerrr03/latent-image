@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvyjakvkndmc"
 path.s3tc="res://.godot/imported/ded_house_FigureCloth_bake.png-898d16012431111628d64a0aa6f21c23.s3tc.ctex"
+path.etc2="res://.godot/imported/ded_house_FigureCloth_bake.png-898d16012431111628d64a0aa6f21c23.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/ded_house/ded_house_FigureCloth_bake.png"
-dest_files=["res://.godot/imported/ded_house_FigureCloth_bake.png-898d16012431111628d64a0aa6f21c23.s3tc.ctex"]
+dest_files=["res://.godot/imported/ded_house_FigureCloth_bake.png-898d16012431111628d64a0aa6f21c23.s3tc.ctex", "res://.godot/imported/ded_house_FigureCloth_bake.png-898d16012431111628d64a0aa6f21c23.etc2.ctex"]
 
 [params]
 

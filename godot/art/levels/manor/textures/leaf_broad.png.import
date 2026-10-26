@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj41tu24ganbr"
 path.s3tc="res://.godot/imported/leaf_broad.png-d3ed19815a47b08c32f272882874b197.s3tc.ctex"
+path.etc2="res://.godot/imported/leaf_broad.png-d3ed19815a47b08c32f272882874b197.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/leaf_broad.png"
-dest_files=["res://.godot/imported/leaf_broad.png-d3ed19815a47b08c32f272882874b197.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaf_broad.png-d3ed19815a47b08c32f272882874b197.s3tc.ctex", "res://.godot/imported/leaf_broad.png-d3ed19815a47b08c32f272882874b197.etc2.ctex"]
 
 [params]
 

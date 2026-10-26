@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8mvk1x2w2kwk"
 path.s3tc="res://.godot/imported/linen_albedo.jpg-173edd1d8484d8c6cccb83834193e935.s3tc.ctex"
+path.etc2="res://.godot/imported/linen_albedo.jpg-173edd1d8484d8c6cccb83834193e935.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/linen_albedo.jpg"
-dest_files=["res://.godot/imported/linen_albedo.jpg-173edd1d8484d8c6cccb83834193e935.s3tc.ctex"]
+dest_files=["res://.godot/imported/linen_albedo.jpg-173edd1d8484d8c6cccb83834193e935.s3tc.ctex", "res://.godot/imported/linen_albedo.jpg-173edd1d8484d8c6cccb83834193e935.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bk3tsi70sek83"
 path.s3tc="res://.godot/imported/soil_normal.jpg-1eef409d6a8548f01e37e56e1e3090c9.s3tc.ctex"
+path.etc2="res://.godot/imported/soil_normal.jpg-1eef409d6a8548f01e37e56e1e3090c9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/soil_normal.jpg"
-dest_files=["res://.godot/imported/soil_normal.jpg-1eef409d6a8548f01e37e56e1e3090c9.s3tc.ctex"]
+dest_files=["res://.godot/imported/soil_normal.jpg-1eef409d6a8548f01e37e56e1e3090c9.s3tc.ctex", "res://.godot/imported/soil_normal.jpg-1eef409d6a8548f01e37e56e1e3090c9.etc2.ctex"]
 
 [params]
 

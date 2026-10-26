@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbfgceawl5tyn"
 path.s3tc="res://.godot/imported/ded_corridor_slate_albedo.jpg-e5e7dc06724f947542f79d735e4e829d.s3tc.ctex"
+path.etc2="res://.godot/imported/ded_corridor_slate_albedo.jpg-e5e7dc06724f947542f79d735e4e829d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/ded_corridor/ded_corridor_slate_albedo.jpg"
-dest_files=["res://.godot/imported/ded_corridor_slate_albedo.jpg-e5e7dc06724f947542f79d735e4e829d.s3tc.ctex"]
+dest_files=["res://.godot/imported/ded_corridor_slate_albedo.jpg-e5e7dc06724f947542f79d735e4e829d.s3tc.ctex", "res://.godot/imported/ded_corridor_slate_albedo.jpg-e5e7dc06724f947542f79d735e4e829d.etc2.ctex"]
 
 [params]
 

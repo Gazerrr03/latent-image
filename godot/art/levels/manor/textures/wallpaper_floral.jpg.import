@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw7opihhp5thd"
 path.s3tc="res://.godot/imported/wallpaper_floral.jpg-5226b009d10d75cd9927d61625fe143c.s3tc.ctex"
+path.etc2="res://.godot/imported/wallpaper_floral.jpg-5226b009d10d75cd9927d61625fe143c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/wallpaper_floral.jpg"
-dest_files=["res://.godot/imported/wallpaper_floral.jpg-5226b009d10d75cd9927d61625fe143c.s3tc.ctex"]
+dest_files=["res://.godot/imported/wallpaper_floral.jpg-5226b009d10d75cd9927d61625fe143c.s3tc.ctex", "res://.godot/imported/wallpaper_floral.jpg-5226b009d10d75cd9927d61625fe143c.etc2.ctex"]
 
 [params]
 

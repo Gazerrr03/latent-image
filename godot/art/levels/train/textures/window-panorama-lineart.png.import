@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bthc2b85vxh4w"
 path.s3tc="res://.godot/imported/window-panorama-lineart.png-47b0349b7aa6603ae88c42c3ceaeafcf.s3tc.ctex"
+path.etc2="res://.godot/imported/window-panorama-lineart.png-47b0349b7aa6603ae88c42c3ceaeafcf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/train/textures/window-panorama-lineart.png"
-dest_files=["res://.godot/imported/window-panorama-lineart.png-47b0349b7aa6603ae88c42c3ceaeafcf.s3tc.ctex"]
+dest_files=["res://.godot/imported/window-panorama-lineart.png-47b0349b7aa6603ae88c42c3ceaeafcf.s3tc.ctex", "res://.godot/imported/window-panorama-lineart.png-47b0349b7aa6603ae88c42c3ceaeafcf.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bg6vnjae0ueyw"
 path.s3tc="res://.godot/imported/ded_corridor_photo_wall_night.jpg-feb59ddb7d3a80cf4833f64d7513714f.s3tc.ctex"
+path.etc2="res://.godot/imported/ded_corridor_photo_wall_night.jpg-feb59ddb7d3a80cf4833f64d7513714f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/ded_corridor/ded_corridor_photo_wall_night.jpg"
-dest_files=["res://.godot/imported/ded_corridor_photo_wall_night.jpg-feb59ddb7d3a80cf4833f64d7513714f.s3tc.ctex"]
+dest_files=["res://.godot/imported/ded_corridor_photo_wall_night.jpg-feb59ddb7d3a80cf4833f64d7513714f.s3tc.ctex", "res://.godot/imported/ded_corridor_photo_wall_night.jpg-feb59ddb7d3a80cf4833f64d7513714f.etc2.ctex"]
 
 [params]
 

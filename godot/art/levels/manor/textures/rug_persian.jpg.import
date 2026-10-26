@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbvbspfyad2ba"
 path.s3tc="res://.godot/imported/rug_persian.jpg-c92a5b311195e0f019535b1390b6c459.s3tc.ctex"
+path.etc2="res://.godot/imported/rug_persian.jpg-c92a5b311195e0f019535b1390b6c459.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/rug_persian.jpg"
-dest_files=["res://.godot/imported/rug_persian.jpg-c92a5b311195e0f019535b1390b6c459.s3tc.ctex"]
+dest_files=["res://.godot/imported/rug_persian.jpg-c92a5b311195e0f019535b1390b6c459.s3tc.ctex", "res://.godot/imported/rug_persian.jpg-c92a5b311195e0f019535b1390b6c459.etc2.ctex"]
 
 [params]
 

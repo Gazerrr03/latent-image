@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6r2blehw7sgr"
 path.s3tc="res://.godot/imported/ded_house_Crow_bake.png-848aac07d92ce45722a6d4f14e8c436d.s3tc.ctex"
+path.etc2="res://.godot/imported/ded_house_Crow_bake.png-848aac07d92ce45722a6d4f14e8c436d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://art/levels/ded_house/ded_house_Crow_bake.png"
-dest_files=["res://.godot/imported/ded_house_Crow_bake.png-848aac07d92ce45722a6d4f14e8c436d.s3tc.ctex"]
+dest_files=["res://.godot/imported/ded_house_Crow_bake.png-848aac07d92ce45722a6d4f14e8c436d.s3tc.ctex", "res://.godot/imported/ded_house_Crow_bake.png-848aac07d92ce45722a6d4f14e8c436d.etc2.ctex"]
 
 [params]
 

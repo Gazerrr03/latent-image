@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7ekibbuiv7q5"
 path.s3tc="res://.godot/imported/leaf_ivy.png-f59d2cd419dd8bdff57ef1adaf134fce.s3tc.ctex"
+path.etc2="res://.godot/imported/leaf_ivy.png-f59d2cd419dd8bdff57ef1adaf134fce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/leaf_ivy.png"
-dest_files=["res://.godot/imported/leaf_ivy.png-f59d2cd419dd8bdff57ef1adaf134fce.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaf_ivy.png-f59d2cd419dd8bdff57ef1adaf134fce.s3tc.ctex", "res://.godot/imported/leaf_ivy.png-f59d2cd419dd8bdff57ef1adaf134fce.etc2.ctex"]
 
 [params]
 

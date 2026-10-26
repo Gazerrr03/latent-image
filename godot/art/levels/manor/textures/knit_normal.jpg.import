@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfbjrgl3rs13f"
 path.s3tc="res://.godot/imported/knit_normal.jpg-b1081a979f8614e178b3fa606c5453d5.s3tc.ctex"
+path.etc2="res://.godot/imported/knit_normal.jpg-b1081a979f8614e178b3fa606c5453d5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://art/levels/manor/textures/knit_normal.jpg"
-dest_files=["res://.godot/imported/knit_normal.jpg-b1081a979f8614e178b3fa606c5453d5.s3tc.ctex"]
+dest_files=["res://.godot/imported/knit_normal.jpg-b1081a979f8614e178b3fa606c5453d5.s3tc.ctex", "res://.godot/imported/knit_normal.jpg-b1081a979f8614e178b3fa606c5453d5.etc2.ctex"]
 
 [params]
 
