@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《潜影》核心工程管线与产品研发全景</title>
+  <style>
+    /* =========================================================
+       TASTE-SKILL EDITORIAL SYSTEM · 1926 DOSSIER AESTHETIC
+       Palette: 80% Warm Stone Ground, Deep Charcoal Ink, Single Crimson Accent (<5%)
+       Typography: High-contrast Editorial Serif + Clean Sans
+       Rules: Low word count, dominant diagrams, zero rainbow tags, zero hairlines
+       ========================================================= */
+    :root {
+      --bg: #f5f2eb;             /* Warm stone ground */
+      --surface: #eae5dc;        /* Tone step surface (no border needed) */
+      --surface-light: #ffffff;  /* Pure contrast card */
+      --ink: #18181b;            /* Deep charcoal ink */
+      --muted: #595964;          /* Clear secondary ink */
+      --quiet: #888894;          /* Footnotes and meta */
+      --accent: #991b1b;         /* Seal red / safelight crimson (strictly <5%) */
+      --accent-subtle: #fbebeb;  /* Pale crimson wash */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --slide-duration: 220ms;
+      --entry-duration: 520ms;
+      --nested-entry-start: 140ms;
+      --visual-image-delay: 180ms;
+      --visual-caption-delay: 250ms;
+      --stagger-1: 65ms;
+      --stagger-2: 130ms;
+      --stagger-3: 195ms;
+      --stagger-4: 260ms;
+      --stagger-5: 325ms;
+      
+      --font-display: "Songti SC", "SimSun", "Georgia", "Baskerville", serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #111113;
+      color: var(--ink);
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 16:9 Presentation Stage */
+    #stage {
+      position: relative;
+      width: 1280px;
+      height: 720px;
+      background: var(--bg);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Minimal Running Header */
+    .deck-header {
+      height: 52px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .header-title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--ink);
+    }
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .header-pill {
+      background: var(--surface);
+      color: var(--ink);
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Slide Content Area */
+    .deck-body {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 16px 48px 36px 48px;
+      display: none;
+      flex-direction: column;
+      background: var(--bg);
+      opacity: 0;
+      transition: opacity var(--slide-duration) var(--ease-out);
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      z-index: 1;
+    }
+    .slide.is-exiting {
+      display: flex;
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    html.motion-ready .slide.active > * {
+      animation: component-enter var(--entry-duration) var(--ease-out) both;
+      animation-delay: var(--item-delay, 0ms);
+    }
+    html.motion-ready .slide.active > :nth-child(2) { --item-delay: var(--stagger-1); }
+    html.motion-ready .slide.active > :nth-child(3) { --item-delay: var(--stagger-2); }
+    html.motion-ready .slide.active > :nth-child(4) { --item-delay: var(--stagger-3); }
+
+    html.motion-ready .slide.active .step-stack > .step-item,
+    html.motion-ready .slide.active .grid-4-cols > .surface-card,
+    html.motion-ready .slide.active .grid-split-55 > .surface-card,
+    html.motion-ready .slide.active .gallery-grid > .photo-plate,
+    html.motion-ready .slide.active .kpi-row > .kpi-item {
+      animation: component-enter var(--entry-duration) var(--ease-out) both;
+      animation-delay: calc(var(--nested-entry-start) + var(--item-delay, 0ms));
+    }
+    .step-stack > .step-item:nth-child(1),
+    .grid-4-cols > .surface-card:nth-child(1),
+    .grid-split-55 > .surface-card:nth-child(1),
+    .gallery-grid > .photo-plate:nth-child(1),
+    .kpi-row > .kpi-item:nth-child(1) { --item-delay: 0ms; }
+    .step-stack > .step-item:nth-child(2),
+    .grid-4-cols > .surface-card:nth-child(2),
+    .grid-split-55 > .surface-card:nth-child(2),
+    .gallery-grid > .photo-plate:nth-child(2),
+    .kpi-row > .kpi-item:nth-child(2) { --item-delay: var(--stagger-1); }
+    .step-stack > .step-item:nth-child(3),
+    .grid-4-cols > .surface-card:nth-child(3),
+    .gallery-grid > .photo-plate:nth-child(3),
+    .kpi-row > .kpi-item:nth-child(3) { --item-delay: var(--stagger-2); }
+    .grid-4-cols > .surface-card:nth-child(4),
+    .gallery-grid > .photo-plate:nth-child(4),
+    .kpi-row > .kpi-item:nth-child(4) { --item-delay: var(--stagger-3); }
+    .kpi-row > .kpi-item:nth-child(5) { --item-delay: var(--stagger-4); }
+    .kpi-row > .kpi-item:nth-child(6) { --item-delay: var(--stagger-5); }
+
+    html.motion-ready .slide.active .generated-visual img,
+    html.motion-ready .slide.active .generated-visual figcaption {
+      animation: component-enter var(--entry-duration) var(--ease-out) both;
+    }
+    html.motion-ready .slide.active .generated-visual img { animation-delay: var(--visual-image-delay); }
+    html.motion-ready .slide.active .generated-visual figcaption { animation-delay: var(--visual-caption-delay); }
+
+    @keyframes component-enter {
+      from { opacity: 0; transform: translate3d(0, 20px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+    @keyframes component-fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --slide-duration: 100ms;
+        --entry-duration: 260ms;
+        --nested-entry-start: 0ms;
+        --visual-image-delay: 0ms;
+        --visual-caption-delay: 0ms;
+        --stagger-1: 0ms;
+        --stagger-2: 0ms;
+        --stagger-3: 0ms;
+        --stagger-4: 0ms;
+        --stagger-5: 0ms;
+      }
+      html.motion-ready .slide.active > *,
+      html.motion-ready .slide.active .step-stack > .step-item,
+      html.motion-ready .slide.active .grid-4-cols > .surface-card,
+      html.motion-ready .slide.active .grid-split-55 > .surface-card,
+      html.motion-ready .slide.active .gallery-grid > .photo-plate,
+      html.motion-ready .slide.active .kpi-row > .kpi-item,
+      html.motion-ready .slide.active .generated-visual img,
+      html.motion-ready .slide.active .generated-visual figcaption {
+        animation-name: component-fade;
+      }
+    }
+
+    /* Typography Scale: Few sizes, far apart */
+    .slide-headline {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .slide-lead {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin-bottom: 24px;
+      max-width: 960px;
+    }
+
+    /* Layout Grids */
+    .grid-split-55 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      flex: 1;
+      min-height: 0;
+    }
+    .grid-split-46 {
+      display: grid;
+      grid-template-columns: 4fr 6fr;
+      gap: 32px;
+      flex: 1;
+      min-height: 0;
+    }
+    .grid-split-64 {
+      display: grid;
+      grid-template-columns: 6fr 4fr;
+      gap: 32px;
+      flex: 1;
+      min-height: 0;
+    }
+    .grid-4-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* Surface Cards (Tone step, NO 1px outlines) */
+    .surface-card {
+      background: var(--surface);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .surface-card.light {
+      background: var(--surface-light);
+    }
+    .surface-card.accent-flag {
+      border-left: 4px solid var(--accent);
+    }
+
+    /* Step / Progression Items (Minimal text, bold labels) */
+    .step-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+    }
+    .step-item {
+      background: var(--surface);
+      border-radius: 3px;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .step-item.focus {
+      background: var(--surface-light);
+      border-left: 3px solid var(--accent);
+    }
+    .step-item-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .step-item-desc {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    /* Generated 3D analysis plates */
+    .schematic-box {
+      background: var(--surface-light);
+      border-radius: 4px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      min-height: 0;
+    }
+    .generated-visual {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 0;
+      padding: 8px;
+      background: #262321;
+      border-radius: 3px;
+    }
+    .generated-visual::before,
+    .feature-plate::before,
+    .photo-plate::before {
+      content: "";
+      position: absolute;
+      inset: -18px;
+      z-index: 0;
+      background-image: var(--visual-image);
+      background-size: cover;
+      background-position: center;
+      filter: blur(18px) brightness(0.62) saturate(0.72);
+      transform: scale(1.04);
+      opacity: 0.84;
+      pointer-events: none;
+    }
+    .generated-visual::after,
+    .feature-plate::after,
+    .photo-plate::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(24, 24, 27, 0.36), transparent 20%, transparent 80%, rgba(24, 24, 27, 0.36)),
+        linear-gradient(0deg, rgba(24, 24, 27, 0.22), transparent 18%, transparent 82%, rgba(24, 24, 27, 0.22));
+      pointer-events: none;
+    }
+    .generated-visual img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 2px;
+    }
+    .generated-visual figcaption {
+      position: relative;
+      z-index: 2;
+      padding-bottom: 8px;
+      background: rgba(245, 242, 235, 0.96);
+      border-radius: 2px;
+    }
+    .feature-plate {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 2.15fr) minmax(270px, 0.85fr);
+      width: 100%;
+      height: 190px;
+      flex: none;
+      margin: 0 0 14px;
+      overflow: hidden;
+      background: #211f1d;
+      border-radius: 3px;
+      isolation: isolate;
+    }
+    .feature-plate img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .feature-plate figcaption {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 9px;
+      padding: 16px 18px;
+      color: #f5f2eb;
+      background: #211f1d;
+    }
+    .feature-plate-label {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      align-items: start;
+      gap: 8px;
+      font-size: 11.5px;
+      line-height: 1.3;
+    }
+    .feature-plate-label > b {
+      color: #d9a6a1;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    .feature-plate-label strong,
+    .feature-plate-label span {
+      display: block;
+    }
+    .feature-plate-label strong {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .feature-plate-label span {
+      margin-top: 2px;
+      color: #c9c3b9;
+      font-size: 10.5px;
+    }
+    .feature-plate--boundary {
+      height: 178px;
+      margin-bottom: 14px;
+    }
+    .visual-sequence {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(24, 24, 27, 0.08);
+      text-align: center;
+    }
+    .visual-sequence-step {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.35;
+    }
+    .visual-sequence-step strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--ink);
+      font-size: 12px;
+    }
+    .visual-sequence-arrow {
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .visual-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(24, 24, 27, 0.08);
+    }
+    .visual-compare > div + div {
+      border-left: 1px solid rgba(24, 24, 27, 0.08);
+      padding-left: 20px;
+    }
+    .visual-compare strong,
+    .visual-compare span {
+      display: block;
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+    .visual-compare strong { color: var(--ink); }
+    .visual-compare span { color: var(--muted); margin-top: 2px; }
+    .visual-narrative {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 7px;
+      padding-top: 9px;
+      border-top: 1px solid rgba(24, 24, 27, 0.08);
+      text-align: center;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.4;
+    }
+    .visual-narrative strong { color: var(--ink); }
+    .visual-narrative-choices {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+    .visual-narrative-choices span + span::before {
+      content: "·";
+      margin-right: 18px;
+      color: var(--accent);
+    }
+    svg text {
+      user-select: none;
+    }
+
+    /* Photo Plates (Real 60 FPS in-engine shots) */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+      min-height: 0;
+    }
+    .photo-plate {
+      position: relative;
+      isolation: isolate;
+      background: #211f1d;
+      border-radius: 3px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .photo-plate img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+    .plate-caption {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+    }
+    .plate-caption .caption-title {
+      font-weight: 700;
+      font-family: var(--font-display);
+      letter-spacing: 0.5px;
+    }
+    .plate-caption .caption-sub {
+      font-size: 12px;
+      color: #d4d4d8;
+    }
+
+    /* KPI Typography Row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-item {
+      background: var(--surface);
+      border-radius: 3px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .kpi-num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .kpi-num.accent {
+      color: var(--accent);
+    }
+    .kpi-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .kpi-detail {
+      font-size: 12px;
+      color: var(--quiet);
+      margin-top: 2px;
+    }
+
+    /* Minimal Running Footer */
+    .deck-footer {
+      height: 44px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12.5px;
+      color: var(--quiet);
+      flex-shrink: 0;
+      user-select: none;
+    }
+    kbd {
+      background: var(--surface);
+      color: var(--ink);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="stage">
+    <!-- Header -->
+    <header class="deck-header">
+      <div class="header-title">《潜影》研发纪实与成果全景</div>
+      <div class="header-nav">
+        <span id="section-label" class="header-pill">工程演进</span>
+        <span>第 <strong id="cur-slide" style="color: var(--ink);">1</strong> / <span id="total-slides">10</span> 页</span>
+      </div>
+    </header>
+
+    <!-- Slide Body -->
+    <main class="deck-body">
+
+      <!-- ==========================================
+           PART 1: 技术语义 —— 工程管线与技术壁垒
+      ========================================== -->
+
+      <!-- SLIDE 1: 技术总纲演进图示 -->
+      <section class="slide active" data-section="工程演进">
+        <h2 class="slide-headline">真实问题驱动的四大工程突破</h2>
+        <p class="slide-lead">拒绝盲目堆砌工具，每个技术选型均源自开发中遭遇的实际阻碍与 SOP 沉淀</p>
+
+        <div class="grid-4-cols">
+          <!-- Pillar 1 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">01 · 流程自动化</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                数据驱动与漫步
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                灰盒拼装易失序，切镜会削弱空间漫步感。将 87 个机位与剧情逻辑表驱动，建筑仍由场景承载。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              SOP：逻辑全入表 · 空间进 TSCN
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">02 · 空间算法</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                1:1 检视与防穿模
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                物证缩放失真、隔柜可检视、楼梯会悬空。以原生尺度装配、视线遮挡判定和邻模块规则解决。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              SOP：3D 建模与防穿模规范
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">03 · 性能调优</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                弃 VoxelGI 锁 60 帧
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                VoxelGI 在轻薄本降至 20 FPS 且发热，SDFGI 又有薄墙漏光。改用 Forward+、SSIL 与自研雨水着色器，稳定 60 FPS。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              SOP：统一天光与 Shader 资产库
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">04 · 自动化闭环</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                全量无头 CI 流水线
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                多分支推理容易漏测，角色曾卡在楼梯踢面。静态零错误门禁、无头双结局通关与房间巡检形成回归闭环。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              SOP：自动化防回归门禁机制
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: 数据驱动管线与“空间不进表”架构 -->
+      <section class="slide" data-section="数据驱动">
+        <h2 class="slide-headline">数据驱动管线与“空间不进表”架构</h2>
+        <p class="slide-lead">解耦叙事逻辑与空间渲染，让剧情机位变动秒级生效，杜绝二进制资产冲突</p>
+
+        <div class="grid-split-46">
+          <div class="step-stack">
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>痛点排查：代码生成空间的失序</span>
+              </div>
+              <div class="step-item-desc">
+                早期曾尝试在 CSV 中记录 3D 坐标并用代码动态拼装房间，导致场景比例失调、采光僵硬，艺术表现力完全丧失。
+              </div>
+            </div>
+
+            <div class="step-item focus">
+              <div class="step-item-title">
+                <span>架构决策：“空间不进表”铁律</span>
+                <span style="font-size: 12px; color: var(--accent); font-weight: 700;">核心红线</span>
+              </div>
+              <div class="step-item-desc">
+                <strong>空间进场景：</strong>庄园建筑、手绘材质与物理碰撞严格由 Blender / Godot <code>.tscn</code> 场景承载。<br>
+                <strong>逻辑全入表：</strong>镜头 <code>shots.csv</code>、任务 <code>quests.csv</code> 与门锁 <code>doors.csv</code> 由纯文本表格驱动。
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>实机效益：87 个机位与大地图漫步</span>
+              </div>
+              <div class="step-item-desc">
+                导演镜头与对话逻辑解耦，策划修改剧本与机位无需重新打包，状态机白名单执行器秒级热重载。
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated 3D architecture visualization -->
+          <div class="schematic-box">
+            <figure class="generated-visual" style="--visual-image: url('./slides_assets/generated/data-driven-pipeline.png')">
+              <img src="./slides_assets/generated/data-driven-pipeline.png" alt="纸面逻辑表经过状态机执行，再连接到独立手工搭建的庄园剖面模型">
+              <figcaption class="visual-sequence" aria-label="数据驱动管线的三个阶段">
+                <span class="visual-sequence-step"><strong>逻辑数据</strong>shots · quests · doors</span>
+                <span class="visual-sequence-arrow" aria-hidden="true">→</span>
+                <span class="visual-sequence-step"><strong>白名单执行器</strong>actions.gd</span>
+                <span class="visual-sequence-arrow" aria-hidden="true">→</span>
+                <span class="visual-sequence-step"><strong>独立 3D 场景</strong>房体 · 光影 · 碰撞</span>
+              </figcaption>
+            </figure>
+          </div> 
+        </div>
+      </section>
+
+      <!-- SLIDE 3: 3D 微观检视算法与建模 SOP -->
+      <section class="slide" data-section="资产算法">
+        <h2 class="slide-headline">物证微观检视算法与 3D 建模规范</h2>
+        <p class="slide-lead">攻克 1:1 探案尺度失真、柜门穿模检视与楼梯悬空事故，固化为可复用的工业级 SOP</p>
+
+        <div class="grid-split-46">
+          <div class="step-stack">
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>攻坚 A：1:1 原生装配杜绝形变</span>
+              </div>
+              <div class="step-item-desc">
+                常规探案 UI 强制缩放会导致皮鞋与案发泥印的 1:1 比对失效。自研 <code>asset_fit=native</code> 原生尺度装配，在 180 个旋转方向检测鞋底宽度与 0.8mm 倒角，杜绝微观物证拉伸。
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>攻坚 B：防穿透遮挡判定算法</span>
+              </div>
+              <div class="step-item-desc">
+                解决隔着紧闭柜门或墙体能触发检视的问题。研发 <code>inspection_surface_for</code> 视线射线遮挡判定，严格限制 0.025m 装配误差，并为狭窄家具增设 2.4—2.7m 动态交互补偿。
+              </div>
+            </div>
+
+            <div class="step-item focus">
+              <div class="step-item-title">
+                <span>事故 C：《3D 建模工作流 SOP》</span>
+                <span style="font-size: 12px; color: var(--accent); font-weight: 700;">规范固化</span>
+              </div>
+              <div class="step-item-desc">
+                门厅拆解引发主楼梯悬空事故后，确立<strong>“视线所及必带邻模块（`邻·门厅`）”</strong>铁律；网格严格遵循 <code>-col</code>（三维凸包）与 <code>-colonly</code> 命名，杜绝穿模与掉入虚空。
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated 3D inspection and modeling visualization -->
+          <div class="schematic-box">
+            <figure class="generated-visual" style="--visual-image: url('./slides_assets/generated/inspection-modeling.png')">
+              <img src="./slides_assets/generated/inspection-modeling.png" alt="实尺泥印物证、被柜门阻断的视线射线，以及连接完整的庄园楼梯模块">
+              <figcaption class="visual-sequence" aria-label="物证检视与建模规范的三个要点">
+                <span class="visual-sequence-step"><strong>1:1 原生尺度</strong>物证不拉伸</span>
+                <span class="visual-sequence-arrow" aria-hidden="true">→</span>
+                <span class="visual-sequence-step"><strong>遮挡即阻断</strong>隔柜不可触发</span>
+                <span class="visual-sequence-arrow" aria-hidden="true">→</span>
+                <span class="visual-sequence-step"><strong>邻模块齐套</strong>楼梯不悬空</span>
+              </figcaption>
+            </figure>
+          </div> 
+        </div>
+      </section>
+
+      <!-- SLIDE 4: 渲染实战 · 弃用 VoxelGI 与自研着色器 -->
+      <section class="slide" data-section="渲染调优">
+        <h2 class="slide-headline">图形渲染抉择：果断弃用高耗能 VoxelGI</h2>
+        <p class="slide-lead">在轻薄设备上实现稳定 60 FPS 与 1920 年代电影胶片质感的技术转向</p>
+
+        <div class="grid-split-46">
+          <div class="step-stack">
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>实测踩坑：VoxelGI 帧率雪崩与薄壁漏光</span>
+              </div>
+              <div class="step-item-desc">
+                早期追求全动态间接光实测 VoxelGI，轻薄本（M4 芯片）<strong>帧率瞬降 20 FPS</strong> 且剧烈发热；而 SDFGI 在庄园薄木板墙体频现大面积漏光穿帮。
+              </div>
+            </div>
+
+            <div class="step-item focus">
+              <div class="step-item-title">
+                <span>技术转向：Forward+ 实用光源群 + SSIL</span>
+                <span style="font-size: 12px; color: var(--accent); font-weight: 700;">稳锁 60 FPS</span>
+              </div>
+              <div class="step-item-desc">
+                果断弃用 VoxelGI。每间房设置一盏主投射窗光 + 暖色灯具发光体 + 不投射阴影的高效补光点，辅以屏幕空间间接光（SSIL），达成同等通透感且稳稳锁死 60 帧。
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>自研着色器群与全庄园统一天光</span>
+              </div>
+              <div class="step-item-desc">
+                自研 <code>rain_glass.gdshader</code>（流淌雨水折射替代昂贵粒子）与 <code>light_shaft.gdshader</code>（半透明加色圆锥模拟丁达尔光），搭配 3D LUT 胶片查找表彻底消除跨门色温突变。
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated 3D rendering comparison visualization -->
+          <div class="schematic-box">
+            <figure class="generated-visual" style="--visual-image: url('./slides_assets/generated/rendering-comparison.png')">
+              <img src="./slides_assets/generated/rendering-comparison.png" alt="同一庄园房间中，过重且漏光的全局光照与受控实用光源方案的对照">
+              <figcaption class="visual-compare" aria-label="两种渲染方案的实测对比">
+                <div>
+                  <strong>早期方案 · VoxelGI / SDFGI</strong>
+                  <span>38–42 FPS · 薄壁漏光</span>
+                </div>
+                <div>
+                  <strong>终选方案 · Forward+ + SSIL</strong>
+                  <span>60 FPS · 实用光源群</span>
+                </div>
+              </figcaption>
+            </figure>
+          </div> 
+        </div>
+      </section>
+
+      <!-- SLIDE 5: 自动化测试闭环与 CI 质量门禁 -->
+      <section class="slide" data-section="测试闭环">
+        <h2 class="slide-headline">全流程无头 CI/CD 自动化回归流水线</h2>
+        <p class="slide-lead">从依赖人工漫游排查，演进为秒级无头静态交叉校验与双主线自动通关</p>
+
+        <div class="grid-split-46">
+          <div class="step-stack">
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>痛点排查：人工回归成本高与死锁隐患</span>
+              </div>
+              <div class="step-item-desc">
+                多线索网状探案中，微小的数据表改动极易引发深层逻辑死锁；角色移动时曾偶发卡在 18cm 楼梯踢面无法爬坡。
+              </div>
+            </div>
+
+            <div class="step-item focus">
+              <div class="step-item-title">
+                <span>自动化突破：静态校验 + 无头自动通关</span>
+                <span style="font-size: 12px; color: var(--accent); font-weight: 700;">100% 自动跑通</span>
+              </div>
+              <div class="step-item-desc">
+                构建 <code>validate_content.gd</code> 交叉校验全部表格字段与资源存在性（0 错误门禁）；编写 <code>--autoplay</code> 无头探针，秒级自动跑通双结局主线。
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>几何巡检：全场景防穿模探针</span>
+              </div>
+              <div class="step-item-desc">
+                开发 <code>probe_walk.gd</code> 与 <code>probe_doorway.gd</code>，自动在庄园 15 个房间进行 8—16 向巡检，确保零穿模、零掉落虚空、跨门光影平滑。
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated 3D regression pipeline visualization -->
+          <div class="schematic-box">
+            <figure class="generated-visual" style="--visual-image: url('./slides_assets/generated/headless-regression.png')">
+              <img src="./slides_assets/generated/headless-regression.png" alt="资源校验设备连接到庄园自动巡检路径，并分支通往两个可完成的结局">
+              <figcaption class="visual-sequence" aria-label="自动回归流水线的三个阶段">
+                <span class="visual-sequence-step"><strong>静态交叉校验</strong>数据与资源</span>
+                <span class="visual-sequence-arrow" aria-hidden="true">→</span>
+                <span class="visual-sequence-step"><strong>无头自动通关</strong>--autoplay</span>
+                <span class="visual-sequence-arrow" aria-hidden="true">→</span>
+                <span class="visual-sequence-step"><strong>几何与门口巡检</strong>15 间房 · 双结局</span>
+              </figcaption>
+            </figure>
+          </div> 
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PART 2: 产品与业务语义 —— 可量化数据与成果呈现
+      ========================================== -->
+
+      <!-- SLIDE 6: Part 2 导引页 (Confident Transition) -->
+      <section class="slide" data-section="产品总览">
+        <h2 class="slide-headline">第二部：产品语义与成果呈现</h2>
+        <p class="slide-lead">聚焦最终交付的游戏作品实体：硬核研发数据大盘、实机视听表现、原创度与哲学思辨</p>
+
+        <div class="grid-4-cols">
+          <!-- Deliverable 1 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">DELIVERABLE 01</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                研发资产大盘
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                15 间房、87 个机位、60 件物证、261 项音频与 112 个原生脚本，形成可追溯的工程资产。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              全量哈希受控 · 零冗余资产
+            </div>
+          </div>
+
+          <!-- Deliverable 2 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">DELIVERABLE 02</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                实时实机画廊
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                门厅、客房、暗房与白色走廊均由引擎实时渲染，全场景稳定 60 FPS，可直接游玩。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              Forward+ 60 FPS · 胶片质感
+            </div>
+          </div>
+
+          <!-- Deliverable 3 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">DELIVERABLE 03</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                独立原创贡献
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                剧本、Blender 空间建模与引擎架构由学生主导，AI 只辅助底层工作并保留离线兜底。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              合规透明 · 原创可追溯
+            </div>
+          </div>
+
+          <!-- Deliverable 4 -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">DELIVERABLE 04</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 12px;">
+                叙事双结局升华
+              </div>
+              <div style="font-size: 13.5px; color: var(--muted); line-height: 1.6;">
+                暗房成为记忆容器，双重视点结局让玩家在“保护他人”与“不被取代”之间作出判断。
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              艺术立意 · 人文关怀
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: 游戏研发资产大盘 (Asset Dashboard) -->
+      <section class="slide" data-section="资产大盘">
+        <h2 class="slide-headline">游戏研发资产大盘：全景量化仪表盘</h2>
+        <p class="slide-lead">基于工程版本库全量扫描的真实研发指标，反映扎实完备的工业化生产体量</p>
+
+        <!-- KPI Header Row -->
+        <div class="kpi-row">
+          <div class="kpi-item">
+            <span class="kpi-num">15</span>
+            <span class="kpi-name">3D 关卡房间</span>
+            <span class="kpi-detail">14 高精 + 2 抽象</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-num">87</span>
+            <span class="kpi-name">独立机位镜头</span>
+            <span class="kpi-detail">shots.csv 纯文本驱动</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-num">60</span>
+            <span class="kpi-name">探案微观物证</span>
+            <span class="kpi-detail">1:1 实尺检视</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-num">261</span>
+            <span class="kpi-name">定制音频资产</span>
+            <span class="kpi-detail">无损音效与环境音</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-num">112</span>
+            <span class="kpi-name">原生代码脚本</span>
+            <span class="kpi-detail">100% 独立研发</span>
+          </div>
+          <div class="kpi-item">
+            <span class="kpi-num accent">60</span>
+            <span class="kpi-name">稳定实机帧率</span>
+            <span class="kpi-detail">全场景锁 60 FPS</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Charts Split -->
+        <div class="grid-split-55">
+          <!-- Left: Asset Category Breakdown -->
+          <div class="surface-card light" style="padding: 20px;">
+            <div style="font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 16px;">
+              工程资产结构分布 (Asset Breakdown)
+            </div>
+
+            <svg viewBox="0 0 500 160" width="100%" height="100%">
+              <!-- Bar 1: Audio -->
+              <text x="0" y="16" font-size="12" font-weight="700" fill="#18181b">音频工程资产 (261 项)</text>
+              <rect x="0" y="24" width="225" height="18" rx="2" fill="#18181b"/>
+              <rect x="227" y="24" width="175" height="18" rx="2" fill="#595964"/>
+              <rect x="404" y="24" width="96" height="18" rx="2" fill="#888894"/>
+              <text x="0" y="55" font-size="10.5" fill="#595964">交互拟真音效 (118) · 环境氛围音 (92) · 角色对白触发 (51)</text>
+
+              <!-- Bar 2: Logic & Narrative -->
+              <text x="0" y="80" font-size="12" font-weight="700" fill="#18181b">叙事与推理管线 (241 条)</text>
+              <rect x="0" y="88" width="180" height="18" rx="2" fill="#18181b"/>
+              <rect x="182" y="88" width="195" height="18" rx="2" fill="#595964"/>
+              <rect x="379" y="88" width="121" height="18" rx="2" fill="#888894"/>
+              <text x="0" y="119" font-size="10.5" fill="#595964">镜头机位 (87) · 剧情对话 (94) · 线索与物证判定 (60)</text>
+
+              <!-- Bar 3: Code Architecture -->
+              <text x="0" y="144" font-size="12" font-weight="700" fill="#18181b">原生核心脚本 (112 个)</text>
+              <rect x="0" y="152" width="240" height="18" rx="2" fill="#18181b"/>
+              <rect x="242" y="152" width="160" height="18" rx="2" fill="#595964"/>
+              <rect x="404" y="152" width="96" height="18" rx="2" fill="#888894"/>
+            </svg>
+          </div>
+
+          <!-- Right: Quality & Performance Gauges -->
+          <div class="surface-card light" style="padding: 20px;">
+            <div style="font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 16px;">
+              工程健康度与轻薄本性能指标
+            </div>
+
+            <div style="display: flex; justify-content: space-around; align-items: center; height: 160px;">
+              <!-- Gauge 1 -->
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#f5f2eb" stroke-width="8"/>
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#18181b" stroke-width="8" stroke-dasharray="238.7" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                  <text x="50" y="55" text-anchor="middle" font-size="16" font-weight="800" fill="#18181b">100%</text>
+                </svg>
+                <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 8px;">CI 静态校验通过率</div>
+                <div style="font-size: 11px; color: var(--quiet);">0 错误门禁</div>
+              </div>
+
+              <!-- Gauge 2 -->
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#f5f2eb" stroke-width="8"/>
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#18181b" stroke-width="8" stroke-dasharray="238.7" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                  <text x="50" y="55" text-anchor="middle" font-size="16" font-weight="800" fill="#18181b">100%</text>
+                </svg>
+                <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 8px;">双结局自动通关</div>
+                <div style="font-size: 11px; color: var(--quiet);">0 卡关 · 0 死锁</div>
+              </div>
+
+              <!-- Gauge 3 -->
+              <div style="display: flex; flex-direction: column; align-items: center;">
+                <svg width="100" height="100" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#f5f2eb" stroke-width="8"/>
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#991b1b" stroke-width="8" stroke-dasharray="238.7" stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+                  <text x="50" y="55" text-anchor="middle" font-size="16" font-weight="800" fill="#991b1b">60</text>
+                </svg>
+                <div style="font-size: 13px; font-weight: 700; color: var(--ink); margin-top: 8px;">实机运行帧率</div>
+                <div style="font-size: 11px; color: var(--quiet);">轻薄本全程稳锁</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: 60 FPS 实时实机画廊 (Editorial Photo Plates) -->
+      <section class="slide" data-section="实机画廊">
+        <h2 class="slide-headline">四大核心场景 60 FPS 实时实机画廊</h2>
+        <p class="slide-lead">100% 引擎实机实录（非预渲染 CG），展现从 1926 英国古典庄园到超现实意识剥离的影调过渡</p>
+
+        <div class="gallery-grid">
+          <!-- Shot 1: Hall -->
+          <div class="photo-plate" style="--visual-image: url('./slides_assets/hall.png')">
+            <img src="./slides_assets/hall.png" alt="庄园门厅">
+            <div class="plate-caption">
+              <span class="caption-title">01 · 庄园门厅 (Hall)</span>
+              <span class="caption-sub">1926 水银镜、暖光吊灯与主楼梯 · Forward+ 60 FPS</span>
+            </div>
+          </div>
+
+          <!-- Shot 2: Guest Room -->
+          <div class="photo-plate" style="--visual-image: url('./slides_assets/guest_room.png')">
+            <img src="./slides_assets/guest_room.png" alt="客房安全屋">
+            <div class="plate-caption">
+              <span class="caption-title">02 · 客房安全屋 (Guest Room)</span>
+              <span class="caption-sub">打字机手记、证据推理画板与窗外冷雨 · Forward+ 60 FPS</span>
+            </div>
+          </div>
+
+          <!-- Shot 3: Darkroom -->
+          <div class="photo-plate" style="--visual-image: url('./slides_assets/darkroom.png')">
+            <img src="./slides_assets/darkroom.png" alt="暗房案发现场">
+            <div class="plate-caption">
+              <span class="caption-title">03 · 案发反锁密室 (Darkroom)</span>
+              <span class="caption-sub">猩红安全灯低频漫射与显影水槽微光 · Forward+ 60 FPS</span>
+            </div>
+          </div>
+
+          <!-- Shot 4: White Corridor -->
+          <div class="photo-plate" style="--visual-image: url('./slides_assets/white_corridor.png')">
+            <img src="./slides_assets/white_corridor.png" alt="白色走廊">
+            <div class="plate-caption">
+              <span class="caption-title">04 · 第七章终局 (White Corridor)</span>
+              <span class="caption-sub">多维屏幕映照多重人格，真相剥离 · Forward+ 60 FPS</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: 独立开发原创性与人机协作边界 -->
+      <section class="slide" data-section="原创自证">
+        <h2 class="slide-headline">独立开发原创性与人机协作边界</h2>
+        <p class="slide-lead">拒绝商业资产拼凑，核心创意学生自主把控，严格遵守大赛《人工智能使用说明》</p>
+
+        <figure class="feature-plate feature-plate--boundary" style="--visual-image: url('./slides_assets/generated/authorship-boundary.jpg')" aria-label="学生掌控创作，AI 被限制在经人工审查的底层辅助环节">
+          <img src="./slides_assets/generated/authorship-boundary.jpg" alt="学生创作的庄园模型与剧本位于透明边界内，底层计算模块经人工关口提供辅助">
+          <figcaption>
+            <div class="feature-plate-label"><b>01</b><div><strong>人主导创作</strong><span>故事、空间、审查决策</span></div></div>
+            <div class="feature-plate-label"><b>02</b><div><strong>AI 辅助底层</strong><span>格式转换、测试与样板代码</span></div></div>
+            <div class="feature-plate-label"><b>03</b><div><strong>离线可运行</strong><span>不依赖运行时模型</span></div></div>
+          </figcaption>
+        </figure>
+
+        <div class="grid-split-55">
+          <!-- Left: 100% Student Core -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">100% 学生自主核心</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 16px;">
+                原创剧本、3D 建模与引擎架构
+              </div>
+              
+              <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13.5px; line-height: 1.6; color: var(--muted);">
+                <div>
+                  <strong style="color: var(--ink);">叙事剧本与文学创作：</strong><br>
+                  纯原创英国古典推理架构（阿加莎《罗杰疑案》叙述者即凶手）+ 赛博多重人格隐喻；全流程台词、九章诗化标题全部自主创作。
+                </div>
+                <div>
+                  <strong style="color: var(--ink);">Blender 从零手工建模：</strong><br>
+                  庄园 15 间房体结构、建筑外壳及核心探案道具全部在 Blender 中自主建模烘焙，拒绝购买商业整套资产包。
+                </div>
+                <div>
+                  <strong style="color: var(--ink);">原生检视与状态机管线：</strong><br>
+                  自主研发 <code>actions.gd</code> 执行器与 1:1 实尺物证微观裁切装配系统。
+                </div>
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              核心设计与审查决策：100% 学生主导
+            </div>
+          </div>
+
+          <!-- Right: AI Boundary -->
+          <div class="surface-card">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">透明合规使用</div>
+              <div style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 16px;">
+                人机协作的清晰安全边界
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13.5px; line-height: 1.6; color: var(--muted);">
+                <div>
+                  <strong style="color: var(--ink);">定位严格受控于底层助手：</strong><br>
+                  AI 仅用于辅助样板代码生成、自动化格式转换与单元测试脚本编写，严守工具属性，不替代艺术决策。
+                </div>
+                <div>
+                  <strong style="color: var(--ink);">离线确定性保障：</strong><br>
+                  游戏设计了完备的预写兜底与词表闸门，彻底脱离网络环境仍可 100% 完整流畅通关，杜绝运行时模型隐式依赖。
+                </div>
+                <div>
+                  <strong style="color: var(--ink);">全量合入人工把关：</strong><br>
+                  所有代码与资产均经过团队代码审查与 CI 静态 0 错误门禁，确保完全自主掌控。
+                </div>
+              </div>
+            </div>
+            <div style="font-size: 12.5px; font-weight: 600; color: var(--ink); padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.06);">
+              可审查 · 可脱机 · 严守学术与比赛诚信
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: 叙事机制破局与双结局哲学思辨 -->
+      <section class="slide" data-section="叙事创新">
+        <h2 class="slide-headline">叙事机制破局：构建《少年派》式的双重视点</h2>
+        <p class="slide-lead">从“谁是凶手”的解谜套路，走向“我该相信哪一种讲法”的哲学追问</p>
+
+        <div class="grid-split-55">
+          <div class="step-stack">
+            <div class="step-item">
+              <div class="step-item-title">
+                <span>核心隐喻：现实中从未发生真正凶杀</span>
+              </div>
+              <div class="step-item-desc">
+                侦探即凶手，死者即记录者。这是一场发生在数字容器内部的“遗忘”与“自我疗愈”。暗房即容器、显影即浮现、定影即留下唯一主体。
+              </div>
+            </div>
+
+            <div class="step-item focus">
+              <div class="step-item-title">
+                <span>终局抉择：打字机上的两种讲法</span>
+                <span style="font-size: 12px; color: var(--accent); font-weight: 700;">由玩家裁决</span>
+              </div>
+              <div class="step-item-desc">
+                在认出凶手就是自己后，游戏拒绝非黑即白的道德说教：<br><br>
+                • <strong>“为了保护所有人”</strong>：选择相信自我牺牲是为了守护其他衍生人格免遭痛苦的温存。<br>
+                • <strong>“为了不被取代”</strong>：选择直面主体为了生存而剥离衍生人格的残酷现实。
+              </div>
+            </div>
+          </div>
+
+          <!-- Generated 3D dual-perspective narrative visualization -->
+          <div class="schematic-box">
+            <figure class="generated-visual" style="--visual-image: url('./slides_assets/generated/dual-perspective.png')">
+              <img src="./slides_assets/generated/dual-perspective.png" alt="红光暗房中照片显影，主体逐渐浮现，并通往守护或生存两种叙事解释">
+              <figcaption class="visual-narrative" aria-label="暗房隐喻与双重叙事视点">
+                <div><strong>封存</strong> → <strong>显影</strong> → <strong>定影</strong></div>
+                <div class="visual-narrative-choices"><span>为了保护所有人</span><span>为了不被取代</span></div>
+              </figcaption>
+            </figure>
+          </div> 
+        </div>
+      </section>
+
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="deck-footer">
+      <div>
+        翻页：<kbd>→</kbd> <kbd>←</kbd> 或 <kbd>空格</kbd> &nbsp;&nbsp;|&nbsp;&nbsp; 全屏：<kbd>F</kbd>
+      </div>
+      <div>
+        1926 庄园悬疑推理 · 赛道三：虚拟现实与游戏类
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    const curSlideEl = document.getElementById('cur-slide');
+    const totalSlidesEl = document.getElementById('total-slides');
+    const sectionLabelEl = document.getElementById('section-label');
+    const exitTimers = new WeakMap();
+
+    if (currentIndex < 0 && slides.length > 0) {
+      currentIndex = 0;
+      slides[currentIndex].classList.add('active');
+    }
+
+    totalSlidesEl.textContent = slides.length;
+
+    function updateSection(slide) {
+      const sec = slide.getAttribute('data-section') || '潜影';
+      sectionLabelEl.textContent = sec;
+    }
+
+    // Wait until the first frame has painted before revealing the entrance motion.
+    // This keeps the opening animation visible when a browser or preview loads the
+    // file in the background before showing it to the user.
+    let motionStartPending = false;
+    function startEntranceMotionWhenVisible() {
+      if (motionStartPending || document.documentElement.classList.contains('motion-ready')) return;
+      if (document.visibilityState !== 'visible') return;
+      motionStartPending = true;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          motionStartPending = false;
+          if (document.visibilityState !== 'visible') return;
+          document.documentElement.classList.add('motion-ready');
+          document.removeEventListener('visibilitychange', startEntranceMotionWhenVisible);
+        });
+      });
+    }
+    document.addEventListener('visibilitychange', startEntranceMotionWhenVisible);
+    startEntranceMotionWhenVisible();
+
+    function showSlide(index) {
+      const nextIndex = Math.max(0, Math.min(index, slides.length - 1));
+      if (nextIndex === currentIndex) return;
+
+      const outgoingSlide = slides[currentIndex];
+      const incomingSlide = slides[nextIndex];
+      const pendingExit = exitTimers.get(incomingSlide);
+      if (pendingExit) {
+        window.clearTimeout(pendingExit);
+        exitTimers.delete(incomingSlide);
+      }
+
+      incomingSlide.classList.remove('is-exiting');
+      outgoingSlide.classList.remove('active');
+      outgoingSlide.classList.add('is-exiting');
+      incomingSlide.classList.add('active');
+      currentIndex = nextIndex;
+      curSlideEl.textContent = currentIndex + 1;
+      updateSection(slides[currentIndex]);
+
+      const exitTimer = window.setTimeout(() => {
+        outgoingSlide.classList.remove('is-exiting');
+        exitTimers.delete(outgoingSlide);
+      }, 220);
+      exitTimers.set(outgoingSlide, exitTimer);
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        showSlide(currentIndex + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        showSlide(currentIndex - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        showSlide(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        showSlide(slides.length - 1);
+      } else if (e.key === 'f' || e.key === 'F') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+    });
+
+    // Click sides to navigate
+    document.getElementById('stage').addEventListener('click', (e) => {
+      if (e.target.closest('button, kbd, a')) return;
+      const rect = document.getElementById('stage').getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      if (clickX > rect.width * 0.65) {
+        showSlide(currentIndex + 1);
+      } else if (clickX < rect.width * 0.35) {
+        showSlide(currentIndex - 1);
+      }
+    });
+
+    updateSection(slides[0]);
+  </script>
+</body>
+</html>
